@@ -1,0 +1,10 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "particle": "opminecraft:block/text_crying_bricks",
+    "bottom": "opminecraft:block/text_crying_bricks",
+    "top": "opminecraft:block/text_crying_bricks",
+    "side": "opminecraft:block/text_crying_bricks"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "opminecraft:chiseled_netherite"
+    },
+    "b": {
+      "item": "opminecraft:diamond_furnace"
+    }
+  },
+  "result": {
+    "id": "opminecraft:netherite_furnace",
+    "count": 1
+  }
+}

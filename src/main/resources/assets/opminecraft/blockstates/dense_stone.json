@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "opminecraft:block/dense_stone",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "opminecraft:block/dense_stone"
+    },
+    "axis=z": {
+      "model": "opminecraft:block/dense_stone",
+      "x": 90
+    }
+  }
+}

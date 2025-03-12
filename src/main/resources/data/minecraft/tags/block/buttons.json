@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:crying_brick_button",
+    "opminecraft:crying_tile_button",
+    "opminecraft:dense_stone_button",
+    "opminecraft:dense_stone_brick_button",
+    "opminecraft:dense_stone_tile_button",
+    "opminecraft:stone_tile_button"
+  ]
+}

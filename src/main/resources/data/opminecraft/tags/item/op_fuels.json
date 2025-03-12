@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:lava_bucket",
+    "minecraft:coal_block",
+    "minecraft:coal",
+    "opminecraft:block_of_charcoal",
+    "minecraft:charcoal",
+    "minecraft:dried_kelp_block",
+    "minecraft:blaze_rod",
+    "#minecraft:logs",
+    "#minecraft:planks",
+    "#minecraft:wooden_slabs",
+    "minecraft:stick"
+  ]
+}

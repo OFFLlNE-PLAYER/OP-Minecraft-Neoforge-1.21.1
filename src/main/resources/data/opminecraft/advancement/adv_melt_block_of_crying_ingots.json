@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:soul_campfire"
+    },
+    "title": {
+      "translate": "advancements.adv_melt_block_of_crying_ingots.title"
+    },
+    "description": {
+      "translate": "advancements.adv_melt_block_of_crying_ingots.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_melt_block_of_crying_ingots_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "opminecraft:adv_crying_ingot"
+}

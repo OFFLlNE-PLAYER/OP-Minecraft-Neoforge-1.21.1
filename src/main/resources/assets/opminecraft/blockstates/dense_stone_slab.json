@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "opminecraft:block/dense_stone_slab"
+    },
+    "type=top": {
+      "model": "opminecraft:block/dense_stone_slab_top"
+    },
+    "type=double": {
+      "model": "opminecraft:block/dense_stone_slab_full"
+    }
+  }
+}

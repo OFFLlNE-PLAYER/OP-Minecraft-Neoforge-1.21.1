@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "opminecraft:diamond_furnace"
+    },
+    "title": {
+      "translate": "advancements.adv_diamond_furnace.title"
+    },
+    "description": {
+      "translate": "advancements.adv_diamond_furnace.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_diamond_furnace_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "opminecraft:diamond_furnace"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "opminecraft:adv_gold_furnace"
+}

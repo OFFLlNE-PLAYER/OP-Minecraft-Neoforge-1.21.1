@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:crying_sword",
+    "opminecraft:crying_axe",
+    "opminecraft:crying_pickaxe",
+    "opminecraft:crying_shovel",
+    "opminecraft:crying_sickle",
+    "opminecraft:crying_helmet",
+    "opminecraft:crying_chestplate",
+    "opminecraft:crying_leggings",
+    "opminecraft:crying_boots"
+  ]
+}

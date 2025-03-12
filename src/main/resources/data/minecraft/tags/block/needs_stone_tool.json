@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:chiseled_iron",
+    "opminecraft:copper_furnace",
+    "opminecraft:iron_furnace"
+  ]
+}

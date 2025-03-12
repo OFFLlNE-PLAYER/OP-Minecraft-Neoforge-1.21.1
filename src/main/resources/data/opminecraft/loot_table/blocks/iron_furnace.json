@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "opminecraft:blocks/iron_furnace",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "opminecraft:iron_furnace"
+        }
+      ]
+    }
+  ]
+}

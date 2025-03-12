@@ -1,0 +1,15 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/text_chiseled_diamond",
+    "up": "opminecraft:block/text_chiseled_diamond",
+    "north": "opminecraft:block/text_chiseled_diamond",
+    "east": "opminecraft:block/text_chiseled_diamond",
+    "south": "opminecraft:block/text_chiseled_diamond",
+    "west": "opminecraft:block/text_chiseled_diamond",
+    "particle": "opminecraft:block/text_chiseled_diamond"
+  },
+  "render_type": "solid",
+  "emissive": false,
+  "light": 0
+}

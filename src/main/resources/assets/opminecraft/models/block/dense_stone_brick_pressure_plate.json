@@ -1,0 +1,8 @@
+{
+  "parent": "block/pressure_plate_up",
+  "textures": {
+    "texture": "opminecraft:block/text_dense_stone_bricks",
+    "particle": "opminecraft:block/text_dense_stone_bricks"
+  },
+  "render_type": "solid"
+}

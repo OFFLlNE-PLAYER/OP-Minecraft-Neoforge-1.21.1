@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "opminecraft:block_of_crying_ingots"
+    }
+  ],
+  "result": {
+    "id": "opminecraft:crying_ingot",
+    "count": 9
+  }
+}

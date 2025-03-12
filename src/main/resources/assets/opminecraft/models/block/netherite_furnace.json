@@ -1,0 +1,15 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/text_chiseled_netherite",
+    "up": "opminecraft:block/text_chiseled_netherite",
+    "north": "opminecraft:block/text_netherite_furnace",
+    "east": "opminecraft:block/text_chiseled_netherite",
+    "south": "opminecraft:block/text_chiseled_netherite",
+    "west": "opminecraft:block/text_chiseled_netherite",
+    "particle": "opminecraft:block/text_chiseled_netherite"
+  },
+  "render_type": "solid",
+  "emissive": false,
+  "light": 0
+}

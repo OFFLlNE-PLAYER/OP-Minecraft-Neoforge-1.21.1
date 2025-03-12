@@ -1,0 +1,10 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "particle": "opminecraft:block/text_stone_tiles",
+    "bottom": "opminecraft:block/text_stone_tiles",
+    "top": "opminecraft:block/text_stone_tiles",
+    "side": "opminecraft:block/text_stone_tiles"
+  },
+  "render_type": "solid"
+}

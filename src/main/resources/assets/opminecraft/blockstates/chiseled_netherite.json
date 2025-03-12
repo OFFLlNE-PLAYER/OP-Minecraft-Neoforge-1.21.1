@@ -1,0 +1,9 @@
+
+{"variants": {
+
+  "axis=x": {"model": "opminecraft:block/chiseled_netherite", "x": 90, "y": 90},
+  "axis=y": {"model": "opminecraft:block/chiseled_netherite"},
+  "axis=z": {"model": "opminecraft:block/chiseled_netherite", "x": 90}
+  }
+}
+

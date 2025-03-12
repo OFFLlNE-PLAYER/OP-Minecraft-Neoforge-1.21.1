@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "opminecraft:blocks/block_of_charcoal",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "opminecraft:block_of_charcoal"
+        }
+      ]
+    }
+  ]
+}

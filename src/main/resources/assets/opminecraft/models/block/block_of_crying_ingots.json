@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/text_block_of_crying_ingots_2",
+    "up": "opminecraft:block/text_block_of_crying_ingots_2",
+    "north": "opminecraft:block/text_block_of_crying_ingots",
+    "east": "opminecraft:block/text_block_of_crying_ingots_2",
+    "south": "opminecraft:block/text_block_of_crying_ingots",
+    "west": "opminecraft:block/text_block_of_crying_ingots_2",
+    "particle": "opminecraft:block/text_block_of_crying_ingots_2"
+  },
+  "render_type": "solid"
+}

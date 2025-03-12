@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "opminecraft:copper_furnace"
+    },
+    "title": {
+      "translate": "advancements.adv_copper_furnace.title"
+    },
+    "description": {
+      "translate": "advancements.adv_copper_furnace.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_copper_furnace_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "opminecraft:copper_furnace"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "opminecraft:adv_opminecraft_root"
+}

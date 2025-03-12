@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "opminecraft:crying_smithing_template"
+    },
+    "title": {
+      "translate": "advancements.adv_smithing_template.title"
+    },
+    "description": {
+      "translate": "advancements.adv_smithing_template.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_smithing_template_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "opminecraft:adv_melt_block_of_crying_ingots"
+}

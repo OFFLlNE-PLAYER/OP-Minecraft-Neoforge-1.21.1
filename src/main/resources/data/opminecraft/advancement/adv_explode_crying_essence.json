@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:lava_bucket"
+    },
+    "title": {
+      "translate": "advancements.adv_explode_crying_essence.title"
+    },
+    "description": {
+      "translate": "advancements.adv_explode_crying_essence.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_explode_crying_essence_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "opminecraft:adv_crying_ingot"
+}

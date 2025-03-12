@@ -1,0 +1,14 @@
+{"parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/text_chiseled_iron",
+    "up": "opminecraft:block/text_chiseled_iron",
+    "north": "opminecraft:block/text_iron_furnace_lit",
+    "east": "opminecraft:block/text_chiseled_iron",
+    "south": "opminecraft:block/text_chiseled_iron",
+    "west": "opminecraft:block/text_chiseled_iron",
+    "particle": "opminecraft:block/text_chiseled_iron"
+  },
+  "render_type": "solid",
+  "emissive": true,
+  "light": 15
+}

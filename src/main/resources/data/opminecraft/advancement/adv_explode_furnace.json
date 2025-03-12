@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:crying_obsidian"
+    },
+    "title": {
+      "translate": "advancements.adv_explode_furnace.title"
+    },
+    "description": {
+      "translate": "advancements.adv_explode_furnace.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_explode_iron_furnace_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "opminecraft:adv_copper_furnace"
+}

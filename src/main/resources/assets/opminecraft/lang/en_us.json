@@ -1,0 +1,190 @@
+{
+
+  "advancements.adv_opminecraft_root.title": "OP's Vanilla Plus",
+  "advancements.adv_opminecraft_root.descr": "Vanilla additions by Offllne Player.",
+
+  "advancements.adv_crying_ingot.title": "Essence of hunger",
+  "advancements.adv_crying_ingot.descr": "Smelt Crying Obsidian in an OP Furnace.",
+
+  "advancements.adv_melt_block_of_crying_ingots.title": "Goldilocks",
+  "advancements.adv_melt_block_of_crying_ingots.descr": "Sucessfully melt a Block of Crying Ingots.",
+
+  "advancements.adv_crying_smithing_template.title": "Dipped in drip",
+  "advancements.adv_crying_smithing_template.descr": "Toss a Netherite smithing template into Crying Essence.",
+
+  "advancements.adv_golden_apple.title": "How it\u0027s made",
+  "advancements.adv_golden_apple.descr": "Toss a Golden Apple into Crying Essence.",
+
+  "advancements.adv_copper_furnace.title": "Chiseled Copper Cooker",
+  "advancements.adv_copper_furnace.descr": "Craft a Copper Furnace.",
+  "advancements.adv_iron_furnace.title": "Shouldn't This Melt?",
+  "advancements.adv_iron_furnace.descr": "Craft an Iron Furnace.",
+  "advancements.adv_gold_furnace.title": "Gilded Insulation",
+  "advancements.adv_gold_furnace.descr": "Craft a Gold Furnace.",
+  "advancements.adv_diamond_furnace.title": "Shining Smelter",
+  "advancements.adv_diamond_furnace.descr": "Craft a Diamond Furnace.",
+  "advancements.adv_netherite_furnace.title": "Blastproof Box",
+  "advancements.adv_netherite_furnace.descr": "Craft a Netherite Furnace.",
+
+  "advancements.adv_explode_crying_essence.title": "Too Hot!",
+  "advancements.adv_explode_crying_essence.descr": "Explode Crying Essence.",
+
+  "advancements.adv_explode_furnace.title": "Not Built For This",
+  "advancements.adv_explode_furnace.descr": "Explode a non-Netherite Furnace with Crying Obsidian.",
+
+  "advancements.adv_full_crying.title": "OP",
+  "advancements.adv_full_crying.descr": "Max out a full set of crying armor.",
+
+"/*-------*[Advancements]*": "",
+
+
+  "block.opminecraft.block_of_charcoal": "Block of Charcoal",
+
+  "block.opminecraft.block_of_crying_ingots": "§dBlock Of Crying Ingots§r",
+
+  "block.opminecraft.crying_essence": "§dCrying Essence§r",
+
+  "block.opminecraft.crying_bricks": "§dCrying Bricks§r",
+  "block.opminecraft.crying_brick_button": "§dCrying Brick Button§r",
+  "block.opminecraft.crying_brick_fence": "§dCrying Brick Fence§r",
+  "block.opminecraft.crying_brick_fence_gate": "§dCrying Brick Fence Gate§r",
+  "block.opminecraft.crying_brick_pressure_plate": "§dCrying Brick Pressure Plate§r",
+  "block.opminecraft.crying_brick_slab": "§dCrying Brick Slab§r",
+  "block.opminecraft.crying_brick_stairs": "§dCrying Brick Stairs§r",
+  "block.opminecraft.crying_brick_trapdoor": "§dCrying Brick Trapdoor§r",
+  "block.opminecraft.crying_brick_wall": "§dCrying Brick Wall§r",
+
+  "block.opminecraft.crying_tiles": "§dCrying Tiles§r",
+  "block.opminecraft.crying_tile_button": "§dCrying Tile Button§r",
+  "block.opminecraft.crying_tile_fence": "§dCrying Tile Fence§r",
+  "block.opminecraft.crying_tile_fence_gate": "§dCrying Tile Fence Gate§r",
+  "block.opminecraft.crying_tile_pressure_plate": "§dCrying Tile Pressure Plate§r",
+  "block.opminecraft.crying_tile_slab": "§dCrying Tile Slab§r",
+  "block.opminecraft.crying_tile_stairs": "§dCrying Tile Stairs§r",
+  "block.opminecraft.crying_tile_trapdoor": "§dCrying Tile Trapdoor§r",
+  "block.opminecraft.crying_tile_wall": "§dCrying Tile Wall§r",
+
+  "block.opminecraft.chiseled_diamond": "Chiseled Diamond",
+  "block.opminecraft.chiseled_gold": "Chiseled Gold",
+  "block.opminecraft.chiseled_iron": "Chiseled Iron",
+  "block.opminecraft.chiseled_netherite": "Chiseled Netherite",
+
+  "block.opminecraft.copper_furnace": "Copper Furnace",
+  "block.opminecraft.diamond_furnace": "Diamond Furnace",
+  "block.opminecraft.gold_furnace": "Gold Furnace",
+  "block.opminecraft.iron_furnace": "Iron Furnace",
+  "block.opminecraft.netherite_furnace": "Netherite Furnace",
+
+  "block.opminecraft.dense_stone": "Dense Stone",
+  "block.opminecraft.dense_stone_button": "Dense Stone Button",
+  "block.opminecraft.dense_stone_fence": "Dense Stone Fence",
+  "block.opminecraft.dense_stone_fence_gate": "Dense Stone Fence Gate",
+  "block.opminecraft.dense_stone_pressure_plate": "Dense Stone Pressure Plate",
+  "block.opminecraft.dense_stone_slab": "Dense Stone Slab",
+  "block.opminecraft.dense_stone_stairs": "Dense Stone Stairs",
+  "block.opminecraft.dense_stone_trapdoor": "Dense Stone Trapdoor",
+  "block.opminecraft.dense_stone_wall": "Dense Stone Wall",
+
+  "block.opminecraft.dense_stone_bricks": "Dense Stone Bricks",
+  "block.opminecraft.dense_stone_brick_button": "Dense Stone Brick Button",
+  "block.opminecraft.dense_stone_brick_fence": "Dense Stone Brick Fence",
+  "block.opminecraft.dense_stone_brick_fence_gate": "Dense Stone Brick Fence Gate",
+  "block.opminecraft.dense_stone_brick_pressure_plate": "Dense Stone Brick Pressure Plate",
+  "block.opminecraft.dense_stone_brick_slab": "Dense Stone Brick Slab",
+  "block.opminecraft.dense_stone_brick_stairs": "Dense Stone Brick Stairs",
+  "block.opminecraft.dense_stone_brick_trapdoor": "Dense Stone Brick Trapdoor",
+  "block.opminecraft.dense_stone_brick_wall": "Dense Stone Brick Wall",
+
+  "block.opminecraft.dense_stone_tiles": "Dense Stone Tiles",
+  "block.opminecraft.dense_stone_tile_button": "Dense Stone Tile Button",
+  "block.opminecraft.dense_stone_tile_fence": "Dense Stone Tile Fence",
+  "block.opminecraft.dense_stone_tile_fence_gate": "Dense Stone Tile Fence Gate",
+  "block.opminecraft.dense_stone_tile_pressure_plate": "Dense Stone Tile Pressure Plate",
+  "block.opminecraft.dense_stone_tile_slab": "Dense Stone Tile Slab",
+  "block.opminecraft.dense_stone_tile_stairs": "Dense Stone Tile Stairs",
+  "block.opminecraft.dense_stone_tile_trapdoor": "Dense Stone Tile Trapdoor",
+  "block.opminecraft.dense_stone_tile_wall": "Dense Stone Tile Wall",
+
+  "block.opminecraft.stone_tiles": "Stone Tiles",
+  "block.opminecraft.stone_tile_button": "Stone Tile Button",
+  "block.opminecraft.stone_tile_fence": "Stone Tile Fence",
+  "block.opminecraft.stone_tile_fence_gate": "Stone Tile Fence Gate",
+  "block.opminecraft.stone_tile_pressure_plate": "Stone Tile Pressure Plate",
+  "block.opminecraft.stone_tile_slab": "Stone Tile Slab",
+  "block.opminecraft.stone_tile_stairs": "Stone Tile Stairs",
+  "block.opminecraft.stone_tile_trapdoor": "Stone Tile Trapdoor",
+  "block.opminecraft.stone_tile_wall": "Stone Tile Wall",
+
+  "block.opminecraft.schist": "Schist",
+  "block.opminecraft.dense_schist": "Dense Schist",
+
+  "block.opminecraft.schist_bricks": "Schist Bricks",
+
+  "block.opminecraft.alexandrite_schist": "Alexandrite Schist",
+  "block.opminecraft.andalusite_schist": "Andalusite Schist",
+  "block.opminecraft.chrysoberyl_schist": "Chrysoberyl Schist",
+  "block.opminecraft.corundum_schist": "Corundum Schist",
+  "block.opminecraft.cymophane_schist": "Cymophane Schist",
+  "block.opminecraft.jadeite_schist": "Jadeite Schist",
+  "block.opminecraft.padparadscha_schist": "Padparadscha Schist",
+  "block.opminecraft.ruby_schist": "Ruby Schist",
+  "block.opminecraft.saffire_schist": "Saffire Schist",
+  "block.opminecraft.scapolite_schist": "Scapolite Schist",
+  "block.opminecraft.staurolite_schist": "Staurolite Schist",
+  "block.opminecraft.tanzanite_schist": "Tanzanite Schist",
+
+  "/*-------*[Blocks]*": "",
+
+  "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
+
+  "item.opminecraft.chisel": "Chisel",
+  "item.opminecraft.dynamite_stick": "Dynamite Stick",
+  "item.opminecraft.tnt_stick": "TNT Stick",
+
+  "item.opminecraft.crying_ingot": "Crying Ingot",
+  "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
+
+  "item.opminecraft.crying_helmet": "Crying Helmet",
+  "item.opminecraft.crying_chestplate": "Crying Chestplate",
+  "item.opminecraft.crying_leggings": "Crying Leggings",
+  "item.opminecraft.crying_boots": "Crying Boots",
+
+  "item.opminecraft.crying_sword": "Crying Sword",
+  "item.opminecraft.crying_axe": "Crying Axe",
+  "item.opminecraft.crying_pickaxe": "Crying Pickaxe",
+  "item.opminecraft.crying_shovel": "Crying Shovel",
+  "item.opminecraft.crying_sickle": "Crying Sickle",
+  "item.opminecraft.crying_paxel": "Crying Paxel",
+
+  "item.minecraft.potion.effect.crying_i_potion": "§dCrying I Potion§r",
+  "item.minecraft.potion.effect.crying_i_potion_long": "§dCrying I Potion (§r§4+§d)§r",
+  "item.minecraft.potion.effect.crying_ii_potion": "§dCrying II Potion§r",
+  "item.minecraft.potion.effect.crying_ii_potion_long": "§dCrying II Potion (§r§4+§d)§r",
+
+  "item.minecraft.splash_potion.effect.crying_i_potion": "§dSplash Crying I Potion§r",
+  "item.minecraft.splash_potion.effect.crying_i_potion_long": "§dSplash Crying I Potion (§r§4+§d)§r",
+  "item.minecraft.splash_potion.effect.crying_ii_potion": "§dSplash Crying II Potion§r",
+  "item.minecraft.splash_potion.effect.crying_ii_potion_long": "§dSplash Crying II Potion (§r§4+§d)§r",
+
+  "item.minecraft.lingering_potion.effect.crying_i_potion": "§dLingering Crying I Potion§r",
+  "item.minecraft.lingering_potion.effect.crying_i_potion_long": "§dLingering Crying I Potion (§r§4+§d)§r",
+  "item.minecraft.lingering_potion.effect.crying_ii_potion": "§dLingering Crying II Potion§r",
+  "item.minecraft.lingering_potion.effect.crying_ii_potion_long": "§dLingering Crying II Potion (§r§4+§d)§r",
+
+  "item.minecraft.tipped_arrow.effect.crying_i_potion": "§dArrow of Crying I§r",
+  "item.minecraft.tipped_arrow.effect.crying_i_potion_long": "§dArrow of Crying I (§r§4+§d)§r",
+  "item.minecraft.tipped_arrow.effect.crying_ii_potion": "§dArrow of Crying II§r",
+  "item.minecraft.tipped_arrow.effect.crying_ii_potion_long": "§dArrow of Crying II (§r§4+§d)§r",
+
+  "/*-------*[Items]*": "",
+
+  "effect.opminecraft.crying_i": "Crying I",
+  "effect.opminecraft.crying_ii": "Crying II",
+
+  "/*-------*[Effects]*": "",
+
+  "enchantment.opminecraft.lightning_striker": "Lightning Striker",
+
+  "/*-------*[enchantment]*": ""
+
+}

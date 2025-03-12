@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:deepslate"
+    },
+    "b": {
+      "item": "opminecraft:crying_ingot"
+    }
+  },
+  "result": {
+    "id": "opminecraft:crying_bricks",
+    "count": 4
+  }
+}

@@ -1,0 +1,19 @@
+{"variants": {
+
+"facing=north,furnaceislit=0": {"model": "opminecraft:block/copper_furnace"},
+      
+"facing=east,furnaceislit=0": {"model": "opminecraft:block/copper_furnace", "y": 90},
+      
+"facing=south,furnaceislit=0": {"model": "opminecraft:block/copper_furnace", "y": 180},
+      
+"facing=west,furnaceislit=0": {"model": "opminecraft:block/copper_furnace", "y": 270},
+
+"facing=north,furnaceislit=1": {"model": "opminecraft:block/copper_furnace_lit"},
+      
+"facing=east,furnaceislit=1": {"model": "opminecraft:block/copper_furnace_lit", "y": 90},
+      
+"facing=south,furnaceislit=1": {"model": "opminecraft:block/copper_furnace_lit", "y": 180},
+      
+"facing=west,furnaceislit=1": {"model": "opminecraft:block/copper_furnace_lit", "y": 270}
+  			   }
+}

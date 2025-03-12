@@ -1,0 +1,26 @@
+{
+  "display": {
+    "background": "opminecraft:textures/screens/text_crying_bricks.png",
+    "icon": {
+      "id": "opminecraft:crying_sword"
+    },
+    "title": {
+      "translate": "advancements.adv_opminecraft_root.title"
+    },
+    "description": {
+      "translate": "advancements.adv_opminecraft_root.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_OPMinecraft_ROOT_0": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:overworld"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "opminecraft:dense_stone"
+    }
+  ],
+  "result": {
+    "id": "minecraft:stone",
+    "count": 4
+  }
+}

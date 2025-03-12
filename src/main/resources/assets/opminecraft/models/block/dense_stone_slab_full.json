@@ -1,0 +1,10 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "opminecraft:block/text_dense_stone",
+    "bottom": "opminecraft:block/text_dense_stone",
+    "top": "opminecraft:block/text_dense_stone",
+    "side": "opminecraft:block/text_dense_stone"
+  },
+  "render_type": "solid"
+}

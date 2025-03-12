@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:crying_brick_fence",
+    "opminecraft:crying_tile_fence",
+    "opminecraft:dense_stone_fence",
+    "opminecraft:dense_stone_brick_fence",
+    "opminecraft:dense_stone_tile_fence",
+    "opminecraft:stone_tile_fence"
+  ]
+}

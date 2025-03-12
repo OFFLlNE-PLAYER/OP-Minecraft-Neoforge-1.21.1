@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "opminecraft:block/text_dense_stone_bricks",
+    "particle": "opminecraft:block/text_dense_stone_bricks"
+  },
+  "render_type": "solid"
+}

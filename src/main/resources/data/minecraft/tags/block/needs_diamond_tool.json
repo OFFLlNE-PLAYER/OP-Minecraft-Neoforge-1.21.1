@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:chiseled_diamond",
+    "opminecraft:diamond_furnace",
+
+    "opminecraft:chiseled_netherite",
+    "opminecraft:netherite_furnace",
+
+    "opminecraft:block_of_crying_ingots",
+
+    "opminecraft:crying_bricks",
+    "opminecraft:crying_brick_button",
+    "opminecraft:crying_brick_fence",
+    "opminecraft:crying_brick_fence_gate",
+    "opminecraft:crying_brick_pressure_plate",
+    "opminecraft:crying_brick_slab",
+    "opminecraft:crying_brick_stairs",
+    "opminecraft:crying_brick_trapdoor",
+    "opminecraft:crying_brick_wall",
+
+    "opminecraft:crying_tiles",
+    "opminecraft:crying_tile_button",
+    "opminecraft:crying_tile_fence",
+    "opminecraft:crying_tile_fence_gate",
+    "opminecraft:crying_tile_pressure_plate",
+    "opminecraft:crying_tile_slab",
+    "opminecraft:crying_tile_stairs",
+    "opminecraft:crying_tile_trapdoor",
+    "opminecraft:crying_tile_wall"
+  ]
+}

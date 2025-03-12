@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:crying_brick_trapdoor",
+    "opminecraft:crying_tile_trapdoor",
+    "opminecraft:dense_stone_trapdoor",
+    "opminecraft:dense_stone_brick_trapdoor",
+    "opminecraft:dense_stone_tile_trapdoor",
+    "opminecraft:stone_tile_trapdoor"
+  ]
+}

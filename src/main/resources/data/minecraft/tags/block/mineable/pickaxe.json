@@ -1,0 +1,80 @@
+{
+  "replace": false,
+  "values": [
+
+    "opminecraft:block_of_charcoal",
+
+    "opminecraft:chiseled_diamond",
+    "opminecraft:chiseled_gold",
+    "opminecraft:chiseled_iron",
+    "opminecraft:chiseled_netherite",
+
+    "opminecraft:copper_furnace",
+    "opminecraft:diamond_furnace",
+    "opminecraft:gold_furnace",
+    "opminecraft:iron_furnace",
+    "opminecraft:netherite_furnace",
+
+    "opminecraft:block_of_crying_ingots",
+
+    "opminecraft:crying_bricks",
+    "opminecraft:crying_brick_button",
+    "opminecraft:crying_brick_fence",
+    "opminecraft:crying_brick_fence_gate",
+    "opminecraft:crying_brick_pressure_plate",
+    "opminecraft:crying_brick_slab",
+    "opminecraft:crying_brick_stairs",
+    "opminecraft:crying_brick_trapdoor",
+    "opminecraft:crying_brick_wall",
+
+    "opminecraft:crying_tiles",
+    "opminecraft:crying_tile_button",
+    "opminecraft:crying_tile_fence",
+    "opminecraft:crying_tile_fence_gate",
+    "opminecraft:crying_tile_pressure_plate",
+    "opminecraft:crying_tile_slab",
+    "opminecraft:crying_tile_stairs",
+    "opminecraft:crying_tile_trapdoor",
+    "opminecraft:crying_tile_wall",
+
+    "opminecraft:dense_stone",
+    "opminecraft:dense_stone_button",
+    "opminecraft:dense_stone_fence",
+    "opminecraft:dense_stone_fence_gate",
+    "opminecraft:dense_stone_pressure_plate",
+    "opminecraft:dense_stone_stairs",
+    "opminecraft:dense_stone_slab",
+    "opminecraft:dense_stone_trapdoor",
+    "opminecraft:dense_stone_wall",
+
+    "opminecraft:dense_stone_bricks",
+    "opminecraft:dense_stone_brick_button",
+    "opminecraft:dense_stone_brick_fence",
+    "opminecraft:dense_stone_brick_fence_gate",
+    "opminecraft:dense_stone_brick_pressure_plate",
+    "opminecraft:dense_stone_brick_slab",
+    "opminecraft:dense_stone_brick_stairs",
+    "opminecraft:dense_stone_brick_trapdoor",
+    "opminecraft:dense_stone_brick_wall",
+
+    "opminecraft:dense_stone_tiles",
+    "opminecraft:dense_stone_tile_button",
+    "opminecraft:dense_stone_tile_fence",
+    "opminecraft:dense_stone_tile_fence_gate",
+    "opminecraft:dense_stone_tile_pressure_plate",
+    "opminecraft:dense_stone_tile_slab",
+    "opminecraft:dense_stone_tile_stairs",
+    "opminecraft:dense_stone_tile_trapdoor",
+    "opminecraft:dense_stone_tile_wall",
+
+    "opminecraft:stone_tiles",
+    "opminecraft:stone_tile_button",
+    "opminecraft:stone_tile_fence",
+    "opminecraft:stone_tile_fence_gate",
+    "opminecraft:stone_tile_pressure_plate",
+    "opminecraft:stone_tile_slab",
+    "opminecraft:stone_tile_stairs",
+    "opminecraft:stone_tile_trapdoor",
+    "opminecraft:stone_tile_wall"
+  ]
+}

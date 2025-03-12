@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:dense_stone",
+    "minecraft:nether_bricks",
+    "minecraft:iron_block",
+    "minecraft:copper_block",
+    "minecraft:gold_block",
+    "opminecraft:crying_ingot"
+  ]
+}

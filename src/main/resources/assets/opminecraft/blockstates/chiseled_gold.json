@@ -1,0 +1,8 @@
+
+{"variants": {
+
+    "axis=x": {"model": "opminecraft:block/chiseled_gold", "x": 90, "y": 90},
+    "axis=y": {"model": "opminecraft:block/chiseled_gold"},
+    "axis=z": {"model": "opminecraft:block/chiseled_gold", "x": 90}
+  }
+}

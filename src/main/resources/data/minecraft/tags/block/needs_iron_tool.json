@@ -1,0 +1,37 @@
+{
+  "replace": false,
+  "values": [
+
+    "opminecraft:dense_stone",
+    "opminecraft:dense_stone_button",
+    "opminecraft:dense_stone_fence",
+    "opminecraft:dense_stone_fence_gate",
+    "opminecraft:dense_stone_pressure_plate",
+    "opminecraft:dense_stone_slab",
+    "opminecraft:dense_stone_stairs",
+    "opminecraft:dense_stone_trapdoor",
+    "opminecraft:dense_stone_wall",
+
+    "opminecraft:dense_stone_tiles",
+    "opminecraft:dense_stone_tile_button",
+    "opminecraft:dense_stone_tile_fence",
+    "opminecraft:dense_stone_tile_fence_gate",
+    "opminecraft:dense_stone_tile_pressure_plate",
+    "opminecraft:dense_stone_tile_stairs",
+    "opminecraft:dense_stone_tile_slab",
+    "opminecraft:dense_stone_tile_wall",
+
+    "opminecraft:dense_stone_bricks",
+    "opminecraft:dense_stone_brick_button",
+    "opminecraft:dense_stone_brick_fence",
+    "opminecraft:dense_stone_brick_fence_gate",
+    "opminecraft:dense_stone_brick_pressure_plate",
+    "opminecraft:dense_stone_brick_wall",
+    "opminecraft:dense_stone_brick_stairs",
+    "opminecraft:dense_stone_brick_slab",
+
+    "opminecraft:chiseled_gold",
+
+    "opminecraft:gold_furnace"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "opminecraft:chiseled_gold"
+    },
+    "b": {
+      "item": "opminecraft:iron_furnace"
+    }
+  },
+  "result": {
+    "id": "opminecraft:gold_furnace",
+    "count": 1
+  }
+}

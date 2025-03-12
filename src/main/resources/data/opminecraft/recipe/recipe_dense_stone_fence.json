@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "opminecraft:dense_stone"
+  },
+  "result": {
+    "id": "opminecraft:dense_stone_fence",
+    "count": 1
+  }
+}

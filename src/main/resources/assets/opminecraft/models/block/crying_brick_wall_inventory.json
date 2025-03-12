@@ -1,0 +1,8 @@
+{
+  "parent": "block/wall_inventory",
+  "textures": {
+    "wall": "opminecraft:block/text_crying_bricks",
+    "particle": "opminecraft:block/text_crying_bricks"
+  },
+  "render_type": "solid"
+}

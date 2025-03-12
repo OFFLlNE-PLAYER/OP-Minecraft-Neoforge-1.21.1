@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_fence_gate",
+  "textures": {
+    "particle": "opminecraft:block/text_crying_bricks",
+    "texture": "opminecraft:block/text_crying_bricks"
+  },
+  "render_type": "solid"
+}

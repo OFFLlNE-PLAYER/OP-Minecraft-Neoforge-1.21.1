@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:enchanted_golden_apple"
+    },
+    "title": {
+      "translate": "advancements.adv_golden_apple.title"
+    },
+    "description": {
+      "translate": "advancements.adv_golden_apple.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_golden_apple_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "opminecraft:adv_melt_block_of_crying_ingots"
+}
