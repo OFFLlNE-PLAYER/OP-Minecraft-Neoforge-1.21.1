@@ -16,7 +16,7 @@ public class StoneTilePressurePlateBlock extends PressurePlateBlock {
 	}
 
 	@Override
-	public int getLightBlock(@NotNull BlockState state, @NotNull BlockGetter worldIn, @NotNull BlockPos pos) {
+	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
 		return 0;
 	}
 }

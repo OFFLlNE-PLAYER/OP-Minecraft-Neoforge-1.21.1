@@ -12,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.offllneplayer.opminecraft.init.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -48,7 +47,7 @@ public class ChiselItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(@NotNull UseOnContext context) {
+    public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 
