@@ -7,15 +7,8 @@
     "aaa"
   ],
   "key": {
-    "a": {
-      "item": "opminecraft:chiseled_gold"
-    },
-    "b": {
-      "item": "opminecraft:iron_furnace"
-    }
+    "a": {"item": "opminecraft:chiseled_gold"},
+    "b": {"item": "opminecraft:iron_furnace"}
   },
-  "result": {
-    "id": "opminecraft:gold_furnace",
-    "count": 1
-  }
+  "result": {"id": "opminecraft:gold_furnace", "count": 1}
 }

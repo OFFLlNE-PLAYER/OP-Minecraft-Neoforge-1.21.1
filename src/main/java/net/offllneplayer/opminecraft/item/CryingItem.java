@@ -33,13 +33,13 @@ public abstract class CryingItem extends ArmorItem {
 	public static void registerArmorMaterial(RegisterEvent event) {
 		event.register(Registries.ARMOR_MATERIAL, registerHelper -> {
 			ArmorMaterial armorMaterial = new ArmorMaterial(Util.make(new EnumMap<>(Type.class), map -> {
-				map.put(Type.BOOTS, 4);
-				map.put(Type.LEGGINGS, 7);
-				map.put(Type.CHESTPLATE, 9);
-				map.put(Type.HELMET, 4);
-				map.put(Type.BODY, 9);
+				map.put(Type.BOOTS, 3);
+				map.put(Type.LEGGINGS, 6);
+				map.put(Type.CHESTPLATE, 8);
+				map.put(Type.HELMET, 3);
+				map.put(Type.BODY, 7);
 			}), 20, DeferredHolder.create(Registries.SOUND_EVENT, ResourceLocation.parse("item.armor.equip_netherite")), () -> Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get())),
-					List.of(new ArmorMaterial.Layer(ResourceLocation.parse("opminecraft:text_crying_armor"))), 3f, 0.1f);
+					List.of(new ArmorMaterial.Layer(ResourceLocation.parse("opminecraft:text_crying_armor"))), 1f, -0.1f);
 			registerHelper.register(ResourceLocation.parse("opminecraft:crying"), armorMaterial);
 			ARMOR_MATERIAL = BuiltInRegistries.ARMOR_MATERIAL.wrapAsHolder(armorMaterial);
 		});

@@ -92,7 +92,9 @@ public class CryingPaxelItem extends DiggerItem {
        .build();
 
     public CryingPaxelItem() {
-        super(TOOL_TIER, DeclareTagKeys.Blocks.CRYING_PAXEL, new Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 6f, -3.2f)).rarity(Rarity.EPIC));
+        super(TOOL_TIER, DeclareTagKeys.Blocks.CRYING_PAXEL, new Properties()
+                .attributes(DiggerItem.createAttributes(TOOL_TIER, 11f, -3.3f))
+                .rarity(Rarity.EPIC));
     }
 
     @Override

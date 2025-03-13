@@ -1,14 +1,14 @@
 {
   "anvil_cost": 3,
   "description": {
-    "translate": "enchantment.opminecraft.lightning_striker"
+    "translate": "enchantment.opminecraft.tempest"
   },
   "effects": {
     "minecraft:post_attack": [
       {
         "affected": "victim",
         "effect": {
-          "type": "opminecraft:lightning_striker",
+          "type": "opminecraft:tempest",
           "level": 1
         },
         "enchanted": "attacker"

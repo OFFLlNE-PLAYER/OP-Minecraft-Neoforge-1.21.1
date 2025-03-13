@@ -7,15 +7,8 @@
     "aaa"
   ],
   "key": {
-    "a": {
-      "item": "minecraft:waxed_oxidized_chiseled_copper"
-    },
-    "b": {
-      "item": "minecraft:blast_furnace"
-    }
+    "a": {"item": "minecraft:waxed_oxidized_chiseled_copper"},
+    "b": {"item": "minecraft:blast_furnace"}
   },
-  "result": {
-    "id": "opminecraft:copper_furnace",
-    "count": 1
-  }
+  "result": {"id": "opminecraft:copper_furnace", "count": 1}
 }
