@@ -1,13 +1,13 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "opminecraft:block/text_crying_essence",
-    "up": "opminecraft:block/text_crying_essence",
-    "north": "opminecraft:block/text_crying_essence",
-    "east": "opminecraft:block/text_crying_essence",
-    "south": "opminecraft:block/text_crying_essence",
-    "west": "opminecraft:block/text_crying_essence",
-    "particle": "opminecraft:block/text_crying_essence"
+    "down": "opminecraft:block/text_crying_essence_still",
+    "up": "opminecraft:block/text_crying_essence_still",
+    "north": "opminecraft:block/text_crying_essence_still",
+    "east": "opminecraft:block/text_crying_essence_still",
+    "south": "opminecraft:block/text_crying_essence_still",
+    "west": "opminecraft:block/text_crying_essence_still",
+    "particle": "opminecraft:block/text_crying_essence_still"
   },
   "display": {
     "thirdperson": {
