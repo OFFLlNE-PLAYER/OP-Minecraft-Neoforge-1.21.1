@@ -1,6 +1,9 @@
 
 package net.offllneplayer.opminecraft.block;
 
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.offllneplayer.opminecraft.init.RegistryClientEventBus;
 
 import net.minecraft.world.level.material.PushReaction;
@@ -20,8 +23,20 @@ import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceCollisio
 
 public class CryingEssenceBlock extends LiquidBlock {
 	public CryingEssenceBlock() {
-		super(RegistryClientEventBus.CRYING_ESSENCE.get(), Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1200f).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10).noCollission()
-				.noLootTable().liquid().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY).replaceable());
+		super(RegistryClientEventBus.CRYING_ESSENCE.get(), Properties.of()
+				.mapColor(MapColor.COLOR_PURPLE)
+				.strength(1200f).hasPostProcess((bs, br, bp) -> true)
+				.emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)
+				.noCollission()
+				.noLootTable()
+				.liquid()
+				.pushReaction(PushReaction.DESTROY)
+				.sound(SoundType.EMPTY).replaceable());
+	}
+
+	@Override
+	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
+		return PathType.DANGER_OTHER;
 	}
 
 	@Override

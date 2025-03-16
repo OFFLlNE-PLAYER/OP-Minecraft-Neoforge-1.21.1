@@ -55,14 +55,14 @@ public class CryingEssence_OnTick_Method {
 						}
 					}
 					if (world instanceof Level _level && !_level.isClientSide())
-						_level.explode(null, x, y, z, 3, Level.ExplosionInteraction.BLOCK);
+						_level.explode(null, x, y, z, 6, true, Level.ExplosionInteraction.BLOCK);
+					world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-					world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 				});
 			} else if (Get_Block_x_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_x_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))
 					|| Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))
@@ -85,20 +85,20 @@ public class CryingEssence_OnTick_Method {
 						}
 					}
 					if (world instanceof Level _level && !_level.isClientSide())
-						_level.explode(null, x, y, z, 2, Level.ExplosionInteraction.BLOCK);
+						_level.explode(null, x, y, z, 4, Level.ExplosionInteraction.BLOCK);
+					world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.AMETHYST_CLUSTER.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
 				});
 			}
 		} else if (!Get_Block_X_Y_Z.getFluidState().isSource()) {
-			if (Get_Block_x_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas"))) || Get_Block_x_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))
-					|| Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas"))) || Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))
-					|| Get_Block_z_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas"))) || Get_Block_z_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+			if (Get_Block_x_plus_1.is(Blocks.LAVA) || Get_Block_x_minus_1.is(Blocks.LAVA)
+					|| Get_Block_y_plus_1.is(Blocks.LAVA) || Get_Block_y_minus_1.is(Blocks.LAVA)
+					|| Get_Block_z_plus_1.is(Blocks.LAVA) || Get_Block_z_minus_1.is(Blocks.LAVA)) {
 				Flowing_Collision_Happened = true;
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
@@ -107,42 +107,42 @@ public class CryingEssence_OnTick_Method {
 						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.lava.extinguish")), SoundSource.MASTER, 1, 1, false);
 					}
 				}
-				if (Get_Block_x_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+				if (Get_Block_x_plus_1.is(Blocks.LAVA)) {
 					if (Get_Block_x_plus_1.getFluidState().isSource()) {
 						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.NETHERRACK.defaultBlockState(), 3);
 					} else {
 						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
 					}
 				}
-				if (Get_Block_x_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+				if (Get_Block_x_minus_1.is(Blocks.LAVA)) {
 					if (Get_Block_x_minus_1.getFluidState().isSource()) {
 						world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.NETHERRACK.defaultBlockState(), 3);
 					} else {
 						world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
 					}
 				}
-				if (Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+				if (Get_Block_y_plus_1.is(Blocks.LAVA)) {
 					if (Get_Block_y_plus_1.getFluidState().isSource()) {
 						world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.NETHERRACK.defaultBlockState(), 3);
 					} else {
 						world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
 					}
 				}
-				if (Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+				if (Get_Block_y_minus_1.is(Blocks.LAVA)) {
 					if (Get_Block_y_minus_1.getFluidState().isSource()) {
 						world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.NETHERRACK.defaultBlockState(), 3);
 					} else {
 						world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
 					}
 				}
-				if (Get_Block_z_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+				if (Get_Block_z_plus_1.is(Blocks.LAVA)) {
 					if (Get_Block_z_plus_1.getFluidState().isSource()) {
 						world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.NETHERRACK.defaultBlockState(), 3);
 					} else {
 						world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.DEEPSLATE.defaultBlockState(), 3);
 					}
 				}
-				if (Get_Block_z_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:lavas")))) {
+				if (Get_Block_z_minus_1.is(Blocks.LAVA)) {
 					if (Get_Block_z_minus_1.getFluidState().isSource()) {
 						world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.NETHERRACK.defaultBlockState(), 3);
 					} else {

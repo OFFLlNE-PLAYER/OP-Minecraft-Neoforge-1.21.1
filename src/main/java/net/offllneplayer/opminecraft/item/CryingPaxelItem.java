@@ -27,7 +27,7 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.offllneplayer.opminecraft.init.DeclareTagKeys;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.method.crying.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -93,7 +93,7 @@ public class CryingPaxelItem extends DiggerItem {
 
     public CryingPaxelItem() {
         super(TOOL_TIER, DeclareTagKeys.Blocks.CRYING_PAXEL, new Properties()
-                .attributes(DiggerItem.createAttributes(TOOL_TIER, 11f, -3.3f))
+                .attributes(DiggerItem.createAttributes(TOOL_TIER, 10.5f, -3.2f))
                 .rarity(Rarity.EPIC));
     }
 

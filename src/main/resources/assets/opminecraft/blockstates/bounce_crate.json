@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "opminecraft:block/bounce_crate"
+    },
+    "facing=east": {
+      "model": "opminecraft:block/bounce_crate",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "opminecraft:block/bounce_crate",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "opminecraft:block/bounce_crate",
+      "y": 270
+    }
+  }
+}

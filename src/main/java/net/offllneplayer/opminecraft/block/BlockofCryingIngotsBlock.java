@@ -26,9 +26,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-import net.offllneplayer.opminecraft.method.crying.CryingDripEffect_Method;
+import net.offllneplayer.opminecraft.method.crying.blockofcryingingots.BlockOfCryingIngots_OnCLIENTTick_Method;
 import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceCollision_Method;
-import net.offllneplayer.opminecraft.method.crying.MeltBlockofCryingIngots_Method;
+import net.offllneplayer.opminecraft.method.crying.blockofcryingingots.MeltBlockofCryingIngots_Method;
 
 
 public class BlockofCryingIngotsBlock extends Block {
@@ -110,7 +110,7 @@ public class BlockofCryingIngotsBlock extends Block {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		CryingDripEffect_Method.execute(world, x, y, z);
+		BlockOfCryingIngots_OnCLIENTTick_Method.execute(world, x, y, z);
 	}
 
 

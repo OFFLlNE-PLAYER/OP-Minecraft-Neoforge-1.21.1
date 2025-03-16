@@ -1,0 +1,31 @@
+
+{
+
+  "aku_aku": {"sounds": [{"name": "opminecraft:aku_aku", "stream": false}]},
+  "aku_aku_dies": {"sounds": [{"name": "opminecraft:aku_aku_dies", "stream": false}]},
+
+  "crash_spin": {"sounds": [{"name": "opminecraft:crash_spin", "stream": false}]},
+
+  "crash_crate_bounce": {"sounds": [{"name": "opminecraft:crash_crate_bounce", "stream": false}]},
+  "crash_crate_break": {"sounds": [{"name": "opminecraft:crash_crate_break", "stream": false}]},
+
+  "gunblade_break": {"sounds": [{"name": "opminecraft:gunblade_break", "stream": false}]},
+  "gunblade_in_dirt": {"sounds": [{"name": "opminecraft:gunblade_in_dirt", "stream": false}]},
+  "gunblade_slash": {"sounds": [{"name": "opminecraft:gunblade_slash", "stream": false}]},
+  "gunblade_shot": {"sounds": [{"name": "opminecraft:gunblade_shot", "stream": false}]},
+
+  "nitro_boom": {"sounds": [{"name": "opminecraft:nitro_boom", "stream": false}]},
+  "nitro_idle_1": {"sounds": [{"name": "opminecraft:nitro_idle_1", "stream": false}]},
+  "nitro_idle_2": {"sounds": [{"name": "opminecraft:nitro_idle_2", "stream": false}]},
+  "nitro_idle_3": {"sounds": [{"name": "opminecraft:nitro_idle_3", "stream": false}]},
+
+  "tnt_boom": {"sounds": [{"name": "opminecraft:tnt_boom", "stream": false}]},
+  "tick_tnt": {"sounds": [{"name": "opminecraft:tick_tnt", "stream": false}]},
+  "fast_tick_tnt": {"sounds": [{"name": "opminecraft:fast_tick_tnt", "stream": false}]},
+  "prime_tnt": {"sounds": [{"name": "opminecraft:prime_tnt", "stream": false}]},
+
+  "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]},
+
+  "silent_sound": {"sounds": [{"name": "opminecraft:silent_sound", "stream": false}]}
+
+}

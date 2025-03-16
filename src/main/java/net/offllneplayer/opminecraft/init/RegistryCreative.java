@@ -95,14 +95,11 @@ public class RegistryCreative {
             }
             if (event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS) {
 
-//natural block go here
+                event.accept(RegistryIBBI.FLOWERING_PITCHER_PLANT);
+                event.accept(RegistryIBBI.WUMPA_PLANT);
 
             }
             if (event.getTabKey()==CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-
-                event.accept(RegistryIBBI.BLOCK_OF_CRYING_INGOTS);
-
-                event.accept(RegistryIBBI.CRYING_ESSENCE);
 
                 event.accept(RegistryIBBI.COPPER_FURNACE);
                 event.accept(RegistryIBBI.DIAMOND_FURNACE);
@@ -119,6 +116,16 @@ public class RegistryCreative {
             if (event.getTabKey()==CreativeModeTabs.TOOLS_AND_UTILITIES) {
 
                 event.accept(RegistryIBBI.CHISEL);
+
+                event.accept(RegistryIBBI.AKU_AKU_CRATE);
+                event.accept(RegistryIBBI.BOUNCE_CRATE);
+                event.accept(RegistryIBBI.CRASH_CRATE);
+                event.accept(RegistryIBBI.CRASH_TNT);
+                event.accept(RegistryIBBI.NITRO);
+
+                event.accept(RegistryIBBI.BLOCK_OF_CRYING_INGOTS);
+
+                event.accept(RegistryIBBI.CRYING_ESSENCE);
 
                 event.accept(RegistryIBBI.CRYING_ESSENCE_BUCKET);
 
@@ -146,7 +153,7 @@ public class RegistryCreative {
             }
             if (event.getTabKey()==CreativeModeTabs.FOOD_AND_DRINKS) {
 
-//food stuff go here
+                event.accept(RegistryIBBI.WUMPA_FRUIT);
 
             }
             if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {

@@ -12,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.block.*;
 import net.offllneplayer.opminecraft.block.chiseledore.*;
+import net.offllneplayer.opminecraft.block.crash.*;
 import net.offllneplayer.opminecraft.block.cryingbricks.*;
 import net.offllneplayer.opminecraft.block.cryingtiles.*;
 import net.offllneplayer.opminecraft.block.densestones.*;
@@ -33,6 +34,8 @@ public class RegistryIBBI {
 	public static final DeferredRegister.Blocks BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 	public static final DeferredRegister.Blocks FR_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 	public static final DeferredRegister.Blocks FR_EPIC_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
+	public static final DeferredRegister.Blocks UNCOMMON_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
+	public static final DeferredRegister.Blocks RARE_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 
 /*--------------------------------------------------------------------------------------------*/
 	/*[Declare Blocks]*/
@@ -115,10 +118,22 @@ public class RegistryIBBI {
 	public static final DeferredBlock<Block> NETHERITE_FURNACE = registerFRBlock("netherite_furnace", NetheriteFurnaceBlock::new);
 
 
-	// public static final DeferredBlock<Block> BLOCK_OF_CRYING_INGOTS = registerFREpicBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
+	// public static final DeferredBlock<Block> BLOCK_OF_FIRERES_EPICNESS = registerFREpicBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
+
+	public static final DeferredBlock<Block> AKU_AKU_CRATE = registerUncommonBlock("aku_aku_crate", AkuAkuCrateBlock::new);
+	public static final DeferredBlock<Block> BOUNCE_CRATE = registerUncommonBlock("bounce_crate", BounceCrateBlock::new);
+	public static final DeferredBlock<Block> CRASH_CRATE = registerUncommonBlock("crash_crate", CrashCrateBlock::new);
+	public static final DeferredBlock<Block> CRASH_TNT = registerUncommonBlock("crash_tnt", CrashTNTBlock::new);
+	public static final DeferredBlock<Block> NITRO = registerUncommonBlock("nitro", NitroBlock::new);
+	public static final DeferredBlock<Block> FLOWERING_PITCHER_PLANT = registerUncommonBlock("flowering_pitcher_plant", FloweringPitcherPlantBlock::new);
+
+	public static final DeferredBlock<Block> WUMPA_PLANT = registerRareBlock("wumpa_plant", WumpaPlantBlock::new);
 
 /*--------------------------------------------------------------------------------------------*/
 	/*[Register Items]*/
+
+	public static final DeferredItem<Item> AKU_AKU_MASK = ITEMSREGISTRY.register("aku_aku_mask", AkuAkuMaskItem::new);
+	public static final DeferredItem<Item> WUMPA_FRUIT = ITEMSREGISTRY.register("wumpa_fruit", WumpaFruitItem::new);
 
 	public static final DeferredItem<Item> CHISEL = ITEMSREGISTRY.register("chisel", ChiselItem::new);
 
@@ -161,6 +176,16 @@ public class RegistryIBBI {
 		registerFREpicBlockItem(name, toReturn); return toReturn;
 	}
 
+	private static <T extends Block> DeferredBlock<T> registerUncommonBlock(String name, Supplier<T> block) {
+		DeferredBlock<T> toReturn = UNCOMMON_BLOCKSREGISTRY.register(name, block);
+		registerUncommonBlockItem(name, toReturn); return toReturn;
+	}
+
+	private static <T extends Block> DeferredBlock<T> registerRareBlock(String name, Supplier<T> block) {
+		DeferredBlock<T> toReturn = RARE_BLOCKSREGISTRY.register(name, block);
+		registerRareBlockItem(name, toReturn); return toReturn;
+	}
+
 /*--------------------------------------------------------------------------------------------*/
 	/*[Register BlockItems]*/
 
@@ -179,21 +204,25 @@ public class RegistryIBBI {
 				new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC)));
 	}
 
+	private static <T extends Block> void registerUncommonBlockItem(String name, DeferredBlock<T> block) {
+		ITEMSREGISTRY.register(name, () -> new BlockItem(block.get(),
+				new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+	}
+
+	private static <T extends Block> void registerRareBlockItem(String name, DeferredBlock<T> block) {
+		ITEMSREGISTRY.register(name, () -> new BlockItem(block.get(),
+				new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
+	}
+
 /*--------------------------------------------------------------------------------------------*/
 	/*[Register EventBus]*/
 
-	public static void registerItems(IEventBus eventBus) {
-		ITEMSREGISTRY.register(eventBus);
-	}
+	public static void registerItems(IEventBus eventBus) {ITEMSREGISTRY.register(eventBus);}
 
-	public static void registerBlocks(IEventBus eventBus) {
-		BLOCKSREGISTRY.register(eventBus);
-	}
-	public static void registerFRBlocks(IEventBus eventBus) {
-		FR_BLOCKSREGISTRY.register(eventBus);
-	}
-	public static void registerFREpicBlocks(IEventBus eventBus) {
-		FR_EPIC_BLOCKSREGISTRY.register(eventBus);
-	}
+	public static void registerBlocks(IEventBus eventBus) {BLOCKSREGISTRY.register(eventBus);}
+	public static void registerFRBlocks(IEventBus eventBus) {FR_BLOCKSREGISTRY.register(eventBus);}
+	public static void registerFREpicBlocks(IEventBus eventBus) {FR_EPIC_BLOCKSREGISTRY.register(eventBus);}
+	public static void registerUncommonBlocks(IEventBus eventBus) {UNCOMMON_BLOCKSREGISTRY.register(eventBus);}
+	public static void registerRareBlocks(IEventBus eventBus) {RARE_BLOCKSREGISTRY.register(eventBus);}
 
 }

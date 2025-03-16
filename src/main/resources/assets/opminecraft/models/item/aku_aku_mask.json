@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:custom/aku_aku",
+  "textures": {
+    "0": "opminecraft:block/text_aku_aku",
+    "particle": "opminecraft:item/text_aku_aku"
+  }
+}

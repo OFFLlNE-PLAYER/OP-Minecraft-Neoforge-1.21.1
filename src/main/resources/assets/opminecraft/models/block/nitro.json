@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/nitro_bottom_texture",
+    "up": "opminecraft:block/nitro_bottom_texture",
+    "north": "opminecraft:block/nitro_sides_texture",
+    "east": "opminecraft:block/nitro_sides_texture",
+    "south": "opminecraft:block/nitro_sides_texture",
+    "west": "opminecraft:block/nitro_sides_texture",
+    "particle": "opminecraft:block/nitro_bottom_texture"
+  },
+  "render_type": "solid"
+}

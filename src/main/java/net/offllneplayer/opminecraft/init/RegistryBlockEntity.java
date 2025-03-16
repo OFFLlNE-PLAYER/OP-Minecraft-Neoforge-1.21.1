@@ -10,6 +10,8 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import net.offllneplayer.opminecraft.block.crash.CrashTNTBlockEntity;
+import net.offllneplayer.opminecraft.block.crash.NitroBlockEntity;
 import net.offllneplayer.opminecraft.block.furnaces.NetheriteFurnaceBlockEntity;
 import net.offllneplayer.opminecraft.block.furnaces.IronFurnaceBlockEntity;
 import net.offllneplayer.opminecraft.block.furnaces.GoldFurnaceBlockEntity;
@@ -29,6 +31,8 @@ public class RegistryBlockEntity {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> DIAMOND_FURNACE = register("diamond_furnace", RegistryIBBI.DIAMOND_FURNACE, DiamondFurnaceBlockEntity::new);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> NETHERITE_FURNACE = register("netherite_furnace", RegistryIBBI.NETHERITE_FURNACE, NetheriteFurnaceBlockEntity::new);
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> CRASH_TNT = register("crash_tnt", RegistryIBBI.CRASH_TNT, CrashTNTBlockEntity::new);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> NITRO = register("nitro", RegistryIBBI.NITRO, NitroBlockEntity::new);
 
     private static DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
         return BLOCKENTREGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
@@ -51,5 +55,8 @@ public class RegistryBlockEntity {
 
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, NETHERITE_FURNACE.get(), (blockEntity, side) -> ((NetheriteFurnaceBlockEntity) blockEntity).getItemHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, NETHERITE_FURNACE.get(), (blockEntity, side) -> ((NetheriteFurnaceBlockEntity) blockEntity).getFluidTank());
+
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, CRASH_TNT.get(), (blockEntity, side) -> ((CrashTNTBlockEntity) blockEntity).getItemHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, NITRO.get(), (blockEntity, side) -> ((NitroBlockEntity) blockEntity).getItemHandler());
     }
 }

@@ -20,7 +20,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.method.crying.FullCrying_Method;
+import net.offllneplayer.opminecraft.method.crying.armor.FullCrying_Method;
 
 import java.util.EnumMap;
 import java.util.List;

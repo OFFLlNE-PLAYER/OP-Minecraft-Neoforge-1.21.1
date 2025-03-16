@@ -1,39 +1,42 @@
 {
 
-  "advancements.adv_opminecraft_root.title": "OP's Vanilla Plus",
-  "advancements.adv_opminecraft_root.descr": "Vanilla additions by Offllne Player.",
+  "advancements.adv_opminecraft_root.title": "OP-Minecraft",
+  "advancements.adv_opminecraft_root.descr": "Minecraft additions by Offllne Player",
 
   "advancements.adv_crying_ingot.title": "Essence of hunger",
-  "advancements.adv_crying_ingot.descr": "Smelt Crying Obsidian in an OP Furnace.",
+  "advancements.adv_crying_ingot.descr": "Smelt Crying Obsidian in an OP Furnace",
 
   "advancements.adv_melt_block_of_crying_ingots.title": "Goldilocks",
-  "advancements.adv_melt_block_of_crying_ingots.descr": "Sucessfully melt a Block of Crying Ingots.",
+  "advancements.adv_melt_block_of_crying_ingots.descr": "Sucessfully melt a Block of Crying Ingots",
 
   "advancements.adv_crying_smithing_template.title": "Dipped in drip",
-  "advancements.adv_crying_smithing_template.descr": "Toss a Netherite smithing template into Crying Essence.",
+  "advancements.adv_crying_smithing_template.descr": "Toss a Netherite smithing template into Crying Essence",
 
-  "advancements.adv_golden_apple.title": "How it\u0027s made",
-  "advancements.adv_golden_apple.descr": "Toss a Golden Apple into Crying Essence.",
+  "advancements.adv_golden_apple.title": "How it's made",
+  "advancements.adv_golden_apple.descr": "Toss a Golden Apple into Crying Essence",
 
   "advancements.adv_copper_furnace.title": "Chiseled Copper Cooker",
-  "advancements.adv_copper_furnace.descr": "Craft a Copper Furnace.",
-  "advancements.adv_iron_furnace.title": "Shouldn't This Melt?",
-  "advancements.adv_iron_furnace.descr": "Craft an Iron Furnace.",
+  "advancements.adv_copper_furnace.descr": "Craft a Copper Furnace",
+  "advancements.adv_iron_furnace.title": "Better, Faster, ..Stronger?",
+  "advancements.adv_iron_furnace.descr": "Craft an Iron Furnace",
   "advancements.adv_gold_furnace.title": "Gilded Insulation",
-  "advancements.adv_gold_furnace.descr": "Craft a Gold Furnace.",
+  "advancements.adv_gold_furnace.descr": "Craft a Gold Furnace",
   "advancements.adv_diamond_furnace.title": "Shining Smelter",
-  "advancements.adv_diamond_furnace.descr": "Craft a Diamond Furnace.",
+  "advancements.adv_diamond_furnace.descr": "Craft a Diamond Furnace",
   "advancements.adv_netherite_furnace.title": "Blastproof Box",
-  "advancements.adv_netherite_furnace.descr": "Craft a Netherite Furnace.",
+  "advancements.adv_netherite_furnace.descr": "Craft a Netherite Furnace",
 
-  "advancements.adv_explode_crying_essence.title": "Too Hot!",
-  "advancements.adv_explode_crying_essence.descr": "Explode Crying Essence.",
+  "advancements.adv_explode_crying_ingots.title": "Too Hot!",
+  "advancements.adv_explode_crying_ingots.descr": "Explode a block of Crying Ingots with lava",
 
   "advancements.adv_explode_furnace.title": "Not Built For This",
-  "advancements.adv_explode_furnace.descr": "Explode a non-Netherite Furnace with Crying Obsidian.",
+  "advancements.adv_explode_furnace.descr": "Explode a non-Netherite Furnace with Crying Obsidian",
 
   "advancements.adv_full_crying.title": "OP",
-  "advancements.adv_full_crying.descr": "Max out a full set of crying armor.",
+  "advancements.adv_full_crying.descr": "Max out a full set of crying armor",
+
+  "advancements.adv_wumpa_fruit.title": "Ancient Fruit",
+  "advancements.adv_wumpa_fruit.descr": "Feed a pitcher plant an apple",
 
 "/*-------*[Advancements]*": "",
 
@@ -41,7 +44,6 @@
   "block.opminecraft.block_of_charcoal": "Block of Charcoal",
 
   "block.opminecraft.block_of_crying_ingots": "§dBlock Of Crying Ingots§r",
-
   "block.opminecraft.crying_essence": "§dCrying Essence§r",
 
   "block.opminecraft.crying_bricks": "§dCrying Bricks§r",
@@ -68,6 +70,19 @@
   "block.opminecraft.chiseled_gold": "Chiseled Gold",
   "block.opminecraft.chiseled_iron": "Chiseled Iron",
   "block.opminecraft.chiseled_netherite": "Chiseled Netherite",
+
+  "block.opminecraft.aku_aku_crate": "Aku Aku Crate",
+  "block.opminecraft.bounce_crate": "Bounce Crate",
+  "block.opminecraft.crash_crate": "Crash Crate",
+  "block.opminecraft.crash_tnt": "§cCrash TNT§r",
+  "block.opminecraft.crash_tnt.description_0": " :DANGER:",
+  "block.opminecraft.crash_tnt.description_1": "§cDO NOT HANDLE WITHOUT SILK TOUCH§r",
+  "block.opminecraft.nitro": "§aNitro§r",
+  "block.opminecraft.nitro.description_0": " :DANGER:",
+  "block.opminecraft.nitro.description_1": "§aDO NOT HANDLE WITHOUT SILK TOUCH§r",
+
+  "block.opminecraft.flowering_pitcher_plant": "Flowering Pitcher Plant",
+  "block.opminecraft.wumpa_plant": "Wumpa Plant",
 
   "block.opminecraft.copper_furnace": "Copper Furnace",
   "block.opminecraft.diamond_furnace": "Diamond Furnace",
@@ -133,13 +148,20 @@
   "block.opminecraft.staurolite_schist": "Staurolite Schist",
   "block.opminecraft.tanzanite_schist": "Tanzanite Schist",
 
+  "block.opminecraft.stuck_gunblade": "Gunblade",
+
   "/*-------*[Blocks]*": "",
+
 
   "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
 
   "item.opminecraft.chisel": "Chisel",
   "item.opminecraft.dynamite_stick": "Dynamite Stick",
   "item.opminecraft.tnt_stick": "TNT Stick",
+
+  "item.opminecraft.aku_aku_mask": "Aku Aku",
+  "item.opminecraft.aku_aku_mask.description_0": "POODABEEGA!",
+  "item.opminecraft.wumpa_fruit": "Wumpa Fruit",
 
   "item.opminecraft.crying_ingot": "Crying Ingot",
   "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
@@ -155,6 +177,13 @@
   "item.opminecraft.crying_shovel": "Crying Shovel",
   "item.opminecraft.crying_sickle": "Crying Sickle",
   "item.opminecraft.crying_paxel": "Crying Paxel",
+
+  "item.opminecraft.gunblade": "Gunblade",
+  "item.opminecraft.gunblade.description_0": "[FF8]",
+  "item.opminecraft.gunblade.description_1": "Slash an entity, then use to fire",
+  "item.opminecraft.prototype_gunblade": "Prototype Gunblade",
+  "item.opminecraft.prototype_gunblade.description_0": "[FF8]",
+  "item.opminecraft.prototype_gunblade.description_1": "This needs some work, doesn't it?",
 
   "item.minecraft.potion.effect.crying_i_potion": "§dCrying I Potion§r",
   "item.minecraft.potion.effect.crying_i_potion_long": "§dCrying I Potion (§r§4+§d)§r",
@@ -178,10 +207,13 @@
 
   "/*-------*[Items]*": "",
 
+
+  "effect.opminecraft.effect_aku_aku": "Aku Aku watches over you",
   "effect.opminecraft.crying_i": "Crying I",
   "effect.opminecraft.crying_ii": "Crying II",
 
   "/*-------*[Effects]*": "",
+
 
   "enchantment.opminecraft.tempest": "Tempest",
 

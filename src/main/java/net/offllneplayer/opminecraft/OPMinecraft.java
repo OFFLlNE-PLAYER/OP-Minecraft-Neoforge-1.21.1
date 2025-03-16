@@ -43,15 +43,16 @@ public class OPMinecraft {
 
         modEventBus.addListener(this::registerNetworking);
 
-        /*
         RegistrySounds.SOUNDSREGISTRY.register(modEventBus);
-         */
 
         RegistryIBBI.BLOCKSREGISTRY.register(modEventBus);
         RegistryIBBI.FR_BLOCKSREGISTRY.register(modEventBus);
         RegistryIBBI.FR_EPIC_BLOCKSREGISTRY.register(modEventBus);
+        RegistryIBBI.UNCOMMON_BLOCKSREGISTRY.register(modEventBus);
+        RegistryIBBI.RARE_BLOCKSREGISTRY.register(modEventBus);
 
         RegistryBlockEntity.BLOCKENTREGISTRY.register(modEventBus);
+
         RegistryInventory.INVREGISTRY.register(modEventBus);
 
         RegistryIBBI.ITEMSREGISTRY.register(modEventBus);

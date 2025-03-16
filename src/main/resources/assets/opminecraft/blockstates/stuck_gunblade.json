@@ -1,0 +1,11 @@
+
+{
+  "variants": {
+    "facing=north": {"model": "opminecraft:block/stuck_gunblade", "x": 90},
+    "facing=east": {"model": "opminecraft:block/stuck_gunblade", "x": 90, "y": 90},
+    "facing=south": {"model": "opminecraft:block/stuck_gunblade", "x": 270},
+    "facing=west": {"model": "opminecraft:block/stuck_gunblade", "x": 270, "y":90},
+    "facing=up": {"model": "opminecraft:block/stuck_gunblade"},
+    "facing=down": {"model": "opminecraft:block/stuck_gunblade", "x": 180}
+  }
+}

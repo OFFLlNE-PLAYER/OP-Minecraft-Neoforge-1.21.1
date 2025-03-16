@@ -5,12 +5,13 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.method.crying.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 
 
 public class CryingSickleItem extends HoeItem {
@@ -47,7 +48,9 @@ public class CryingSickleItem extends HoeItem {
 	};
 
 	public CryingSickleItem() {
-		super(TOOL_TIER, new Properties().attributes(HoeItem.createAttributes(TOOL_TIER, 5f, -2.4f)));
+		super(TOOL_TIER, new Properties()
+				.attributes(HoeItem.createAttributes(TOOL_TIER, 5f, -2.3f))
+				.rarity(Rarity.EPIC));
 	}
 
 	@Override

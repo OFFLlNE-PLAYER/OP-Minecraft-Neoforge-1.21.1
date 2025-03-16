@@ -1,0 +1,15 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/text_tnt_bottom",
+    "up": "opminecraft:block/text_tnt_bottom",
+    "north": "opminecraft:block/text_tnt_1",
+    "east": "opminecraft:block/text_tnt_1",
+    "south": "opminecraft:block/text_tnt_1",
+    "west": "opminecraft:block/text_tnt_1",
+    "particle": "opminecraft:block/text_tnt_1"
+  },
+  "render_type": "solid",
+  "emissive": true,
+  "light": 8
+}

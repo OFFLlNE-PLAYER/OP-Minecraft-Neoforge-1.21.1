@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "opminecraft:block/text_crash_crate",
+    "up": "opminecraft:block/text_crash_crate",
+    "north": "opminecraft:block/text_crash_bounce_crate",
+    "east": "opminecraft:block/text_crash_bounce_crate",
+    "south": "opminecraft:block/text_crash_bounce_crate",
+    "west": "opminecraft:block/text_crash_bounce_crate",
+    "particle": "opminecraft:block/text_crash_crate"
+  },
+  "render_type": "solid"
+}

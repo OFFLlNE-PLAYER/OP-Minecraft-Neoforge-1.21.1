@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "opminecraft:block/crash_crate"
+    },
+    "facing=east": {
+      "model": "opminecraft:block/crash_crate",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "opminecraft:block/crash_crate",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "opminecraft:block/crash_crate",
+      "y": 270
+    }
+  }
+}
