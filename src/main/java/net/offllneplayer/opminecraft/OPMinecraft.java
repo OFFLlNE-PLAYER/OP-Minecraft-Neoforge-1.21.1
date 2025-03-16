@@ -62,6 +62,8 @@ public class OPMinecraft {
         RegistryPotions.POTSREGISTRY.register(modEventBus);
         RegistryMobEffects.MOBEFFECTSREGISTRY.register(modEventBus);
 
+        RegistryParticleTypes.PARTICLETYPESREGISTRY.register(modEventBus);
+
         RegistryClientEventBus.FLUIDSREGISTRY.register(modEventBus);
         RegistryFluidTypes.FLUIDTYPESREGISTRY.register(modEventBus);
 

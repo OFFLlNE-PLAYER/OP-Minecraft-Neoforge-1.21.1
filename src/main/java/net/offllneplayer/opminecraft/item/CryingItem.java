@@ -9,9 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -38,7 +36,8 @@ public abstract class CryingItem extends ArmorItem {
 				map.put(Type.CHESTPLATE, 8);
 				map.put(Type.HELMET, 3);
 				map.put(Type.BODY, 7);
-			}), 20, DeferredHolder.create(Registries.SOUND_EVENT, ResourceLocation.parse("item.armor.equip_netherite")), () -> Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get())),
+			}), 20, DeferredHolder.create(Registries.SOUND_EVENT, ResourceLocation.parse("item.armor.equip_netherite")),
+					() -> Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get())),
 					List.of(new ArmorMaterial.Layer(ResourceLocation.parse("opminecraft:crying_armor"))), 1f, -0.1f);
 			registerHelper.register(ResourceLocation.parse("opminecraft:crying"), armorMaterial);
 			ARMOR_MATERIAL = BuiltInRegistries.ARMOR_MATERIAL.wrapAsHolder(armorMaterial);
@@ -51,7 +50,7 @@ public abstract class CryingItem extends ArmorItem {
 
 		public static class Helmet extends CryingItem {
 			public Helmet() {
-				super(Type.HELMET, new Properties().durability(Type.HELMET.getDurability(40)).fireResistant());
+				super(Type.HELMET, new Properties().durability(Type.HELMET.getDurability(40)).rarity(Rarity.EPIC));
 			}
 
 			@Override
@@ -65,19 +64,19 @@ public abstract class CryingItem extends ArmorItem {
 
 		public static class Chestplate extends CryingItem {
 			public Chestplate() {
-				super(Type.CHESTPLATE, new Properties().durability(Type.CHESTPLATE.getDurability(40)).fireResistant());
+				super(Type.CHESTPLATE, new Properties().durability(Type.CHESTPLATE.getDurability(40)).rarity(Rarity.EPIC));
 			}
 		}
 
 		public static class Leggings extends CryingItem {
 			public Leggings() {
-				super(Type.LEGGINGS, new Properties().durability(Type.LEGGINGS.getDurability(40)).fireResistant());
+				super(Type.LEGGINGS, new Properties().durability(Type.LEGGINGS.getDurability(40)).rarity(Rarity.EPIC));
 			}
 		}
 
 		public static class Boots extends CryingItem {
 			public Boots() {
-				super(Type.BOOTS, new Properties().durability(Type.BOOTS.getDurability(40)).fireResistant());
+				super(Type.BOOTS, new Properties().durability(Type.BOOTS.getDurability(40)).rarity(Rarity.EPIC));
 			}
 		}
 }

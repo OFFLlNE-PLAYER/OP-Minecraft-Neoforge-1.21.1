@@ -42,11 +42,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.PROC_Nitro_Check_Silk_TouchProcedure;
-import net.offllneplayer.opminecraft.method.PROCNitroSneakyProcedure;
-import net.offllneplayer.opminecraft.method.PROCNitroPlaceSoundProcedure;
-import net.offllneplayer.opminecraft.method.PROCNitroOnTickProcedure;
-import net.offllneplayer.opminecraft.method.PROCNitroBoomProcedure;
+import net.offllneplayer.opminecraft.method.crash.nitro.PROC_Nitro_Check_Silk_TouchProcedure;
+import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroSneakyProcedure;
+import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroPlaceSoundProcedure;
+import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroOnTickProcedure;
+import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroBoomProcedure;
 
 
 import java.util.List;

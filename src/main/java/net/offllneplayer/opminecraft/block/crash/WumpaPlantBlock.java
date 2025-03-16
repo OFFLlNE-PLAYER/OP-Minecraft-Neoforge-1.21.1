@@ -22,8 +22,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.PROCWumpaPlantPlacementProcedure;
-import net.offllneplayer.opminecraft.method.PROCWumpaPlantOnClickProcedure;
+import net.offllneplayer.opminecraft.method.crash.wumpa.PROCWumpaPlantPlacementProcedure;
+import net.offllneplayer.opminecraft.method.crash.wumpa.PROCWumpaPlantOnClickProcedure;
 
 public class WumpaPlantBlock extends Block {
 	public WumpaPlantBlock() {

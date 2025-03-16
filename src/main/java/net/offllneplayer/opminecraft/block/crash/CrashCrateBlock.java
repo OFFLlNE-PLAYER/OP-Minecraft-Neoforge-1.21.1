@@ -30,9 +30,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.PROCCrateCheckSilkTouchProcedure;
-import net.offllneplayer.opminecraft.method.PROCCrashCrateCollisionProcedure;
-import net.offllneplayer.opminecraft.method.PROCCrashCrateBreakProcedure;
+import net.offllneplayer.opminecraft.method.crash.crate.PROCCrateCheckSilkTouchProcedure;
+import net.offllneplayer.opminecraft.method.crash.crate.PROCCrashCrateCollisionProcedure;
+import net.offllneplayer.opminecraft.method.crash.crate.PROCCrashCrateBreakProcedure;
 
 public class CrashCrateBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;

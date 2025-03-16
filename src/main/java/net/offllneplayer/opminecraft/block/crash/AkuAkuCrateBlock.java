@@ -29,8 +29,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.PROCAkuAkuCrateCollisionProcedure;
-import net.offllneplayer.opminecraft.method.PROCAkuAkuCheckSilkTouchProcedure;
+import net.offllneplayer.opminecraft.method.crash.akuaku.PROCAkuAkuCrateCollisionProcedure;
+import net.offllneplayer.opminecraft.method.crash.akuaku.PROCAkuAkuCheckSilkTouchProcedure;
 
 public class AkuAkuCrateBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;

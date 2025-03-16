@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.LivingEntity;
 
-import net.offllneplayer.opminecraft.method.PROCWumpaFruitProcedure;
+import net.offllneplayer.opminecraft.method.crash.wumpa.PROCWumpaFruitProcedure;
 
 public class WumpaFruitItem extends Item {
 	public WumpaFruitItem() {

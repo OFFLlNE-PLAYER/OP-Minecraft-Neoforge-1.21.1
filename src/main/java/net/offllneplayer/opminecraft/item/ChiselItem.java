@@ -43,7 +43,10 @@ public class ChiselItem extends Item {
     );
 
     public ChiselItem() {
-        super(new Properties().stacksTo(1).durability(64).fireResistant().rarity(Rarity.RARE));
+        super(new Properties()
+                .stacksTo(1)
+                .durability(64)
+                .rarity(Rarity.RARE));
     }
 
     @Override

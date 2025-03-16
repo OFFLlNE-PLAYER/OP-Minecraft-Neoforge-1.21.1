@@ -17,25 +17,20 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.network.chat.Component;
 
-import net.offllneplayer.opminecraft.method.PROCAkuAkuUseProcedure;
-import net.offllneplayer.opminecraft.method.PROCAkuAkuActivateProcedure;
+import net.offllneplayer.opminecraft.method.crash.akuaku.PROCAkuAkuUseProcedure;
+import net.offllneplayer.opminecraft.method.crash.akuaku.PROCAkuAkuActivateProcedure;
 
 import java.util.List;
 
 public class AkuAkuMaskItem extends Item {
-	public AkuAkuMaskItem() {
-		super(new Properties().stacksTo(1).rarity(Rarity.EPIC));
-	}
+	public AkuAkuMaskItem() {super(new Properties()
+			.stacksTo(1).rarity(Rarity.RARE));}
 
 	@Override
-	public UseAnim getUseAnimation(ItemStack itemstack) {
-		return UseAnim.SPEAR;
-	}
+	public UseAnim getUseAnimation(ItemStack itemstack) {return UseAnim.SPEAR;}
 
 	@Override
-	public int getUseDuration(ItemStack itemstack, LivingEntity livingEntity) {
-		return 1;
-	}
+	public int getUseDuration(ItemStack itemstack, LivingEntity livingEntity) {return 1;}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
@@ -55,7 +50,11 @@ public class AkuAkuMaskItem extends Item {
 	@Override
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
-		if (selected)
-			PROCAkuAkuActivateProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+
+		if ((selected) || (slot == 40)) {PROCAkuAkuActivateProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);}
+	/*
+	USE TO GET SLOT WHEN ITS IN HAND
+	System.out.println(slot);
+	*/
 	}
 }

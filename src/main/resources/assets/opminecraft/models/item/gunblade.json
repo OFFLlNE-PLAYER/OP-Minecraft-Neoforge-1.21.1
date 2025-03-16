@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:custom/gunblade",
+  "textures": {
+    "0": "opminecraft:block/text_gunblade",
+    "particle": "opminecraft:item/text_gunblade"
+  }
+}

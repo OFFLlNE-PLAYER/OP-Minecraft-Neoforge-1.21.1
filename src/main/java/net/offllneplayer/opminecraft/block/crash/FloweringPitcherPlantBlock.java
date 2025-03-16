@@ -18,8 +18,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.PROC_Flowering_Pitcher_Plant_OnTickProcedure;
-import net.offllneplayer.opminecraft.method.PROCWumpaPlantPlacementProcedure;
+import net.offllneplayer.opminecraft.method.crash.wumpa.PROC_Flowering_Pitcher_Plant_OnTickProcedure;
+import net.offllneplayer.opminecraft.method.crash.wumpa.PROCWumpaPlantPlacementProcedure;
 
 public class FloweringPitcherPlantBlock extends Block {
 	public FloweringPitcherPlantBlock() {

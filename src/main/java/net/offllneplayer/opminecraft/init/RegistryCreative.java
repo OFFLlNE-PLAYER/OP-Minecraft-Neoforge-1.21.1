@@ -110,7 +110,7 @@ public class RegistryCreative {
             }
             if (event.getTabKey()==CreativeModeTabs.REDSTONE_BLOCKS) {
 
-//POWER block go here
+//Redstone block go here ~(hah I'll probably never touch this)
 
             }
             if (event.getTabKey()==CreativeModeTabs.TOOLS_AND_UTILITIES) {
@@ -126,20 +126,13 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.BLOCK_OF_CRYING_INGOTS);
 
                 event.accept(RegistryIBBI.CRYING_ESSENCE);
-
                 event.accept(RegistryIBBI.CRYING_ESSENCE_BUCKET);
 
-                event.accept(RegistryIBBI.CRYING_SWORD);
                 event.accept(RegistryIBBI.CRYING_AXE);
                 event.accept(RegistryIBBI.CRYING_PICKAXE);
                 event.accept(RegistryIBBI.CRYING_SHOVEL);
                 event.accept(RegistryIBBI.CRYING_SICKLE);
                 event.accept(RegistryIBBI.CRYING_PAXEL);
-
-                event.accept(RegistryIBBI.CRYING_HELMET);
-                event.accept(RegistryIBBI.CRYING_CHESTPLATE);
-                event.accept(RegistryIBBI.CRYING_LEGGINGS);
-                event.accept(RegistryIBBI.CRYING_BOOTS);
 
                 event.accept(RegistryIBBI.TNT_STICK);
 
@@ -148,7 +141,16 @@ public class RegistryCreative {
             }
             if (event.getTabKey() == CreativeModeTabs.COMBAT) {
 
-//combat stuff go here
+                event.accept(RegistryIBBI.CRYING_SWORD);
+
+                event.accept(RegistryIBBI.CRYING_HELMET);
+                event.accept(RegistryIBBI.CRYING_CHESTPLATE);
+                event.accept(RegistryIBBI.CRYING_LEGGINGS);
+                event.accept(RegistryIBBI.CRYING_BOOTS);
+                event.accept(RegistryIBBI.CRYING_HORSE_ARMOR);
+
+                event.accept(RegistryIBBI.AKU_AKU_MASK);
+                event.accept(RegistryIBBI.TOTEM_OF_LIFE);
 
             }
             if (event.getTabKey()==CreativeModeTabs.FOOD_AND_DRINKS) {

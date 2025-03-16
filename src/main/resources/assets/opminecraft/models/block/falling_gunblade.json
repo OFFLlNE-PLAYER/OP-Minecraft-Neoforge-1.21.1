@@ -1,0 +1,9 @@
+{
+  "parent": "opminecraft:custom/stuck_gunblade",
+  "textures": {
+    "all": "opminecraft:block/text_gunblade",
+    "particle": "opminecraft:block/text_gunblade",
+    "0": "opminecraft:block/text_gunblade"
+  },
+  "render_type": "cutout_mipped"
+}

@@ -4,6 +4,7 @@ package net.offllneplayer.opminecraft.init;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -11,10 +12,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.registries.Registries;
 
-import net.offllneplayer.opminecraft.method.PROCAkuAkuEndProcedure;
+import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuEnd_Method;
 import net.offllneplayer.opminecraft.potion.*;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
+@EventBusSubscriber
 public class RegistryMobEffects {
 
 	public static final DeferredRegister<MobEffect> MOBEFFECTSREGISTRY = DeferredRegister.create(Registries.MOB_EFFECT, OPMinecraft.Mod_ID);
@@ -22,7 +24,8 @@ public class RegistryMobEffects {
 	public static final DeferredHolder<MobEffect, MobEffect> CRYING_I = MOBEFFECTSREGISTRY.register("crying_i", CryingIMobEffect::new);
 	public static final DeferredHolder<MobEffect, MobEffect> CRYING_II = MOBEFFECTSREGISTRY.register("crying_ii", CryingIIMobEffect::new);
 
-	public static final DeferredHolder<MobEffect, MobEffect> EFFECT_AKU_AKU = MOBEFFECTSREGISTRY.register("effect_aku_aku", () -> new EFFECTAkuAkuMobEffect());
+	public static final DeferredHolder<MobEffect, MobEffect> AKU_AKU = MOBEFFECTSREGISTRY.register("aku_aku", AkuAkuMobEffect::new);
+	public static final DeferredHolder<MobEffect, MobEffect> TOTEM_OF_LIFE = MOBEFFECTSREGISTRY.register("totem_of_life", TOLMobEffect::new);
 
 	@SubscribeEvent
 	public static void onEffectRemoved(MobEffectEvent.Remove event) {
@@ -41,8 +44,18 @@ public class RegistryMobEffects {
 	}
 
 	private static void expireEffects(Entity entity, MobEffectInstance effectInstance) {
-		if (effectInstance.getEffect().is(EFFECT_AKU_AKU)) {
-			PROCAkuAkuEndProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-		}
+
+		if (effectInstance.getEffect().is(AKU_AKU)) AkuAkuEnd_Method.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
