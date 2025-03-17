@@ -1,6 +1,7 @@
 
 package net.offllneplayer.opminecraft.handler.GUI_Button;
 
+import net.minecraft.core.SectionPos;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -57,9 +58,7 @@ public record IronFurnaceButtonHandler(int buttonID, int x, int y, int z) implem
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		HashMap guistate = IronFurnaceInv.guistate;
-		// security measure to prevent arbitrary chunk generation
-		if (!world.hasChunkAt(new BlockPos(x, y, z)))
-			return;
+		world.getChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z));
 		if (buttonID == 0) {
 
 			FurnacesExpButton_Method.execute(world, x, y, z);

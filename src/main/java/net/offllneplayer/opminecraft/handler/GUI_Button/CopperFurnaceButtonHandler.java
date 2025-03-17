@@ -1,6 +1,7 @@
 
 package net.offllneplayer.opminecraft.handler.GUI_Button;
 
+import net.minecraft.core.SectionPos;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -14,7 +15,6 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.method.furnaces.FurnacesExpButton_Method;
@@ -58,10 +58,8 @@ public record CopperFurnaceButtonHandler(int buttonID, int x, int y, int z) impl
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
 		HashMap guistate = CopperFurnaceInv.guistate;
-		// security measure to prevent arbitrary chunk generation
-		if (!world.hasChunkAt(new BlockPos(x, y, z)))
-			return;
-		if (buttonID == 0) {
+        world.getChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z));
+        if (buttonID == 0) {
 
 			FurnacesExpButton_Method.execute(world, x, y, z);
 		}
