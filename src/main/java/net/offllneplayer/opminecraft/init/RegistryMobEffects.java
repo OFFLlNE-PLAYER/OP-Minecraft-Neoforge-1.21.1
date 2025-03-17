@@ -44,9 +44,9 @@ public class RegistryMobEffects {
 	}
 
 	private static void expireEffects(Entity entity, MobEffectInstance effectInstance) {
-
-		if (effectInstance.getEffect().is(AKU_AKU)) AkuAkuEnd_Method.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-
+		if (effectInstance.getEffect().equals(AKU_AKU)){
+			AkuAkuEnd_Method.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		}
 	}
 }
 

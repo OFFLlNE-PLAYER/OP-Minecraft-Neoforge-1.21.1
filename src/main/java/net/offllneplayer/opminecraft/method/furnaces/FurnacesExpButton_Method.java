@@ -23,12 +23,8 @@ public class FurnacesExpButton_Method {
 				return -1;
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "Stored_EXP") > 0) {
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if (world instanceof Level _level && !_level.isClientSide()) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.experience_bottle.throw")), SoundSource.MASTER, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.experience_bottle.throw")), SoundSource.MASTER, 1, 1, false);
-				}
 			}
 			for (int index0 = 0; index0 < (int) (new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
@@ -51,12 +47,8 @@ public class FurnacesExpButton_Method {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			OPMinecraft.queueServerWork(2, () -> {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if (world instanceof Level _level && !_level.isClientSide()) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.glass.break")), SoundSource.MASTER, (float) 0.6, (float) 1.1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.glass.break")), SoundSource.MASTER, (float) 0.6, (float) 1.1, false);
-					}
 				}
 			});
 		}

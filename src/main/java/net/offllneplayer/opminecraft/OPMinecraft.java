@@ -22,6 +22,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickRenderer;
+import net.offllneplayer.opminecraft.handler.DamageEventHandler;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -72,6 +73,8 @@ public class OPMinecraft {
         RegistryEnchantmentEffects.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
+
+        NeoForge.EVENT_BUS.register(new DamageEventHandler());
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

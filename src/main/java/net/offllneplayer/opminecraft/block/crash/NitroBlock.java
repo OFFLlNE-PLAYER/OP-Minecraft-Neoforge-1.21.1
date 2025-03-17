@@ -105,11 +105,8 @@ public class NitroBlock extends FallingBlock implements EntityBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(0.4, 0, 0.4, 15.6, 15.6, 15.6);
-			case NORTH -> box(0.4, 0, 0.4, 15.6, 15.6, 15.6);
-			case SOUTH -> box(0.4, 0, 0.4, 15.6, 15.6, 15.6);
-			case EAST -> box(0.4, 0, 0.4, 15.6, 15.6, 15.6);
-			case WEST -> box(0.4, 0, 0.4, 15.6, 15.6, 15.6);
+			case NORTH, SOUTH, EAST, WEST, UP -> box(0.4, 0, 0.4, 15.6, 15.6, 15.6);
+			case DOWN -> box(0.4, 0.4, 0.4, 15.6, 16, 15.6);  // Adjusted Y values for DOWN case
 		};
 	}
 
@@ -128,13 +125,15 @@ public class NitroBlock extends FallingBlock implements EntityBlock {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
+	@Override
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
-		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+		Direction newFacing = mirrorIn.getRotation(state.getValue(FACING)).rotate(state.getValue(FACING));
+		return state.setValue(FACING, newFacing);
 	}
 
 	@Override
 	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return PathType.DANGER_POWDER_SNOW;
+		return PathType.BLOCKED;
 	}
 
 	@Override
@@ -183,6 +182,6 @@ public class NitroBlock extends FallingBlock implements EntityBlock {
 	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
+		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
 	}
 }

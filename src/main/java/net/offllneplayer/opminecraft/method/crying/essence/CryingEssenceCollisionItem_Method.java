@@ -27,11 +27,6 @@ public class CryingEssenceCollisionItem_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		boolean Crying_Chestplate_logic = false;
-		boolean Crying_Leggings_logic = false;
-		boolean Crying_Helmet_logic = false;
-		boolean Crying_Boots_logic = false;
-		boolean Cryoxide_Damage_logic = false;
 		double Number_of_Item = 0;
 		Number_of_Item = 0;
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).getFluidState().isSource()) {
@@ -44,8 +39,6 @@ public class CryingEssenceCollisionItem_Method {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.enter")), SoundSource.MASTER, 1, (float) 0.2);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.enter")), SoundSource.MASTER, 1, (float) 0.2, false);
 					}
 				}
 				if (!entity.level().isClientSide())

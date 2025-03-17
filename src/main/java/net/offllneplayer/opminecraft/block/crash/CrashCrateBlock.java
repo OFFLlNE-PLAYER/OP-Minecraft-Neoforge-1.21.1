@@ -70,11 +70,8 @@ public class CrashCrateBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(0, 0, 0, 16, 15.9, 16);
-			case NORTH -> box(0, 0, 0, 16, 15.9, 16);
-			case SOUTH -> box(0, 0, 0, 16, 15.9, 16);
-			case EAST -> box(0, 0, 0, 16, 15.9, 16);
-			case WEST -> box(0, 0, 0, 16, 15.9, 16);
+			case NORTH, SOUTH, EAST, WEST, UP -> box(0, 0, 0, 16, 15.9, 16);
+			case DOWN -> box(0, 0.1, 0, 16, 16, 16);
 		};
 	}
 
@@ -93,13 +90,15 @@ public class CrashCrateBlock extends Block {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
+	@Override
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
-		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+		Direction newFacing = mirrorIn.getRotation(state.getValue(FACING)).rotate(state.getValue(FACING));
+		return state.setValue(FACING, newFacing);
 	}
 
 	@Override
 	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return PathType.WALKABLE;
+		return PathType.BLOCKED;
 	}
 
 	@Override

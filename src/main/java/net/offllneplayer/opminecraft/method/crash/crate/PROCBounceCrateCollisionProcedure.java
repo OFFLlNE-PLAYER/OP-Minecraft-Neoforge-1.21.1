@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.method.crash;
+package net.offllneplayer.opminecraft.method.crash.crate;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
