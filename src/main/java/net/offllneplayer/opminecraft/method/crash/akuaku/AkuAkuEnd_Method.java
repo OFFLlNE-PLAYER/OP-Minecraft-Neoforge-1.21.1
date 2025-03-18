@@ -18,11 +18,9 @@ public class AkuAkuEnd_Method {
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide() && _entity.isInvulnerable()){
 			_entity.setInvulnerable(false);
 	}
-		if (world instanceof Level _level) {
+		if ((world instanceof Level _level) && (!_level.isClientSide())) {
 			float tone = Mth.nextFloat(RandomSource.create(), 0.9f, 1.05f);
-			if (!_level.isClientSide()) {
-				_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku_dies")), SoundSource.MASTER, (float) 0.6, tone);
-			}
+			_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku_dies")), SoundSource.MASTER, (float) 0.6, tone);
 		}
 	}
 }

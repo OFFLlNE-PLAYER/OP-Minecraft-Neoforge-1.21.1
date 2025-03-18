@@ -30,12 +30,8 @@ public class PROCBounceCrateCollisionProcedure {
 				&& !(entity instanceof SpectralArrow)) {
 			entity.fallDistance = 0;
 			entity.push(0, 1.3, 0);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_crate_bounce")), SoundSource.MASTER, 1, (float) 0.9);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_crate_bounce")), SoundSource.MASTER, 1, (float) 0.9, false);
-				}
 			}
 		}
 	}

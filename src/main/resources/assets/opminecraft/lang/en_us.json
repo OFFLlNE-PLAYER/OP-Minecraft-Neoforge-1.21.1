@@ -185,6 +185,9 @@
   "item.opminecraft.prototype_gunblade.description_0": "[FF8]",
   "item.opminecraft.prototype_gunblade.description_1": "This needs some work, doesn't it?",
 
+  "item.opminecraft.sculk_hammer": "Sculk Hammer",
+  "item.opminecraft.sculk_hammer.description_0": "Repairs anything at it's own expense",
+
   "item.opminecraft.totem_of_life": "Totem of Life",
   "item.opminecraft.totem_of_life.description_0": "Somehow, this keeps you safer",
 

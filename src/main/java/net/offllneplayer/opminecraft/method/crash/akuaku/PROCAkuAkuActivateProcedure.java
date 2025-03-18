@@ -24,61 +24,44 @@ public class PROCAkuAkuActivateProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) {
-			// Get the item in the main hand
+			// Get the item in the main/off hand
 			ItemStack mainHandItem = _entity.getItemInHand(InteractionHand.MAIN_HAND);
-			// Get the item in the off hand
 			ItemStack offHandItem = _entity.getItemInHand(InteractionHand.OFF_HAND);
-
 			// Initialize variable to track if inventory needs updating
 			boolean updateInventory = false;
 
-			// Set health and invulnerable state
+			// Set full health and invulnerable state
 			_entity.setHealth(_entity.getMaxHealth());
 			_entity.setInvulnerable(true);
 
-			// Play sound on the server
-			if (_entity.level() instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(_entity.getX(), _entity.getY(), _entity.getZ()),
-							BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku")), SoundSource.MASTER, 0.8f, 1);
-				}
-			}
-
-			// Play particles (on server side only)
+			// Play particles (server side only)
 			if (_entity.level() instanceof ServerLevel _level) {
 				_level.sendParticles(ParticleTypes.CHERRY_LEAVES, _entity.getX(), _entity.getY() + 1, _entity.getZ(), 5, 2, 0, 2, 1);
 				_level.sendParticles(ParticleTypes.CHERRY_LEAVES, _entity.getX(), _entity.getY(), _entity.getZ(), 3, 2, 0, 2, 1);
 				_level.sendParticles(ParticleTypes.WHITE_ASH, _entity.getX(), _entity.getY() + 1, _entity.getZ(), 5, 2, 0, 2, 1);
 				_level.sendParticles(ParticleTypes.TOTEM_OF_UNDYING, _entity.getX(), _entity.getY() + 1, _entity.getZ(), 5, 2, 0, 2, 1);
 				_level.sendParticles(ParticleTypes.POOF, _entity.getX(), _entity.getY() + 1, _entity.getZ(), 2, 2, 0, 2, 1);
+
+				_level.playSound(null, BlockPos.containing(_entity.getX(), _entity.getY(), _entity.getZ()),
+				BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku")), SoundSource.MASTER, 0.8f, 1);
 			}
 
-			// Check if Aku Aku Mask is in the main hand
-			if (mainHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get()) {
-				// Decrease stack count in main hand
-				mainHandItem.setCount(mainHandItem.getCount() - 1);
+// Check if Aku Aku Mask is in either hand (main or off-hand)
+			if ((mainHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get() || offHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get())) {
+				// Decrease stack count in the appropriate hand and apply the effect
+				if (mainHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get()) {
+					mainHandItem.setCount(mainHandItem.getCount() - 1);
+				} else if (offHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get()) {
+					offHandItem.setCount(offHandItem.getCount() - 1);
+				}
 
 				// Apply the Aku Aku effect
 				_entity.addEffect(new MobEffectInstance(RegistryMobEffects.AKU_AKU, 140, 1, false, true));
 
-				// Mark for inventory update
-				updateInventory = true;
-			}
-			// Check if Aku Aku Mask is in the off hand (only if it's not in the main hand)
-			else if (offHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get()) {
-				// Decrease stack count in off hand
-				offHandItem.setCount(offHandItem.getCount() - 1);
-
-				// Apply the Aku Aku effect
-				_entity.addEffect(new MobEffectInstance(RegistryMobEffects.AKU_AKU, 140, 1, false, true));
-
-				// Mark for inventory update
-				updateInventory = true;
-			}
-
-			// If it's a player, update the inventory
-			if (updateInventory && _entity instanceof Player _player) {
-				_player.getInventory().setChanged();
+				// Update the player's inventory immediately after use
+				if (_entity instanceof Player _player) {
+					_player.getInventory().setChanged();
+				}
 			}
 		}
 	}

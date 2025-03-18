@@ -28,17 +28,13 @@ public class PROCNitroSneakyProcedure {
 		if (!(entity instanceof ArmorStand) && !(entity instanceof Arrow) && !(entity instanceof EvokerFangs) && !(entity instanceof ThrownExperienceBottle) && !(entity instanceof ExperienceOrb) && !(entity instanceof GlowItemFrame)
 				&& !(entity instanceof HangingEntity) && !(entity instanceof ItemEntity) && !(entity instanceof Display.ItemDisplay) && !(entity instanceof ItemFrame) && !(entity instanceof Marker) && !(entity instanceof ThrownPotion)
 				&& !(entity instanceof SpectralArrow)) {
-			if (entity.isShiftKeyDown() == false) {
+			if (!entity.isShiftKeyDown()) {
 				world.destroyBlock(BlockPos.containing(x, y, z), false);
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_boom")), SoundSource.MASTER, (float) 0.6, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_boom")), SoundSource.MASTER, (float) 0.6, 1, false);
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
+					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_boom")), SoundSource.MASTER, (float) 0.6, 1);
 					}
-				}
 				if (world instanceof Level _level && !_level.isClientSide())
-					_level.explode(null, x, (y + 1), z, 2, Level.ExplosionInteraction.BLOCK);
+					_level.explode(null, x, (y + 1), z, 2, true, Level.ExplosionInteraction.BLOCK);
 			}
 		}
 	}

@@ -135,8 +135,8 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.CRYING_PAXEL);
 
                 event.accept(RegistryIBBI.TNT_STICK);
-
                 event.accept(RegistryIBBI.DYNAMITE_STICK);
+                event.accept(RegistryIBBI.SCULK_HAMMER);
 
             }
             if (event.getTabKey() == CreativeModeTabs.COMBAT) {
