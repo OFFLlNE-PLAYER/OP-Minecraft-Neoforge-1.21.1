@@ -41,12 +41,8 @@ public class MeltBlockofCryingIngots_Method {
 				entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));;
 				_level.addFreshEntity(entityToSpawn);
 			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.7, (float) 0.4);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.7, (float) 0.4, false);
-				}
 			}
 			{
 				final Vec3 _center = new Vec3(x, y, z);
@@ -68,15 +64,10 @@ public class MeltBlockofCryingIngots_Method {
 				}
 			}
 			OPMinecraft.queueServerWork(20, () -> {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0, false);
-					}
-				}
-				if (world instanceof Level _level && !_level.isClientSide())
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
+					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0);
 					_level.explode(null, x, y, z, 1, Level.ExplosionInteraction.BLOCK);
+				}
 				world.setBlock(BlockPos.containing(x, y, z), RegistryIBBI.CRYING_ESSENCE.get().defaultBlockState(), 3);
 				for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 0, 2); index0++) {
 					if (world instanceof ServerLevel _level) {
@@ -94,12 +85,8 @@ public class MeltBlockofCryingIngots_Method {
 					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));;
 					_level.addFreshEntity(entityToSpawn);
 				}
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.7, (float) 0.4);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.7, (float) 0.4, false);
-					}
 				}
 				{
 					final Vec3 _center = new Vec3(x, y, z);
@@ -121,15 +108,10 @@ public class MeltBlockofCryingIngots_Method {
 					}
 				}
 				OPMinecraft.queueServerWork(20, () -> {
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0, false);
-						}
-					}
-					if (world instanceof Level _level && !_level.isClientSide())
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
+						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0);
 						_level.explode(null, x, y, z, 7,true, Level.ExplosionInteraction.BLOCK);
+					}
 					world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
@@ -153,23 +135,14 @@ public class MeltBlockofCryingIngots_Method {
 				entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));;
 				_level.addFreshEntity(entityToSpawn);
 			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.7, (float) 0.4);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.7, (float) 0.4, false);
-				}
 			}
 			OPMinecraft.queueServerWork(20, () -> {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0, false);
-					}
-				}
-				if (world instanceof Level _level && !_level.isClientSide())
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
+					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit")), SoundSource.NEUTRAL, 1, 0);
 					_level.explode(null, x, y, z, 5,true, Level.ExplosionInteraction.BLOCK);
+				}
 				world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
 				world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
 				world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);

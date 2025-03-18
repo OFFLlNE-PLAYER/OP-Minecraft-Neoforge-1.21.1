@@ -23,22 +23,14 @@ public class PROCWumpaPlantOnClickProcedure {
 		if (entity == null)
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.crop.break")), SoundSource.MASTER, 1, (float) 1.1);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.crop.break")), SoundSource.MASTER, 1, (float) 1.1, false);
-				}
 			}
 			world.levelEvent(2001, BlockPos.containing(x, y + 1, z), Block.getId(RegistryIBBI.WUMPA_PLANT.get().defaultBlockState()));
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 			OPMinecraft.queueServerWork(4, () -> {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:wumpa_fruit")), SoundSource.MASTER, 1, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:wumpa_fruit")), SoundSource.MASTER, 1, 1, false);
-					}
 				}
 				if (world instanceof ServerLevel _level) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.WUMPA_FRUIT.get()));

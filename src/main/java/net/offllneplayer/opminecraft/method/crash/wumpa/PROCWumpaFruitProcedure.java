@@ -32,12 +32,8 @@ public class PROCWumpaFruitProcedure {
 			if (entity instanceof Player _player)
 				_player.getFoodData().setFoodLevel((int) ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) - 4));
 			entity.hurt(new DamageSource(world.holderOrThrow(DamageTypes.STARVE)), 1);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.6, (float) Mth.nextDouble(RandomSource.create(), 0.8, 1));
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.6, (float) Mth.nextDouble(RandomSource.create(), 0.8, 1), false);
-				}
 			}
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 70, 1));
@@ -50,13 +46,8 @@ public class PROCWumpaFruitProcedure {
 					if (entity instanceof Player _player)
 						_player.getFoodData().setFoodLevel((int) ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) - 4));
 					entity.hurt(new DamageSource(world.holderOrThrow(DamageTypes.STARVE)), 1);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.7,
-									(float) Mth.nextDouble(RandomSource.create(), 0.6, 0.7));
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.7, (float) Mth.nextDouble(RandomSource.create(), 0.6, 0.7), false);
-						}
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
+						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.7, (float) Mth.nextDouble(RandomSource.create(), 0.6, 0.7));
 					}
 					OPMinecraft.queueServerWork(20, () -> {
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -65,22 +56,12 @@ public class PROCWumpaFruitProcedure {
 							if (entity instanceof Player _player)
 								_player.getFoodData().setFoodLevel((int) ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) - 4));
 							entity.hurt(new DamageSource(world.holderOrThrow(DamageTypes.STARVE)), 1);
-							if (world instanceof Level _level) {
-								if (!_level.isClientSide()) {
-									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.5,
-											(float) Mth.nextDouble(RandomSource.create(), 0.7, 0.9));
-								} else {
-									_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.5, (float) Mth.nextDouble(RandomSource.create(), 0.7, 0.9), false);
-								}
+							if ((world instanceof Level _level) && (!_level.isClientSide())) {
+									_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.5, (float) Mth.nextDouble(RandomSource.create(), 0.7, 0.9));
 							}
 							OPMinecraft.queueServerWork(10, () -> {
-								if (world instanceof Level _level) {
-									if (!_level.isClientSide()) {
-										_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.8,
-												(float) Mth.nextDouble(RandomSource.create(), 1.1, 1.2));
-									} else {
-										_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.8, (float) Mth.nextDouble(RandomSource.create(), 1.1, 1.2), false);
-									}
+								if ((world instanceof Level _level) && (!_level.isClientSide())) {
+										_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp")), SoundSource.MASTER, (float) 0.8, (float) Mth.nextDouble(RandomSource.create(), 1.1, 1.2));
 								}
 								OPMinecraft.queueServerWork(60, () -> {
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())

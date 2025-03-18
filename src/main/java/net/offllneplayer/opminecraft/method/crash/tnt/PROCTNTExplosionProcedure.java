@@ -22,15 +22,10 @@ public class PROCTNTExplosionProcedure {
 		x_power = Mth.nextInt(RandomSource.create(), 3, 5);
 		y_power = Mth.nextInt(RandomSource.create(), 3, 5);
 		z_power = Mth.nextInt(RandomSource.create(), 3, 5);
-		if (world instanceof Level _level) {
-			if (!_level.isClientSide()) {
-				_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tnt_boom")), SoundSource.MASTER, (float) 1.1, 1);
-			} else {
-				_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tnt_boom")), SoundSource.MASTER, (float) 1.1, 1, false);
-			}
-		}
-		if (world instanceof Level _level && !_level.isClientSide())
+		if ((world instanceof Level _level) && (!_level.isClientSide())) {
+			_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tnt_boom")), SoundSource.MASTER, (float) 1.1, 1);
 			_level.explode(null, x, y, z, 4, Level.ExplosionInteraction.BLOCK);
+		}
 		while (x_power > 0 && y_power > 0 && z_power > 0) {
 			if (!(world.getBlockState(BlockPos.containing(x + x_power, y, z))).is(BlockTags.create(ResourceLocation.parse("opminecraft:tnt_immune")))) {
 				world.setBlock(BlockPos.containing(x + x_power, y, z), Blocks.AIR.defaultBlockState(), 3);

@@ -23,12 +23,8 @@ public class PROCAkuAkuUseProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (world instanceof Level _level) {
-			if (!_level.isClientSide()) {
+		if ((world instanceof Level _level) && (!_level.isClientSide())) {
 				_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku")), SoundSource.MASTER, 1, 1);
-			} else {
-				_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku")), SoundSource.MASTER, 1, 1, false);
-			}
 		}
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.CHERRY_LEAVES, x, y, z, 3, 3, 3, 3, 1);

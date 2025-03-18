@@ -34,10 +34,8 @@ public class PROCTNTCollisionProcedure {
 			if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("tntstate") instanceof IntegerProperty _getip16 ? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip16) : -1) == 0) {
 				PROCPrimeTNTProcedure.execute(world, x, y, z);
 			} else {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_crate_bounce")), SoundSource.MASTER, 1, 1);
-					}
 				}
 			}
 		}

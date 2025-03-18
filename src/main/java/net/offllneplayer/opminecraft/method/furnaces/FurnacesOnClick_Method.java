@@ -64,10 +64,8 @@ public class FurnacesOnClick_Method {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava")), SoundSource.NEUTRAL, 1, 1);
-					}
 				}
 			} else {
 				if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
@@ -195,10 +193,8 @@ public class FurnacesOnClick_Method {
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
 				}
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava")), SoundSource.NEUTRAL, 1, 1);
-					}
 				}
 			} else {
 				if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {

@@ -11,12 +11,8 @@ import net.minecraft.core.BlockPos;
 
 public class PROCPrimeTNTProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (world instanceof Level _level) {
-			if (!_level.isClientSide()) {
+		if ((world instanceof Level _level) && (!_level.isClientSide())) {
 				_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:prime_tnt")), SoundSource.MASTER, 1, 1);
-			} else {
-				_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:prime_tnt")), SoundSource.MASTER, 1, 1, false);
-			}
 		}
 		{
 			int _value = 4;

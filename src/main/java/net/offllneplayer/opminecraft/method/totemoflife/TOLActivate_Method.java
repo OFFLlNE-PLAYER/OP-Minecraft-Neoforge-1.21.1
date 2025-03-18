@@ -25,14 +25,9 @@ public class TOLActivate_Method {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) < (entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1) / 1.8) {
 			if (entity instanceof LivingEntity _entity)
 				_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.totem.use")), SoundSource.MASTER, (float) 0.6, (float) 1.2);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.totem.use")), SoundSource.MASTER, (float) 0.6, (float) 1.2, false);
-				}
 			}
-
 			if (world instanceof ServerLevel _level) _level.sendParticles(ParticleTypes.CHERRY_LEAVES, x, y, z, 3, 2, 0, 2, 1);
 			if (world instanceof ServerLevel _level) _level.sendParticles(ParticleTypes.WHITE_ASH, x, (y + 1), z, 5, 2, 0, 2, 1);
 			if (world instanceof ServerLevel _level) _level.sendParticles(ParticleTypes.TOTEM_OF_UNDYING, x, (y + 1), z, 5, 2, 0, 2, 1);

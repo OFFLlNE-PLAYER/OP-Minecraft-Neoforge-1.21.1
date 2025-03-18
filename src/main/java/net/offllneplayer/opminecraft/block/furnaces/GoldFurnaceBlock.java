@@ -70,8 +70,10 @@ public class GoldFurnaceBlock extends Block implements EntityBlock {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
+	@Override
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
-		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
+		Direction newFacing = mirrorIn.getRotation(state.getValue(FACING)).rotate(state.getValue(FACING));
+		return state.setValue(FACING, newFacing);
 	}
 
 	@Override

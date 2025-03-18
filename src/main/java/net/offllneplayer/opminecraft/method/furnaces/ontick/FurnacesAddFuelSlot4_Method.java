@@ -48,12 +48,9 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9000) {
 			if (Stack_of_Slot_4.getItem() == Items.LAVA_BUCKET) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava")), SoundSource.NEUTRAL, 1, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava")), SoundSource.NEUTRAL, 1, 1, false);
-					}
+
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -67,12 +64,8 @@ public class FurnacesAddFuelSlot4_Method {
 						_fluidHandler.fill(new FluidStack(Fluids.LAVA, 1000), IFluidHandler.FluidAction.EXECUTE);
 				}
 				OPMinecraft.queueServerWork(1, () -> {
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.9, 1);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.9, 1, false);
-						}
 					}
 					if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 						ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
@@ -93,12 +86,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.getItem() == Blocks.COAL_BLOCK.asItem()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.8, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.8, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -124,12 +113,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.getItem() == RegistryIBBI.BLOCK_OF_CHARCOAL.asItem()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.8, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.8, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -155,12 +140,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.getItem() == Blocks.DRIED_KELP_BLOCK.asItem()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.7, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.7, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -186,12 +167,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.getItem() == Items.BLAZE_ROD) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.6, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.6, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -217,12 +194,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.getItem() == Items.COAL || Stack_of_Slot_4.getItem() == Items.CHARCOAL) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.5, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.5, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -248,12 +221,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.is(ItemTags.create(ResourceLocation.parse("minecraft:logs")))) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.4, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.4, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -279,12 +248,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.is(ItemTags.create(ResourceLocation.parse("minecraft:planks")))) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.4, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.4, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -310,12 +275,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.is(ItemTags.create(ResourceLocation.parse("minecraft:wooden_slabs")))) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.4, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.4, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;
@@ -341,12 +302,8 @@ public class FurnacesAddFuelSlot4_Method {
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
 			if (Stack_of_Slot_4.getItem() == Items.STICK) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.3, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.blastfurnace.fire_crackle")), SoundSource.NEUTRAL, (float) 0.3, 1, false);
-					}
 				}
 				if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 					int _slotid = 4;

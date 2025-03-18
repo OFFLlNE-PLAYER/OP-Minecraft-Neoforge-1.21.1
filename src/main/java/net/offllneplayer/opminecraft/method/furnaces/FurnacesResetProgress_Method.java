@@ -4,7 +4,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
@@ -70,21 +69,15 @@ public class FurnacesResetProgress_Method {
 		}.getItemStack(world, BlockPos.containing(x, y, z), 3)).copy();
 		if (Stack_of_Slot_0.getItem() == Blocks.AIR.asItem() || Stack_of_Slot_1.getItem() == Blocks.AIR.asItem() || Stack_of_Slot_2.getItem() == Blocks.AIR.asItem() || Stack_of_Slot_3.getItem() == Blocks.AIR.asItem()) {
 			if (new Object() {
-				public int getEnergyStored(LevelAccessor level, BlockPos pos) {
-					if (level instanceof ILevelExtension _ext) {
-						IEnergyStorage _entityStorage = _ext.getCapability(Capabilities.EnergyStorage.BLOCK, pos, null);
-						if (_entityStorage != null)
-							return _entityStorage.getEnergyStored();
-					}
-					return 0;
+				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+					BlockEntity blockEntity = world.getBlockEntity(pos);
+					if (blockEntity != null)
+						return blockEntity.getPersistentData().getDouble(tag);
+					return -1;
 				}
-			}.getEnergyStored(world, BlockPos.containing(x, y, z)) > 0) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+			}.getValue(world, BlockPos.containing(x, y, z), "NBT_Furnaces_Progress") > 0) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.6, (float) 0.7);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.6, (float) 0.7, false);
-					}
 				}
 			}
 			if (!world.isClientSide()) {
@@ -112,12 +105,8 @@ public class FurnacesResetProgress_Method {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.6, (float) 0.7);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.6, (float) 0.7, false);
-				}
 			}
 			if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 				ItemStack _setstack = new ItemStack(Blocks.AIR).copy();

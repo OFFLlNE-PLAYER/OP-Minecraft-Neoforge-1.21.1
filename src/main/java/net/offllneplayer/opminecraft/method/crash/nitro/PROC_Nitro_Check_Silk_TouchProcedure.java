@@ -22,15 +22,10 @@ public class PROC_Nitro_Check_Silk_TouchProcedure {
 		} else {
 			Harvest_It = false;
 			world.destroyBlock(BlockPos.containing(x, y, z), false);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_boom")), SoundSource.MASTER, (float) 0.5, 1);
-				} else {
-					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_boom")), SoundSource.MASTER, (float) 0.5, 1, false);
-				}
-			}
-			if (world instanceof Level _level && !_level.isClientSide())
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
+				_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_boom")), SoundSource.MASTER, (float) 0.5, 1);
 				_level.explode(null, x, (y + 0.5), z, 2, Level.ExplosionInteraction.BLOCK);
+			}
 		}
 		return Harvest_It;
 	}

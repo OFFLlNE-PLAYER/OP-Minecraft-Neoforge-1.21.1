@@ -36,10 +36,8 @@ public class CryingEssenceCollisionItem_Method {
 				Number_of_Item = 2;
 			}
 			if (Number_of_Item == 1 || Number_of_Item == 2) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.enter")), SoundSource.MASTER, 1, (float) 0.2);
-					}
 				}
 				if (!entity.level().isClientSide())
 					entity.discard();

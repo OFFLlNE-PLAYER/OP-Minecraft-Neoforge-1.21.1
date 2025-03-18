@@ -37,22 +37,14 @@ public class CryingEssence_OnTick_Method {
 			if (Get_Block_x_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:crying_obsidian_triggers"))) || Get_Block_x_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:crying_obsidian_triggers")))
 					|| Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:crying_obsidian_triggers"))) || Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:crying_obsidian_triggers")))
 					|| Get_Block_z_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:crying_obsidian_triggers"))) || Get_Block_z_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:crying_obsidian_triggers")))) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.9, (float) 0.4);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.9, (float) 0.4, false);
-					}
 				}
 				OPMinecraft.queueServerWork(10, () -> {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.deepslate.step")), SoundSource.MASTER, 1, (float) 0.8);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.deepslate.step")), SoundSource.MASTER, 1, (float) 0.8, false);
-						}
 					}
 					if (world instanceof Level _level && !_level.isClientSide())
 						_level.explode(null, x, y, z, 6, true, Level.ExplosionInteraction.BLOCK);
@@ -67,22 +59,14 @@ public class CryingEssence_OnTick_Method {
 			} else if (Get_Block_x_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_x_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))
 					|| Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))
 					|| Get_Block_z_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_z_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.9, (float) 0.4);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.9, (float) 0.4, false);
-					}
 				}
 				OPMinecraft.queueServerWork(10, () -> {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.chime")), SoundSource.MASTER, 1, (float) 0.8);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.chime")), SoundSource.MASTER, 1, (float) 0.8, false);
-						}
 					}
 					if (world instanceof Level _level && !_level.isClientSide())
 						_level.explode(null, x, y, z, 4, Level.ExplosionInteraction.BLOCK);
@@ -100,12 +84,8 @@ public class CryingEssence_OnTick_Method {
 					|| Get_Block_y_plus_1.is(Blocks.LAVA) || Get_Block_y_minus_1.is(Blocks.LAVA)
 					|| Get_Block_z_plus_1.is(Blocks.LAVA) || Get_Block_z_minus_1.is(Blocks.LAVA)) {
 				Flowing_Collision_Happened = true;
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.lava.extinguish")), SoundSource.MASTER, 1, 1);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.lava.extinguish")), SoundSource.MASTER, 1, 1, false);
-					}
 				}
 				if (Get_Block_x_plus_1.is(Blocks.LAVA)) {
 					if (Get_Block_x_plus_1.getFluidState().isSource()) {
@@ -154,12 +134,8 @@ public class CryingEssence_OnTick_Method {
 					|| Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))
 					|| Get_Block_z_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters"))) || Get_Block_z_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))) {
 				Flowing_Collision_Happened = true;
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.wet_grass.break")), SoundSource.MASTER, (float) 0.6, (float) 1.5);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.wet_grass.break")), SoundSource.MASTER, (float) 0.6, (float) 1.5, false);
-					}
 				}
 				if (Get_Block_x_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:waters")))) {
 					if (Get_Block_x_plus_1.getFluidState().isSource()) {
@@ -208,12 +184,8 @@ public class CryingEssence_OnTick_Method {
 					|| Get_Block_y_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:ices"))) || Get_Block_y_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:ices")))
 					|| Get_Block_z_plus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:ices"))) || Get_Block_z_minus_1.is(BlockTags.create(ResourceLocation.parse("opminecraft:ices")))) {
 				Flowing_Collision_Happened = true;
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
+				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.resonate")), SoundSource.MASTER, (float) 0.6, (float) 1.3);
-					} else {
-						_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.resonate")), SoundSource.MASTER, (float) 0.6, (float) 1.3, false);
-					}
 				}
 				if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).is(BlockTags.create(ResourceLocation.parse("opminecraft:ices")))) {
 					world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);

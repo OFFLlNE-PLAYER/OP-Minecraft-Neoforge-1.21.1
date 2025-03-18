@@ -45,12 +45,8 @@ public class PROCTNTOnTickProcedure {
 						return -1;
 					}
 				}.getValue(world, BlockPos.containing(x, y, z), "boom_countdown") == 7) {
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:fast_tick_tnt")), SoundSource.MASTER, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:fast_tick_tnt")), SoundSource.MASTER, 1, 1, false);
-						}
 					}
 					{
 						int _value = 1;
@@ -67,12 +63,8 @@ public class PROCTNTOnTickProcedure {
 						return -1;
 					}
 				}.getValue(world, BlockPos.containing(x, y, z), "boom_countdown") == 5) {
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tick_tnt")), SoundSource.MASTER, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tick_tnt")), SoundSource.MASTER, 1, 1, false);
-						}
 					}
 					{
 						int _value = 2;
@@ -89,12 +81,8 @@ public class PROCTNTOnTickProcedure {
 						return -1;
 					}
 				}.getValue(world, BlockPos.containing(x, y, z), "boom_countdown") == 3) {
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
+					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tick_tnt")), SoundSource.MASTER, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tick_tnt")), SoundSource.MASTER, 1, 1, false);
-						}
 					}
 					{
 						int _value = 3;
