@@ -19,8 +19,6 @@ import java.util.LinkedHashMap;
 
 
 public class ModItemModelProvider extends ItemModelProvider {
-
-
     private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
     static {
         trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
@@ -50,12 +48,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         /*
         basicItem(ModItems.CHAINSAW.get());
-
-        basicItem(ModItems.IRON_WARTURTLE_ARMOR.get());
-        basicItem(ModItems.GOLD_WARTURTLE_ARMOR.get());
-        basicItem(ModItems.DIAMOND_WARTURTLE_ARMOR.get());
-        basicItem(ModItems.NETHERITE_WARTURTLE_ARMOR.get());
-        basicItem(ModItems.BLACK_OPAL_WARTURTLE_ARMOR.get());
 
         withExistingParent(ModItems.PENGUIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.GIRAFFE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));

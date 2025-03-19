@@ -149,6 +149,8 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.CRYING_BOOTS);
                 event.accept(RegistryIBBI.CRYING_HORSE_ARMOR);
 
+                event.accept(RegistryIBBI.KAUPENJOE_SMITHING_TEMPLATE);
+
                 event.accept(RegistryIBBI.AKU_AKU_MASK);
                 event.accept(RegistryIBBI.TOTEM_OF_LIFE);
 

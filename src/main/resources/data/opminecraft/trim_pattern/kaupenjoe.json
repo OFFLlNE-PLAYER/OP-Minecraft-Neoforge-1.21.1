@@ -1,0 +1,8 @@
+{
+  "asset_id": "opminecraft:kaupenjoe",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.opminecraft.kaupenjoe"
+  },
+  "template_item": "opminecraft:kaupenjoe_armor_trim_smithing_template"
+}

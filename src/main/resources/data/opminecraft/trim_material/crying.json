@@ -1,0 +1,9 @@
+{
+  "asset_name": "crying",
+  "description": {
+    "color": "#C638FF",
+    "translate": "trim_material.opminecraft.crying"
+  },
+  "ingredient": "opminecraft:crying_ingot",
+  "item_model_index": 1.0
+}

@@ -1,10 +1,8 @@
 
 package net.offllneplayer.opminecraft.init;
 
-import net.minecraft.world.item.AnimalArmorItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -158,7 +156,10 @@ public class RegistryIBBI {
 
 	public static final DeferredItem<Item> CRYING_HORSE_ARMOR = ITEMSREGISTRY.register("crying_horse_armor",
 			() -> new AnimalArmorItem(CryingItem.ARMOR_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
-	//-----------------------------------------------------Kaupenjoe shoutout for providing this^
+
+	public static final DeferredItem<Item> KAUPENJOE_SMITHING_TEMPLATE = ITEMSREGISTRY.register("kaupenjoe_armor_trim_smithing_template",
+			() -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "kaupenjoe")));
+	//-----------------------------------------------------Kaupenjoe tribute for providing horse armor and custom trims^
 
 	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);
 
