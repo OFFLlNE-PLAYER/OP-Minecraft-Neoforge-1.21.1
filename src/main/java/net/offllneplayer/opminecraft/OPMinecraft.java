@@ -56,9 +56,9 @@ public class OPMinecraft {
 
         RegistryInventory.INVREGISTRY.register(modEventBus);
 
-        RegistryIBBI.ITEMSREGISTRY.register(modEventBus);
-
         RegistryEntities.ENTREGISTRY.register(modEventBus);
+
+        RegistryIBBI.ITEMSREGISTRY.register(modEventBus);
 
         RegistryPotions.POTSREGISTRY.register(modEventBus);
         RegistryMobEffects.MOBEFFECTSREGISTRY.register(modEventBus);
