@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class TOLMobEffect extends MobEffect {
 	public TOLMobEffect() {
-		super(MobEffectCategory.BENEFICIAL, -26584);
+		super(MobEffectCategory.BENEFICIAL, -0xFFE52428);
 	}
 
 	@Override
@@ -22,7 +22,6 @@ public class TOLMobEffect extends MobEffect {
 
 	@Override
 	public void onEffectStarted(LivingEntity entity, int amplifier) {
-		TOLEffectStartedapplied_Method.execute(entity);
 	}
 
 	@Override

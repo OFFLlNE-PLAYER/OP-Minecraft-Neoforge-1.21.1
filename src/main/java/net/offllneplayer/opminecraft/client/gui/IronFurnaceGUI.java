@@ -13,7 +13,9 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphics;
 
 import net.offllneplayer.opminecraft.handler.GUI_Button.IronFurnaceButtonHandler;
-import net.offllneplayer.opminecraft.method.furnaces.*;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesExpBar_SuperMethod;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesFuelBar_SuperMethod;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesProgressBar_SuperMethod;
 import net.offllneplayer.opminecraft.world.inventory.IronFurnaceInv;
 
 import java.util.HashMap;

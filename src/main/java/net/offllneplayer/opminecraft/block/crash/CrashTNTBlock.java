@@ -40,7 +40,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
-import net.offllneplayer.opminecraft.method.crash.tnt.*;
+import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.tnt.*;
 
 import java.util.List;
 
@@ -159,7 +160,7 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 	@Override
 	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, world, pos, entity);
-		PROCTNTCollisionProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		CrashCratesCollision_Method.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 	}
 
 	@Override

@@ -1,57 +1,48 @@
 
 package net.offllneplayer.opminecraft.block.crash;
 
-import net.neoforged.neoforge.common.util.DeferredSoundType;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.api.distmarker.Dist;
-
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.FastColor;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.Direction;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-
-import net.offllneplayer.opminecraft.method.crash.nitro.PROC_Nitro_Check_Silk_TouchProcedure;
-import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroSneakyProcedure;
-import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroPlaceSoundProcedure;
-import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroOnTickProcedure;
-import net.offllneplayer.opminecraft.method.crash.nitro.PROCNitroBoomProcedure;
-
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.FastColor;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.util.DeferredSoundType;
+import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROCNitroBoomProcedure;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROCNitroOnTickProcedure;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROCNitroPlaceSoundProcedure;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROC_Nitro_Check_Silk_TouchProcedure;
 
 import java.util.List;
-
-import com.mojang.serialization.MapCodec;
 
 public class NitroBlock extends FallingBlock implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -164,7 +155,7 @@ public class NitroBlock extends FallingBlock implements EntityBlock {
 	@Override
 	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, world, pos, entity);
-		PROCNitroSneakyProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		CrashCratesCollision_Method.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 	}
 
 	@Override

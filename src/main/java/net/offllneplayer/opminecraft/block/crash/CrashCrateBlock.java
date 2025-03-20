@@ -30,9 +30,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.crash.crate.PROCCrateCheckSilkTouchProcedure;
-import net.offllneplayer.opminecraft.method.crash.crate.PROCCrashCrateCollisionProcedure;
-import net.offllneplayer.opminecraft.method.crash.crate.PROCCrashCrateBreakProcedure;
+import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateCheckSilkTouch_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateBreak_Method;
 
 public class CrashCrateBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -103,18 +103,18 @@ public class CrashCrateBlock extends Block {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && PROCCrateCheckSilkTouchProcedure.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && CrashCrateCheckSilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
-		PROCCrashCrateBreakProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		CrashCrateBreak_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override
 	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, world, pos, entity);
-		PROCCrashCrateCollisionProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		CrashCratesCollision_Method.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 	}
 }

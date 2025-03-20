@@ -7,7 +7,8 @@ public class TOL_OnTick_Method {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof LivingEntity _entity)
-			_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
+		if (entity instanceof LivingEntity _entity) {
+            _entity.setHealth(_entity.getMaxHealth());
+        }
 	}
 }

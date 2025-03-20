@@ -17,8 +17,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.method.furnaces.FurnacesExpButton_Method;
-import net.offllneplayer.opminecraft.method.furnaces.FurnacesStokeButton_Method;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesExpButton_Method;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesStokeButton_Method;
 import net.offllneplayer.opminecraft.world.inventory.CopperFurnaceInv;
 
 

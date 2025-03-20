@@ -2,7 +2,6 @@
 package net.offllneplayer.opminecraft.item;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,12 +19,6 @@ public class TotemOfLifeItem extends Item {
 			.stacksTo(1).rarity(Rarity.UNCOMMON));}
 
 	@Override
-	public UseAnim getUseAnimation(ItemStack itemstack) {return UseAnim.SPEAR;}
-
-	@Override
-	public int getUseDuration(ItemStack itemstack, LivingEntity livingEntity) {return 1;}
-
-	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
@@ -33,10 +26,14 @@ public class TotemOfLifeItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		entity.startUsingItem(hand);
-		return ar;
+	public UseAnim getUseAnimation(ItemStack itemstack) {return UseAnim.NONE;}
+
+	@Override
+	public int getUseDuration(ItemStack itemstack, LivingEntity livingEntity) {return 0;}
+
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, net.minecraft.world.InteractionHand hand) {
+		return InteractionResultHolder.pass(player.getItemInHand(hand));
 	}
 
 	@Override

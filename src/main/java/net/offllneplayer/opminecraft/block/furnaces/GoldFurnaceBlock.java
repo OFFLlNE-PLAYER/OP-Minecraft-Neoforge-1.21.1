@@ -32,7 +32,7 @@ import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.method.furnaces.ontick.Furnaces_OnTick_Method;
 import net.offllneplayer.opminecraft.method.furnaces.FurnacesOnClick_Method;
-import net.offllneplayer.opminecraft.method.furnaces.FurnacesExpButton_Method;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesExpButton_Method;
 
 public class GoldFurnaceBlock extends Block implements EntityBlock {
 	

@@ -15,11 +15,10 @@ import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.furnaces.FurnacesStokeButton_Method;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesStokeButton_Method;
 import net.offllneplayer.opminecraft.world.inventory.DiamondFurnaceInv;
-import net.offllneplayer.opminecraft.method.furnaces.FurnacesExpButton_Method;
+import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesExpButton_Method;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 import java.util.HashMap;

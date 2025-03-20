@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:crash_crate",
+    "opminecraft:bounce_crate",
+    "opminecraft:aku_aku_crate",
+    "opminecraft:crash_tnt"
+  ]
+}
