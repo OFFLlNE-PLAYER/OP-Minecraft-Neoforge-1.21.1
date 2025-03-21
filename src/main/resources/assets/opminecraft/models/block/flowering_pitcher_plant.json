@@ -1,9 +1,9 @@
 {
   "parent": "opminecraft:custom/pitcher_plant_flowering",
   "textures": {
-    "all": "opminecraft:block/pitcher_plant_flowering",
-    "particle": "opminecraft:block/pitcher_plant_flowering",
-    "1": "opminecraft:block/pitcher_plant_flowering",
+    "all": "opminecraft:block/text_pitcher_plant_flowering",
+    "particle": "opminecraft:block/text_pitcher_plant_flowering",
+    "1": "opminecraft:block/text_pitcher_plant_flowering",
     "stage_4_bottom": "minecraft:block/pitcher_crop_bottom_stage_4"
   },
   "render_type": "cutout_mipped"

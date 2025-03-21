@@ -1,281 +1,92 @@
 {
-  "credit": "Made with Blockbench",
-  "ambientocclusion": false,
-  "elements": [
-    {
-      "name": "pitcher_crop_bottom_stage_4",
-      "from": [
-        8,
-        -7,
-        0
-      ],
-      "to": [
-        8,
-        16,
-        16
-      ],
-      "shade": false,
-      "rotation": {
-        "angle": 45,
-        "axis": "y",
-        "origin": [
-          8,
-          -8,
-          8
-        ]
-      },
-      "faces": {
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#stage_4_bottom"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#stage_4_bottom"
-        }
-      }
-    },
-    {
-      "name": "pitcher_crop_bottom_stage_4",
-      "from": [
-        0,
-        -7,
-        8
-      ],
-      "to": [
-        16,
-        16,
-        8
-      ],
-      "shade": false,
-      "rotation": {
-        "angle": 45,
-        "axis": "y",
-        "origin": [
-          8,
-          0,
-          8
-        ]
-      },
-      "faces": {
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#stage_4_bottom"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#stage_4_bottom"
-        }
-      }
-    },
-    {
-      "name": "pitcher_crop_top_stage_4",
-      "from": [
-        8,
-        16,
-        0
-      ],
-      "to": [
-        8,
-        32,
-        16
-      ],
-      "shade": false,
-      "rotation": {
-        "angle": 45,
-        "axis": "y",
-        "origin": [
-          8,
-          16,
-          8
-        ]
-      },
-      "faces": {
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#1"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#1"
-        }
-      }
-    },
-    {
-      "name": "pitcher_crop_top_stage_4",
-      "from": [
-        0,
-        16,
-        8
-      ],
-      "to": [
-        16,
-        32,
-        8
-      ],
-      "shade": false,
-      "rotation": {
-        "angle": 45,
-        "axis": "y",
-        "origin": [
-          8,
-          16,
-          8
-        ]
-      },
-      "faces": {
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#1"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#1"
-        }
-      }
-    }
-  ],
-  "display": {
-    "thirdperson_righthand": {
-      "translation": [
-        0,
-        1,
-        -2
-      ],
-      "scale": [
-        0.6,
-        0.6,
-        0.6
-      ]
-    },
-    "thirdperson_lefthand": {
-      "translation": [
-        0,
-        1,
-        -2
-      ],
-      "scale": [
-        0.6,
-        0.6,
-        0.6
-      ]
-    },
-    "firstperson_righthand": {
-      "translation": [
-        2,
-        0,
-        0
-      ],
-      "scale": [
-        0.6,
-        0.6,
-        0.6
-      ]
-    },
-    "firstperson_lefthand": {
-      "translation": [
-        2,
-        0,
-        0
-      ],
-      "scale": [
-        0.6,
-        0.6,
-        0.6
-      ]
-    },
-    "ground": {
-      "translation": [
-        0,
-        4,
-        0
-      ],
-      "scale": [
-        0.5,
-        0.5,
-        0.5
-      ]
-    },
-    "gui": {
-      "rotation": [
-        0,
-        45,
-        0
-      ],
-      "translation": [
-        0,
-        -3.75,
-        0
-      ],
-      "scale": [
-        0.5,
-        0.5,
-        0.5
-      ]
-    },
-    "head": {
-      "translation": [
-        0,
-        -9,
-        0
-      ]
-    },
-    "fixed": {
-      "rotation": [
-        0,
-        45,
-        0
-      ],
-      "translation": [
-        0,
-        -3.75,
-        0
-      ],
-      "scale": [
-        0.5,
-        0.5,
-        0.5
-      ]
-    }
-  }
+	"credit": "Made by OP with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "opminecraft:block/text_pitcher_plant_flowering",
+		"particle": "opminecraft:block/text_pitcher_plant_flowering",
+		"stage_4_bottom": "opminecraft:block/text_pitcher_crop_bottom_stage_4"
+	},
+	"elements": [
+		{
+			"name": "pitcher_crop_bottom_stage_4",
+			"from": [8, -7, 0],
+			"to": [8, 16, 16],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.25, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#stage_4_bottom"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#stage_4_bottom"}
+			}
+		},
+		{
+			"name": "pitcher_crop_bottom_stage_4",
+			"from": [0, -7, 8],
+			"to": [16, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.25, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#stage_4_bottom"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#stage_4_bottom"}
+			}
+		},
+		{
+			"name": "pitcher_crop_top_stage_4",
+			"from": [8, 16, 0],
+			"to": [8, 32, 16],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.25, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "pitcher_crop_top_stage_4",
+			"from": [0, 16, 8],
+			"to": [16, 32, 8],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.25, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -0.25, -1],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, -0.25, -1],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 0, -5],
+			"translation": [4.25, 0, -1],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 0, -5],
+			"translation": [4.25, 0, -1],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"gui": {
+			"translation": [0, -3.75, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"translation": [0, -9, 0]
+		},
+		"fixed": {
+			"rotation": [0, 45, 0],
+			"translation": [0, -3.75, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
 }

@@ -1,9 +1,9 @@
 {
   "parent": "opminecraft:custom/pitcher_plant_wumpa",
   "textures": {
-    "all": "opminecraft:block/pitcher_wumpa",
-    "particle": "opminecraft:block/pitcher_wumpa",
-    "1": "opminecraft:block/pitcher_wumpa",
+    "all": "opminecraft:block/text_pitcher_plant_wumpa",
+    "particle": "opminecraft:block/text_pitcher_plant_wumpa",
+    "1": "opminecraft:block/text_pitcher_plant_wumpa",
     "stage_4_bottom": "minecraft:block/pitcher_crop_bottom_stage_4"
   },
   "render_type": "cutout_mipped"
