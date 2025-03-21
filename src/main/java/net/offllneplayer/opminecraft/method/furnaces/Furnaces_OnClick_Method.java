@@ -35,7 +35,9 @@ import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
 import io.netty.buffer.Unpooled;
 
-public class FurnacesOnClick_Method {
+import java.util.Objects;
+
+public class Furnaces_OnClick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
@@ -65,7 +67,7 @@ public class FurnacesOnClick_Method {
 						_player.getInventory().setChanged();
 				}
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava"))), SoundSource.NEUTRAL, 1, 1);
 				}
 			} else {
 				if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
@@ -194,7 +196,7 @@ public class FurnacesOnClick_Method {
 						_player.getInventory().setChanged();
 				}
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.bucket.empty_lava"))), SoundSource.NEUTRAL, 1, 1);
 				}
 			} else {
 				if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {

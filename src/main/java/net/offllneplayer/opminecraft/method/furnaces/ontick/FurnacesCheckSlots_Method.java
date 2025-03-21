@@ -1,5 +1,9 @@
 package net.offllneplayer.opminecraft.method.furnaces.ontick;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -11,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+
+import java.util.Objects;
 
 public class FurnacesCheckSlots_Method {
 	public static double execute(LevelAccessor world, double x, double y, double z) {
@@ -94,6 +100,9 @@ public class FurnacesCheckSlots_Method {
 		} else if (Stack_of_Slot_0.getItem() == Items.RAW_GOLD && (Stack_of_Slot_5.getItem() == Blocks.GOLD_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 5;
 		} else if (Stack_of_Slot_0.getItem() == Blocks.CRYING_OBSIDIAN.asItem() && (Stack_of_Slot_5.getItem() == RegistryIBBI.CRYING_INGOT.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
+				_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_furnace"))), SoundSource.MASTER, (float) 1, (float) 0.8);
+			}
 			Number_of_Item = 6;
 		}
 		return Number_of_Item;

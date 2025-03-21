@@ -1,6 +1,8 @@
 
 {
 
+  "silent_sound": {"sounds": [{"name": "opminecraft:silent_sound", "stream": false}]},
+
   "aku_aku": {"sounds": [{"name": "opminecraft:aku_aku", "stream": false}]},
   "aku_aku_dies": {"sounds": [{"name": "opminecraft:aku_aku_dies", "stream": false}]},
 
@@ -8,6 +10,9 @@
 
   "crash_crate_bounce": {"sounds": [{"name": "opminecraft:crash_crate_bounce", "stream": false}]},
   "crash_crate_break": {"sounds": [{"name": "opminecraft:crash_crate_break", "stream": false}]},
+
+  "crying_explode": {"sounds": [{"name": "opminecraft:crying_explode", "stream": false}]},
+  "crying_furnace": {"sounds": [{"name": "opminecraft:crying_furnace", "stream": false}]},
 
   "gunblade_break": {"sounds": [{"name": "opminecraft:gunblade_break", "stream": false}]},
   "gunblade_in_dirt": {"sounds": [{"name": "opminecraft:gunblade_in_dirt", "stream": false}]},
@@ -24,8 +29,6 @@
   "fast_tick_tnt": {"sounds": [{"name": "opminecraft:fast_tick_tnt", "stream": false}]},
   "prime_tnt": {"sounds": [{"name": "opminecraft:prime_tnt", "stream": false}]},
 
-  "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]},
-
-  "silent_sound": {"sounds": [{"name": "opminecraft:silent_sound", "stream": false}]}
+  "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]}
 
 }

@@ -4,6 +4,7 @@ package net.offllneplayer.opminecraft.block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
@@ -28,7 +29,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 import net.offllneplayer.opminecraft.method.crying.blockofcryingingots.BlockOfCryingIngots_OnCLIENTTick_Method;
 import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceCollision_Method;
-import net.offllneplayer.opminecraft.method.crying.blockofcryingingots.MeltBlockofCryingIngots_Method;
+import net.offllneplayer.opminecraft.method.crying.blockofcryingingots.BlockofCryingIngots_OnTick_Method;
+import net.offllneplayer.opminecraft.method.crying.essence.CryingEssence_OnTick_Method;
 
 
 public class BlockofCryingIngotsBlock extends Block {
@@ -99,7 +101,26 @@ public class BlockofCryingIngotsBlock extends Block {
 	@Override
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, fromPos, moving);
-		MeltBlockofCryingIngots_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		BlockofCryingIngots_OnTick_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+
+	@Override
+	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(blockstate, world, pos, oldState, moving);
+		world.scheduleTick(pos, this, 20);
+	}
+
+	@Override
+	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
+		super.tick(blockstate, world, pos, random);
+		BlockofCryingIngots_OnTick_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		world.scheduleTick(pos, this, 20);
+	}
+
+	@Override
+	public void entityInside(BlockState blockstate, Level menu, BlockPos pos, Entity entity) {
+		super.entityInside(blockstate, menu, pos, entity);
+		CryingEssenceCollision_Method.execute(menu, pos.getX(), pos.getY(), pos.getZ(), entity);
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -112,13 +133,5 @@ public class BlockofCryingIngotsBlock extends Block {
 		int z = pos.getZ();
 		BlockOfCryingIngots_OnCLIENTTick_Method.execute(world, x, y, z);
 	}
-
-
-	@Override
-	public void entityInside(BlockState blockstate, Level menu, BlockPos pos, Entity entity) {
-		super.entityInside(blockstate, menu, pos, entity);
-		CryingEssenceCollision_Method.execute(menu, pos.getX(), pos.getY(), pos.getZ(), entity);
-	}
-
 
 }

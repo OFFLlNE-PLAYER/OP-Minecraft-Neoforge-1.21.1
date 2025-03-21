@@ -7,6 +7,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -33,6 +35,7 @@ import net.offllneplayer.opminecraft.OPMinecraft;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class FurnacesCooking_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -104,8 +107,7 @@ public class FurnacesCooking_Method {
 				return 0;
 			}
 		}.getAmount(world, BlockPos.containing(x, y, z), 5);
-		if (Stack_of_Slot_0.getItem() == Stack_of_Slot_1.getItem() && Stack_of_Slot_0.getItem() == Stack_of_Slot_2.getItem() && Stack_of_Slot_0.getItem() == Stack_of_Slot_3.getItem() && Stack_of_Slot_1.getItem() == Stack_of_Slot_2.getItem()
-				&& Stack_of_Slot_1.getItem() == Stack_of_Slot_3.getItem() && Stack_of_Slot_2.getItem() == Stack_of_Slot_3.getItem()) {
+		if (Stack_of_Slot_0.getItem() == Stack_of_Slot_1.getItem() && Stack_of_Slot_0.getItem() == Stack_of_Slot_2.getItem() && Stack_of_Slot_0.getItem() == Stack_of_Slot_3.getItem()) {
 			Number_of_Item = FurnacesCheckSlots_Method.execute(world, x, y, z);
 			if (Number_of_Item != 0) {
 				if (new Object() {
@@ -448,72 +450,67 @@ public class FurnacesCooking_Method {
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
 						if ((world instanceof Level _level) && (!_level.isClientSide())) {
-								_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.wither.spawn")), SoundSource.MASTER, (float) 0.4, (float) 0.4);
+								_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
 						}
 						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 							ItemStack _setstack = new ItemStack(RegistryIBBI.CRYING_INGOT.get()).copy();
 							_setstack.setCount((int) (Number_of_Slot_5 + 1));
 							_itemHandlerModifiable.setStackInSlot(5, _setstack);
 						}
+
 						OPMinecraft.queueServerWork(20, () -> {
-							 Vec3 vec3 = new Vec3(x, y, z);
-							if (world instanceof Level _level && !_level.isClientSide())
-								_level.explode(null, _level.damageSources().badRespawnPointExplosion(vec3), null, vec3, 5.0F, true, Level.ExplosionInteraction.BLOCK);
-							if (!((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.NETHERITE_FURNACE.get())) {
-								{
-									final Vec3 _center = new Vec3(x, y, z);
-									List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
-											.toList();
-									for (Entity entityiterator : _entfound) {
-										if (!(entityiterator instanceof ServerPlayer _plr72 && _plr72.level() instanceof ServerLevel
-												&& _plr72.getAdvancements().getOrStartProgress(_plr72.server.getAdvancements().get(ResourceLocation.parse("opminecraft:adv_explode_furnace"))).isDone())) {
-											if (entityiterator instanceof ServerPlayer _player) {
-												AdvancementHolder _adv = _player.server.getAdvancements().get(ResourceLocation.parse("opminecraft:adv_explode_furnace"));
-												if (_adv != null) {
-													AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-													if (!_ap.isDone()) {
-														for (String criteria : _ap.getRemainingCriteria())
-															_player.getAdvancements().award(_adv, criteria);
+							final Vec3 _center = new Vec3(x, y, z);
+							BlockPos blockPos = BlockPos.containing(x, y, z);
+							BlockState state = world.getBlockState(blockPos);
+
+							if (world instanceof Level _level && !_level.isClientSide()) {
+								if (state.getBlock() != RegistryIBBI.NETHERITE_FURNACE.get()) {
+									world.destroyBlock(blockPos, false);
+								}
+
+								_level.explode(null, _level.damageSources().badRespawnPointExplosion(_center), null, _center, 3F, false, Level.ExplosionInteraction.BLOCK);
+							}
+
+							if (state.getBlock() != RegistryIBBI.NETHERITE_FURNACE.get()) {
+								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5), e -> true)
+										.stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+
+								for (Entity entityiterator : _entfound) {
+									if (!(entityiterator instanceof ServerPlayer _plr72 && _plr72.level() instanceof ServerLevel
+											&& _plr72.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr72.server.getAdvancements().get(ResourceLocation.parse("opminecraft:adv_explode_furnace")))).isDone())) {
+										if (entityiterator instanceof ServerPlayer _player) {
+											AdvancementHolder _adv = _player.server.getAdvancements().get(ResourceLocation.parse("opminecraft:adv_explode_furnace"));
+											if (_adv != null) {
+												AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+												if (!_ap.isDone()) {
+													for (String criteria : _ap.getRemainingCriteria()) {
+														_player.getAdvancements().award(_adv, criteria);
 													}
 												}
 											}
 										}
 									}
 								}
-								if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
-									world.destroyBlock(BlockPos.containing(x, y, z), false);
-									for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 3, 6); index0++) {
-										if (world instanceof ServerLevel _level) {
-											ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Blocks.WAXED_OXIDIZED_CHISELED_COPPER));
-											entityToSpawn.setPickUpDelay(10);
-											_level.addFreshEntity(entityToSpawn);
-										}
+
+								if (world instanceof ServerLevel _level) {
+									int randomCount = Mth.nextInt(RandomSource.create(), 4, 6);
+									ItemEntity entityToSpawn = null;
+
+									if (state.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Blocks.WAXED_OXIDIZED_CHISELED_COPPER));
+									} else if (state.getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_IRON.get()));
+									} else if (state.getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_GOLD.get()));
+									} else if (state.getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_DIAMOND.get()));
 									}
-								} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
-									world.destroyBlock(BlockPos.containing(x, y, z), false);
-									for (int index1 = 0; index1 < Mth.nextInt(RandomSource.create(), 3, 6); index1++) {
-										if (world instanceof ServerLevel _level) {
-											ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_IRON.get()));
-											entityToSpawn.setPickUpDelay(10);
-											_level.addFreshEntity(entityToSpawn);
-										}
-									}
-								} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
-									world.destroyBlock(BlockPos.containing(x, y, z), false);
-									for (int index2 = 0; index2 < Mth.nextInt(RandomSource.create(), 3, 6); index2++) {
-										if (world instanceof ServerLevel _level) {
-											ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_GOLD.get()));
-											entityToSpawn.setPickUpDelay(10);
-											_level.addFreshEntity(entityToSpawn);
-										}
-									}
-								} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
-									world.destroyBlock(BlockPos.containing(x, y, z), false);
-									for (int index3 = 0; index3 < Mth.nextInt(RandomSource.create(), 3, 6); index3++) {
-										if (world instanceof ServerLevel _level) {
-											ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_DIAMOND.get()));
-											entityToSpawn.setPickUpDelay(10);
-											_level.addFreshEntity(entityToSpawn);
+
+									if (entityToSpawn != null) {
+										for (int i = 0; i < randomCount; i++) {
+											ItemEntity spawnedEntity = entityToSpawn.copy();
+											spawnedEntity.setPickUpDelay(10);
+											_level.addFreshEntity(spawnedEntity);
 										}
 									}
 								}

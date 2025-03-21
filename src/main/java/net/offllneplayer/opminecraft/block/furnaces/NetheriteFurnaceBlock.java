@@ -31,7 +31,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.method.furnaces.ontick.Furnaces_OnTick_Method;
-import net.offllneplayer.opminecraft.method.furnaces.FurnacesOnClick_Method;
+import net.offllneplayer.opminecraft.method.furnaces.Furnaces_OnClick_Method;
 import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesExpButton_Method;
 
 
@@ -112,7 +112,7 @@ public class NetheriteFurnaceBlock extends Block implements EntityBlock {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		FurnacesOnClick_Method.execute(world, x, y, z, entity);
+		Furnaces_OnClick_Method.execute(world, x, y, z, entity);
 		return InteractionResult.SUCCESS;
 	}
 

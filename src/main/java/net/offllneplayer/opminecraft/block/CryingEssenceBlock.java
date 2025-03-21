@@ -42,14 +42,14 @@ public class CryingEssenceBlock extends LiquidBlock {
 	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
-		world.scheduleTick(pos, this, 10);
+		world.scheduleTick(pos, this, 20);
 	}
 
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
 		CryingEssence_OnTick_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
-		world.scheduleTick(pos, this, 10);
+		world.scheduleTick(pos, this, 20);
 	}
 
 	@Override
