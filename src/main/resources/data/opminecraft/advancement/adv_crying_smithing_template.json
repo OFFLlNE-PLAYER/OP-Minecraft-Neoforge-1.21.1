@@ -4,10 +4,10 @@
       "id": "opminecraft:crying_smithing_template"
     },
     "title": {
-      "translate": "advancements.adv_smithing_template.title"
+      "translate": "advancements.adv_crying_smithing_template.title"
     },
     "description": {
-      "translate": "advancements.adv_smithing_template.descr"
+      "translate": "advancements.adv_crying_smithing_template.descr"
     },
     "frame": "challenge",
     "show_toast": true,

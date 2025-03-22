@@ -13,7 +13,7 @@ public class CryingButtons_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
-				_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_furnace"))), SoundSource.MASTER, (float) 0.8, (float) 0.4);
+				_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 0.8, 1);
 			}
 		}
 	}
