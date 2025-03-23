@@ -1,0 +1,14 @@
+
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {"item": "opminecraft:crying_ingot"}
+  },
+  "result": {"id": "opminecraft:block_of_crying_ingots", "count": 1}
+}

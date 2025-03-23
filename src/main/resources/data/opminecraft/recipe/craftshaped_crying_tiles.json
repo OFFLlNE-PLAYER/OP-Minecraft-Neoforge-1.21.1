@@ -1,0 +1,15 @@
+
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {"item": "minecraft:deepslate_tiles"},
+    "b": {"item": "opminecraft:crying_ingot"}
+  },
+  "result": {"id": "opminecraft:crying_tiles", "count": 4}
+}

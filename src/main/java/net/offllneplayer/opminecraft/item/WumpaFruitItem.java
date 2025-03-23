@@ -1,6 +1,8 @@
 
 package net.offllneplayer.opminecraft.item;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
@@ -8,7 +10,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.LivingEntity;
 
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.offllneplayer.opminecraft.method.crash.wumpafruit.ConsumeWumpaFruit_Method;
+
+import java.util.List;
 
 public class WumpaFruitItem extends Item {
 	public WumpaFruitItem() {
@@ -24,4 +30,13 @@ public class WumpaFruitItem extends Item {
 		ConsumeWumpaFruit_Method.execute(entity);
 		return retval;
 	}
+
+
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
+		list.add(Component.translatable("item.opminecraft.wumpa_fruit.description_0"));
+	}
+
 }

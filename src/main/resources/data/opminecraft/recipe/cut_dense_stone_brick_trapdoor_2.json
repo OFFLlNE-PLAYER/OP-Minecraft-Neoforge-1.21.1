@@ -1,0 +1,8 @@
+
+{
+  "type": "minecraft:stonecutting",
+
+  "ingredient": {"item": "opminecraft:dense_stone_bricks"},
+
+  "result": {"id": "opminecraft:dense_stone_brick_trapdoor", "count": 2}
+}

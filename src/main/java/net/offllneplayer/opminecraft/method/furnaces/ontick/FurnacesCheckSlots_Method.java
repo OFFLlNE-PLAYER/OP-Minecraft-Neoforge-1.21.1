@@ -91,19 +91,30 @@ public class FurnacesCheckSlots_Method {
 		}.getAmount(world, BlockPos.containing(x, y, z), 5);
 		if (Stack_of_Slot_0.getItem() == Blocks.COBBLESTONE.asItem() && (Stack_of_Slot_5.getItem() == RegistryIBBI.DENSE_STONE.get().asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 1;
+
 		} else if (Stack_of_Slot_0.getItem() == Blocks.NETHERRACK.asItem() && (Stack_of_Slot_5.getItem() == Blocks.NETHER_BRICKS.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 2;
-		} else if (Stack_of_Slot_0.getItem() == Items.RAW_COPPER && (Stack_of_Slot_5.getItem() == Blocks.COPPER_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+
+		} else if (Stack_of_Slot_0.getItem() == Items.RAW_COPPER || Stack_of_Slot_0.getItem() == Items.COPPER_ORE || Stack_of_Slot_0.getItem() == Items.DEEPSLATE_COPPER_ORE
+				&& (Stack_of_Slot_5.getItem() == Blocks.COPPER_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 3;
-		} else if (Stack_of_Slot_0.getItem() == Items.RAW_IRON && (Stack_of_Slot_5.getItem() == Blocks.IRON_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+
+		} else if (Stack_of_Slot_0.getItem() == Items.RAW_IRON || Stack_of_Slot_0.getItem() == Items.IRON_ORE || Stack_of_Slot_0.getItem() == Items.DEEPSLATE_IRON_ORE
+				&& (Stack_of_Slot_5.getItem() == Blocks.IRON_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 4;
-		} else if (Stack_of_Slot_0.getItem() == Items.RAW_GOLD && (Stack_of_Slot_5.getItem() == Blocks.GOLD_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+
+		} else if (Stack_of_Slot_0.getItem() == Items.RAW_GOLD || Stack_of_Slot_0.getItem() == Items.GOLD_ORE || Stack_of_Slot_0.getItem() == Items.DEEPSLATE_GOLD_ORE || Stack_of_Slot_0.getItem() == Items.NETHER_GOLD_ORE
+				&& (Stack_of_Slot_5.getItem() == Blocks.GOLD_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 5;
+
+		}  else if (Stack_of_Slot_0.getItem() == Items.ANCIENT_DEBRIS && (Stack_of_Slot_5.getItem() == RegistryIBBI.ANCIENT_CHUNK.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+			Number_of_Item = 6;
+
 		} else if (Stack_of_Slot_0.getItem() == Blocks.CRYING_OBSIDIAN.asItem() && (Stack_of_Slot_5.getItem() == RegistryIBBI.CRYING_INGOT.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 				_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_furnace"))), SoundSource.MASTER, (float) 1, (float) 0.8);
 			}
-			Number_of_Item = 6;
+			Number_of_Item = 7;
 		}
 		return Number_of_Item;
 	}

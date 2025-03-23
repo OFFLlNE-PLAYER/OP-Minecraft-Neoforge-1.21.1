@@ -63,6 +63,6 @@
     }
   ],
   "textures": {
-    "layer0": "opminecraft:item/crying_boots"
+    "layer0": "opminecraft:item/text_crying_boots"
   }
 }

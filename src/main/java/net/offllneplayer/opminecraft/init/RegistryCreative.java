@@ -162,9 +162,18 @@ public class RegistryCreative {
             }
             if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
 
+                event.accept(RegistryIBBI.ANCIENT_CHUNK);
+                event.accept(RegistryIBBI.FLAWLESS_DIAMOND);
+                event.accept(RegistryIBBI.PERFECT_DIAMOND);
+
                 event.accept(RegistryIBBI.CRYING_INGOT);
                 event.accept(RegistryIBBI.CRYING_SMITHING_TEMPLATE);
             }
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+
+            //Spawn eggs go here!
+
+        }
         }
     public static void register(IEventBus eventBus) {
         CREATIVETABSREGISTRY.register(eventBus);

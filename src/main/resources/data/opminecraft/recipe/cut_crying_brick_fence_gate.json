@@ -1,0 +1,8 @@
+
+{
+  "type": "minecraft:stonecutting",
+
+  "ingredient": {"item": "opminecraft:crying_bricks"},
+
+  "result": {"id": "opminecraft:crying_brick_fence_gate", "count": 1}
+}

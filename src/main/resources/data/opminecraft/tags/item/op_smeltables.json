@@ -3,9 +3,17 @@
   "values": [
     "minecraft:cobblestone",
     "minecraft:netherrack",
-    "minecraft:raw_iron",
     "minecraft:raw_copper",
+    "minecraft:copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "minecraft:raw_iron",
+    "minecraft:iron_ore",
+    "minecraft:deepslate_iron_ore",
     "minecraft:raw_gold",
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore",
+    "minecraft:nether_gold_ore",
+    "minecraft:ancient_debris",
     "minecraft:crying_obsidian"
   ]
 }

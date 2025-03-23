@@ -320,6 +320,7 @@ public class FurnacesCooking_Method {
 						if (_bs.getBlock().getStateDefinition().getProperty("furnaceislit") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 					}
+					/*--------------------------------------------------------------------------------------------*/
 					if (Number_of_Item == 1) {
 						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 							ItemStack _setstack = new ItemStack(RegistryIBBI.DENSE_STONE.get()).copy();
@@ -342,12 +343,13 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if (Number_of_Item == 2) {
-						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(Blocks.NETHER_BRICKS).copy();
-							_setstack.setCount((int) (Number_of_Slot_5 + 1));
-							_itemHandlerModifiable.setStackInSlot(5, _setstack);
-						}
+					} else /*--------------------------------------------------------------------------------------------*/
+						if (Number_of_Item == 2) {
+							if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+								ItemStack _setstack = new ItemStack(Blocks.NETHER_BRICKS).copy();
+								_setstack.setCount((int) (Number_of_Slot_5 + 1));
+								_itemHandlerModifiable.setStackInSlot(5, _setstack);
+							}
 						if (!world.isClientSide()) {
 							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -364,12 +366,13 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if (Number_of_Item == 3) {
-						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(Blocks.COPPER_BLOCK).copy();
-							_setstack.setCount((int) (Number_of_Slot_5 + 1));
-							_itemHandlerModifiable.setStackInSlot(5, _setstack);
-						}
+					} else /*--------------------------------------------------------------------------------------------*/
+						if (Number_of_Item == 3) {
+							if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+								ItemStack _setstack = new ItemStack(Blocks.COPPER_BLOCK).copy();
+								_setstack.setCount((int) (Number_of_Slot_5 + 1));
+								_itemHandlerModifiable.setStackInSlot(5, _setstack);
+							}
 						if (!world.isClientSide()) {
 							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -386,12 +389,13 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if (Number_of_Item == 4) {
-						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(Blocks.IRON_BLOCK).copy();
-							_setstack.setCount((int) (Number_of_Slot_5 + 1));
-							_itemHandlerModifiable.setStackInSlot(5, _setstack);
-						}
+					} else /*--------------------------------------------------------------------------------------------*/
+						if (Number_of_Item == 4) {
+							if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+								ItemStack _setstack = new ItemStack(Blocks.IRON_BLOCK).copy();
+								_setstack.setCount((int) (Number_of_Slot_5 + 1));
+								_itemHandlerModifiable.setStackInSlot(5, _setstack);
+							}
 						if (!world.isClientSide()) {
 							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -408,12 +412,13 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if (Number_of_Item == 5) {
-						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(Blocks.GOLD_BLOCK).copy();
-							_setstack.setCount((int) (Number_of_Slot_5 + 1));
-							_itemHandlerModifiable.setStackInSlot(5, _setstack);
-						}
+					} else /*--------------------------------------------------------------------------------------------*/
+						if (Number_of_Item == 5) {
+							if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+								ItemStack _setstack = new ItemStack(Blocks.GOLD_BLOCK).copy();
+								_setstack.setCount((int) (Number_of_Slot_5 + 1));
+								_itemHandlerModifiable.setStackInSlot(5, _setstack);
+							}
 						if (!world.isClientSide()) {
 							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -430,13 +435,37 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if (Number_of_Item == 6) {
-						if (!world.isClientSide()) {
-							BlockPos _bp = BlockPos.containing(x, y, z);
-							BlockEntity _blockEntity = world.getBlockEntity(_bp);
-							BlockState _bs = world.getBlockState(_bp);
-							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("Stored_EXP", (new Object() {
+					} else /*--------------------------------------------------------------------------------------------*/
+						if (Number_of_Item == 6) {
+								if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+									ItemStack _setstack = new ItemStack(RegistryIBBI.ANCIENT_CHUNK.get()).copy();
+									_setstack.setCount((int) (Number_of_Slot_5 + 1));
+									_itemHandlerModifiable.setStackInSlot(5, _setstack);
+								}
+								if (!world.isClientSide()) {
+									BlockPos _bp = BlockPos.containing(x, y, z);
+									BlockEntity _blockEntity = world.getBlockEntity(_bp);
+									BlockState _bs = world.getBlockState(_bp);
+									if (_blockEntity != null)
+										_blockEntity.getPersistentData().putDouble("Stored_EXP", (new Object() {
+											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+												BlockEntity blockEntity = world.getBlockEntity(pos);
+												if (blockEntity != null)
+													return blockEntity.getPersistentData().getDouble(tag);
+												return -1;
+											}
+										}.getValue(world, BlockPos.containing(x, y, z), "Stored_EXP") + 16));
+									if (world instanceof Level _level)
+										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+								}
+					} else /*--------------------------------------------------------------------------------------------*/
+						if (Number_of_Item == 7) {
+							if (!world.isClientSide()) {
+								BlockPos _bp = BlockPos.containing(x, y, z);
+								BlockEntity _blockEntity = world.getBlockEntity(_bp);
+								BlockState _bs = world.getBlockState(_bp);
+								if (_blockEntity != null)
+									_blockEntity.getPersistentData().putDouble("Stored_EXP", (new Object() {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
@@ -447,6 +476,7 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
+
 						if ((world instanceof Level _level) && (!_level.isClientSide())) {
 								_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
 						}

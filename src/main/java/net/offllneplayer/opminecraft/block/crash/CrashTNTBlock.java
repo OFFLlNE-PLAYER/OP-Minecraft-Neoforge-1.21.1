@@ -64,15 +64,6 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TNTSTATE, 0));
 	}
 
-
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.translatable("block.opminecraft.crash_tnt.description_0"));
-		list.add(Component.translatable("block.opminecraft.crash_tnt.description_1"));
-	}
-
 	@Override
 	public Integer getBeaconColorMultiplier(BlockState state, LevelReader world, BlockPos pos, BlockPos beaconPos) {
 		return FastColor.ARGB32.opaque(-5238758);
@@ -199,4 +190,13 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
 	}
+
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
+		list.add(Component.translatable("block.opminecraft.crash_tnt.description_0"));
+		list.add(Component.translatable("block.opminecraft.crash_tnt.description_1"));
+	}
+
 }

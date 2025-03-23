@@ -68,12 +68,18 @@
 
   "block.opminecraft.chiseled_diamond": "Chiseled Diamond",
   "block.opminecraft.chiseled_gold": "Chiseled Gold",
-  "block.opminecraft.chiseled_iron": "Chiseled Iron",
-  "block.opminecraft.chiseled_netherite": "Chiseled Netherite",
+  "block.opminecraft.chiseled_iron": "§7Chiseled Iron§r",
+  "block.opminecraft.chiseled_netherite": "§8Chiseled Netherite§r",
 
-  "block.opminecraft.aku_aku_crate": "Aku Aku Crate",
+  "block.opminecraft.copper_furnace": "Copper Furnace",
+  "block.opminecraft.diamond_furnace": "§bDiamond Furnace§r",
+  "block.opminecraft.gold_furnace": "§eGold Furnace§r",
+  "block.opminecraft.iron_furnace": "§7Iron Furnace§r",
+  "block.opminecraft.netherite_furnace": "§8Netherite Furnace§r",
+
+  "block.opminecraft.aku_aku_crate": "§5A§ak§eu §6A§dk§au §6Crate§r",
   "block.opminecraft.bounce_crate": "Bounce Crate",
-  "block.opminecraft.crash_crate": "Crash Crate",
+  "block.opminecraft.crash_crate": "§6Crash Crate§r",
   "block.opminecraft.crash_tnt": "§cCrash TNT§r",
   "block.opminecraft.crash_tnt.description_0": " :DANGER:",
   "block.opminecraft.crash_tnt.description_1": "§cDO NOT HANDLE WITHOUT SILK TOUCH§r",
@@ -82,13 +88,7 @@
   "block.opminecraft.nitro.description_1": "§aDO NOT HANDLE WITHOUT SILK TOUCH§r",
 
   "block.opminecraft.flowering_pitcher_plant": "Flowering Pitcher Plant",
-  "block.opminecraft.wumpa_plant": "Wumpa Plant",
-
-  "block.opminecraft.copper_furnace": "Copper Furnace",
-  "block.opminecraft.diamond_furnace": "Diamond Furnace",
-  "block.opminecraft.gold_furnace": "Gold Furnace",
-  "block.opminecraft.iron_furnace": "Iron Furnace",
-  "block.opminecraft.netherite_furnace": "Netherite Furnace",
+  "block.opminecraft.wumpa_plant": "§6Wumpa Plant§r",
 
   "block.opminecraft.dense_stone": "Dense Stone",
   "block.opminecraft.dense_stone_button": "Dense Stone Button",
@@ -152,16 +152,27 @@
 
   "/*-------*[Blocks]*": "",
 
+  "block.minecraft.pitcher_plant": "§bPitcher Plant§r",
+
+  "block.minecraft.netherite_block": "§7Block of Netherite§r",
+
+  "/*-------*[Minecraft_Blocks]*": "",
+
+  "item.opminecraft.ancient_chunk": "Ancient Chunk",
+
+  "item.opminecraft.flawless_diamond": "Flawless Diamond",
+  "item.opminecraft.perfect_diamond": "Perfect Diamond",
 
   "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
 
   "item.opminecraft.chisel": "Chisel",
-  "item.opminecraft.dynamite_stick": "Dynamite Stick",
-  "item.opminecraft.tnt_stick": "TNT Stick",
+  "item.opminecraft.dynamite_stick": "§cDynamite Stick§r",
+  "item.opminecraft.tnt_stick": "§cTNT Stick§r",
 
-  "item.opminecraft.aku_aku_mask": "Aku Aku",
-  "item.opminecraft.aku_aku_mask.description_0": "POODABEEGA!",
-  "item.opminecraft.wumpa_fruit": "Wumpa Fruit",
+  "item.opminecraft.aku_aku_mask": "§5A§ak§eu §6A§dk§au§r",
+  "item.opminecraft.aku_aku_mask.description_0": "§6P§5O§eO§aD§dA§6B§5E§eE§aG§dA§r",
+  "item.opminecraft.wumpa_fruit": "§6Wumpa Fruit§r",
+  "item.opminecraft.wumpa_fruit.description_0": "..Probably shouldn't eat these.",
 
   "item.opminecraft.crying_ingot": "Crying Ingot",
   "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
@@ -190,15 +201,20 @@
   "item.opminecraft.kaupenjoe_armor_trim_smithing_template": "Kaupenjoe Trim Template",
 
   "item.opminecraft.sculk_hammer": "Sculk Hammer",
-  "item.opminecraft.sculk_hammer.description_0": "Repairs anything at it's own expense",
+  "item.opminecraft.sculk_hammer.description_0": "Repair anything.. at it's own expense",
 
-  "item.opminecraft.totem_of_life": "Totem of Life",
-  "item.opminecraft.totem_of_life.description_0": "Somehow, this keeps you safer",
+  "item.opminecraft.totem_of_life": "§cTotem of Life§r",
+  "item.opminecraft.totem_of_life.description_0": "sOmEhOw, tHiS kEePs yOu sAfEr",
 
-  "item.opminecraft.totem_of_uncrying": "Totem of Uncrying",
-  "item.opminecraft.totem_of_uncrying.description_0": "Somehow, this keeps you safer",
+  "item.opminecraft.totem_of_uncrying": "§dTotem of Uncrying§r",
+  "item.opminecraft.totem_of_uncrying.description_0": "sOmEhOw, tHiS kEePs yOu sAfEr",
 
   "/*-------*[Items]*": "",
+
+  "item.minecraft.netherite_scrap": "Ancient Scrap",
+
+  "item.minecraft.blaze_rod": "§eBlaze Rod§r",
+  "item.minecraft.blaze_powder": "§eBlaze Powder§r",
 
   "item.minecraft.potion.effect.crying_i_potion": "§dCrying I Potion§r",
   "item.minecraft.potion.effect.crying_i_potion_long": "§dCrying I Potion (§r§4+§d)§r",
@@ -220,7 +236,7 @@
   "item.minecraft.tipped_arrow.effect.crying_ii_potion": "§dArrow of Crying II§r",
   "item.minecraft.tipped_arrow.effect.crying_ii_potion_long": "§dArrow of Crying II (§r§4+§d)§r",
 
-  "/*-------*[MinecraftItems]*": "",
+  "/*-------*[Minecraft_Items]*": "",
 
   "trim_pattern.opminecraft.kaupenjoe": "Kaupenjoe Armor Trim",
   "trim_material.opminecraft.crying": "Crying Material",

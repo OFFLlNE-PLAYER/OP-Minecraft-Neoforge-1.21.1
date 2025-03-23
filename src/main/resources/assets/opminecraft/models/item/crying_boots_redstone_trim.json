@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "opminecraft:item/crying_boots",
+    "layer0": "opminecraft:item/text_crying_boots",
     "layer1": "minecraft:trims/items/boots_trim_redstone"
   }
 }
