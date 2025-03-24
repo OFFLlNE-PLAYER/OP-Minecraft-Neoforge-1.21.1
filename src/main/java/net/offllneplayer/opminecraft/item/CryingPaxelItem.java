@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import net.offllneplayer.opminecraft.init.DeclareTagKeys;
+import net.offllneplayer.opminecraft.DeclareTagKeys;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 

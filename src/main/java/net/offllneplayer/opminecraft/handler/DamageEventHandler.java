@@ -20,7 +20,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuActivate_Method;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.init.DeclareTagKeys;
+import net.offllneplayer.opminecraft.DeclareTagKeys;
 
 public class DamageEventHandler {
     @SubscribeEvent

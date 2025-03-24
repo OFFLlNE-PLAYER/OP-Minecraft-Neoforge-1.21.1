@@ -158,10 +158,49 @@
 
   "/*-------*[Minecraft_Blocks]*": "",
 
+  "item.opminecraft.test_item": "§4TeSt ItEm§r",
+
   "item.opminecraft.ancient_chunk": "Ancient Chunk",
 
-  "item.opminecraft.flawless_diamond": "Flawless Diamond",
-  "item.opminecraft.perfect_diamond": "Perfect Diamond",
+  "item.opminecraft.flawless_alexandrite": "§5Flawless Alexandrite§r",
+  "item.opminecraft.perfect_alexandrite": "§5Perfect Alexandrite§r",
+
+  "item.opminecraft.flawless_andalusite": "§6Flawless Andalusite§r",
+  "item.opminecraft.perfect_andalusite": "§6Perfect Andalusite§r",
+
+  "item.opminecraft.flawless_chrysoberyl": "§eFlawless Chrysoberyl§r",
+  "item.opminecraft.perfect_chrysoberyl": "§ePerfect Chrysoberyl§r",
+
+  "item.opminecraft.corundum": "§fCorundum§r",
+  "item.opminecraft.flawless_corundum": "§fFlawless Corundum§r",
+  "item.opminecraft.perfect_corundum": "§fPerfect Corundum§r",
+
+  "item.opminecraft.flawless_cymophane": "§eFlawless Cymophane§r",
+  "item.opminecraft.perfect_cymophane": "§ePerfect Cymophane§r",
+
+  "item.opminecraft.flawless_padparadscha": "§dFlawless Padparadscha§r",
+  "item.opminecraft.perfect_padparadscha": "§dPerfect Padparadscha§r",
+
+  "item.opminecraft.flawless_ruby": "§cFlawless Ruby§r",
+  "item.opminecraft.perfect_ruby": "§cPerfect Ruby§r",
+
+  "item.opminecraft.flawless_sapphire": "§bFlawless Sapphire§r",
+  "item.opminecraft.perfect_sapphire": "§bPerfect Sapphire§r",
+
+  "item.opminecraft.flawless_scapolite": "§6Flawless Scapolite§r",
+  "item.opminecraft.perfect_scapolite": "§6Perfect Scapolite§r",
+
+  "item.opminecraft.flawless_staurolite": "§7Flawless Staurolite§r",
+  "item.opminecraft.perfect_staurolite": "§7Perfect Staurolite§r",
+
+  "item.opminecraft.flawless_tanzanite": "§1Flawless Tanzanite§r",
+  "item.opminecraft.perfect_tanzanite": "§1Perfect Tanzanite§r",
+
+  "item.opminecraft.flawless_emerald": "§2Flawless Emerald§r",
+  "item.opminecraft.perfect_emerald": "§2Perfect Emerald§r",
+
+  "item.opminecraft.flawless_diamond": "§bFlawless Diamond§r",
+  "item.opminecraft.perfect_diamond": "§bPerfect Diamond§r",
 
   "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
 

@@ -23,7 +23,7 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.AdvancementHolder;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.DeclareTagKeys;
+import net.offllneplayer.opminecraft.DeclareTagKeys;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
 import java.util.List;

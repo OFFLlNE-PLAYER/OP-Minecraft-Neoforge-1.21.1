@@ -12,7 +12,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.DeclareTagKeys;
+import net.offllneplayer.opminecraft.DeclareTagKeys;
 
 import java.util.Objects;
 

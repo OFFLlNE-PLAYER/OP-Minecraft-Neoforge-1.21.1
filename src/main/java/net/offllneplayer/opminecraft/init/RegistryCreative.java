@@ -162,7 +162,47 @@ public class RegistryCreative {
             }
             if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
 
+                event.accept(RegistryIBBI.TEST_ITEM);
+
                 event.accept(RegistryIBBI.ANCIENT_CHUNK);
+
+                event.accept(RegistryIBBI.FLAWLESS_ALEXANDRITE);
+                event.accept(RegistryIBBI.PERFECT_ALEXANDRITE);
+
+                event.accept(RegistryIBBI.FLAWLESS_ANDALUSITE);
+                event.accept(RegistryIBBI.PERFECT_ANDALUSITE);
+
+                event.accept(RegistryIBBI.FLAWLESS_CHRYSOBERYL);
+                event.accept(RegistryIBBI.PERFECT_CHRYSOBERYL);
+
+                event.accept(RegistryIBBI.CORUNDUM);
+                event.accept(RegistryIBBI.FLAWLESS_CORUNDUM);
+                event.accept(RegistryIBBI.PERFECT_CORUNDUM);
+
+                event.accept(RegistryIBBI.FLAWLESS_CYMOPHANE);
+                event.accept(RegistryIBBI.PERFECT_CYMOPHANE);
+
+                event.accept(RegistryIBBI.FLAWLESS_PADPARADSCHA);
+                event.accept(RegistryIBBI.PERFECT_PADPARADSCHA);
+
+                event.accept(RegistryIBBI.FLAWLESS_RUBY);
+                event.accept(RegistryIBBI.PERFECT_RUBY);
+
+                event.accept(RegistryIBBI.FLAWLESS_SAPPHIRE);
+                event.accept(RegistryIBBI.PERFECT_SAPPHIRE);
+
+                event.accept(RegistryIBBI.FLAWLESS_SCAPOLITE);
+                event.accept(RegistryIBBI.PERFECT_SCAPOLITE);
+
+                event.accept(RegistryIBBI.FLAWLESS_STAUROLITE);
+                event.accept(RegistryIBBI.PERFECT_STAUROLITE);
+
+                event.accept(RegistryIBBI.FLAWLESS_TANZANITE);
+                event.accept(RegistryIBBI.PERFECT_TANZANITE);
+
+                event.accept(RegistryIBBI.FLAWLESS_EMERALD);
+                event.accept(RegistryIBBI.PERFECT_EMERALD);
+
                 event.accept(RegistryIBBI.FLAWLESS_DIAMOND);
                 event.accept(RegistryIBBI.PERFECT_DIAMOND);
 

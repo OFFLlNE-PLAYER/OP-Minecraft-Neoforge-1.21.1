@@ -1,0 +1,19 @@
+
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "opminecraft:item/text_flawless_padparadscha"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, 0, 0],
+      "translation": [-0.5, 2, 0],
+      "scale": [0.55, 0.55, 0.55]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 2, 0],
+      "scale": [0.55, 0.55, 0.55]
+    }
+  }
+}
