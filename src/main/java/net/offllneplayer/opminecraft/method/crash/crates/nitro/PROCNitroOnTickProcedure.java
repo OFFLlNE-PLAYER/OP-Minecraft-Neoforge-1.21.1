@@ -19,25 +19,26 @@ import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
 import java.util.List;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class PROCNitroOnTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		BlockPos pos = BlockPos.containing(x, y, z);
 
-		if (getBlockData(world, pos, "nitro_hop_number") < 100) {
+		if (getBlockData(world, pos) < 100) {
 			if (!world.isClientSide()) {
-				updateBlockData(world, pos, "nitro_hop_number", getBlockData(world, pos, "nitro_hop_number") + Mth.nextInt(RandomSource.create(), 8, 26));
+				updateBlockData(world, pos, getBlockData(world, pos) + Mth.nextInt(RandomSource.create(), 8, 26));
 			}
 		} else {
 			if (!world.isClientSide()) {
-				updateBlockData(world, pos, "nitro_hop_number", 0);
+				updateBlockData(world, pos, 0);
 			}
 
 			// Play one of three random sounds
 			if (world instanceof Level _level && !_level.isClientSide()) {
 				int randomIndex = Mth.nextInt(RandomSource.create(), 1, 3);
 				ResourceLocation soundId = ResourceLocation.parse("opminecraft:nitro_idle_" + randomIndex);
-				_level.playSound(null, pos, BuiltInRegistries.SOUND_EVENT.get(soundId), SoundSource.MASTER, 1, 1);
+				_level.playSound(null, pos, Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(soundId)), SoundSource.MASTER, 1, 1);
 			}
 
 			// Handle block replacement and entity teleportation
@@ -50,16 +51,16 @@ public class PROCNitroOnTickProcedure {
 	}
 
 	// **Helper Method: Retrieve block entity data**
-	private static double getBlockData(LevelAccessor world, BlockPos pos, String tag) {
+	private static double getBlockData(LevelAccessor world, BlockPos pos) {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return (blockEntity != null) ? blockEntity.getPersistentData().getDouble(tag) : -1;
+		return (blockEntity != null) ? blockEntity.getPersistentData().getDouble("nitro_hop_number") : -1;
 	}
 
 	// **Helper Method: Update block entity data and notify clients**
-	private static void updateBlockData(LevelAccessor world, BlockPos pos, String tag, double value) {
+	private static void updateBlockData(LevelAccessor world, BlockPos pos, double value) {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
 		if (blockEntity != null) {
-			blockEntity.getPersistentData().putDouble(tag, value);
+			blockEntity.getPersistentData().putDouble("nitro_hop_number", value);
 		}
 		if (world instanceof Level _level) {
 			_level.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
