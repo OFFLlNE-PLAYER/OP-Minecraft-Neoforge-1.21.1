@@ -15,10 +15,15 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 public class DenseStoneBlock extends Block {
+
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
 	public DenseStoneBlock() {
-		super(Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(3f, 8f).requiresCorrectToolForDrops());
+		super(Properties.of()
+				.mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(3f, 8f)
+				.requiresCorrectToolForDrops());
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
 	}
 

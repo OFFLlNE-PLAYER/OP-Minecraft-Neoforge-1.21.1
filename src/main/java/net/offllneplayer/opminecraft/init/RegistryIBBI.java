@@ -10,6 +10,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.block.*;
+import net.offllneplayer.opminecraft.block.charcoal.BlockofCharcoalBlock;
 import net.offllneplayer.opminecraft.block.chiseledore.*;
 import net.offllneplayer.opminecraft.block.crash.*;
 import net.offllneplayer.opminecraft.block.cryingbricks.*;
