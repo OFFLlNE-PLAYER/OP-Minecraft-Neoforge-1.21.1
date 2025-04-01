@@ -1,0 +1,22 @@
+{
+    "providers": [
+    {"type": "space", "advances": {"\uE999": -8}},
+
+    {"type": "space", "advances": {"\uE996": -4}},
+
+
+
+    { 
+        "type": "bitmap",
+        "file": "minecraft:gui/container/chests/barrel.png",
+        "height": 83, "ascent": 14,
+        "chars": ["\uEC03"]
+    },
+    { 
+        "type": "bitmap",
+        "file": "minecraft:gui/container/chests/ender_chest.png",
+        "height": 91, "ascent": 23,
+        "chars": ["\uEC04"]
+    }
+    ]
+}
