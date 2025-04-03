@@ -1,0 +1,26 @@
+
+{"variants":{
+  "":[
+  {"model":"block/bookshelf/bookshelf","weight":4},
+  {"model":"block/bookshelf/bookshelf_1","weight":2},
+  {"model":"block/bookshelf/bookshelf_2","weight":2},
+  {"model":"block/bookshelf/bookshelf_3","weight":2},
+  {"model":"block/bookshelf/bookshelf_4","weight":4},
+  {"model":"block/bookshelf/bookshelf_5","weight":4},
+  {"model":"block/bookshelf/bookshelf_6","weight":4},
+  {"model":"block/bookshelf/bookshelf_7","weight":4},
+  {"model":"block/bookshelf/bookshelf_8","weight":4},
+  {"model":"block/bookshelf/bookshelf_9","weight":4},
+  {"model":"block/bookshelf/bookshelf_10","weight":4},
+  {"model":"block/bookshelf/bookshelf_11","weight":4},
+  {"model":"block/bookshelf/bookshelf_12","weight":4},
+  {"model":"block/bookshelf/bookshelf_13","weight":4},
+  {"model":"block/bookshelf/bookshelf_14","weight":4},
+  {"model":"block/bookshelf/bookshelf_15","weight":2},
+  {"model":"block/bookshelf/bookshelf_16","weight":2},
+  {"model":"block/bookshelf/bookshelf_17","weight":2},
+  {"model":"block/bookshelf/bookshelf_18","weight":2},
+  {"model":"block/bookshelf/bookshelf_19","weight":2}
+]
+}
+}
