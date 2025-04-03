@@ -1,5 +1,6 @@
 {
-  "parent": "neoforge:item/bucket_drip",
-  "loader": "neoforge:fluid_container",
-  "fluid": "opminecraft:crying_essence"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "opminecraft:item/text_crying_essence_bucket"
+  }
 }
