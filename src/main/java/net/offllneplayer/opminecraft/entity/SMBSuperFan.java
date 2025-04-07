@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.decoration.ItemFrame;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -67,7 +68,6 @@ public class SMBSuperFan extends AbstractArrow {
         return true;
     }
 
-
     public boolean isAttackable() {
         return true;
     }
@@ -75,15 +75,6 @@ public class SMBSuperFan extends AbstractArrow {
     @Override
     public boolean isInvulnerableTo(DamageSource source) {
         return true;
-    }
-
-    @Override
-    public boolean hurt(DamageSource source, float amount) {
-        if (source.getEntity() instanceof Player player) {
-            float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-            this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
-        }
-        return false;
     }
 
     @Override
@@ -179,6 +170,7 @@ public class SMBSuperFan extends AbstractArrow {
         return InteractionResult.PASS;
     }
 
+
     private int customTickCounter = 0;
 
     @Override
@@ -186,25 +178,42 @@ public class SMBSuperFan extends AbstractArrow {
         super.tick();
 
         if (!this.getCommandSenderWorld().isClientSide) {
-            if (++customTickCounter % 20 == 0) {
+            customTickCounter++;
 
+            // Every 20 ticks (1 second) play idle sound.
+            if (customTickCounter % 20 == 0) {
+                float vol = Mth.randomBetween(this.random, 0.2F, 0.420F);
+                float tone = Mth.randomBetween(this.random, 0.9F, 1.05F);
+                this.playSound(RegistrySounds.SMB_SUPER_FAN_IDLE.get(), vol, tone);
+            }
+
+            // Every 10 ticks (0.5 seconds) process nearby entities.
+            if (customTickCounter % 10 == 0) {
                 Level level = this.getCommandSenderWorld();
-
-                float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-                this.playSound(RegistrySounds.SMB_SUPER_FAN_IDLE.get(), 1F, tone);
-
                 AABB boundingBox = this.getBoundingBox().inflate(0.1D);
-                List<Entity> entities = level.getEntities(this, boundingBox, entity -> entity instanceof LivingEntity);
+                List<Entity> entities = level.getEntities(this, boundingBox,
+                        entity -> (entity instanceof LivingEntity) || (entity instanceof ItemEntity));
 
                 for (Entity entity : entities) {
-                    DamageSource fanDamage = new DamageSource(
-                            level.registryAccess()
-                                    .registryOrThrow(Registries.DAMAGE_TYPE)
-                                    .getHolderOrThrow(RegistryDamageTypes.SMB_SUPER_FAN),
-                            this, this.getOwner()
-                    );
 
-                    entity.hurt(fanDamage, 2.0F);
+                    if (entity instanceof ItemEntity) {// Discard item entities and play hit sound
+                        entity.discard();
+                        float vol = Mth.randomBetween(this.random, 0.6F, 1F);
+                        float tone = Mth.randomBetween(this.random, 1.0F, 1.3F);
+                        this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
+
+                    } else if (entity instanceof LivingEntity) {// Hurt living entities and play hit sound
+                        DamageSource fanDamage = new DamageSource(
+                                level.registryAccess()
+                                        .registryOrThrow(Registries.DAMAGE_TYPE)
+                                        .getHolderOrThrow(RegistryDamageTypes.SMB_SUPER_FAN),
+                                this, this.getOwner()
+                        );
+                        entity.hurt(fanDamage, 2.0F);
+                        float vol = Mth.randomBetween(this.random, 0.8F, 1.05F);
+                        float tone = Mth.randomBetween(this.random, 0.8F, 1.1F);
+                        this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
+                    }
                 }
             }
         }
