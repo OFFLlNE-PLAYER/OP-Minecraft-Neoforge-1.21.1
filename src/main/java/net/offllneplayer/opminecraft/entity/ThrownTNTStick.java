@@ -17,8 +17,11 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+
+import java.util.Objects;
 
 
 public class ThrownTNTStick extends ThrowableItemProjectile {
@@ -65,9 +68,9 @@ public class ThrownTNTStick extends ThrowableItemProjectile {
                     if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandler) {
                         ItemStack _setstack = new ItemStack(RegistryIBBI.TNT_STICK.get()).copy();
                         _setstack.setCount(1);
-                        _modHandler.setStackInSlot(0, _setstack);
+                        ItemHandlerHelper.insertItem(_modHandler, _setstack, false);
 
-                        this.level().playLocalSound(getX(), getY(), getZ(), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.8, (float) 1.4, false);
+                        this.level().playLocalSound(getX(), getY(), getZ(), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish"))), SoundSource.MASTER, (float) 0.8, (float) 1.4, false);
 
                         this.discard();
 

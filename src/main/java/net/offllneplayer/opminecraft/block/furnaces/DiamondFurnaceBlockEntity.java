@@ -23,8 +23,8 @@ import net.minecraft.tags.ItemTags;
 
 import net.minecraft.resources.ResourceLocation;
 
+import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
 import net.offllneplayer.opminecraft.world.inventory.DiamondFurnaceInv;
-import net.offllneplayer.opminecraft.init.RegistryBlockEntity;
 
 import javax.annotation.Nullable;
 
@@ -37,7 +37,7 @@ public class DiamondFurnaceBlockEntity extends RandomizableContainerBlockEntity 
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public DiamondFurnaceBlockEntity(BlockPos position, BlockState state) {
-		super(RegistryBlockEntity.DIAMOND_FURNACE.get(), position, state);
+		super(RegistryBlockEntities.DIAMOND_FURNACE.get(), position, state);
 	}
 
 	@Override

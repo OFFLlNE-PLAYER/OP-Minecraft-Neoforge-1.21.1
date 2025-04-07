@@ -15,6 +15,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
+import net.offllneplayer.opminecraft.client.SMBSuperFanRenderer;
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickRenderer;
 import net.offllneplayer.opminecraft.client.tnt.ThrownTNTStickRenderer;
 import net.offllneplayer.opminecraft.fluid.CryingEssenceFluid;
@@ -35,7 +36,9 @@ public class RegistryClientEventBus {
 			EntityRenderers.register(RegistryEntities.THROWN_DYNAMITE_STICK.get(), ThrownDynamiteStickRenderer::new);
 
 			EntityRenderers.register(RegistryEntities.THROWN_TNT_STICK.get(), ThrownTNTStickRenderer::new);
-			
+
+			EntityRenderers.register(RegistryEntities.SMB_SUPER_FAN.get(), SMBSuperFanRenderer::new);
+
 			ItemBlockRenderTypes.setRenderLayer(CRYING_ESSENCE.get(), RenderType.translucent());
 			ItemBlockRenderTypes.setRenderLayer(FLOWING_CRYING_ESSENCE.get(), RenderType.translucent());
 

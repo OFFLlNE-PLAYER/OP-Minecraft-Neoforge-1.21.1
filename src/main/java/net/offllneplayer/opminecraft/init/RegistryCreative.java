@@ -136,7 +136,10 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.TNT_STICK);
                 event.accept(RegistryIBBI.DYNAMITE_STICK);
+
                 event.accept(RegistryIBBI.SCULK_HAMMER);
+
+                event.accept(RegistryIBBI.SMB_SUPER_FAN);
 
             }
             if (event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -154,6 +157,11 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.AKU_AKU_MASK);
                 event.accept(RegistryIBBI.TOTEM_OF_LIFE);
 
+                event.accept(RegistryIBBI.GUNBLADE);
+                event.accept(RegistryIBBI.PROTOTYPE_GUNBLADE);
+                event.accept(RegistryIBBI.FALLING_GUNBLADE);
+                event.accept(RegistryIBBI.STUCK_GUNBLADE);
+
             }
             if (event.getTabKey()==CreativeModeTabs.FOOD_AND_DRINKS) {
 
@@ -166,12 +174,15 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.ANCIENT_CHUNK);
 
+                event.accept(RegistryIBBI.ALEXANDRITE);
                 event.accept(RegistryIBBI.FLAWLESS_ALEXANDRITE);
                 event.accept(RegistryIBBI.PERFECT_ALEXANDRITE);
 
+                event.accept(RegistryIBBI.ANDALUSITE);
                 event.accept(RegistryIBBI.FLAWLESS_ANDALUSITE);
                 event.accept(RegistryIBBI.PERFECT_ANDALUSITE);
 
+                event.accept(RegistryIBBI.CHRYSOBERYL);
                 event.accept(RegistryIBBI.FLAWLESS_CHRYSOBERYL);
                 event.accept(RegistryIBBI.PERFECT_CHRYSOBERYL);
 
@@ -179,24 +190,31 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.FLAWLESS_CORUNDUM);
                 event.accept(RegistryIBBI.PERFECT_CORUNDUM);
 
+                event.accept(RegistryIBBI.CYMOPHANE);
                 event.accept(RegistryIBBI.FLAWLESS_CYMOPHANE);
                 event.accept(RegistryIBBI.PERFECT_CYMOPHANE);
 
+                event.accept(RegistryIBBI.PADPARADSCHA);
                 event.accept(RegistryIBBI.FLAWLESS_PADPARADSCHA);
                 event.accept(RegistryIBBI.PERFECT_PADPARADSCHA);
 
+                event.accept(RegistryIBBI.RUBY);
                 event.accept(RegistryIBBI.FLAWLESS_RUBY);
                 event.accept(RegistryIBBI.PERFECT_RUBY);
 
+                event.accept(RegistryIBBI.SAPPHIRE);
                 event.accept(RegistryIBBI.FLAWLESS_SAPPHIRE);
                 event.accept(RegistryIBBI.PERFECT_SAPPHIRE);
 
+                event.accept(RegistryIBBI.SCAPOLITE);
                 event.accept(RegistryIBBI.FLAWLESS_SCAPOLITE);
                 event.accept(RegistryIBBI.PERFECT_SCAPOLITE);
 
+                event.accept(RegistryIBBI.STAUROLITE);
                 event.accept(RegistryIBBI.FLAWLESS_STAUROLITE);
                 event.accept(RegistryIBBI.PERFECT_STAUROLITE);
 
+                event.accept(RegistryIBBI.TANZANITE);
                 event.accept(RegistryIBBI.FLAWLESS_TANZANITE);
                 event.accept(RegistryIBBI.PERFECT_TANZANITE);
 
@@ -205,6 +223,8 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.FLAWLESS_DIAMOND);
                 event.accept(RegistryIBBI.PERFECT_DIAMOND);
+
+                event.accept(RegistryIBBI.GEMSTONE_DUST);
 
                 event.accept(RegistryIBBI.CRYING_INGOT);
                 event.accept(RegistryIBBI.CRYING_SMITHING_TEMPLATE);

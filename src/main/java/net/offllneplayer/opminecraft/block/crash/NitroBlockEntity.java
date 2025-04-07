@@ -18,7 +18,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.init.RegistryBlockEntity;
+import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
 
 
 import javax.annotation.Nullable;
@@ -30,7 +30,7 @@ public class NitroBlockEntity extends RandomizableContainerBlockEntity implement
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public NitroBlockEntity(BlockPos position, BlockState state) {
-		super(RegistryBlockEntity.NITRO.get(), position, state);
+		super(RegistryBlockEntities.NITRO.get(), position, state);
 	}
 
 	@Override

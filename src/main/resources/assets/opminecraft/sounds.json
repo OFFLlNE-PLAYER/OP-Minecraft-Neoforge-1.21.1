@@ -29,6 +29,9 @@
   "fast_tick_tnt": {"sounds": [{"name": "opminecraft:fast_tick_tnt", "stream": false}]},
   "prime_tnt": {"sounds": [{"name": "opminecraft:prime_tnt", "stream": false}]},
 
+  "smb_super_fan_hit": {"sounds": [{"name": "opminecraft:smb_super_fan_hit", "stream": false}]},
+  "smb_super_fan_idle": {"sounds": [{"name": "opminecraft:smb_super_fan_idle", "stream": false}]},
+
   "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]}
 
 }

@@ -24,7 +24,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
 
 import net.offllneplayer.opminecraft.world.inventory.IronFurnaceInv;
-import net.offllneplayer.opminecraft.init.RegistryBlockEntity;
+import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
 
 import javax.annotation.Nullable;
 
@@ -37,7 +37,7 @@ public class IronFurnaceBlockEntity extends RandomizableContainerBlockEntity imp
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public IronFurnaceBlockEntity(BlockPos position, BlockState state) {
-		super(RegistryBlockEntity.IRON_FURNACE.get(), position, state);
+		super(RegistryBlockEntities.IRON_FURNACE.get(), position, state);
 	}
 
 	@Override

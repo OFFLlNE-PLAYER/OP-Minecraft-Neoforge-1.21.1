@@ -25,4 +25,7 @@ public class ModModelLayers {
     public static final ModelLayerLocation THROWN_DYNAMITE_STICK = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_dynamite_stick"), "main");
 
+    public static final ModelLayerLocation SMB_SUPER_FAN = new ModelLayerLocation(
+            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "smb_super_fan"), "main");
+
 }

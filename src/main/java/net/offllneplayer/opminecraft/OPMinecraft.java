@@ -23,6 +23,7 @@ import net.neoforged.neoforge.common.NeoForge;
 
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickRenderer;
 import net.offllneplayer.opminecraft.handler.DamageEventHandler;
+import net.offllneplayer.opminecraft.handler.EntitySpawnHandler;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -52,7 +53,7 @@ public class OPMinecraft {
         RegistryIBBI.UNCOMMON_BLOCKSREGISTRY.register(modEventBus);
         RegistryIBBI.RARE_BLOCKSREGISTRY.register(modEventBus);
 
-        RegistryBlockEntity.BLOCKENTREGISTRY.register(modEventBus);
+        RegistryBlockEntities.BLOCKENTREGISTRY.register(modEventBus);
 
         RegistryInventory.INVREGISTRY.register(modEventBus);
 
@@ -75,6 +76,7 @@ public class OPMinecraft {
         NeoForge.EVENT_BUS.register(this);
 
         NeoForge.EVENT_BUS.register(new DamageEventHandler());
+        NeoForge.EVENT_BUS.register(new EntitySpawnHandler());
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

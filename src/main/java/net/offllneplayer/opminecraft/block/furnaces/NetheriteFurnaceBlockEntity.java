@@ -30,14 +30,14 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
-import net.offllneplayer.opminecraft.init.RegistryBlockEntity;
+import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
 
 public class NetheriteFurnaceBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(6, ItemStack.EMPTY);
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public NetheriteFurnaceBlockEntity(BlockPos position, BlockState state) {
-		super(RegistryBlockEntity.NETHERITE_FURNACE.get(), position, state);
+		super(RegistryBlockEntities.NETHERITE_FURNACE.get(), position, state);
 	}
 
 	@Override

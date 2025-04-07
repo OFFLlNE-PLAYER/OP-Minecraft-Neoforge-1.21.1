@@ -31,7 +31,6 @@ public class ThrownDynamiteStickModel extends EntityModel<ThrownDynamiteStick> {
 
     @Override
     public void setupAnim(ThrownDynamiteStick entity, float v, float v1, float v2, float v3, float v4) {
-
     }
 
     @Override

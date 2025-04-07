@@ -40,6 +40,7 @@ public class DamageEventHandler {
     /*[FIRE]*/
         if (attacker instanceof LivingEntity livingAttacker
                 && (livingAttacker.getMainHandItem().is(Items.BLAZE_ROD)
+                || livingAttacker.getMainHandItem().is(Items.BLAZE_POWDER)
                 || livingAttacker.getMainHandItem().is(Items.FIRE_CHARGE)
                 || livingAttacker.getMainHandItem().is(Items.LAVA_BUCKET))) {
             entitytarget.setRemainingFireTicks(3 * 20);

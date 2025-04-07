@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 
 import net.offllneplayer.opminecraft.entity.ThrownDynamiteStick;
 import net.offllneplayer.opminecraft.OPMinecraft;
+import net.offllneplayer.opminecraft.entity.SMBSuperFan;
 import net.offllneplayer.opminecraft.entity.ThrownTNTStick;
 
 import java.util.function.Supplier;
@@ -31,7 +32,8 @@ public class RegistryEntities {
     public static final Supplier<EntityType<ThrownTNTStick>> THROWN_TNT_STICK = ENTREGISTRY.register("thrown_tnt_stick",
             ()-> EntityType.Builder.<ThrownTNTStick>of(ThrownTNTStick::new, MobCategory.MISC).build("thrown_tnt_stick"));
 
-
+    public static final Supplier<EntityType<SMBSuperFan>> SMB_SUPER_FAN = ENTREGISTRY.register("smb_super_fan",
+            ()-> EntityType.Builder.<SMBSuperFan>of(SMBSuperFan::new, MobCategory.MISC).build("smb_super_fan"));
 
     /*--------------------------------------------------------------------------------------------*/
     /*[Register EventBus]*/

@@ -23,7 +23,7 @@ import net.minecraft.tags.ItemTags;
 
 import net.minecraft.resources.ResourceLocation;
 
-import net.offllneplayer.opminecraft.init.RegistryBlockEntity;
+import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
 import net.offllneplayer.opminecraft.world.inventory.CopperFurnaceInv;
 
 import javax.annotation.Nullable;
@@ -37,7 +37,7 @@ public class CopperFurnaceBlockEntity extends RandomizableContainerBlockEntity i
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
 	public CopperFurnaceBlockEntity(BlockPos position, BlockState state) {
-		super(RegistryBlockEntity.COPPER_FURNACE.get(), position, state);
+		super(RegistryBlockEntities.COPPER_FURNACE.get(), position, state);
 	}
 
 	@Override
