@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Block;
 public class DeclareTagKeys {
 
     public static class Blocks {
+
         public static final TagKey<Block> CRYING_PAXEL = createTag("mineable/crying_paxel");
         public static final TagKey<Block> CRASH_CRATES = createTag("crash_crates");
 
@@ -31,8 +32,8 @@ public class DeclareTagKeys {
 
 
     public static class Items {
-        public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
 
+        public static final TagKey<Item> CRYING_ITEMS = createTag("crying_items");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));

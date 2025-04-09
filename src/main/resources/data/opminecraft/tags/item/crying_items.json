@@ -1,11 +1,17 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:crying_ingot",
+    "opminecraft:crying_essence_bucket",
+    "opminecraft:crying_smithing_template",
+
     "opminecraft:crying_sword",
     "opminecraft:crying_axe",
     "opminecraft:crying_pickaxe",
     "opminecraft:crying_shovel",
     "opminecraft:crying_sickle",
+    "opminecraft:crying_paxel",
+
     "opminecraft:crying_helmet",
     "opminecraft:crying_chestplate",
     "opminecraft:crying_leggings",
