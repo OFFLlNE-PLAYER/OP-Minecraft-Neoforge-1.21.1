@@ -1,5 +1,6 @@
 package net.offllneplayer.opminecraft.method.crying.essence;
 
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -13,6 +14,7 @@ import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.DeclareTagKeys;
+import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 
 import java.util.Objects;
 
@@ -53,7 +55,8 @@ public class CryingEssence_OnTick_Method {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.deepslate.step"))), SoundSource.MASTER, 1, (float) 0.8);
 
-						_level.explode(null, x, y, z, 5, true, Level.ExplosionInteraction.BLOCK);
+						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+						_level.explode(source.getEntity(), x, y, z, 5.0f, true, Level.ExplosionInteraction.BLOCK);
 
 						world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
@@ -86,7 +89,8 @@ public class CryingEssence_OnTick_Method {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.chime"))), SoundSource.MASTER, 1, (float) 0.8);
 
-						_level.explode(null, x, y, z, 3, Level.ExplosionInteraction.BLOCK);
+						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+						_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
 
 					world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
 					world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);

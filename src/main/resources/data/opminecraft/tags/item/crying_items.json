@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:block_of_crying_ingots",
     "opminecraft:crying_ingot",
     "opminecraft:crying_essence_bucket",
     "opminecraft:crying_smithing_template",

@@ -1,6 +1,7 @@
 package net.offllneplayer.opminecraft.method.crying.blockofcryingingots;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -24,6 +25,7 @@ import net.minecraft.advancements.AdvancementHolder;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.DeclareTagKeys;
+import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
 import java.util.List;
@@ -72,7 +74,9 @@ public class BlockofCryingIngots_OnTick_Method {
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_furnace"))), SoundSource.NEUTRAL, (float)0.8, (float) 0.2);
 					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit"))), SoundSource.NEUTRAL, 1, (float) 0.2);
-					_level.explode(null, x, y, z, 1, Level.ExplosionInteraction.BLOCK);
+
+					DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+					_level.explode(source.getEntity(), x, y, z, 1.0f, false, Level.ExplosionInteraction.BLOCK);
 				}
 
 				if (world instanceof ServerLevel _level) {
@@ -115,7 +119,9 @@ public class BlockofCryingIngots_OnTick_Method {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.deepslate.step"))), SoundSource.MASTER, 1, (float) 0.8);
 						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit"))), SoundSource.NEUTRAL, 1, (float) 0.2);
-						_level.explode(null, x, y, z, 5, true, Level.ExplosionInteraction.BLOCK);
+
+						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+						_level.explode(source.getEntity(), x, y, z, 5.0f, false, Level.ExplosionInteraction.BLOCK);
 					}
 
 					if (world instanceof ServerLevel _level) {
@@ -165,7 +171,9 @@ public class BlockofCryingIngots_OnTick_Method {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.chime"))), SoundSource.MASTER, 1, (float) 0.8);
 						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit"))), SoundSource.NEUTRAL, 1, (float) 0.2);
-						_level.explode(null, x, y, z, 3, Level.ExplosionInteraction.BLOCK);
+
+						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+						_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
 					}
 
 					if (world instanceof ServerLevel _level) {

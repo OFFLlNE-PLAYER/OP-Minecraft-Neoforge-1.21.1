@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.phys.AABB;
@@ -28,6 +29,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 
+import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
@@ -496,7 +498,8 @@ public class FurnacesCooking_Method {
 									world.destroyBlock(blockPos, false);
 								}
 
-								_level.explode(null, _level.damageSources().badRespawnPointExplosion(_center), null, _center, 3F, false, Level.ExplosionInteraction.BLOCK);
+								DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+								_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
 							}
 
 							if (state.getBlock() != RegistryIBBI.NETHERITE_FURNACE.get()) {

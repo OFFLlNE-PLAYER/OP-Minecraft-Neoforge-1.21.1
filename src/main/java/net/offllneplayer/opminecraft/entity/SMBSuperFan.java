@@ -127,7 +127,13 @@ public class SMBSuperFan extends AbstractArrow {
                 this.hasImpulse = true;
 
                 if (entity instanceof LivingEntity) {
-                    entity.hurt(this.damageSources().thrown(this, this.getOwner()), 4.0F);
+                    DamageSource fanDamage = this.level().damageSources().source(
+                            RegistryDamageTypes.SMB_SUPER_FAN,
+                            this,
+                            this.getOwner()
+                    );
+
+                    entity.hurt(fanDamage, 2.0F);
                     this.level().broadcastEntityEvent(this, (byte) 3);
                 }
             }
@@ -203,12 +209,12 @@ public class SMBSuperFan extends AbstractArrow {
                         this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
 
                     } else if (entity instanceof LivingEntity) {// Hurt living entities and play hit sound
-                        DamageSource fanDamage = new DamageSource(
-                                level.registryAccess()
-                                        .registryOrThrow(Registries.DAMAGE_TYPE)
-                                        .getHolderOrThrow(RegistryDamageTypes.SMB_SUPER_FAN),
-                                this, this.getOwner()
+                        DamageSource fanDamage = level.damageSources().source(
+                                RegistryDamageTypes.SMB_SUPER_FAN,
+                                this,
+                                this.getOwner()
                         );
+
                         entity.hurt(fanDamage, 2.0F);
                         float vol = Mth.randomBetween(this.random, 0.8F, 1.05F);
                         float tone = Mth.randomBetween(this.random, 0.8F, 1.1F);

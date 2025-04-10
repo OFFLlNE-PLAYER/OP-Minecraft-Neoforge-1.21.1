@@ -12,4 +12,9 @@ public class RegistryDamageTypes {
             Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "smb_super_fan")
     );
+
+    public static final ResourceKey<DamageType> CRYING_ESSENCE = ResourceKey.create(
+            Registries.DAMAGE_TYPE,
+            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "crying_essence")
+    );
 }

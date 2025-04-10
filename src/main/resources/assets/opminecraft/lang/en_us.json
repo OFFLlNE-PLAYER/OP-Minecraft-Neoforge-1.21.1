@@ -309,8 +309,12 @@
 
   "/*-------*[enchantment]*": "",
 
-  "death.attack.smb_super_fan": "%1$s turned into meat with an SMB Super Fan",
-  "death.attack.smb_super_fan.player": "%1$s was turned into meat by %2$s's SMB Super Fan",
+  "death.attack.crying_essence": "§d%1$s blew up crying§r",
+  "death.attack.crying_essence.player": "§d%1$s blew up crying by %2$s§r",
+  "death.attack.crying_essence.item": "§d%1$s was blown up by crying by %2$s using %3$s§r",
+
+  "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
+  "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by %2$s's SMB Super Fan§r",
 
   "/*-------*[death]*": ""
 }
