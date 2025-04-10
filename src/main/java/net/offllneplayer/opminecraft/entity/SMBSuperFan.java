@@ -189,7 +189,7 @@ public class SMBSuperFan extends AbstractArrow {
             // Every 20 ticks (1 second) play idle sound.
             if (customTickCounter % 20 == 0) {
                 float vol = Mth.randomBetween(this.random, 0.2F, 0.420F);
-                float tone = Mth.randomBetween(this.random, 0.9F, 1.05F);
+                float tone = Mth.randomBetween(this.random, 0.9F, 1.0F);
                 this.playSound(RegistrySounds.SMB_SUPER_FAN_IDLE.get(), vol, tone);
             }
 

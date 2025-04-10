@@ -2,34 +2,27 @@
 package net.offllneplayer.opminecraft.init;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
-import net.offllneplayer.opminecraft.client.SMBSuperFanRenderer;
+import net.offllneplayer.opminecraft.client.SMBSuperFan.SMBSuperFanRenderer;
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickRenderer;
 import net.offllneplayer.opminecraft.client.tnt.ThrownTNTStickRenderer;
-import net.offllneplayer.opminecraft.fluid.CryingEssenceFluid;
-import net.offllneplayer.opminecraft.OPMinecraft;
+
+import static net.offllneplayer.opminecraft.OPMinecraft.Mod_ID;
+import static net.offllneplayer.opminecraft.init.RegistryFluids.CRYING_ESSENCE;
+import static net.offllneplayer.opminecraft.init.RegistryFluids.FLOWING_CRYING_ESSENCE;
+
 
 public class RegistryClientEventBus {
 
-	public static final DeferredRegister<Fluid> FLUIDSREGISTRY = DeferredRegister.create(BuiltInRegistries.FLUID, OPMinecraft.Mod_ID);
-
-	public static final DeferredHolder<Fluid, FlowingFluid> CRYING_ESSENCE = FLUIDSREGISTRY.register("crying_essence", CryingEssenceFluid.Source::new);
-	public static final DeferredHolder<Fluid, FlowingFluid> FLOWING_CRYING_ESSENCE = FLUIDSREGISTRY.register("flowing_crying_essence", CryingEssenceFluid.Flowing::new);
-
-	@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-	public static class FluidsClientSideHandler {
+	@EventBusSubscriber(modid = Mod_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+	public static class ClientModEvents {
 		@SubscribeEvent
 		public static void clientSetup(FMLClientSetupEvent event) {
 

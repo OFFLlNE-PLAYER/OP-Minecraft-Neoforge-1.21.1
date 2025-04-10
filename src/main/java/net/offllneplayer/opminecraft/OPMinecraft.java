@@ -66,7 +66,7 @@ public class OPMinecraft {
 
         RegistryParticleTypes.PARTICLETYPESREGISTRY.register(modEventBus);
 
-        RegistryClientEventBus.FLUIDSREGISTRY.register(modEventBus);
+        RegistryFluids.FLUIDSREGISTRY.register(modEventBus);
         RegistryFluidTypes.FLUIDTYPESREGISTRY.register(modEventBus);
 
         RegistryCreative.CREATIVETABSREGISTRY.register(modEventBus);
@@ -117,14 +117,5 @@ public class OPMinecraft {
         });
         actions.forEach(e -> e.getA().run());
         TupleQueue.removeAll(actions);
-    }
-
-    @EventBusSubscriber(modid = Mod_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-
-            EntityRenderers.register(RegistryEntities.THROWN_DYNAMITE_STICK.get(), ThrownDynamiteStickRenderer::new);
-        }
     }
 }

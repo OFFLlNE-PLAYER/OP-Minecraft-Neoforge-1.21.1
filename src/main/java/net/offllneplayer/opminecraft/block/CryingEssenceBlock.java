@@ -4,7 +4,6 @@ package net.offllneplayer.opminecraft.block;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.offllneplayer.opminecraft.init.RegistryClientEventBus;
 
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.material.MapColor;
@@ -17,13 +16,15 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 
+import net.offllneplayer.opminecraft.init.RegistryFluids;
 import net.offllneplayer.opminecraft.method.crying.essence.CryingEssence_OnTick_Method;
 import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceCollision_Method;
 
 
 public class CryingEssenceBlock extends LiquidBlock {
+
 	public CryingEssenceBlock() {
-		super(RegistryClientEventBus.CRYING_ESSENCE.get(), Properties.of()
+		super(RegistryFluids.CRYING_ESSENCE.get(), Properties.of()
 				.mapColor(MapColor.COLOR_PURPLE)
 				.strength(1200f).hasPostProcess((bs, br, bp) -> true)
 				.emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 10)

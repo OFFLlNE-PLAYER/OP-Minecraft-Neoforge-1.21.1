@@ -6,7 +6,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 import net.offllneplayer.opminecraft.client.ModModelLayers;
-import net.offllneplayer.opminecraft.client.SMBSuperFanModel;
+import net.offllneplayer.opminecraft.client.SMBSuperFan.SMBSuperFanModel;
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickModel;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.client.tnt.ThrownTNTStickModel;

@@ -22,7 +22,6 @@ public class RegistryEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTREGISTRY = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, OPMinecraft.Mod_ID);
 
-
     /*--------------------------------------------------------------------------------------------*/
     /*[Register Entities]*/
 
@@ -36,11 +35,5 @@ public class RegistryEntities {
             ()-> EntityType.Builder.<SMBSuperFan>of(SMBSuperFan::new, MobCategory.MISC).build("smb_super_fan"));
 
     /*--------------------------------------------------------------------------------------------*/
-    /*[Register EventBus]*/
-
-    public static void registerentities(IEventBus eventBus) {
-        ENTREGISTRY.register(eventBus);
-    }
-
 }
 
