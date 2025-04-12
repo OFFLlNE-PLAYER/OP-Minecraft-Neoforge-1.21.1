@@ -229,9 +229,11 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.FLAWLESS_TANZANITE);
                 event.accept(RegistryIBBI.PERFECT_TANZANITE);
 
+                event.accept(RegistryIBBI.CRUDE_EMERALD);
                 event.accept(RegistryIBBI.FLAWLESS_EMERALD);
                 event.accept(RegistryIBBI.PERFECT_EMERALD);
 
+                event.accept(RegistryIBBI.CRUDE_DIAMOND);
                 event.accept(RegistryIBBI.FLAWLESS_DIAMOND);
                 event.accept(RegistryIBBI.PERFECT_DIAMOND);
 

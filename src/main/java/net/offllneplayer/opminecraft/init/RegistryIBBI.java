@@ -139,65 +139,67 @@ public class RegistryIBBI {
 
 	public static final DeferredItem<Item> ANCIENT_CHUNK = ITEMSREGISTRY.registerItem("ancient_chunk", Item::new, new Item.Properties().stacksTo(64).fireResistant());
 
-	public static final DeferredItem<Item> CRUDE_ALEXANDRITE = ITEMSREGISTRY.registerItem("crude_alexandrite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> ALEXANDRITE = ITEMSREGISTRY.registerItem("alexandrite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_ALEXANDRITE = ITEMSREGISTRY.registerItem("flawless_alexandrite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_ALEXANDRITE = ITEMSREGISTRY.registerItem("crude_alexandrite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> ALEXANDRITE = ITEMSREGISTRY.registerItem("alexandrite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_ALEXANDRITE = ITEMSREGISTRY.registerItem("flawless_alexandrite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_ALEXANDRITE = ITEMSREGISTRY.registerItem("perfect_alexandrite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_ANDALUSITE = ITEMSREGISTRY.registerItem("crude_andalusite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> ANDALUSITE = ITEMSREGISTRY.registerItem("andalusite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_ANDALUSITE = ITEMSREGISTRY.registerItem("flawless_andalusite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_ANDALUSITE = ITEMSREGISTRY.registerItem("crude_andalusite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> ANDALUSITE = ITEMSREGISTRY.registerItem("andalusite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_ANDALUSITE = ITEMSREGISTRY.registerItem("flawless_andalusite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_ANDALUSITE = ITEMSREGISTRY.registerItem("perfect_andalusite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_CHRYSOBERYL = ITEMSREGISTRY.registerItem("crude_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> CHRYSOBERYL = ITEMSREGISTRY.registerItem("chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_CHRYSOBERYL = ITEMSREGISTRY.registerItem("flawless_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_CHRYSOBERYL = ITEMSREGISTRY.registerItem("crude_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> CHRYSOBERYL = ITEMSREGISTRY.registerItem("chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_CHRYSOBERYL = ITEMSREGISTRY.registerItem("flawless_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_CHRYSOBERYL = ITEMSREGISTRY.registerItem("perfect_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_CORUNDUM = ITEMSREGISTRY.registerItem("crude_corundum", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> CORUNDUM = ITEMSREGISTRY.registerItem("corundum", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_CORUNDUM = ITEMSREGISTRY.registerItem("flawless_corundum", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_CORUNDUM = ITEMSREGISTRY.registerItem("crude_corundum", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> CORUNDUM = ITEMSREGISTRY.registerItem("corundum", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_CORUNDUM = ITEMSREGISTRY.registerItem("flawless_corundum", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_CORUNDUM = ITEMSREGISTRY.registerItem("perfect_corundum", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_CYMOPHANE = ITEMSREGISTRY.registerItem("crude_cymophane", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> CYMOPHANE = ITEMSREGISTRY.registerItem("cymophane", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_CYMOPHANE = ITEMSREGISTRY.registerItem("flawless_cymophane", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_CYMOPHANE = ITEMSREGISTRY.registerItem("crude_cymophane", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> CYMOPHANE = ITEMSREGISTRY.registerItem("cymophane", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_CYMOPHANE = ITEMSREGISTRY.registerItem("flawless_cymophane", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_CYMOPHANE = ITEMSREGISTRY.registerItem("perfect_cymophane", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_PADPARADSCHA = ITEMSREGISTRY.registerItem("crude_padparadscha", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> PADPARADSCHA = ITEMSREGISTRY.registerItem("padparadscha", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_PADPARADSCHA = ITEMSREGISTRY.registerItem("flawless_padparadscha", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_PADPARADSCHA = ITEMSREGISTRY.registerItem("crude_padparadscha", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> PADPARADSCHA = ITEMSREGISTRY.registerItem("padparadscha", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_PADPARADSCHA = ITEMSREGISTRY.registerItem("flawless_padparadscha", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_PADPARADSCHA = ITEMSREGISTRY.registerItem("perfect_padparadscha", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_RUBY = ITEMSREGISTRY.registerItem("crude_ruby", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> RUBY = ITEMSREGISTRY.registerItem("ruby", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_RUBY = ITEMSREGISTRY.registerItem("flawless_ruby", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_RUBY = ITEMSREGISTRY.registerItem("crude_ruby", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> RUBY = ITEMSREGISTRY.registerItem("ruby", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_RUBY = ITEMSREGISTRY.registerItem("flawless_ruby", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_RUBY = ITEMSREGISTRY.registerItem("perfect_ruby", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_SAPPHIRE = ITEMSREGISTRY.registerItem("crude_sapphire", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> SAPPHIRE = ITEMSREGISTRY.registerItem("sapphire", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_SAPPHIRE = ITEMSREGISTRY.registerItem("flawless_sapphire", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_SAPPHIRE = ITEMSREGISTRY.registerItem("crude_sapphire", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> SAPPHIRE = ITEMSREGISTRY.registerItem("sapphire", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_SAPPHIRE = ITEMSREGISTRY.registerItem("flawless_sapphire", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_SAPPHIRE = ITEMSREGISTRY.registerItem("perfect_sapphire", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_SCAPOLITE = ITEMSREGISTRY.registerItem("crude_scapolite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> SCAPOLITE = ITEMSREGISTRY.registerItem("scapolite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_SCAPOLITE = ITEMSREGISTRY.registerItem("flawless_scapolite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_SCAPOLITE = ITEMSREGISTRY.registerItem("crude_scapolite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> SCAPOLITE = ITEMSREGISTRY.registerItem("scapolite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_SCAPOLITE = ITEMSREGISTRY.registerItem("flawless_scapolite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_SCAPOLITE = ITEMSREGISTRY.registerItem("perfect_scapolite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_STAUROLITE = ITEMSREGISTRY.registerItem("crude_staurolite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> STAUROLITE = ITEMSREGISTRY.registerItem("staurolite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_STAUROLITE = ITEMSREGISTRY.registerItem("flawless_staurolite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_STAUROLITE = ITEMSREGISTRY.registerItem("crude_staurolite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> STAUROLITE = ITEMSREGISTRY.registerItem("staurolite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_STAUROLITE = ITEMSREGISTRY.registerItem("flawless_staurolite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_STAUROLITE = ITEMSREGISTRY.registerItem("perfect_staurolite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_TANZANITE = ITEMSREGISTRY.registerItem("crude_tanzanite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(8));
-	public static final DeferredItem<Item> TANZANITE = ITEMSREGISTRY.registerItem("tanzanite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
-	public static final DeferredItem<Item> FLAWLESS_TANZANITE = ITEMSREGISTRY.registerItem("flawless_tanzanite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_TANZANITE = ITEMSREGISTRY.registerItem("crude_tanzanite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> TANZANITE = ITEMSREGISTRY.registerItem("tanzanite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_TANZANITE = ITEMSREGISTRY.registerItem("flawless_tanzanite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_TANZANITE = ITEMSREGISTRY.registerItem("perfect_tanzanite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> FLAWLESS_EMERALD = ITEMSREGISTRY.registerItem("flawless_emerald", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_EMERALD = ITEMSREGISTRY.registerItem("crude_emerald", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_EMERALD = ITEMSREGISTRY.registerItem("flawless_emerald", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_EMERALD = ITEMSREGISTRY.registerItem("perfect_emerald", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> FLAWLESS_DIAMOND = ITEMSREGISTRY.registerItem("flawless_diamond", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> CRUDE_DIAMOND = ITEMSREGISTRY.registerItem("crude_diamond", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_DIAMOND = ITEMSREGISTRY.registerItem("flawless_diamond", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_DIAMOND = ITEMSREGISTRY.registerItem("perfect_diamond", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> GEMSTONE_DUST = ITEMSREGISTRY.registerItem("gemstone_dust", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));

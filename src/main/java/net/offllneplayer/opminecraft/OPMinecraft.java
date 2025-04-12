@@ -1,37 +1,32 @@
 package net.offllneplayer.opminecraft;
 
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.util.Tuple;
 
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.util.thread.SidedThreadGroups;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.handling.IPayloadHandler;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.util.thread.SidedThreadGroups;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.IPayloadHandler;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.common.NeoForge;
 
-import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickRenderer;
 import net.offllneplayer.opminecraft.handler.DamageEventHandler;
 import net.offllneplayer.opminecraft.handler.EntitySpawnHandler;
+import net.offllneplayer.opminecraft.init.*;
+
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
-
-import net.offllneplayer.opminecraft.init.*;
 
 
 @Mod(OPMinecraft.Mod_ID)
