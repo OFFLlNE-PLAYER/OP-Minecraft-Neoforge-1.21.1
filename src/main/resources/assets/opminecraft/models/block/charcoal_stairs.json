@@ -1,0 +1,10 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "particle": "opminecraft:block/text_block_of_charcoal",
+    "bottom": "opminecraft:block/text_block_of_charcoal",
+    "top": "opminecraft:block/text_block_of_charcoal",
+    "side": "opminecraft:block/text_block_of_charcoal"
+  },
+  "render_type": "solid"
+}

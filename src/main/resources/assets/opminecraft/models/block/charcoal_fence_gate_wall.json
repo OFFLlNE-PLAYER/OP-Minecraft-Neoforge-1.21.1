@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_fence_gate_wall",
+  "textures": {
+    "particle": "opminecraft:block/text_block_of_charcoal",
+    "texture": "opminecraft:block/text_block_of_charcoal"
+  },
+  "render_type": "solid"
+}

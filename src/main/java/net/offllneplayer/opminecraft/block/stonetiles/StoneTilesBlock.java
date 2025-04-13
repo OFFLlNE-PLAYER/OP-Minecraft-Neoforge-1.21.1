@@ -19,7 +19,11 @@ public class StoneTilesBlock extends Block {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
 	public StoneTilesBlock() {
-		super(Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops());
+		super(Properties.of().mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(1.5f, 6f)
+				.requiresCorrectToolForDrops());
+
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
 	}
 

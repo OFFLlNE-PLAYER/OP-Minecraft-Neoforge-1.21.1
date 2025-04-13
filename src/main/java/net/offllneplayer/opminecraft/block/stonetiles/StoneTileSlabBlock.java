@@ -10,7 +10,11 @@ import net.minecraft.core.BlockPos;
 
 public class StoneTileSlabBlock extends SlabBlock {
 	public StoneTileSlabBlock() {
-		super(Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops());
+		super(Properties.of()
+				.mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(1.5f, 6f)
+				.requiresCorrectToolForDrops());
 	}
 
 	@Override

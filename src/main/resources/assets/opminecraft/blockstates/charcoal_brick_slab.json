@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": {"model": "opminecraft:block/charcoal_brick_slab"},
+    "type=top": {"model": "opminecraft:block/charcoal_brick_slab_top"},
+    "type=double": {"model": "opminecraft:block/charcoal_brick_slab_full"}
+  }
+}

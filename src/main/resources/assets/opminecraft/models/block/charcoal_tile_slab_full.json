@@ -1,0 +1,10 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "opminecraft:block/text_charcoal_tiles",
+    "bottom": "opminecraft:block/text_charcoal_tiles",
+    "top": "opminecraft:block/text_charcoal_tiles",
+    "side": "opminecraft:block/text_charcoal_tiles"
+  },
+  "render_type": "solid"
+}

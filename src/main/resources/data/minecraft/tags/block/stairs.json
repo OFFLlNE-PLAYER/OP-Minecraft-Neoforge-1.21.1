@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:charcoal_stairs",
+    "opminecraft:charcoal_brick_stairs",
+    "opminecraft:charcoal_tile_stairs",
     "opminecraft:crying_brick_stairs",
     "opminecraft:crying_tile_stairs",
     "opminecraft:dense_stone_stairs",

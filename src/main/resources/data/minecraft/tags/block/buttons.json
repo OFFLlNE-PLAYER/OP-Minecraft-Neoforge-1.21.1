@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:charcoal_button",
+    "opminecraft:charcoal_brick_button",
+    "opminecraft:charcoal_tile_button",
     "opminecraft:crying_brick_button",
     "opminecraft:crying_tile_button",
     "opminecraft:dense_stone_button",

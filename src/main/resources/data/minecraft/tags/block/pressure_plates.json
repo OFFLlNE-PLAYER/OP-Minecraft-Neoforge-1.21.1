@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:charcoal_pressure_plate",
+    "opminecraft:charcoal_brick_pressure_plate",
+    "opminecraft:charcoal_tile_pressure_plate",
     "opminecraft:crying_brick_pressure_plate",
     "opminecraft:crying_tile_pressure_plate",
     "opminecraft:dense_stone_pressure_plate",

@@ -11,7 +11,11 @@ import net.minecraft.world.level.material.MapColor;
 
 public class StoneTileButtonBlock extends ButtonBlock {
 	public StoneTileButtonBlock() {
-		super(BlockSetType.STONE, 20, Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops());
+		super(BlockSetType.STONE, 20, Properties.of()
+				.mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(1.5f, 6f)
+				.requiresCorrectToolForDrops());
 	}
 
 	@Override

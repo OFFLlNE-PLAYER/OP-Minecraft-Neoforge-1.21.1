@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": {"model": "opminecraft:block/charcoal_tile_pressure_plate"},
+    "powered=true": {"model": "opminecraft:block/charcoal_tile_pressure_plate_down"}
+  }
+}

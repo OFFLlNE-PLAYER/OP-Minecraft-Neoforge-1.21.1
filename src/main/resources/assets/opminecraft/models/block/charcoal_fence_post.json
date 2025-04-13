@@ -1,0 +1,8 @@
+{
+  "parent": "block/fence_post",
+  "textures": {
+    "texture": "opminecraft:block/text_block_of_charcoal",
+    "particle": "opminecraft:block/text_block_of_charcoal"
+  },
+  "render_type": "solid"
+}

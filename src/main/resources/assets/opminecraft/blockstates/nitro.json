@@ -1,19 +1,8 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "opminecraft:block/nitro"
-    },
-    "facing=east": {
-      "model": "opminecraft:block/nitro",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "opminecraft:block/nitro",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "opminecraft:block/nitro",
-      "y": 270
-    }
+    "facing=north": {"model": "opminecraft:block/nitro"},
+    "facing=south": {"model": "opminecraft:block/nitro", "y": 180},
+    "facing=east": {"model": "opminecraft:block/nitro", "y": 90},
+    "facing=west": {"model": "opminecraft:block/nitro", "y": 270}
   }
 }

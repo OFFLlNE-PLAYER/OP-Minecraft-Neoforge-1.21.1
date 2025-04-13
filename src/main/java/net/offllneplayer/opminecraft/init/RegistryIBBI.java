@@ -9,15 +9,14 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.block.*;
-import net.offllneplayer.opminecraft.block.charcoal.BlockofCharcoalBlock;
+import net.offllneplayer.opminecraft.block.charcoal.*;
 import net.offllneplayer.opminecraft.block.chiseledore.*;
 import net.offllneplayer.opminecraft.block.crash.*;
-import net.offllneplayer.opminecraft.block.cryingbricks.*;
-import net.offllneplayer.opminecraft.block.cryingtiles.*;
+import net.offllneplayer.opminecraft.block.crying.BlockofCryingIngotsBlock;
+import net.offllneplayer.opminecraft.block.crying.CryingEssenceBlock;
+import net.offllneplayer.opminecraft.block.crying.cryingbricks.*;
+import net.offllneplayer.opminecraft.block.crying.cryingtiles.*;
 import net.offllneplayer.opminecraft.block.densestones.*;
-import net.offllneplayer.opminecraft.block.densestones.densestonebricks.*;
-import net.offllneplayer.opminecraft.block.densestones.densestonetiles.*;
 import net.offllneplayer.opminecraft.block.furnaces.*;
 import net.offllneplayer.opminecraft.block.gunblade.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
@@ -42,6 +41,34 @@ public class RegistryIBBI {
 	/*[Declare Blocks]*/
 
 	public static final DeferredBlock<Block> BLOCK_OF_CHARCOAL = registerBlock("block_of_charcoal", BlockofCharcoalBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BUTTON = registerBlock("charcoal_button", CharcoalButtonBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_FENCE = registerBlock("charcoal_fence", CharcoalFenceBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_FENCE_GATE = registerBlock("charcoal_fence_gate", CharcoalFenceGateBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_PRESSURE_PLATE = registerBlock("charcoal_pressure_plate", CharcoalPressurePlateBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_SLAB = registerBlock("charcoal_slab", CharcoalSlabBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_STAIRS = registerBlock("charcoal_stairs", CharcoalStairsBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TRAPDOOR = registerBlock("charcoal_trapdoor", CharcoalTrapdoorBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_WALL = registerBlock("charcoal_wall",  CharcoalWallBlock::new);
+
+	public static final DeferredBlock<Block> CHARCOAL_BRICKS = registerBlock("charcoal_bricks", BlockofCharcoalBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_BUTTON = registerBlock("charcoal_brick_button", CharcoalButtonBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_FENCE = registerBlock("charcoal_brick_fence", CharcoalFenceBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_FENCE_GATE = registerBlock("charcoal_brick_fence_gate", CharcoalFenceGateBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_PRESSURE_PLATE = registerBlock("charcoal_brick_pressure_plate", CharcoalPressurePlateBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_SLAB = registerBlock("charcoal_brick_slab", CharcoalSlabBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_STAIRS = registerBlock("charcoal_brick_stairs", CharcoalStairsBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_TRAPDOOR = registerBlock("charcoal_brick_trapdoor", CharcoalTrapdoorBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_BRICK_WALL = registerBlock("charcoal_brick_wall",  CharcoalWallBlock::new);
+
+	public static final DeferredBlock<Block> CHARCOAL_TILES = registerBlock("charcoal_tiles", BlockofCharcoalBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_BUTTON = registerBlock("charcoal_tile_button", CharcoalButtonBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_FENCE = registerBlock("charcoal_tile_fence", CharcoalFenceBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_FENCE_GATE = registerBlock("charcoal_tile_fence_gate", CharcoalFenceGateBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_PRESSURE_PLATE = registerBlock("charcoal_tile_pressure_plate", CharcoalPressurePlateBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_SLAB = registerBlock("charcoal_tile_slab", CharcoalSlabBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_STAIRS = registerBlock("charcoal_tile_stairs", CharcoalStairsBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_TRAPDOOR = registerBlock("charcoal_tile_trapdoor", CharcoalTrapdoorBlock::new);
+	public static final DeferredBlock<Block> CHARCOAL_TILE_WALL = registerBlock("charcoal_tile_wall",  CharcoalWallBlock::new);
 
 	public static final DeferredBlock<Block> BLOCK_OF_CRYING_INGOTS = registerBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
 	public static final DeferredBlock<Block> CRYING_ESSENCE = registerBlock("crying_essence", CryingEssenceBlock::new);
@@ -80,25 +107,25 @@ public class RegistryIBBI {
 	public static final DeferredBlock<Block> DENSE_STONE_TRAPDOOR = registerBlock("dense_stone_trapdoor", DenseStoneTrapdoorBlock::new);
 	public static final DeferredBlock<Block> DENSE_STONE_WALL = registerBlock("dense_stone_wall",  DenseStoneWallBlock::new);
 
-	public static final DeferredBlock<Block> DENSE_STONE_BRICKS = registerBlock("dense_stone_bricks", DenseStoneBricksBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_BUTTON = registerBlock("dense_stone_brick_button", DenseStoneBrickButtonBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_FENCE = registerBlock("dense_stone_brick_fence", DenseStoneBrickFenceBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_FENCE_GATE = registerBlock("dense_stone_brick_fence_gate", DenseStoneBrickFenceGateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_PRESSURE_PLATE = registerBlock("dense_stone_brick_pressure_plate", DenseStoneBrickPressurePlateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_SLAB = registerBlock("dense_stone_brick_slab", DenseStoneBrickSlabBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_STAIRS = registerBlock("dense_stone_brick_stairs", DenseStoneBrickStairsBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_TRAPDOOR = registerBlock("dense_stone_brick_trapdoor", DenseStoneBrickTrapdoorBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_WALL = registerBlock("dense_stone_brick_wall", DenseStoneBrickWallBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICKS = registerBlock("dense_stone_bricks", DenseStoneBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_BUTTON = registerBlock("dense_stone_brick_button", DenseStoneButtonBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_FENCE = registerBlock("dense_stone_brick_fence", DenseStoneFenceBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_FENCE_GATE = registerBlock("dense_stone_brick_fence_gate", DenseStoneFenceGateBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_PRESSURE_PLATE = registerBlock("dense_stone_brick_pressure_plate", DenseStonePressurePlateBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_SLAB = registerBlock("dense_stone_brick_slab", DenseStoneSlabBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_STAIRS = registerBlock("dense_stone_brick_stairs", DenseStoneStairsBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_TRAPDOOR = registerBlock("dense_stone_brick_trapdoor", DenseStoneTrapdoorBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_BRICK_WALL = registerBlock("dense_stone_brick_wall", DenseStoneWallBlock::new);
 
-	public static final DeferredBlock<Block> DENSE_STONE_TILES = registerBlock("dense_stone_tiles", DenseStoneTilesBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_BUTTON = registerBlock("dense_stone_tile_button", DenseStoneTileButtonBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_FENCE = registerBlock("dense_stone_tile_fence", DenseStoneTileFenceBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_FENCE_GATE = registerBlock("dense_stone_tile_fence_gate", DenseStoneTileFenceGateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_PRESSURE_PLATE = registerBlock("dense_stone_tile_pressure_plate", DenseStoneTilePressurePlateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_SLAB = registerBlock("dense_stone_tile_slab", DenseStoneTileSlabBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_STAIRS = registerBlock("dense_stone_tile_stairs", DenseStoneTileStairsBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_TRAPDOOR = registerBlock("dense_stone_tile_trapdoor", DenseStoneTileTrapdoorBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_WALL = registerBlock("dense_stone_tile_wall", DenseStoneTileWallBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILES = registerBlock("dense_stone_tiles", DenseStoneBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_BUTTON = registerBlock("dense_stone_tile_button", DenseStoneButtonBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_FENCE = registerBlock("dense_stone_tile_fence", DenseStoneFenceBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_FENCE_GATE = registerBlock("dense_stone_tile_fence_gate", DenseStoneFenceGateBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_PRESSURE_PLATE = registerBlock("dense_stone_tile_pressure_plate", DenseStonePressurePlateBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_SLAB = registerBlock("dense_stone_tile_slab", DenseStoneSlabBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_STAIRS = registerBlock("dense_stone_tile_stairs", DenseStoneStairsBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_TRAPDOOR = registerBlock("dense_stone_tile_trapdoor", DenseStoneTrapdoorBlock::new);
+	public static final DeferredBlock<Block> DENSE_STONE_TILE_WALL = registerBlock("dense_stone_tile_wall", DenseStoneWallBlock::new);
 
 	public static final DeferredBlock<Block> COPPER_FURNACE = registerBlock("copper_furnace", CopperFurnaceBlock::new);
 	public static final DeferredBlock<Block> DIAMOND_FURNACE = registerBlock("diamond_furnace", DiamondFurnaceBlock::new);

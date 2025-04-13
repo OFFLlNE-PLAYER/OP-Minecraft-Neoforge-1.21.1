@@ -8,11 +8,10 @@ import net.minecraft.world.level.block.Blocks;
 
 public class StoneTileStairsBlock extends StairBlock {
 	public StoneTileStairsBlock() {
-		super(Blocks.AIR.defaultBlockState(), Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops());
-	}
-
-	@Override
-	public float getExplosionResistance() {
-		return 6f;
+		super(Blocks.AIR.defaultBlockState(), Properties.of()
+				.mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(1.5f, 6f)
+				.requiresCorrectToolForDrops());
 	}
 }

@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:charcoal_fence",
+    "opminecraft:charcoal_brick_fence",
+    "opminecraft:charcoal_tile_fence",
     "opminecraft:crying_brick_fence",
     "opminecraft:crying_tile_fence",
     "opminecraft:dense_stone_fence",

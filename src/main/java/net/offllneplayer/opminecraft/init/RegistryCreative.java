@@ -21,6 +21,34 @@ public class RegistryCreative {
             if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 
                 event.accept(RegistryIBBI.BLOCK_OF_CHARCOAL);
+                event.accept(RegistryIBBI.CHARCOAL_BUTTON);
+                event.accept(RegistryIBBI.CHARCOAL_FENCE);
+                event.accept(RegistryIBBI.CHARCOAL_FENCE_GATE);
+                event.accept(RegistryIBBI.CHARCOAL_PRESSURE_PLATE);
+                event.accept(RegistryIBBI.CHARCOAL_SLAB);
+                event.accept(RegistryIBBI.CHARCOAL_STAIRS);
+                event.accept(RegistryIBBI.CHARCOAL_TRAPDOOR);
+                event.accept(RegistryIBBI.CHARCOAL_WALL);
+
+                event.accept(RegistryIBBI.CHARCOAL_BRICKS);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_BUTTON);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_FENCE);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_FENCE_GATE);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_PRESSURE_PLATE);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_SLAB);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_STAIRS);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_TRAPDOOR);
+                event.accept(RegistryIBBI.CHARCOAL_BRICK_WALL);
+
+                event.accept(RegistryIBBI.CHARCOAL_TILES);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_BUTTON);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_FENCE);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_FENCE_GATE);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_PRESSURE_PLATE);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_SLAB);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_STAIRS);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_TRAPDOOR);
+                event.accept(RegistryIBBI.CHARCOAL_TILE_WALL);
 
                 event.accept(RegistryIBBI.CHISELED_DIAMOND);
                 event.accept(RegistryIBBI.CHISELED_GOLD);

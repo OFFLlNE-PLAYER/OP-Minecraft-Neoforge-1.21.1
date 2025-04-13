@@ -11,7 +11,12 @@ import net.minecraft.world.level.material.MapColor;
 
 public class StoneTileFenceGateBlock extends FenceGateBlock {
 	public StoneTileFenceGateBlock() {
-		super(WoodType.OAK, Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops().forceSolidOn());
+		super(WoodType.OAK, Properties.of()
+				.mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(1.5f, 6f)
+				.requiresCorrectToolForDrops()
+				.forceSolidOn());
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import net.minecraft.world.level.material.MapColor;
 
 public class StoneTilePressurePlateBlock extends PressurePlateBlock {
 	public StoneTilePressurePlateBlock() {
-		super(BlockSetType.IRON, Properties.of()
+		super(BlockSetType.STONE, Properties.of()
 				.mapColor(MapColor.STONE)
 				.sound(SoundType.STONE)
 				.strength(1.5f, 6f).requiresCorrectToolForDrops().forceSolidOn());

@@ -23,7 +23,7 @@ public class BlockofCharcoalBlock extends Block {
 		super(BlockBehaviour.Properties.of()
 				.ignitedByLava()
 				.mapColor(MapColor.COLOR_BLACK)
-				.sound(SoundType.STONE).strength(5f, 6f)
+				.sound(SoundType.STONE)
 				.strength(3f, 8f)
 				.requiresCorrectToolForDrops());
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
