@@ -1,7 +1,6 @@
 package net.offllneplayer.opminecraft.entity;
 
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -21,13 +20,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 import java.util.List;
-
 
 public class SMBSuperFan extends AbstractArrow {
 
@@ -216,6 +215,7 @@ public class SMBSuperFan extends AbstractArrow {
                         );
 
                         entity.hurt(fanDamage, 2.0F);
+
                         float vol = Mth.randomBetween(this.random, 0.8F, 1.05F);
                         float tone = Mth.randomBetween(this.random, 0.8F, 1.1F);
                         this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);

@@ -19,6 +19,10 @@ public class TempestEnchantmentEffect implements EnchantmentEntityEffect {
 
         int boost_chance= 0;
         int base_chance = Mth.nextInt(RandomSource.create(), 1, 80);
+
+        //prevent crashing if someone attempts to go over 10 lmao
+        if (enchantmentLevel > 10) enchantmentLevel = 10;
+
         for (int i = 0; i < Math.min(enchantmentLevel, 10); i++) {
             boost_chance= (boost_chance + Mth.nextInt(RandomSource.create(), 1, 10));
         }

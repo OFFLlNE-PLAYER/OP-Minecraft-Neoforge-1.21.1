@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
-import net.offllneplayer.opminecraft.method.crash.crates.akuaku.AkuAkuCheckSilkTouch_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.akuaku.AkuAku_SilkTouch_Method;
 
 public class AkuAkuCrateBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -98,7 +98,7 @@ public class AkuAkuCrateBlock extends Block {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && AkuAkuCheckSilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && AkuAku_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override

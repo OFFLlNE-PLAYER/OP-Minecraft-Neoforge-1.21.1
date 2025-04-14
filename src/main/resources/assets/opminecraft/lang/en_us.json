@@ -350,12 +350,14 @@
 
   "/*-------*[enchantment]*": "",
 
-  "death.attack.crying_essence": "§d%1$s blew up crying§r",
-  "death.attack.crying_essence.player": "§d%1$s blew up crying by %2$s§r",
-  "death.attack.crying_essence.item": "§d%1$s was blown up by crying by %2$s using %3$s§r",
+  "death.attack.crying_essence": "%1$s §dlearned about sadness§r",
+  "death.attack.crying_essence.player": "%1$s §dblew up crying by§r %2$s",
+  "death.attack.crying_essence.item": "%1$s §dblew up in sadness by§r %2$s's %3$s",
 
   "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
-  "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by %2$s's SMB Super Fan§r",
+  "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by§r %2$s's §cSMB Super Fan§r",
+
+  "death.attack.wumpa_fruit": "%1$s §2g§aa§6g§6g§2e§ad§r on an §6old fruit§r",
 
   "/*-------*[death]*": ""
 }

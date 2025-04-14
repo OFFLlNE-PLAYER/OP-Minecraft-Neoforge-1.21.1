@@ -28,7 +28,7 @@ public class AkuAkuActivate_Method {
 			if (_entity.level() instanceof ServerLevel _level) {
 
 				_entity.setInvulnerable(true);
-				_entity.addEffect(new MobEffectInstance(RegistryMobEffects.AKU_AKU, 140, 1, false, true));
+				_entity.addEffect(new MobEffectInstance(RegistryMobEffects.AKU_AKU, 400, 1, false, true));
 
 				_level.playSound(null, BlockPos.containing(_entity.getX(), _entity.getY(), _entity.getZ()),
 						Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:aku_aku"))), SoundSource.MASTER, 0.8f, 1);

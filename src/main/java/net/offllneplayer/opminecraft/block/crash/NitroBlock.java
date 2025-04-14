@@ -37,10 +37,10 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
-import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROCNitroBoomProcedure;
-import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROCNitroOnTickProcedure;
-import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROCNitroPlaceSoundProcedure;
-import net.offllneplayer.opminecraft.method.crash.crates.nitro.PROC_Nitro_Check_Silk_TouchProcedure;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.NitroBoom_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.Nitro_OnTick_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.NitroIdleSound_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.Nitro_SilkTouch_Method;
 
 import java.util.List;
 
@@ -121,27 +121,27 @@ public class NitroBlock extends FallingBlock implements EntityBlock {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && PROC_Nitro_Check_Silk_TouchProcedure.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && Nitro_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
 		world.scheduleTick(pos, this, 20);
-		PROCNitroPlaceSoundProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		NitroIdleSound_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		PROCNitroOnTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		Nitro_OnTick_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		world.scheduleTick(pos, this, 20);
 	}
 
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
-		PROCNitroBoomProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		NitroBoom_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

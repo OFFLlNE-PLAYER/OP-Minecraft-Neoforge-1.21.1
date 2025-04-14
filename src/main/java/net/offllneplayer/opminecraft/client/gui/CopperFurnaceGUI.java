@@ -16,7 +16,7 @@ import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesExpBar_SuperMet
 import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesFuelBar_SuperMethod;
 import net.offllneplayer.opminecraft.method.furnaces.gui.FurnacesProgressBar_SuperMethod;
 import net.offllneplayer.opminecraft.world.inventory.CopperFurnaceInv;
-import net.offllneplayer.opminecraft.handler.GUI_Button.*;
+import net.offllneplayer.opminecraft.method._handler.GUI_Button.*;
 
 import java.util.HashMap;
 

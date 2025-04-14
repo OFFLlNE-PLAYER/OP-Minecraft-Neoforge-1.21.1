@@ -41,7 +41,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
-import net.offllneplayer.opminecraft.method.crash.crates.tnt.*;
+import net.offllneplayer.opminecraft.method.crash.crates.crashtnt.*;
 
 import java.util.List;
 
@@ -115,7 +115,7 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && PROCTNTCheckSilkTouchProcedure.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && CrashTNT_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, fromPos, moving);
 		if (world.getBestNeighborSignal(pos) > 0) {
-			PROCPrimeTNTProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+			CrashTNTPrime_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		}
 	}
 
@@ -138,14 +138,14 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		PROCTNTOnTickProcedure.execute(world, x, y, z);
+		CrashTNT_OnTick_Method.execute(world, x, y, z);
 		world.scheduleTick(pos, this, 20);
 	}
 
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
-		PROCTNTExplosionProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		CrashTNTBoom_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override
@@ -156,7 +156,7 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 
 	@Override
 	public void onProjectileHit(Level world, BlockState blockstate, BlockHitResult hit, Projectile entity) {
-		PROCPrimeTNTProcedure.execute(world, hit.getBlockPos().getX(), hit.getBlockPos().getY(), hit.getBlockPos().getZ());
+		CrashTNTPrime_Method.execute(world, hit.getBlockPos().getX(), hit.getBlockPos().getY(), hit.getBlockPos().getZ());
 	}
 
 	@Override
@@ -169,7 +169,7 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		PROCPrimeTNTProcedure.execute(world, x, y, z);
+		CrashTNTPrime_Method.execute(world, x, y, z);
 		return InteractionResult.SUCCESS;
 	}
 

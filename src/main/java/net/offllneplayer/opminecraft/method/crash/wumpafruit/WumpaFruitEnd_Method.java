@@ -24,8 +24,9 @@ public class WumpaFruitEnd_Method {
 			_entity.addEffect(new MobEffectInstance(MobEffects.SATURATION, durationroll, 1));
 	}
 		if ((world instanceof Level _level) && (!_level.isClientSide())) {
-			float tone = Mth.nextFloat(RandomSource.create(), 0.7f, 1.05f);
-			_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp"))), SoundSource.MASTER, (float) 0.6, tone);
+			float vol = Mth.nextFloat(RandomSource.create(), 0.69F, 0.9F);
+			float tone = Mth.nextFloat(RandomSource.create(), 0.69F, 1.0420F);
+			_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp"))), SoundSource.MASTER, vol, tone);
 		}
 	}
 }

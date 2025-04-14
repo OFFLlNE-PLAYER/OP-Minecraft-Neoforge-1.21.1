@@ -1,6 +1,10 @@
 
 package net.offllneplayer.opminecraft.block.crash;
 
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -9,21 +13,27 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.crash.wumpaplant.PROC_Flowering_Pitcher_Plant_OnTickProcedure;
-import net.offllneplayer.opminecraft.method.crash.wumpaplant.PROCWumpaPlantPlacementProcedure;
+import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateBreak_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrate_SilkTouch_Method;
+import net.offllneplayer.opminecraft.method.crash.wumpaplant.FloweringPitcherPlant_OnTick_Method;
+import net.offllneplayer.opminecraft.method.crash.wumpaplant.WumpaPlantPlacement_Method;
 
 public class FloweringPitcherPlantBlock extends Block {
 	public FloweringPitcherPlantBlock() {
-		super(Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.SMALL_DRIPLEAF).strength(1f, 10f).noCollission().noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false));
+		super(Properties.of()
+				.mapColor(MapColor.TERRACOTTA_ORANGE)
+				.sound(SoundType.SMALL_DRIPLEAF)
+				.strength(1, 1)
+				.noCollission()
+				.noOcclusion()
+				.randomTicks()
+				.isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
@@ -47,12 +57,17 @@ public class FloweringPitcherPlantBlock extends Block {
 	}
 
 	@Override
+	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
+		return PathType.WALKABLE;
+	}
+
+	@Override
 	public boolean canSurvive(BlockState blockstate, LevelReader worldIn, BlockPos pos) {
 		if (worldIn instanceof LevelAccessor world) {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return PROCWumpaPlantPlacementProcedure.execute(world, x, y, z);
+			return WumpaPlantPlacement_Method.execute(world, x, y, z);
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}
@@ -68,8 +83,13 @@ public class FloweringPitcherPlantBlock extends Block {
 	}
 
 	@Override
+	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
+		return true;
+	}
+
+	@Override
 	public void randomTick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.randomTick(blockstate, world, pos, random);
-		PROC_Flowering_Pitcher_Plant_OnTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		FloweringPitcherPlant_OnTick_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 }

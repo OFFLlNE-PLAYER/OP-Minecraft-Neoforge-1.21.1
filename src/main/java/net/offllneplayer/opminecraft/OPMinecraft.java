@@ -17,8 +17,8 @@ import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.common.NeoForge;
 
-import net.offllneplayer.opminecraft.handler.DamageEventHandler;
-import net.offllneplayer.opminecraft.handler.EntitySpawnHandler;
+import net.offllneplayer.opminecraft.method._handler.DamageEventHandler;
+import net.offllneplayer.opminecraft.method._handler.EntitySpawnHandler;
 import net.offllneplayer.opminecraft.init.*;
 
 import org.slf4j.Logger;
@@ -84,7 +84,7 @@ public class OPMinecraft {
 
     public static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id, StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
         if (networkingRegistered)
-            throw new IllegalStateException("Cannot register new handler messages after networking has been registered");
+            throw new IllegalStateException("Cannot register new _handler messages after networking has been registered");
         MESSAGES.put(id, new NetworkMessage<>(reader, handler));
     }
 

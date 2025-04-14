@@ -31,14 +31,15 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
-import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateCheckSilkTouch_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrate_SilkTouch_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateBreak_Method;
 
 public class CrashCrateBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
 	public CrashCrateBlock() {
-		super(Properties.of().mapColor(MapColor.WOOD)
+		super(Properties.of()
+				.mapColor(MapColor.WOOD)
 				.sound(new DeferredSoundType(1.0f, 1.0f,
 						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_crate_break")),
 						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.bamboo.step")),
@@ -98,12 +99,12 @@ public class CrashCrateBlock extends Block {
 
 	@Override
 	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return PathType.BLOCKED;
+		return PathType.WALKABLE;
 	}
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && CrashCrateCheckSilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && CrashCrate_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
