@@ -180,13 +180,16 @@
 
   "/*-------*[Blocks]*": "",
 
+
   "block.minecraft.pitcher_plant": "§bPitcher Plant§r",
 
   "block.minecraft.netherite_block": "§7Block of Netherite§r",
 
   "/*-------*[Minecraft_Blocks]*": "",
 
+
   "item.opminecraft.test_item": "§4TeSt ItEm§r",
+  "item.opminecraft.test_item.description_0": "..What's the last thing OP worked on..?",
 
   "item.opminecraft.ancient_chunk": "Ancient Chunk",
 
@@ -306,6 +309,7 @@
 
   "/*-------*[Items]*": "",
 
+
   "item.minecraft.netherite_scrap": "Ancient Scrap",
 
   "item.minecraft.blaze_rod": "§eBlaze Rod§r",
@@ -333,10 +337,12 @@
 
   "/*-------*[Minecraft_Items]*": "",
 
+
   "trim_pattern.opminecraft.kaupenjoe": "Kaupenjoe Armor Trim",
   "trim_material.opminecraft.crying": "Crying Material",
 
   "/*-------*[Trims]*": "",
+
 
   "effect.opminecraft.totem_of_life": "Totem Of Life",
   "effect.opminecraft.aku_aku": "Aku Aku watches over you",
@@ -348,16 +354,17 @@
 
   "enchantment.opminecraft.tempest": "Tempest",
 
-  "/*-------*[enchantment]*": "",
+  "/*-------*[enchantments]*": "",
 
-  "death.attack.crying_essence": "%1$s §dlearned about sadness§r",
+
+  "death.attack.crying_essence": "%1$s §dblew up crying§r",
   "death.attack.crying_essence.player": "%1$s §dblew up crying by§r %2$s",
-  "death.attack.crying_essence.item": "%1$s §dblew up in sadness by§r %2$s's %3$s",
+  "death.attack.crying_essence.item": "%1$s §dblew up crying by§r %2$s's %3$s",
 
   "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
   "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by§r %2$s's §cSMB Super Fan§r",
 
   "death.attack.wumpa_fruit": "%1$s §2g§aa§6g§6g§2e§ad§r on an §6old fruit§r",
 
-  "/*-------*[death]*": ""
+  "/*-------*[deaths]*": ""
 }
