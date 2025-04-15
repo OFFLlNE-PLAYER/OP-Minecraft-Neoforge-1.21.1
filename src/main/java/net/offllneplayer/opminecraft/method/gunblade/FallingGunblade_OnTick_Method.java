@@ -1,5 +1,7 @@
 package net.offllneplayer.opminecraft.method.gunblade;
 
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -9,21 +11,18 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-import java.util.Objects;
-
-public class PROCFallingGunbladeOnTickProcedure {
+public class FallingGunblade_OnTick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world.getBlockState(BlockPos.containing(x, y - 1, z)).canOcclude()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:gunblade_in_dirt"))), SoundSource.MASTER, (float) 0.6, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.8F, Mth.nextFloat(RandomSource.create(), 0.5420F, 0.7420F));
 				}
 			}
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);

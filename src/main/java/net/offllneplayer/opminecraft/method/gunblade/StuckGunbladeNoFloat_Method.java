@@ -1,6 +1,8 @@
 
 package net.offllneplayer.opminecraft.method.gunblade;
 
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -12,18 +14,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-import java.util.Objects;
 
-public class PROCStuckGunbladeDoesntFloatProcedure {
+public class StuckGunbladeNoFloat_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		boolean break_block = false;
-		String which_hand = "";
 		Direction direction_of_sword = Direction.NORTH;
 		double level_of_bane = 0;
 		double level_of_smite = 0;
@@ -164,7 +164,7 @@ public class PROCStuckGunbladeDoesntFloatProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:gunblade_in_dirt"))), SoundSource.MASTER, (float) 0.4, (float) 0.7);
+						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.8F, Mth.nextFloat(RandomSource.create(), 0.5420F, 0.7420F));
 					}
 				}
 			} else {

@@ -9,7 +9,11 @@ import net.offllneplayer.opminecraft.OPMinecraft;
 
 public class RegistrySounds {
 
-        public static final DeferredRegister<SoundEvent> SOUNDSREGISTRY = DeferredRegister.create(Registries.SOUND_EVENT, OPMinecraft.Mod_ID);
+/*-----------------------------------------------------------------------------------------------------------------------*/
+        /*[Declare Registry]*/
+        public static final DeferredRegister<SoundEvent> SOUNDSREGISTRY =
+                DeferredRegister.create(Registries.SOUND_EVENT, OPMinecraft.Mod_ID);
+/*-----------------------------------------------------------------------------------------------------------------------*/
 
         public static final DeferredHolder<SoundEvent, SoundEvent> SILENT_SOUND = SOUNDSREGISTRY.register("silent_sound", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "silent_sound")));
 

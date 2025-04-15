@@ -37,9 +37,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.gunblade.PROC_Stuck_Gunblade_OnRightClickProcedure;
-import net.offllneplayer.opminecraft.method.gunblade.PROCStuckGunbladeDoesntFloatProcedure;
-import net.offllneplayer.opminecraft.method.gunblade.PROCStuckGunbladeCheckSilkTouchProcedure;
+import net.offllneplayer.opminecraft.method.gunblade.Stuck_Gunblade_OnClick_Method;
+import net.offllneplayer.opminecraft.method.gunblade.StuckGunbladeNoFloat_Method;
+import net.offllneplayer.opminecraft.method.gunblade.StuckGunblade_SilkTouch_Method;
 
 
 public class StuckGunbladeBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
@@ -127,13 +127,13 @@ public class StuckGunbladeBlock extends Block implements SimpleWaterloggedBlock,
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && PROCStuckGunbladeCheckSilkTouchProcedure.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && StuckGunblade_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, fromPos, moving);
-		PROCStuckGunbladeDoesntFloatProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		StuckGunbladeNoFloat_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override
@@ -142,7 +142,7 @@ public class StuckGunbladeBlock extends Block implements SimpleWaterloggedBlock,
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		PROC_Stuck_Gunblade_OnRightClickProcedure.execute(world, x, y, z, entity);
+		Stuck_Gunblade_OnClick_Method.execute(world, x, y, z, entity);
 		return InteractionResult.SUCCESS;
 	}
 

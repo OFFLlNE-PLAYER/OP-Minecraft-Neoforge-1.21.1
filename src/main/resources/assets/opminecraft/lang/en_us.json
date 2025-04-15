@@ -361,6 +361,10 @@
   "death.attack.crying_essence.player": "%1$s §dblew up crying by§r %2$s",
   "death.attack.crying_essence.item": "%1$s §dblew up crying by§r %2$s's %3$s",
 
+  "death.attack.gunblade": "%1$s §7saw their final fantasy§r",
+  "death.attack.gunblade.player": "%1$s §7saw their final fantasy thanks to§r %2$s",
+  "death.attack.gunblade.item": "%1$s §7saw their final fantasy by§r %2$s's %3$s",
+
   "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
   "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by§r %2$s's §cSMB Super Fan§r",
 

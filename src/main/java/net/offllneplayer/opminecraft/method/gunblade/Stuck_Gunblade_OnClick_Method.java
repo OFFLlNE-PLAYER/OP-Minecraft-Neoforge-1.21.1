@@ -1,30 +1,27 @@
 package net.offllneplayer.opminecraft.method.gunblade;
 
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-import java.util.Objects;
-
-public class PROC_Stuck_Gunblade_OnRightClickProcedure {
+public class Stuck_Gunblade_OnClick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
@@ -42,8 +39,7 @@ public class PROC_Stuck_Gunblade_OnRightClickProcedure {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:gunblade_slash"))), SoundSource.MASTER, (float) 0.3,
-							(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.2));
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_SLASH.get(), SoundSource.MASTER, 0.420F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.1420F));
 				}
 			}
 			if (entity instanceof LivingEntity _entity) {
@@ -216,8 +212,7 @@ public class PROC_Stuck_Gunblade_OnRightClickProcedure {
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:gunblade_slash"))), SoundSource.MASTER, (float) 0.3,
-							(float) Mth.nextDouble(RandomSource.create(), 0.9, 1.2));
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_SLASH.get(), SoundSource.MASTER, 0.420F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.1420F));
 				}
 			}
 			if (entity instanceof LivingEntity _entity) {

@@ -28,7 +28,6 @@ public class RegistryIBBI {
 
 /*--------------------------------------------------------------------------------------------*/
 	/*[Declare Registries]*/
-
 	public static final DeferredRegister.Items ITEMSREGISTRY = DeferredRegister.createItems(OPMinecraft.Mod_ID);
 
 	public static final DeferredRegister.Blocks BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
@@ -36,8 +35,7 @@ public class RegistryIBBI {
 	public static final DeferredRegister.Blocks FR_EPIC_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 	public static final DeferredRegister.Blocks UNCOMMON_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 	public static final DeferredRegister.Blocks RARE_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
-
-/*--------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Declare Blocks]*/
 
 	public static final DeferredBlock<Block> BLOCK_OF_CHARCOAL = registerBlock("block_of_charcoal", BlockofCharcoalBlock::new);
@@ -159,7 +157,7 @@ public class RegistryIBBI {
 	public static final DeferredBlock<Block> FALLING_GUNBLADE = registerRareBlock("falling_gunblade", FallingGunbladeBlock::new);
 	public static final DeferredBlock<Block> STUCK_GUNBLADE = registerRareBlock("stuck_gunblade", StuckGunbladeBlock::new);
 
-/*--------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Items]*/
 
 	public static final DeferredItem<Item> TEST_ITEM = ITEMSREGISTRY.registerItem("test_item", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
@@ -271,7 +269,7 @@ public class RegistryIBBI {
 
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 
-/*--------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Blocks]*/
 
 	private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -299,7 +297,7 @@ public class RegistryIBBI {
 		registerRareBlockItem(name, toReturn); return toReturn;
 	}
 
-/*--------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register BlockItems]*/
 
 	private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {

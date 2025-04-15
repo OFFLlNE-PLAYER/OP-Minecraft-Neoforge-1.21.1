@@ -11,14 +11,14 @@ import net.minecraft.core.registries.Registries;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
-public class PROCStuckGunbladeCheckSilkTouchProcedure {
+public class StuckGunblade_SilkTouch_Method {
 	public static boolean execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
-			return false;
-		double Fortune_Level = 0;
+
+		if (entity == null) return false;
 		boolean Silk_Touch_It = false;
-		Silk_Touch_It = false;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getEnchantmentLevel(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH)) != 0) {
+
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)
+				.getEnchantmentLevel(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH)) != 0) {
 			Silk_Touch_It = true;
 		} else {
 			if (world instanceof ServerLevel _level) {

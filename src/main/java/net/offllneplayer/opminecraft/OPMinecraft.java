@@ -68,6 +68,8 @@ public class OPMinecraft {
 
         RegistryEnchantmentEffects.register(modEventBus);
 
+        RegistryDataComponents.DATA_COMPONENTS.register(modEventBus);
+
         NeoForge.EVENT_BUS.register(this);
 
         NeoForge.EVENT_BUS.register(new DamageEventHandler());

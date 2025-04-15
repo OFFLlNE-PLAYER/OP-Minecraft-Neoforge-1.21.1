@@ -35,10 +35,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.gunblade.PROC_Stuck_Gunblade_OnRightClickProcedure;
-import net.offllneplayer.opminecraft.method.gunblade.PROCStuckGunbladeCheckSilkTouchProcedure;
-import net.offllneplayer.opminecraft.method.gunblade.PROCFallingGunbladeOnTickProcedure;
-import net.offllneplayer.opminecraft.method.gunblade.PROCFallingGunbladeCollisionProcedure;
+import net.offllneplayer.opminecraft.method.gunblade.FallingGunblade_OnTick_Method;
+import net.offllneplayer.opminecraft.method.gunblade.Stuck_Gunblade_OnClick_Method;
+import net.offllneplayer.opminecraft.method.gunblade.StuckGunblade_SilkTouch_Method;
+import net.offllneplayer.opminecraft.method.gunblade.FallingGunbladeCollision_Method;
 
 
 import com.mojang.serialization.MapCodec;
@@ -115,7 +115,7 @@ public class FallingGunbladeBlock extends FallingBlock implements EntityBlock {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && PROCStuckGunbladeCheckSilkTouchProcedure.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && StuckGunblade_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
@@ -127,14 +127,14 @@ public class FallingGunbladeBlock extends FallingBlock implements EntityBlock {
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		PROCFallingGunbladeOnTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		FallingGunblade_OnTick_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		world.scheduleTick(pos, this, 2);
 	}
 
 	@Override
 	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, world, pos, entity);
-		PROCFallingGunbladeCollisionProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		FallingGunbladeCollision_Method.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class FallingGunbladeBlock extends FallingBlock implements EntityBlock {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		PROC_Stuck_Gunblade_OnRightClickProcedure.execute(world, x, y, z, entity);
+		Stuck_Gunblade_OnClick_Method.execute(world, x, y, z, entity);
 		return InteractionResult.SUCCESS;
 	}
 

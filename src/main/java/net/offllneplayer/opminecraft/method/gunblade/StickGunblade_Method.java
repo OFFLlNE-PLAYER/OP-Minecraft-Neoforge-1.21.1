@@ -27,9 +27,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-public class PROCStickGunbladeProcedure {
+public class StickGunblade_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
@@ -3017,8 +3017,7 @@ public class PROCStickGunbladeProcedure {
 			if (sword_is_getting_stuck_logic) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:gunblade_in_dirt")), SoundSource.MASTER, (float) 0.3,
-								(float) Mth.nextDouble(RandomSource.create(), 0.8, 1.1));
+						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.3F, Mth.nextFloat(RandomSource.create(), 0.8F, 1.1F));
 					}
 				}
 				if ((which_hand).equals("main")) {

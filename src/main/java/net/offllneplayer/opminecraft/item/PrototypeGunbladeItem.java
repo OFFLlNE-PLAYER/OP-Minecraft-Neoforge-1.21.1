@@ -16,7 +16,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.network.chat.Component;
 
-import net.offllneplayer.opminecraft.method.gunblade.PROCPrototypeGunbladeProcedure;
+import net.offllneplayer.opminecraft.method.gunblade.PrototypeGunbladeShot_Method;
 
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class PrototypeGunbladeItem extends SwordItem {
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		PROCPrototypeGunbladeProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity, sourceentity);
+		PrototypeGunbladeShot_Method.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity, sourceentity);
 		return retval;
 	}
 
