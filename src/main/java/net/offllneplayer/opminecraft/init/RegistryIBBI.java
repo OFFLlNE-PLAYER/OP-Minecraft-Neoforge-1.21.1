@@ -35,9 +35,9 @@ public class RegistryIBBI {
 	public static final DeferredRegister.Blocks FR_EPIC_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 	public static final DeferredRegister.Blocks UNCOMMON_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
 	public static final DeferredRegister.Blocks RARE_BLOCKSREGISTRY = DeferredRegister.createBlocks(OPMinecraft.Mod_ID);
+
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Declare Blocks]*/
-
 	public static final DeferredBlock<Block> BLOCK_OF_CHARCOAL = registerBlock("block_of_charcoal", BlockofCharcoalBlock::new);
 	public static final DeferredBlock<Block> CHARCOAL_BUTTON = registerBlock("charcoal_button", CharcoalButtonBlock::new);
 	public static final DeferredBlock<Block> CHARCOAL_FENCE = registerBlock("charcoal_fence", CharcoalFenceBlock::new);
@@ -159,7 +159,6 @@ public class RegistryIBBI {
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Items]*/
-
 	public static final DeferredItem<Item> TEST_ITEM = ITEMSREGISTRY.registerItem("test_item", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 
 	public static final DeferredItem<Item> ANCIENT_CHUNK = ITEMSREGISTRY.registerItem("ancient_chunk", Item::new, new Item.Properties().stacksTo(64).fireResistant());
@@ -271,7 +270,6 @@ public class RegistryIBBI {
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Blocks]*/
-
 	private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
 		DeferredBlock<T> toReturn = BLOCKSREGISTRY.register(name, block);
 		registerBlockItem(name, toReturn); return toReturn;
@@ -299,7 +297,6 @@ public class RegistryIBBI {
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register BlockItems]*/
-
 	private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
 		ITEMSREGISTRY.register(name, () -> new BlockItem(block.get(),
 				new Item.Properties().stacksTo(64)));

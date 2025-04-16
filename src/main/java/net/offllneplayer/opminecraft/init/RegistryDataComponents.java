@@ -18,4 +18,5 @@ public class RegistryDataComponents {
             DataComponentType<Long>> GUNBLADE_LAST_HIT_TIME =
                 DATA_COMPONENTS.register("gunblade_last_hit_time",
                     () -> DataComponentType.<Long>builder().persistent(Codec.LONG).build());
+
 }

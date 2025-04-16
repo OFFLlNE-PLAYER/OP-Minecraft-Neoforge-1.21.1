@@ -12,7 +12,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.resources.ResourceLocation;
 
-import net.offllneplayer.opminecraft.init.RegistryFluidTypes;
+import net.offllneplayer.opminecraft.init.RegistryFluids;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class CryingEssenceFluidType extends FluidType {
@@ -46,6 +46,6 @@ public class CryingEssenceFluidType extends FluidType {
 			public ResourceLocation getFlowingTexture() {
 				return FLOWING_TEXTURE;
 			}
-		}, RegistryFluidTypes.CRYING_ESSENCE_TYPE.get());
+		}, RegistryFluids.CRYING_ESSENCE_TYPE.get());
 	}
 }

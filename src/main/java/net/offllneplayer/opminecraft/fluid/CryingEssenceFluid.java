@@ -18,11 +18,10 @@ import net.minecraft.core.BlockPos;
 import net.offllneplayer.opminecraft.init.RegistryFluids;
 import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceFlowingCondition_Method;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.init.RegistryFluidTypes;
 
 
 public abstract class CryingEssenceFluid extends BaseFlowingFluid {
-	public static final Properties PROPERTIES = new Properties(RegistryFluidTypes.CRYING_ESSENCE_TYPE::get, RegistryFluids.CRYING_ESSENCE,
+	public static final Properties PROPERTIES = new Properties(RegistryFluids.CRYING_ESSENCE_TYPE::get, RegistryFluids.CRYING_ESSENCE,
             RegistryFluids.FLOWING_CRYING_ESSENCE::get)
 			.explosionResistance(1200f)
 			.tickRate(6)

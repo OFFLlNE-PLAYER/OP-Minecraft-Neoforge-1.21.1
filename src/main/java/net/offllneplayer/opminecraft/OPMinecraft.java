@@ -62,7 +62,7 @@ public class OPMinecraft {
         RegistryParticleTypes.PARTICLETYPESREGISTRY.register(modEventBus);
 
         RegistryFluids.FLUIDSREGISTRY.register(modEventBus);
-        RegistryFluidTypes.FLUIDTYPESREGISTRY.register(modEventBus);
+        RegistryFluids.FLUIDTYPESREGISTRY.register(modEventBus);
 
         RegistryCreative.CREATIVETABSREGISTRY.register(modEventBus);
 

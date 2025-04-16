@@ -12,5 +12,8 @@ import net.offllneplayer.opminecraft.OPMinecraft;
 
 public class RegistryParticleTypes {
 	public static final DeferredRegister<ParticleType<?>> PARTICLETYPESREGISTRY = DeferredRegister.create(Registries.PARTICLE_TYPE, OPMinecraft.Mod_ID);
-	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PARTICLE_GUNBLADE_SHOT = PARTICLETYPESREGISTRY.register("particle_gunblade_shot", () -> new SimpleParticleType(true));
+
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PARTICLE_GUNBLADE_SHOT =
+			PARTICLETYPESREGISTRY.register("particle_gunblade_shot", () -> new SimpleParticleType(true));
+
 }
