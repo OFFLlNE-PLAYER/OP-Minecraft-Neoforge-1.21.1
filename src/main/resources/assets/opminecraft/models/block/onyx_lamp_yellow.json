@@ -1,0 +1,9 @@
+{
+    "parent": "opminecraft:block/onyx_lamp",
+    "textures": {
+        "all": "opminecraft:block/text_onyx_lamp_yellow",
+        "particle": "opminecraft:block/text_onyx_lamp_yellow",
+        "0": "opminecraft:block/text_onyx_lamp_yellow"
+    },
+    "render_type": "minecraft:cutout_mipped"
+}

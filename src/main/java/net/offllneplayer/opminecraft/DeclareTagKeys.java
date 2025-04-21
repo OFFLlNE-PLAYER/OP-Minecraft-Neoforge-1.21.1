@@ -22,6 +22,7 @@ public class DeclareTagKeys {
         public static final TagKey<Block> LIQUIDS = createTag("liquids");
         public static final TagKey<Block> SOUL_FIRE = createTag("soul_fire");
 
+        public static final TagKey<Block> OP_LAMPS = createTag("op_lamps");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));

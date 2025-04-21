@@ -1,8 +1,6 @@
 package net.offllneplayer.opminecraft.method.crash.wumpafruit;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -14,8 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
-
-import java.util.Objects;
 
 public class WumpaFruit_OnTick_Method {
 	public static void execute(Entity entity) {
@@ -32,7 +28,7 @@ public class WumpaFruit_OnTick_Method {
 
 			if (hungerroll == 1 && entity instanceof Player _player) {
 				if (!_entity.hasEffect(MobEffects.HUNGER)) {
-					_entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 2));
+					_entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 1));
 				}
 				if (_player.getFoodData().getFoodLevel() == 0) {
 					Level level = _entity.level();
@@ -46,16 +42,16 @@ public class WumpaFruit_OnTick_Method {
 			}
 
 			if (burproll == 1) {
-				if (!_entity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, sideeffectduration, 2));
+				if (!_entity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, sideeffectduration, 1));
 
 				float vol = Mth.nextFloat(RandomSource.create(), 0.6F, 0.9F);
 				float tone = Mth.nextFloat(RandomSource.create(), 0.69F, 1.0420F);
-				_entity.level().playSound(null, _entity.getX(), _entity.getY(), _entity.getZ(), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp"))), SoundSource.MASTER, vol, tone);
+				_entity.level().playSound(null, _entity.getX(), _entity.getY(), _entity.getZ(), SoundEvents.PLAYER_BURP, SoundSource.MASTER, vol, tone);
 			}
 
-			if (darkroll == 1 && !_entity.hasEffect(MobEffects.DARKNESS)) _entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, sideeffectduration, 2));
-			if (nightroll == 1 && !_entity.hasEffect(MobEffects.NIGHT_VISION)) _entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, sideeffectduration, 1));
-			if (confusionroll == 1 && !_entity.hasEffect(MobEffects.CONFUSION)) _entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, sideeffectduration, 2));
+			if (darkroll == 1 && !_entity.hasEffect(MobEffects.DARKNESS)) _entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, sideeffectduration, 1));
+			if (nightroll == 1 && !_entity.hasEffect(MobEffects.NIGHT_VISION)) _entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, sideeffectduration, 0));
+			if (confusionroll == 1 && !_entity.hasEffect(MobEffects.CONFUSION)) _entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, sideeffectduration, 1));
 		}
 	}
 }

@@ -1,0 +1,9 @@
+{
+    "parent": "opminecraft:block/onyx_lamp_hanging",
+    "textures": {
+        "all": "opminecraft:block/text_onyx_lamp_gray",
+        "particle": "opminecraft:block/text_onyx_lamp_gray",
+        "0": "opminecraft:block/text_onyx_lamp_gray"
+    },
+    "render_type": "minecraft:cutout_mipped"
+}

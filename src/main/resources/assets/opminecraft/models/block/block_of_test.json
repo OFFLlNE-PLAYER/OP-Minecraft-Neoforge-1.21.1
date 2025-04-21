@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "opminecraft:block/text_block_of_onyx_test",
+    "particle": "opminecraft:block/text_block_of_onyx_test"
+  },
+  "render_type": "solid"
+}

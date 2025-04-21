@@ -41,7 +41,12 @@ public class CopperFurnaceBlock extends Block implements EntityBlock {
 	public static final IntegerProperty FURNACEISLIT = IntegerProperty.create("furnaceislit", 0, 1);
 
 	public CopperFurnaceBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_NYLIUM).sound(SoundType.COPPER).strength(3.5f, 7f).requiresCorrectToolForDrops().pushReaction(PushReaction.BLOCK));
+		super(BlockBehaviour.Properties.of()
+				.mapColor(MapColor.WARPED_NYLIUM)
+				.sound(SoundType.COPPER)
+				.strength(3.5f, 7f)
+				.requiresCorrectToolForDrops()
+				.pushReaction(PushReaction.BLOCK));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FURNACEISLIT, 0));
 	}
 
@@ -50,6 +55,7 @@ public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
    if (state.getValue(FURNACEISLIT) == 1) {
         return 15;
     } else { return 0; }}
+
     @Override
 public int getLightEmission(BlockState state, BlockGetter worldIn, BlockPos pos) {
     if (state.getValue(FURNACEISLIT) == 1) {

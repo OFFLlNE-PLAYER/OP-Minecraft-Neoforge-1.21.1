@@ -208,12 +208,7 @@ public class SMBSuperFan extends AbstractArrow {
                         this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
 
                     } else if (entity instanceof LivingEntity) {// Hurt living entities and play hit sound
-                        DamageSource fanDamage = level.damageSources().source(
-                                RegistryDamageTypes.SMB_SUPER_FAN,
-                                this,
-                                this.getOwner()
-                        );
-
+                        DamageSource fanDamage = level.damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
                         entity.hurt(fanDamage, 2.0F);
 
                         float vol = Mth.randomBetween(this.random, 0.8F, 1.05F);

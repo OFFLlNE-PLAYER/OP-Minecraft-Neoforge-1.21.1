@@ -22,8 +22,8 @@ public class StoneTilesBlock extends Block {
 		super(Properties.of().mapColor(MapColor.STONE)
 				.sound(SoundType.STONE)
 				.strength(1.5f, 6f)
-				.requiresCorrectToolForDrops());
-
+				.requiresCorrectToolForDrops()
+		);
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
 	}
 

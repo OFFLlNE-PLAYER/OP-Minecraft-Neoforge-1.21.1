@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "blockisabove=false,facing=north": {
+            "model": "opminecraft:block/onyx_lamp_orange"
+        },
+        "blockisabove=false,facing=south": {
+            "model": "opminecraft:block/onyx_lamp_orange",
+            "y": 180
+        },
+        "blockisabove=false,facing=east": {
+            "model": "opminecraft:block/onyx_lamp_orange",
+            "y": 90
+        },
+        "blockisabove=false,facing=west": {
+            "model": "opminecraft:block/onyx_lamp_orange",
+            "y": 270
+        },
+        "blockisabove=true,facing=north": {
+            "model": "opminecraft:block/onyx_lamp_hanging_orange"
+        },
+        "blockisabove=true,facing=south": {
+            "model": "opminecraft:block/onyx_lamp_hanging_orange",
+            "y": 180
+        },
+        "blockisabove=true,facing=east": {
+            "model": "opminecraft:block/onyx_lamp_hanging_orange",
+            "y": 90
+        },
+        "blockisabove=true,facing=west": {
+            "model": "opminecraft:block/onyx_lamp_hanging_orange",
+            "y": 270
+        }
+    }
+}

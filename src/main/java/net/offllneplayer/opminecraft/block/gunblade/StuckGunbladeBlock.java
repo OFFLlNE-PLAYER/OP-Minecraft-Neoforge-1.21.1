@@ -1,6 +1,7 @@
 
 package net.offllneplayer.opminecraft.block.gunblade;
 
+import net.minecraft.sounds.SoundEvents;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -32,13 +33,12 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.util.FastColor;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.gunblade.Stuck_Gunblade_OnClick_Method;
-import net.offllneplayer.opminecraft.method.gunblade.StuckGunbladeNoFloat_Method;
+import net.offllneplayer.opminecraft.method.gunblade.StuckGunbladePopItem_Method;
 import net.offllneplayer.opminecraft.method.gunblade.StuckGunblade_SilkTouch_Method;
 
 
@@ -47,15 +47,22 @@ public class StuckGunbladeBlock extends Block implements SimpleWaterloggedBlock,
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	public StuckGunbladeBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
-				.sound(new DeferredSoundType(1.0f, 1.0f, () -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.armor.equip_chain")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.chain.step")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:gunblade_in_dirt")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.chain.hit")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.chain.fall"))))
-				.strength(-1, 3600000).friction(0.5f).noOcclusion().pushReaction(PushReaction.BLOCK)
-				.isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
+		super(BlockBehaviour.Properties.of()
+				.mapColor(MapColor.METAL)
+				.sound(new DeferredSoundType(1.0f, 1.0f,
+                        SoundEvents.ARMOR_EQUIP_CHAIN::value,
+						() -> SoundEvents.CHAIN_STEP,
+                        RegistrySounds.GUNBLADE_IN_DIRT,
+						() -> SoundEvents.CHAIN_HIT,
+						() -> SoundEvents.CHAIN_FALL))
+				.strength(-1, 420000).friction(0.5f)
+				.noOcclusion()
+				.pushReaction(PushReaction.BLOCK)
+				.isRedstoneConductor((bs, br, bp) -> false)
+				.forceSolidOff());
+		this.registerDefaultState(this.stateDefinition.any()
+				.setValue(FACING, Direction.NORTH)
+				.setValue(WATERLOGGED, false));
 	}
 
 	@Override
@@ -133,7 +140,7 @@ public class StuckGunbladeBlock extends Block implements SimpleWaterloggedBlock,
 	@Override
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, fromPos, moving);
-		StuckGunbladeNoFloat_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		StuckGunbladePopItem_Method.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

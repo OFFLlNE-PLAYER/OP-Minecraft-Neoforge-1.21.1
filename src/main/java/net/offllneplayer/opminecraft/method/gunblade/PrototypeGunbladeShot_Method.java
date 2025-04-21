@@ -25,37 +25,33 @@ public class PrototypeGunbladeShot_Method {
 			return;
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
-				_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.3F, Mth.nextFloat(RandomSource.create(), 0.8F, 1.1F));
+				_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.3F, Mth.nextFloat(RandomSource.create(), 0.8F, 1F));
 			}
 		}
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == RegistryIBBI.PROTOTYPE_GUNBLADE.get()) {
-			OPMinecraft.queueServerWork(3, () -> {
+
+			OPMinecraft.queueServerWork(4, () -> {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_SHOT.get(), SoundSource.MASTER, 1, Mth.nextFloat(RandomSource.create(), 0.7420F, 0.9420F));
+						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_SHOT.get(), SoundSource.MASTER, 1, Mth.nextFloat(RandomSource.create(), 0.70420F, 0.80420F));
 					}
 				}
-				world.addParticle((RegistryParticleTypes.PARTICLE_GUNBLADE_SHOT.get()), x, (y + 1), z, 0, 0, 0);
-			});
-			OPMinecraft.queueServerWork(4, () -> {
 				entity.hurt(new DamageSource(world.holderOrThrow(RegistryDamageTypes.GUNBLADE)), Mth.nextInt(RandomSource.create(), 2, 7));
 				if ((sourceentity.getDirection()).getAxis() == Direction.Axis.Z) {
-					entity.push(0, 0.01, (-0.05));
+					entity.push(0, 0.01, (-0.02));
 				}
 				if ((sourceentity.getDirection()).getAxis() == Direction.Axis.Z) {
-					entity.push(0, 0.01, 0.05);
+					entity.push(0, 0.01, 0.02);
 				}
 				if ((sourceentity.getDirection()).getAxis() == Direction.Axis.X) {
-					entity.push(0.05, 0.01, 0);
+					entity.push(0.02, 0.01, 0);
 				}
 				if ((sourceentity.getDirection()).getAxis() == Direction.Axis.X) {
-					entity.push((-0.05), 0.01, 0);
+					entity.push((-0.02), 0.01, 0);
 				}
-				if (world instanceof Level _level && !_level.isClientSide())
-					_level.explode(null, x, (y + 1), z, 1, Level.ExplosionInteraction.MOB);
 				if (world instanceof ServerLevel _level) {
-					(sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).hurtAndBreak(1, _level, null, _stkprov -> {
-					});
+					(sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).hurtAndBreak(1, _level, null, _stkprov -> {});
+					_level.sendParticles(RegistryParticleTypes.PARTICLE_GUNBLADE_SHOT.get(), entity.getX(), entity.getY() + 0.420F, entity.getZ(), 1, 0, 0, 0, 0);
 				}
 			});
 		}

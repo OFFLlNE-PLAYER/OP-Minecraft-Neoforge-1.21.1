@@ -2,7 +2,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_totem_of_uncrying"
+    "layer0": "opminecraft:item/text_lim3_feather"
   },
   "display": {
     "thirdperson_righthand": {

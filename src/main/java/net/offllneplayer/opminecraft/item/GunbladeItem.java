@@ -1,11 +1,15 @@
 
 package net.offllneplayer.opminecraft.item;
 
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,16 +19,13 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.gunblade.GunbladeShot_Method;
 import net.offllneplayer.opminecraft.method.gunblade.StickGunblade_Method;
 
@@ -96,6 +97,13 @@ public class GunbladeItem extends SwordItem {
 		Level level = sourceEntity.level();
 
 		if (!level.isClientSide()) {
+
+				Long lastHitTime = stack.get(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get());
+				long currentTime = level.getGameTime();
+
+				if (lastHitTime != null && currentTime - lastHitTime <= 20L) {
+					sourceEntity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), RegistrySounds.GUNBLADE_SLASH.get(), SoundSource.MASTER, 0.420F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.0420F));
+				}
 			stack.set(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get(), level.getGameTime());
 		}
 
@@ -115,16 +123,14 @@ public class GunbladeItem extends SwordItem {
 			Long lastHitTime = stack.get(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get());
 			long currentTime = level.getGameTime();
 
-			if (lastHitTime != null && currentTime - lastHitTime <= 20L) {
+			if (lastHitTime != null && currentTime - lastHitTime <= 40L) {
 
 				stack.remove(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get());
 				stack.set(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get(), null);
 
 				GunbladeShot_Method.execute(level, entity.getX(), entity.getY(), entity.getZ(), entity, sourceEntity);
 
-				stack.setDamageValue(stack.getDamageValue() + Mth.nextInt(RandomSource.create(), 20, 69));
-
-				sourceEntity.getCooldowns().addCooldown(stack.getItem(), 20);
+				sourceEntity.getCooldowns().addCooldown(stack.getItem(), 40);
 
 				return InteractionResult.sidedSuccess(level.isClientSide());
 			}

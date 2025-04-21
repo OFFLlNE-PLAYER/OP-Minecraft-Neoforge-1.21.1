@@ -19,6 +19,8 @@
   "gunblade_slash": {"sounds": [{"name": "opminecraft:gunblade_slash", "stream": false}]},
   "gunblade_shot": {"sounds": [{"name": "opminecraft:gunblade_shot", "stream": false}]},
 
+  "lamp_use": {"sounds": [{"name": "opminecraft:lamp_use", "stream": false}]},
+
   "nitro_boom": {"sounds": [{"name": "opminecraft:nitro_boom", "stream": false}]},
   "nitro_idle_1": {"sounds": [{"name": "opminecraft:nitro_idle_1", "stream": false}]},
   "nitro_idle_2": {"sounds": [{"name": "opminecraft:nitro_idle_2", "stream": false}]},
@@ -28,6 +30,8 @@
   "tick_tnt": {"sounds": [{"name": "opminecraft:tick_tnt", "stream": false}]},
   "fast_tick_tnt": {"sounds": [{"name": "opminecraft:fast_tick_tnt", "stream": false}]},
   "prime_tnt": {"sounds": [{"name": "opminecraft:prime_tnt", "stream": false}]},
+
+  "punch": {"sounds": [{"name": "opminecraft:punch", "stream": false}]},
 
   "smb_super_fan_hit": {"sounds": [{"name": "opminecraft:smb_super_fan_hit", "stream": false}]},
   "smb_super_fan_idle": {"sounds": [{"name": "opminecraft:smb_super_fan_idle", "stream": false}]},

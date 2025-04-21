@@ -10,6 +10,5 @@
     "particle": "opminecraft:block/text_chiseled_gold"
   },
   "render_type": "solid",
-  "emissive": false,
-  "light": 0
+  "emissive": false, "light": 0
 }

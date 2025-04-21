@@ -20,6 +20,8 @@ public class RegistryCreative {
         public static void addCreative(BuildCreativeModeTabContentsEvent event) {
             if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 
+                event.accept(RegistryIBBI.BLOCK_OF_TEST);
+
                 event.accept(RegistryIBBI.BLOCK_OF_CHARCOAL);
                 event.accept(RegistryIBBI.CHARCOAL_BUTTON);
                 event.accept(RegistryIBBI.CHARCOAL_FENCE);
@@ -105,6 +107,25 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.DENSE_STONE_TILE_TRAPDOOR);
                 event.accept(RegistryIBBI.DENSE_STONE_TILE_WALL);
 
+                event.accept(RegistryIBBI.BLOCK_OF_ONYX);
+
+                event.accept(RegistryIBBI.ONYX_LAMP_BLACK);
+                event.accept(RegistryIBBI.ONYX_LAMP_BLUE);
+                event.accept(RegistryIBBI.ONYX_LAMP_BROWN);
+                event.accept(RegistryIBBI.ONYX_LAMP_CYAN);
+                event.accept(RegistryIBBI.ONYX_LAMP_GRAY);
+                event.accept(RegistryIBBI.ONYX_LAMP_GREEN);
+                event.accept(RegistryIBBI.ONYX_LAMP_LIGHT_BLUE);
+                event.accept(RegistryIBBI.ONYX_LAMP_LIGHT_GRAY);
+                event.accept(RegistryIBBI.ONYX_LAMP_LIME);
+                event.accept(RegistryIBBI.ONYX_LAMP_MAGENTA);
+                event.accept(RegistryIBBI.ONYX_LAMP_ORANGE);
+                event.accept(RegistryIBBI.ONYX_LAMP_PINK);
+                event.accept(RegistryIBBI.ONYX_LAMP_PURPLE);
+                event.accept(RegistryIBBI.ONYX_LAMP_RED);
+                event.accept(RegistryIBBI.ONYX_LAMP_WHITE);
+                event.accept(RegistryIBBI.ONYX_LAMP_YELLOW);
+
                 event.accept(RegistryIBBI.STONE_TILES);
                 event.accept(RegistryIBBI.STONE_TILE_BUTTON);
                 event.accept(RegistryIBBI.STONE_TILE_FENCE);
@@ -187,7 +208,6 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.GUNBLADE);
                 event.accept(RegistryIBBI.PROTOTYPE_GUNBLADE);
-                event.accept(RegistryIBBI.FALLING_GUNBLADE);
                 event.accept(RegistryIBBI.STUCK_GUNBLADE);
 
             }
@@ -269,6 +289,24 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.CRYING_INGOT);
                 event.accept(RegistryIBBI.CRYING_SMITHING_TEMPLATE);
+
+                event.accept(RegistryIBBI.BLACK_FEATHER);
+                event.accept(RegistryIBBI.BLUE_FEATHER);
+                event.accept(RegistryIBBI.BROWN_FEATHER);
+                event.accept(RegistryIBBI.CYAN_FEATHER);
+                event.accept(RegistryIBBI.GRAY_FEATHER);
+                event.accept(RegistryIBBI.GREEN_FEATHER);
+                event.accept(RegistryIBBI.LIGHT_BLUE_FEATHER);
+                event.accept(RegistryIBBI.LIGHT_GRAY_FEATHER);
+                event.accept(RegistryIBBI.LIME_FEATHER);
+                event.accept(RegistryIBBI.MAGENTA_FEATHER);
+                event.accept(RegistryIBBI.ORANGE_FEATHER);
+                event.accept(RegistryIBBI.PINK_FEATHER);
+                event.accept(RegistryIBBI.PURPLE_FEATHER);
+                event.accept(RegistryIBBI.RED_FEATHER);
+                event.accept(RegistryIBBI.YELLOW_FEATHER);
+                event.accept(RegistryIBBI.GOLDEN_FEATHER);
+
             }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
 

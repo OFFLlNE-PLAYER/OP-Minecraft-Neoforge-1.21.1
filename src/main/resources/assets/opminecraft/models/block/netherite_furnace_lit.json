@@ -9,6 +9,5 @@
     "particle": "opminecraft:block/text_chiseled_netherite"
   },
   "render_type": "solid",
-  "emissive": true,
-  "light": 15
+  "emissive": true, "light": 15
 }

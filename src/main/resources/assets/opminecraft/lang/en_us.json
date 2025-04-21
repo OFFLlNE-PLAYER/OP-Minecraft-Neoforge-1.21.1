@@ -41,6 +41,8 @@
 "/*-------*[Advancements]*": "",
 
 
+  "block.opminecraft.block_of_test": "§4What's the last test?§r",
+
   "block.opminecraft.block_of_charcoal": "§8Block of Charcoal§r",
   "block.opminecraft.charcoal_button": "§8Charcoal Button§r",
   "block.opminecraft.charcoal_fence": "§8Charcoal Fence§r",
@@ -148,6 +150,26 @@
   "block.opminecraft.dense_stone_tile_trapdoor": "Dense Stone Tile Trapdoor",
   "block.opminecraft.dense_stone_tile_wall": "Dense Stone Tile Wall",
 
+  "block.opminecraft.block_of_onyx": "§8Block Of Onyx§r",
+
+  "block.opminecraft.onyx_lamp": "§8Onyx Lamp§r",
+  "block.opminecraft.onyx_lamp_black": "§8Onyx Lamp Black§r",
+  "block.opminecraft.onyx_lamp_blue": "§8Onyx Lamp Blue§r",
+  "block.opminecraft.onyx_lamp_brown": "§8Onyx Lamp Brown§r",
+  "block.opminecraft.onyx_lamp_cyan": "§8Onyx Lamp Cyan§r",
+  "block.opminecraft.onyx_lamp_gray": "§8Onyx Lamp Gray§r",
+  "block.opminecraft.onyx_lamp_green": "§8Onyx Lamp Green§r",
+  "block.opminecraft.onyx_lamp_light_blue": "§8Onyx Lamp Light Blue§r",
+  "block.opminecraft.onyx_lamp_light_gray": "§8Onyx Lamp Light Gray§r",
+  "block.opminecraft.onyx_lamp_lime": "§8Onyx Lamp Lime§r",
+  "block.opminecraft.onyx_lamp_magenta": "§8Onyx Lamp Magenta§r",
+  "block.opminecraft.onyx_lamp_orange": "§8Onyx Lamp Orange§r",
+  "block.opminecraft.onyx_lamp_pink": "§8Onyx Lamp Pink§r",
+  "block.opminecraft.onyx_lamp_purple": "§8Onyx Lamp Purple§r",
+  "block.opminecraft.onyx_lamp_red": "§8Onyx Lamp Red§r",
+  "block.opminecraft.onyx_lamp_white": "§8Onyx Lamp White§r",
+  "block.opminecraft.onyx_lamp_yellow": "§8Onyx Lamp Yellow§r",
+
   "block.opminecraft.stone_tiles": "Stone Tiles",
   "block.opminecraft.stone_tile_button": "Stone Tile Button",
   "block.opminecraft.stone_tile_fence": "Stone Tile Fence",
@@ -189,6 +211,7 @@
 
 
   "item.opminecraft.test_item": "§4TeSt ItEm§r",
+
   "item.opminecraft.test_item.description_0": "..What's the last thing OP worked on..?",
 
   "item.opminecraft.ancient_chunk": "Ancient Chunk",
@@ -286,6 +309,23 @@
   "item.opminecraft.crying_sickle": "Crying Sickle",
   "item.opminecraft.crying_paxel": "Crying Paxel",
 
+  "item.opminecraft.black_feather": "Black Feather",
+  "item.opminecraft.blue_feather": "Blue Feather",
+  "item.opminecraft.brown_feather": "Brown Feather",
+  "item.opminecraft.cyan_feather": "Cyan Feather",
+  "item.opminecraft.gray_feather": "Gray Feather",
+  "item.opminecraft.green_feather": "Green Feather",
+  "item.opminecraft.light_blue_feather": "Light Blue Feather",
+  "item.opminecraft.light_gray_feather": "Light Gray Feather",
+  "item.opminecraft.lime_feather": "Lime Feather",
+  "item.opminecraft.magenta_feather": "Magenta Feather",
+  "item.opminecraft.orange_feather": "Orange Feather",
+  "item.opminecraft.pink_feather": "Pink Feather",
+  "item.opminecraft.purple_feather": "Purple Feather",
+  "item.opminecraft.red_feather": "Red Feather",
+  "item.opminecraft.yellow_feather": "Yellow Feather",
+  "item.opminecraft.golden_feather": "Golden Feather",
+
   "item.opminecraft.gunblade": "Gunblade",
   "item.opminecraft.gunblade.description_0": "[FF8]",
   "item.opminecraft.gunblade.description_1": "Slash an entity, then use to fire",
@@ -345,9 +385,9 @@
 
 
   "effect.opminecraft.totem_of_life": "Totem Of Life",
-  "effect.opminecraft.aku_aku": "Aku Aku watches over you",
-  "effect.opminecraft.crying_i": "Crying I",
-  "effect.opminecraft.crying_ii": "Crying II",
+  "effect.opminecraft.aku_aku": "Aku Aku",
+  "effect.opminecraft.crying_i": "Crying",
+  "effect.opminecraft.crying_ii": "Crying",
 
   "/*-------*[Effects]*": "",
 
@@ -356,6 +396,8 @@
 
   "/*-------*[enchantments]*": "",
 
+  "death.attack.aku_aku": "%1$s §6was pummeled by Aku Aku§r",
+  "death.attack.aku_aku.player": "%1$s §6was pummeled by Aku Aku protecting§r %2$s",
 
   "death.attack.crying_essence": "%1$s §dblew up crying§r",
   "death.attack.crying_essence.player": "%1$s §dblew up crying by§r %2$s",
@@ -363,7 +405,6 @@
 
   "death.attack.gunblade": "%1$s §7saw their final fantasy§r",
   "death.attack.gunblade.player": "%1$s §7saw their final fantasy thanks to§r %2$s",
-  "death.attack.gunblade.item": "%1$s §7saw their final fantasy by§r %2$s's %3$s",
 
   "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
   "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by§r %2$s's §cSMB Super Fan§r",

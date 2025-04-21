@@ -1,19 +1,23 @@
-
 {
   "parent": "item/generated",
   "textures": {
     "layer0": "opminecraft:item/text_sapphire"
   },
   "display": {
+    "firstperson_lefthand": {
+      "rotation": [0, 90, -35],
+      "translation": [2, 3, 0],
+      "scale": [0.68, 0.68, 0.68]
+    },
     "thirdperson_righthand": {
-    "rotation": [0, 0, 0],
-    "translation": [0, 1.5, 0],
-    "scale": [0.55, 0.55, 0.55]
-  },
+      "rotation": [0, -90, 35],
+      "translation": [0, 2.5, 0],
+      "scale": [0.65, 0.65, 0.65]
+    },
     "thirdperson_lefthand": {
-    "rotation": [0, 0, 0],
-    "translation": [0, 1.5, 0],
-    "scale": [0.55, 0.55, 0.55]
+      "rotation": [0, 90, -35],
+      "translation": [0, 2.5, 0],
+      "scale": [0.65, 0.65, 0.65]
     }
   }
 }

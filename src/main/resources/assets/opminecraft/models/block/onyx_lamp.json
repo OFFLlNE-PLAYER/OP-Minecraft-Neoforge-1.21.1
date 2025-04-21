@@ -1,15 +1,16 @@
 {
-	"credit": "Made with Blockbench",
+	"credit": "Made by OP with Blockbench",
 	"texture_size": [32, 32],
+	"render_type": "cutout_mipped",
 	"textures": {
-		"0": "block/text_onyx_lamp",
-		"particle": "block/text_onyx_lamp"
+		"0": "opminecraft:block/text_onyx_lamp",
+		"particle": "opminecraft:block/text_onyx_lamp"
 	},
 	"elements": [
 		{
 			"name": "bottom",
-			"from": [4, 0, 4],
-			"to": [12, 1, 12],
+			"from": [5, 0, 5],
+			"to": [11, 1, 11],
 			"rotation": {"angle": 0, "axis": "y", "origin": [5, 0, 5]},
 			"faces": {
 				"north": {"uv": [4, 3.5, 8, 4], "texture": "#0"},
@@ -26,18 +27,18 @@
 			"to": [9, 7, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7, 1, 7]},
 			"faces": {
-				"north": {"uv": [4, 0, 5, 2.5], "texture": "#0"},
-				"east": {"uv": [5, 0, 6, 2.5], "texture": "#0"},
-				"south": {"uv": [6, 0, 7, 2.5], "texture": "#0"},
-				"west": {"uv": [7, 0, 8, 2.5], "texture": "#0"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
-				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+				"north": {"uv": [4, 0, 5, 3], "texture": "#0"},
+				"east": {"uv": [5, 0, 6, 3], "texture": "#0"},
+				"south": {"uv": [6, 0, 7, 3], "texture": "#0"},
+				"west": {"uv": [7, 0, 8, 3], "texture": "#0"},
+				"up": {"uv": [4, 0, 5, 1], "texture": "#0"},
+				"down": {"uv": [4, 0, 5, 1], "texture": "#0"}
 			}
 		},
 		{
 			"name": "top",
 			"from": [4, 7, 4],
-			"to": [12, 16, 12],
+			"to": [12, 15, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [5, 6, 5]},
 			"faces": {
 				"north": {"uv": [0, 0, 4, 5], "texture": "#0"},
@@ -49,9 +50,23 @@
 			}
 		},
 		{
+			"name": "top_oftop",
+			"from": [5, 15, 5],
+			"to": [11, 16, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 6, 5]},
+			"faces": {
+				"north": {"uv": [0, 5, 4, 5.5], "texture": "#0"},
+				"east": {"uv": [0, 5, 4, 5.5], "texture": "#0"},
+				"south": {"uv": [0, 5, 4, 5.5], "texture": "#0"},
+				"west": {"uv": [0, 5, 4, 5.5], "texture": "#0"},
+				"up": {"uv": [8, 8, 4, 4], "texture": "#0"},
+				"down": {"uv": [4, 5, 0, 9], "texture": "#0"}
+			}
+		},
+		{
 			"name": "lightstring",
-			"from": [6, 4, 8],
-			"to": [6.5, 7, 8.5],
+			"from": [6.5, 4, 7.75],
+			"to": [7, 7, 8.25],
 			"rotation": {"angle": 0, "axis": "y", "origin": [6, 4, 8]},
 			"faces": {
 				"north": {"uv": [4, 8, 4.125, 9], "texture": "#0"},

@@ -24,7 +24,7 @@ public class PrototypeGunbladeItem extends SwordItem {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
-			return 20;
+			return 6;
 		}
 
 		@Override
