@@ -12,6 +12,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
@@ -76,30 +77,24 @@ public class DamageEventHandler {
 
         /*--------------------------------------------------------------------------------------------*/
         /*[ITEM-BASED EFFECTS]*/
-        if (sourceEntity instanceof LivingEntity livingAttacker) {
+        if (sourceEntity instanceof LivingEntity livingAttacker && !(sourceEntity instanceof Player)) {
             Item held = livingAttacker.getMainHandItem().getItem();
 
             /*--------------------------------------------------------------------------------------------*/
             /*[FIRE]*/
-            if (held == Items.BLAZE_ROD
-                    || held == Items.BLAZE_POWDER
-                    || held == Items.FIRE_CHARGE
-                    || held == Items.LAVA_BUCKET) {
+            if (held == Items.BLAZE_ROD || held == Items.BLAZE_POWDER || held == Items.FIRE_CHARGE || held == Items.LAVA_BUCKET) {
                 targetEntity.setRemainingFireTicks(3 * 20);
             }
 
             /*--------------------------------------------------------------------------------------------*/
             /*[ICE]*/
-            else if (held == Items.ICE
-                    || held == Items.PACKED_ICE
-                    || held == Items.BLUE_ICE) {
+            else if (held == Items.ICE || held == Items.PACKED_ICE || held == Items.BLUE_ICE) {
                 targetEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3 * 20, 1));
             }
 
             /*--------------------------------------------------------------------------------------------*/
             /*[POISON]*/
-            else if (held == Items.POISONOUS_POTATO
-                    || held == Items.SPIDER_EYE) {
+            else if (held == Items.POISONOUS_POTATO || held == Items.SPIDER_EYE) {
                 targetEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 3 * 20, 1));
             }
 

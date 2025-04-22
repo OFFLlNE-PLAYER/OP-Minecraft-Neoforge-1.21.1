@@ -93,7 +93,6 @@ public class GunbladeItem extends SwordItem {
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity sourceEntity) {
 
-		boolean retVal = super.hurtEnemy(stack, entity, sourceEntity);
 		Level level = sourceEntity.level();
 
 		if (!level.isClientSide()) {
@@ -107,7 +106,7 @@ public class GunbladeItem extends SwordItem {
 			stack.set(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get(), level.getGameTime());
 		}
 
-		return retVal;
+		return super.hurtEnemy(stack, entity, sourceEntity);
 	}
 
 	@Override
