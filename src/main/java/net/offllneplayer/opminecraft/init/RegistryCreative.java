@@ -109,6 +109,21 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.BLOCK_OF_ONYX);
 
+                event.accept(RegistryIBBI.STONE_TILES);
+                event.accept(RegistryIBBI.STONE_TILE_BUTTON);
+                event.accept(RegistryIBBI.STONE_TILE_FENCE);
+                event.accept(RegistryIBBI.STONE_TILE_FENCE_GATE);
+                event.accept(RegistryIBBI.STONE_TILE_PRESSURE_PLATE);
+                event.accept(RegistryIBBI.STONE_TILE_SLAB);
+                event.accept(RegistryIBBI.STONE_TILE_STAIRS);
+                event.accept(RegistryIBBI.STONE_TILE_TRAPDOOR);
+                event.accept(RegistryIBBI.STONE_TILE_WALL);
+
+            }
+            if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
+
+                event.accept(RegistryIBBI.GOLDEN_BED);
+
                 event.accept(RegistryIBBI.ONYX_LAMP_BLACK);
                 event.accept(RegistryIBBI.ONYX_LAMP_BLUE);
                 event.accept(RegistryIBBI.ONYX_LAMP_BROWN);
@@ -126,21 +141,6 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.ONYX_LAMP_WHITE);
                 event.accept(RegistryIBBI.ONYX_LAMP_YELLOW);
 
-                event.accept(RegistryIBBI.STONE_TILES);
-                event.accept(RegistryIBBI.STONE_TILE_BUTTON);
-                event.accept(RegistryIBBI.STONE_TILE_FENCE);
-                event.accept(RegistryIBBI.STONE_TILE_FENCE_GATE);
-                event.accept(RegistryIBBI.STONE_TILE_PRESSURE_PLATE);
-                event.accept(RegistryIBBI.STONE_TILE_SLAB);
-                event.accept(RegistryIBBI.STONE_TILE_STAIRS);
-                event.accept(RegistryIBBI.STONE_TILE_TRAPDOOR);
-                event.accept(RegistryIBBI.STONE_TILE_WALL);
-
-            }
-            if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
-
-//colored block go here
-
             }
             if (event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS) {
 
@@ -155,6 +155,25 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.GOLD_FURNACE);
                 event.accept(RegistryIBBI.IRON_FURNACE);
                 event.accept(RegistryIBBI.NETHERITE_FURNACE);
+
+                event.accept(RegistryIBBI.GOLDEN_BED);
+
+                event.accept(RegistryIBBI.ONYX_LAMP_BLACK);
+                event.accept(RegistryIBBI.ONYX_LAMP_BLUE);
+                event.accept(RegistryIBBI.ONYX_LAMP_BROWN);
+                event.accept(RegistryIBBI.ONYX_LAMP_CYAN);
+                event.accept(RegistryIBBI.ONYX_LAMP_GRAY);
+                event.accept(RegistryIBBI.ONYX_LAMP_GREEN);
+                event.accept(RegistryIBBI.ONYX_LAMP_LIGHT_BLUE);
+                event.accept(RegistryIBBI.ONYX_LAMP_LIGHT_GRAY);
+                event.accept(RegistryIBBI.ONYX_LAMP_LIME);
+                event.accept(RegistryIBBI.ONYX_LAMP_MAGENTA);
+                event.accept(RegistryIBBI.ONYX_LAMP_ORANGE);
+                event.accept(RegistryIBBI.ONYX_LAMP_PINK);
+                event.accept(RegistryIBBI.ONYX_LAMP_PURPLE);
+                event.accept(RegistryIBBI.ONYX_LAMP_RED);
+                event.accept(RegistryIBBI.ONYX_LAMP_WHITE);
+                event.accept(RegistryIBBI.ONYX_LAMP_YELLOW);
 
             }
             if (event.getTabKey()==CreativeModeTabs.REDSTONE_BLOCKS) {

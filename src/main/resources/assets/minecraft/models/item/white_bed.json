@@ -1,0 +1,6 @@
+{
+  "parent": "opminecraft:item/golden_bed",
+  "textures": {
+    "0": "opminecraft:item/bed/white"
+  }
+}

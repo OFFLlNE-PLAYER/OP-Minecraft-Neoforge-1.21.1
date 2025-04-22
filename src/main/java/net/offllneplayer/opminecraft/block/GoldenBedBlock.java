@@ -14,8 +14,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.LootParams;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 public class GoldenBedBlock extends BedBlock {
     public static final Properties PROPERTIES = Properties.of()
@@ -40,13 +43,9 @@ public class GoldenBedBlock extends BedBlock {
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        super.onRemove(state, level, pos, newState, isMoving);
-        if (!level.isClientSide && state.getValue(PART) == BedPart.FOOT) {
-            ItemEntity drop = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(this.asItem()));
-            drop.setPickUpDelay(10);
-            level.addFreshEntity(drop);
-        }
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder lootContext) {
+        return state.getValue(PART) == BedPart.HEAD
+        ? super.getDrops(state, lootContext) : List.of();
     }
 
     @Override
