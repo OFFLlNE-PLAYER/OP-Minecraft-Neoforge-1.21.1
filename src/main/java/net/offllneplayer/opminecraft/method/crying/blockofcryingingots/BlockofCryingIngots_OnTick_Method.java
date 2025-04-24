@@ -1,6 +1,7 @@
 package net.offllneplayer.opminecraft.method.crying.blockofcryingingots;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
@@ -27,6 +28,7 @@ import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.DeclareTagKeys;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 import java.util.List;
 import java.util.Comparator;
@@ -34,23 +36,23 @@ import java.util.Objects;
 
 public class BlockofCryingIngots_OnTick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		// Check for soul fire first
-		if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).is(DeclareTagKeys.Blocks.SOUL_FIRE)
-				|| (world.getBlockState(BlockPos.containing(x + 1, y, z))).is(DeclareTagKeys.Blocks.SOUL_FIRE)
-				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(DeclareTagKeys.Blocks.SOUL_FIRE)
-				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(DeclareTagKeys.Blocks.SOUL_FIRE)
-				|| (world.getBlockState(BlockPos.containing(x, y, z + 1))).is(DeclareTagKeys.Blocks.SOUL_FIRE)
-				|| (world.getBlockState(BlockPos.containing(x, y, z - 1))).is(DeclareTagKeys.Blocks.SOUL_FIRE)) {
+
+		if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x + 1, y, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y, z + 1))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y, z - 1))).is(DeclareTagKeys.Blocks.SOUL_FIRES)) {
 
 			if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 				if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.BLOCK_OF_CRYING_INGOTS.get()) {
 
 					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
-					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 2, 2, 2, 1);
+
+					world.setBlock(BlockPos.containing(x, y, z), RegistryIBBI.CRYING_ESSENCE.get().defaultBlockState(), 3);
 
 					OPMinecraft.queueServerWork(10, () -> {
-
-						world.setBlock(BlockPos.containing(x, y, z), RegistryIBBI.CRYING_ESSENCE.get().defaultBlockState(), 3);
 
 						LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
 						lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
@@ -89,7 +91,7 @@ public class BlockofCryingIngots_OnTick_Method {
 					});
 				}
 			}
-		} else // Check for lava
+		} else
 			if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == Blocks.LAVA
 				|| (world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == Blocks.LAVA
 				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == Blocks.LAVA
@@ -100,12 +102,12 @@ public class BlockofCryingIngots_OnTick_Method {
 			if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 				if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.BLOCK_OF_CRYING_INGOTS.get()) {
 
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
-					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 2, 2, 2, 1);
+
+					world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 
 					OPMinecraft.queueServerWork(10, () -> {
-
-						world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 
 						LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
 						lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
@@ -114,8 +116,8 @@ public class BlockofCryingIngots_OnTick_Method {
 
 					OPMinecraft.queueServerWork(20, () -> {
 
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.deepslate.step"))), SoundSource.MASTER, 1, (float) 0.8);
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit"))), SoundSource.NEUTRAL, 1, (float) 0.2);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.DEEPSLATE_STEP, SoundSource.BLOCKS, 1.0F, 0.8F);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMBIENT_UNDERWATER_EXIT, SoundSource.BLOCKS, 1, 0.2F);
 
 						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
 						_level.explode(source.getEntity(), x, y, z, 5.0f, false, Level.ExplosionInteraction.BLOCK);
@@ -126,6 +128,10 @@ public class BlockofCryingIngots_OnTick_Method {
 							_level.addFreshEntity(ingotEntity);
 						}
 
+						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryIBBI.CRYING_RESIN.get()));
+						resinEntity.setPickUpDelay(5);
+						_level.addFreshEntity(resinEntity);
+
 						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 						world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 						world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
@@ -135,7 +141,7 @@ public class BlockofCryingIngots_OnTick_Method {
 					});
 				}
 			}
-		} else // Check for water
+		} else
 			if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == Blocks.WATER
 				|| (world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == Blocks.WATER
 				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == Blocks.WATER
@@ -146,12 +152,12 @@ public class BlockofCryingIngots_OnTick_Method {
 			if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 				if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.BLOCK_OF_CRYING_INGOTS.get()) {
 
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
-					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 2, 2, 2, 1);
+
+					world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 
 					OPMinecraft.queueServerWork(10, () -> {
-
-						world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
 
 						LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
 						lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
@@ -160,8 +166,8 @@ public class BlockofCryingIngots_OnTick_Method {
 
 					OPMinecraft.queueServerWork(20, () -> {
 
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.chime"))), SoundSource.MASTER, 1, (float) 0.8);
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit"))), SoundSource.NEUTRAL, 1, (float) 0.2);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 0.8F);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMBIENT_UNDERWATER_EXIT, SoundSource.BLOCKS, 1, 0.269F);
 
 						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
 						_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
@@ -171,6 +177,10 @@ public class BlockofCryingIngots_OnTick_Method {
 							ingotEntity.setPickUpDelay(5);
 							_level.addFreshEntity(ingotEntity);
 						}
+
+						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryIBBI.CRYING_RESIN.get()));
+						resinEntity.setPickUpDelay(5);
+						_level.addFreshEntity(resinEntity);
 
 						world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
 						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);

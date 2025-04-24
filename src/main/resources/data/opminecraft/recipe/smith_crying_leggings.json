@@ -4,7 +4,7 @@
 
   "template": {"item": "minecraft:netherite_leggings"},
 
-  "base": {"item": "opminecraft:crying_essence_bucket"},
+  "base": {"item": "opminecraft:crying_resin"},
 
   "addition": {"item": "opminecraft:crying_smithing_template"},
 

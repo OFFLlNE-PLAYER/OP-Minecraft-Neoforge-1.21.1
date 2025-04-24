@@ -17,10 +17,10 @@ public class DeclareTagKeys {
         public static final TagKey<Block> CRASH_CRATES = createTag("crash_crates");
 
         public static final TagKey<Block> CRYING_OBSIDIAN_TRIGGERS = createTag("crying_obsidian_triggers");
+        public static final TagKey<Block> LAVAS = createTag("lavas");
         public static final TagKey<Block> WATERS = createTag("waters");
         public static final TagKey<Block> ICES = createTag("ices");
-        public static final TagKey<Block> LIQUIDS = createTag("liquids");
-        public static final TagKey<Block> SOUL_FIRE = createTag("soul_fire");
+        public static final TagKey<Block> SOUL_FIRES = createTag("soul_fires");
 
         public static final TagKey<Block> OP_LAMPS = createTag("op_lamps");
 

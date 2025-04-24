@@ -1,27 +1,30 @@
 package net.offllneplayer.opminecraft.method.crying.essence;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.offllneplayer.opminecraft.OPMinecraft;
+
 import net.offllneplayer.opminecraft.DeclareTagKeys;
+import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-import java.util.Objects;
 
 public class CryingEssence_OnTick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -36,7 +39,7 @@ public class CryingEssence_OnTick_Method {
 		BlockState Get_Block_z_plus_1 = (world.getBlockState(BlockPos.containing(x, y, z + 1)));
 		BlockState Get_Block_z_minus_1 = (world.getBlockState(BlockPos.containing(x, y, z - 1)));
 
-		// change fluid source crying essence blocks
+
 		if (Get_Block_X_Y_Z.getFluidState().isSource()) {
 
 			if (Get_Block_x_plus_1.is(DeclareTagKeys.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
@@ -47,35 +50,37 @@ public class CryingEssence_OnTick_Method {
 					Get_Block_z_minus_1.is(DeclareTagKeys.Blocks.CRYING_OBSIDIAN_TRIGGERS)) {
 
 				if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
-					if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.CRYING_ESSENCE.get()) {
 
-						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
-						_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
 
-						OPMinecraft.queueServerWork(10, () -> {
+					world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 
-							LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
-							lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
-							_level.addFreshEntity(lightningEntity);
+					OPMinecraft.queueServerWork(10, () -> {
 
-							world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-						});
+						LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
+						lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
+						_level.addFreshEntity(lightningEntity);
+					});
 
-						OPMinecraft.queueServerWork(20, () -> {
+					OPMinecraft.queueServerWork(20, () -> {
 
-							_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.deepslate.step"))), SoundSource.MASTER, 1, (float) 0.8);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.DEEPSLATE_STEP, SoundSource.BLOCKS, 1.0F, 0.8F);
 
-							DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
-							_level.explode(source.getEntity(), x, y, z, 5.0f, true, Level.ExplosionInteraction.BLOCK);
+						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+						_level.explode(source.getEntity(), x, y, z, 5.0f, true, Level.ExplosionInteraction.BLOCK);
 
-							world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-						});
-					}
+						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryIBBI.CRYING_RESIN.get()));
+						resinEntity.setPickUpDelay(5);
+						_level.addFreshEntity(resinEntity);
+
+						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
+					});
 				}
 			} else if (Get_Block_x_plus_1.is(DeclareTagKeys.Blocks.WATERS) ||
 					Get_Block_x_minus_1.is(DeclareTagKeys.Blocks.WATERS) ||
@@ -85,188 +90,105 @@ public class CryingEssence_OnTick_Method {
 					Get_Block_z_minus_1.is(DeclareTagKeys.Blocks.WATERS)) {
 
 				if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
-					if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.CRYING_ESSENCE.get()) {
 
-						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
-						_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
 
-						OPMinecraft.queueServerWork(10, () -> {
-
-							LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
-							lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
-							_level.addFreshEntity(lightningEntity);
-
-							world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
-						});
-
-						OPMinecraft.queueServerWork(20, () -> {
-
-							_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.chime"))), SoundSource.MASTER, 1, (float) 0.8);
-
-							DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
-							_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
-
-							world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.AMETHYST_CLUSTER.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-							world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-						});
-					}
-				}
-		} else // change non-fluid source crying essence blocks
-			if (!Get_Block_X_Y_Z.getFluidState().isSource()) {
-
-				if (Get_Block_x_plus_1.is(Blocks.LAVA)
-						|| Get_Block_x_minus_1.is(Blocks.LAVA)
-						|| Get_Block_y_plus_1.is(Blocks.LAVA)
-						|| Get_Block_y_minus_1.is(Blocks.LAVA)
-						|| Get_Block_z_plus_1.is(Blocks.LAVA)
-						|| Get_Block_z_minus_1.is(Blocks.LAVA)) {
-
-					Flowing_Collision_Happened = true;
-
-					if ((world instanceof Level _level) && (!_level.isClientSide())) {
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.lava.extinguish"))), SoundSource.MASTER, 1, 1);
-					}
-
-					if (Get_Block_x_plus_1.is(Blocks.LAVA)) {
-						if (Get_Block_x_plus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.NETHERRACK.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_x_minus_1.is(Blocks.LAVA)) {
-						if (Get_Block_x_minus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.NETHERRACK.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_y_plus_1.is(Blocks.LAVA)) {
-						if (Get_Block_y_plus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.NETHERRACK.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_y_minus_1.is(Blocks.LAVA)) {
-						if (Get_Block_y_minus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.NETHERRACK.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.DEEPSLATE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_z_plus_1.is(Blocks.LAVA)) {
-						if (Get_Block_z_plus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.NETHERRACK.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.DEEPSLATE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_z_minus_1.is(Blocks.LAVA)) {
-						if (Get_Block_z_minus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.NETHERRACK.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.DEEPSLATE.defaultBlockState(), 3);
-						}
-					}
-				}
-				if (Get_Block_x_plus_1.is(DeclareTagKeys.Blocks.WATERS) ||
-						Get_Block_x_minus_1.is(DeclareTagKeys.Blocks.WATERS) ||
-						Get_Block_y_plus_1.is(DeclareTagKeys.Blocks.WATERS) ||
-						Get_Block_y_minus_1.is(DeclareTagKeys.Blocks.WATERS) ||
-						Get_Block_z_plus_1.is(DeclareTagKeys.Blocks.WATERS) ||
-						Get_Block_z_minus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-
-					Flowing_Collision_Happened = true;
-
-					if ((world instanceof Level _level) && (!_level.isClientSide())) {
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.wet_grass.break"))), SoundSource.MASTER, (float) 0.6, (float) 1.5);
-					}
-
-					if (Get_Block_x_plus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-						if (Get_Block_x_plus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.ICE.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.CALCITE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_x_minus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-						if (Get_Block_x_minus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.ICE.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.CALCITE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_y_plus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-						if (Get_Block_y_plus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.ICE.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.CALCITE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_y_minus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-						if (Get_Block_y_minus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.ICE.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.CALCITE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_z_plus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-						if (Get_Block_z_plus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.ICE.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.CALCITE.defaultBlockState(), 3);
-						}
-					}
-					if (Get_Block_z_minus_1.is(DeclareTagKeys.Blocks.WATERS)) {
-						if (Get_Block_z_minus_1.getFluidState().isSource()) {
-							world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.ICE.defaultBlockState(), 3);
-						} else {
-							world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.CALCITE.defaultBlockState(), 3);
-						}
-					}
-				}
-				if (Get_Block_x_plus_1.is(DeclareTagKeys.Blocks.ICES) ||
-						Get_Block_x_minus_1.is(DeclareTagKeys.Blocks.ICES) ||
-						Get_Block_y_plus_1.is(DeclareTagKeys.Blocks.ICES) ||
-						Get_Block_y_minus_1.is(DeclareTagKeys.Blocks.ICES) ||
-						Get_Block_z_plus_1.is(DeclareTagKeys.Blocks.ICES) ||
-						Get_Block_z_minus_1.is(DeclareTagKeys.Blocks.ICES)) {
-
-					Flowing_Collision_Happened = true;
-
-					if ((world instanceof Level _level) && (!_level.isClientSide())) {
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.amethyst_block.resonate"))), SoundSource.MASTER, (float) 0.6, (float) 1.3);
-					}
-
-					if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).is(DeclareTagKeys.Blocks.ICES)) {
-						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					}
-					if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).is(DeclareTagKeys.Blocks.ICES)) {
-						world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					}
-					if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(DeclareTagKeys.Blocks.ICES)) {
-						world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					}
-					if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(DeclareTagKeys.Blocks.ICES)) {
-						world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					}
-					if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).is(DeclareTagKeys.Blocks.ICES)) {
-						world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					}
-					if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).is(DeclareTagKeys.Blocks.ICES)) {
-						world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
-					}
-				}
-
-				if (Flowing_Collision_Happened) {
-					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 4, 6, 4, 1);
 					world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
+
+					OPMinecraft.queueServerWork(10, () -> {
+
+						LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(_level);
+						lightningEntity.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
+						_level.addFreshEntity(lightningEntity);
+					});
+
+					OPMinecraft.queueServerWork(20, () -> {
+
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 0.8F);
+
+						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
+						_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
+
+						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryIBBI.CRYING_RESIN.get()));
+						resinEntity.setPickUpDelay(5);
+						_level.addFreshEntity(resinEntity);
+
+						world.setBlock(BlockPos.containing(x, y, z), Blocks.BUDDING_AMETHYST.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x + 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x - 1, y, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y + 1, z), Blocks.AMETHYST_CLUSTER.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y - 1, z), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y, z + 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
+						world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
+					});
+				}
+			}
+		} else {
+
+			BlockPos pos = BlockPos.containing(x, y, z);
+
+			for (Direction dir : Direction.values()) {
+				BlockPos np = pos.relative(dir);
+				BlockState blockState = world.getBlockState(np);
+
+				if ((blockState.is(Blocks.LAVA)) || (blockState.is(DeclareTagKeys.Blocks.WATERS)) || (blockState.is(DeclareTagKeys.Blocks.ICES))) {
+
+					Flowing_Collision_Happened = true;
+					double xOffset = Mth.nextDouble(RandomSource.create(), -0.420D, 0.420D);
+					double zOffset = Mth.nextDouble(RandomSource.create(), -0.420D, 0.420D);
+
+					int howmanyParticles = Mth.nextInt(RandomSource.create(), 2, 6);
+
+				if (blockState.is(Blocks.LAVA)) {
+
+					if (world instanceof Level _level && !_level.isClientSide()) {
+						_level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
+					}
+					if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
+						_slevel.sendParticles(ParticleTypes.SMOKE, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+					}
+
+					world.setBlock(np, blockState.getFluidState().isSource() ? Blocks.NETHERRACK.defaultBlockState() : Blocks.DEEPSLATE.defaultBlockState(), 3);
+
+
+				} else if (blockState.is(DeclareTagKeys.Blocks.WATERS)) {
+
+					if (world instanceof Level _level && !_level.isClientSide()) {
+						_level.playSound(null, pos, SoundEvents.DEEPSLATE_STEP, SoundSource.BLOCKS, 0.8F, 1.420F);
+					}
+
+					if (blockState.getFluidState().isSource()) {
+						if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
+							_slevel.sendParticles(ParticleTypes.SPIT, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+						}
+					} else {
+						if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
+							_slevel.sendParticles(ParticleTypes.DRIPPING_WATER, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+						}
+					}
+
+					world.setBlock(np, blockState.getFluidState().isSource() ? Blocks.CALCITE.defaultBlockState() : Blocks.ICE.defaultBlockState(), 3);
+
+
+				} else if (blockState.is(DeclareTagKeys.Blocks.ICES)) {
+
+					if (world instanceof Level _level && !_level.isClientSide()) {
+						_level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.69F, 1.269F);
+					}
+					if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
+						_slevel.sendParticles(ParticleTypes.DRIPPING_WATER, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+					}
+
+					world.setBlock(np, Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
+				}
+			}
+				if (Flowing_Collision_Happened) {
+					if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
+						_slevel.sendParticles(ParticleTypes.LANDING_OBSIDIAN_TEAR, x, y, z, 4, 0.420, 0.420, 0.420, 0.2);
+					}
+
+					world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 				}
 			}
 		}

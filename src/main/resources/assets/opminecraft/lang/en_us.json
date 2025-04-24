@@ -200,21 +200,30 @@
 
   "block.opminecraft.stuck_gunblade": "Gunblade",
 
-  "/*-------*[Blocks]*": "",
+  "/*-------*[OP:Blocks]*": "",
 
 
   "block.minecraft.pitcher_plant": "§bPitcher Plant§r",
 
   "block.minecraft.netherite_block": "§7Block of Netherite§r",
 
-  "/*-------*[Minecraft_Blocks]*": "",
+  "/*-------*[Minecraft:Blocks]*": "",
 
 
   "item.opminecraft.test_item": "§4TeSt ItEm§r",
-
   "item.opminecraft.test_item.description_0": "..What's the last thing OP worked on..?",
 
   "item.opminecraft.ancient_chunk": "Ancient Chunk",
+
+  "item.opminecraft.chisel": "Chisel",
+  "item.opminecraft.chisel.description_0": "Changes certain blocks at will",
+  "item.opminecraft.sculk_hammer": "Sculk Hammer",
+  "item.opminecraft.sculk_hammer.description_0": "Repair anything.. at it's own expense",
+
+  "item.opminecraft.aku_aku_mask": "§5A§ak§eu §6A§dk§au§r",
+  "item.opminecraft.aku_aku_mask.description_0": "§6P§5O§eO§aD§dA§6B§5E§eE§aG§dA§r",
+  "item.opminecraft.wumpa_fruit": "§6Wumpa Fruit§r",
+  "item.opminecraft.wumpa_fruit.description_0": "..Probably shouldn't eat these.",
 
   "item.opminecraft.crude_alexandrite": "§5Crude Alexandrite§r",
   "item.opminecraft.alexandrite": "§5Alexandrite§r",
@@ -281,34 +290,6 @@
 
   "item.opminecraft.gemstone_dust": "Gemstone Dust",
 
-  "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
-
-  "item.opminecraft.chisel": "Chisel",
-  "item.opminecraft.dynamite_stick": "§cDynamite Stick§r",
-  "item.opminecraft.tnt_stick": "§cTNT Stick§r",
-
-  "item.opminecraft.aku_aku_mask": "§5A§ak§eu §6A§dk§au§r",
-  "item.opminecraft.aku_aku_mask.description_0": "§6P§5O§eO§aD§dA§6B§5E§eE§aG§dA§r",
-  "item.opminecraft.wumpa_fruit": "§6Wumpa Fruit§r",
-  "item.opminecraft.wumpa_fruit.description_0": "..Probably shouldn't eat these.",
-
-  "item.opminecraft.crying_ingot": "Crying Ingot",
-  "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
-
-  "item.opminecraft.crying_helmet": "Crying Helmet",
-  "item.opminecraft.crying_chestplate": "Crying Chestplate",
-  "item.opminecraft.crying_leggings": "Crying Leggings",
-  "item.opminecraft.crying_boots": "Crying Boots",
-
-  "item.opminecraft.crying_horse_armor": "Crying Horse Armor",
-
-  "item.opminecraft.crying_sword": "Crying Sword",
-  "item.opminecraft.crying_axe": "Crying Axe",
-  "item.opminecraft.crying_pickaxe": "Crying Pickaxe",
-  "item.opminecraft.crying_shovel": "Crying Shovel",
-  "item.opminecraft.crying_sickle": "Crying Sickle",
-  "item.opminecraft.crying_paxel": "Crying Paxel",
-
   "item.opminecraft.black_feather": "Black Feather",
   "item.opminecraft.blue_feather": "Blue Feather",
   "item.opminecraft.brown_feather": "Brown Feather",
@@ -326,6 +307,28 @@
   "item.opminecraft.yellow_feather": "Yellow Feather",
   "item.opminecraft.golden_feather": "Golden Feather",
 
+  "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
+  "item.opminecraft.crying_ingot": "Crying Ingot",
+  "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
+
+  "item.opminecraft.crying_sword": "Crying Sword",
+  "item.opminecraft.crying_axe": "Crying Axe",
+  "item.opminecraft.crying_pickaxe": "Crying Pickaxe",
+  "item.opminecraft.crying_shovel": "Crying Shovel",
+  "item.opminecraft.crying_sickle": "Crying Sickle",
+  "item.opminecraft.crying_paxel": "Crying Paxel",
+
+  "item.opminecraft.crying_helmet": "Crying Helmet",
+  "item.opminecraft.crying_chestplate": "Crying Chestplate",
+  "item.opminecraft.crying_leggings": "Crying Leggings",
+  "item.opminecraft.crying_boots": "Crying Boots",
+
+  "item.opminecraft.crying_resin": "Crying Resin",
+
+  "item.opminecraft.crying_horse_armor": "Crying Horse Armor",
+
+  "item.opminecraft.kaupenjoe_armor_trim_smithing_template": "Kaupenjoe Trim Template",
+
   "item.opminecraft.gunblade": "Gunblade",
   "item.opminecraft.gunblade.description_0": "[FF8]",
   "item.opminecraft.gunblade.description_1": "Slash an entity, then use to fire",
@@ -333,21 +336,18 @@
   "item.opminecraft.prototype_gunblade.description_0": "[FF8]",
   "item.opminecraft.prototype_gunblade.description_1": "This needs some work, doesn't it?",
 
-  "item.opminecraft.kaupenjoe_armor_trim_smithing_template": "Kaupenjoe Trim Template",
-
-  "item.opminecraft.sculk_hammer": "Sculk Hammer",
-  "item.opminecraft.sculk_hammer.description_0": "Repair anything.. at it's own expense",
+  "item.opminecraft.dynamite_stick": "§cDynamite Stick§r",
+  "item.opminecraft.tnt_stick": "§cTNT Stick§r",
 
   "item.opminecraft.smb_super_fan": "§4SMB Super Fan§r",
   "item.opminecraft.smb_super_fan.description_0": "§4It smells like meat..§r",
 
   "item.opminecraft.totem_of_life": "§cTotem of Life§r",
   "item.opminecraft.totem_of_life.description_0": "sOmEhOw, tHiS kEePs yOu sAfEr",
-
   "item.opminecraft.totem_of_uncrying": "§dTotem of Uncrying§r",
   "item.opminecraft.totem_of_uncrying.description_0": "sOmEhOw, tHiS kEePs yOu sAfEr",
 
-  "/*-------*[Items]*": "",
+  "/*-------*[OP:Items]*": "",
 
 
   "item.minecraft.netherite_scrap": "Ancient Scrap",
@@ -375,7 +375,7 @@
   "item.minecraft.tipped_arrow.effect.crying_ii_potion": "§dArrow of Crying II§r",
   "item.minecraft.tipped_arrow.effect.crying_ii_potion_long": "§dArrow of Crying II (§r§4+§d)§r",
 
-  "/*-------*[Minecraft_Items]*": "",
+  "/*-------*[Minecraft:Items]*": "",
 
 
   "trim_pattern.opminecraft.kaupenjoe": "Kaupenjoe Armor Trim",

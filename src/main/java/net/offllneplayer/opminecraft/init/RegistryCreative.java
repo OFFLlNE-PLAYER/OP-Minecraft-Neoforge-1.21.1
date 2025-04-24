@@ -223,12 +223,14 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.KAUPENJOE_SMITHING_TEMPLATE);
 
                 event.accept(RegistryIBBI.AKU_AKU_MASK);
-                event.accept(RegistryIBBI.TOTEM_OF_LIFE);
+
 
                 event.accept(RegistryIBBI.GUNBLADE);
                 event.accept(RegistryIBBI.PROTOTYPE_GUNBLADE);
                 event.accept(RegistryIBBI.STUCK_GUNBLADE);
 
+                event.accept(RegistryIBBI.TOTEM_OF_LIFE);
+                // event.accept(RegistryIBBI.TOTEM_OF_UNCRYING);
             }
             if (event.getTabKey()==CreativeModeTabs.FOOD_AND_DRINKS) {
 
@@ -308,6 +310,7 @@ public class RegistryCreative {
 
                 event.accept(RegistryIBBI.CRYING_INGOT);
                 event.accept(RegistryIBBI.CRYING_SMITHING_TEMPLATE);
+                event.accept(RegistryIBBI.CRYING_RESIN);
 
                 event.accept(RegistryIBBI.BLACK_FEATHER);
                 event.accept(RegistryIBBI.BLUE_FEATHER);

@@ -1,6 +1,7 @@
 
 package net.offllneplayer.opminecraft.fluid;
 
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
 import net.minecraft.world.level.material.FluidState;
@@ -18,13 +19,14 @@ import net.minecraft.core.BlockPos;
 import net.offllneplayer.opminecraft.init.RegistryFluids;
 import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceFlowingCondition_Method;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.method.crying.essence.CryingEssence_OnTick_Method;
 
 
 public abstract class CryingEssenceFluid extends BaseFlowingFluid {
 	public static final Properties PROPERTIES = new Properties(RegistryFluids.CRYING_ESSENCE_TYPE::get, RegistryFluids.CRYING_ESSENCE,
             RegistryFluids.FLOWING_CRYING_ESSENCE::get)
 			.explosionResistance(1200f)
-			.tickRate(6)
+			.tickRate(14)
 			.levelDecreasePerBlock(3)
 			.slopeFindDistance(2)
 			.bucket(RegistryIBBI.CRYING_ESSENCE_BUCKET)
@@ -33,7 +35,8 @@ public abstract class CryingEssenceFluid extends BaseFlowingFluid {
 	private CryingEssenceFluid() {super(PROPERTIES);}
 
 	@Override
-	public ParticleOptions getDripParticle() {return ParticleTypes.DRIPPING_OBSIDIAN_TEAR;}
+	public ParticleOptions getDripParticle() {return ParticleTypes.DRIPPING_OBSIDIAN_TEAR;
+	}
 
 	@Override
 	protected boolean canSpreadTo(BlockGetter worldIn, BlockPos fromPos, BlockState blockstate, Direction direction, BlockPos toPos, BlockState intostate, FluidState toFluidState, Fluid fluidIn) {
@@ -42,15 +45,19 @@ public abstract class CryingEssenceFluid extends BaseFlowingFluid {
 			int x = fromPos.getX();
 			int y = fromPos.getY();
 			int z = fromPos.getZ();
-			if (direction == direction.DOWN){condition = CryingEssenceFlowingCondition_Method.execute(world, x, y, z);}
+			if (direction == direction.DOWN){
+				condition = CryingEssenceFlowingCondition_Method.execute(world, x, y, z);
+			}
 		}
 		return super.canSpreadTo(worldIn, fromPos, blockstate, direction, toPos, intostate, toFluidState, fluidIn) && condition;
 	}
 
 	public static class Source extends CryingEssenceFluid {
-		public int getAmount(FluidState state) {return 8;}
+		public int getAmount(FluidState state) {return 8;
+		}
 
-		public boolean isSource(FluidState state) {return true;}
+		public boolean isSource(FluidState state) {return true;
+		}
 	}
 
 	public static class Flowing extends CryingEssenceFluid {
@@ -59,8 +66,12 @@ public abstract class CryingEssenceFluid extends BaseFlowingFluid {
 			builder.add(LEVEL);
 		}
 
-		public int getAmount(FluidState state) {return state.getValue(LEVEL);}
+		public int getAmount(FluidState state) {
+			return state.getValue(LEVEL);
+		}
 
-		public boolean isSource(FluidState state) {return false;}
+		public boolean isSource(FluidState state) {
+			return false;
+		}
 	}
 }

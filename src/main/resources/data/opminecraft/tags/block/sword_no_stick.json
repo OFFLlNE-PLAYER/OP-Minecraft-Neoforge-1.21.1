@@ -56,6 +56,7 @@
     "minecraft:kelp",
     "minecraft:lantern",
     "minecraft:large_amethyst_bud",
+    "minecraft:lava",
     "minecraft:lectern",
     "minecraft:lever",
     "minecraft:lightning_rod",
@@ -75,7 +76,7 @@
     "minecraft:structure_void",
     "minecraft:turtle_egg",
 
-    "#opminecraft:liquids",
+    "#opminecraft:waters",
     "#opminecraft:non_solid_corals",
 
     "opminecraft:crash_tnt",
