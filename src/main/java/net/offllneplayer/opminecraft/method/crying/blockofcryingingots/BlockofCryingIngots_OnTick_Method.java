@@ -19,7 +19,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.AdvancementHolder;
@@ -47,7 +46,7 @@ public class BlockofCryingIngots_OnTick_Method {
 			if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 				if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.BLOCK_OF_CRYING_INGOTS.get()) {
 
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, (float) 1, (float) 1);
 					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 2, 2, 2, 1);
 
 					world.setBlock(BlockPos.containing(x, y, z), RegistryIBBI.CRYING_ESSENCE.get().defaultBlockState(), 3);
@@ -78,7 +77,7 @@ public class BlockofCryingIngots_OnTick_Method {
 							}
 						}
 
-						_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.exit"))), SoundSource.NEUTRAL, 1, 0.2F);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMBIENT_UNDERWATER_EXIT, SoundSource.NEUTRAL, 1, 0.2F);
 
 						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
 						_level.explode(source.getEntity(), x, y, z, 1.0f, false, Level.ExplosionInteraction.BLOCK);

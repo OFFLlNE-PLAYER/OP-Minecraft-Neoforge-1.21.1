@@ -6,11 +6,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
-import java.util.Objects;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
+
 
 public class CrashTNT_OnTick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -48,7 +47,7 @@ public class CrashTNT_OnTick_Method {
 					}
 				}.getValue(world, BlockPos.containing(x, y, z), "boom_countdown") == 7) {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
-							_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:fast_tick_tnt"))), SoundSource.MASTER, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.FAST_TICK_TNT.get(), SoundSource.MASTER, 1, 1);
 					}
 					{
 						int _value = 1;
@@ -66,7 +65,7 @@ public class CrashTNT_OnTick_Method {
 					}
 				}.getValue(world, BlockPos.containing(x, y, z), "boom_countdown") == 5) {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
-							_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tick_tnt"))), SoundSource.MASTER, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.TICK_TNT.get(), SoundSource.MASTER, 1, 1);
 					}
 					{
 						int _value = 2;
@@ -84,7 +83,7 @@ public class CrashTNT_OnTick_Method {
 					}
 				}.getValue(world, BlockPos.containing(x, y, z), "boom_countdown") == 3) {
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
-							_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:tick_tnt"))), SoundSource.MASTER, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.TICK_TNT.get(), SoundSource.MASTER, 1, 1);
 					}
 					{
 						int _value = 3;

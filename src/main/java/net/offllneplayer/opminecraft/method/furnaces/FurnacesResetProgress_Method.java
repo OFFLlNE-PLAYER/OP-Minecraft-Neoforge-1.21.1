@@ -1,12 +1,13 @@
 package net.offllneplayer.opminecraft.method.furnaces;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.common.extensions.ILevelExtension;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -14,9 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
+
 import net.offllneplayer.opminecraft.method.furnaces.ontick.FurnacesAnime_Method;
 
 public class FurnacesResetProgress_Method {
@@ -77,7 +77,7 @@ public class FurnacesResetProgress_Method {
 				}
 			}.getValue(world, BlockPos.containing(x, y, z), "NBT_Furnaces_Progress") > 0) {
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.6, (float) 0.7);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.FIRE_EXTINGUISH, SoundSource.MASTER, (float) 0.6, (float) 0.7);
 				}
 			}
 			if (!world.isClientSide()) {
@@ -106,7 +106,7 @@ public class FurnacesResetProgress_Method {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if ((world instanceof Level _level) && (!_level.isClientSide())) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.fire.extinguish")), SoundSource.MASTER, (float) 0.6, (float) 0.7);
+					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.FIRE_EXTINGUISH, SoundSource.MASTER, (float) 0.6, (float) 0.7);
 			}
 			if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
 				ItemStack _setstack = new ItemStack(Blocks.AIR).copy();

@@ -1,8 +1,7 @@
 package net.offllneplayer.opminecraft.method.crash.wumpafruit;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -12,8 +11,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-
-import java.util.Objects;
 
 public class WumpaFruitEnd_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -26,7 +23,7 @@ public class WumpaFruitEnd_Method {
 		if ((world instanceof Level _level) && (!_level.isClientSide())) {
 			float vol = Mth.nextFloat(RandomSource.create(), 0.69F, 0.9F);
 			float tone = Mth.nextFloat(RandomSource.create(), 0.69F, 1.0420F);
-			_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.player.burp"))), SoundSource.MASTER, vol, tone);
+			_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.PLAYER_BURP, SoundSource.MASTER, vol, tone);
 		}
 	}
 }

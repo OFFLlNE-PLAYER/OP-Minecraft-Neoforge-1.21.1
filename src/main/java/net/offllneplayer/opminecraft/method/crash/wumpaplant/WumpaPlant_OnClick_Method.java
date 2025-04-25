@@ -11,15 +11,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-
-import java.util.Objects;
 
 public class WumpaPlant_OnClick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -27,7 +24,8 @@ public class WumpaPlant_OnClick_Method {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			if ((world instanceof Level _level) && (!_level.isClientSide())) {
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.crop.break"))), SoundSource.MASTER, 1, (float) 1.1);
+				_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CROP_BREAK, SoundSource.MASTER, 1.0F, 1.1F);
+
 			}
 			world.levelEvent(2001, BlockPos.containing(x, y + 1, z), Block.getId(RegistryIBBI.WUMPA_PLANT.get().defaultBlockState()));
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);

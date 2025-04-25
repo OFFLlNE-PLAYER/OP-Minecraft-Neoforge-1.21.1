@@ -1,12 +1,15 @@
 
 package net.offllneplayer.opminecraft.block.crash;
 
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.util.DeferredSoundType;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -25,7 +28,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -37,11 +39,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.common.util.DeferredSoundType;
+
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
-import net.offllneplayer.opminecraft.method.crash.crates.crashtnt.*;
+import net.offllneplayer.opminecraft.method.crash.crates.crashtnt.CrashTNTBoom_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crashtnt.CrashTNTPrime_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crashtnt.CrashTNT_OnTick_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.crashtnt.CrashTNT_SilkTouch_Method;
 
 import java.util.List;
 
@@ -50,18 +54,22 @@ public class CrashTNTBlock extends Block implements EntityBlock {
 	public static final IntegerProperty TNTSTATE = IntegerProperty.create("tntstate", 0, 4);
 
 	public CrashTNTBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
+		super(Properties.of()
+				.mapColor(MapColor.COLOR_RED)
 				.sound(new DeferredSoundType(1.0f, 1.0f,
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_crate_break")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.bamboo.step")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.bamboo_wood.place")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_spin")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:silent_sound"))))
+						(RegistrySounds.CRASH_CRATE_BREAK),
+						() -> SoundEvents.BAMBOO_STEP,
+						() -> SoundEvents.BAMBOO_PLACE,
+						(RegistrySounds.CRASH_SPIN),
+						(RegistrySounds.SILENT_SOUND)))
 				.strength(0.1f, 0f)
+				.lightLevel(s -> 5)
 				.noOcclusion()
 				.pushReaction(PushReaction.DESTROY)
+				.hasPostProcess((bs, br, bp) -> true)
+				.emissiveRendering((bs, br, bp) -> true)
 				.isRedstoneConductor((bs, br, bp) -> false));
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TNTSTATE, 0));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
 	@Override

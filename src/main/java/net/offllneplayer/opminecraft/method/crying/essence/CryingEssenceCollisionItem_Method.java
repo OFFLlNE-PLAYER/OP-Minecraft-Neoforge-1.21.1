@@ -3,10 +3,10 @@ package net.offllneplayer.opminecraft.method.crying.essence;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -22,7 +22,6 @@ import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 public class CryingEssenceCollisionItem_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -39,7 +38,7 @@ public class CryingEssenceCollisionItem_Method {
 
 			if (Number_of_Item == 1 || Number_of_Item == 2) {
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
-					_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("ambient.underwater.enter"))), SoundSource.MASTER, 1, (float) 0.2);
+					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMBIENT_UNDERWATER_ENTER, SoundSource.MASTER, 1, (float) 0.2);
 					entity.discard();
 				}
 

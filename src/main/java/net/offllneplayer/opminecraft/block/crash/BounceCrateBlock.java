@@ -1,10 +1,11 @@
 
 package net.offllneplayer.opminecraft.block.crash;
 
+import net.neoforged.neoforge.common.util.DeferredSoundType;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
@@ -27,7 +28,8 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.util.DeferredSoundType;
+
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateBreak_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrate_SilkTouch_Method;
@@ -36,17 +38,19 @@ public class BounceCrateBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
 	public BounceCrateBlock() {
-		super(Properties.of().mapColor(MapColor.DIRT)
+		super(Properties.of()
+				.mapColor(MapColor.WOOD)
 				.sound(new DeferredSoundType(1.0f, 1.0f,
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_crate_break")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.bamboo.step")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.bamboo.place")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_spin")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:silent_sound"))))
+						(RegistrySounds.CRASH_CRATE_BREAK),
+						() -> SoundEvents.BAMBOO_STEP,
+						() -> SoundEvents.BAMBOO_PLACE,
+						(RegistrySounds.CRASH_SPIN),
+						(RegistrySounds.SILENT_SOUND)))
 				.strength(0.1f, 0f)
 				.lightLevel(s -> 5)
 				.noOcclusion()
-				.pushReaction(PushReaction.DESTROY).isRedstoneConductor((bs, br, bp) -> false));
+				.pushReaction(PushReaction.DESTROY)
+				.isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 

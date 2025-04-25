@@ -1,13 +1,17 @@
 
 package net.offllneplayer.opminecraft.block.crash;
 
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.util.DeferredSoundType;
+
 import com.mojang.serialization.MapCodec;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.MenuProvider;
@@ -33,13 +37,12 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.common.util.DeferredSoundType;
+
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.crates.CrashCratesCollision_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.nitro.NitroBoom_Method;
-import net.offllneplayer.opminecraft.method.crash.crates.nitro.Nitro_OnTick_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.nitro.NitroIdleSound_Method;
+import net.offllneplayer.opminecraft.method.crash.crates.nitro.Nitro_OnTick_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.nitro.Nitro_SilkTouch_Method;
 
 import java.util.List;
@@ -53,13 +56,14 @@ public class NitroBlock extends FallingBlock implements EntityBlock {
 	}
 
 	public NitroBlock() {
-		super(Properties.of().mapColor(MapColor.COLOR_GREEN)
+		super(Properties.of()
+				.mapColor(MapColor.COLOR_LIGHT_GREEN)
 				.sound(new DeferredSoundType(1.0f, 1.0f,
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_idle_3")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.bamboo.step")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:silent_sound")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crash_spin")),
-						() -> BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:nitro_idle_2"))))
+						(RegistrySounds.CRASH_CRATE_BREAK),
+						() -> SoundEvents.BAMBOO_STEP,
+						() -> SoundEvents.BAMBOO_PLACE,
+						(RegistrySounds.CRASH_SPIN),
+						(RegistrySounds.SILENT_SOUND)))
 				.strength(0.1f, 0f)
 				.lightLevel(s -> 5)
 				.noOcclusion()

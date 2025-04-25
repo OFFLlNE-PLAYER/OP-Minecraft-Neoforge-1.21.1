@@ -1,15 +1,14 @@
 package net.offllneplayer.opminecraft.method.furnaces.gui;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 
@@ -24,7 +23,7 @@ public class FurnacesExpButton_Method {
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "Stored_EXP") > 0) {
 			if (world instanceof Level _level && !_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.experience_bottle.throw")), SoundSource.MASTER, 1, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.EXPERIENCE_BOTTLE_THROW, SoundSource.MASTER, 0.9F, 1);
 			}
 			for (int index0 = 0; index0 < (int) (new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
@@ -48,7 +47,7 @@ public class FurnacesExpButton_Method {
 			}
 			OPMinecraft.queueServerWork(2, () -> {
 				if (world instanceof Level _level && !_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.glass.break")), SoundSource.MASTER, (float) 0.6, (float) 1.1);
+						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GLASS_BREAK, SoundSource.MASTER, 0.6F, 1.1F);
 				}
 			});
 		}
