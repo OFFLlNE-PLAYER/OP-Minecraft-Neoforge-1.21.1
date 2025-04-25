@@ -26,7 +26,7 @@ public abstract class CryingEssenceFluid extends BaseFlowingFluid {
 	public static final Properties PROPERTIES = new Properties(RegistryFluids.CRYING_ESSENCE_TYPE::get, RegistryFluids.CRYING_ESSENCE,
             RegistryFluids.FLOWING_CRYING_ESSENCE::get)
 			.explosionResistance(1200f)
-			.tickRate(14)
+			.tickRate(16)
 			.levelDecreasePerBlock(3)
 			.slopeFindDistance(2)
 			.bucket(RegistryIBBI.CRYING_ESSENCE_BUCKET)

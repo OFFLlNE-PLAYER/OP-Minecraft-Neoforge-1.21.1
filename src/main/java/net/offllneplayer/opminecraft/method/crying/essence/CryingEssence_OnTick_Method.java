@@ -52,7 +52,7 @@ public class CryingEssence_OnTick_Method {
 				if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 
 					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
-					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 1, 1, 1, 1);
 
 					world.setBlock(BlockPos.containing(x, y, z), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 
@@ -92,7 +92,7 @@ public class CryingEssence_OnTick_Method {
 				if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 
 					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRYING_EXPLODE.get(), SoundSource.MASTER, 1.0F, 1.0F);
-					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 3, 3, 3, 1);
+					_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 5, 1, 1, 1, 1);
 
 					world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 
@@ -135,8 +135,9 @@ public class CryingEssence_OnTick_Method {
 				if ((blockState.is(Blocks.LAVA)) || (blockState.is(DeclareTagKeys.Blocks.WATERS)) || (blockState.is(DeclareTagKeys.Blocks.ICES))) {
 
 					Flowing_Collision_Happened = true;
-					double xOffset = Mth.nextDouble(RandomSource.create(), -0.420D, 0.420D);
-					double zOffset = Mth.nextDouble(RandomSource.create(), -0.420D, 0.420D);
+					double xOffset = Mth.nextDouble(RandomSource.create(), -0.2D, 0.2D);
+					double yOffset = Mth.nextDouble(RandomSource.create(), -0.2D, 0.2D);
+					double zOffset = Mth.nextDouble(RandomSource.create(), -0.2D, 0.2D);
 
 					int howmanyParticles = Mth.nextInt(RandomSource.create(), 2, 6);
 
@@ -146,7 +147,7 @@ public class CryingEssence_OnTick_Method {
 						_level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
 					}
 					if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
-						_slevel.sendParticles(ParticleTypes.SMOKE, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+						_slevel.sendParticles(ParticleTypes.SMOKE, x, y, z, howmanyParticles, xOffset, yOffset, zOffset, 0.2);
 					}
 
 					world.setBlock(np, blockState.getFluidState().isSource() ? Blocks.NETHERRACK.defaultBlockState() : Blocks.DEEPSLATE.defaultBlockState(), 3);
@@ -160,11 +161,11 @@ public class CryingEssence_OnTick_Method {
 
 					if (blockState.getFluidState().isSource()) {
 						if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
-							_slevel.sendParticles(ParticleTypes.SPIT, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+							_slevel.sendParticles(ParticleTypes.SPIT, x, y, z, howmanyParticles, xOffset, yOffset, zOffset, 0.2);
 						}
 					} else {
 						if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
-							_slevel.sendParticles(ParticleTypes.DRIPPING_WATER, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+							_slevel.sendParticles(ParticleTypes.DRIPPING_WATER, x, y, z, howmanyParticles, xOffset, yOffset, zOffset, 0.2);
 						}
 					}
 
@@ -177,7 +178,7 @@ public class CryingEssence_OnTick_Method {
 						_level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.69F, 1.269F);
 					}
 					if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
-						_slevel.sendParticles(ParticleTypes.DRIPPING_WATER, x, y, z, howmanyParticles, xOffset, 0.420, zOffset, 0.2);
+						_slevel.sendParticles(ParticleTypes.DRIPPING_WATER, x, y, z, howmanyParticles, xOffset, yOffset, zOffset, 0.2);
 					}
 
 					world.setBlock(np, Blocks.AMETHYST_BLOCK.defaultBlockState(), 3);
@@ -185,7 +186,11 @@ public class CryingEssence_OnTick_Method {
 			}
 				if (Flowing_Collision_Happened) {
 					if (world instanceof ServerLevel _slevel && !_slevel.isClientSide()) {
-						_slevel.sendParticles(ParticleTypes.LANDING_OBSIDIAN_TEAR, x, y, z, 4, 0.420, 0.420, 0.420, 0.2);
+
+						_slevel.sendParticles(ParticleTypes.LANDING_OBSIDIAN_TEAR, x, y, z, Mth.nextInt(RandomSource.create(), 2, 4),
+								Mth.nextDouble(RandomSource.create(), -0.2D, 0.2D),
+								Mth.nextDouble(RandomSource.create(), -0.2D, 0D),
+								Mth.nextDouble(RandomSource.create(), -0.2D, 0.2D), 0.2);
 					}
 
 					world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
