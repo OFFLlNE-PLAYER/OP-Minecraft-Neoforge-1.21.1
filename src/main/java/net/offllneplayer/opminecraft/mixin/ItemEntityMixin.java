@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import static net.offllneplayer.opminecraft.DeclareTagKeys.Items.CRYING_ITEMS;
+import static net.offllneplayer.opminecraft.util.DeclareTagKeys.Items.CRYING_ITEMS;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin {

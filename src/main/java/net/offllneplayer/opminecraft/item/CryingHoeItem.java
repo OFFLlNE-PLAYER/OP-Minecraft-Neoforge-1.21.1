@@ -1,10 +1,9 @@
-
 package net.offllneplayer.opminecraft.item;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tier;
@@ -15,37 +14,42 @@ import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 
 
-public class CryingAxeItem extends AxeItem {
+public class CryingHoeItem extends HoeItem {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
 			return 420;
 		}
+
 		@Override
 		public float getSpeed() {
-			return 11F;
+			return 11f;
 		}
+
 		@Override
 		public float getAttackDamageBonus() {
 			return 0;
 		}
+
 		@Override
 		public TagKey<Block> getIncorrectBlocksForDrops() {
 			return BlockTags.INCORRECT_FOR_NETHERITE_TOOL;
 		}
+
 		@Override
 		public int getEnchantmentValue() {
 			return 20;
 		}
+
 		@Override
 		public Ingredient getRepairIngredient() {
 			return Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get()));
 		}
 	};
 
-	public CryingAxeItem() {
+	public CryingHoeItem() {
 		super(TOOL_TIER, new Properties()
-				.attributes(AxeItem.createAttributes(TOOL_TIER, 9.5F, -2.9F))
+				.attributes(HoeItem.createAttributes(TOOL_TIER, 5f, -2.3f))
 				.rarity(Rarity.EPIC));
 	}
 

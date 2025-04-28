@@ -5,6 +5,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.offllneplayer.opminecraft.OPMinecraft;
+import net.offllneplayer.opminecraft.entity.CryingSickle;
 import net.offllneplayer.opminecraft.entity.SMBSuperFan;
 import net.offllneplayer.opminecraft.entity.ThrownDynamiteStick;
 import net.offllneplayer.opminecraft.entity.ThrownTNTStick;
@@ -19,6 +20,10 @@ public class RegistryEntities {
 
 /*--------------------------------------------------------------------------------------------*/
     /*[Register Entities]*/
+
+    public static final Supplier<EntityType<CryingSickle>> CRYING_SICKLE = ENTREGISTRY.register("crying_sickle",
+            ()-> EntityType.Builder.<CryingSickle>of(CryingSickle::new, MobCategory.MISC).build("crying_sickle"));
+
     public static final Supplier<EntityType<ThrownDynamiteStick>> THROWN_DYNAMITE_STICK = ENTREGISTRY.register("thrown_dynamite_stick",
             ()-> EntityType.Builder.<ThrownDynamiteStick>of(ThrownDynamiteStick::new, MobCategory.MISC).build("thrown_dynamite_stick"));
 

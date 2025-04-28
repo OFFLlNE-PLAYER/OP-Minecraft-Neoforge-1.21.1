@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 
 import net.offllneplayer.opminecraft.client.SMBSuperFan.SMBSuperFanRenderer;
+import net.offllneplayer.opminecraft.client.crying_sickle.CryingSickleRenderer;
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickRenderer;
 import net.offllneplayer.opminecraft.client.particle.ParticleGunbladeShot;
 import net.offllneplayer.opminecraft.client.tnt.ThrownTNTStickRenderer;
@@ -34,6 +35,7 @@ public class RegistryClientEventBus {
 		/*--------------------------------------------------------------------------------------------*/
 			/*[Register Entity Renderers]*/
 
+			EntityRenderers.register(RegistryEntities.CRYING_SICKLE.get(), CryingSickleRenderer::new);
 			EntityRenderers.register(RegistryEntities.THROWN_DYNAMITE_STICK.get(), ThrownDynamiteStickRenderer::new);
 			EntityRenderers.register(RegistryEntities.THROWN_TNT_STICK.get(), ThrownTNTStickRenderer::new);
 			EntityRenderers.register(RegistryEntities.SMB_SUPER_FAN.get(), SMBSuperFanRenderer::new);

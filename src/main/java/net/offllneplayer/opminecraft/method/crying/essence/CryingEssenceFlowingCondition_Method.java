@@ -2,7 +2,7 @@ package net.offllneplayer.opminecraft.method.crying.essence;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.core.BlockPos;
-import net.offllneplayer.opminecraft.DeclareTagKeys;
+import net.offllneplayer.opminecraft.util.DeclareTagKeys;
 
 public class CryingEssenceFlowingCondition_Method {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {

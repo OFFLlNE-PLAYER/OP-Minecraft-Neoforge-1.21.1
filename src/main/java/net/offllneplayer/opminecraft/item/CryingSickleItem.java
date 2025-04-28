@@ -1,64 +1,74 @@
 package net.offllneplayer.opminecraft.item;
 
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.HoeItem;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.entity.CryingSickle;
+import net.offllneplayer.opminecraft.util.PutNBT;
+
+import java.util.List;
 
 
-public class CryingSickleItem extends HoeItem {
-	private static final Tier TOOL_TIER = new Tier() {
-		@Override
-		public int getUses() {
-			return 420;
-		}
+public class CryingSickleItem extends Item {
+    public CryingSickleItem(){
+        super(new Properties().stacksTo(1).rarity(Rarity.EPIC));
+    }
 
-		@Override
-		public float getSpeed() {
-			return 11f;
-		}
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        if (level.isClientSide()) return InteractionResultHolder.sidedSuccess(itemstack, true);
 
-		@Override
-		public float getAttackDamageBonus() {
-			return 0;
-		}
+        CryingSickle sickle = new CryingSickle(player, level);
+        double verticalOffset = 1.4;
+        double forwardOffset = 0.7;
+        double lateralOffset = 0.5;
+        double yawRad = Math.toRadians(player.getYRot());
+        double forwardX = -Math.sin(yawRad);
+        double forwardZ = Math.cos(yawRad);
+        double rightX = forwardZ;
+        double rightZ = -forwardX;
+        if (hand == InteractionHand.MAIN_HAND) lateralOffset = -lateralOffset;
 
-		@Override
-		public TagKey<Block> getIncorrectBlocksForDrops() {
-			return BlockTags.INCORRECT_FOR_NETHERITE_TOOL;
-		}
+        double spawnX = player.getX() + forwardX * forwardOffset + rightX * lateralOffset;
+        double spawnY = player.getY() + verticalOffset;
+        double spawnZ = player.getZ() + forwardZ * forwardOffset + rightZ * lateralOffset;
 
-		@Override
-		public int getEnchantmentValue() {
-			return 20;
-		}
+        PutNBT.writeWeaponDataToEntity(itemstack, sickle, level);
 
-		@Override
-		public Ingredient getRepairIngredient() {
-			return Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get()));
-		}
-	};
+        sickle.setPos(spawnX, spawnY, spawnZ);
+        sickle.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.69F, 0.420F);
+        level.addFreshEntity(sickle);
 
-	public CryingSickleItem() {
-		super(TOOL_TIER, new Properties()
-				.attributes(HoeItem.createAttributes(TOOL_TIER, 5f, -2.3f))
-				.rarity(Rarity.EPIC));
-	}
+        player.awardStat(Stats.ITEM_USED.get(this));
+        itemstack.consume(1, player);
 
-	@Override
-	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
+        float vol = Mth.nextFloat(RandomSource.create(), 0.6F, 1F);
+        float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.2F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, vol, tone);
 
-		ApplyCrying1_Method.execute(entity);
+        return InteractionResultHolder.sidedSuccess(itemstack, false);
+    }
 
-		return retval;
-	}
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, context, list, flag);
+        list.add(Component.translatable("item.opminecraft.crying_sickle.description_0"));
+    }
 }

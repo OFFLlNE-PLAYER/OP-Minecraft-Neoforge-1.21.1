@@ -12,7 +12,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.decoration.ItemFrame;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -20,6 +19,7 @@ import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -31,16 +31,14 @@ import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.util.PutNBT;
 
-import java.util.List;
+public class CryingSickle extends AbstractArrow {
 
-public class SMBSuperFan extends AbstractArrow {
-
-    public SMBSuperFan(LivingEntity shooter, Level level) {
-        super(RegistryEntities.SMB_SUPER_FAN.get(), shooter, level, new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get()), null);
-        this.pickup = AbstractArrow.Pickup.DISALLOWED;
+    public CryingSickle(LivingEntity shooter, Level level) {
+        super(RegistryEntities.CRYING_SICKLE.get(), shooter, level, new ItemStack(RegistryIBBI.CRYING_SICKLE.get()), null);
+        this.pickup = Pickup.DISALLOWED;
     }
 
-    public SMBSuperFan(EntityType<? extends AbstractArrow> entityType, Level level) {
+    public CryingSickle(EntityType<? extends AbstractArrow> entityType, Level level) {
         super(entityType, level);
     }
 
@@ -103,7 +101,7 @@ public class SMBSuperFan extends AbstractArrow {
 
     @Override
     public ItemStack getDefaultPickupItem() {
-        return new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
+        return new ItemStack(RegistryIBBI.CRYING_SICKLE.get());
     }
 
     @Override
@@ -152,17 +150,16 @@ public class SMBSuperFan extends AbstractArrow {
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (!this.level().isClientSide()) {
-
             if (player.getItemInHand(hand).isEmpty()) {
 
-                float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-                this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
+                float tone = Mth.randomBetween(this.random, 1.35F, 1.5F);
+                this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 0.6F, tone);
 
-                ItemStack fan = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
+                ItemStack blade = new ItemStack(RegistryIBBI.CRYING_SICKLE.get());
                 CompoundTag nbt = this.getPersistentData();
-                PutNBT.writeWeaponDataToItemstack(fan, nbt, this.level());
+                PutNBT.writeWeaponDataToItemstack(blade, nbt, this.level());
 
-                player.setItemInHand(hand, fan);
+                player.setItemInHand(hand, blade);
                 this.discard();
 
                 return InteractionResult.SUCCESS;
@@ -170,6 +167,7 @@ public class SMBSuperFan extends AbstractArrow {
         }
         return InteractionResult.PASS;
     }
+
 
     private BlockPos stuckPos;
     private Block stuckBlock;
@@ -184,8 +182,8 @@ public class SMBSuperFan extends AbstractArrow {
         super.onHitBlock(result);
 
         if (!level().isClientSide()) {
-            float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-            this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
+            float tone = Mth.randomBetween(this.random, 1.2F, 1.4F);
+            this.playSound(RegistrySounds.GUNBLADE_SLASH.get(), 1.0F, tone);
             this.level().broadcastEntityEvent(this, (byte)3);
         }
     }
@@ -194,56 +192,20 @@ public class SMBSuperFan extends AbstractArrow {
         return stuckFace;
     }
 
-
-    private int customTickCounter = 0;
-
     @Override
     public void tick() {
         super.tick();
 
         if (this.inGround && stuckPos != null) {
             if (level().getBlockState(stuckPos).getBlock() != stuckBlock) {
-                this.inGround = false;
-                this.hasImpulse = true;
+                this.inGround      = false;
+                this.hasImpulse    = true;
                 this.setDeltaMovement(Vec3.ZERO);
             }
         }
 
-        if (!this.getCommandSenderWorld().isClientSide()) {
-            customTickCounter++;
-
-            // Every 20 ticks (1 second) play idle sound.
-            if (customTickCounter % 20 == 0) {
-                float vol = Mth.randomBetween(this.random, 0.2F, 0.420F);
-                float tone = Mth.randomBetween(this.random, 0.9F, 1.0F);
-                this.playSound(RegistrySounds.SMB_SUPER_FAN_IDLE.get(), vol, tone);
-            }
-
-            // Every 10 ticks (0.5 seconds) process nearby entities.
-            if (customTickCounter % 10 == 0) {
-                Level level = this.getCommandSenderWorld();
-                AABB boundingBox = this.getBoundingBox().inflate(0.1D);
-                List<Entity> entities = level.getEntities(this, boundingBox,
-                        entity -> (entity instanceof LivingEntity) || (entity instanceof ItemEntity));
-
-                for (Entity entity : entities) {
-
-                    if (entity instanceof ItemEntity) {// Discard item entities and play hit sound
-                        entity.discard();
-                        float vol = Mth.randomBetween(this.random, 0.6F, 1F);
-                        float tone = Mth.randomBetween(this.random, 1.0F, 1.3F);
-                        this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
-
-                    } else if (entity instanceof LivingEntity) {// Hurt living entities and play hit sound
-                        DamageSource fanDamage = level.damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
-                        entity.hurt(fanDamage, 2.0F);
-
-                        float vol = Mth.randomBetween(this.random, 0.8F, 1.05F);
-                        float tone = Mth.randomBetween(this.random, 0.8F, 1.1F);
-                        this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
-                    }
-                }
-            }
+        if (!inGround) {
+            rotation = (rotation + 15F) % 360F;
         }
     }
 

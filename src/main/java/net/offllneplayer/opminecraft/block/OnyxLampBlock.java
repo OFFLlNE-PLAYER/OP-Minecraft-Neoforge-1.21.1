@@ -35,7 +35,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.offllneplayer.opminecraft.DeclareTagKeys;
+import net.offllneplayer.opminecraft.util.DeclareTagKeys;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 

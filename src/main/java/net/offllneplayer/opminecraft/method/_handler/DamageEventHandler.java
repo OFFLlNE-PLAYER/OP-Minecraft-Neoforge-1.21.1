@@ -1,13 +1,11 @@
 package net.offllneplayer.opminecraft.method._handler;
 
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -22,12 +20,11 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryMobEffects;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuActivate_Method;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.DeclareTagKeys;
+import net.offllneplayer.opminecraft.util.DeclareTagKeys;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuReflect_Method;
 import net.offllneplayer.opminecraft.method.gunblade.GunbladeShot_Method;
 import net.offllneplayer.opminecraft.method.gunblade.PrototypeGunbladeShot_Method;

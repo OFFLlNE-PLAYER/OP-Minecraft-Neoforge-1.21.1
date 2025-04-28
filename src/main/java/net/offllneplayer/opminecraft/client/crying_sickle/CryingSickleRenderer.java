@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.client.SMBSuperFan;
+package net.offllneplayer.opminecraft.client.crying_sickle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -15,18 +15,17 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.entity.SMBSuperFan;
+import net.offllneplayer.opminecraft.entity.CryingSickle;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
-public class SMBSuperFanRenderer extends EntityRenderer<SMBSuperFan> {
-
-    public SMBSuperFanRenderer(EntityRendererProvider.Context context) {
+public class CryingSickleRenderer extends EntityRenderer<CryingSickle> {
+    public CryingSickleRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    public void render(SMBSuperFan entity, float entityYaw, float partialTicks, PoseStack poseStack,
-                       MultiBufferSource buffer, int packedLight) {
+    public void render(CryingSickle entity, float entityYaw, float partialTicks,
+                       PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
         Direction dir = entity.getDirection();
@@ -54,10 +53,8 @@ public class SMBSuperFanRenderer extends EntityRenderer<SMBSuperFan> {
             }
         }
 
-        ItemStack stack = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
-        // Retrieve the BakedModel for the ItemStack.
+        ItemStack stack = new ItemStack(RegistryIBBI.CRYING_SICKLE.get());
         BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(stack, entity.getCommandSenderWorld(), null, entity.getId());
-        // Render the item using the obtained BakedModel.
         Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
         poseStack.popPose();
@@ -65,8 +62,7 @@ public class SMBSuperFanRenderer extends EntityRenderer<SMBSuperFan> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SMBSuperFan entity) {
-        // This is not used by the item renderer but must be implemented.
-        return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_smb_super_fan.png");
+    public ResourceLocation getTextureLocation(CryingSickle entity) {
+        return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_crying_sickle.png");
     }
 }

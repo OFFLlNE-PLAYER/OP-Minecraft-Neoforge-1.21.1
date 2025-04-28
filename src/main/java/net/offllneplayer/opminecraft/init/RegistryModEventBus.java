@@ -7,6 +7,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 import net.offllneplayer.opminecraft.client.ModModelLayers;
 import net.offllneplayer.opminecraft.client.SMBSuperFan.SMBSuperFanModel;
+import net.offllneplayer.opminecraft.client.crying_sickle.CryingSickleModel;
 import net.offllneplayer.opminecraft.client.dynamite.ThrownDynamiteStickModel;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.client.tnt.ThrownTNTStickModel;
@@ -25,6 +26,7 @@ public class RegistryModEventBus {
         event.registerLayerDefinition(ModModelLayers.WARTURTLE_ARMOR, WarturtleModel::createBodyLayer);
 
          */
+        event.registerLayerDefinition(ModModelLayers.CRYING_SICKLE, CryingSickleModel::createBodyLayer);
 
         event.registerLayerDefinition(ModModelLayers.THROWN_DYNAMITE_STICK, ThrownDynamiteStickModel::createBodyLayer);
 
