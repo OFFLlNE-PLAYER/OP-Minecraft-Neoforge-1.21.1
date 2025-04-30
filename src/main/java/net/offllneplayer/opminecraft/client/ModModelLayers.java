@@ -19,8 +19,8 @@ public class ModModelLayers {
             ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "warturtle_armor"), "armor");
 */
 
-    public static final ModelLayerLocation CRYING_SICKLE = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "crying_sickle"), "main");
+    public static final ModelLayerLocation CRYING_HATCHET = new ModelLayerLocation(
+            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "crying_hatchet"), "main");
 
     public static final ModelLayerLocation THROWN_TNT_STICK = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_tnt_stick"), "main");

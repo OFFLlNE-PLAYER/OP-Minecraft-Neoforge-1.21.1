@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.client.crying_sickle;
+package net.offllneplayer.opminecraft.client.crying_hatchet;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -9,17 +9,17 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.offllneplayer.opminecraft.entity.CryingSickle;
+import net.offllneplayer.opminecraft.entity.CryingHatchet;
 
-public class CryingSickleModel extends EntityModel<CryingSickle> {
+public class CryingHatchetModel extends EntityModel<CryingHatchet> {
     private final ModelPart root;
 
-    public CryingSickleModel(ModelPart root) {
+    public CryingHatchetModel(ModelPart root) {
         this.root = root;
     }
 
     @Override
-    public void setupAnim(CryingSickle entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(CryingHatchet entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         // No animation needed for a flat model.
     }
 

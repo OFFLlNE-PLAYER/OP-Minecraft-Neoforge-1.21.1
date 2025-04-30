@@ -28,15 +28,16 @@ public class SMBSuperFanRenderer extends EntityRenderer<SMBSuperFan> {
     public void render(SMBSuperFan entity, float entityYaw, float partialTicks, PoseStack poseStack,
                        MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
+        poseStack.scale(2F, 2F, 2F);
 
         Direction dir = entity.getDirection();
         Direction stuckFace = entity.getStuckFace();
 
         if (dir == Direction.NORTH) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            poseStack.mulPose(Axis.YP.rotationDegrees(270));
         }
         if (dir == Direction.SOUTH) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            poseStack.mulPose(Axis.YP.rotationDegrees(90));
         }
         if (dir == Direction.EAST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(0));
@@ -47,10 +48,24 @@ public class SMBSuperFanRenderer extends EntityRenderer<SMBSuperFan> {
 
         if (!entity.isGrounded()) {
             poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getRenderingRotation() * 15F));
-
         } else {
-            if (stuckFace != Direction.DOWN) {
+            if (stuckFace == Direction.NORTH) {
                 poseStack.mulPose(Axis.XP.rotationDegrees(180));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.SOUTH) {
+                poseStack.mulPose(Axis.XP.rotationDegrees(180));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.EAST) {
+                poseStack.mulPose(Axis.XP.rotationDegrees(180));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.WEST) {
+                poseStack.mulPose(Axis.XP.rotationDegrees(180));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.UP) {
+                poseStack.mulPose(Axis.XP.rotationDegrees(180));
+            } else if (stuckFace == Direction.DOWN) {
+                poseStack.mulPose(Axis.XP.rotationDegrees(180));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(180));
             }
         }
 

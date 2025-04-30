@@ -20,6 +20,9 @@ public class RegistryDamageTypes {
     public static final ResourceKey<DamageType> GUNBLADE = ResourceKey.create(Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "gunblade"));
 
+    public static final ResourceKey<DamageType> HATCHET = ResourceKey.create(Registries.DAMAGE_TYPE,
+            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "hatchet"));
+
     public static final ResourceKey<DamageType> SMB_SUPER_FAN = ResourceKey.create(Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "smb_super_fan"));
 

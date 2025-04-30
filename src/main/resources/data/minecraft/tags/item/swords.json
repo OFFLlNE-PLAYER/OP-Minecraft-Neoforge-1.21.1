@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:crying_hatchet",
     "opminecraft:crying_sword",
-    "opminecraft:crying_sickle",
-    "opminecraft:crying_paxel",
+    "opminecraft:crying_swhopaxel",
     "opminecraft:gunblade",
     "opminecraft:prototype_gunblade"
   ]

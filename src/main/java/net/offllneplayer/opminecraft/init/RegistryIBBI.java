@@ -289,7 +289,7 @@ public class RegistryIBBI {
 	public static final DeferredItem<Item> CRYING_PAXEL = ITEMSREGISTRY.register("crying_paxel", CryingPaxelItem::new);
 	public static final DeferredItem<Item> CRYING_SWHOPAXEL = ITEMSREGISTRY.register("crying_swhopaxel", CryingSwhopaxelItem::new);
 
-	public static final DeferredItem<Item> CRYING_SICKLE = ITEMSREGISTRY.register("crying_sickle", CryingSickleItem::new);
+	public static final DeferredItem<Item> CRYING_HATCHET = ITEMSREGISTRY.register("crying_hatchet", CryingHatchetItem::new);
 
 	public static final DeferredItem<Item> CRYING_HELMET = ITEMSREGISTRY.register("crying_helmet", CryingItem.Helmet::new);
 	public static final DeferredItem<Item> CRYING_CHESTPLATE = ITEMSREGISTRY.register("crying_chestplate", CryingItem.Chestplate::new);

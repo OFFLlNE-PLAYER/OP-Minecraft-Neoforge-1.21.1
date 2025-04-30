@@ -50,7 +50,7 @@ public class CryingSwordItem extends SwordItem {
 
 	public CryingSwordItem() {
 		super(TOOL_TIER, new Properties()
-				.attributes(SwordItem.createAttributes(TOOL_TIER, 7.5f, -2.58f))
+				.attributes(SwordItem.createAttributes(TOOL_TIER, 7.5F, -2.58F))
 				.rarity(Rarity.EPIC));
 	}
 

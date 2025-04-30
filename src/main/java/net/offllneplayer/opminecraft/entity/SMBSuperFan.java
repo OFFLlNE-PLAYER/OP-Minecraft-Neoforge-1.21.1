@@ -7,9 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -48,22 +46,16 @@ public class SMBSuperFan extends AbstractArrow {
     public void setPos(double x, double y, double z) {
         super.setPos(x, y, z);
 
-        float shortHalf = 0.1f;
-        float longHalf = 0.36f;
-        float height = 0.36f;
+        float shortHalf = 0.1F;
+        float longHalf = 0.74F;
+        float height = 0.74F;
 
         Direction dir = Direction.fromYRot(this.getYRot());
 
         if (dir == Direction.NORTH || dir == Direction.SOUTH) {
-            this.setBoundingBox(new AABB(
-                    x - shortHalf, y - height, z - longHalf,
-                    x + shortHalf, y + height, z + longHalf
-            ));
+            this.setBoundingBox(new AABB(x - shortHalf, y - height, z - longHalf, x + shortHalf, y + height, z + longHalf));
         } else {
-            this.setBoundingBox(new AABB(
-                    x - longHalf, y - height, z - shortHalf,
-                    x + longHalf, y + height, z + shortHalf
-            ));
+            this.setBoundingBox(new AABB(x - longHalf, y - height, z - shortHalf, x + longHalf, y + height, z + shortHalf));
         }
     }
 
@@ -123,10 +115,6 @@ public class SMBSuperFan extends AbstractArrow {
                     crystal.discard();
                 }
 
-
-                float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-                this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
-
                 this.setDeltaMovement(this.getDeltaMovement().scale(-0.1));
                 this.hasImpulse = true;
 
@@ -139,6 +127,10 @@ public class SMBSuperFan extends AbstractArrow {
 
                     entity.hurt(fanDamage, 2.0F);
                     this.level().broadcastEntityEvent(this, (byte) 3);
+
+
+                    float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
+                    this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
                 }
             }
         }
@@ -228,7 +220,7 @@ public class SMBSuperFan extends AbstractArrow {
 
                 for (Entity entity : entities) {
 
-                    if (entity instanceof ItemEntity) {// Discard item entities and play hit sound
+                    if (entity instanceof ItemEntity || entity instanceof ExperienceOrb) {// Discard item entities and play hit sound
                         entity.discard();
                         float vol = Mth.randomBetween(this.random, 0.6F, 1F);
                         float tone = Mth.randomBetween(this.random, 1.0F, 1.3F);

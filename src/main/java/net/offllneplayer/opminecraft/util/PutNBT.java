@@ -26,10 +26,10 @@ public class PutNBT {
         data.putInt("sharp", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SHARPNESS), itemstack));
         data.putInt("unbreakin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.UNBREAKING), itemstack));
         data.putInt("lootin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.LOOTING), itemstack));
-        data.putInt("sweepin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), itemstack));
         data.putInt("firey", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.FIRE_ASPECT), itemstack));
         data.putInt("knickerbocker", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.KNOCKBACK), itemstack));
         data.putInt("mendi", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.MENDING), itemstack));
+        data.putInt("sweepin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), itemstack));
         data.putInt("vanish", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.VANISHING_CURSE), itemstack));
         data.putInt("tempest", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(RegistryEnchantments.TEMPEST), itemstack));
     }
@@ -46,10 +46,10 @@ public class PutNBT {
         data.putInt("sharp", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SHARPNESS), itemstack));
         data.putInt("unbreakin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.UNBREAKING), itemstack));
         data.putInt("lootin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.LOOTING), itemstack));
-        data.putInt("sweepin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), itemstack));
         data.putInt("firey", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.FIRE_ASPECT), itemstack));
         data.putInt("knickerbocker", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.KNOCKBACK), itemstack));
         data.putInt("mendi", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.MENDING), itemstack));
+        data.putInt("sweepin", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), itemstack));
         data.putInt("vanish", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.VANISHING_CURSE), itemstack));
         data.putInt("tempest", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(RegistryEnchantments.TEMPEST), itemstack));
     }
@@ -65,10 +65,10 @@ public class PutNBT {
         if (nbt.getInt("sharp") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.SHARPNESS), nbt.getInt("sharp"));
         if (nbt.getInt("unbreakin") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.UNBREAKING), nbt.getInt("unbreakin"));
         if (nbt.getInt("lootin") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.LOOTING), nbt.getInt("lootin"));
-        if (nbt.getInt("sweepin") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), nbt.getInt("sweepin"));
         if (nbt.getInt("firey") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.FIRE_ASPECT), nbt.getInt("firey"));
         if (nbt.getInt("knickerbocker") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.KNOCKBACK), nbt.getInt("knickerbocker"));
         if (nbt.getInt("mendi") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.MENDING), nbt.getInt("mendi"));
+        if (nbt.getInt("sweepin") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), nbt.getInt("sweepin"));
         if (nbt.getInt("vanish") > 0) blade.enchant(enchReg.getHolderOrThrow(Enchantments.VANISHING_CURSE), nbt.getInt("vanish"));
         if (nbt.getInt("tempest") > 0) blade.enchant(enchReg.getHolderOrThrow(RegistryEnchantments.TEMPEST), nbt.getInt("tempest"));
     }

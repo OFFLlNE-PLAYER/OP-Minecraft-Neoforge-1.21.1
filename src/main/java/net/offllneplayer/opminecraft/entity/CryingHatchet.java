@@ -1,17 +1,18 @@
 package net.offllneplayer.opminecraft.entity;
 
+import com.mojang.math.Axis;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.decoration.ItemFrame;
+
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -19,26 +20,25 @@ import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-
 import net.minecraft.world.phys.Vec3;
+
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.util.PutNBT;
 
-public class CryingSickle extends AbstractArrow {
+public class CryingHatchet extends AbstractArrow {
 
-    public CryingSickle(LivingEntity shooter, Level level) {
-        super(RegistryEntities.CRYING_SICKLE.get(), shooter, level, new ItemStack(RegistryIBBI.CRYING_SICKLE.get()), null);
+    public CryingHatchet(LivingEntity shooter, Level level) {
+        super(RegistryEntities.CRYING_HATCHET.get(), shooter, level, new ItemStack(RegistryIBBI.CRYING_HATCHET.get()), null);
         this.pickup = Pickup.DISALLOWED;
     }
 
-    public CryingSickle(EntityType<? extends AbstractArrow> entityType, Level level) {
+    public CryingHatchet(EntityType<? extends AbstractArrow> entityType, Level level) {
         super(entityType, level);
     }
 
@@ -46,22 +46,16 @@ public class CryingSickle extends AbstractArrow {
     public void setPos(double x, double y, double z) {
         super.setPos(x, y, z);
 
-        float shortHalf = 0.1f;
-        float longHalf = 0.36f;
-        float height = 0.36f;
+        float shortHalf = 0.05F;
+        float longHalf = 0.420F;
+        float height = 0.420F;
 
         Direction dir = Direction.fromYRot(this.getYRot());
 
         if (dir == Direction.NORTH || dir == Direction.SOUTH) {
-            this.setBoundingBox(new AABB(
-                    x - shortHalf, y - height, z - longHalf,
-                    x + shortHalf, y + height, z + longHalf
-            ));
+            this.setBoundingBox(new AABB(x - shortHalf, y - height, z - longHalf, x + shortHalf, y + height, z + longHalf));
         } else {
-            this.setBoundingBox(new AABB(
-                    x - longHalf, y - height, z - shortHalf,
-                    x + longHalf, y + height, z + shortHalf
-            ));
+            this.setBoundingBox(new AABB(x - longHalf, y - height, z - shortHalf, x + longHalf, y + height, z + shortHalf));
         }
     }
 
@@ -101,43 +95,62 @@ public class CryingSickle extends AbstractArrow {
 
     @Override
     public ItemStack getDefaultPickupItem() {
-        return new ItemStack(RegistryIBBI.CRYING_SICKLE.get());
+        return new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
     }
 
     @Override
     public void onHitEntity(EntityHitResult result) {
-        if (!this.level().isClientSide()) {
-            Entity entity = result.getEntity();
+        if (this.level().isClientSide()) return;
+        Entity hitEntity = result.getEntity();
 
-            // Handle bounce logic
-            if (entity instanceof Projectile ||
-                    entity instanceof ItemFrame ||
-                    entity instanceof AbstractMinecart ||
-                    entity instanceof EndCrystal ||
-                    entity instanceof LivingEntity) {
+        if (hitEntity instanceof Projectile ||
+                hitEntity instanceof ItemFrame ||
+                hitEntity instanceof AbstractMinecart ||
+                hitEntity instanceof EndCrystal ||
+                hitEntity instanceof LivingEntity) {
 
-                if (entity instanceof EndCrystal crystal) {
-                    this.level().explode(this, crystal.getX(), crystal.getY(), crystal.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
-                    crystal.discard();
+            if (hitEntity instanceof EndCrystal crystal) {
+                this.level().explode(this,
+                        crystal.getX(), crystal.getY(), crystal.getZ(),
+                        6.0F, false, Level.ExplosionInteraction.BLOCK);
+                crystal.discard();
+            }
+
+            this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
+            this.hasImpulse = true;
+
+            if (hitEntity instanceof LivingEntity living) {
+                DamageSource hatchetDMG = this.level().damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
+                CompoundTag data = this.getPersistentData();
+                float dmg = 9F;
+                int sharpLevel = data.getInt("sharp");
+                int smiteLevel = data.getInt("smiite");
+                int baneLevel = data.getInt("bane");
+                int fireyLevel = data.getInt("firey");
+                int knickerbockerLevel = data.getInt("knickerbocker");
+
+                if (sharpLevel > 0) {
+                    dmg += sharpLevel;
+                } else
+                    if (smiteLevel > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+                    dmg += 2F * smiteLevel;
+                } else
+                    if (baneLevel > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
+                    dmg += 2F * baneLevel;
                 }
 
+                if (fireyLevel > 0) living.igniteForTicks(80 * fireyLevel);
 
-                float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-                this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
-
-                this.setDeltaMovement(this.getDeltaMovement().scale(-0.1));
-                this.hasImpulse = true;
-
-                if (entity instanceof LivingEntity) {
-                    DamageSource fanDamage = this.level().damageSources().source(
-                            RegistryDamageTypes.SMB_SUPER_FAN,
-                            this,
-                            this.getOwner()
-                    );
-
-                    entity.hurt(fanDamage, 2.0F);
-                    this.level().broadcastEntityEvent(this, (byte) 3);
+                if (knickerbockerLevel > 0) {
+                    Vec3 pushDir = this.getDeltaMovement().normalize().scale(knickerbockerLevel * 1D);
+                    living.push(-pushDir.x, 0.1D, -pushDir.z);
                 }
+
+                living.hurt(hatchetDMG, dmg);
+                this.level().broadcastEntityEvent(this, (byte) 3);
+
+                float tone = Mth.randomBetween(this.random, 1.1F, 1.2F);
+                this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 1.0F, tone);
             }
         }
     }
@@ -155,7 +168,7 @@ public class CryingSickle extends AbstractArrow {
                 float tone = Mth.randomBetween(this.random, 1.35F, 1.5F);
                 this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 0.6F, tone);
 
-                ItemStack blade = new ItemStack(RegistryIBBI.CRYING_SICKLE.get());
+                ItemStack blade = new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
                 CompoundTag nbt = this.getPersistentData();
                 PutNBT.writeWeaponDataToItemstack(blade, nbt, this.level());
 
@@ -198,14 +211,25 @@ public class CryingSickle extends AbstractArrow {
 
         if (this.inGround && stuckPos != null) {
             if (level().getBlockState(stuckPos).getBlock() != stuckBlock) {
-                this.inGround      = false;
-                this.hasImpulse    = true;
+                this.inGround   = false;
+                this.hasImpulse = true;
                 this.setDeltaMovement(Vec3.ZERO);
             }
         }
 
-        if (!inGround) {
-            rotation = (rotation + 15F) % 360F;
+        if (!this.inGround) {
+            Vec3 motion = this.getDeltaMovement();
+            double speed = motion.length();
+
+            float degreesThisTick = (float)(speed * 15.0F);
+
+            Direction dir = Direction.fromYRot(this.getYRot());
+
+            if (dir == Direction.NORTH || dir == Direction.WEST) {
+                rotation = (rotation + degreesThisTick) % 360F;
+            } else {
+                rotation = (rotation - degreesThisTick) % 360F;
+            }
         }
     }
 

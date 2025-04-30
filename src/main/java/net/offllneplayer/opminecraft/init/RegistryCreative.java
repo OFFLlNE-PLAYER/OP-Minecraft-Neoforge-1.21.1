@@ -203,7 +203,7 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.CRYING_PAXEL);
                 event.accept(RegistryIBBI.CRYING_SWHOPAXEL);
 
-                event.accept(RegistryIBBI.CRYING_SICKLE);
+                event.accept(RegistryIBBI.CRYING_HATCHET);
 
                 event.accept(RegistryIBBI.TNT_STICK);
                 event.accept(RegistryIBBI.DYNAMITE_STICK);

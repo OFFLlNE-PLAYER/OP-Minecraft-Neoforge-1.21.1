@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "opminecraft:item/text_crying_sickle"
-  }
-}

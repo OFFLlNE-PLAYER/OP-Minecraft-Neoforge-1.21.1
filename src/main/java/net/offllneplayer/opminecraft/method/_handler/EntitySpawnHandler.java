@@ -220,7 +220,7 @@ public class EntitySpawnHandler {
             case 0: return new ItemStack(Items.DIAMOND_AXE);
             case 1: return new ItemStack(Items.NETHERITE_AXE);
             case 2: return new ItemStack(RegistryIBBI.CRYING_AXE.get());
-            case 3: return new ItemStack(RegistryIBBI.CRYING_SICKLE.get());
+            case 3: return new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
             case 4: return new ItemStack(RegistryIBBI.CRYING_PAXEL.get());
             default: return new ItemStack(Items.DIAMOND_AXE);
         }
@@ -271,7 +271,7 @@ public class EntitySpawnHandler {
         Item witem = weapon.getItem();
         boolean isSwordLike = (witem instanceof SwordItem);
         boolean isAxeLike = (witem instanceof AxeItem);
-        if (witem == RegistryIBBI.CRYING_SICKLE.get()) {
+        if (witem == RegistryIBBI.CRYING_HATCHET.get()) {
             isAxeLike = true;
         } else if (witem == RegistryIBBI.CRYING_PAXEL.get()) {
             isSwordLike = true;
