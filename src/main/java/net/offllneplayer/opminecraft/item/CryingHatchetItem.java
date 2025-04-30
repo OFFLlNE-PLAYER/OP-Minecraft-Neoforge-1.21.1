@@ -2,6 +2,7 @@ package net.offllneplayer.opminecraft.item;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -9,7 +10,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +20,7 @@ import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.util.PutNBT;
 
 
-public class CryingHatchetItem extends SwordItem {
+public class CryingHatchetItem extends TieredItem {
 
     private static final Tier TOOL_TIER = new Tier() {
         @Override
@@ -51,48 +51,56 @@ public class CryingHatchetItem extends SwordItem {
 
     public CryingHatchetItem() {
         super(TOOL_TIER, new Properties()
-                .attributes(AxeItem.createAttributes(TOOL_TIER, 8.5F, -2.69F))
+                .attributes(SwordItem.createAttributes(TOOL_TIER, 4F, -2.69F))
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }
 
     @Override
-    public int getEnchantmentValue() { return 20;
+    public int getUseDuration(ItemStack itemstack, LivingEntity user) {
+        return 60;
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.SPEAR;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (level.isClientSide()) return InteractionResultHolder.sidedSuccess(itemstack, true);
+        player.startUsingItem(hand);
+        return InteractionResultHolder.consume(player.getItemInHand(hand));
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
+        if (!(user instanceof Player player) || level.isClientSide) return;
+
+        int charge = this.getUseDuration(stack, user) - timeLeft;
+        float pull  = Mth.clamp(charge / 20f, 0f, 1f);
+        if (pull < 0.1f) return;
+
+        float velocity = pull * 2.5f;
+
+        double yawRad = Math.toRadians(player.getYRot());
+        double fx = -Math.sin(yawRad), fz =  Math.cos(yawRad);
+        double rz = -fx;
+        double lat = (player.getUsedItemHand() == InteractionHand.MAIN_HAND ? -0.5 : 0.5);
+        double x = player.getX() + fx * 0.7 + fz * lat;
+        double y = player.getY() + 1.4;
+        double z = player.getZ() + fz * 0.7 + rz * lat;
 
         CryingHatchet hatchet = new CryingHatchet(player, level);
-        double verticalOffset = 1.4;
-        double forwardOffset = 0.7;
-        double lateralOffset = 0.5;
-        double yawRad = Math.toRadians(player.getYRot());
-        double forwardX = -Math.sin(yawRad);
-        double forwardZ = Math.cos(yawRad);
-        double rightX = forwardZ;
-        double rightZ = -forwardX;
-        if (hand == InteractionHand.MAIN_HAND) lateralOffset = -lateralOffset;
-
-        double spawnX = player.getX() + forwardX * forwardOffset + rightX * lateralOffset;
-        double spawnY = player.getY() + verticalOffset;
-        double spawnZ = player.getZ() + forwardZ * forwardOffset + rightZ * lateralOffset;
-
-        PutNBT.writeWeaponDataToEntity(itemstack, hatchet, level);
-
-        hatchet.setPos(spawnX, spawnY, spawnZ);
-        hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.69F, 0.420F);
+        PutNBT.writeWeaponDataToEntity(stack, hatchet, level);
+        hatchet.setPullRatio(pull);
+        hatchet.setPos(x, y, z);
+        hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0f, velocity, 0.420F);
         level.addFreshEntity(hatchet);
 
         player.awardStat(Stats.ITEM_USED.get(this));
-        itemstack.consume(1, player);
+        stack.shrink(1);
 
-        float vol = Mth.nextFloat(RandomSource.create(), 0.6F, 1F);
-        float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.2F);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, vol, tone);
-
-        return InteractionResultHolder.sidedSuccess(itemstack, false);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0f, 1.0f + pull * 0.2F
+        );
     }
 }

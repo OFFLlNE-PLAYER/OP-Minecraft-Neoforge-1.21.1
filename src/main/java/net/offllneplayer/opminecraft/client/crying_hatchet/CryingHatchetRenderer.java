@@ -24,29 +24,24 @@ public class CryingHatchetRenderer extends EntityRenderer<CryingHatchet> {
     }
 
     @Override
-    public void render(CryingHatchet entity, float entityYaw, float partialTicks,
-                       PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void render(CryingHatchet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
         Direction dir = entity.getDirection();
         Direction stuckFace = entity.getStuckFace();
 
-        if (dir == Direction.NORTH) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(270));
-        }
-        if (dir == Direction.SOUTH) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(90));
-        }
-        if (dir == Direction.EAST) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(0));
-        }
-        if (dir == Direction.WEST) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(180));
-        }
-
         if (!entity.isGrounded()) {
-            poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getRenderingRotation() * 15F));
+            if (dir == Direction.NORTH) poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            if (dir == Direction.SOUTH) poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            if (dir == Direction.EAST) poseStack.mulPose(Axis.YP.rotationDegrees(180));
+            if (dir == Direction.WEST) poseStack.mulPose(Axis.YP.rotationDegrees(0));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getRenderingRotation()));
         } else {
+            if (dir == Direction.NORTH) poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            if (dir == Direction.SOUTH) poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            if (dir == Direction.EAST) poseStack.mulPose(Axis.YP.rotationDegrees(0));
+            if (dir == Direction.WEST) poseStack.mulPose(Axis.YP.rotationDegrees(180));
+
             if (stuckFace == Direction.NORTH) {
                 poseStack.mulPose(Axis.XP.rotationDegrees(180));
                 poseStack.mulPose(Axis.ZP.rotationDegrees(90));

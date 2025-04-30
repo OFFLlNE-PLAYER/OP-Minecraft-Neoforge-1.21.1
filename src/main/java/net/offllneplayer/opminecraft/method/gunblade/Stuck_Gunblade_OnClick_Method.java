@@ -39,7 +39,7 @@ public class Stuck_Gunblade_OnClick_Method {
 				: null;
 		if (hand == null) return;
 
-		PutNBT.writeWeaponDataToItemstack(blade, nbt, level);
+		PutNBT.enchantWeaponDataToItemstack(blade, nbt, level);
 
 		living.setItemInHand(hand, blade);
 		if (living instanceof Player player) player.getInventory().setChanged();

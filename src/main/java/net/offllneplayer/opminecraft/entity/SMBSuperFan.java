@@ -3,6 +3,7 @@ package net.offllneplayer.opminecraft.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -101,34 +102,59 @@ public class SMBSuperFan extends AbstractArrow {
     @Override
     public void onHitEntity(EntityHitResult result) {
         if (!this.level().isClientSide()) {
-            Entity entity = result.getEntity();
+            Entity hitEntity = result.getEntity();
 
-            // Handle bounce logic
-            if (entity instanceof Projectile ||
-                    entity instanceof ItemFrame ||
-                    entity instanceof AbstractMinecart ||
-                    entity instanceof EndCrystal ||
-                    entity instanceof LivingEntity) {
 
-                if (entity instanceof EndCrystal crystal) {
-                    this.level().explode(this, crystal.getX(), crystal.getY(), crystal.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
-                    crystal.discard();
-                }
+            if (hitEntity instanceof EndCrystal crystal) {
+                this.level().explode(this, crystal.getX(), crystal.getY(), crystal.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
+                crystal.discard();
+            }
 
-                this.setDeltaMovement(this.getDeltaMovement().scale(-0.1));
+            if (hitEntity instanceof Projectile || hitEntity instanceof ItemFrame || hitEntity instanceof AbstractMinecart) {
+                this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
                 this.hasImpulse = true;
 
-                if (entity instanceof LivingEntity) {
-                    DamageSource fanDamage = this.level().damageSources().source(
-                            RegistryDamageTypes.SMB_SUPER_FAN,
-                            this,
-                            this.getOwner()
-                    );
+            } else {
+                if (hitEntity instanceof LivingEntity living) {
+                    DamageSource fanDamage = this.level().damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
+                    CompoundTag data = this.getPersistentData();
+                    int DMGVALU = data.getInt("DMG_VALU");
+                    int unbreakinLevel = data.getInt("unbreakin");
+                    float dmg = 4F;
+                    int sharpLevel = data.getInt("sharp");
+                    int smiteLevel = data.getInt("smiite");
+                    int baneLevel = data.getInt("bane");
+                    int fireyLevel = data.getInt("firey");
+                    int knickerbockerLevel = data.getInt("knickerbocker");
+                    int sweepinLevel = data.getInt("sweepin");
 
-                    entity.hurt(fanDamage, 2.0F);
+                    if (this.random.nextInt(unbreakinLevel + 1) == 0) {
+                        data.putInt("DMG_VALU", DMGVALU + 1);
+                    }
+
+                    if (sharpLevel > 0) {
+                        dmg += sharpLevel;
+                    } else if (smiteLevel > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+                        dmg += 2F * smiteLevel;
+                    } else if (baneLevel > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
+                        dmg += 2F * baneLevel;
+                    }
+
+                    living.hurt(fanDamage, dmg);
                     this.level().broadcastEntityEvent(this, (byte) 3);
 
+                    if (fireyLevel > 0) living.igniteForTicks(80 * fireyLevel);
 
+                    if (knickerbockerLevel > 0) {
+                        Vec3 pushDir = this.getDeltaMovement().normalize().scale(knickerbockerLevel * 1D);
+                        living.push(pushDir.x, 0.1D, pushDir.z);
+                    }
+
+                    if (sweepinLevel < 1) {
+                        this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
+                        this.hasImpulse = true;
+                    }
+                    
                     float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
                     this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
                 }
@@ -152,7 +178,7 @@ public class SMBSuperFan extends AbstractArrow {
 
                 ItemStack fan = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
                 CompoundTag nbt = this.getPersistentData();
-                PutNBT.writeWeaponDataToItemstack(fan, nbt, this.level());
+                PutNBT.enchantWeaponDataToItemstack(fan, nbt, this.level());
 
                 player.setItemInHand(hand, fan);
                 this.discard();
@@ -199,6 +225,11 @@ public class SMBSuperFan extends AbstractArrow {
                 this.hasImpulse = true;
                 this.setDeltaMovement(Vec3.ZERO);
             }
+        }
+
+        if (!this.inGround) {
+            rotation = (rotation - (float)(this.getDeltaMovement().length() * 20F)) % 360F;
+            if (rotation < 0) rotation += 360F;
         }
 
         if (!this.getCommandSenderWorld().isClientSide()) {

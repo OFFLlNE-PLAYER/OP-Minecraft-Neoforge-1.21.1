@@ -3,7 +3,6 @@ package net.offllneplayer.opminecraft.method.gunblade;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -50,7 +49,7 @@ public class StuckGunbladePopItem_Method {
 
 		level.removeBlock(pos, false);
 
-		PutNBT.writeWeaponDataToItemstack(blade, nbt, level);
+		PutNBT.enchantWeaponDataToItemstack(blade, nbt, level);
 
 		ItemEntity drop = new ItemEntity(level, dropPos.getX() + 0.5, dropPos.getY() + 0.5, dropPos.getZ() + 0.5, blade);
 		level.addFreshEntity(drop);
