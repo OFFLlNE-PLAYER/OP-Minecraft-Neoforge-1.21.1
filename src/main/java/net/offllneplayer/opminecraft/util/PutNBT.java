@@ -12,8 +12,52 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.offllneplayer.opminecraft.init.RegistryEnchantments;
 
+
 public class PutNBT {
 
+/*--------------------------------------------------------------------------------------------*/
+    /*[read WeaponData -> Entity Class]*/
+    public record WeaponData(
+            String item_nayme,
+            int DMGVALU,
+            int unbreakinLevel,
+            int mendiLevel,
+            int sharpLevel,
+            int smiteLevel,
+            int baneLevel,
+            int fireyLevel,
+            int lootinLevel,
+            int knickerbockerLevel,
+            int sweepinLevel,
+            int vanishLevel,
+            int tempestLevel
+    ) {}
+
+    public static WeaponData readWeaponData(CompoundTag data) {
+        return new WeaponData(
+                data.getString("nayme"),
+                data.getInt("DMG_VALU"),
+                data.getInt("unbreakin"),
+                data.getInt("mendi"),
+                data.getInt("sharp"),
+                data.getInt("smiite"),
+                data.getInt("bane"),
+                data.getInt("firey"),
+                data.getInt("lootin"),
+                data.getInt("knickerbocker"),
+                data.getInt("sweepin"),
+                data.getInt("vanish"),
+                data.getInt("tempest")
+        );
+    }
+
+    /* pass an Entity directly */
+    public static WeaponData readWeaponData(Entity entity) {
+        return readWeaponData(entity.getPersistentData());
+    }
+
+/*--------------------------------------------------------------------------------------------*/
+    /*[write WeaponData -> Tag]*/
     private static void writeWeaponDataToTag(CompoundTag data, ItemStack itemstack, Level level) {
         var enchReg = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
 
@@ -46,18 +90,20 @@ public class PutNBT {
         writeWeaponDataToTag(entity.getPersistentData(), itemstack, level);
     }
 
-
+/*--------------------------------------------------------------------------------------------*/
+    /*[enchant WeaponData -> itemStack]*/
     public static void enchantWeaponDataToItemstack(ItemStack itemStack, CompoundTag nbt, Level level) {
         var enchReg = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
 
         String item_nayme = nbt.getString("nayme");
+
+        if (!itemStack.getHoverName().getString().equals(item_nayme)) itemStack.set(DataComponents.CUSTOM_NAME, Component.literal(item_nayme));
 
         itemStack.setDamageValue(nbt.getInt("DMG_VALU"));
 
         if (nbt.getInt("unbreakin") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.UNBREAKING), nbt.getInt("unbreakin"));
         if (nbt.getInt("mendi") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.MENDING), nbt.getInt("mendi"));
 
-        if (!itemStack.getHoverName().getString().equals(item_nayme)) itemStack.set(DataComponents.CUSTOM_NAME, Component.literal(item_nayme));
         if (nbt.getInt("sharp") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.SHARPNESS), nbt.getInt("sharp"));
         if (nbt.getInt("smiite") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.SMITE), nbt.getInt("smiite"));
         if (nbt.getInt("bane") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.BANE_OF_ARTHROPODS), nbt.getInt("bane"));

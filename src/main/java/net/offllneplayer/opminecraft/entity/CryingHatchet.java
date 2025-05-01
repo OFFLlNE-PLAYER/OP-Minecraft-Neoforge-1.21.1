@@ -11,11 +11,20 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.decoration.ItemFrame;
+import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
+import net.minecraft.world.entity.decoration.Painting;
+import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.vehicle.ChestBoat;
+import net.minecraft.world.entity.vehicle.MinecartChest;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
@@ -28,6 +37,7 @@ import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.util.DeclareTagKeys;
 import net.offllneplayer.opminecraft.util.PutNBT;
 
 public class CryingHatchet extends AbstractArrow {
@@ -101,64 +111,97 @@ public class CryingHatchet extends AbstractArrow {
     public void onHitEntity(EntityHitResult result) {
         if (this.level().isClientSide()) return;
         Entity hitEntity = result.getEntity();
+        Level level = hitEntity.level();
+        double x = hitEntity.getX(), y = hitEntity.getY(), z = hitEntity.getZ();
 
-        if (hitEntity instanceof EndCrystal crystal) {
-            this.level().explode(this, crystal.getX(), crystal.getY(), crystal.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
-            crystal.discard();
-        }
+        if (hitEntity instanceof LivingEntity living) {
+            DamageSource hatchetDMG = this.level().damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
+            float dmg = 9F;
+            PutNBT.WeaponData data = PutNBT.readWeaponData(this);
 
-        if (hitEntity instanceof Projectile || hitEntity instanceof ItemFrame || hitEntity instanceof AbstractMinecart) {
-            this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
+            if (this.random.nextInt(data.unbreakinLevel() + 1) == 0) {
+                this.getPersistentData().putInt("DMG_VALU", data.DMGVALU() + 1);
+            }
+
+            if (data.sharpLevel() > 0) {
+                dmg += data.sharpLevel();
+            } else if (data.smiteLevel() > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+                dmg += 2F * data.smiteLevel();
+            } else if (data.baneLevel() > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
+                dmg += 2F * data.baneLevel();
+            }
+
+            living.hurt(hatchetDMG, dmg);
+            this.level().broadcastEntityEvent(this, (byte) 3);
+
+            if (data.fireyLevel() > 0) living.igniteForTicks(80 * data.fireyLevel());
+
+            if (data.knickerbockerLevel() > 0) {
+                Vec3 pushDir = this.getDeltaMovement().normalize().scale(data.knickerbockerLevel() * 1D);
+                living.push(pushDir.x, 0.1D, pushDir.z);
+            }
+
+            if (data.sweepinLevel() < 1) {
+                this.setDeltaMovement(this.getDeltaMovement().scale(-Mth.randomBetween(this.random, -0.10420F, -0.01420F)));
+                this.hasImpulse = true;
+            }
+
+            ApplyCrying1_Method.execute(living);
+
+            float tone = Mth.randomBetween(this.random, 1.1F, 1.2F);
+            this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 1.0F, tone);
+
+        } else if ((hitEntity instanceof ChestBoat) || (hitEntity instanceof MinecartChest)) {
+            this.setDeltaMovement(this.getDeltaMovement().scale(-Mth.randomBetween(this.random, -0.1420F, -0.69420F)));
             this.hasImpulse = true;
 
-        } else {
-            if (hitEntity instanceof LivingEntity living) {
-                DamageSource hatchetDMG = this.level().damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
-                CompoundTag data = this.getPersistentData();
-                int DMGVALU = data.getInt("DMG_VALU");
-                int unbreakinLevel = data.getInt("unbreakin");
-                float dmg = 9F;
-                int sharpLevel = data.getInt("sharp");
-                int smiteLevel = data.getInt("smiite");
-                int baneLevel = data.getInt("bane");
-                int fireyLevel = data.getInt("firey");
-                int knickerbockerLevel = data.getInt("knickerbocker");
-                int sweepinLevel = data.getInt("sweepin");
+        } else if (hitEntity instanceof FallingBlockEntity fbe) {
+            var state = fbe.getBlockState();
+            level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(state.getBlock().asItem())));
+            hitEntity.discard();
 
-                if (this.random.nextInt(unbreakinLevel + 1) == 0) {
-                    data.putInt("DMG_VALU", DMGVALU + 1);
-                }
+        } else if (hitEntity instanceof Boat boat) {
+            level.addFreshEntity(new ItemEntity(level, x, y, z, boat.getDropItem().getDefaultInstance()));
+            hitEntity.discard();
 
-                if (sharpLevel > 0) {
-                    dmg += sharpLevel;
-                } else
-                    if (smiteLevel > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-                    dmg += 2F * smiteLevel;
-                } else
-                    if (baneLevel > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
-                    dmg += 2F * baneLevel;
-                }
-
-                living.hurt(hatchetDMG, dmg);
-                this.level().broadcastEntityEvent(this, (byte) 3);
-
-                if (fireyLevel > 0) living.igniteForTicks(80 * fireyLevel);
-
-                if (knickerbockerLevel > 0) {
-                    Vec3 pushDir = this.getDeltaMovement().normalize().scale(knickerbockerLevel * 1D);
-                    living.push(pushDir.x, 0.1D, pushDir.z);
-                }
-
-                if (sweepinLevel < 1) {
-                    this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
-                    this.hasImpulse = true;
-                }
-
-                ApplyCrying1_Method.execute(living);
-
-                float tone = Mth.randomBetween(this.random, 1.1F, 1.2F);
-                this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 1.0F, tone);
+        } else if (hitEntity instanceof net.minecraft.world.entity.vehicle.AbstractMinecart cart) {
+            if (cart instanceof net.minecraft.world.entity.vehicle.MinecartFurnace) {
+                level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.FURNACE_MINECART)));
+            } else if (cart instanceof net.minecraft.world.entity.vehicle.MinecartHopper) {
+                level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.HOPPER_MINECART)));
+            } else if (cart instanceof net.minecraft.world.entity.vehicle.MinecartTNT) {
+                level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.TNT_MINECART)));
+            } else {
+                level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.MINECART)));
             }
+            hitEntity.discard();
+
+        } else if (hitEntity instanceof Painting) {
+            level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.PAINTING)));
+            hitEntity.discard();
+
+        } else if (hitEntity instanceof LeashFenceKnotEntity) {
+            level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.LEAD)));
+            hitEntity.discard();
+
+        } else  if (hitEntity.getType().is(DeclareTagKeys.Entities.IMPACT_PROJECTILES)) {
+            if (hitEntity instanceof ItemSupplier supplier) {
+                ItemStack drop = supplier.getItem();
+            if (!drop.isEmpty()) {
+                level.addFreshEntity(new ItemEntity(level, x, y, z, drop.copy()));
+            }
+        }
+        hitEntity.discard();
+
+        this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
+        this.hasImpulse = true;
+
+        } else if (hitEntity instanceof EndCrystal crystal) {
+            this.level().explode(this, crystal.getX(), crystal.getY(), crystal.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
+            crystal.discard();
+
+            this.setDeltaMovement(this.getDeltaMovement().scale(-Mth.randomBetween(this.random, -0.420F, -1.1420F)));
+            this.hasImpulse = true;
         }
     }
 
@@ -213,9 +256,7 @@ public class CryingHatchet extends AbstractArrow {
     }
 
 
-    private float pullRatio = 1.0f; // default if nothing set
-
-    /** Called by the item when it spawns the entity. */
+    private float pullRatio = 1.0f;
     public void setPullRatio(float pullRatio) {
         this.pullRatio = pullRatio;
     }
@@ -233,8 +274,7 @@ public class CryingHatchet extends AbstractArrow {
         }
 
         if (!this.inGround) {
-            // use pullRatio to scale your rotation instead of raw speed
-            float degreesPerPull = 20F; // tweak to taste
+            float degreesPerPull = 20F;
             rotation = (rotation - pullRatio * degreesPerPull) % 360F;
             if (rotation < 0) rotation += 360F;
         }

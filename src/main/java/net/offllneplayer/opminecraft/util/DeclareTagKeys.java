@@ -1,10 +1,14 @@
 
 package net.offllneplayer.opminecraft.util;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.offllneplayer.opminecraft.OPMinecraft;
@@ -12,6 +16,8 @@ import net.offllneplayer.opminecraft.OPMinecraft;
 
 public class DeclareTagKeys {
 
+    /*--------------------------------------------------------------------------------------------*/
+    /*[Block Tags]*/
     public static class Blocks {
 
         public static final TagKey<Block> CRYING_PAXEL = createTag("mineable/crying_paxel");
@@ -31,10 +37,9 @@ public class DeclareTagKeys {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));
         }
     }
+
 /*--------------------------------------------------------------------------------------------*/
-    /*[Block Tags]*/
-
-
+    /*[Item Tags]*/
     public static class Items {
 
         public static final TagKey<Item> CRYING_ITEMS = createTag("crying_items");
@@ -43,6 +48,14 @@ public class DeclareTagKeys {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));
         }
     }
-/*--------------------------------------------------------------------------------------------*/
-    /*[Item Tags]*/
+    /*--------------------------------------------------------------------------------------------*/
+    /*[Entity Tags]*/
+    public static class Entities {
+
+        public static final TagKey<EntityType<?>> IMPACT_PROJECTILES = createTag("impact_projectiles");
+
+        private static TagKey<EntityType<?>> createTag(String name) {
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));
+        }
+    }
 }
