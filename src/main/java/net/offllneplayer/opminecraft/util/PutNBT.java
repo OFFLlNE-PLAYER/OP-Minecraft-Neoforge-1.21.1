@@ -1,120 +1,89 @@
 package net.offllneplayer.opminecraft.util;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.offllneplayer.opminecraft.init.RegistryEnchantments;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class PutNBT {
-
-/*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
     /*[read WeaponData -> Entity Class]*/
-    public record WeaponData(
-            String item_nayme,
-            int DMGVALU,
-            int unbreakinLevel,
-            int mendiLevel,
-            int sharpLevel,
-            int smiteLevel,
-            int baneLevel,
-            int fireyLevel,
-            int lootinLevel,
-            int knickerbockerLevel,
-            int sweepinLevel,
-            int vanishLevel,
-            int tempestLevel
-    ) {}
+    public record WeaponData(String itemName, int dmgValue, Map<Enchantment, Integer> enchantments) {}
 
-    public static WeaponData readWeaponData(CompoundTag data) {
-        return new WeaponData(
-                data.getString("nayme"),
-                data.getInt("DMG_VALU"),
-                data.getInt("unbreakin"),
-                data.getInt("mendi"),
-                data.getInt("sharp"),
-                data.getInt("smiite"),
-                data.getInt("bane"),
-                data.getInt("firey"),
-                data.getInt("lootin"),
-                data.getInt("knickerbocker"),
-                data.getInt("sweepin"),
-                data.getInt("vanish"),
-                data.getInt("tempest")
-        );
+    public static WeaponData readWeaponData(CompoundTag data, Level level) {
+        String name = data.getString("nayme");
+        int dmg = data.getInt("DMG_VALU");
+
+        Map<Enchantment, Integer> enchs = new HashMap<>();
+        Registry<Enchantment> reg   = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+
+        // iterate *all* keys in the tag except our two fixed fields
+        for (String key : data.getAllKeys()) {
+            if (key.equals("nayme") || key.equals("DMG_VALU")) continue;
+            // try to parse it as an enchantment ID
+            ResourceLocation rl = ResourceLocation.tryParse(key);
+            if (rl == null) continue;
+
+            ResourceKey<Enchantment> rkey = ResourceKey.create(Registries.ENCHANTMENT, rl);
+            reg.getHolder(rkey).ifPresent(holder -> {
+                int lvl = data.getInt(key);
+                if (lvl > 0) enchs.put(holder.value(), lvl);
+            });
+        }
+        return new WeaponData(name, dmg, enchs);
     }
 
-    /* pass an Entity directly */
-    public static WeaponData readWeaponData(Entity entity) {
-        return readWeaponData(entity.getPersistentData());
+    /*--------------------------------------------------------------------------------------------*/
+    /*[write WeaponData -> Block]*/
+    public static void writeWeaponDataToBlock(ItemStack stack, BlockEntity be, Level level) {
+        CompoundTag data = be.getPersistentData();
+
+        data.putString("nayme",    stack.getHoverName().getString());
+        data.putInt   ("DMG_VALU", stack.getDamageValue());
+
+        for (Map.Entry<Holder<Enchantment>, Integer> entry : stack.getTagEnchantments().entrySet()) {
+            int lvl = entry.getValue();
+            if (lvl <= 0) continue;
+
+            entry.getKey().unwrapKey().ifPresent(key -> data.putInt(key.location().toString(), lvl));
+        }
     }
 
-/*--------------------------------------------------------------------------------------------*/
-    /*[write WeaponData -> Tag]*/
-    private static void writeWeaponDataToTag(CompoundTag data, ItemStack itemstack, Level level) {
-        var enchReg = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
-
-        data.putString("nayme", itemstack.getHoverName().getString());
-
-        data.putInt("DMG_VALU", itemstack.getDamageValue());
-
-        data.putInt("unbreakin",EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.UNBREAKING), itemstack));
-        data.putInt("mendi",    EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.MENDING), itemstack));
-
-        data.putInt("sharp",    EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SHARPNESS), itemstack));
-        data.putInt("smiite",   EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SMITE), itemstack));
-        data.putInt("bane",     EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.BANE_OF_ARTHROPODS), itemstack));
-
-        data.putInt("firey",    EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.FIRE_ASPECT), itemstack));
-        data.putInt("lootin",   EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.LOOTING), itemstack));
-        data.putInt("knickerbocker", EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.KNOCKBACK), itemstack));
-        data.putInt("sweepin",  EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), itemstack));
-
-        data.putInt("vanish",   EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(Enchantments.VANISHING_CURSE), itemstack));
-
-        data.putInt("tempest",  EnchantmentHelper.getItemEnchantmentLevel(enchReg.getHolderOrThrow(RegistryEnchantments.TEMPEST), itemstack));
-    }
-
-    public static void writeWeaponDataToBlock(ItemStack itemstack, BlockEntity blockEntity, Level level) {
-        writeWeaponDataToTag(blockEntity.getPersistentData(), itemstack, level);
-    }
-
-    public static void writeWeaponDataToEntity(ItemStack itemstack, Entity entity, Level level) {
-        writeWeaponDataToTag(entity.getPersistentData(), itemstack, level);
-    }
-
-/*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
     /*[enchant WeaponData -> itemStack]*/
-    public static void enchantWeaponDataToItemstack(ItemStack itemStack, CompoundTag nbt, Level level) {
-        var enchReg = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+    public static void enchantWeaponDataToItemstack(ItemStack stack, CompoundTag nbt, Level level) {
 
-        String item_nayme = nbt.getString("nayme");
+        String name = nbt.getString("nayme");
+        if (!stack.getHoverName().getString().equals(name)) {
+            stack.set(DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal(name));
+        }
+        stack.setDamageValue(nbt.getInt("DMG_VALU"));
 
-        if (!itemStack.getHoverName().getString().equals(item_nayme)) itemStack.set(DataComponents.CUSTOM_NAME, Component.literal(item_nayme));
+        // restore every enchant we wrote
+        Registry<Enchantment> reg = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+        for (String key : nbt.getAllKeys()) {
+            if (key.equals("nayme") || key.equals("DMG_VALU")) continue;
+            ResourceLocation rl = ResourceLocation.tryParse(key);
+            if (rl == null) continue;
 
-        itemStack.setDamageValue(nbt.getInt("DMG_VALU"));
-
-        if (nbt.getInt("unbreakin") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.UNBREAKING), nbt.getInt("unbreakin"));
-        if (nbt.getInt("mendi") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.MENDING), nbt.getInt("mendi"));
-
-        if (nbt.getInt("sharp") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.SHARPNESS), nbt.getInt("sharp"));
-        if (nbt.getInt("smiite") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.SMITE), nbt.getInt("smiite"));
-        if (nbt.getInt("bane") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.BANE_OF_ARTHROPODS), nbt.getInt("bane"));
-
-        if (nbt.getInt("firey") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.FIRE_ASPECT), nbt.getInt("firey"));
-        if (nbt.getInt("lootin") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.LOOTING), nbt.getInt("lootin"));
-        if (nbt.getInt("knickerbocker") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.KNOCKBACK), nbt.getInt("knickerbocker"));
-        if (nbt.getInt("sweepin") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.SWEEPING_EDGE), nbt.getInt("sweepin"));
-
-        if (nbt.getInt("vanish") > 0) itemStack.enchant(enchReg.getHolderOrThrow(Enchantments.VANISHING_CURSE), nbt.getInt("vanish"));
-
-        if (nbt.getInt("tempest") > 0) itemStack.enchant(enchReg.getHolderOrThrow(RegistryEnchantments.TEMPEST), nbt.getInt("tempest"));
+            ResourceKey<Enchantment> rkey = ResourceKey.create(Registries.ENCHANTMENT, rl);
+            reg.getHolder(rkey).ifPresent(holder -> {
+                int lvl = nbt.getInt(key);
+                if (lvl > 0) stack.enchant(holder, lvl);
+            });
+        }
     }
 }

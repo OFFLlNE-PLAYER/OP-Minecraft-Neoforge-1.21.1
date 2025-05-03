@@ -17,8 +17,6 @@ import net.minecraft.world.level.Level;
 
 import net.offllneplayer.opminecraft.entity.CryingHatchet;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.util.PutNBT;
-
 
 public class CryingHatchetItem extends TieredItem {
 
@@ -76,31 +74,30 @@ public class CryingHatchetItem extends TieredItem {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
         if (!(user instanceof Player player) || level.isClientSide) return;
 
-        int charge = this.getUseDuration(stack, user) - timeLeft;
-        float pull  = Mth.clamp(charge / 20f, 0f, 1f);
-        if (pull < 0.1f) return;
+        float pull = Mth.clamp((getUseDuration(stack, user) - timeLeft) / 20F, 0F, 1F);
+        if (pull < 0.1F) return;
 
-        float velocity = pull * 2.5f;
+        InteractionHand hand = player.getUsedItemHand();
 
         double yawRad = Math.toRadians(player.getYRot());
-        double fx = -Math.sin(yawRad), fz =  Math.cos(yawRad);
-        double rz = -fx;
-        double lat = (player.getUsedItemHand() == InteractionHand.MAIN_HAND ? -0.5 : 0.5);
-        double x = player.getX() + fx * 0.7 + fz * lat;
-        double y = player.getY() + 1.4;
-        double z = player.getZ() + fz * 0.7 + rz * lat;
+        double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
+        double rightX = forwardZ, rightZ = -forwardX;
+        double forwardOff = 0.6;
+        double lateralOff = hand == InteractionHand.MAIN_HAND ? -0.3 : 0.3;
+        double spawnX = player.getX() + forwardX * forwardOff + rightX * lateralOff;
+        double spawnY = player.getY() + player.getEyeHeight();
+        double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
 
-        CryingHatchet hatchet = new CryingHatchet(player, level);
-        PutNBT.writeWeaponDataToEntity(stack, hatchet, level);
+        CryingHatchet hatchet = new CryingHatchet(player, level, stack.copy());
+
         hatchet.setPullRatio(pull);
-        hatchet.setPos(x, y, z);
-        hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0f, velocity, 0.420F);
+        hatchet.setPos(spawnX, spawnY, spawnZ);
+        hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * 2.5F, 0.420F);
         level.addFreshEntity(hatchet);
 
         player.awardStat(Stats.ITEM_USED.get(this));
         stack.shrink(1);
 
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0f, 1.0f + pull * 0.2F
-        );
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1, 1 + pull * 0.2F);
     }
 }

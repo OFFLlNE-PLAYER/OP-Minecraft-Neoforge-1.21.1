@@ -2,7 +2,9 @@ package net.offllneplayer.opminecraft.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -16,13 +18,14 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.entity.vehicle.MinecartChest;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
@@ -30,24 +33,37 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
-import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
-import net.offllneplayer.opminecraft.init.RegistryEntities;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.init.RegistrySounds;
+import net.offllneplayer.opminecraft.init.*;
 import net.offllneplayer.opminecraft.util.DeclareTagKeys;
 import net.offllneplayer.opminecraft.util.PutNBT;
 
 import java.util.List;
+import java.util.Map;
 
 public class SMBSuperFan extends AbstractArrow {
 
-    public SMBSuperFan(LivingEntity shooter, Level level) {
-        super(RegistryEntities.SMB_SUPER_FAN.get(), shooter, level, new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get()), null);
-        this.pickup = AbstractArrow.Pickup.DISALLOWED;
+    public SMBSuperFan(EntityType<? extends SMBSuperFan> type, Level level) {
+        super(type, level);
     }
 
-    public SMBSuperFan(EntityType<? extends AbstractArrow> entityType, Level level) {
-        super(entityType, level);
+    public SMBSuperFan(Level world, LivingEntity shooter) {
+        super(RegistryEntities.SMB_SUPER_FAN.get(), world);
+        this.setOwner(shooter);
+    }
+
+    public SMBSuperFan(Player shooter, Level world, ItemStack stack) {
+        this(world, shooter);
+
+        CompoundTag data = this.getPersistentData();
+        data.putString("nayme", stack.getHoverName().getString());
+        data.putInt ("DMG_VALU", stack.getDamageValue());
+
+        var enchants = stack.getComponents().get(DataComponents.ENCHANTMENTS);
+        for (var entry : enchants.entrySet()) {
+            entry.getKey().unwrapKey().ifPresent(key ->
+                    data.putInt(key.location().getPath(), entry.getIntValue())
+            );
+        }
     }
 
     @Override
@@ -111,45 +127,61 @@ public class SMBSuperFan extends AbstractArrow {
         if (this.level().isClientSide()) return;
         Entity hitEntity = result.getEntity();
         Level level = hitEntity.level();
-        double x = hitEntity.getX(), y = hitEntity.getY(), z = hitEntity.getZ();
+        double x = hitEntity.getX();
+        double y = hitEntity.getY();
+        double z = hitEntity.getZ();
 
         if (hitEntity instanceof LivingEntity living) {
-            DamageSource fanDamage = this.level().damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
-            float dmg = 4F;
+            if (level() instanceof ServerLevel serverLevel) {
+                PutNBT.WeaponData wd = PutNBT.readWeaponData(this.getPersistentData(), level);
+                Map<Enchantment, Integer> enchs = wd.enchantments();
 
-            PutNBT.WeaponData data = PutNBT.readWeaponData(this);
+                if (this.random.nextInt(enchs.getOrDefault(Enchantments.UNBREAKING, 0) + 1) == 0) {
+                    this.getPersistentData().putInt("DMG_VALU", wd.dmgValue() + 1);
+                }
 
-            if (this.random.nextInt(data.unbreakinLevel() + 1) == 0) {
-                this.getPersistentData().putInt("DMG_VALU", data.DMGVALU() + 1);
+                float dmg = 4F;
+                if (enchs.getOrDefault(Enchantments.SHARPNESS, 0) > 0) {
+                    dmg += enchs.get(Enchantments.SHARPNESS);
+                } else if (enchs.getOrDefault(Enchantments.SMITE, 0) > 0
+                        && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+                    dmg += 2F * enchs.get(Enchantments.SMITE);
+                } else if (enchs.getOrDefault(Enchantments.BANE_OF_ARTHROPODS, 0) > 0
+                        && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
+                    dmg += 2F * enchs.get(Enchantments.BANE_OF_ARTHROPODS);
+                }
+
+                DamageSource fanDMG = level.damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
+                living.hurt(fanDMG, dmg);
+                level.broadcastEntityEvent(this, (byte)3);
+
+                if (enchs.getOrDefault(Enchantments.FIRE_ASPECT, 0) > 0) {
+                    living.igniteForTicks(80 * enchs.get(Enchantments.FIRE_ASPECT));
+                }
+
+                if (enchs.getOrDefault(Enchantments.KNOCKBACK, 0) > 0) {
+                    Vec3 pushDir = this.getDeltaMovement().normalize().scale(enchs.get(Enchantments.KNOCKBACK));
+                    living.push(pushDir.x, 0.1, pushDir.z);
+                }
+
+                if (enchs.getOrDefault(Enchantments.SWEEPING_EDGE, 0) < 1) {
+                    this.setDeltaMovement(
+                            this.getDeltaMovement()
+                                    .scale(-Mth.randomBetween(this.random, -0.10420F, -0.01420F))
+                    );
+                    this.hasImpulse = true;
+                }
+
+                ItemStack stack = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
+                PutNBT.enchantWeaponDataToItemstack(stack, this.getPersistentData(), level());
+                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, fanDMG, stack);
+
+                float tone = Mth.randomBetween(this.random, 1.1F, 1.2F);
+                this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 1.0F, tone);
+
+                float tone2 = Mth.randomBetween(this.random, 0.9F, 1.1F);
+                this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone2);
             }
-
-            if (data.sharpLevel() > 0) {
-                dmg += data.sharpLevel();
-            } else if (data.smiteLevel() > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-                dmg += 2F * data.smiteLevel();
-            } else if (data.baneLevel() > 0 && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
-                dmg += 2F * data.baneLevel();
-            }
-
-            living.hurt(fanDamage, dmg);
-            this.level().broadcastEntityEvent(this, (byte) 3);
-
-            if (data.fireyLevel() > 0) living.igniteForTicks(80 * data.fireyLevel());
-
-            if (data.knickerbockerLevel() > 0) {
-                Vec3 pushDir = this.getDeltaMovement().normalize().scale(data.knickerbockerLevel() * 1D);
-                living.push(pushDir.x, 0.1D, pushDir.z);
-            }
-
-            if (data.sweepinLevel() < 1) {
-                this.setDeltaMovement(this.getDeltaMovement().scale(-0.01));
-                this.hasImpulse = true;
-            }
-
-            float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
-            this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
-
-
         } else if ((hitEntity instanceof ChestBoat) || (hitEntity instanceof MinecartChest)) {
             this.setDeltaMovement(this.getDeltaMovement().scale(-Mth.randomBetween(this.random, -0.1420F, -0.69420F)));
             this.hasImpulse = true;
@@ -255,7 +287,7 @@ public class SMBSuperFan extends AbstractArrow {
     }
 
 
-    private float pullRatio = 1.0f;
+    private float pullRatio = 1F;
     public void setPullRatio(float pullRatio) {
         this.pullRatio = pullRatio;
     }
@@ -275,8 +307,7 @@ public class SMBSuperFan extends AbstractArrow {
         }
 
         if (!this.inGround) {
-            float degreesPerPull = 20F;
-            rotation = (rotation - pullRatio * degreesPerPull) % 360F;
+            rotation = (rotation - pullRatio * 20F) % 360F;
             if (rotation < 0) rotation += 360F;
         }
 
@@ -293,13 +324,25 @@ public class SMBSuperFan extends AbstractArrow {
             // Every 10 ticks (0.5 seconds) process nearby entities.
             if (customTickCounter % 10 == 0) {
                 Level level = this.getCommandSenderWorld();
-                AABB boundingBox = this.getBoundingBox().inflate(0.1D);
-                List<Entity> entities = level.getEntities(this, boundingBox,
-                        entity -> (entity instanceof LivingEntity) || (entity instanceof ItemEntity));
+                AABB boundingBox = this.getBoundingBox().inflate(0.01420D);
+                List<Entity> entities = level.getEntities(this, boundingBox, entity -> (entity instanceof LivingEntity) || (entity instanceof ItemEntity) || (entity instanceof ExperienceOrb));
 
                 for (Entity entity : entities) {
 
-                    if (entity instanceof ItemEntity || entity instanceof ExperienceOrb) {// Discard item entities and play hit sound
+                    if (entity instanceof ItemEntity) {// Discard and play hit sound
+                        entity.discard();
+                        float vol = Mth.randomBetween(this.random, 0.69F, 0.8F);
+                        float tone = Mth.randomBetween(this.random, 1.0F, 1.3F);
+                        this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), vol, tone);
+
+                    }else if (entity instanceof ExperienceOrb) {
+                        PutNBT.WeaponData wd = PutNBT.readWeaponData(this.getPersistentData(), level);
+                        Map<Enchantment, Integer> enchs = wd.enchantments();
+
+                        if (enchs.getOrDefault(Enchantments.MENDING, 0) > 0) {
+                            this.getPersistentData().putInt("DMG_VALU", wd.dmgValue() - 1);
+                        }
+
                         entity.discard();
                         float vol = Mth.randomBetween(this.random, 0.6F, 1F);
                         float tone = Mth.randomBetween(this.random, 1.0F, 1.3F);

@@ -63,7 +63,7 @@ public class StickGunblade_Method {
 		BlockEntity gun = level.getBlockEntity(first);
 		if (gun != null) {
 
-			PutNBT.writeWeaponDataToBlock(stack, gun, level);
+		PutNBT.writeWeaponDataToBlock(stack, gun, level);
 
 			gun.setChanged();
 			level.sendBlockUpdated(first, stuck, stuck, 3);
