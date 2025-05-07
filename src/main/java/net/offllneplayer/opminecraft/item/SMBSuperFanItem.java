@@ -1,5 +1,8 @@
 package net.offllneplayer.opminecraft.item;
 
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -20,11 +24,13 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.offllneplayer.opminecraft.entity.SMBSuperFan;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
+import net.offllneplayer.opminecraft.util.DispensibleProjectile;
 
 import java.util.List;
 
 
-public class SMBSuperFanItem extends TieredItem {
+public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile {
+
         private static final Tier TOOL_TIER = new Tier() {
             @Override
             public int getUses() {
@@ -115,4 +121,42 @@ public class SMBSuperFanItem extends TieredItem {
         super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.translatable("item.opminecraft.smb_super_fan.description_0"));
     }
+
+    @Override
+    public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
+        SMBSuperFan fan = new SMBSuperFan(level, null);
+
+        fan.setPos(pos.x(), pos.y(), pos.z());
+
+        // Copy item data to entity
+        fan.getPersistentData().putString("nayme", stack.getHoverName().getString());
+        fan.getPersistentData().putInt("DMG_VALU", stack.getDamageValue());
+
+        var enchants = stack.getComponents().get(DataComponents.ENCHANTMENTS);
+        for (var entry : enchants.entrySet()) {
+            entry.getKey().unwrapKey().ifPresent(key ->
+                    fan.getPersistentData().putInt(key.location().toString(), entry.getIntValue())
+            );
+        }
+
+        // Set velocity and rotation
+        float speed = getDispenseSpeed();
+        fan.setDeltaMovement(
+                direction.getStepX() * speed,
+                direction.getStepY() * speed + 0.1F,
+                direction.getStepZ() * speed
+        );
+
+        float yRot = switch (direction) {
+            case NORTH -> 0F;
+            case SOUTH -> 180F;
+            case WEST -> 90F;
+            case EAST -> 270F;
+            default -> 0F;
+        };
+        fan.setYRot(yRot);
+
+        return fan;
+    }
 }
+

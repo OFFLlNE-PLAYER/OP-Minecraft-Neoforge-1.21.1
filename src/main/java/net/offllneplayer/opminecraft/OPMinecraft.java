@@ -10,6 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.util.thread.SidedThreadGroups;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -17,6 +18,7 @@ import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.common.NeoForge;
 
+import net.offllneplayer.opminecraft.init.fml.FMLDispenserBehaviors;
 import net.offllneplayer.opminecraft.method._handler.DamageEventHandler;
 import net.offllneplayer.opminecraft.method._handler.EntitySpawnHandler;
 import net.offllneplayer.opminecraft.init.*;
@@ -39,6 +41,7 @@ public class OPMinecraft {
     public OPMinecraft(IEventBus modEventBus, ModContainer modContainer) {
 
         modEventBus.addListener(this::registerNetworking);
+        modEventBus.addListener(this::commonSetup);
 
         RegistrySounds.SOUNDSREGISTRY.register(modEventBus);
 
@@ -72,10 +75,11 @@ public class OPMinecraft {
 
         NeoForge.EVENT_BUS.register(this);
 
-        NeoForge.EVENT_BUS.register(new DamageEventHandler());
-        NeoForge.EVENT_BUS.register(new EntitySpawnHandler());
-
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(FMLDispenserBehaviors::DispenserBehaviors);
     }
 
     private static boolean networkingRegistered = false;

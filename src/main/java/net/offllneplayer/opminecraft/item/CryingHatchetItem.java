@@ -1,8 +1,12 @@
 package net.offllneplayer.opminecraft.item;
 
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -17,8 +21,10 @@ import net.minecraft.world.level.Level;
 
 import net.offllneplayer.opminecraft.entity.CryingHatchet;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.util.DispensibleProjectile;
 
-public class CryingHatchetItem extends TieredItem {
+public class CryingHatchetItem extends TieredItem implements DispensibleProjectile {
+
 
     private static final Tier TOOL_TIER = new Tier() {
         @Override
@@ -99,5 +105,27 @@ public class CryingHatchetItem extends TieredItem {
         stack.shrink(1);
 
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1, 1 + pull * 0.2F);
+    }
+
+    @Override
+    public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
+
+        CryingHatchet hatchet =  new CryingHatchet(null, level, stack.copy());
+
+        hatchet.setPos(pos.x(), pos.y(), pos.z());
+
+        float speed = getDispenseSpeed();
+        hatchet.setDeltaMovement(direction.getStepX() * speed, direction.getStepY() * speed + 0.1F, direction.getStepZ() * speed);
+
+        float yRot = switch (direction) {
+            case NORTH -> 0F;
+            case SOUTH -> 180F;
+            case WEST -> 90F;
+            case EAST -> 270F;
+            default -> 0F;
+        };
+        hatchet.setYRot(yRot);
+
+        return hatchet;
     }
 }

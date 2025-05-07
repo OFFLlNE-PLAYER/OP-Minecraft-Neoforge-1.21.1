@@ -1,12 +1,13 @@
 package net.offllneplayer.opminecraft.init;
 
+import net.minecraft.core.HolderSet;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.enchantment.TempestEnchantmentEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -22,9 +23,12 @@ public class RegistryEnchantments {
         var items = context.lookup(Registries.ITEM);
 
         registerEnchants(context, TEMPEST, Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), 2, 3,
-                        Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 3, EquipmentSlotGroup.MAINHAND))
-                .exclusiveWith(enchantment.getOrThrow(EnchantmentTags.RIPTIDE_EXCLUSIVE))
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), 1, 10,
+                        Enchantment.dynamicCost(20, 4), Enchantment.dynamicCost(69, 12), 3, EquipmentSlotGroup.MAINHAND))
+                .exclusiveWith(HolderSet.direct(
+                        enchantment.getOrThrow(Enchantments.SWEEPING_EDGE),
+                        enchantment.getOrThrow(Enchantments.CHANNELING)
+                ))
                 .withEffect(EnchantmentEffectComponents.POST_ATTACK, EnchantmentTarget.ATTACKER,
                         EnchantmentTarget.VICTIM, new TempestEnchantmentEffect()));
     }

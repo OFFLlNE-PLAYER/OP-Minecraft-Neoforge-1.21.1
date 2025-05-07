@@ -5,14 +5,15 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.item.FallingBlockEntity;
@@ -20,8 +21,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.entity.vehicle.MinecartChest;
@@ -29,9 +28,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -39,8 +41,9 @@ import net.minecraft.world.phys.Vec3;
 
 import net.offllneplayer.opminecraft.init.*;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.util.DeclareTagKeys;
-import net.offllneplayer.opminecraft.util.PutNBT;
+import net.offllneplayer.opminecraft.util.TagKeyUtil;
+import net.offllneplayer.opminecraft.util.ProjectileEnchantUtil;
+import net.offllneplayer.opminecraft.util.NBTUtil;
 
 import java.util.Map;
 
@@ -53,9 +56,13 @@ public class CryingHatchet extends AbstractArrow {
     public CryingHatchet(Level world, LivingEntity shooter) {
         super(RegistryEntities.CRYING_HATCHET.get(), world);
         this.setOwner(shooter);
-        this.setPos(shooter.getX(), shooter.getY() + shooter.getEyeHeight(), shooter.getZ());
+
+        if (shooter != null) {
+            this.setPos(shooter.getX(), shooter.getY() + shooter.getEyeHeight(), shooter.getZ());
+        }
         this.pickup = Pickup.DISALLOWED;
     }
+
 
     public CryingHatchet(Player shooter, Level world, ItemStack stack) {
         this(world, shooter);
@@ -67,11 +74,34 @@ public class CryingHatchet extends AbstractArrow {
         var enchants = stack.getComponents().get(DataComponents.ENCHANTMENTS);
         for (var entry : enchants.entrySet()) {
             entry.getKey().unwrapKey().ifPresent(key ->
-                    data.putInt(key.location().getPath(), entry.getIntValue())
+                    data.putInt(key.location().toString(), entry.getIntValue())
             );
         }
     }
 
+    public boolean isGrounded() {
+        return inGround;
+    }
+
+    private float pullRatio = 1F;
+    public void setPullRatio(float pullRatio) {
+        this.pullRatio = pullRatio;
+    }
+
+    private BlockPos stuckPos;
+    private Block stuckBlock;
+    private Direction stuckFace = null;
+    private float rotation;
+
+    public Direction getStuckFace() {
+        return stuckFace;
+    }
+
+    public float getRenderingRotation() {
+        return rotation;
+    }
+
+/*--------------------------------------------------------------------------------------------*/
     @Override
     public void setPos(double x, double y, double z) {
         super.setPos(x, y, z);
@@ -87,6 +117,11 @@ public class CryingHatchet extends AbstractArrow {
         } else {
             this.setBoundingBox(new AABB(x - longHalf, y - height, z - shortHalf, x + longHalf, y + height, z + shortHalf));
         }
+    }
+
+    @Override
+    public ItemStack getDefaultPickupItem() {
+        return new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
     }
 
     @Override
@@ -124,10 +159,56 @@ public class CryingHatchet extends AbstractArrow {
     }
 
     @Override
-    public ItemStack getDefaultPickupItem() {
-        return new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
+    protected void updateRotation() {/*VOIDED vanilla abstract arrow rot*/}
+    @Override
+    public void tickDespawn() {/*VOIDED despawning due to tick time*/}
+    @Override
+    public void checkDespawn() {/*VOIDED despawning due to player distance*/}
+    @Override
+    public void doPostHurtEffects(LivingEntity target) {/*VOIDED Discard entity on hit*/}
+
+/*--------------------------------------------------------------------------------------------*/
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.inGround && stuckPos != null) {
+            if (level().getBlockState(stuckPos).getBlock() != stuckBlock) {
+                this.inGround   = false;
+                this.hasImpulse = true;
+                this.setDeltaMovement(Vec3.ZERO);
+            }
+        }
+
+        if (!this.inGround) {
+            rotation = (rotation - pullRatio * 20F) % 360F;
+            if (rotation < 0) rotation += 360F;
+        }
     }
 
+/*--------------------------------------------------------------------------------------------*/
+    @Override
+    public InteractionResult interact(Player player, InteractionHand hand) {
+        if (!this.level().isClientSide()) {
+            if (player.getItemInHand(hand).isEmpty()) {
+
+                float tone = Mth.randomBetween(this.random, 1.35F, 1.5F);
+                this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 0.6F, tone);
+
+                ItemStack blade = new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
+                CompoundTag nbt = this.getPersistentData();
+                NBTUtil.enchantWeaponDataToItemstack(blade, nbt, this.level());
+
+                player.setItemInHand(hand, blade);
+                this.discard();
+
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+/*--------------------------------------------------------------------------------------------*/
     @Override
     public void onHitEntity(EntityHitResult result) {
         if (this.level().isClientSide()) return;
@@ -139,48 +220,26 @@ public class CryingHatchet extends AbstractArrow {
 
         if (hitEntity instanceof LivingEntity living) {
             if (level() instanceof ServerLevel serverLevel) {
-                PutNBT.WeaponData wd = PutNBT.readWeaponData(this.getPersistentData(), level);
-                Map<Enchantment, Integer> enchs = wd.enchantments();
-
-                if (this.random.nextInt(enchs.getOrDefault(Enchantments.UNBREAKING, 0) + 1) == 0) {
-                    this.getPersistentData().putInt("DMG_VALU", wd.dmgValue() + 1);
-                }
-
-                float dmg = 9F;
-                if (enchs.getOrDefault(Enchantments.SHARPNESS, 0) > 0) {
-                    dmg += enchs.get(Enchantments.SHARPNESS);
-                } else if (enchs.getOrDefault(Enchantments.SMITE, 0) > 0
-                        && living.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-                    dmg += 2F * enchs.get(Enchantments.SMITE);
-                } else if (enchs.getOrDefault(Enchantments.BANE_OF_ARTHROPODS, 0) > 0
-                        && living.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
-                    dmg += 2F * enchs.get(Enchantments.BANE_OF_ARTHROPODS);
-                }
+                NBTUtil.WeaponData wd = NBTUtil.readItemStacktoClass(this.getPersistentData(), level);
+                Map<Enchantment,Integer> enchs = wd.enchants();
 
                 DamageSource hatchetDMG = level.damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
-                living.hurt(hatchetDMG, dmg);
+                float dmg = 9F;
+                float enchantDmg = ProjectileEnchantUtil.calculateDamageBonus(living, enchs);
+                float damage = dmg + enchantDmg;
+
+                living.hurt(hatchetDMG, damage);
                 level.broadcastEntityEvent(this, (byte)3);
 
-                if (enchs.getOrDefault(Enchantments.FIRE_ASPECT, 0) > 0) {
-                    living.igniteForTicks(80 * enchs.get(Enchantments.FIRE_ASPECT));
-                }
+                ProjectileEnchantUtil.processUnbreaking(this, enchs, this.random);
 
-                if (enchs.getOrDefault(Enchantments.KNOCKBACK, 0) > 0) {
-                    Vec3 pushDir = this.getDeltaMovement().normalize().scale(enchs.get(Enchantments.KNOCKBACK));
-                    living.push(pushDir.x, 0.1, pushDir.z);
-                }
+                ProjectileEnchantUtil.applyFireAspect(living, enchs);
+                ProjectileEnchantUtil.applyKnockback(this, living, enchs);
+                ProjectileEnchantUtil.applyCleaving(this, enchs, this.random);
 
-                if (enchs.getOrDefault(Enchantments.SWEEPING_EDGE, 0) < 1) {
-                    this.setDeltaMovement(
-                            this.getDeltaMovement()
-                                    .scale(-Mth.randomBetween(this.random, -0.10420F, -0.01420F))
-                    );
-                    this.hasImpulse = true;
-                }
-
-                ItemStack stack = new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
-                PutNBT.enchantWeaponDataToItemstack(stack, this.getPersistentData(), level());
-                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, hatchetDMG, stack);
+                ItemStack dummyStack = new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
+                NBTUtil.enchantWeaponDataToItemstack(dummyStack, this.getPersistentData(), level());
+                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, hatchetDMG, dummyStack);
 
                 ApplyCrying1_Method.execute(living);
 
@@ -220,7 +279,7 @@ public class CryingHatchet extends AbstractArrow {
             level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(Items.LEAD)));
             hitEntity.discard();
 
-        } else  if (hitEntity.getType().is(DeclareTagKeys.Entities.IMPACT_PROJECTILES)) {
+        } else  if (hitEntity.getType().is(TagKeyUtil.Entities.IMPACT_PROJECTILES)) {
             if (hitEntity instanceof ItemSupplier supplier) {
                 ItemStack drop = supplier.getItem();
             if (!drop.isEmpty()) {
@@ -241,100 +300,58 @@ public class CryingHatchet extends AbstractArrow {
         }
     }
 
-    @Override
-    public void doPostHurtEffects(LivingEntity target) {
-        // Prevents arrow from discarding itself after hitting a target.
-    }
-
-    @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
-        if (!this.level().isClientSide()) {
-            if (player.getItemInHand(hand).isEmpty()) {
-
-                float tone = Mth.randomBetween(this.random, 1.35F, 1.5F);
-                this.playSound(RegistrySounds.GUNBLADE_IN_DIRT.get(), 0.6F, tone);
-
-                ItemStack blade = new ItemStack(RegistryIBBI.CRYING_HATCHET.get());
-                CompoundTag nbt = this.getPersistentData();
-                PutNBT.enchantWeaponDataToItemstack(blade, nbt, this.level());
-
-                player.setItemInHand(hand, blade);
-                this.discard();
-
-                return InteractionResult.SUCCESS;
-            }
-        }
-        return InteractionResult.PASS;
-    }
-
-
-    private BlockPos stuckPos;
-    private Block stuckBlock;
-    private Direction stuckFace = null;
-    private float rotation;
-
+/*--------------------------------------------------------------------------------------------*/
     @Override
     public void onHitBlock(BlockHitResult result) {
-        stuckPos   = result.getBlockPos();
+        stuckPos = result.getBlockPos();
         stuckBlock = level().getBlockState(stuckPos).getBlock();
-        this.stuckFace = result.getDirection();
+        stuckFace = result.getDirection();
         super.onHitBlock(result);
 
         if (!level().isClientSide()) {
+            BlockPos pos = result.getBlockPos();
+            BlockState state = level().getBlockState(pos);
+            Block block = state.getBlock();
+
+            // Handle button interaction using the buttons tag
+            if (block.builtInRegistryHolder().is(BlockTags.BUTTONS)) {
+                if (state.hasProperty(ButtonBlock.POWERED) && !state.getValue(ButtonBlock.POWERED)) {
+                    // Only press if not already pressed
+                    BlockState pressedState = state.setValue(ButtonBlock.POWERED, true);
+                    level().setBlock(pos, pressedState, 3);
+
+                    level().playSound(null, pos, SoundEvents.STONE_BUTTON_CLICK_ON, SoundSource.BLOCKS, 0.3F, 0.6F);
+
+                    level().scheduleTick(pos, block, 30);
+                    level().updateNeighborsAt(pos, block);
+
+                    // Get the attached face direction
+                    if (state.hasProperty(ButtonBlock.FACING) && state.hasProperty(ButtonBlock.FACE)) {
+                        Direction direction = state.getValue(ButtonBlock.FACING);
+                        AttachFace face = state.getValue(ButtonBlock.FACE);
+
+                        // Convert AttachFace to Direction
+                        Direction faceDirection;
+                        switch (face) {
+                            case FLOOR: faceDirection = Direction.DOWN;
+                                break;
+                            case CEILING: faceDirection = Direction.UP;
+                                break;
+                            case WALL:
+                            default: faceDirection = direction.getOpposite();
+                                break;
+                        }
+
+                        level().updateNeighborsAt(pos.relative(faceDirection), block);
+                    }
+                    // Create block event to notify neighbors
+                    level().gameEvent(this.getOwner(), GameEvent.BLOCK_ACTIVATE, pos);
+                }
+            }
+
             float tone = Mth.randomBetween(this.random, 1.2F, 1.4F);
             this.playSound(RegistrySounds.GUNBLADE_SLASH.get(), 1.0F, tone);
-            this.level().broadcastEntityEvent(this, (byte)3);
+            this.level().broadcastEntityEvent(this, (byte) 3);
         }
-    }
-
-    public Direction getStuckFace() {
-        return stuckFace;
-    }
-
-
-    private float pullRatio = 1F;
-    public void setPullRatio(float pullRatio) {
-        this.pullRatio = pullRatio;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-
-        if (this.inGround && stuckPos != null) {
-            if (level().getBlockState(stuckPos).getBlock() != stuckBlock) {
-                this.inGround   = false;
-                this.hasImpulse = true;
-                this.setDeltaMovement(Vec3.ZERO);
-            }
-        }
-
-        if (!this.inGround) {
-            rotation = (rotation - pullRatio * 20F) % 360F;
-            if (rotation < 0) rotation += 360F;
-        }
-    }
-
-    public float getRenderingRotation() {
-        return rotation;
-    }
-
-    public boolean isGrounded() {
-        return inGround;
-    }
-
-    @Override
-    protected void updateRotation() {
-        // skip the vanilla yaw/pitch alignment
-    }
-
-    @Override
-    public void tickDespawn() {
-        // Do nothing — disables auto-despawn logic
-    }
-
-    @Override
-    public void checkDespawn() {
-        // Prevent despawning due to player distance
     }
 }

@@ -2,7 +2,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_lim3_feather"
+    "layer0": "opminecraft:item/text_perfect_alexandrite_old"
   },
   "display": {
     "thirdperson_righthand": {

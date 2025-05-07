@@ -14,6 +14,11 @@ public class RegistryDataComponents {
             DeferredRegister.create(BuiltInRegistries.DATA_COMPONENT_TYPE, "opminecraft");
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> DYNAMITE_LIT_TIME =
+            DATA_COMPONENTS.register("dynamite_lit_time",
+                    () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
+
+
     public static final DeferredHolder<DataComponentType<?>,
             DataComponentType<Long>> GUNBLADE_LAST_HIT_TIME =
                 DATA_COMPONENTS.register("gunblade_last_hit_time",

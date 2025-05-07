@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.util.PutNBT;
+import net.offllneplayer.opminecraft.util.NBTUtil;
 
 
 public class StuckGunbladePopItem_Method {
@@ -49,7 +49,7 @@ public class StuckGunbladePopItem_Method {
 
 		level.removeBlock(pos, false);
 
-		PutNBT.enchantWeaponDataToItemstack(blade, nbt, level);
+		NBTUtil.enchantWeaponDataToItemstack(blade, nbt, level);
 
 		ItemEntity drop = new ItemEntity(level, dropPos.getX() + 0.5, dropPos.getY() + 0.5, dropPos.getZ() + 0.5, blade);
 		level.addFreshEntity(drop);

@@ -29,8 +29,7 @@ public class RegistryClientEventBus {
 		@SubscribeEvent
 		public static void clientSetup(FMLClientSetupEvent event) {
 
-			ItemBlockRenderTypes.setRenderLayer( RegistryIBBI.GOLDEN_BED.get(),
-					RenderType.cutoutMipped() );
+			ItemBlockRenderTypes.setRenderLayer( RegistryIBBI.GOLDEN_BED.get(), RenderType.cutoutMipped() );
 
 		/*--------------------------------------------------------------------------------------------*/
 			/*[Register Entity Renderers]*/

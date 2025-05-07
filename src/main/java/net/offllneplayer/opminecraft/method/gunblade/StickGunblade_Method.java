@@ -2,18 +2,13 @@ package net.offllneplayer.opminecraft.method.gunblade;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -22,11 +17,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-
-import net.offllneplayer.opminecraft.init.RegistryEnchantments;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.util.PutNBT;
+import net.offllneplayer.opminecraft.util.NBTUtil;
 
 public class StickGunblade_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -63,7 +56,7 @@ public class StickGunblade_Method {
 		BlockEntity gun = level.getBlockEntity(first);
 		if (gun != null) {
 
-		PutNBT.writeWeaponDataToBlock(stack, gun, level);
+			NBTUtil.writeItemStackNBTToBlock(stack, gun);
 
 			gun.setChanged();
 			level.sendBlockUpdated(first, stuck, stuck, 3);

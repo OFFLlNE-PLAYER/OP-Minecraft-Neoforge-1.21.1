@@ -24,7 +24,7 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.AdvancementHolder;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.util.DeclareTagKeys;
+import net.offllneplayer.opminecraft.util.TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
@@ -36,12 +36,12 @@ import java.util.Objects;
 public class BlockofCryingIngots_OnTick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 
-		if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
-				|| (world.getBlockState(BlockPos.containing(x + 1, y, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
-				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
-				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
-				|| (world.getBlockState(BlockPos.containing(x, y, z + 1))).is(DeclareTagKeys.Blocks.SOUL_FIRES)
-				|| (world.getBlockState(BlockPos.containing(x, y, z - 1))).is(DeclareTagKeys.Blocks.SOUL_FIRES)) {
+		if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).is(TagKeyUtil.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x + 1, y, z))).is(TagKeyUtil.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(TagKeyUtil.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(TagKeyUtil.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y, z + 1))).is(TagKeyUtil.Blocks.SOUL_FIRES)
+				|| (world.getBlockState(BlockPos.containing(x, y, z - 1))).is(TagKeyUtil.Blocks.SOUL_FIRES)) {
 
 			if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 				if (world.getBlockState(BlockPos.containing(x, y, z)).getBlock() == RegistryIBBI.BLOCK_OF_CRYING_INGOTS.get()) {

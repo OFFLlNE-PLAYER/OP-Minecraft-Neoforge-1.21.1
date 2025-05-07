@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.util.PutNBT;
+import net.offllneplayer.opminecraft.util.NBTUtil;
 
 public class Stuck_Gunblade_OnClick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -31,15 +31,15 @@ public class Stuck_Gunblade_OnClick_Method {
 		BlockEntity gun = level.getBlockEntity(pos);
 		if (gun == null) return;
 
+		ItemStack blade = new ItemStack(RegistryIBBI.GUNBLADE.get());
 		CompoundTag nbt = gun.getPersistentData();
 
-		ItemStack blade = new ItemStack(RegistryIBBI.GUNBLADE.get());
 		InteractionHand hand = living.getMainHandItem().isEmpty() ? InteractionHand.MAIN_HAND
 				: living.getOffhandItem().isEmpty() ? InteractionHand.OFF_HAND
 				: null;
 		if (hand == null) return;
 
-		PutNBT.enchantWeaponDataToItemstack(blade, nbt, level);
+		NBTUtil.enchantWeaponDataToItemstack(blade, nbt, level);
 
 		living.setItemInHand(hand, blade);
 		if (living instanceof Player player) player.getInventory().setChanged();

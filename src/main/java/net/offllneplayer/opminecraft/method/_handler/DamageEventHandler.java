@@ -16,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -24,14 +25,15 @@ import net.offllneplayer.opminecraft.init.RegistryMobEffects;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuActivate_Method;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.util.DeclareTagKeys;
+import net.offllneplayer.opminecraft.util.TagKeyUtil;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuReflect_Method;
 import net.offllneplayer.opminecraft.method.gunblade.GunbladeShot_Method;
 import net.offllneplayer.opminecraft.method.gunblade.PrototypeGunbladeShot_Method;
 
+@EventBusSubscriber
 public class DamageEventHandler {
     @SubscribeEvent
-    public void onEntityDamage(LivingIncomingDamageEvent event) {
+    public static void onEntityDamage(LivingIncomingDamageEvent event) {
 
         Entity sourceEntity = event.getSource().getEntity();
         LivingEntity targetEntity = event.getEntity();
@@ -48,7 +50,7 @@ public class DamageEventHandler {
         /*[CRASH CRATES]*/
         if (event.getSource().is(DamageTypes.FALL)) {
             BlockState belowBlock = level.getBlockState(targetEntity.blockPosition().below());
-            if (belowBlock.is(DeclareTagKeys.Blocks.CRASH_CRATES)) {
+            if (belowBlock.is(TagKeyUtil.Blocks.CRASH_CRATES)) {
                 event.setCanceled(true);
                 cancelaku = true;
             }
