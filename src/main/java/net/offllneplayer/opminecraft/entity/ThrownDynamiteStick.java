@@ -3,7 +3,11 @@ package net.offllneplayer.opminecraft.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -11,7 +15,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -25,9 +28,12 @@ import net.minecraft.world.phys.Vec3;
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 
 public class ThrownDynamiteStick extends AbstractArrow {
+
+    private static final EntityDataAccessor<Integer> DATA_LIT_TIME = SynchedEntityData.defineId(ThrownDynamiteStick.class, EntityDataSerializers.INT);
 
     // Standard entity data
     private BlockPos stuckPos;
@@ -39,6 +45,7 @@ public class ThrownDynamiteStick extends AbstractArrow {
 
     // Pull ratio from throw
     private float pullRatio = 1F;
+
 
     public ThrownDynamiteStick(EntityType<? extends ThrownDynamiteStick> type, Level level) {
         super(type, level);
@@ -60,8 +67,17 @@ public class ThrownDynamiteStick extends AbstractArrow {
 
     public ThrownDynamiteStick(Player shooter, Level world, ItemStack stack) {
         this(world, shooter);
-        CompoundTag data = this.getPersistentData();
-        data.putInt("dynamite_lit_time", stack.getDamageValue());
+        // Set the lit time using our synchronized data
+        this.entityData.set(DATA_LIT_TIME, stack.get(RegistryDataComponents.DYNAMITE_LIT_TIME.get()));
+    }
+
+    // Getter/setter methods for the lit time
+    public int getLitTime() {
+        return this.entityData.get(DATA_LIT_TIME);
+    }
+
+    public void setLitTime(int time) {
+        this.entityData.set(DATA_LIT_TIME, time);
     }
 
     public boolean isGrounded() {
@@ -80,7 +96,30 @@ public class ThrownDynamiteStick extends AbstractArrow {
         return spinRotation;
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------*/
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_LIT_TIME, -1); // Default to -1 (not lit)
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putInt("dynamite_lit_time", this.getLitTime());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if (compound.contains("dynamite_lit_time")) {
+            this.setLitTime(compound.getInt("dynamite_lit_time"));
+        }
+    }
+
+/*--------------------------------------------------------------------------------------------*/
     @Override
     public void setPos(double x, double y, double z) {
         super.setPos(x, y, z);
@@ -92,54 +131,48 @@ public class ThrownDynamiteStick extends AbstractArrow {
         double y = this.getY();
         double z = this.getZ();
 
-        double width = 0.21D;
-        double length = 0.5D;
-
         if (this.inGround) {
             // Ensure we have a valid direction
             Direction dir = this.getStuckDirection();
-            System.out.println("Stuck Direction: " + dir); // Keep the debug line
 
             if (dir == Direction.NORTH || dir == Direction.SOUTH) {
                 // Lying along Z axis
                 this.setBoundingBox(new AABB(
-                        x - width / 2,    // Left
-                        y - 0.15,    // Bottom
-                        z - length - 0.17 / 2,   // Front/fuse
-                        x + width / 2,    // Right
-                        y + 0.15D /2, // Top (flat on ground)
-                        z + length / 2 // Back
+                        x - 0.105D,    // Left
+                        y - 0.16D,    // Bottom
+                        z - 0.42D,   // Front/fuse
+                        x + 0.105D,    // Right
+                        y + 0.07D, // Top (flat on ground)
+                        z + 0.25D // Back
                 ));
             } else {
                 // Lying along X axis
                 this.setBoundingBox(new AABB(
-                        x - length / 2,   // Left
-                        y - 0.15,    // Bottom
-                        z - width + 0.17 / 2,    // Front/fuse
-                        x + length / 2,   // Right
-                        y + 0.15D / 2, // Top (flat on ground)
-                        z + width / 2 // Back
+                        x - 0.25D,   // Left
+                        y - 0.16D,    // Bottom
+                        z - 0.0225D,    // Front/fuse
+                        x + 0.25D,   // Right
+                        y + 0.07D, // Top (flat on ground)
+                        z + 0.105D // Back
                 ));
             }
         } else {
             // In flight
             this.setBoundingBox(new AABB(
-                    x - length / 2,    // Left
-                    y,    // Bottom
-                    z - length / 2,   // Back
-                    x + length / 2,    // Right
-                    y + length, // Top (flat on ground)
-                    z + length / 2    // Front
+                    x - 0.25D,    // Left
+                    y - 0.16D,    // Bottom
+                    z - 0.25D,   // Back
+                    x + 0.25D,    // Right
+                    y + 0.5D, // Top (flat on ground)
+                    z + 0.25D    // Front
             ));
         }
     }
-
 
     @Override
     public ItemStack getDefaultPickupItem() {
         return new ItemStack(RegistryIBBI.DYNAMITE_STICK.get());
     }
-
     @Override
     public boolean canBeCollidedWith() { return true; }
     @Override
@@ -153,13 +186,7 @@ public class ThrownDynamiteStick extends AbstractArrow {
     @Override
     public boolean shouldRenderAtSqrDistance(double distance) { return true; }
     @Override
-    public boolean displayFireAnimation() { return false; }
-    @Override
     protected void updateRotation() {/*VOIDED vanilla abstract arrow rot*/}
-    @Override
-    public void tickDespawn() {/*VOIDED despawning due to tick time*/}
-    @Override
-    public void checkDespawn() {/*VOIDED despawning due to player distance*/}
     @Override
     public void doPostHurtEffects(LivingEntity target) {/*VOIDED Discard entity on hit*/}
 
@@ -168,32 +195,9 @@ public class ThrownDynamiteStick extends AbstractArrow {
     public void tick() {
         super.tick();
 
-        // Handle countdown to explosion
-        if (!this.level().isClientSide()) {
-            int litTime = this.getPersistentData().getInt("dynamite_lit_time");
-            if (litTime > 0) {
-                this.getPersistentData().putInt("dynamite_lit_time", litTime - 1);
-            } else {
-                    if (!this.isInWater()) {
-                        this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3.0F, Level.ExplosionInteraction.TNT);
-                        this.discard();
-                        return;
-
-                }else {
-                    Level level = level();
-                    ItemEntity entityToSpawn = new ItemEntity(level, getX(), getY(), getZ(), new ItemStack(RegistryIBBI.DYNAMITE_STICK.get()));
-                    entityToSpawn.setPickUpDelay(5);
-                    level.addFreshEntity(entityToSpawn);
-
-                    this.discard();
-                    return;
-                }
-            }
-        }
-
         // Update spin rotation in flight
         if (!this.inGround) {
-            spinRotation = (spinRotation + pullRatio * 10F) % 360F;
+            spinRotation = (spinRotation + pullRatio * 12F) % 360F;
         }
 
         // If the block we're stuck in changes, unstick
@@ -204,7 +208,46 @@ public class ThrownDynamiteStick extends AbstractArrow {
                 this.setDeltaMovement(Vec3.ZERO);
             }
         }
+
+        if (this.isOnFire() && this.getLitTime() == -1) {
+
+            this.setLitTime(100);
+            this.playSound(RegistrySounds.DYNAMITE_FUSE.get(), 1F, 1.1420F);
+        }
+
+        if (this.isInLava()) {
+            this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3.0F, Level.ExplosionInteraction.TNT);
+            this.discard();
+            return;
+        }
+
+        // Handle countdown to explosion
+        if (!this.level().isClientSide()) {
+            // Server-side code
+            int litTime = this.getLitTime();
+
+            if (litTime > 0) {
+                if (this.isInWaterRainOrBubble()) {
+                    this.setLitTime(-1);
+                    this.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0F, 1.0F);
+                    return;
+                }
+
+                if (litTime % 40 == 0) {
+                    // Play sizzle sound periodically
+                    float tone = 1.69F + 0.31F * (1F - litTime / 100F);
+                    this.playSound(RegistrySounds.DYNAMITE_SIZZLE.get(), 1.0F, tone);
+                }
+
+                // Decrement the timer
+                this.setLitTime(litTime - 1);
+            } else if (litTime == 0) {
+                this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3.0F, Level.ExplosionInteraction.TNT);
+                this.discard();
+            }
+        }
     }
+
 
     /*--------------------------------------------------------------------------------------------*/
     @Override
@@ -212,7 +255,7 @@ public class ThrownDynamiteStick extends AbstractArrow {
         if (!this.level().isClientSide()) {
             if (player.getItemInHand(hand).isEmpty()) {
                 ItemStack dynamite = new ItemStack(RegistryIBBI.DYNAMITE_STICK.get());
-                dynamite.set(RegistryDataComponents.DYNAMITE_LIT_TIME.get(), this.getPersistentData().getInt("dynamite_lit_time"));
+                dynamite.set(RegistryDataComponents.DYNAMITE_LIT_TIME.get(), -1);
                 player.setItemInHand(hand, dynamite);
                 this.discard();
                 return InteractionResult.SUCCESS;
@@ -221,7 +264,7 @@ public class ThrownDynamiteStick extends AbstractArrow {
         return InteractionResult.PASS;
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------*/
     @Override
     public void onHitEntity(EntityHitResult result) {
         if (this.level().isClientSide()) return;
@@ -232,7 +275,7 @@ public class ThrownDynamiteStick extends AbstractArrow {
         Vec3 currentPos = this.position();
         Vec3 entityPos = hitEntity.position();
         Vec3 motion = this.getDeltaMovement();
-        
+
         // Calculate bounce direction away from entity
         Vec3 bounceDir = currentPos.subtract(entityPos).normalize();
 
@@ -244,7 +287,7 @@ public class ThrownDynamiteStick extends AbstractArrow {
         this.playSound(SoundEvents.BAMBOO_HIT, 0.6F, tone);
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------*/
     @Override
     public void onHitBlock(BlockHitResult result) {
         if (this.level().isClientSide()) return;
@@ -259,28 +302,30 @@ public class ThrownDynamiteStick extends AbstractArrow {
             float motionLength = (float) motion.length();
 
             // If we have meaningful velocity when hitting the ground, bounce
-            if (motionLength > 0.2f) {
+            if (motionLength > 0.2420F) {
                 // Create bounce effect - reduce vertical speed and maintain some horizontal momentum
-                float bounceStrength = 0.4f;  // Controls how high it bounces
+                float bounceStrength = Math.min(0.6F * motionLength, 0.9F);  // Scale bounce with speed
                 Vec3 bounceVec = new Vec3(
-                        motion.x * 0.8,  // Maintain most horizontal momentum but with some friction
-                        -motion.y * bounceStrength,  // Reverse vertical momentum with dampening
-                        motion.z * 0.8   // Maintain most horizontal momentum but with some friction
+                        motion.x * (0.69D + motionLength * 0.1), // More horizontal momentum retention at higher speeds
+                        -motion.y * bounceStrength,  // Bounce height scales with impact speed
+                        motion.z * (0.69D + motionLength * 0.1)  // More horizontal momentum retention at higher speeds
                 );
 
                 this.setDeltaMovement(bounceVec);
-                this.inGround = false;  // Keep it active
+                this.inGround = false;
                 this.hasImpulse = true;
 
-                // Play bounce sound
-                float tone = Mth.randomBetween(this.random, 0.8F, 1.2F);
-                this.playSound(SoundEvents.BAMBOO_HIT, 0.5F, tone);
+                float tone = Mth.randomBetween(this.random, 0.3F, 0.420F);
+                this.playSound(SoundEvents.BAMBOO_HIT, Math.min(0.2F * motionLength, 0.6F), tone);
 
-                return;  // Skip the rest of the method and continue bouncing
+                return;
             }
 
             // When velocity is low enough, go to resting position
             this.inGround = true;
+            this.hasImpulse = false;
+            this.spinRotation = 0F;
+
 
             // Set the facing direction based on motion
             if (Math.abs(motion.x) > Math.abs(motion.z)) {
@@ -292,27 +337,28 @@ public class ThrownDynamiteStick extends AbstractArrow {
             this.setYRot(stuckDirection.toYRot());
             this.setDeltaMovement(Vec3.ZERO);
 
-            // Play a thud sound
-            float tone = Mth.randomBetween(this.random, 0.420F, 0.69F);
-            this.playSound(SoundEvents.BAMBOO_PLACE, 0.69F, tone);
+            float tone = Mth.randomBetween(this.random, 0.3F, 0.420F);
+            this.playSound(SoundEvents.BAMBOO_PLACE, 0.2F, tone);
 
         } else if (hitFace != Direction.DOWN) {
-            // For walls, bounce with dampening
-            Vec3 normal = Vec3.atLowerCornerOf(hitFace.getNormal());
 
-            // Simple reflection with dampening
-            Vec3 reflected = motion.subtract(normal.scale(2 * motion.dot(normal))).scale(0.7);
+            // reflection with dampening based on speed
+            float motionLength = (float) motion.length();
+            float dampening = 0.7f + motionLength * 0.1f;
+            dampening = Math.min(dampening, 0.95f);
+
+            Vec3 normal = Vec3.atLowerCornerOf(hitFace.getNormal());
+            Vec3 reflected = motion.subtract(normal.scale(2 * motion.dot(normal))).scale(dampening);
 
             this.setDeltaMovement(reflected);
             this.inGround = false;
             this.hasImpulse = true;
 
-            // Play hit sound
-            float tone = Mth.randomBetween(this.random, 0.420F, 0.69F);
-            this.playSound(SoundEvents.BAMBOO_HIT, 0.420F, tone);
+            float tone = Mth.randomBetween(this.random, 0.3F, 0.420F);
+            this.playSound(SoundEvents.BAMBOO_HIT, Math.min(0.2F * motionLength, 0.6F), tone);
         }
 
-        // Make sure the hitbox is updated
         updateHitbox();
     }
 }
+

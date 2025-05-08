@@ -20,7 +20,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import net.offllneplayer.opminecraft.entity.ThrownDynamiteStick;
-import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.util.DispensibleProjectile;
 
@@ -35,11 +34,11 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
 
     public DynamiteStickItem() {
         super(new Properties()
-                .stacksTo(64)
+                .stacksTo(4)
                 .rarity(Rarity.UNCOMMON));
     }
 
-/*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
     private void stopFuseSound(Level level, double x, double y, double z) {
         if (!(level instanceof ServerLevel serverLevel)) return;
 
@@ -53,10 +52,10 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         }
     }
 
-/*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
     @Override
     public int getUseDuration(ItemStack itemstack, LivingEntity user) {
-        return FUSE_DURATION; // Exactly match fuse sound duration (5 seconds)
+        return FUSE_DURATION;
     }
 
     @Override
@@ -64,6 +63,8 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         return UseAnim.SPEAR;
     }
 
+
+    /*--------------------------------------------------------------------------------------------*/
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack dynamiteStack = player.getItemInHand(hand);
@@ -71,21 +72,30 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         ItemStack otherHandStack = player.getItemInHand(otherHand);
 
         if (otherHandStack.getItem() instanceof FlintAndSteelItem) {
+            if (player.isUnderWater() || player.getCooldowns().isOnCooldown(this)) {
+                return InteractionResultHolder.fail(dynamiteStack);
+            }
 
             level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1F, 1F);
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), RegistrySounds.DYNAMITE_FUSE.get(), SoundSource.NEUTRAL, 1F, 1.1F);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), RegistrySounds.DYNAMITE_FUSE.get(), SoundSource.NEUTRAL, 1F, 1.1420F);
 
             otherHandStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(otherHand));
             player.swing(otherHand, true);
+
+            player.getCooldowns().addCooldown(this, 40);
 
             player.startUsingItem(hand);
             return InteractionResultHolder.consume(dynamiteStack);
         }
 
+        // If no flint and steel in other hand
+        player.displayClientMessage(net.minecraft.network.chat.Component.literal("Jack Black's words echoed... FLINT AND STEEL!"), true);
+        player.swing(hand, true);
         return InteractionResultHolder.fail(dynamiteStack);
     }
 
-/*--------------------------------------------------------------------------------------------*/
+
+    /*--------------------------------------------------------------------------------------------*/
     @Override
     public void onUseTick(Level level, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         if (!(user instanceof Player player)) return;
@@ -104,7 +114,7 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         }
     }
 
-/*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
     @Override
     public void onStopUsing(ItemStack stack, LivingEntity livingEntity, int timeLeft) {
         if (!(livingEntity instanceof Player player)) return;
@@ -116,7 +126,7 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         }
     }
 
-/*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
         if (!(user instanceof Player player) || level.isClientSide) return;
@@ -128,8 +138,7 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         }
 
         int timeUsed = getUseDuration(stack, user) - timeLeft;
-        float pull = Mth.clamp(timeUsed / (float)FUSE_DURATION, 0F, 1F);
-
+        float pull = Mth.clamp(timeUsed / (float) FUSE_DURATION, 0.420F, 1.0420F);
 
         InteractionHand hand = player.getUsedItemHand();
 
@@ -146,14 +155,14 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
         // Create and setup the thrown dynamite entity
         ThrownDynamiteStick dstick = new ThrownDynamiteStick(player, level, stack.copy());
 
-        // Pass remaining fuse time to entity - this is what makes explosion time dynamic
+        // Pass remaining fuse time to entity using our new setter method
         int fuseTimeRemaining = FUSE_DURATION - timeUsed;
-        dstick.getPersistentData().putInt("dynamite_lit_time", fuseTimeRemaining);
+        dstick.setLitTime(fuseTimeRemaining);
 
         dstick.setPullRatio(pull);
         dstick.setPos(spawnX, spawnY, spawnZ);
-        float velo = Mth.nextFloat(RandomSource.create(), 2.420F, 2.69F);
-        dstick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull / 1.5F * velo, 0.420F);
+        float velo = Mth.nextFloat(RandomSource.create(), 1.420F, 2.0420F);
+        dstick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * velo, 0.420F);
         level.addFreshEntity(dstick);
 
         player.awardStat(Stats.ITEM_USED.get(this));
@@ -163,25 +172,58 @@ public class DynamiteStickItem extends Item implements DispensibleProjectile {
                 SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 1.0F, 1.1F + pull * 0.2F);
     }
 
-/*--------------------------------------------------------------------------------------------*/
+
+    /*--------------------------------------------------------------------------------------------*/
     @Override
     public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
         ThrownDynamiteStick dstick = new ThrownDynamiteStick(null, level, stack.copy());
-
-        // Transfer lit time data from item to entity
-        Integer litTime = stack.get(RegistryDataComponents.DYNAMITE_LIT_TIME.get());
-        if (litTime != null && litTime > 0) {
-            dstick.getPersistentData().putInt("dynamite_lit_time", litTime);
-        }
-
+        dstick.setLitTime(100);  // Use our new setter
         dstick.setPos(pos.x(), pos.y(), pos.z());
 
-        float speed = getDispenseSpeed();
-        dstick.setDeltaMovement(
-                direction.getStepX() * speed,
-                direction.getStepY() * speed + 0.1F,
-                direction.getStepZ() * speed
-        );
+
+        float speed = getDispenseSpeed() * 0.8F;
+        RandomSource random = level.getRandom();
+        float randomSpread = random.nextFloat() * 0.1F - 0.05F; // -0.05 to 0.05
+
+        // Special handling for UP and DOWN directions
+        if (direction == Direction.UP) {
+            // For upward dispensers, send mostly upward with slight random horizontal spread
+            float randomAngle = random.nextFloat() * ((float) Math.PI * 2);
+            dstick.setDeltaMovement(
+                    Math.cos(randomAngle) * randomSpread * speed,
+                    speed, // Primarily upward movement
+                    Math.sin(randomAngle) * randomSpread * speed
+            );
+        } else if (direction == Direction.DOWN) {
+            // For downward dispensers, send mostly downward with slight random horizontal spread
+            float randomAngle = random.nextFloat() * ((float) Math.PI * 2);
+            dstick.setDeltaMovement(
+                    Math.cos(randomAngle) * randomSpread * speed,
+                    -speed, // Primarily downward movement
+                    Math.sin(randomAngle) * randomSpread * speed
+            );
+        } else {
+            // Horizontal dispensers (NORTH, SOUTH, EAST, WEST)
+            float randomUpAngle = random.nextFloat() * 0.420F;
+            dstick.setDeltaMovement(
+                    direction.getStepX() * speed + (direction.getStepX() == 0 ? randomSpread : 0),
+                    0.2F + randomUpAngle, // Slight upward arc for horizontal motion
+                    direction.getStepZ() * speed + (direction.getStepZ() == 0 ? randomSpread : 0)
+            );
+        }
+
+        // Set rotation based on direction
+        float yRot = switch (direction) {
+            case NORTH -> 0F;
+            case SOUTH -> 180F;
+            case WEST -> 90F;
+            case EAST -> 270F;
+            case UP, DOWN -> random.nextFloat() * 360F; // Random rotation for up/down
+            default -> 0F;
+        };
+        dstick.setYRot(yRot);
+
+        level.playSound(null, pos.x(), pos.y(), pos.z(), SoundEvents.TNT_PRIMED, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
         return dstick;
     }

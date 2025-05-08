@@ -30,58 +30,124 @@ public class ThrownDynamiteStickRenderer extends EntityRenderer<ThrownDynamiteSt
                        MultiBufferSource bufferSource, int packedLight) {
         poseStack.pushPose();
 
-        Direction dir = Direction.UP;
-
+        Direction dir = Direction.NORTH;
 
         if (entity.isGrounded()) {
             dir = entity.getStuckDirection();
 
-            // Force transform
-            if (dir == Direction.UP) dir = Direction.NORTH;
-            if (dir == Direction.DOWN) dir = Direction.SOUTH;
-
-                // use to y-offset grounded state
-            poseStack.translate(0, -0.5D, 0);
+            // use to y-offset grounded state
+            poseStack.translate(0, -0.420D, 0);
             poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
-
 
             if (dir == Direction.NORTH || dir == Direction.SOUTH) {
                 // For north/south, rotate 90 around X
                 poseStack.mulPose(Axis.XP.rotationDegrees(90));
 
-                if (dir == Direction.NORTH) poseStack.translate(-0.42D, -0.2D, 0);
-                if (dir == Direction.SOUTH) poseStack.translate(0.42D, -0.2D, 0);
+                if (dir == Direction.NORTH) poseStack.translate(-0.420D, -0.2D, 0);
+                if (dir == Direction.SOUTH) poseStack.translate(0.420D, -0.2D, 0);
+
+                // Spawn flame particles at the fuse end for north/south
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    double particleX = entity.getX() + (dir == Direction.NORTH ? -0.5 : 0.5);
+                    double particleY = entity.getY() + 0.1;
+                    double particleZ = entity.getZ();
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            particleX, particleY, particleZ,
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
             } else {
                 // else rotate 90 around Z
                 poseStack.mulPose(Axis.ZP.rotationDegrees(90));
 
                 // Apply the directional offsets to position correctly
-                if (dir == Direction.EAST) poseStack.translate(0, -0.2D, -0.42D);
-                if (dir == Direction.WEST) poseStack.translate(0, -0.2D, 0.42D);
+                if (dir == Direction.EAST) poseStack.translate(0, -0.2D, -0.420D);
+                if (dir == Direction.WEST) poseStack.translate(0, -0.2D, 0.420D);
+
+                // Spawn flame particles at the fuse end for east/west
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    double particleX = entity.getX();
+                    double particleY = entity.getY() + 0.1;
+                    double particleZ = entity.getZ() + (dir == Direction.EAST ? -0.5 : 0.5);
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            particleX, particleY, particleZ,
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
             }
 
         } else {
             // In flight
             dir = entity.getMotionDirection();
 
-            poseStack.translate(0, 0.2D, 0);
-            poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
-
+            // Perform rotation based on motion direction
             if (dir == Direction.NORTH) {
+                poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
                 poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
                 poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot() - entity.getSpinRotation()));
-            } if (dir == Direction.SOUTH) {
+
+                // Particle for north
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            entity.getX(), entity.getY(), entity.getZ() - 0.5,
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
+            } else if (dir == Direction.SOUTH) {
+                poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
                 poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
                 poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot() + entity.getSpinRotation()));
-            } if (dir == Direction.EAST) {
-                poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
-                poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getXRot() - entity.getSpinRotation()));
-        } if (dir == Direction.WEST) {
-                poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
-                poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getXRot() + entity.getSpinRotation()));
+
+                // Particle for south
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            entity.getX(), entity.getY(), entity.getZ() + 0.5,
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
+            } else if (dir == Direction.EAST) {
+                poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
+                poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot() - entity.getSpinRotation()));
+
+                // Particle for east
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            entity.getX() + 0.5, entity.getY(), entity.getZ(),
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
+            } else if (dir == Direction.WEST) {
+                poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
+                poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot() + entity.getSpinRotation()));
+
+                // Particle for west
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            entity.getX() - 0.5, entity.getY(), entity.getZ(),
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
             } else {
-                poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
-                poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getXRot() - entity.getSpinRotation()));
+                poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot())));
+                poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot() + entity.getSpinRotation()));
+
+                // Default particle for other directions
+                if (entity.getLitTime() > 0 && entity.level().isClientSide()) {
+                    entity.level().addParticle(
+                            net.minecraft.core.particles.ParticleTypes.FLAME,
+                            entity.getX(), entity.getY(), entity.getZ() - 0.5,
+                            0.0D, 0.05D, 0.0D
+                    );
+                }
             }
         }
 
@@ -94,8 +160,14 @@ public class ThrownDynamiteStickRenderer extends EntityRenderer<ThrownDynamiteSt
         super.render(entity, entityYaw, partialTicks, poseStack, bufferSource, packedLight);
     }
 
+
     @Override
     public ResourceLocation getTextureLocation(ThrownDynamiteStick entity) {
-        return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "textures/entity/text_thrown_dynamite_stick.png");
+        if (entity.getLitTime() > 0) {
+            return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "textures/entity/text_thrown_dynamite_stick_lit.png");
+        } else {
+            return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "textures/entity/text_thrown_dynamite_stick.png");
+        }
     }
+
 }

@@ -28,6 +28,7 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> CRYING_FURNACE = SOUNDSREGISTRY.register("crying_furnace", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "crying_furnace")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> DYNAMITE_FUSE = SOUNDSREGISTRY.register("dynamite_fuse", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "dynamite_fuse")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> DYNAMITE_SIZZLE = SOUNDSREGISTRY.register("dynamite_sizzle", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "dynamite_sizzle")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> LAMP_USE = SOUNDSREGISTRY.register("lamp_use", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "lamp_use")));
 

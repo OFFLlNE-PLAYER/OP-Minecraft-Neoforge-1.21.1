@@ -19,7 +19,12 @@ public class FMLDispenserBehaviors {
 
     public static void DispenserBehaviors() {
         registerDispensibleProjectile(RegistryIBBI.CRYING_HATCHET.get());
+
         registerDispensibleProjectile(RegistryIBBI.SMB_SUPER_FAN.get());
+
+        registerDispensibleProjectile(RegistryIBBI.DYNAMITE_STICK.get());
+        registerDispensibleProjectile(RegistryIBBI.TNT_STICK.get());
+
         }
 
     private static void registerDispensibleProjectile(Item item) {

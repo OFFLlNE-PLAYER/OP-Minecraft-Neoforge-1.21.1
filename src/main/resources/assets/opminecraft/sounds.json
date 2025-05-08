@@ -15,6 +15,7 @@
   "crying_furnace": {"sounds": [{"name": "opminecraft:crying_furnace", "stream": false}]},
 
   "dynamite_fuse": {"sounds": [{"name": "opminecraft:dynamite_fuse", "stream": false}]},
+  "dynamite_sizzle": {"sounds": [{"name": "opminecraft:dynamite_sizzle", "stream": false}]},
 
   "gunblade_break": {"sounds": [{"name": "opminecraft:gunblade_break", "stream": false}]},
   "gunblade_in_dirt": {"sounds": [{"name": "opminecraft:gunblade_in_dirt", "stream": false}]},
