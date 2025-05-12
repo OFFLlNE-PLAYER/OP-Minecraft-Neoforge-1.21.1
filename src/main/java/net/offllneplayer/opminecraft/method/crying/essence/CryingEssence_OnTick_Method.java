@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import net.offllneplayer.opminecraft.util.TagKeyUtil;
+import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
@@ -42,12 +42,12 @@ public class CryingEssence_OnTick_Method {
 
 		if (Get_Block_X_Y_Z.getFluidState().isSource()) {
 
-			if (Get_Block_x_plus_1.is(TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
-					Get_Block_x_minus_1.is(TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
-					Get_Block_y_plus_1.is(TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
-					Get_Block_y_minus_1.is(TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
-					Get_Block_z_plus_1.is(TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
-					Get_Block_z_minus_1.is(TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS)) {
+			if (Get_Block_x_plus_1.is(OP_TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
+					Get_Block_x_minus_1.is(OP_TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
+					Get_Block_y_plus_1.is(OP_TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
+					Get_Block_y_minus_1.is(OP_TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
+					Get_Block_z_plus_1.is(OP_TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS) ||
+					Get_Block_z_minus_1.is(OP_TagKeyUtil.Blocks.CRYING_OBSIDIAN_TRIGGERS)) {
 
 				if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 
@@ -82,12 +82,12 @@ public class CryingEssence_OnTick_Method {
 						world.setBlock(BlockPos.containing(x, y, z - 1), Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
 					});
 				}
-			} else if (Get_Block_x_plus_1.is(TagKeyUtil.Blocks.WATERS) ||
-					Get_Block_x_minus_1.is(TagKeyUtil.Blocks.WATERS) ||
-					Get_Block_y_plus_1.is(TagKeyUtil.Blocks.WATERS) ||
-					Get_Block_y_minus_1.is(TagKeyUtil.Blocks.WATERS) ||
-					Get_Block_z_plus_1.is(TagKeyUtil.Blocks.WATERS) ||
-					Get_Block_z_minus_1.is(TagKeyUtil.Blocks.WATERS)) {
+			} else if (Get_Block_x_plus_1.is(OP_TagKeyUtil.Blocks.WATERS) ||
+					Get_Block_x_minus_1.is(OP_TagKeyUtil.Blocks.WATERS) ||
+					Get_Block_y_plus_1.is(OP_TagKeyUtil.Blocks.WATERS) ||
+					Get_Block_y_minus_1.is(OP_TagKeyUtil.Blocks.WATERS) ||
+					Get_Block_z_plus_1.is(OP_TagKeyUtil.Blocks.WATERS) ||
+					Get_Block_z_minus_1.is(OP_TagKeyUtil.Blocks.WATERS)) {
 
 				if ((world instanceof ServerLevel _level) && (!_level.isClientSide())) {
 
@@ -132,7 +132,7 @@ public class CryingEssence_OnTick_Method {
 				BlockPos np = pos.relative(dir);
 				BlockState blockState = world.getBlockState(np);
 
-				if ((blockState.is(Blocks.LAVA)) || (blockState.is(TagKeyUtil.Blocks.WATERS)) || (blockState.is(TagKeyUtil.Blocks.ICES))) {
+				if ((blockState.is(Blocks.LAVA)) || (blockState.is(OP_TagKeyUtil.Blocks.WATERS)) || (blockState.is(OP_TagKeyUtil.Blocks.ICES))) {
 
 					Flowing_Collision_Happened = true;
 					double xOffset = Mth.nextDouble(RandomSource.create(), -0.2D, 0.2D);
@@ -153,7 +153,7 @@ public class CryingEssence_OnTick_Method {
 					world.setBlock(np, blockState.getFluidState().isSource() ? Blocks.NETHERRACK.defaultBlockState() : Blocks.DEEPSLATE.defaultBlockState(), 3);
 
 
-				} else if (blockState.is(TagKeyUtil.Blocks.WATERS)) {
+				} else if (blockState.is(OP_TagKeyUtil.Blocks.WATERS)) {
 
 					if (world instanceof Level _level && !_level.isClientSide()) {
 						_level.playSound(null, pos, SoundEvents.DEEPSLATE_STEP, SoundSource.BLOCKS, 0.8F, 1.420F);
@@ -172,7 +172,7 @@ public class CryingEssence_OnTick_Method {
 					world.setBlock(np, blockState.getFluidState().isSource() ? Blocks.CALCITE.defaultBlockState() : Blocks.ICE.defaultBlockState(), 3);
 
 
-				} else if (blockState.is(TagKeyUtil.Blocks.ICES)) {
+				} else if (blockState.is(OP_TagKeyUtil.Blocks.ICES)) {
 
 					if (world instanceof Level _level && !_level.isClientSide()) {
 						_level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.69F, 1.269F);

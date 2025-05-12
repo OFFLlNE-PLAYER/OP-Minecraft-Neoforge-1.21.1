@@ -19,16 +19,13 @@ public class ModModelLayers {
             ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "warturtle_armor"), "armor");
 */
 
-    public static final ModelLayerLocation CRYING_HATCHET = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "crying_hatchet"), "main");
+    public static final ModelLayerLocation THROWN_CRYING_HATCHET = new ModelLayerLocation(
+            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_crying_hatchet"), "main");
 
     public static final ModelLayerLocation THROWN_TNT_STICK = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_tnt_stick"), "main");
 
-    public static final ModelLayerLocation THROWN_DYNAMITE_STICK = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_dynamite_stick"), "main");
-
-    public static final ModelLayerLocation SMB_SUPER_FAN = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "smb_super_fan"), "main");
+    public static final ModelLayerLocation THROWN_SMB_SUPER_FAN = new ModelLayerLocation(
+            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_smb_super_fan"), "main");
 
 }

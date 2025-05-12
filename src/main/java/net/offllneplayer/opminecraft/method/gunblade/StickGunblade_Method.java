@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.util.NBTUtil;
+import net.offllneplayer.opminecraft.method.util.OP_NBTUtil;
 
 public class StickGunblade_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -56,13 +56,13 @@ public class StickGunblade_Method {
 		BlockEntity gun = level.getBlockEntity(first);
 		if (gun != null) {
 
-			NBTUtil.writeItemStackNBTToBlock(stack, gun);
+			OP_NBTUtil.writeItemStackNBTToBlock(stack, gun);
 
 			gun.setChanged();
 			level.sendBlockUpdated(first, stuck, stuck, 3);
 		}
 
-		level.playSound(null, first, RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.BLOCKS, 1f, Mth.nextFloat(RandomSource.create(), 0.9f, 1.1f));
+		level.playSound(null, first, RegistrySounds.BLADE_SLASH.get(), SoundSource.BLOCKS, 1f, Mth.nextFloat(RandomSource.create(), 0.9f, 1.1f));
 		stack.shrink(1);
 	}
 }

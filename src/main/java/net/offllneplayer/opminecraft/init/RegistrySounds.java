@@ -17,6 +17,9 @@ public class RegistrySounds {
 
         public static final DeferredHolder<SoundEvent, SoundEvent> SILENT_SOUND = SOUNDSREGISTRY.register("silent_sound", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "silent_sound")));
 
+        public static final DeferredHolder<SoundEvent, SoundEvent> BLADE_SLASH = SOUNDSREGISTRY.register("blade_slash", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "blade_slash")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BLADE_STICK = SOUNDSREGISTRY.register("blade_stick", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "blade_stick")));
+
         public static final DeferredHolder<SoundEvent, SoundEvent> AKU_AKU = SOUNDSREGISTRY.register("aku_aku", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "aku_aku")));
         public static final DeferredHolder<SoundEvent, SoundEvent> AKU_AKU_DIES = SOUNDSREGISTRY.register("aku_aku_dies", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "aku_aku_dies")));
 
@@ -27,14 +30,12 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> CRYING_EXPLODE = SOUNDSREGISTRY.register("crying_explode", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "crying_explode")));
         public static final DeferredHolder<SoundEvent, SoundEvent> CRYING_FURNACE = SOUNDSREGISTRY.register("crying_furnace", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "crying_furnace")));
 
-        public static final DeferredHolder<SoundEvent, SoundEvent> DYNAMITE_FUSE = SOUNDSREGISTRY.register("dynamite_fuse", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "dynamite_fuse")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> DYNAMITE_SIZZLE = SOUNDSREGISTRY.register("dynamite_sizzle", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "dynamite_sizzle")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> TNT_FUSE = SOUNDSREGISTRY.register("tnt_fuse", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "tnt_fuse")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> TNT_SIZZLE = SOUNDSREGISTRY.register("tnt_sizzle", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "tnt_sizzle")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> LAMP_USE = SOUNDSREGISTRY.register("lamp_use", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "lamp_use")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> GUNBLADE_BREAK = SOUNDSREGISTRY.register("gunblade_break", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "gunblade_break")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> GUNBLADE_IN_DIRT = SOUNDSREGISTRY.register("gunblade_in_dirt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "gunblade_in_dirt")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> GUNBLADE_SLASH = SOUNDSREGISTRY.register("gunblade_slash", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "gunblade_slash")));
         public static final DeferredHolder<SoundEvent, SoundEvent> GUNBLADE_SHOT = SOUNDSREGISTRY.register("gunblade_shot", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "gunblade_shot")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> NITRO_BOOM = SOUNDSREGISTRY.register("nitro_boom", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "nitro_boom")));

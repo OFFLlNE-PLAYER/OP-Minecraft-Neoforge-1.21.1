@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.util;
+package net.offllneplayer.opminecraft.iface;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 public interface DispensibleProjectile {
     Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction);
     default float getDispenseSpeed() {
-        return 1.5F;
+        return 1F;
     }
 }
 

@@ -5,10 +5,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.entity.CryingHatchet;
-import net.offllneplayer.opminecraft.entity.SMBSuperFan;
-import net.offllneplayer.opminecraft.entity.ThrownDynamiteStick;
-import net.offllneplayer.opminecraft.entity.ThrownTNTStick;
+import net.offllneplayer.opminecraft.iwe.CryingHatchet.ThrownCryingHatchet;
+import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFan;
+import net.offllneplayer.opminecraft.iwe.TNTStick.ThrownTNTStick;
 
 import java.util.function.Supplier;
 
@@ -21,16 +20,13 @@ public class RegistryEntities {
 /*--------------------------------------------------------------------------------------------*/
     /*[Register Entities]*/
 
-    public static final Supplier<EntityType<CryingHatchet>> CRYING_HATCHET = ENTREGISTRY.register("crying_hatchet",
-            ()-> EntityType.Builder.<CryingHatchet>of(CryingHatchet::new, MobCategory.MISC).build("crying_hatchet"));
-
-    public static final Supplier<EntityType<ThrownDynamiteStick>> THROWN_DYNAMITE_STICK = ENTREGISTRY.register("thrown_dynamite_stick",
-            ()-> EntityType.Builder.<ThrownDynamiteStick>of(ThrownDynamiteStick::new, MobCategory.MISC).build("thrown_dynamite_stick"));
+    public static final Supplier<EntityType<ThrownCryingHatchet>> THROWN_CRYING_HATCHET = ENTREGISTRY.register("thrown_crying_hatchet",
+            ()-> EntityType.Builder.<ThrownCryingHatchet>of(ThrownCryingHatchet::new, MobCategory.MISC).build("thrown_crying_hatchet"));
 
     public static final Supplier<EntityType<ThrownTNTStick>> THROWN_TNT_STICK = ENTREGISTRY.register("thrown_tnt_stick",
             ()-> EntityType.Builder.<ThrownTNTStick>of(ThrownTNTStick::new, MobCategory.MISC).build("thrown_tnt_stick"));
 
-    public static final Supplier<EntityType<SMBSuperFan>> SMB_SUPER_FAN = ENTREGISTRY.register("smb_super_fan",
-            ()-> EntityType.Builder.<SMBSuperFan>of(SMBSuperFan::new, MobCategory.MISC).build("smb_super_fan"));
+    public static final Supplier<EntityType<ThrownSMBSuperFan>> THROWN_SMB_SUPER_FAN = ENTREGISTRY.register("thrown_smb_super_fan",
+            ()-> EntityType.Builder.<ThrownSMBSuperFan>of(ThrownSMBSuperFan::new, MobCategory.MISC).build("thrown_smb_super_fan"));
 
 }

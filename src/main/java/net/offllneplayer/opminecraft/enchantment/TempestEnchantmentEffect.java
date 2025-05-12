@@ -27,7 +27,7 @@ public class TempestEnchantmentEffect implements EnchantmentEntityEffect {
             boost_chance= (boost_chance + Mth.nextInt(RandomSource.create(), 1, 10));
         }
         int chance_of_lightning = base_chance + boost_chance;
-        if (chance_of_lightning > 60) {EntityType.LIGHTNING_BOLT.spawn(level, entity.getOnPos(), MobSpawnType.TRIGGERED);
+        if (chance_of_lightning > 64) {EntityType.LIGHTNING_BOLT.spawn(level, entity.getOnPos(), MobSpawnType.TRIGGERED);
         }
     }
 

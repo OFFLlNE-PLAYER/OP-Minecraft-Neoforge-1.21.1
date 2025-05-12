@@ -338,7 +338,6 @@
   "item.opminecraft.prototype_gunblade.description_0": "[FF8]",
   "item.opminecraft.prototype_gunblade.description_1": "This needs some work, doesn't it?",
 
-  "item.opminecraft.dynamite_stick": "§cDynamite Stick§r",
   "item.opminecraft.tnt_stick": "§cTNT Stick§r",
 
   "item.opminecraft.smb_super_fan": "§4SMB Super Fan§r",
@@ -407,6 +406,9 @@
 
   "death.attack.gunblade": "%1$s §7saw their final fantasy§r",
   "death.attack.gunblade.player": "%1$s §7saw their final fantasy thanks to§r %2$s",
+
+  "death.attack.hatchet": "%1$s caught a hatchet",
+  "death.attack.hatchet.player": "%1$s caught a hatchet from %2$s",
 
   "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
   "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by§r %2$s's §cSMB Super Fan§r",

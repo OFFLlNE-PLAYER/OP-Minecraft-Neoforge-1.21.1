@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.util;
+package net.offllneplayer.opminecraft.method.util;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -14,15 +14,25 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import java.util.HashMap;
 import java.util.Map;
 
+    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
+    /// --------------------------------------------------
+    /// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
+    /// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
+    /// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
+    /// ~ SUPPORT/ENJOY MY MOD!
+    /// ---------------------------------------------------
+    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
 
-public class NBTUtil {
+public class OP_NBTUtil {
 
-/*--------------------------------------------------------------------------------------------*/
-    /*[WeaponData Record]*/
+     /*whataf***ingpaininmya$$thisonewas*/
+    /**/
+   /*[WeaponData Record]*/
     public record WeaponData(String itemName, int dmgValue, Map<Enchantment,Integer> enchants) {}
 
-/*--------------------------------------------------------------------------------------------*/
-    /*[read WeaponData -> Entity Class]*/
+
+    /*x-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>o*/
+	/*[read WeaponData -> Entity Class]*/
     public static WeaponData readItemStacktoClass(CompoundTag tag, Level level) {
         String name = tag.getString("nayme");
         int dmg = tag.getInt("DMG_VALU");
@@ -51,7 +61,9 @@ public class NBTUtil {
 
         return new WeaponData(name, dmg, map);
     }
-    /*--------------------------------------------------------------------------------------------*/
+
+      /*x-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>o*/
+	  /* - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] */
     /*[write WeaponData -> BlockEntity]*/
     public static void writeItemStackNBTToBlock(ItemStack stack, BlockEntity be) {
         CompoundTag data = be.getPersistentData();
@@ -67,8 +79,10 @@ public class NBTUtil {
         }
     }
 
-/*--------------------------------------------------------------------------------------------*/
-    /*[enchant WeaponData -> itemStack]*/
+
+     /* - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] */
+    /*-~>-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o-~>o*/
+        /*[enchant WeaponData -> itemStack]*/
     public static void enchantWeaponDataToItemstack(ItemStack stack, CompoundTag tag, Level level) {
     // restore custom name
         String name = tag.getString("nayme");
@@ -101,4 +115,7 @@ public class NBTUtil {
         registry.getHolder(rkey).ifPresent(holder -> stack.enchant(holder, lvl));
         }
     }
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 }

@@ -35,7 +35,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.offllneplayer.opminecraft.util.TagKeyUtil;
+import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 
@@ -164,7 +164,7 @@ public class OnyxLampBlock extends Block {
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         boolean aboveSolid = level.getBlockState(pos.above()).isSolid();
-        boolean belowSolid = level.getBlockState(pos.below()).isSolid() || level.getBlockState(pos.below()).is(TagKeyUtil.Blocks.OP_LAMPS);
+        boolean belowSolid = level.getBlockState(pos.below()).isSolid() || level.getBlockState(pos.below()).is(OP_TagKeyUtil.Blocks.OP_LAMPS);
 
         if (belowSolid) {// Supported from below, standing.
             return state.setValue(BLOCKISABOVE, false);
@@ -192,7 +192,7 @@ public class OnyxLampBlock extends Block {
         if (!level.isClientSide) {
 
             boolean aboveSolid = level.getBlockState(pos.above()).isSolid();
-            boolean belowSolid = level.getBlockState(pos.below()).isSolid() || level.getBlockState(pos.below()).is(TagKeyUtil.Blocks.OP_LAMPS);
+            boolean belowSolid = level.getBlockState(pos.below()).isSolid() || level.getBlockState(pos.below()).is(OP_TagKeyUtil.Blocks.OP_LAMPS);
 
             if (!belowSolid && !aboveSolid) {
                 FallingBlockEntity.fall(level, pos, state);

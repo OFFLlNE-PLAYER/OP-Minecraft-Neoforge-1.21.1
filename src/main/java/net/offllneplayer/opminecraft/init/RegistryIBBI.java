@@ -24,6 +24,9 @@ import net.offllneplayer.opminecraft.block.gunblade.*;
 import net.offllneplayer.opminecraft.block.onyx.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
 import net.offllneplayer.opminecraft.item.*;
+import net.offllneplayer.opminecraft.iwe.CryingHatchet.CryingHatchetItem;
+import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
+import net.offllneplayer.opminecraft.iwe.TNTStick.TNTStickItem;
 
 import java.util.function.Supplier;
 
@@ -289,8 +292,6 @@ public class RegistryIBBI {
 	public static final DeferredItem<Item> CRYING_PAXEL = ITEMSREGISTRY.register("crying_paxel", CryingPaxelItem::new);
 	public static final DeferredItem<Item> CRYING_SWHOPAXEL = ITEMSREGISTRY.register("crying_swhopaxel", CryingSwhopaxelItem::new);
 
-	public static final DeferredItem<Item> CRYING_HATCHET = ITEMSREGISTRY.register("crying_hatchet", CryingHatchetItem::new);
-
 	public static final DeferredItem<Item> CRYING_HELMET = ITEMSREGISTRY.register("crying_helmet", CryingItem.Helmet::new);
 	public static final DeferredItem<Item> CRYING_CHESTPLATE = ITEMSREGISTRY.register("crying_chestplate", CryingItem.Chestplate::new);
 	public static final DeferredItem<Item> CRYING_LEGGINGS = ITEMSREGISTRY.register("crying_leggings", CryingItem.Leggings::new);
@@ -305,11 +306,12 @@ public class RegistryIBBI {
 			() -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "kaupenjoe")));
 	//-----------------------------------------------------Kaupenjoe tribute for providing horse armor and custom trims^
 
+	public static final DeferredItem<CryingHatchetItem> CRYING_HATCHET = ITEMSREGISTRY.register("crying_hatchet", CryingHatchetItem::new);
+
 	public static final DeferredItem<GunbladeItem> GUNBLADE = ITEMSREGISTRY.register("gunblade", GunbladeItem::new);
 	public static final DeferredItem<PrototypeGunbladeItem> PROTOTYPE_GUNBLADE = ITEMSREGISTRY.register("prototype_gunblade", PrototypeGunbladeItem::new);
 
 	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);
-	public static final DeferredItem<DynamiteStickItem> DYNAMITE_STICK = ITEMSREGISTRY.register("dynamite_stick", DynamiteStickItem::new);
 
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 

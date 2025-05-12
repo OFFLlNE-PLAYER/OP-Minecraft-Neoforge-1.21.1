@@ -25,7 +25,7 @@ public class PrototypeGunbladeShot_Method {
 			return;
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
-				_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.3F, Mth.nextFloat(RandomSource.create(), 0.8F, 1F));
+				_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.3F, Mth.nextFloat(RandomSource.create(), 0.8F, 1F));
 			}
 		}
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == RegistryIBBI.PROTOTYPE_GUNBLADE.get()) {

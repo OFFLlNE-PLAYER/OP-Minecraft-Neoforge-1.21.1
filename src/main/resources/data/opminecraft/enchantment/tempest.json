@@ -3,6 +3,18 @@
   "description": {
     "translate": "enchantment.opminecraft.tempest"
   },
+  "primary_items": "#minecraft:enchantable/weapon",
+  "slots": ["mainhand"],
+  "supported_items": "#minecraft:enchantable/weapon",
+  "weight": 2,
+  "exclusive_set": "#minecraft:exclusive_set/riptide",
+  "max_level": 10,
+  "min_cost": {
+    "base": 36, "per_level_above_first": 6
+  },
+  "max_cost": {
+    "base": 40, "per_level_above_first": 9
+  },
   "effects": {
     "minecraft:post_attack": [
       {
@@ -14,21 +26,5 @@
         "enchanted": "attacker"
       }
     ]
-  },
-  "exclusive_set": "#minecraft:exclusive_set/riptide",
-  "max_cost": {
-    "base": 25,
-    "per_level_above_first": 8
-  },
-  "max_level": 3,
-  "min_cost": {
-    "base": 5,
-    "per_level_above_first": 8
-  },
-  "primary_items": "#minecraft:enchantable/weapon",
-  "slots": [
-    "mainhand"
-  ],
-  "supported_items": "#minecraft:enchantable/weapon",
-  "weight": 2
+  }
 }

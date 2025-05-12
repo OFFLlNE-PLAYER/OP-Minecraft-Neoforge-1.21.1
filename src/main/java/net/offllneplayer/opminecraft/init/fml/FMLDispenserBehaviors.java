@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.util.DispensibleProjectile;
+import net.offllneplayer.opminecraft.iface.DispensibleProjectile;
 
 
 public class FMLDispenserBehaviors {
@@ -22,7 +22,6 @@ public class FMLDispenserBehaviors {
 
         registerDispensibleProjectile(RegistryIBBI.SMB_SUPER_FAN.get());
 
-        registerDispensibleProjectile(RegistryIBBI.DYNAMITE_STICK.get());
         registerDispensibleProjectile(RegistryIBBI.TNT_STICK.get());
 
         }

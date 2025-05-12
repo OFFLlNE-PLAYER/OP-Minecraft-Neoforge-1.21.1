@@ -25,7 +25,7 @@ import net.offllneplayer.opminecraft.init.RegistryMobEffects;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuActivate_Method;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
-import net.offllneplayer.opminecraft.util.TagKeyUtil;
+import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuReflect_Method;
 import net.offllneplayer.opminecraft.method.gunblade.GunbladeShot_Method;
 import net.offllneplayer.opminecraft.method.gunblade.PrototypeGunbladeShot_Method;
@@ -50,7 +50,7 @@ public class DamageEventHandler {
         /*[CRASH CRATES]*/
         if (event.getSource().is(DamageTypes.FALL)) {
             BlockState belowBlock = level.getBlockState(targetEntity.blockPosition().below());
-            if (belowBlock.is(TagKeyUtil.Blocks.CRASH_CRATES)) {
+            if (belowBlock.is(OP_TagKeyUtil.Blocks.CRASH_CRATES)) {
                 event.setCanceled(true);
                 cancelaku = true;
             }
@@ -134,7 +134,7 @@ public class DamageEventHandler {
             /*[GUNBLADE]*/
             else if (held == RegistryIBBI.GUNBLADE.get()) {
                 float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.1420F);
-                level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.GUNBLADE_SLASH.get(), SoundSource.MASTER, 0.42F, tone);
+                level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.42F, tone);
                 GunbladeShot_Method.execute(level, xtarg, ytarg, ztarg, targetEntity, sourceEntity);
             }
 
@@ -142,7 +142,7 @@ public class DamageEventHandler {
             /*[PROTOTYPE GUNBLADE]*/
             else if (held == RegistryIBBI.PROTOTYPE_GUNBLADE.get()) {
                 float tone = Mth.nextFloat(RandomSource.create(), 0.8F, 1F);
-                level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.GUNBLADE_IN_DIRT.get(), SoundSource.MASTER, 0.3F, tone);
+                level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.3F, tone);
                 PrototypeGunbladeShot_Method.execute(level, xtarg, ytarg, ztarg, targetEntity, sourceEntity);
             }
         }

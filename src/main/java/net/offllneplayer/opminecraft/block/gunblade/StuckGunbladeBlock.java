@@ -52,7 +52,7 @@ public class StuckGunbladeBlock extends Block implements SimpleWaterloggedBlock,
 				.sound(new DeferredSoundType(1.0f, 1.0f,
                         SoundEvents.ARMOR_EQUIP_CHAIN::value,
 						() -> SoundEvents.CHAIN_STEP,
-                        RegistrySounds.GUNBLADE_IN_DIRT,
+                        RegistrySounds.BLADE_SLASH,
 						() -> SoundEvents.CHAIN_HIT,
 						() -> SoundEvents.CHAIN_FALL))
 				.strength(-1, 420000).friction(0.5f)

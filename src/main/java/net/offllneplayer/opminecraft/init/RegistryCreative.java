@@ -206,7 +206,6 @@ public class RegistryCreative {
                 event.accept(RegistryIBBI.CRYING_HATCHET);
 
                 event.accept(RegistryIBBI.TNT_STICK);
-                event.accept(RegistryIBBI.DYNAMITE_STICK);
 
                 event.accept(RegistryIBBI.SCULK_HAMMER);
 

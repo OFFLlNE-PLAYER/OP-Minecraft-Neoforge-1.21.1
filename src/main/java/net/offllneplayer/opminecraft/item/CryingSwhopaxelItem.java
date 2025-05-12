@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-import net.offllneplayer.opminecraft.util.TagKeyUtil;
+import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 
@@ -102,7 +102,7 @@ public class CryingSwhopaxelItem extends DiggerItem {
 
     public CryingSwhopaxelItem() {
         super(TOOL_TIER,
-                TagKeyUtil.Blocks.CRYING_SWHOPAXEL,
+                OP_TagKeyUtil.Blocks.CRYING_SWHOPAXEL,
                 new Properties()
                         .attributes(DiggerItem.createAttributes(TOOL_TIER, 12F, -3.3F))
                         .rarity(Rarity.EPIC)

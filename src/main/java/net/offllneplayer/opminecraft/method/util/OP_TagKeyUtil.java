@@ -1,5 +1,5 @@
 
-package net.offllneplayer.opminecraft.util;
+package net.offllneplayer.opminecraft.method.util;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -11,11 +11,19 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
+    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
+    /// --------------------------------------------------
+    /// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
+    /// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
+    /// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
+    /// ~ SUPPORT/ENJOY MY MOD!
+    /// ---------------------------------------------------
+    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
 
-public class TagKeyUtil {
+public class OP_TagKeyUtil {
 
-    /*--------------------------------------------------------------------------------------------*/
-    /*[Block Tags]*/
+    /* - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] */
+   /*[Block Tags]*/
     public static class Blocks {
 
         public static final TagKey<Block> CRYING_PAXEL = createTag("mineable/crying_paxel");
@@ -36,8 +44,10 @@ public class TagKeyUtil {
         }
     }
 
-/*--------------------------------------------------------------------------------------------*/
-    /*[Item Tags]*/
+
+     /* - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] - [ ] */
+    /* ___I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I___*/
+   /*[Item Tags]*/
     public static class Items {
 
         public static final TagKey<Item> CRYING_ITEMS = createTag("crying_items");
@@ -46,8 +56,11 @@ public class TagKeyUtil {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));
         }
     }
-    /*--------------------------------------------------------------------------------------------*/
-    /*[Entity Tags]*/
+
+
+     /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    /*____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____*/
+   /*[Entity Tags]*/
     public static class Entities {
 
         public static final TagKey<EntityType<?>> IMPACT_PROJECTILES = createTag("impact_projectiles");
