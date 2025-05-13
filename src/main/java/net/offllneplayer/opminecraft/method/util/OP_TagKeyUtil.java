@@ -11,14 +11,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
-    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
-    /// --------------------------------------------------
-    /// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
-    /// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
-    /// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
-    /// ~ SUPPORT/ENJOY MY MOD!
-    /// ---------------------------------------------------
-    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
 
 public class OP_TagKeyUtil {
 

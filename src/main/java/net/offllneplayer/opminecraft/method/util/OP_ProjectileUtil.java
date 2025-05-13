@@ -25,14 +25,6 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
 
-	/// *~* OP ARR COPYRIGHT DISCLAIMER *~*
-	/// --------------------------------------------------
-	/// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
-	/// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
-	/// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
-	/// ~ SUPPORT/ENJOY MY MOD!
-	/// ---------------------------------------------------
-	/// *~* OP ARR COPYRIGHT DISCLAIMER *~*
 
 public class OP_ProjectileUtil {
 

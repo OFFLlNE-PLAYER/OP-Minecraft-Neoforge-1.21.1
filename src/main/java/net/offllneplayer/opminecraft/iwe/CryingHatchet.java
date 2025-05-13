@@ -78,16 +78,8 @@ import net.offllneplayer.opminecraft.method.util.OP_ProjectileUtil;
 
 import java.util.Map;
 
-public class CryingHatchet {
 
-   /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
-   /// --------------------------------------------------
-   /// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
-   /// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
-   /// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
-   /// ~ SUPPORT/ENJOY MY MOD!
-   /// ---------------------------------------------------
-   /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
+public class CryingHatchet {
 
   /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
  /* ___I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I____I___*/

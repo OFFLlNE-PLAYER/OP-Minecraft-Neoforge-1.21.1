@@ -17,8 +17,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.Position;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -69,20 +69,10 @@ import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryIBBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
+import net.offllneplayer.opminecraft.method.util.OP_getBarColorUtil;
 
 import java.util.stream.StreamSupport;
 
-import static net.offllneplayer.opminecraft.method.util.OP_getBarColorUtil.calculateBarColor;
-import static net.offllneplayer.opminecraft.method.util.OP_getBarColorUtil.rgbToInt;
-
-   /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
-   /// --------------------------------------------------
-   /// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
-   /// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
-   /// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
-   /// ~ SUPPORT/ENJOY MY MOD!
-   /// ---------------------------------------------------
-   /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
 
 public class TNTStick {
 
@@ -148,19 +138,20 @@ public class TNTStick {
      public int getBarColor(ItemStack stack) {
         // Create a yellow to orange to red gradient as the fuse burns
         Player player = Minecraft.getInstance().player;
-        if (player == null || player.getUseItem() != stack) return rgbToInt(255, 255, 0); // Yellow when not in use
+        if (player == null || player.getUseItem() != stack) return OP_getBarColorUtil.hexToInt("FFFF00"); // Yellow when not in use
 
         // Calculate progress as a value between 0 and 1
         float progress = 1.0F - (float) player.getUseItemRemainingTicks() / FUSE_DURATION;
 
-        return calculateBarColor(progress,
-           new int[] {189, 255, 42},  // Early stage - pastel yellow
-           new int[] {169, 185, 42}, // Mid stage
-           new int[] {169, 0, 22},    // Late stage - dark red
-           new int[] {139, 0, 12},   // Final base - darker red
-           new int[] {30, 22, 10},  // Final pulse amounts **additive increments that get combined with the finalBaseColor based on the pulse intensity
-           8.0F);                              // Pulse frequency, higher = more pulses
+        return OP_getBarColorUtil.calculateBarColor(progress,
+           "BDFF2A",  // Early stage - pastel yellow (189, 255, 42)
+           "A9B92A",  // Mid stage (169, 185, 42)
+           "A90016",  // Late stage - dark red (169, 0, 22)
+           "8B000C",  // Final base - darker red (139, 0, 12)
+           "1E160A",  // Final pulse amounts (30, 22, 10)
+           8.0F);     // Pulse frequency, higher = more pulses
      }
+
 
 
      /* ====================================================================================*/

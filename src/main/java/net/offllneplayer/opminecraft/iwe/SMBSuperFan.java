@@ -84,14 +84,6 @@ import net.offllneplayer.opminecraft.method.util.OP_ProjectileUtil;
 import java.util.List;
 import java.util.Map;
 
-    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
-    /// --------------------------------------------------
-    /// ~ USE OF THIS CODE IS EXPLICITLY PROHIBITED WITHOUT DIRECT PERMISSION.
-    /// ~ COPY OR _ANY_USE_ OF THIS CODE GOES AGAINST COPYRIGHT.
-    /// ~ YOU SHOULD CLOSE THIS HAVING ACKNOWLEDGED THAT.
-    /// ~ SUPPORT/ENJOY MY MOD!
-    /// ---------------------------------------------------
-    /// *~* OP ARR COPYRIGHT DISCLAIMER *~*
 
 public class SMBSuperFan {
 
@@ -115,34 +107,17 @@ public class SMBSuperFan {
        /*[BASIC TOOL Item OVERRIDES]*/
         private static final Tier TOOL_TIER = new Tier() {
             @Override
-            public int getUses() {
-                return 420;
-            }
-
+            public int getUses() {return 420;}
             @Override
-            public float getSpeed() {
-                return 11F;
-            }
-
+            public float getSpeed() {return 11F;}
             @Override
-            public float getAttackDamageBonus() {
-                return 0;
-            }
-
+            public float getAttackDamageBonus() {return 0;}
             @Override
-            public TagKey<Block> getIncorrectBlocksForDrops() {
-                return BlockTags.INCORRECT_FOR_NETHERITE_TOOL;
-            }
-
+            public TagKey<Block> getIncorrectBlocksForDrops() {return BlockTags.INCORRECT_FOR_NETHERITE_TOOL;}
             @Override
-            public int getEnchantmentValue() {
-                return 20;
-            }
-
+            public int getEnchantmentValue() {return 20;}
             @Override
-            public Ingredient getRepairIngredient() {
-                return Ingredient.EMPTY;
-            }
+            public Ingredient getRepairIngredient() {return Ingredient.EMPTY;}
         };
 
          /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
