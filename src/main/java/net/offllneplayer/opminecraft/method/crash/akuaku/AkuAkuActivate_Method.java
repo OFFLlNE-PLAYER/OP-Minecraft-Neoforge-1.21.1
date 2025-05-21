@@ -17,7 +17,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryMobEffects;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 public class AkuAkuActivate_Method {
@@ -58,7 +58,7 @@ public class AkuAkuActivate_Method {
 				yOffset = Mth.nextDouble(RandomSource.create(), -1.420D,  1.420D);
 				_level.sendParticles(ParticleTypes.POOF, _entity.getX(), _entity.getY() + 1, _entity.getZ(), 2, -0.69D, yOffset, 0.69D, 1);
 
-				Item[] feathers = {RegistryIBBI.ORANGE_FEATHER.get(), RegistryIBBI.PINK_FEATHER.get(), RegistryIBBI.PURPLE_FEATHER.get(), RegistryIBBI.YELLOW_FEATHER.get()};
+				Item[] feathers = {RegistryBIBI.ORANGE_FEATHER.get(), RegistryBIBI.PINK_FEATHER.get(), RegistryBIBI.PURPLE_FEATHER.get(), RegistryBIBI.YELLOW_FEATHER.get()};
 
 				for (Item feather : feathers) {
 					int sendChance = Mth.nextInt(RandomSource.create(), 1, 4);
@@ -87,13 +87,13 @@ public class AkuAkuActivate_Method {
 			ItemStack mainHandItem = _entity.getItemInHand(InteractionHand.MAIN_HAND);
 			ItemStack offHandItem = _entity.getItemInHand(InteractionHand.OFF_HAND);
 
-				if (mainHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get()) {
+				if (mainHandItem.getItem() == RegistryBIBI.AKU_AKU_MASK.get()) {
 					mainHandItem.setCount(mainHandItem.getCount() - 1);
 					if (_entity instanceof Player _player) {
 						_player.getInventory().setChanged();
 					}
 
-				} else if (offHandItem.getItem() == RegistryIBBI.AKU_AKU_MASK.get()) {
+				} else if (offHandItem.getItem() == RegistryBIBI.AKU_AKU_MASK.get()) {
 					offHandItem.setCount(offHandItem.getCount() - 1);
 					if (_entity instanceof Player _player) {
 						_player.getInventory().setChanged();

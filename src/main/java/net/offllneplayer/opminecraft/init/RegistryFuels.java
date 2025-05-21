@@ -11,7 +11,7 @@ public class RegistryFuels {
     @SubscribeEvent
     public static void furnaceFuelBurnTimeEvent(FurnaceFuelBurnTimeEvent event) {
         ItemStack itemstack = event.getItemStack();
-        if (itemstack.getItem() == RegistryIBBI.BLOCK_OF_CHARCOAL.get().asItem())
+        if (itemstack.getItem() == RegistryBIBI.BLOCK_OF_CHARCOAL.get().asItem())
             event.setBurnTime(16000);
     }
 }

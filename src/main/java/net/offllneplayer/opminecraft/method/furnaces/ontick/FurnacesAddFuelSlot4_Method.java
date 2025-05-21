@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 public class FurnacesAddFuelSlot4_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -112,7 +112,7 @@ public class FurnacesAddFuelSlot4_Method {
 				return 0;
 			}
 		}.getFluidTankLevel(world, BlockPos.containing(x, y, z), 1) <= 9900) {
-			if (Stack_of_Slot_4.getItem() == RegistryIBBI.BLOCK_OF_CHARCOAL.asItem()) {
+			if (Stack_of_Slot_4.getItem() == RegistryBIBI.BLOCK_OF_CHARCOAL.asItem()) {
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.NEUTRAL, (float) 0.8, 1);
 				}

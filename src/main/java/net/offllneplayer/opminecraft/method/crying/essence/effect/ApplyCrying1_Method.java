@@ -11,6 +11,6 @@ public class ApplyCrying1_Method {
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(RegistryMobEffects.CRYING_II, 120, 1));
+			_entity.addEffect(new MobEffectInstance(RegistryMobEffects.CRYING_I, 120, 1));
 	}
 }

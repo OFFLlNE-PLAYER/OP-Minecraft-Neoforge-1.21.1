@@ -2,7 +2,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_flawless_sapphire_old"
+    "layer0": "opminecraft:item/text_perfect_padparadscha_new"
   },
   "display": {
     "thirdperson_righthand": {

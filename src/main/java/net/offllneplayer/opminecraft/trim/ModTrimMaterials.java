@@ -1,7 +1,7 @@
 package net.offllneplayer.opminecraft.trim;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -19,7 +19,7 @@ public class ModTrimMaterials {
     public static final ResourceKey<TrimMaterial> CRYING = ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "crying"));
 
     public static void bootstrap(BootstrapContext<TrimMaterial> context) {
-        register(context, CRYING, RegistryIBBI.CRYING_INGOT.get(), Style.EMPTY.withColor(TextColor.parseColor("#C638FF").getOrThrow()), 1.0F);
+        register(context, CRYING, RegistryBIBI.CRYING_INGOT.get(), Style.EMPTY.withColor(TextColor.parseColor("#C638FF").getOrThrow()), 1.0F);
     }
 
     private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> trimKey, Item item,

@@ -10,7 +10,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class Nitro_OnTick_Method {
 				&& (world.getBlockState(pos.above(2)).getBlock() == Blocks.AIR)
 				&& (world.getBlockState(pos.above(3)).getBlock() == Blocks.AIR)) {
 					world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-					world.setBlock(pos.above(), RegistryIBBI.NITRO.get().defaultBlockState(), 3);
+					world.setBlock(pos.above(), RegistryBIBI.NITRO.get().defaultBlockState(), 3);
 					teleportEntitiesAbove(world, x, y, z);
 			}
 		}

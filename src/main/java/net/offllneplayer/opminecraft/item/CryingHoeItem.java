@@ -10,7 +10,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 
 
@@ -43,7 +43,7 @@ public class CryingHoeItem extends HoeItem {
 
 		@Override
 		public Ingredient getRepairIngredient() {
-			return Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get()));
+			return Ingredient.of(new ItemStack(RegistryBIBI.CRYING_INGOT.get()));
 		}
 	};
 

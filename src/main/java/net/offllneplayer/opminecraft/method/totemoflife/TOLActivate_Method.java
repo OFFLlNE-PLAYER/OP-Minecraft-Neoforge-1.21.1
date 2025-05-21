@@ -14,7 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryMobEffects;
 
 public class TOLActivate_Method {
@@ -41,13 +41,13 @@ public class TOLActivate_Method {
 				ItemStack mainHandItem = _entity.getItemInHand(InteractionHand.MAIN_HAND);
 				ItemStack offHandItem = _entity.getItemInHand(InteractionHand.OFF_HAND);
 
-					if (mainHandItem.getItem() == RegistryIBBI.TOTEM_OF_LIFE.get()) {
+					if (mainHandItem.getItem() == RegistryBIBI.TOTEM_OF_LIFE.get()) {
 						mainHandItem.setCount(mainHandItem.getCount() - 1);
 						if (_entity instanceof Player _player) {
 							_player.getInventory().setChanged();
 						}
 
-					} else if (offHandItem.getItem() == RegistryIBBI.TOTEM_OF_LIFE.get()) {
+					} else if (offHandItem.getItem() == RegistryBIBI.TOTEM_OF_LIFE.get()) {
 						offHandItem.setCount(offHandItem.getCount() - 1);
 						if (_entity instanceof Player _player) {
 							_player.getInventory().setChanged();

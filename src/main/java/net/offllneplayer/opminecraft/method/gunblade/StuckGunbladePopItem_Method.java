@@ -18,9 +18,9 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.method.util.OP_NBTUtil;
+import net.offllneplayer.opminecraft.method.UTIL.OP_NBTUtil;
 
 
 public class StuckGunbladePopItem_Method {
@@ -45,7 +45,7 @@ public class StuckGunbladePopItem_Method {
 
 		CompoundTag nbt = gun.getPersistentData();
 
-		ItemStack blade = new ItemStack(RegistryIBBI.GUNBLADE.get());
+		ItemStack blade = new ItemStack(RegistryBIBI.TITAN_GUNBLADE.get());
 
 		level.removeBlock(pos, false);
 

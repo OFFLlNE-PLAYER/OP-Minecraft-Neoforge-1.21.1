@@ -30,7 +30,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.world.inventory.*;
 
 public class Furnaces_OnClick_Method {
@@ -66,7 +66,7 @@ public class Furnaces_OnClick_Method {
 						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BUCKET_EMPTY_LAVA, SoundSource.NEUTRAL, 1, 1);
 				}
 			} else {
-				if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
+				if (Block_At_XYZ.getBlock() == RegistryBIBI.COPPER_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -86,7 +86,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.IRON_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -106,7 +106,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.GOLD_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -126,7 +126,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.DIAMOND_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -146,7 +146,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.NETHERITE_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.NETHERITE_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -195,7 +195,7 @@ public class Furnaces_OnClick_Method {
 						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BUCKET_EMPTY_LAVA, SoundSource.NEUTRAL, 1, 1);
 				}
 			} else {
-				if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
+				if (Block_At_XYZ.getBlock() == RegistryBIBI.COPPER_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -215,7 +215,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.IRON_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -235,7 +235,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.GOLD_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -255,7 +255,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.DIAMOND_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -275,7 +275,7 @@ public class Furnaces_OnClick_Method {
 							}
 						}, _bpos);
 					}
-				} else if (Block_At_XYZ.getBlock() == RegistryIBBI.NETHERITE_FURNACE.get()) {
+				} else if (Block_At_XYZ.getBlock() == RegistryBIBI.NETHERITE_FURNACE.get()) {
 					if (entity instanceof ServerPlayer _ent) {
 						BlockPos _bpos = BlockPos.containing(x, y, z);
 						_ent.openMenu(new MenuProvider() {
@@ -298,7 +298,7 @@ public class Furnaces_OnClick_Method {
 				}
 			}
 		} else {
-			if (Block_At_XYZ.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
+			if (Block_At_XYZ.getBlock() == RegistryBIBI.COPPER_FURNACE.get()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(x, y, z);
 					_ent.openMenu(new MenuProvider() {
@@ -318,7 +318,7 @@ public class Furnaces_OnClick_Method {
 						}
 					}, _bpos);
 				}
-			} else if (Block_At_XYZ.getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
+			} else if (Block_At_XYZ.getBlock() == RegistryBIBI.IRON_FURNACE.get()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(x, y, z);
 					_ent.openMenu(new MenuProvider() {
@@ -338,7 +338,7 @@ public class Furnaces_OnClick_Method {
 						}
 					}, _bpos);
 				}
-			} else if (Block_At_XYZ.getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
+			} else if (Block_At_XYZ.getBlock() == RegistryBIBI.GOLD_FURNACE.get()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(x, y, z);
 					_ent.openMenu(new MenuProvider() {
@@ -358,7 +358,7 @@ public class Furnaces_OnClick_Method {
 						}
 					}, _bpos);
 				}
-			} else if (Block_At_XYZ.getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
+			} else if (Block_At_XYZ.getBlock() == RegistryBIBI.DIAMOND_FURNACE.get()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(x, y, z);
 					_ent.openMenu(new MenuProvider() {
@@ -378,7 +378,7 @@ public class Furnaces_OnClick_Method {
 						}
 					}, _bpos);
 				}
-			} else if (Block_At_XYZ.getBlock() == RegistryIBBI.NETHERITE_FURNACE.get()) {
+			} else if (Block_At_XYZ.getBlock() == RegistryBIBI.NETHERITE_FURNACE.get()) {
 				if (entity instanceof ServerPlayer _ent) {
 					BlockPos _bpos = BlockPos.containing(x, y, z);
 					_ent.openMenu(new MenuProvider() {

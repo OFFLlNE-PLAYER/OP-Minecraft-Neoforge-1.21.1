@@ -11,7 +11,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 public class WumpaPlant_SilkTouch_Method {
@@ -36,7 +36,7 @@ public class WumpaPlant_SilkTouch_Method {
 				double spawnY = pos.getY();
 				double spawnZ = pos.getZ() + 0.5;
 
-				ItemEntity fruitEntity = new ItemEntity(_level, spawnX, spawnY, spawnZ, new ItemStack(RegistryIBBI.WUMPA_FRUIT.get()));
+				ItemEntity fruitEntity = new ItemEntity(_level, spawnX, spawnY, spawnZ, new ItemStack(RegistryBIBI.WUMPA_FRUIT.get()));
 				fruitEntity.setPickUpDelay(0);
 				_level.addFreshEntity(fruitEntity);
 

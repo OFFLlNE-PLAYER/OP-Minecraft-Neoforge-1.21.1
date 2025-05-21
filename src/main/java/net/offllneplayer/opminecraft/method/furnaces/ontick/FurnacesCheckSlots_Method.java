@@ -14,7 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 import java.util.Objects;
 
@@ -89,7 +89,7 @@ public class FurnacesCheckSlots_Method {
 				return 0;
 			}
 		}.getAmount(world, BlockPos.containing(x, y, z), 5);
-		if (Stack_of_Slot_0.getItem() == Blocks.COBBLESTONE.asItem() && (Stack_of_Slot_5.getItem() == RegistryIBBI.DENSE_STONE.get().asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+		if (Stack_of_Slot_0.getItem() == Blocks.COBBLESTONE.asItem() && (Stack_of_Slot_5.getItem() == RegistryBIBI.DENSE_STONE.get().asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 1;
 
 		} else if (Stack_of_Slot_0.getItem() == Blocks.NETHERRACK.asItem() && (Stack_of_Slot_5.getItem() == Blocks.NETHER_BRICKS.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
@@ -107,10 +107,10 @@ public class FurnacesCheckSlots_Method {
 				&& (Stack_of_Slot_5.getItem() == Blocks.GOLD_BLOCK.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 5;
 
-		}  else if (Stack_of_Slot_0.getItem() == Items.ANCIENT_DEBRIS && (Stack_of_Slot_5.getItem() == RegistryIBBI.ANCIENT_CHUNK.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+		}  else if (Stack_of_Slot_0.getItem() == Items.ANCIENT_DEBRIS && (Stack_of_Slot_5.getItem() == RegistryBIBI.ANCIENT_CHUNK.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 6;
 
-		} else if (Stack_of_Slot_0.getItem() == Blocks.CRYING_OBSIDIAN.asItem() && (Stack_of_Slot_5.getItem() == RegistryIBBI.CRYING_INGOT.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+		} else if (Stack_of_Slot_0.getItem() == Blocks.CRYING_OBSIDIAN.asItem() && (Stack_of_Slot_5.getItem() == RegistryBIBI.CRYING_INGOT.get() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			if ((world instanceof Level _level) && (!_level.isClientSide())) {
 				_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_furnace"))), SoundSource.MASTER, (float) 1, (float) 0.8);
 			}

@@ -17,7 +17,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.method.crying.armor.FullCrying_Method;
 
 import java.util.EnumMap;
@@ -37,7 +37,7 @@ public abstract class CryingItem extends ArmorItem {
 				map.put(Type.HELMET, 3);
 				map.put(Type.BODY, 7);
 			}), 20, DeferredHolder.create(Registries.SOUND_EVENT, ResourceLocation.parse("item.armor.equip_netherite")),
-					() -> Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get())),
+					() -> Ingredient.of(new ItemStack(RegistryBIBI.CRYING_INGOT.get())),
 					List.of(new ArmorMaterial.Layer(ResourceLocation.parse("opminecraft:crying_armor"))), 1f, -0.1f);
 			registerHelper.register(ResourceLocation.parse("opminecraft:crying"), armorMaterial);
 			ARMOR_MATERIAL = BuiltInRegistries.ARMOR_MATERIAL.wrapAsHolder(armorMaterial);

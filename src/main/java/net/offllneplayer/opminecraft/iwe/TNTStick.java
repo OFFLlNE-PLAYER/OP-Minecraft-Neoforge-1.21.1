@@ -37,10 +37,12 @@ import net.minecraft.sounds.SoundSource;
 
 import net.minecraft.stats.Stats;
 
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -67,9 +69,9 @@ import net.offllneplayer.opminecraft.client.ModModelLayers;
 
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.method.util.OP_getBarColorUtil;
+import net.offllneplayer.opminecraft.method.UTIL.OP_getBarColorUtil;
 
 import java.util.stream.StreamSupport;
 
@@ -337,7 +339,6 @@ public class TNTStick {
 
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 0.69F, 0.420F * randomVelo + pull);
-            System.out.println("TNTStick throw sound pitch: " + (0.420F * randomVelo + pull));
         }
 
       /* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
@@ -398,11 +399,10 @@ public class TNTStick {
   /*____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____ENT____*/
  /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*[~AS ENTITY~]*/
-
     public static class ThrownTNTStick extends AbstractArrow {
 
      /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
-    /*[DATA COMPONENTS]*/
+    /*[DATA]*/
 
         private static final EntityDataAccessor<Integer> TNT_LIT_TIMER = SynchedEntityData.defineId(ThrownTNTStick.class, EntityDataSerializers.INT);
         private static final EntityDataAccessor<Float> TNT_SPIN_ROTATION = SynchedEntityData.defineId(ThrownTNTStick.class, EntityDataSerializers.FLOAT);
@@ -429,6 +429,7 @@ public class TNTStick {
             this.setOwner(shooter);
             this.noPhysics = false;
 
+
             if (shooter != null) {
                 this.setPos(shooter.getX(), shooter.getY() + shooter.getEyeHeight(), shooter.getZ());
                 // Set initial direction based on shooter's facing
@@ -437,18 +438,15 @@ public class TNTStick {
             this.pickup = Pickup.DISALLOWED;
         }
 
-        public ThrownTNTStick(Player shooter, Level world, ItemStack stack) {
-            this(world, shooter);
-            // Add null checks with defaults
-            Integer litTime = stack.get(RegistryDataComponents.TNT_LIT_TIMER.get());
-            this.entityData.set(TNT_LIT_TIMER, litTime != null ? litTime : -1);
+          public ThrownTNTStick(Player shooter, Level world, ItemStack stack) {
+             this(world, shooter);
 
-            Float spinRotation = stack.get(RegistryDataComponents.TNT_SPIN_ROTATION.get());
-            this.entityData.set(TNT_SPIN_ROTATION, spinRotation != null ? spinRotation : 12F);
+             this.entityData.set(TNT_LIT_TIMER, -1);
+             this.entityData.set(TNT_SPIN_ROTATION, 12F);
+             this.entityData.set(TNT_GROUNDED_zROTATION, 0F);
 
-            Float groundedzRotation = stack.get(RegistryDataComponents.TNT_GROUNDED_zROTATION.get());
-            this.entityData.set(TNT_GROUNDED_zROTATION, groundedzRotation != null ? groundedzRotation : 0F);
-        }
+          }
+
 
       /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
      /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
@@ -489,17 +487,20 @@ public class TNTStick {
             this.entityData.set(TNT_GROUNDED_zROTATION, rotation);
         }
 
+
       /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
      /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*[BASIC Entity OVERRIDES]*/
         @Override
-        public ItemStack getDefaultPickupItem() { return new ItemStack(RegistryIBBI.TNT_STICK.get());}
+        public ItemStack getDefaultPickupItem() { return new ItemStack(RegistryBIBI.TNT_STICK.get());}
         @Override
         public boolean canBeCollidedWith() { return true; }
         @Override
         public boolean isAttackable() { return true; }
         @Override
         public boolean isInvulnerableTo(DamageSource source) { return true; }
+        @Override
+        public boolean displayFireAnimation() { return false; }
         @Override
         public boolean isPickable() { return true; }
         @Override
@@ -618,7 +619,7 @@ public class TNTStick {
         public void tick() {
             super.tick();
 
-            // Update spin rotation in flight
+              // Update spin rotation in flight
             if (!this.inGround) {
                 // Get the current velocity magnitude
                 Vec3 motion = this.getDeltaMovement();
@@ -647,36 +648,14 @@ public class TNTStick {
                 }
             }
 
-            boolean touchingFire = StreamSupport.stream(this.level().getBlockCollisions(this, this.getBoundingBox()).spliterator(), false)
-                    .anyMatch(voxelShape -> {
-                        BlockPos blockPos = new BlockPos(
-                                (int)voxelShape.min(Direction.Axis.X),
-                                (int)voxelShape.min(Direction.Axis.Y),
-                                (int)voxelShape.min(Direction.Axis.Z)
-                        );
-                        BlockState blockState = this.level().getBlockState(blockPos);
-                        return blockState.is(Blocks.FIRE) || blockState.is(Blocks.SOUL_FIRE);
-                    });
-
-
             if (!this.level().isClientSide()) {
-                // If in fire or lava, explode
-                if (this.isInLava() || this.isOnFire() || touchingFire) {
-                    this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3.0F, Level.ExplosionInteraction.TNT);
-                    this.discard();
-                    return;
-                }
-
                 // Handle countdown
                 int litTime = this.getLitTime();
 
-                if (litTime == -1) {
-                    return;
-                } else if (litTime > 0) {
+                if (litTime > 0) {
                     if (this.isInWaterRainOrBubble()) {
                         this.setLitTime(-1);
                         this.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0F, 1.0F);
-                        return;
 
                     } else {
                         this.setLitTime(litTime - 1);
@@ -685,26 +664,39 @@ public class TNTStick {
                     if (litTime % 40 == 0) {
                         // Play sizzle sound periodically
                         float tone = 1.69F + 0.31F * (1F - litTime / 100F);
-                        this.playSound(RegistrySounds.TNT_SIZZLE.get(), 1.0F, tone);
+                        this.playSound(RegistrySounds.TNT_SIZZLE.get(), 0.8F, tone);
                     }
-
-                } else if (litTime == 0) {
-                    this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3.0F, Level.ExplosionInteraction.TNT);
-                    this.discard();
                 }
             }
         }
 
-      /*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
+
+          /*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
+         /*-- ____________________________________________________________________________________________--*/
+          @Override
+          public void baseTick() {
+             super.baseTick();
+
+             if (!this.level().isClientSide()) {
+                BlockState state = this.level().getBlockState(blockPosition());
+
+                if (state.is(BlockTags.FIRE) || state.is(Blocks.SOUL_FIRE) || state.is(Blocks.MAGMA_BLOCK) || this.isInLava() || getLitTime() == 0) {
+                   this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3.0F, false, Level.ExplosionInteraction.TNT);
+                   this.discard();
+                }
+             }
+          }
+
+
+      /*-- ____________________________________________________________________________________________--*/
      /*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
     /*[interact]*/
         @Override
         public InteractionResult interact(Player player, InteractionHand hand) {
             if (!this.level().isClientSide()) {
                 if (player.getItemInHand(hand).isEmpty()) {
-                    ItemStack tnt = new ItemStack(RegistryIBBI.TNT_STICK.get());
-                    tnt.set(RegistryDataComponents.TNT_LIT_TIMER.get(), -1);
-                    player.setItemInHand(hand, tnt);
+                    ItemStack tnt = new ItemStack(RegistryBIBI.TNT_STICK.get());
+                   player.setItemInHand(hand, tnt);
                     this.discard();
                     return InteractionResult.SUCCESS;
                 }
@@ -770,9 +762,9 @@ public class TNTStick {
                 if (motionLength > tooLowForBounce && bounceCount <= 3) {
                     // Bounce!
                     Vec3 bounceVec = new Vec3(
-                            motion.x * Mth.nextFloat(this.random, 0.420F * motionLength, 0.69F * motionLength), // X horizontal momentum retention
-                            -motion.y * Mth.nextFloat(this.random, 0.69F * motionLength, 0.8F * motionLength),  // Bounce with negative motion
-                            motion.z * Mth.nextFloat(this.random, 0.420F * motionLength, 0.69F * motionLength)  // Z horizontal momentum retention
+                            motion.x * Mth.nextFloat(this.random, 0.369F * motionLength, 0.420F * motionLength), // X horizontal momentum retention
+                            -motion.y * Mth.nextFloat(this.random, 0.420F * motionLength, 0.69F * motionLength),  // Bounce with negative motion
+                            motion.z * Mth.nextFloat(this.random, 0.369F * motionLength, 0.420F * motionLength)  // Z horizontal momentum retention
                     );
 
                     this.setDeltaMovement(bounceVec);
@@ -790,24 +782,22 @@ public class TNTStick {
                     if (Math.abs(motion.x) > Math.abs(motion.z)) {
                         this.stuckDirection = motion.x > 0 ? Direction.EAST : Direction.WEST;
                         randomGroundedzRotation =
-                                this.random.nextInt(5) == 0 ? -170F :
-                                        this.random.nextInt(5) == 1 ? -175.8F :
-                                                this.random.nextInt(5) == 2 ? 180F :
-                                                        this.random.nextInt(5) == 3 ? 184.20F :
-                                                                190F;
+                            this.random.nextInt(5) == 0 ? -170F :
+                            this.random.nextInt(5) == 1 ? -175.8F :
+                            this.random.nextInt(5) == 2 ? 180F :
+                            this.random.nextInt(5) == 3 ? 184.20F : 190F;
+
                     } else {
                         this.stuckDirection = motion.z > 0 ? Direction.SOUTH : Direction.NORTH;
                         randomGroundedzRotation =
-                                this.random.nextInt(5) == 0 ? -10F :
-                                        this.random.nextInt(5) == 1 ? -5.2F :
-                                                this.random.nextInt(5) == 2 ? -4.6F :
-                                                        this.random.nextInt(5) == 3 ? 0F :
-                                                                4.8F;
+                            this.random.nextInt(5) == 0 ? -10F :
+                            this.random.nextInt(5) == 1 ? -5.2F :
+                            this.random.nextInt(5) == 2 ? -4.6F :
+                            this.random.nextInt(5) == 3 ? 0F : 4.8F;
                     }
 
                     this.inGround = true;
-                    this.setSpinRotation(0F);
-                    this.getPersistentData().putInt("lowBounceCount", 0); // Reset counter incase it falls off block
+                    this.getPersistentData().putInt("lowBounceCount", 0);
                     this.setGroundedzRotation(randomGroundedzRotation);
                     this.setYRot(stuckDirection.toYRot());
                     this.setDeltaMovement(Vec3.ZERO);
@@ -818,8 +808,8 @@ public class TNTStick {
             } else if (hitFace != Direction.DOWN) {
 
                 // reflection with dampening based on speed
-                float dampening = 0.7f + motionLength * 0.1f;
-                dampening = Math.min(dampening, 0.95f);
+                float dampening = 0.420F + motionLength * 0.1420F;
+                dampening = Math.min(dampening, 0.95F);
 
                 Vec3 normal = Vec3.atLowerCornerOf(hitFace.getNormal());
                 Vec3 reflected = motion.subtract(normal.scale(2 * motion.dot(normal))).scale(dampening);

@@ -15,7 +15,7 @@ import net.minecraft.world.level.LevelAccessor;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryParticleTypes;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
@@ -28,7 +28,7 @@ public class PrototypeGunbladeShot_Method {
 				_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.3F, Mth.nextFloat(RandomSource.create(), 0.8F, 1F));
 			}
 		}
-		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == RegistryIBBI.PROTOTYPE_GUNBLADE.get()) {
+		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == RegistryBIBI.PROTOTYPE_GUNBLADE.get()) {
 
 			OPMinecraft.queueServerWork(4, () -> {
 				if (world instanceof Level _level) {

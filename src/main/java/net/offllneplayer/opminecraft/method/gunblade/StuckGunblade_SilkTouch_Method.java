@@ -9,7 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.registries.Registries;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 public class StuckGunblade_SilkTouch_Method {
 	public static boolean execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -22,7 +22,7 @@ public class StuckGunblade_SilkTouch_Method {
 			Silk_Touch_It = true;
 		} else {
 			if (world instanceof ServerLevel _level) {
-				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.GUNBLADE.get()));
+				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.TITAN_GUNBLADE.get()));
 				entityToSpawn.setPickUpDelay(10);
 				_level.addFreshEntity(entityToSpawn);
 			}

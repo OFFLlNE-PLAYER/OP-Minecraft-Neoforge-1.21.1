@@ -15,7 +15,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.crates.akuaku.AkuAkuCrateBreak_Method;
 import net.offllneplayer.opminecraft.method.crash.crates.crate.CrashCrateBreak_Method;
@@ -40,7 +40,7 @@ public class CrashCratesCollision_Method {
 		&& !(entity instanceof ThrownEnderpearl)
 		&& !(entity instanceof SpectralArrow)) {
 
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.CRASH_CRATE.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.CRASH_CRATE.get()) {
 				entity.fallDistance = 0;
 				entity.push(0, 0.8, 0);
 				if ((world instanceof Level _level) && (!_level.isClientSide())) {
@@ -51,14 +51,14 @@ public class CrashCratesCollision_Method {
 					CrashCrateBreak_Method.execute(world, x, y, z);
 				});
 			} else    /*--------------------------------------------------------------------------------------------*/
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.BOUNCE_CRATE.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.BOUNCE_CRATE.get()) {
 					entity.fallDistance = 0;
 					entity.push(0, 1.3, 0);
 					if ((world instanceof Level _level) && (!_level.isClientSide())) {
 						_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.CRASH_CRATE_BOUNCE.get(), SoundSource.MASTER, 1.0F, 1.0F);
 					}
 				} else    /*--------------------------------------------------------------------------------------------*/
-					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.AKU_AKU_CRATE.get()) {
+					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.AKU_AKU_CRATE.get()) {
 						entity.fallDistance = 0;
 						entity.push(0, 0.8, 0);
 						if ((world instanceof Level _level) && (!_level.isClientSide())) {
@@ -72,7 +72,7 @@ public class CrashCratesCollision_Method {
 							AkuAkuCrateBreak_Method.execute(world, x, y, z);
 						});
 				} else    /*--------------------------------------------------------------------------------------------*/
-					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.CRASH_TNT.get()) {
+					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.CRASH_TNT.get()) {
 						entity.fallDistance = 0;
 						entity.push(0, 0.8, 0);
 
@@ -87,7 +87,7 @@ public class CrashCratesCollision_Method {
 								}
 							}
 						} else    /*--------------------------------------------------------------------------------------------*/
-							if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.NITRO.get()) {
+							if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.NITRO.get()) {
 								if (!entity.isShiftKeyDown()) {
 									world.destroyBlock(BlockPos.containing(x, y, z), false);
 									if ((world instanceof Level _level) && (!_level.isClientSide())) {
@@ -104,7 +104,7 @@ public class CrashCratesCollision_Method {
 					|| (entity instanceof ThrownEgg)
 					|| (entity instanceof ThrownEnderpearl)) {
 
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.CRASH_TNT.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.CRASH_TNT.get()) {
 					if (((world.getBlockState(BlockPos.containing(x, y, z)))
 					.getBlock().getStateDefinition().getProperty("tntstate")
 					instanceof IntegerProperty _getip16 ? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip16) : -1) == 0) {
@@ -112,7 +112,7 @@ public class CrashCratesCollision_Method {
 						CrashTNTPrime_Method.execute(world, x, y, z);
 					}
 				}else    /*--------------------------------------------------------------------------------------------*/
-					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.NITRO.get()) {
+					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.NITRO.get()) {
 						world.destroyBlock(BlockPos.containing(x, y, z), false);
 						if ((world instanceof Level _level) && (!_level.isClientSide())) {
 							NitroBoom_Method.execute(world, x, y, z);

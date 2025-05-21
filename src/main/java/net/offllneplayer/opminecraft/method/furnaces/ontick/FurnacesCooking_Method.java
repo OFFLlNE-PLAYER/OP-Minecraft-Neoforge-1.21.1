@@ -30,7 +30,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 import java.util.Comparator;
@@ -125,7 +125,7 @@ public class FurnacesCooking_Method {
 						if (_bs.getBlock().getStateDefinition().getProperty("furnaceislit") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 					}
-					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
+					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.COPPER_FURNACE.get()) {
 						if (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -156,7 +156,7 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.IRON_FURNACE.get()) {
 						if (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -187,7 +187,7 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.GOLD_FURNACE.get()) {
 						if (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -218,7 +218,7 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.DIAMOND_FURNACE.get()) {
 						if (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -249,7 +249,7 @@ public class FurnacesCooking_Method {
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
-					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryIBBI.NETHERITE_FURNACE.get()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == RegistryBIBI.NETHERITE_FURNACE.get()) {
 						if (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -325,7 +325,7 @@ public class FurnacesCooking_Method {
 					/*--------------------------------------------------------------------------------------------*/
 					if (Number_of_Item == 1) {
 						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(RegistryIBBI.DENSE_STONE.get()).copy();
+							ItemStack _setstack = new ItemStack(RegistryBIBI.DENSE_STONE.get()).copy();
 							_setstack.setCount((int) (Number_of_Slot_5 + 1));
 							_itemHandlerModifiable.setStackInSlot(5, _setstack);
 						}
@@ -440,7 +440,7 @@ public class FurnacesCooking_Method {
 					} else /*--------------------------------------------------------------------------------------------*/
 						if (Number_of_Item == 6) {
 								if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-									ItemStack _setstack = new ItemStack(RegistryIBBI.ANCIENT_CHUNK.get()).copy();
+									ItemStack _setstack = new ItemStack(RegistryBIBI.ANCIENT_CHUNK.get()).copy();
 									_setstack.setCount((int) (Number_of_Slot_5 + 1));
 									_itemHandlerModifiable.setStackInSlot(5, _setstack);
 								}
@@ -483,7 +483,7 @@ public class FurnacesCooking_Method {
 								_level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("opminecraft:crying_explode"))), SoundSource.MASTER, (float) 1, (float) 1);
 						}
 						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(RegistryIBBI.CRYING_INGOT.get()).copy();
+							ItemStack _setstack = new ItemStack(RegistryBIBI.CRYING_INGOT.get()).copy();
 							_setstack.setCount((int) (Number_of_Slot_5 + 1));
 							_itemHandlerModifiable.setStackInSlot(5, _setstack);
 						}
@@ -494,7 +494,7 @@ public class FurnacesCooking_Method {
 							BlockState state = world.getBlockState(blockPos);
 
 							if (world instanceof Level _level && !_level.isClientSide()) {
-								if (state.getBlock() != RegistryIBBI.NETHERITE_FURNACE.get()) {
+								if (state.getBlock() != RegistryBIBI.NETHERITE_FURNACE.get()) {
 									world.destroyBlock(blockPos, false);
 								}
 
@@ -502,7 +502,7 @@ public class FurnacesCooking_Method {
 								_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
 							}
 
-							if (state.getBlock() != RegistryIBBI.NETHERITE_FURNACE.get()) {
+							if (state.getBlock() != RegistryBIBI.NETHERITE_FURNACE.get()) {
 								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10), e -> true)
 										.stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 
@@ -527,14 +527,14 @@ public class FurnacesCooking_Method {
 									int randomCount = Mth.nextInt(RandomSource.create(), 4, 6);
 									ItemEntity entityToSpawn = null;
 
-									if (state.getBlock() == RegistryIBBI.COPPER_FURNACE.get()) {
+									if (state.getBlock() == RegistryBIBI.COPPER_FURNACE.get()) {
 										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Blocks.WAXED_OXIDIZED_CHISELED_COPPER));
-									} else if (state.getBlock() == RegistryIBBI.IRON_FURNACE.get()) {
-										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_IRON.get()));
-									} else if (state.getBlock() == RegistryIBBI.GOLD_FURNACE.get()) {
-										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_GOLD.get()));
-									} else if (state.getBlock() == RegistryIBBI.DIAMOND_FURNACE.get()) {
-										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CHISELED_DIAMOND.get()));
+									} else if (state.getBlock() == RegistryBIBI.IRON_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.CHISELED_IRON.get()));
+									} else if (state.getBlock() == RegistryBIBI.GOLD_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.CHISELED_GOLD.get()));
+									} else if (state.getBlock() == RegistryBIBI.DIAMOND_FURNACE.get()) {
+										entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.CHISELED_DIAMOND.get()));
 									}
 
 									if (entityToSpawn != null) {

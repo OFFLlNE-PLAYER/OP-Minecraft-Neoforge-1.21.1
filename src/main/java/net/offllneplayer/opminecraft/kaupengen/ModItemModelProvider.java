@@ -13,7 +13,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 import java.util.LinkedHashMap;
 
@@ -41,10 +41,10 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
-        trimmedArmorItem(RegistryIBBI.CRYING_HELMET);
-        trimmedArmorItem(RegistryIBBI.CRYING_CHESTPLATE);
-        trimmedArmorItem(RegistryIBBI.CRYING_LEGGINGS);
-        trimmedArmorItem(RegistryIBBI.CRYING_BOOTS);
+        trimmedArmorItem(RegistryBIBI.CRYING_HELMET);
+        trimmedArmorItem(RegistryBIBI.CRYING_CHESTPLATE);
+        trimmedArmorItem(RegistryBIBI.CRYING_LEGGINGS);
+        trimmedArmorItem(RegistryBIBI.CRYING_BOOTS);
 
         /*
         basicItem(ModItems.CHAINSAW.get());

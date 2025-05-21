@@ -19,10 +19,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
+import net.offllneplayer.opminecraft.method.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 
@@ -70,7 +70,7 @@ public class CryingEssence_OnTick_Method {
 						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
 						_level.explode(source.getEntity(), x, y, z, 5.0f, true, Level.ExplosionInteraction.BLOCK);
 
-						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryIBBI.CRYING_RESIN.get()));
+						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryBIBI.CRYING_RESIN.get()));
 						resinEntity.setPickUpDelay(5);
 						_level.addFreshEntity(resinEntity);
 
@@ -110,7 +110,7 @@ public class CryingEssence_OnTick_Method {
 						DamageSource source = _level.damageSources().source(RegistryDamageTypes.CRYING_ESSENCE);
 						_level.explode(source.getEntity(), x, y, z, 3.0f, false, Level.ExplosionInteraction.BLOCK);
 
-						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryIBBI.CRYING_RESIN.get()));
+						ItemEntity resinEntity = new ItemEntity(_level, x, y + 1, z, new ItemStack(RegistryBIBI.CRYING_RESIN.get()));
 						resinEntity.setPickUpDelay(5);
 						_level.addFreshEntity(resinEntity);
 

@@ -75,11 +75,12 @@ import net.offllneplayer.opminecraft.iface.DispensibleProjectile;
 
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-import net.offllneplayer.opminecraft.method.util.OP_NBTUtil;
-import net.offllneplayer.opminecraft.method.util.OP_ProjectileUtil;
+import net.offllneplayer.opminecraft.method.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.method.hatchet.HatchetonHitBlock;
+import net.offllneplayer.opminecraft.method.hatchet.HatchetonHitEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -307,7 +308,7 @@ public class SMBSuperFan {
         /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
        /*[BASIC Entity OVERRIDES]*/
         @Override
-        public ItemStack getDefaultPickupItem() {return new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());}
+        public ItemStack getDefaultPickupItem() {return new ItemStack(RegistryBIBI.SMB_SUPER_FAN.get());}
         @Override
         public boolean canBeCollidedWith() {return true;}
         @Override
@@ -361,12 +362,10 @@ public class SMBSuperFan {
         public void tick() {
             super.tick();
 
-            if (this.inGround && stuckPos != null) {
-                if (level().getBlockState(stuckPos).getBlock() != stuckBlock) {
-                    this.inGround = false;
-                    this.hasImpulse = true;
-                    this.setDeltaMovement(Vec3.ZERO);
-                }
+            if (this.inGround && stuckPos != null && level().getBlockState(stuckPos).getBlock() != stuckBlock) {
+                this.inGround = false;
+                this.hasImpulse = true;
+                this.setDeltaMovement(Vec3.ZERO);
             }
 
             if (!this.inGround) {
@@ -436,7 +435,7 @@ public class SMBSuperFan {
                     float tone = Mth.randomBetween(this.random, 0.85F, 1.2F);
                     this.playSound(RegistrySounds.SMB_SUPER_FAN_HIT.get(), 1.0F, tone);
 
-                    ItemStack fan = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
+                    ItemStack fan = new ItemStack(RegistryBIBI.SMB_SUPER_FAN.get());
                     CompoundTag nbt = this.getPersistentData();
                     OP_NBTUtil.enchantWeaponDataToItemstack(fan, nbt, this.level());
 
@@ -454,7 +453,6 @@ public class SMBSuperFan {
        /*[on Hit Entity]*/
         @Override
         public void onHitEntity(EntityHitResult result) {
-            if (this.level().isClientSide()) return;
             Entity hitEntity = result.getEntity();
             Level level = hitEntity.level();
             double x = hitEntity.getX();
@@ -468,22 +466,20 @@ public class SMBSuperFan {
 
                     DamageSource fanDMG = level.damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
                     float dmg = 4F;
-                    float enchantDmg = OP_ProjectileUtil.calculateDamageBonus(living, enchs);
+                    float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
                     float damage = dmg + enchantDmg;
 
                     living.hurt(fanDMG, damage);
 
-                    OP_ProjectileUtil.processUnbreaking(this, enchs, this.random);
+                    HatchetonHitEntity.processUnbreaking(this, enchs, this.random);
 
-                    OP_ProjectileUtil.applyFireAspect(living, enchs);
-                    OP_ProjectileUtil.applyKnockback(this, living, enchs);
-                    OP_ProjectileUtil.applyCleaving(this, enchs, this.random);
+                    HatchetonHitEntity.applyFireAspect(living, enchs);
+                    HatchetonHitEntity.applyKnockback(this, living, enchs);
+                    HatchetonHitEntity.applyCleaving(this, enchs, this.random);
 
-                    ItemStack dummyStack = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
+                    ItemStack dummyStack = new ItemStack(RegistryBIBI.SMB_SUPER_FAN.get());
                     OP_NBTUtil.enchantWeaponDataToItemstack(dummyStack, this.getPersistentData(), level());
                     EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, fanDMG, dummyStack);
-
-                    level.broadcastEntityEvent(this, (byte) 3);
 
                     float tone = Mth.randomBetween(this.random, 1.2F, 1.420F);
                     this.playSound(RegistrySounds.BLADE_SLASH.get(), 0.1420F, tone);
@@ -493,9 +489,9 @@ public class SMBSuperFan {
                 }
             } else {
                 // Handle non-living entities utility class
-                OP_ProjectileUtil.miscEntityHit(this, hitEntity, level, this.random);
-                level.broadcastEntityEvent(this, (byte) 3);
+                HatchetonHitEntity.miscEntityHit(this, hitEntity, level, this.random);
             }
+            level.broadcastEntityEvent(this, (byte) 3);
         }
 
          /*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
@@ -509,48 +505,10 @@ public class SMBSuperFan {
             super.onHitBlock(result);
 
             if (!level().isClientSide()) {
-                BlockPos pos = result.getBlockPos();
-                BlockState state = level().getBlockState(pos);
-                Block block = state.getBlock();
 
-                // Handle button interaction using the buttons tag
-                if (block.builtInRegistryHolder().is(BlockTags.BUTTONS)) {
-                    if (state.hasProperty(ButtonBlock.POWERED) && !state.getValue(ButtonBlock.POWERED)) {
-                        // Only press if not already pressed
-                        BlockState pressedState = state.setValue(ButtonBlock.POWERED, true);
-                        level().setBlock(pos, pressedState, 3);
+                // Use the utility method for button interaction
+                HatchetonHitBlock.handleButtonInteraction(result, level(), this);
 
-                        level().playSound(null, pos, SoundEvents.STONE_BUTTON_CLICK_ON, SoundSource.BLOCKS, 0.3F, 0.6F);
-
-                        level().scheduleTick(pos, block, 30);
-                        level().updateNeighborsAt(pos, block);
-
-                        // Get the attached face direction
-                        if (state.hasProperty(ButtonBlock.FACING) && state.hasProperty(ButtonBlock.FACE)) {
-                            Direction direction = state.getValue(ButtonBlock.FACING);
-                            AttachFace face = state.getValue(ButtonBlock.FACE);
-
-                            // Convert AttachFace to Direction
-                            Direction faceDirection;
-                            switch (face) {
-                                case FLOOR:
-                                    faceDirection = Direction.DOWN;
-                                    break;
-                                case CEILING:
-                                    faceDirection = Direction.UP;
-                                    break;
-                                case WALL:
-                                default:
-                                    faceDirection = direction.getOpposite();
-                                    break;
-                            }
-
-                            level().updateNeighborsAt(pos.relative(faceDirection), block);
-                        }
-                        // Create block event to notify neighbors
-                        level().gameEvent(this.getOwner(), GameEvent.BLOCK_ACTIVATE, pos);
-                    }
-                }
                 float tone = Mth.randomBetween(this.random, 1.2F, 1.420F);
                 this.playSound(RegistrySounds.BLADE_STICK.get(), 0.1420F, tone);
 
@@ -616,7 +574,7 @@ public class SMBSuperFan {
                 }
             }
 
-            ItemStack stack = new ItemStack(RegistryIBBI.SMB_SUPER_FAN.get());
+            ItemStack stack = new ItemStack(RegistryBIBI.SMB_SUPER_FAN.get());
             // Retrieve the BakedModel for the ItemStack.
             BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(stack, entity.getCommandSenderWorld(), null, entity.getId());
             // Render the item using the obtained BakedModel.

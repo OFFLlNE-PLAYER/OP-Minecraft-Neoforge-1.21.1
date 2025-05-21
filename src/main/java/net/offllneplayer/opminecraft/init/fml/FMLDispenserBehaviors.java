@@ -11,18 +11,18 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.iface.DispensibleProjectile;
 
 
 public class FMLDispenserBehaviors {
 
     public static void DispenserBehaviors() {
-        registerDispensibleProjectile(RegistryIBBI.CRYING_HATCHET.get());
+        registerDispensibleProjectile(RegistryBIBI.CRYING_HATCHET.get());
 
-        registerDispensibleProjectile(RegistryIBBI.SMB_SUPER_FAN.get());
+        registerDispensibleProjectile(RegistryBIBI.SMB_SUPER_FAN.get());
 
-        registerDispensibleProjectile(RegistryIBBI.TNT_STICK.get());
+        registerDispensibleProjectile(RegistryBIBI.TNT_STICK.get());
 
         }
 

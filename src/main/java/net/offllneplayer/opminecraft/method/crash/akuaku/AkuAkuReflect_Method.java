@@ -16,7 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 public class AkuAkuReflect_Method {
@@ -33,11 +33,11 @@ public class AkuAkuReflect_Method {
             float yOffset = Mth.nextFloat(RandomSource.create(), 0.420F,  1.20420F);
             float zOffset = Mth.nextFloat(RandomSource.create(), -0.69F,  0.69F);
 
-            _level.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(RegistryIBBI.AKU_AKU_MASK.get())),
+            _level.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(RegistryBIBI.AKU_AKU_MASK.get())),
                     attacker.getX() + xOffset, attacker.getY() + yOffset, attacker.getZ() + zOffset,
                     1, 0, 0, 0, 0);
 
-            Item[] feathers = {RegistryIBBI.ORANGE_FEATHER.get(), RegistryIBBI.PINK_FEATHER.get(), RegistryIBBI.PURPLE_FEATHER.get(), RegistryIBBI.YELLOW_FEATHER.get()};
+            Item[] feathers = {RegistryBIBI.ORANGE_FEATHER.get(), RegistryBIBI.PINK_FEATHER.get(), RegistryBIBI.PURPLE_FEATHER.get(), RegistryBIBI.YELLOW_FEATHER.get()};
 
             for (Item feather : feathers) {
                 int sendChance = Mth.nextInt(RandomSource.create(), 1, 4);

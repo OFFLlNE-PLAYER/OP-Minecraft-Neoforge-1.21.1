@@ -7,14 +7,14 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 public class FloweringPitcherPlant_OnTick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (Mth.nextInt(RandomSource.create(), 1, 100) <= 3) {
 			{
 				BlockPos _bp = BlockPos.containing(x, y, z);
-				BlockState _bs = RegistryIBBI.WUMPA_PLANT.get().defaultBlockState();
+				BlockState _bs = RegistryBIBI.WUMPA_PLANT.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Property<?> _propertyOld : _bso.getProperties()) {
 					Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());

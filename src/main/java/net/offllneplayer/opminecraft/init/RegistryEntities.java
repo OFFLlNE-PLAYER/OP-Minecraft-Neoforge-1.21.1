@@ -4,10 +4,12 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.iwe.CryingHatchet.ThrownCryingHatchet;
+
+import net.offllneplayer.opminecraft.iwe.Gunblade.StuckGunblade;
+import net.offllneplayer.opminecraft.iwe.Hatchet.ThrownHatchet;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFan;
 import net.offllneplayer.opminecraft.iwe.TNTStick.ThrownTNTStick;
+import net.offllneplayer.opminecraft.OPMinecraft;
 
 import java.util.function.Supplier;
 
@@ -20,8 +22,11 @@ public class RegistryEntities {
 /*--------------------------------------------------------------------------------------------*/
     /*[Register Entities]*/
 
-    public static final Supplier<EntityType<ThrownCryingHatchet>> THROWN_CRYING_HATCHET = ENTREGISTRY.register("thrown_crying_hatchet",
-            ()-> EntityType.Builder.<ThrownCryingHatchet>of(ThrownCryingHatchet::new, MobCategory.MISC).build("thrown_crying_hatchet"));
+    public static final Supplier<EntityType<StuckGunblade>> STUCK_GUNBLADE = ENTREGISTRY.register("stuck_gunblade",
+       ()-> EntityType.Builder.<StuckGunblade>of(StuckGunblade::new, MobCategory.MISC).build("stuck_gunblade"));
+
+    public static final Supplier<EntityType<ThrownHatchet>> THROWN_HATCHET = ENTREGISTRY.register("thrown_hatchet",
+       ()-> EntityType.Builder.<ThrownHatchet>of(ThrownHatchet::new, MobCategory.MISC).build("thrown_hatchet"));
 
     public static final Supplier<EntityType<ThrownTNTStick>> THROWN_TNT_STICK = ENTREGISTRY.register("thrown_tnt_stick",
             ()-> EntityType.Builder.<ThrownTNTStick>of(ThrownTNTStick::new, MobCategory.MISC).build("thrown_tnt_stick"));

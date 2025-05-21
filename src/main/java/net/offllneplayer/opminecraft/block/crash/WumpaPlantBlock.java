@@ -25,7 +25,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.method.crash.wumpaplant.WumpaPlant_SilkTouch_Method;
 import net.offllneplayer.opminecraft.method.crash.wumpaplant.WumpaPlantPlacement_Method;
@@ -121,7 +121,7 @@ public class WumpaPlantBlock extends Block {
 			double spawnY = pos.getY();
 			double spawnZ = pos.getZ() + 0.5;
 
-			ItemEntity fruitEntity = new ItemEntity(serverLevel, spawnX, spawnY, spawnZ, new ItemStack(RegistryIBBI.WUMPA_FRUIT.get()));
+			ItemEntity fruitEntity = new ItemEntity(serverLevel, spawnX, spawnY, spawnZ, new ItemStack(RegistryBIBI.WUMPA_FRUIT.get()));
 			fruitEntity.setPickUpDelay(0);
 			serverLevel.addFreshEntity(fruitEntity);
 

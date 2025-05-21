@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 import java.util.Comparator;
 import java.util.List;
@@ -47,7 +47,7 @@ public class CryingEssenceCollisionItem_Method {
 				// Netherite Smithing Template
 					if (Number_of_Item == 1) {
 						if (world instanceof ServerLevel _level) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryIBBI.CRYING_SMITHING_TEMPLATE.get()));
+							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.CRYING_SMITHING_TEMPLATE.get()));
 							entityToSpawn.setPickUpDelay(5);
 							_level.addFreshEntity(entityToSpawn);
 						}

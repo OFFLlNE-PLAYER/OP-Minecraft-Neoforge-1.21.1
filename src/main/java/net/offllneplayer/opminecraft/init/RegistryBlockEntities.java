@@ -12,7 +12,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.offllneplayer.opminecraft.block.crash.CrashTNTBlockEntity;
 import net.offllneplayer.opminecraft.block.crash.NitroBlockEntity;
-import net.offllneplayer.opminecraft.block.gunblade.*;
 import net.offllneplayer.opminecraft.block.furnaces.*;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
@@ -23,30 +22,26 @@ public class RegistryBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCKENTREGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, OPMinecraft.Mod_ID);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> IRON_FURNACE =
-            register("iron_furnace", RegistryIBBI.IRON_FURNACE, IronFurnaceBlockEntity::new);
+            register("iron_furnace", RegistryBIBI.IRON_FURNACE, IronFurnaceBlockEntity::new);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> COPPER_FURNACE =
-            register("copper_furnace", RegistryIBBI.COPPER_FURNACE, CopperFurnaceBlockEntity::new);
+            register("copper_furnace", RegistryBIBI.COPPER_FURNACE, CopperFurnaceBlockEntity::new);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> GOLD_FURNACE =
-            register("gold_furnace", RegistryIBBI.GOLD_FURNACE, GoldFurnaceBlockEntity::new);
+            register("gold_furnace", RegistryBIBI.GOLD_FURNACE, GoldFurnaceBlockEntity::new);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> DIAMOND_FURNACE =
-            register("diamond_furnace", RegistryIBBI.DIAMOND_FURNACE, DiamondFurnaceBlockEntity::new);
+            register("diamond_furnace", RegistryBIBI.DIAMOND_FURNACE, DiamondFurnaceBlockEntity::new);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> NETHERITE_FURNACE =
-            register("netherite_furnace", RegistryIBBI.NETHERITE_FURNACE, NetheriteFurnaceBlockEntity::new);
+            register("netherite_furnace", RegistryBIBI.NETHERITE_FURNACE, NetheriteFurnaceBlockEntity::new);
 
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> CRASH_TNT =
-            register("crash_tnt", RegistryIBBI.CRASH_TNT, CrashTNTBlockEntity::new);
+            register("crash_tnt", RegistryBIBI.CRASH_TNT, CrashTNTBlockEntity::new);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> NITRO =
-            register("nitro", RegistryIBBI.NITRO, NitroBlockEntity::new);
-
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> STUCK_GUNBLADE =
-            register("stuck_gunblade", RegistryIBBI.STUCK_GUNBLADE, StuckGunbladeBlockEntity::new);
+            register("nitro", RegistryBIBI.NITRO, NitroBlockEntity::new);
 
 
     private static DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {

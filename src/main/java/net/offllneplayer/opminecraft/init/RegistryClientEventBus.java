@@ -12,7 +12,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 
 import net.offllneplayer.opminecraft.client.particle.ParticleGunbladeShot;
-import net.offllneplayer.opminecraft.iwe.CryingHatchet.ThrownCryingHatchetRenderer;
+
+import net.offllneplayer.opminecraft.iwe.Gunblade.StuckGunbladeRenderer;
+import net.offllneplayer.opminecraft.iwe.Hatchet.ThrownHatchetRenderer;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFanRenderer;
 import net.offllneplayer.opminecraft.iwe.TNTStick.ThrownTNTStickRenderer;
 
@@ -29,12 +31,14 @@ public class RegistryClientEventBus {
 		@SubscribeEvent
 		public static void clientSetup(FMLClientSetupEvent event) {
 
-			ItemBlockRenderTypes.setRenderLayer( RegistryIBBI.GOLDEN_BED.get(), RenderType.cutoutMipped() );
+			ItemBlockRenderTypes.setRenderLayer( RegistryBIBI.GOLDEN_BED.get(), RenderType.cutoutMipped() );
 
 		/*--------------------------------------------------------------------------------------------*/
 			/*[Register Entity Renderers]*/
 
-			EntityRenderers.register(RegistryEntities.THROWN_CRYING_HATCHET.get(), ThrownCryingHatchetRenderer::new);
+			EntityRenderers.register(RegistryEntities.STUCK_GUNBLADE.get(), StuckGunbladeRenderer::new);
+
+			EntityRenderers.register(RegistryEntities.THROWN_HATCHET.get(), ThrownHatchetRenderer::new);
 			EntityRenderers.register(RegistryEntities.THROWN_TNT_STICK.get(), ThrownTNTStickRenderer::new);
 			EntityRenderers.register(RegistryEntities.THROWN_SMB_SUPER_FAN.get(), ThrownSMBSuperFanRenderer::new);
 

@@ -19,8 +19,6 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.common.NeoForge;
 
 import net.offllneplayer.opminecraft.init.fml.FMLDispenserBehaviors;
-import net.offllneplayer.opminecraft.method._handler.DamageEventHandler;
-import net.offllneplayer.opminecraft.method._handler.EntitySpawnHandler;
 import net.offllneplayer.opminecraft.init.*;
 
 import org.slf4j.Logger;
@@ -45,11 +43,11 @@ public class OPMinecraft {
 
         RegistrySounds.SOUNDSREGISTRY.register(modEventBus);
 
-        RegistryIBBI.BLOCKSREGISTRY.register(modEventBus);
-        RegistryIBBI.FR_BLOCKSREGISTRY.register(modEventBus);
-        RegistryIBBI.FR_EPIC_BLOCKSREGISTRY.register(modEventBus);
-        RegistryIBBI.UNCOMMON_BLOCKSREGISTRY.register(modEventBus);
-        RegistryIBBI.RARE_BLOCKSREGISTRY.register(modEventBus);
+        RegistryBIBI.BLOCKSREGISTRY.register(modEventBus);
+        RegistryBIBI.FR_BLOCKSREGISTRY.register(modEventBus);
+        RegistryBIBI.FR_EPIC_BLOCKSREGISTRY.register(modEventBus);
+        RegistryBIBI.UNCOMMON_BLOCKSREGISTRY.register(modEventBus);
+        RegistryBIBI.RARE_BLOCKSREGISTRY.register(modEventBus);
 
         RegistryBlockEntities.BLOCKENTREGISTRY.register(modEventBus);
 
@@ -57,7 +55,7 @@ public class OPMinecraft {
 
         RegistryEntities.ENTREGISTRY.register(modEventBus);
 
-        RegistryIBBI.ITEMSREGISTRY.register(modEventBus);
+        RegistryBIBI.ITEMSREGISTRY.register(modEventBus);
 
         RegistryPotions.POTSREGISTRY.register(modEventBus);
         RegistryMobEffects.MOBEFFECTSREGISTRY.register(modEventBus);
@@ -90,7 +88,7 @@ public class OPMinecraft {
 
     public static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id, StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
         if (networkingRegistered)
-            throw new IllegalStateException("Cannot register new _handler messages after networking has been registered");
+            throw new IllegalStateException("Cannot register new $handler messages after networking has been registered");
         MESSAGES.put(id, new NetworkMessage<>(reader, handler));
     }
 

@@ -35,9 +35,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
+import net.offllneplayer.opminecraft.method.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -234,22 +234,22 @@ public class OnyxLampBlock extends Block {
         // --- BEGIN swap to a color‐specific block instance ---
         // Map DyeColor → your registered block, e.g. ModBlocks.ONYX_LAMP_BLACK, etc.
         Block targetBlock = switch (newColor) {
-            case BLACK -> RegistryIBBI.ONYX_LAMP_BLACK.get();
-            case BLUE -> RegistryIBBI.ONYX_LAMP_BLUE.get();
-            case BROWN -> RegistryIBBI.ONYX_LAMP_BROWN.get();
-            case CYAN -> RegistryIBBI.ONYX_LAMP_CYAN.get();
-            case GRAY -> RegistryIBBI.ONYX_LAMP_GRAY.get();
-            case GREEN -> RegistryIBBI.ONYX_LAMP_GREEN.get();
-            case LIGHT_BLUE -> RegistryIBBI.ONYX_LAMP_LIGHT_BLUE.get();
-            case LIGHT_GRAY -> RegistryIBBI.ONYX_LAMP_LIGHT_GRAY.get();
-            case LIME -> RegistryIBBI.ONYX_LAMP_LIME.get();
-            case MAGENTA -> RegistryIBBI.ONYX_LAMP_MAGENTA.get();
-            case ORANGE -> RegistryIBBI.ONYX_LAMP_ORANGE.get();
-            case PINK -> RegistryIBBI.ONYX_LAMP_PINK.get();
-            case PURPLE -> RegistryIBBI.ONYX_LAMP_PURPLE.get();
-            case RED -> RegistryIBBI.ONYX_LAMP_RED.get();
-            case WHITE -> RegistryIBBI.ONYX_LAMP_WHITE.get();
-            case YELLOW -> RegistryIBBI.ONYX_LAMP_YELLOW.get();
+            case BLACK -> RegistryBIBI.ONYX_LAMP_BLACK.get();
+            case BLUE -> RegistryBIBI.ONYX_LAMP_BLUE.get();
+            case BROWN -> RegistryBIBI.ONYX_LAMP_BROWN.get();
+            case CYAN -> RegistryBIBI.ONYX_LAMP_CYAN.get();
+            case GRAY -> RegistryBIBI.ONYX_LAMP_GRAY.get();
+            case GREEN -> RegistryBIBI.ONYX_LAMP_GREEN.get();
+            case LIGHT_BLUE -> RegistryBIBI.ONYX_LAMP_LIGHT_BLUE.get();
+            case LIGHT_GRAY -> RegistryBIBI.ONYX_LAMP_LIGHT_GRAY.get();
+            case LIME -> RegistryBIBI.ONYX_LAMP_LIME.get();
+            case MAGENTA -> RegistryBIBI.ONYX_LAMP_MAGENTA.get();
+            case ORANGE -> RegistryBIBI.ONYX_LAMP_ORANGE.get();
+            case PINK -> RegistryBIBI.ONYX_LAMP_PINK.get();
+            case PURPLE -> RegistryBIBI.ONYX_LAMP_PURPLE.get();
+            case RED -> RegistryBIBI.ONYX_LAMP_RED.get();
+            case WHITE -> RegistryBIBI.ONYX_LAMP_WHITE.get();
+            case YELLOW -> RegistryBIBI.ONYX_LAMP_YELLOW.get();
         };
         // Build the new blockstate, preserving facing/above/lit
         BlockState updated = targetBlock.defaultBlockState()

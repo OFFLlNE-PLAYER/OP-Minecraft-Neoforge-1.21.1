@@ -1,7 +1,7 @@
 package net.offllneplayer.opminecraft.trim;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -17,7 +17,7 @@ public class ModTrimPatterns {
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "kaupenjoe"));
 
     public static void bootstrap(BootstrapContext<TrimPattern> context) {
-        register(context, RegistryIBBI.KAUPENJOE_SMITHING_TEMPLATE, KAUPENJOE);
+        register(context, RegistryBIBI.KAUPENJOE_SMITHING_TEMPLATE, KAUPENJOE);
     }
 
     private static void register(BootstrapContext<TrimPattern> context, DeferredItem<Item> item, ResourceKey<TrimPattern> key) {

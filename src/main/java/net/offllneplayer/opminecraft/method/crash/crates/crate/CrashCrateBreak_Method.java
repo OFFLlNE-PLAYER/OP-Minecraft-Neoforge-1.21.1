@@ -7,7 +7,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 public class CrashCrateBreak_Method {
@@ -18,7 +18,7 @@ public class CrashCrateBreak_Method {
 			_level.playSound(null, pos, RegistrySounds.WUMPA_FRUIT.get(), SoundSource.MASTER, 1, 1);
 		}
 			if (world instanceof ServerLevel _level) {
-				ItemEntity fruitEntity = new ItemEntity(_level, (x + Math.random()), (y + Math.random()), (z + Math.random()), new ItemStack(RegistryIBBI.WUMPA_FRUIT.get()));
+				ItemEntity fruitEntity = new ItemEntity(_level, (x + Math.random()), (y + Math.random()), (z + Math.random()), new ItemStack(RegistryBIBI.WUMPA_FRUIT.get()));
 				fruitEntity.setPickUpDelay(0);
 				_level.addFreshEntity(fruitEntity);
 		}

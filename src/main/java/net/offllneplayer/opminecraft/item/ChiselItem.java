@@ -69,22 +69,22 @@ public class ChiselItem extends Item {
         else if (block == Blocks.CHISELED_TUFF) { newBlock = Blocks.CHISELED_TUFF_BRICKS; }
         else if (block == Blocks.CHISELED_TUFF_BRICKS) { newBlock = Blocks.TUFF; }
         else if (block == Blocks.STONE) { newBlock = Blocks.STONE_BRICKS; }
-        else if (block == Blocks.STONE_BRICKS) { newBlock = RegistryIBBI.STONE_TILES.get(); }
-        else if (block == RegistryIBBI.STONE_TILES.get()) { newBlock = Blocks.CHISELED_STONE_BRICKS; }
+        else if (block == Blocks.STONE_BRICKS) { newBlock = RegistryBIBI.STONE_TILES.get(); }
+        else if (block == RegistryBIBI.STONE_TILES.get()) { newBlock = Blocks.CHISELED_STONE_BRICKS; }
         else if (block == Blocks.CHISELED_STONE_BRICKS) { newBlock = Blocks.STONE; }
-        else if (block == RegistryIBBI.DENSE_STONE.get()) { newBlock = RegistryIBBI.DENSE_STONE_BRICKS.get(); }
-        else if (block == RegistryIBBI.DENSE_STONE_BRICKS.get()) { newBlock = RegistryIBBI.DENSE_STONE_TILES.get(); }
-        else if (block == RegistryIBBI.DENSE_STONE_TILES.get()) { newBlock = RegistryIBBI.DENSE_STONE.get(); }
-        else if (block == Blocks.DIAMOND_BLOCK) { newBlock = RegistryIBBI.CHISELED_DIAMOND.get(); }
-        else if (block == RegistryIBBI.CHISELED_DIAMOND.get()) { newBlock = Blocks.DIAMOND_BLOCK; }
-        else if (block == Blocks.GOLD_BLOCK) { newBlock = RegistryIBBI.CHISELED_GOLD.get(); }
-        else if (block == RegistryIBBI.CHISELED_GOLD.get()) { newBlock = Blocks.GOLD_BLOCK; }
-        else if (block == Blocks.IRON_BLOCK) { newBlock = RegistryIBBI.CHISELED_IRON.get(); }
-        else if (block == RegistryIBBI.CHISELED_IRON.get()) { newBlock = Blocks.IRON_BLOCK; }
-        else if (block == Blocks.NETHERITE_BLOCK) { newBlock = RegistryIBBI.CHISELED_NETHERITE.get(); }
-        else if (block == RegistryIBBI.CHISELED_NETHERITE.get()) { newBlock = Blocks.NETHERITE_BLOCK; }
-        else if (block == RegistryIBBI.CRYING_BRICKS.get()) { newBlock = RegistryIBBI.CRYING_TILES.get(); }
-        else if (block == RegistryIBBI.CRYING_TILES.get()) { newBlock = RegistryIBBI.CRYING_BRICKS.get(); }
+        else if (block == RegistryBIBI.DENSE_STONE.get()) { newBlock = RegistryBIBI.DENSE_STONE_BRICKS.get(); }
+        else if (block == RegistryBIBI.DENSE_STONE_BRICKS.get()) { newBlock = RegistryBIBI.DENSE_STONE_TILES.get(); }
+        else if (block == RegistryBIBI.DENSE_STONE_TILES.get()) { newBlock = RegistryBIBI.DENSE_STONE.get(); }
+        else if (block == Blocks.DIAMOND_BLOCK) { newBlock = RegistryBIBI.CHISELED_DIAMOND.get(); }
+        else if (block == RegistryBIBI.CHISELED_DIAMOND.get()) { newBlock = Blocks.DIAMOND_BLOCK; }
+        else if (block == Blocks.GOLD_BLOCK) { newBlock = RegistryBIBI.CHISELED_GOLD.get(); }
+        else if (block == RegistryBIBI.CHISELED_GOLD.get()) { newBlock = Blocks.GOLD_BLOCK; }
+        else if (block == Blocks.IRON_BLOCK) { newBlock = RegistryBIBI.CHISELED_IRON.get(); }
+        else if (block == RegistryBIBI.CHISELED_IRON.get()) { newBlock = Blocks.IRON_BLOCK; }
+        else if (block == Blocks.NETHERITE_BLOCK) { newBlock = RegistryBIBI.CHISELED_NETHERITE.get(); }
+        else if (block == RegistryBIBI.CHISELED_NETHERITE.get()) { newBlock = Blocks.NETHERITE_BLOCK; }
+        else if (block == RegistryBIBI.CRYING_BRICKS.get()) { newBlock = RegistryBIBI.CRYING_TILES.get(); }
+        else if (block == RegistryBIBI.CRYING_TILES.get()) { newBlock = RegistryBIBI.CRYING_BRICKS.get(); }
 
         if (newBlock != null) {
             serverLevel.setBlockAndUpdate(pos, newBlock.defaultBlockState());

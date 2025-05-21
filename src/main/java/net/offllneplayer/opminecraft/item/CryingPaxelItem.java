@@ -26,8 +26,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-import net.offllneplayer.opminecraft.method.util.OP_TagKeyUtil;
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.method.UTIL.OP_TagKeyUtil;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.method.crying.essence.effect.ApplyCrying1_Method;
 
 import javax.annotation.Nullable;
@@ -52,7 +52,7 @@ public class CryingPaxelItem extends DiggerItem {
         public int getEnchantmentValue() { return 20;
         }
         @Override
-        public Ingredient getRepairIngredient() {return Ingredient.of(new ItemStack(RegistryIBBI.CRYING_INGOT.get()));
+        public Ingredient getRepairIngredient() {return Ingredient.of(new ItemStack(RegistryBIBI.CRYING_INGOT.get()));
         }
     };
 

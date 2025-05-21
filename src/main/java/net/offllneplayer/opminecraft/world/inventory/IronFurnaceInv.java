@@ -25,7 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method._handler.GUI_Slot.IronFurnaceSlotHandler;
+import net.offllneplayer.opminecraft.method.HANDLER.GUI_Slot.IronFurnaceSlotHandler;
 import net.offllneplayer.opminecraft.init.RegistryInventory;
 
 import java.util.function.Supplier;

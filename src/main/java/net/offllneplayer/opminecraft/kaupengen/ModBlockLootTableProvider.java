@@ -1,7 +1,7 @@
 package net.offllneplayer.opminecraft.kaupengen;
 
 
-import net.offllneplayer.opminecraft.init.RegistryIBBI;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -53,6 +53,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return RegistryIBBI.BLOCKSREGISTRY.getEntries().stream().map(Holder::value)::iterator;
+        return RegistryBIBI.BLOCKSREGISTRY.getEntries().stream().map(Holder::value)::iterator;
     }
 }

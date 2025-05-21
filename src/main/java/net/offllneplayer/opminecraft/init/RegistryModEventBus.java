@@ -7,11 +7,14 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 import net.offllneplayer.opminecraft.client.ModModelLayers;
 
-import net.offllneplayer.opminecraft.iwe.CryingHatchet.ThrownCryingHatchetModel;
+
+import net.offllneplayer.opminecraft.iwe.Gunblade.StuckGunbladeModel;
+import net.offllneplayer.opminecraft.iwe.Hatchet.ThrownHatchetModel;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFanModel;
 import net.offllneplayer.opminecraft.iwe.TNTStick.ThrownTNTStickModel;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
+
 
 @EventBusSubscriber(modid = OPMinecraft.Mod_ID, bus = EventBusSubscriber.Bus.MOD)
 public class RegistryModEventBus {
@@ -27,7 +30,10 @@ public class RegistryModEventBus {
         event.registerLayerDefinition(ModModelLayers.WARTURTLE_ARMOR, WarturtleModel::createBodyLayer);
 
          */
-        event.registerLayerDefinition(ModModelLayers.THROWN_CRYING_HATCHET, ThrownCryingHatchetModel::createBodyLayer);
+
+        event.registerLayerDefinition(ModModelLayers.STUCK_GUNBLADE, StuckGunbladeModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.THROWN_HATCHET, ThrownHatchetModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.THROWN_SMB_SUPER_FAN, ThrownSMBSuperFanModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.THROWN_TNT_STICK, ThrownTNTStickModel::createBodyLayer);
 
