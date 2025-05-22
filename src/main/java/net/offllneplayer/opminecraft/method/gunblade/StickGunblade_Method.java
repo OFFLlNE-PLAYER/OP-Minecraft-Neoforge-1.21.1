@@ -48,88 +48,45 @@ public class StickGunblade_Method {
 
 		// Setup Entity Position
 		Vec3 spawnPos;
-		Direction stuckDirection = Direction.NORTH;
-		float gunRotation = 270F;
+		float gunRotation = 0F;
 
 		// Get exact hit location for better positioning
 		Vec3 hitLocation = context.getClickLocation();
 
+		// use player rotation to determine entity rotation
+		float playerRotation = player.getYRot() % 360F;
+		if (playerRotation < 0F) playerRotation += 360F;
+
 		// Set position based on face direction
 		if (face == Direction.UP || face == Direction.DOWN) {
+
+			// converts player rotation to gun rotation
+			gunRotation = (360F - playerRotation + 90F) % 360F;
+
 			// Use block center with vertical offset
 			double offset = 0.4D;
-			spawnPos = Vec3.atCenterOf(hitPos).add(
-				face.getStepX() * offset,
-				face.getStepY() * offset,
-				face.getStepZ() * offset
-			);
-
-			// For horizontal faces, use player rotation to determine entity rotation
-			float playerRotation = player.getYRot() % 360F;
-			if (playerRotation < 0F) playerRotation += 360F;
-
-			// Check for diagonal boundaries first
-			boolean isAtDiagonal = false;
-
-			// South-West diagonal (around 45°)
-			if (Math.abs(playerRotation - 45F) < 5F) {
-				gunRotation = 45F;  // Half way between south (90°) and west (0°)
-				isAtDiagonal = true;
-			}
-			// North-East diagonal (around 225°)
-			else if (Math.abs(playerRotation - 225F) < 5F) {
-				gunRotation = 225F;  // Half way between north (270°) and east (180°)
-				isAtDiagonal = true;
-			}
-			// North-West diagonal (around 135°)
-			else if (Math.abs(playerRotation - 135F) < 5F) {
-				gunRotation = 315F;  // Opposite of 135° is 315° (135° + 180°)
-				isAtDiagonal = true;
-			}
-			// South-East diagonal (around 315°)
-			else if (Math.abs(playerRotation - 315F) < 5F) {
-				gunRotation = 135F;  // Opposite of 315° is 135° (315° - 180°)
-				isAtDiagonal = true;
-			}
-
-			// Only process cardinal directions if not at a diagonal
-			if (!isAtDiagonal) {
-				if (playerRotation >= 135 && playerRotation < 225F) {
-					stuckDirection = Direction.NORTH;
-					gunRotation = 270F;
-				} else if ((playerRotation >= 315F && playerRotation <= 360F) || (playerRotation >= 0F && playerRotation < 45F)) {
-					stuckDirection = Direction.SOUTH;
-					gunRotation = 90F;
-				} else if (playerRotation >= 225F && playerRotation < 315F) {
-					stuckDirection = Direction.EAST;
-					gunRotation = 180F;
-				} else if (playerRotation >= 45F && playerRotation < 135F) {
-					stuckDirection = Direction.WEST;
-					gunRotation = 0F;
-				}
-			}
-
+			double xPos = face.getStepX() * offset;
+			double yPos = face.getStepY() * offset;
+			double zPos = face.getStepZ() * offset;
+			spawnPos = Vec3.atCenterOf(hitPos).add(xPos, yPos, zPos);
 
 		} else { // For side faces
+
+			if (face == Direction.NORTH || face == Direction.EAST) {
+				gunRotation = 0F;
+			} else if (face == Direction.SOUTH || face == Direction.WEST) {
+				gunRotation = 180F;
+			}
+
 			// Use hit location for Y and offset for X/Z
 			double offset = 0.4D;
 			double xPos = hitPos.getX() + 0.5D + (face.getStepX() * offset);
 			double zPos = hitPos.getZ() + 0.5D + (face.getStepZ() * offset);
 			spawnPos = new Vec3(xPos, hitLocation.y, zPos);
-
-			// For vertical faces, set direction based on face
-			switch (face) {
-				case NORTH -> stuckDirection = Direction.NORTH;
-				case SOUTH -> stuckDirection = Direction.SOUTH;
-				case WEST -> stuckDirection = Direction.WEST;
-				case EAST -> stuckDirection = Direction.EAST;
-				default -> stuckDirection = Direction.NORTH;
-			}
 		}
 
 		// Set entity position and data
 		gun.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
-		gun.setStuckDirection(stuckDirection);
 		gun.setStuckFace(face);
 		gun.setRenderingRotation(gunRotation);
 		gun.stuckPos = hitPos;
@@ -142,7 +99,6 @@ public class StickGunblade_Method {
 		System.out.println("new instance of StuckGunblade");
 		System.out.println("++++++++++++++++++++++");
 		System.out.println("Player Facing: " + player.getDirection());
-		System.out.println("Set entity stuckDirection to: " + gun.getStuckDirection());
 		System.out.println("--------------------");
 		System.out.println("Set entity stuckFace to: " + gun.getStuckFace());
 		System.out.println("Set entity YRot to: " + gun.getRenderingRotation());

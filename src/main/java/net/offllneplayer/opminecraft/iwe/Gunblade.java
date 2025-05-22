@@ -218,7 +218,6 @@ public class Gunblade {
 	  /*[DATA]*/
 		public static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.STRING);
 		public static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.BYTE);
-		public static final EntityDataAccessor<Byte> STUCK_DIRECTION = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.BYTE);
 		public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.FLOAT);
 
 		 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
@@ -310,21 +309,12 @@ public class Gunblade {
 			return inGround;
 		}
 
-		public void setStuckDirection(Direction direction) {
-			this.entityData.set(STUCK_DIRECTION, (byte)direction.get3DDataValue());
-		}
-
 		public void setStuckFace(Direction face) {
 			this.entityData.set(STUCK_FACE, (byte)face.get3DDataValue());
 		}
 
 		public void setRenderingRotation(float rotation) {
 			this.entityData.set(ROTATION, rotation);
-		}
-
-		// Update getters to use synced data
-		public Direction getStuckDirection() {
-			return Direction.from3DDataValue(this.entityData.get(STUCK_DIRECTION));
 		}
 
 		public Direction getStuckFace() {
@@ -344,7 +334,6 @@ public class Gunblade {
 			super.defineSynchedData(builder);
 			builder.define(MATERIAL_NAME, "titan");
 			builder.define(STUCK_FACE, (byte)Direction.UP.get3DDataValue());
-			builder.define(STUCK_DIRECTION, (byte)Direction.NORTH.get3DDataValue());
 			builder.define(ROTATION, 0.0F);
 		}
 
@@ -353,7 +342,6 @@ public class Gunblade {
 			super.addAdditionalSaveData(compound);
 			compound.putString("material_name", this.entityData.get(MATERIAL_NAME));
 			compound.putByte("stuck_face", this.entityData.get(STUCK_FACE));
-			compound.putByte("stuck_direction", this.entityData.get(STUCK_DIRECTION));
 			compound.putFloat("rotation", this.entityData.get(ROTATION));
 		}
 
@@ -369,9 +357,6 @@ public class Gunblade {
 			}
 			if (compound.contains("stuck_face")) {
 				this.entityData.set(STUCK_FACE, compound.getByte("stuck_face"));
-			}
-			if (compound.contains("stuck_direction")) {
-				this.entityData.set(STUCK_DIRECTION, compound.getByte("stuck_direction"));
 			}
 			if (compound.contains("rotation")) {
 				this.entityData.set(ROTATION, compound.getFloat("rotation"));
@@ -422,33 +407,86 @@ public class Gunblade {
 		 @Override
 		 public void setPos(double x, double y, double z) {
 			 super.setPos(x, y, z);
-
 			 float shortHalf = 0.05F;
 			 float longHalf = 0.1420F;
 			 float height = 0.72F;
 			 float offset = 0.13F;
+			 Direction stuckFace = this.getStuckFace();
 
-			 float yRot = this.entityData.get(ROTATION);
-
-			 double cos = Math.cos(Math.toRadians(yRot));
-			 double sin = Math.sin(Math.toRadians(yRot));
-
-			 double dx = longHalf * cos - shortHalf * sin;
-			 double dz = longHalf * sin + shortHalf * cos;
-
-			 // Add offset in direction of rotation
-			 x -= offset * cos;
-			 z += offset * sin;
-
-			 this.setBoundingBox(new AABB(
-				 x - Math.abs(dx),
-				 y - height,
-				 z - Math.abs(dz),
-				 x + Math.abs(dx),
-				 y + height,
-				 z + Math.abs(dz)
-			 ));
-		}
+			 if (stuckFace == Direction.UP) {
+				 double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
+				 double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
+				 double dx = longHalf * cos - shortHalf * sin;
+				 double dz = longHalf * sin + shortHalf * cos;
+				 // Add offset in direction of rotation
+				 x -= offset * cos;
+				 z += offset * sin;
+				 this.setBoundingBox(new AABB(
+					 x - Math.abs(dx),
+					 y - height,
+					 z - Math.abs(dz),
+					 x + Math.abs(dx),
+					 y + height,
+					 z + Math.abs(dz)
+				 ));
+			 } else if (stuckFace == Direction.DOWN) {
+				 double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
+				 double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
+				 double dx = longHalf * cos - shortHalf * sin;
+				 double dz = longHalf * sin + shortHalf * cos;
+				 // Add offset in direction of rotation
+				 x += offset * cos;
+				 z -= offset * sin;
+				 this.setBoundingBox(new AABB(
+					 x - Math.abs(dx),
+					 y - height,
+					 z - Math.abs(dz),
+					 x + Math.abs(dx),
+					 y + height,
+					 z + Math.abs(dz)
+				 ));
+			 } else if (stuckFace == Direction.NORTH) {
+				 x -= offset;
+				 this.setBoundingBox(new AABB(
+					 x - longHalf,
+					 y - shortHalf,
+					 z - height,
+					 x + longHalf,
+					 y + shortHalf,
+					 z + height
+				 ));
+			 } else if (stuckFace == Direction.SOUTH) {
+				 x += offset;
+				 this.setBoundingBox(new AABB(
+					 x - longHalf,
+					 y - shortHalf,
+					 z - height,
+					 x + longHalf,
+					 y + shortHalf,
+					 z + height
+				 ));
+			 } else if (stuckFace == Direction.EAST) {
+				 z -= offset;
+				 this.setBoundingBox(new AABB(
+					 x - height,
+					 y - shortHalf,
+					 z - longHalf,
+					 x + height,
+					 y + shortHalf,
+					 z + longHalf
+				 ));
+			 } else if (stuckFace == Direction.WEST) {
+				 z += offset;
+				 this.setBoundingBox(new AABB(
+					 x - height,
+					 y - shortHalf,
+					 z - longHalf,
+					 x + height,
+					 y + shortHalf,
+					 z + longHalf
+				 ));
+			 }
+		 }
 
 
 	    /*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
@@ -465,11 +503,14 @@ public class Gunblade {
 			}
 
 			if (!this.inGround) {
-				float currentRotation = this.entityData.get(ROTATION);
+
+				this.setStuckFace(Direction.UP);
+
+				float currentRotation = this.getRenderingRotation();
 				float newRotation;
 				newRotation = (random.nextBoolean() ? currentRotation + 10F : currentRotation - 10F) % 360F;
 				if (newRotation < 0) newRotation += 360F;
-				this.entityData.set(ROTATION, newRotation);
+				this.setRenderingRotation(newRotation);
 			}
 		}
 
@@ -560,13 +601,14 @@ public class Gunblade {
 			super(context);
 		}
 
-		@Override
-		public void render(StuckGunblade entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-			poseStack.pushPose();
+			@Override
+			public void render(StuckGunblade entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+				poseStack.pushPose();
 
-			float rotation = entity.getRenderingRotation();
+				Direction stuckFace = entity.getStuckFace();
+				float rotation = entity.getRenderingRotation();
 
-			GunbladeRenderRotations.applyGunbladeRotation(poseStack, entity.getStuckFace(), entity.getStuckDirection(),  entity.isGrounded(), rotation);
+				GunbladeRenderRotations.applyGunbladeRotation(poseStack, stuckFace, entity.isGrounded(), rotation);
 
 			String materialName = entity.getEntityData().get(StuckGunblade.MATERIAL_NAME);
 			GunbladeMaterialMap.GunbladeMaterial material = GunbladeMaterialMap.get(materialName);

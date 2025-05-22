@@ -256,69 +256,83 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.ALEXANDRITE);
                 event.accept(RegistryBIBI.FLAWLESS_ALEXANDRITE);
                 event.accept(RegistryBIBI.PERFECT_ALEXANDRITE);
+                event.accept(RegistryBIBI.BRILLIANT_ALEXANDRITE);
 
                 event.accept(RegistryBIBI.CRUDE_ANDALUSITE);
                 event.accept(RegistryBIBI.ANDALUSITE);
                 event.accept(RegistryBIBI.FLAWLESS_ANDALUSITE);
                 event.accept(RegistryBIBI.PERFECT_ANDALUSITE);
+                event.accept(RegistryBIBI.BRILLIANT_ANDALUSITE);
 
                 event.accept(RegistryBIBI.CRUDE_CHRYSOBERYL);
                 event.accept(RegistryBIBI.CHRYSOBERYL);
                 event.accept(RegistryBIBI.FLAWLESS_CHRYSOBERYL);
                 event.accept(RegistryBIBI.PERFECT_CHRYSOBERYL);
+                event.accept(RegistryBIBI.BRILLIANT_CHRYSOBERYL);
 
                 event.accept(RegistryBIBI.CRUDE_CORUNDUM);
                 event.accept(RegistryBIBI.CORUNDUM);
                 event.accept(RegistryBIBI.FLAWLESS_CORUNDUM);
                 event.accept(RegistryBIBI.PERFECT_CORUNDUM);
+                event.accept(RegistryBIBI.BRILLIANT_CORUNDUM);
 
                 event.accept(RegistryBIBI.CRUDE_CYMOPHANE);
                 event.accept(RegistryBIBI.CYMOPHANE);
                 event.accept(RegistryBIBI.FLAWLESS_CYMOPHANE);
                 event.accept(RegistryBIBI.PERFECT_CYMOPHANE);
+                event.accept(RegistryBIBI.BRILLIANT_CYMOPHANE);
 
                 event.accept(RegistryBIBI.CRUDE_JADEITE);
                 event.accept(RegistryBIBI.JADEITE);
                 event.accept(RegistryBIBI.FLAWLESS_JADEITE);
                 event.accept(RegistryBIBI.PERFECT_JADEITE);
-                
+                event.accept(RegistryBIBI.BRILLIANT_JADEITE);
+
                 event.accept(RegistryBIBI.CRUDE_PADPARADSCHA);
                 event.accept(RegistryBIBI.PADPARADSCHA);
                 event.accept(RegistryBIBI.FLAWLESS_PADPARADSCHA);
                 event.accept(RegistryBIBI.PERFECT_PADPARADSCHA);
+                event.accept(RegistryBIBI.BRILLIANT_PADPARADSCHA);
 
                 event.accept(RegistryBIBI.CRUDE_RUBY);
                 event.accept(RegistryBIBI.RUBY);
                 event.accept(RegistryBIBI.FLAWLESS_RUBY);
                 event.accept(RegistryBIBI.PERFECT_RUBY);
+                event.accept(RegistryBIBI.BRILLIANT_RUBY);
 
                 event.accept(RegistryBIBI.CRUDE_SAPPHIRE);
                 event.accept(RegistryBIBI.SAPPHIRE);
                 event.accept(RegistryBIBI.FLAWLESS_SAPPHIRE);
                 event.accept(RegistryBIBI.PERFECT_SAPPHIRE);
+                event.accept(RegistryBIBI.BRILLIANT_SAPPHIRE);
 
                 event.accept(RegistryBIBI.CRUDE_SCAPOLITE);
                 event.accept(RegistryBIBI.SCAPOLITE);
                 event.accept(RegistryBIBI.FLAWLESS_SCAPOLITE);
                 event.accept(RegistryBIBI.PERFECT_SCAPOLITE);
+                event.accept(RegistryBIBI.BRILLIANT_SCAPOLITE);
 
                 event.accept(RegistryBIBI.CRUDE_STAUROLITE);
                 event.accept(RegistryBIBI.STAUROLITE);
                 event.accept(RegistryBIBI.FLAWLESS_STAUROLITE);
                 event.accept(RegistryBIBI.PERFECT_STAUROLITE);
+                event.accept(RegistryBIBI.BRILLIANT_STAUROLITE);
 
                 event.accept(RegistryBIBI.CRUDE_TANZANITE);
                 event.accept(RegistryBIBI.TANZANITE);
                 event.accept(RegistryBIBI.FLAWLESS_TANZANITE);
                 event.accept(RegistryBIBI.PERFECT_TANZANITE);
+                event.accept(RegistryBIBI.BRILLIANT_TANZANITE);
 
                 event.accept(RegistryBIBI.CRUDE_EMERALD);
                 event.accept(RegistryBIBI.FLAWLESS_EMERALD);
                 event.accept(RegistryBIBI.PERFECT_EMERALD);
+                event.accept(RegistryBIBI.BRILLIANT_EMERALD);
 
                 event.accept(RegistryBIBI.CRUDE_DIAMOND);
                 event.accept(RegistryBIBI.FLAWLESS_DIAMOND);
                 event.accept(RegistryBIBI.PERFECT_DIAMOND);
+                event.accept(RegistryBIBI.BRILLIANT_DIAMOND);
 
                 event.accept(RegistryBIBI.GEMSTONE_DUST);
 
