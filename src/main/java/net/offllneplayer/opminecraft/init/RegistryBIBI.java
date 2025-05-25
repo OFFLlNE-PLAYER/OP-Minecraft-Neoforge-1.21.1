@@ -211,6 +211,12 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> PERFECT_ANDALUSITE = ITEMSREGISTRY.registerItem("perfect_andalusite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_ANDALUSITE = ITEMSREGISTRY.registerItem("brilliant_andalusite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
+	public static final DeferredItem<Item> CRUDE_AQUAMARINE = ITEMSREGISTRY.registerItem("crude_aquamarine", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> AQUAMARINE = ITEMSREGISTRY.registerItem("aquamarine", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_AQUAMARINE = ITEMSREGISTRY.registerItem("flawless_aquamarine", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_AQUAMARINE = ITEMSREGISTRY.registerItem("perfect_aquamarine", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_AQUAMARINE = ITEMSREGISTRY.registerItem("brilliant_aquamarine", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
 	public static final DeferredItem<Item> CRUDE_CHRYSOBERYL = ITEMSREGISTRY.registerItem("crude_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> CHRYSOBERYL = ITEMSREGISTRY.registerItem("chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 	public static final DeferredItem<Item> FLAWLESS_CHRYSOBERYL = ITEMSREGISTRY.registerItem("flawless_chrysoberyl", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
@@ -228,12 +234,24 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> FLAWLESS_CYMOPHANE = ITEMSREGISTRY.registerItem("flawless_cymophane", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_CYMOPHANE = ITEMSREGISTRY.registerItem("perfect_cymophane", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_CYMOPHANE = ITEMSREGISTRY.registerItem("brilliant_cymophane", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	
+	public static final DeferredItem<Item> CRUDE_DRAGONITE = ITEMSREGISTRY.registerItem("crude_dragonite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> DRAGONITE = ITEMSREGISTRY.registerItem("dragonite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_DRAGONITE = ITEMSREGISTRY.registerItem("flawless_dragonite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_DRAGONITE = ITEMSREGISTRY.registerItem("perfect_dragonite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_DRAGONITE = ITEMSREGISTRY.registerItem("brilliant_dragonite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> CRUDE_JADEITE = ITEMSREGISTRY.registerItem("crude_jadeite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> JADEITE = ITEMSREGISTRY.registerItem("jadeite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 	public static final DeferredItem<Item> FLAWLESS_JADEITE = ITEMSREGISTRY.registerItem("flawless_jadeite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_JADEITE = ITEMSREGISTRY.registerItem("perfect_jadeite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_JADEITE = ITEMSREGISTRY.registerItem("brilliant_jadeite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+	public static final DeferredItem<Item> CRUDE_OPALITE = ITEMSREGISTRY.registerItem("crude_opalite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> OPALITE = ITEMSREGISTRY.registerItem("opalite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_OPALITE = ITEMSREGISTRY.registerItem("flawless_opalite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_OPALITE = ITEMSREGISTRY.registerItem("perfect_opalite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_OPALITE = ITEMSREGISTRY.registerItem("brilliant_opalite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> CRUDE_PADPARADSCHA = ITEMSREGISTRY.registerItem("crude_padparadscha", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> PADPARADSCHA = ITEMSREGISTRY.registerItem("padparadscha", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
@@ -270,6 +288,11 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> FLAWLESS_TANZANITE = ITEMSREGISTRY.registerItem("flawless_tanzanite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_TANZANITE = ITEMSREGISTRY.registerItem("perfect_tanzanite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_TANZANITE = ITEMSREGISTRY.registerItem("brilliant_tanzanite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+	public static final DeferredItem<Item> CRUDE_AMETHYST = ITEMSREGISTRY.registerItem("crude_amethyst", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_AMETHYST = ITEMSREGISTRY.registerItem("flawless_amethyst", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_AMETHYST = ITEMSREGISTRY.registerItem("perfect_amethyst", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_AMETHYST = ITEMSREGISTRY.registerItem("brilliant_amethyst", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> CRUDE_EMERALD = ITEMSREGISTRY.registerItem("crude_emerald", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> FLAWLESS_EMERALD = ITEMSREGISTRY.registerItem("flawless_emerald", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
@@ -345,6 +368,12 @@ public class RegistryBIBI {
 	public static final Supplier<HatchetItem> NETHERITE_HATCHET = ITEMSREGISTRY.register("netherite_hatchet",
 		() -> new HatchetItem(HatchetMaterialMap.NETHERITE, 6.0F, -2F));
 
+	public static final Supplier<HatchetItem> ONYX_HATCHET = ITEMSREGISTRY.register("onyx_hatchet",
+		() -> new HatchetItem(HatchetMaterialMap.ONYX, 6.0F, -2F));
+
+	public static final Supplier<HatchetItem> TITAN_HATCHET = ITEMSREGISTRY.register("titan_hatchet",
+		() -> new HatchetItem(HatchetMaterialMap.TITAN, 6.0F, -2F));
+
 	public static final Supplier<HatchetItem> CRYING_HATCHET = ITEMSREGISTRY.register("crying_hatchet",
 		() -> new HatchetItem(HatchetMaterialMap.CRYING, 6.0F, -2F));
 
@@ -363,6 +392,8 @@ public class RegistryBIBI {
 	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);
 
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
+
+	// public static final DeferredItem<SamuraiEdgeItem> SAMURAI_EDGE = ITEMSREGISTRY.register("samurai_edge", SamuraiEdge::new);
 
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
 

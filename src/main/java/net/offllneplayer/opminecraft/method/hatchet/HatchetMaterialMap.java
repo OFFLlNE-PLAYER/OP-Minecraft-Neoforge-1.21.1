@@ -86,11 +86,19 @@ public class HatchetMaterialMap {
 
 		public static final HatchetMaterial NETHERITE = register(new HatchetMaterial(
 			"netherite", BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9F, 7F, 15,
-			Ingredient.of(Items.NETHERITE_INGOT), Rarity.RARE, true));  // Only Netherite is fire resistant
+			Ingredient.of(Items.NETHERITE_INGOT), Rarity.EPIC, true));
+
+	public static final HatchetMaterial ONYX = register(new HatchetMaterial(
+		"onyx", BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9F, 7F, 15,
+		Ingredient.of(Items.NETHERITE_INGOT), Rarity.EPIC, true));
+
+	public static final HatchetMaterial TITAN = register(new HatchetMaterial(
+		"titan", BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9F, 7F, 15,
+		Ingredient.of(Items.NETHERITE_INGOT), Rarity.EPIC, true));
 
 		public static final HatchetMaterial CRYING = register(new HatchetMaterial(
 			"crying", BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9F, 7F, 15,
-			Ingredient.of(RegistryBIBI.CRYING_INGOT), Rarity.RARE, false));
+			Ingredient.of(RegistryBIBI.CRYING_INGOT), Rarity.EPIC, false));
 
 		// Register a material and return it for convenience
 		public static HatchetMaterial register(HatchetMaterial material) {

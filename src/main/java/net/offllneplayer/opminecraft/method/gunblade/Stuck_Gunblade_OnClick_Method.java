@@ -26,6 +26,7 @@ public class Stuck_Gunblade_OnClick_Method {
 			if (gunbladeEntity instanceof StuckGunblade stuckGunblade) {
 				ItemStack blade = stuckGunblade.getDefaultPickupItem().copy();
 				CompoundTag nbt = stuckGunblade.getPersistentData();
+
 				OP_NBTUtil.enchantWeaponDataToItemstack(blade, nbt, level);
 
 				// Give the item to the player

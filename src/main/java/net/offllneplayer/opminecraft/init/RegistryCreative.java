@@ -220,6 +220,8 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.GOLDEN_HATCHET.get());
                 event.accept(RegistryBIBI.DIAMOND_HATCHET.get());
                 event.accept(RegistryBIBI.NETHERITE_HATCHET.get());
+                event.accept(RegistryBIBI.ONYX_HATCHET.get());
+                event.accept(RegistryBIBI.TITAN_HATCHET.get());
                 event.accept(RegistryBIBI.CRYING_HATCHET.get());
 
                 event.accept(RegistryBIBI.CRYING_HELMET);
@@ -237,6 +239,8 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.ONYX_GUNBLADE.get());
                 event.accept(RegistryBIBI.TITAN_GUNBLADE.get());
                 event.accept(RegistryBIBI.PROTOTYPE_GUNBLADE);
+
+              //  event.accept(RegistryBIBI.SAMURAI_EDGE);
 
                 event.accept(RegistryBIBI.TOTEM_OF_LIFE);
                 // event.accept(RegistryIBBI.TOTEM_OF_UNCRYING);
@@ -264,6 +268,12 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.PERFECT_ANDALUSITE);
                 event.accept(RegistryBIBI.BRILLIANT_ANDALUSITE);
 
+                event.accept(RegistryBIBI.CRUDE_AQUAMARINE);
+                event.accept(RegistryBIBI.AQUAMARINE);
+                event.accept(RegistryBIBI.FLAWLESS_AQUAMARINE);
+                event.accept(RegistryBIBI.PERFECT_AQUAMARINE);
+                event.accept(RegistryBIBI.BRILLIANT_AQUAMARINE);
+
                 event.accept(RegistryBIBI.CRUDE_CHRYSOBERYL);
                 event.accept(RegistryBIBI.CHRYSOBERYL);
                 event.accept(RegistryBIBI.FLAWLESS_CHRYSOBERYL);
@@ -282,11 +292,23 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.PERFECT_CYMOPHANE);
                 event.accept(RegistryBIBI.BRILLIANT_CYMOPHANE);
 
+                event.accept(RegistryBIBI.CRUDE_DRAGONITE);
+                event.accept(RegistryBIBI.DRAGONITE);
+                event.accept(RegistryBIBI.FLAWLESS_DRAGONITE);
+                event.accept(RegistryBIBI.PERFECT_DRAGONITE);
+                event.accept(RegistryBIBI.BRILLIANT_DRAGONITE);
+
                 event.accept(RegistryBIBI.CRUDE_JADEITE);
                 event.accept(RegistryBIBI.JADEITE);
                 event.accept(RegistryBIBI.FLAWLESS_JADEITE);
                 event.accept(RegistryBIBI.PERFECT_JADEITE);
                 event.accept(RegistryBIBI.BRILLIANT_JADEITE);
+
+                event.accept(RegistryBIBI.CRUDE_OPALITE);
+                event.accept(RegistryBIBI.OPALITE);
+                event.accept(RegistryBIBI.FLAWLESS_OPALITE);
+                event.accept(RegistryBIBI.PERFECT_OPALITE);
+                event.accept(RegistryBIBI.BRILLIANT_OPALITE);
 
                 event.accept(RegistryBIBI.CRUDE_PADPARADSCHA);
                 event.accept(RegistryBIBI.PADPARADSCHA);
@@ -323,6 +345,11 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.FLAWLESS_TANZANITE);
                 event.accept(RegistryBIBI.PERFECT_TANZANITE);
                 event.accept(RegistryBIBI.BRILLIANT_TANZANITE);
+
+                event.accept(RegistryBIBI.CRUDE_AMETHYST);
+                event.accept(RegistryBIBI.FLAWLESS_AMETHYST);
+                event.accept(RegistryBIBI.PERFECT_AMETHYST);
+                event.accept(RegistryBIBI.BRILLIANT_AMETHYST);
 
                 event.accept(RegistryBIBI.CRUDE_EMERALD);
                 event.accept(RegistryBIBI.FLAWLESS_EMERALD);

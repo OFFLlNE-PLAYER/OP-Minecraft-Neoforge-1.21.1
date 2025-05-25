@@ -145,7 +145,7 @@ public class TNTStick {
         // Calculate progress as a value between 0 and 1
         float progress = 1.0F - (float) player.getUseItemRemainingTicks() / FUSE_DURATION;
 
-        return OP_getBarColorUtil.calculateBarColor(progress,
+        return OP_getBarColorUtil.countdownBarColor(progress,
            "BDFF2A",  // Early stage - pastel yellow (189, 255, 42)
            "A9B92A",  // Mid stage (169, 185, 42)
            "A90016",  // Late stage - dark red (169, 0, 22)

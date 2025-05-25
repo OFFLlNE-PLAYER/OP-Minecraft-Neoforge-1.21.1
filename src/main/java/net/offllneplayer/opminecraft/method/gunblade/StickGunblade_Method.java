@@ -19,74 +19,89 @@ import net.offllneplayer.opminecraft.method.UTIL.OP_TagKeyUtil;
 
 public class StickGunblade_Method {
 	public static InteractionResult execute(UseOnContext context) {
+
 		Level level = context.getLevel();
+
 		if (!(context.getPlayer() instanceof Player player) || level.isClientSide) return InteractionResult.PASS;
+		if (player == null) return InteractionResult.PASS;
 
-		// Only proceed if player is shift-clicking
-		if (player == null || !player.isShiftKeyDown()) {
-			return InteractionResult.PASS;
-		}
-
-		// Get the item from the player's active hand
+		// Set used stack
 		ItemStack stack = context.getItemInHand();
-		if (stack.isEmpty()) {
-			return InteractionResult.PASS;
-		}
+		if (stack.isEmpty()) return InteractionResult.PASS;
 
-		// Get hit position details
+		// Set hit position
 		BlockPos hitPos = context.getClickedPos();
+		Vec3 hitLocation = context.getClickLocation();
+		double xPos = hitLocation.x;
+		double yPos = hitLocation.y;
+		double zPos = hitLocation.z;
 		Direction face = context.getClickedFace();
 
-		// Check if the block is in the no-stick tag
+		// Check no-stick tag
 		BlockState state = level.getBlockState(hitPos);
-		if (state.is(OP_TagKeyUtil.Blocks.SWORD_NO_STICK)) {
-			return InteractionResult.PASS;
+		if (state.is(OP_TagKeyUtil.Blocks.SWORD_NO_STICK)) return InteractionResult.PASS;
+
+		// Setup Entity
+		StuckGunblade gun = new StuckGunblade(player, level, stack.copy());
+		Vec3 spawnPos = Vec3.atCenterOf(hitPos).add(xPos, yPos, zPos);;
+		double offset;
+		float gunRotation = (face == Direction.NORTH || face == Direction.EAST) ? 0F : (face == Direction.SOUTH || face == Direction.WEST) ? 180F : 0F;
+
+		// rotation adjustment
+		if (face == Direction.NORTH || face == Direction.EAST) {
+			gunRotation = 0F;
+		} else if (face == Direction.SOUTH || face == Direction.WEST) {
+			gunRotation = 180F;
 		}
 
-		// Create the entity directly with the appropriate constructor
-		StuckGunblade gun = new StuckGunblade(player, level, stack.copy());
+		// not crouching, gunblade falls
+		if (!(player.isCrouching() || player.isShiftKeyDown())) {
+			if (face == Direction.UP || face == Direction.DOWN) return InteractionResult.PASS;
 
-		// Setup Entity Position
-		Vec3 spawnPos;
-		float gunRotation = 0F;
+			offset = 0.1969420D;
 
-		// Get exact hit location for better positioning
-		Vec3 hitLocation = context.getClickLocation();
+			if (face == Direction.NORTH || face == Direction.SOUTH) {
+				xPos = hitLocation.x;
+				zPos = hitLocation.z + (face.getStepZ() * offset); // offset z to make it fall
+				spawnPos = new Vec3(xPos, hitLocation.y, zPos);
 
-		// use player rotation to determine entity rotation
-		float playerRotation = player.getYRot() % 360F;
-		if (playerRotation < 0F) playerRotation += 360F;
-
-		// Set position based on face direction
-		if (face == Direction.UP || face == Direction.DOWN) {
-
-			// converts player rotation to gun rotation
-			gunRotation = (360F - playerRotation + 90F) % 360F;
-
-			// Use block center with vertical offset
-			double offset = 0.4D;
-			double xPos = face.getStepX() * offset;
-			double yPos = face.getStepY() * offset;
-			double zPos = face.getStepZ() * offset;
-			spawnPos = Vec3.atCenterOf(hitPos).add(xPos, yPos, zPos);
-
-		} else { // For side faces
-
-			if (face == Direction.NORTH || face == Direction.EAST) {
-				gunRotation = 0F;
-			} else if (face == Direction.SOUTH || face == Direction.WEST) {
-				gunRotation = 180F;
+			} else if (face == Direction.EAST || face == Direction.WEST) {
+				xPos = hitLocation.x + (face.getStepX() * offset);  // offset x to make it fall
+				zPos = hitLocation.z;
+				spawnPos = new Vec3(xPos, hitLocation.y, zPos);
 			}
 
-			// Use hit location for Y and offset for X/Z
-			double offset = 0.4D;
-			double xPos = hitPos.getX() + 0.5D + (face.getStepX() * offset);
-			double zPos = hitPos.getZ() + 0.5D + (face.getStepZ() * offset);
-			spawnPos = new Vec3(xPos, hitLocation.y, zPos);
+		} else { // if crouching stick gunblade in block
+
+			offset = 0.420D;
+
+			if (face == Direction.UP || face == Direction.DOWN) {
+
+				float playerRotation = player.getYRot() % 360F;
+				if (playerRotation < 0F) playerRotation += 360F;
+
+				gunRotation = (360F - playerRotation + 90F) % 360F;
+
+				offset = face == Direction.UP ? 0.180420D : 0D;
+
+				spawnPos = new Vec3(hitLocation.x, hitLocation.y + offset, hitLocation.z);
+
+			} else if (face == Direction.NORTH || face == Direction.SOUTH) {
+				xPos = hitLocation.x;
+				zPos = hitPos.getZ() + 0.5D + (face.getStepZ() * offset);
+				spawnPos = new Vec3(xPos, hitLocation.y, zPos);
+
+			} else if (face == Direction.EAST || face == Direction.WEST) {
+				xPos = hitPos.getX() + 0.5D + (face.getStepX() * offset);
+				zPos = hitLocation.z;
+				spawnPos = new Vec3(xPos, hitLocation.y, zPos);
+			}
 		}
 
-		// Set entity position and data
+		// Set entity position
 		gun.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
+
+		// Set data
 		gun.setStuckFace(face);
 		gun.setRenderingRotation(gunRotation);
 		gun.stuckPos = hitPos;
@@ -94,7 +109,7 @@ public class StickGunblade_Method {
 
 		level.addFreshEntity(gun);
 
-		// Log what we're setting
+		// Log Output.
 		System.out.println("++++++++++++++++++++++");
 		System.out.println("new instance of StuckGunblade");
 		System.out.println("++++++++++++++++++++++");

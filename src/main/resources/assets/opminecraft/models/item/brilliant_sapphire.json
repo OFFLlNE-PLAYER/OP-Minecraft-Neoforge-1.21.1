@@ -1,0 +1,6 @@
+{
+  "parent": "opminecraft:item/brilliant_gem",
+  "textures": {
+    "0": "opminecraft:item/text_brilliant_sapphire"
+  }
+}

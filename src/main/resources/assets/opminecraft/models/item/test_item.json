@@ -2,7 +2,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_perfect_padparadscha_new"
+    "layer0": "opminecraft:item/text_crying_hatchet_old"
   },
   "display": {
     "thirdperson_righthand": {

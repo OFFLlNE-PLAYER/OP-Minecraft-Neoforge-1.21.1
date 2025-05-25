@@ -27,7 +27,7 @@ public class OP_getBarColorUtil {
 	}
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	public static int calculateBarColor(float progress, String earlyColor, String midColor, String lateColor, String finalBaseColor, String finalPulseColor, float pulseFrequency) {
+	public static int countdownBarColor(float progress, String earlyColor, String midColor, String lateColor, String finalBaseColor, String finalPulseColor, float pulseFrequency) {
 
 		// Convert hex colors to RGB components
 		int earlyColorInt = hexToInt(earlyColor);

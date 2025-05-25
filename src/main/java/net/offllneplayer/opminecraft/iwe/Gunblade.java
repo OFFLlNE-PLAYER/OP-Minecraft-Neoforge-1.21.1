@@ -407,43 +407,55 @@ public class Gunblade {
 		 @Override
 		 public void setPos(double x, double y, double z) {
 			 super.setPos(x, y, z);
-			 float shortHalf = 0.05F;
+			 float shortHalf = 0.0420F;
 			 float longHalf = 0.1420F;
 			 float height = 0.72F;
-			 float offset = 0.13F;
+			 float offset = 0.1420F;
 			 Direction stuckFace = this.getStuckFace();
 
 			 if (stuckFace == Direction.UP) {
 				 double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
 				 double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
-				 double dx = longHalf * cos - shortHalf * sin;
-				 double dz = longHalf * sin + shortHalf * cos;
+				 double dx = longHalf * Math.abs(cos) + shortHalf * Math.abs(sin);
+				 double dz = longHalf * Math.abs(sin) + shortHalf * Math.abs(cos);
+
+				 // Ensure minimum dimensions
+				 dx = Math.max(dx, 0.0420F);  // Minimum width
+				 dz = Math.max(dz, 0.0420F);  // Minimum depth
+
 				 // Add offset in direction of rotation
 				 x -= offset * cos;
 				 z += offset * sin;
+
 				 this.setBoundingBox(new AABB(
-					 x - Math.abs(dx),
+					 x - dx,
 					 y - height,
-					 z - Math.abs(dz),
-					 x + Math.abs(dx),
+					 z - dz,
+					 x + dx,
 					 y + height,
-					 z + Math.abs(dz)
+					 z + dz
 				 ));
 			 } else if (stuckFace == Direction.DOWN) {
 				 double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
 				 double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
-				 double dx = longHalf * cos - shortHalf * sin;
-				 double dz = longHalf * sin + shortHalf * cos;
+				 double dx = longHalf * Math.abs(cos) + shortHalf * Math.abs(sin);
+				 double dz = longHalf * Math.abs(sin) + shortHalf * Math.abs(cos);
+
+				 // Ensure minimum dimensions
+				 dx = Math.max(dx, 0.0420F);  // Minimum width
+				 dz = Math.max(dz, 0.0420F);  // Minimum depth
+
 				 // Add offset in direction of rotation
 				 x += offset * cos;
 				 z -= offset * sin;
+
 				 this.setBoundingBox(new AABB(
-					 x - Math.abs(dx),
+					 x - dx,
 					 y - height,
-					 z - Math.abs(dz),
-					 x + Math.abs(dx),
+					 z - dz,
+					 x + dx,
 					 y + height,
-					 z + Math.abs(dz)
+					 z + dz
 				 ));
 			 } else if (stuckFace == Direction.NORTH) {
 				 x -= offset;
