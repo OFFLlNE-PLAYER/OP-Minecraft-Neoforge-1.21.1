@@ -12,8 +12,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.registries.Registries;
 
-import net.offllneplayer.opminecraft.method.crash.akuaku.AkuAkuEnd_Method;
-import net.offllneplayer.opminecraft.method.crash.wumpafruit.WumpaFruitEnd_Method;
+import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuEnd_Method;
+import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitEnd_Method;
 import net.offllneplayer.opminecraft.potion.*;
 import net.offllneplayer.opminecraft.OPMinecraft;
 

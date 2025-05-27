@@ -61,10 +61,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -78,9 +74,9 @@ import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
-import net.offllneplayer.opminecraft.method.UTIL.OP_NBTUtil;
-import net.offllneplayer.opminecraft.method.hatchet.HatchetonHitBlock;
-import net.offllneplayer.opminecraft.method.hatchet.HatchetonHitEntity;
+import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
+import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -506,7 +502,7 @@ public class SMBSuperFan {
 
             if (!level().isClientSide()) {
 
-                // Use the utility method for button interaction
+                // Use the utility SHAREDMETHODS for button interaction
                 HatchetonHitBlock.handleButtonInteraction(result, level(), this);
 
                 float tone = Mth.randomBetween(this.random, 1.2F, 1.420F);
@@ -527,6 +523,7 @@ public class SMBSuperFan {
   /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
  /*-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-$-*/
 /*[ENTITY RENDERER]*/
+    @OnlyIn(Dist.CLIENT)
     public static class ThrownSMBSuperFanRenderer extends EntityRenderer<ThrownSMBSuperFan> {
 
         public ThrownSMBSuperFanRenderer(EntityRendererProvider.Context context) {
@@ -599,6 +596,7 @@ public class SMBSuperFan {
   /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
  /* -^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^--__--^ */
 /*[ENTITY MODEL]*/
+    @OnlyIn(Dist.CLIENT)
     public static class ThrownSMBSuperFanModel extends EntityModel<ThrownSMBSuperFan> {
         private final ModelPart root;
 

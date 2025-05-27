@@ -448,6 +448,9 @@
   "death.attack.smb_super_fan": "%1$s §cturned into meat with an SMB Super Fan§r",
   "death.attack.smb_super_fan.player": "%1$s §cwas turned into meat by§r %2$s's §cSMB Super Fan§r",
 
+  "death.attack.sw0rd": "%1$s stood on the wrong end of a sword",
+  "death.attack.sw0rd.player": "%1$s was impaled by %2$s's sword",
+
   "death.attack.wumpa_fruit": "%1$s §2g§aa§6g§6g§2e§ad§r on an §6old fruit§r",
 
   "/*-------*[deaths]*": ""

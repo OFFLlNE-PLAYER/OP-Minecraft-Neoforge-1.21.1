@@ -16,7 +16,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.network.chat.Component;
 
-import net.offllneplayer.opminecraft.method.gunblade.PrototypeGunbladeShot_Method;
+import net.offllneplayer.opminecraft.iwe.gunblade.PrototypeGunbladeShot_Method;
 
 import java.util.List;
 

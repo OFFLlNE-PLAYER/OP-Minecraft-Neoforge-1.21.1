@@ -13,23 +13,33 @@ import net.offllneplayer.opminecraft.block.GoldenBedBlock;
 import net.offllneplayer.opminecraft.block.OnyxLampBlock;
 import net.offllneplayer.opminecraft.block.charcoal.*;
 import net.offllneplayer.opminecraft.block.chiseledore.*;
-import net.offllneplayer.opminecraft.block.crash.*;
-import net.offllneplayer.opminecraft.block.crying.BlockofCryingIngotsBlock;
-import net.offllneplayer.opminecraft.block.crying.CryingEssenceBlock;
+import net.offllneplayer.opminecraft.block.crash.crates.crashtnt.CrashTNTBlock;
+import net.offllneplayer.opminecraft.block.crash.crates.crate.BounceCrateBlock;
+import net.offllneplayer.opminecraft.block.crash.crates.akuaku.AkuAkuCrateBlock;
+import net.offllneplayer.opminecraft.block.crash.crates.crate.CrashCrateBlock;
+import net.offllneplayer.opminecraft.block.crash.crates.nitro.NitroBlock;
+import net.offllneplayer.opminecraft.block.crash.wumpaplant.FloweringPitcherPlantBlock;
+import net.offllneplayer.opminecraft.block.crash.wumpaplant.WumpaPlantBlock;
+import net.offllneplayer.opminecraft.block.crying.blockofcryingingots.BlockofCryingIngotsBlock;
+import net.offllneplayer.opminecraft.block.crying.essence.CryingEssenceBlock;
 import net.offllneplayer.opminecraft.block.crying.cryingbricks.*;
 import net.offllneplayer.opminecraft.block.crying.cryingtiles.*;
 import net.offllneplayer.opminecraft.block.densestones.*;
-import net.offllneplayer.opminecraft.block.furnaces.*;
+import net.offllneplayer.opminecraft.block.furnaces.furnace.*;
 import net.offllneplayer.opminecraft.block.onyx.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
 import net.offllneplayer.opminecraft.item.*;
 
-import net.offllneplayer.opminecraft.iwe.Gunblade.GunbladeItem;
-import net.offllneplayer.opminecraft.iwe.Hatchet.HatchetItem;
+import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuMaskItem;
+import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitItem;
+import net.offllneplayer.opminecraft.item.crying.*;
+import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
+import net.offllneplayer.opminecraft.iwe.gunblade.Gunblade.GunbladeItem;
+import net.offllneplayer.opminecraft.iwe.hatchet.Hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
-import net.offllneplayer.opminecraft.iwe.TNTStick.TNTStickItem;
-import net.offllneplayer.opminecraft.method.gunblade.GunbladeMaterialMap;
-import net.offllneplayer.opminecraft.method.hatchet.HatchetMaterialMap;
+import net.offllneplayer.opminecraft.iwe.tntstick.TNTStick.TNTStickItem;
+import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterialMap;
+import net.offllneplayer.opminecraft.iwe.hatchet.HatchetMaterialMap;
 
 import java.util.function.Supplier;
 
@@ -351,7 +361,7 @@ public class RegistryBIBI {
 
 
 	public static final Supplier<HatchetItem> WOODEN_HATCHET = ITEMSREGISTRY.register("wooden_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.WOOD, 4.0F, -2F));
+		() -> new HatchetItem(HatchetMaterialMap.WOODEN, 4.0F, -2F));
 
 	public static final Supplier<HatchetItem> STONE_HATCHET = ITEMSREGISTRY.register("stone_hatchet",
 		() -> new HatchetItem(HatchetMaterialMap.STONE, 4.5F, -2F));

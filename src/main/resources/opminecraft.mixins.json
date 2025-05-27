@@ -1,10 +1,11 @@
 {
   "required": true,
-  "package": "net.offllneplayer.opminecraft.method.VANILLA_MIXIN",
+  "package": "net.offllneplayer.opminecraft.VANILLA_MIXIN",
   "refmap": "${mod_id}.refmap.json",
   "mixins": [
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "itemuseOnMixin"
   ],
-  "client": [],
+  "client": ["ItemEntityRendererMixin"],
   "server": []
 }

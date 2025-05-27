@@ -26,6 +26,9 @@ public class RegistryDamageTypes {
     public static final ResourceKey<DamageType> SMB_SUPER_FAN = ResourceKey.create(Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "smb_super_fan"));
 
+    public static final ResourceKey<DamageType> SW0RD = ResourceKey.create(Registries.DAMAGE_TYPE,
+       ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "sw0rd"));
+
     public static final ResourceKey<DamageType> WUMPA_FRUIT = ResourceKey.create(Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "wumpa_fruit"));
 

@@ -21,6 +21,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.offllneplayer.opminecraft.init.fml.FMLDispenserBehaviors;
 import net.offllneplayer.opminecraft.init.*;
 
+import net.offllneplayer.opminecraft.init.fml.FMLSw0rdmap;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -78,6 +79,7 @@ public class OPMinecraft {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(FMLDispenserBehaviors::DispenserBehaviors);
+        event.enqueueWork(FMLSw0rdmap::Sw0rdMap);
     }
 
     private static boolean networkingRegistered = false;

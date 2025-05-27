@@ -10,10 +10,10 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import net.offllneplayer.opminecraft.block.crash.CrashTNTBlockEntity;
-import net.offllneplayer.opminecraft.block.crash.NitroBlockEntity;
-import net.offllneplayer.opminecraft.block.furnaces.*;
+import net.offllneplayer.opminecraft.block.crash.crates.crashtnt.CrashTNTBlockEntity;
+import net.offllneplayer.opminecraft.block.crash.crates.nitro.NitroBlockEntity;
 import net.offllneplayer.opminecraft.OPMinecraft;
+import net.offllneplayer.opminecraft.block.furnaces.furnace.*;
 
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)

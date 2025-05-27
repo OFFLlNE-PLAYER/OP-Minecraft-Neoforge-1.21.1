@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.method.crying.CryingButtons_Method;
+import net.offllneplayer.opminecraft.block.crying.CryingButtons_Method;
 
 public class CryingTileButtonBlock extends ButtonBlock {
 	public CryingTileButtonBlock() {

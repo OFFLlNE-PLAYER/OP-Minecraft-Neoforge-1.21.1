@@ -9,7 +9,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.ButtonBlock;
-import net.offllneplayer.opminecraft.method.crying.CryingButtons_Method;
+import net.offllneplayer.opminecraft.block.crying.CryingButtons_Method;
 
 public class CryingBrickButtonBlock extends ButtonBlock {
 	public CryingBrickButtonBlock() {

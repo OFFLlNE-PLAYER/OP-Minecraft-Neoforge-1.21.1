@@ -16,7 +16,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryFluids;
-import net.offllneplayer.opminecraft.method.crying.essence.CryingEssenceFlowingCondition_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.CryingEssenceFlowingCondition_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 

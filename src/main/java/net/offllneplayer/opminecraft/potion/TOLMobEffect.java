@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.common.EffectCure;
-import net.offllneplayer.opminecraft.method.totemoflife.*;
+import net.offllneplayer.opminecraft.item.tol.TOL_OnTick_Method;
 
 
 import java.util.Set;

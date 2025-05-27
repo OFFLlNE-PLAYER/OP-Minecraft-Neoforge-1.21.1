@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.common.EffectCure;
-import net.offllneplayer.opminecraft.method.crash.wumpafruit.WumpaFruit_OnTick_Method;
+import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruit_OnTick_Method;
 
 import java.util.Set;
 

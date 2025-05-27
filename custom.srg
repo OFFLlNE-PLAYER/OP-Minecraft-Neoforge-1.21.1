@@ -1,2 +1,18 @@
+# Entity mappings for ItemEntity
 CL: net/minecraft/world/entity/item/ItemEntity net/minecraft/world/entity/item/ItemEntity
+# Method for entity tick updates
 MD: net/minecraft/world/entity/item/ItemEntity/tick ()V net/minecraft/world/entity/item/ItemEntity/m_70168_ ()V
+
+# Method to get spin angle of items (used for rotation animations)
+MD: net/minecraft/world/entity/item/ItemEntity/getSpin (F)F net/minecraft/world/entity/item/ItemEntity/m_31984_ (F)F
+
+# Renderer class for dropped items
+CL: net/minecraft/client/renderer/entity/ItemEntityRenderer net/minecraft/client/renderer/entity/ItemEntityRenderer
+# Main render method for item entities
+MD: net/minecraft/client/renderer/entity/ItemEntityRenderer/render (Lnet/minecraft/world/entity/item/ItemEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V net/minecraft/client/renderer/entity/ItemEntityRenderer/render (Lnet/minecraft/world/entity/item/ItemEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
+
+# Method for applying rotation to the rendering matrix
+MD: com/mojang/blaze3d/vertex/PoseStack/mulPose (Lorg/joml/Quaternionf;)V com/mojang/blaze3d/vertex/PoseStack/mulPose (Lorg/joml/Quaternionf;)V
+
+# Item interaction method for using items on blocks
+MD: net/minecraft/world/item/Item/useOn (Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; net/minecraft/world/item/Item/m_7203_ (Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;
