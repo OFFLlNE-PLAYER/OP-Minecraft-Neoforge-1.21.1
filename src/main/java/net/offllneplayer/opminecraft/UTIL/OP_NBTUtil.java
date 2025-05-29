@@ -79,17 +79,10 @@ public class OP_NBTUtil {
     // restore custom name
         String name = tag.getString("nayme");
 
-
-        System.out.println("nayme:" + name);
-        System.out.println("direct hover name:" + stack.getHoverName());
-        System.out.println("getString hover name:" + stack.getHoverName().getString());
-
-
         if (!stack.getHoverName().getString().equals(name)) {
             stack.set(DataComponents.CUSTOM_NAME, Component.literal(name));
         }
 
-    // restore damage
         stack.setDamageValue(tag.getInt("DMG_VALU"));
 
     // lookup each saved enchant by ID and re-apply
@@ -116,5 +109,5 @@ public class OP_NBTUtil {
     }
 
 
-/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+ /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 }

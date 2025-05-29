@@ -1,6 +1,7 @@
 package net.offllneplayer.opminecraft.iwe.gunblade;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -610,7 +611,36 @@ public class Gunblade {
 				Direction stuckFace = entity.getStuckFace();
 				float rotation = entity.getRenderingRotation();
 
-				GunbladeRenderRotations.applyGunbladeRotation(poseStack, stuckFace, entity.isGrounded(), rotation);
+				if (!entity.isGrounded()) {
+					poseStack.mulPose(Axis.XP.rotationDegrees(0));
+					poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
+					poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+
+				} else {
+					if (stuckFace == Direction.NORTH) {
+						poseStack.mulPose(Axis.XP.rotationDegrees(270));
+						poseStack.mulPose(Axis.YP.rotationDegrees(0));
+						poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+					} else if (stuckFace == Direction.SOUTH) {
+						poseStack.mulPose(Axis.XP.rotationDegrees(90));
+						poseStack.mulPose(Axis.YP.rotationDegrees(180));
+						poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+					} else if (stuckFace == Direction.EAST) {
+						poseStack.mulPose(Axis.XP.rotationDegrees(270));
+						poseStack.mulPose(Axis.YP.rotationDegrees(0));
+						poseStack.mulPose(Axis.ZP.rotationDegrees(315));
+					} else if (stuckFace == Direction.WEST) {
+						poseStack.mulPose(Axis.XP.rotationDegrees(90));
+						poseStack.mulPose(Axis.YP.rotationDegrees(180));
+						poseStack.mulPose(Axis.ZP.rotationDegrees(315));
+					} else if (stuckFace == Direction.UP) {
+						poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
+						poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+					} else if (stuckFace == Direction.DOWN) {
+						poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
+						poseStack.mulPose(Axis.ZP.rotationDegrees(225));
+					}
+				}
 
 			String materialName = entity.getEntityData().get(StuckGunblade.MATERIAL_NAME);
 			GunbladeMaterialMap.GunbladeMaterial material = GunbladeMaterialMap.get(materialName);

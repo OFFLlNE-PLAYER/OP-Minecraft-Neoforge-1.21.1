@@ -44,6 +44,8 @@ public class OP_TagKeyUtil {
    /*[Item Tags]*/
     public static class Items {
 
+         public static final TagKey<Item> DONT_ROTATE_ITEMS = createTag("dont_rotate_items");
+
         public static final TagKey<Item> CRYING_ITEMS = createTag("crying_items");
 
          public static final TagKey<Item> GUNBLADES = createTag("gunblades");

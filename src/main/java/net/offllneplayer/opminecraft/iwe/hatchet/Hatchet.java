@@ -2,6 +2,7 @@ package net.offllneplayer.opminecraft.iwe.hatchet;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -560,9 +561,39 @@ public class Hatchet {
          Direction dir = entity.getDirection();
          Direction stuckFace = entity.getStuckDirection();
 
-         HatchetRenderRotations.applyProjectileRotation(poseStack, dir, stuckFace, entity.isGrounded(), entity.getRenderingRotation());
+         if (!entity.isGrounded()) {
+            if (dir == Direction.NORTH) poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            if (dir == Direction.SOUTH) poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            if (dir == Direction.EAST) poseStack.mulPose(Axis.YP.rotationDegrees(180));
+            if (dir == Direction.WEST) poseStack.mulPose(Axis.YP.rotationDegrees(0));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(entity.rotation));
+         } else {
+            if (dir == Direction.NORTH) poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            if (dir == Direction.SOUTH) poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            if (dir == Direction.EAST) poseStack.mulPose(Axis.YP.rotationDegrees(0));
+            if (dir == Direction.WEST) poseStack.mulPose(Axis.YP.rotationDegrees(180));
 
-         // Fix: Get material from synchronized data
+            if (stuckFace == Direction.NORTH) {
+               poseStack.mulPose(Axis.XP.rotationDegrees(180));
+               poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.SOUTH) {
+               poseStack.mulPose(Axis.XP.rotationDegrees(180));
+               poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.EAST) {
+               poseStack.mulPose(Axis.XP.rotationDegrees(180));
+               poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.WEST) {
+               poseStack.mulPose(Axis.XP.rotationDegrees(180));
+               poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            } else if (stuckFace == Direction.UP) {
+               poseStack.mulPose(Axis.XP.rotationDegrees(180));
+            } else if (stuckFace == Direction.DOWN) {
+               poseStack.mulPose(Axis.XP.rotationDegrees(180));
+               poseStack.mulPose(Axis.ZP.rotationDegrees(180));
+            }
+         }
+
+         // Get material from synchronized data
          String materialName = entity.getEntityData().get(ThrownHatchet.MATERIAL_NAME);
          HatchetMaterialMap.HatchetMaterial material = HatchetMaterialMap.get(materialName);
          Item hatchetItem = material.getRegisteredItem();

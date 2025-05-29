@@ -18,22 +18,19 @@ public class Stuck_Sw0rd_OnClick_Method {
 		if (level.isClientSide()) return;
 
 		if (player.getItemInHand(hand).isEmpty()) {
-			// Play sound effect
+
 			float tone = Mth.randomBetween(level.getRandom(), 1.35F, 1.5F);
 			level.playSound(null, sw0rd, RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.6F, tone);
 
-			// Create item stack based on material (assuming gunbladeEntity is a StuckGunblade)
 			if (sw0rd instanceof StuckGunblade stuckGunblade) {
 				ItemStack blade = stuckGunblade.getDefaultPickupItem().copy();
 				CompoundTag nbt = stuckGunblade.getPersistentData();
 
 				OP_NBTUtil.enchantWeaponDataToItemstack(blade, nbt, level);
 
-				// Give the item to the player
 				player.setItemInHand(hand, blade);
 				player.getInventory().setChanged();
 
-				// Remove the entity
 				stuckGunblade.discard();
 
 			} else if (sw0rd instanceof StuckSw0rd stucksw0rd) {
@@ -42,11 +39,9 @@ public class Stuck_Sw0rd_OnClick_Method {
 
 				OP_NBTUtil.enchantWeaponDataToItemstack(blade, nbt, level);
 
-				// Give the item to the player
 				player.setItemInHand(hand, blade);
 				player.getInventory().setChanged();
 
-				// Remove the entity
 				stucksw0rd.discard();
 			}
 		}

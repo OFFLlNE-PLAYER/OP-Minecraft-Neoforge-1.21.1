@@ -29,6 +29,11 @@ public class RegistryEntities {
     public static final Supplier<EntityType<StuckSw0rd>> STUCK_SW0RD = ENTREGISTRY.register("stuck_sw0rd",
        () -> EntityType.Builder.<StuckSw0rd>of(StuckSw0rd::new, MobCategory.MISC).build("stuck_sw0rd"));
 
+    /*
+    public static final Supplier<EntityType<StuckOPSw0rd>> STUCK_OP_SW0RD = ENTREGISTRY.register("stuck_op_sw0rd",
+       () -> EntityType.Builder.<StuckOPSw0rd>of(StuckOPSw0rd::new, MobCategory.MISC).build("stuck_op_sw0rd"));
+    */
+
     public static final Supplier<EntityType<ThrownHatchet>> THROWN_HATCHET = ENTREGISTRY.register("thrown_hatchet",
        ()-> EntityType.Builder.<ThrownHatchet>of(ThrownHatchet::new, MobCategory.MISC).build("thrown_hatchet"));
 

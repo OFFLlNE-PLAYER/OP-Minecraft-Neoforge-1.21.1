@@ -18,14 +18,6 @@ public class ModModelLayers {
     public static final ModelLayerLocation WARTURTLE_ARMOR = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID, "warturtle_armor"), "armor");
 */
-  public static final ModelLayerLocation STUCK_GUNBLADE = new ModelLayerLocation(
-     ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "stuck_gunblade"), "main");
-
-    public static final ModelLayerLocation STUCK_SW0RD = new ModelLayerLocation(
-       ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "stuck_sw0rd"), "main");
-
-    public static final ModelLayerLocation THROWN_HATCHET = new ModelLayerLocation(
-       ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_hatchet"), "main");
 
     public static final ModelLayerLocation THROWN_TNT_STICK = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_tnt_stick"), "main");

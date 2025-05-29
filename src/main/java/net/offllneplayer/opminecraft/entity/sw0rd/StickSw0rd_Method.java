@@ -14,7 +14,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.offllneplayer.opminecraft.entity.sw0rd.StuckSw0rd;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.iwe.gunblade.Gunblade.StuckGunblade;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
@@ -118,19 +117,6 @@ public class StickSw0rd_Method {
 
 			level.addFreshEntity(gun);
 
-			// Log Output.
-			System.out.println("++++++++++++++++++++++");
-			System.out.println("new instance of gun");
-			System.out.println("++++++++++++++++++++++");
-			System.out.println("Player Facing: " + player.getDirection());
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("Set gun stuckFace to: " + gun.getStuckFace());
-			System.out.println("Set gun YRot to: " + gun.getRenderingRotation());
-			System.out.println("---------------------------------------");
-			System.out.println("regName:" + regName);
-			System.out.println("regPath:" + regPath);
-			System.out.println("gun.material:" + gun.material);
-			System.out.println("======================");
 
 		} else if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS)) {
 
@@ -144,25 +130,9 @@ public class StickSw0rd_Method {
 			sw0rd.stuckBlock = level.getBlockState(hitPos).getBlock();
 
 			level.addFreshEntity(sw0rd);
-
-
-			// Log Output.
-			System.out.println("++++++++++++++++++++++");
-			System.out.println("new instance of Sw0rd");
-			System.out.println("++++++++++++++++++++++");
-			System.out.println("Player Facing: " + player.getDirection());
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("Set gun stuckFace to: " + sw0rd.getStuckFace());
-			System.out.println("Set gun YRot to: " + sw0rd.getRenderingRotation());
-			System.out.println("---------------------------------------");
-			System.out.println("regName:" + regName);
-			System.out.println("regPath:" + regPath);
-			System.out.println("gun.material:" + sw0rd.material);
-			System.out.println("======================");
-
 		}
 
-		level.playSound(null, hitPos, RegistrySounds.BLADE_SLASH.get(), SoundSource.BLOCKS, 1F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.1F));
+		level.playSound(null, hitPos, RegistrySounds.BLADE_SLASH.get(), SoundSource.BLOCKS, 0.69F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.1F));
 
 		stack.shrink(1);
 

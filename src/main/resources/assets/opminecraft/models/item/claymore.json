@@ -1,6 +1,6 @@
 {
   "parent": "opminecraft:item/op_sw0rd",
   "textures": {
-    "0": "opminecraft:item/text_crying_sword"
+    "0": "opminecraft:item/text_claymore"
   }
 }

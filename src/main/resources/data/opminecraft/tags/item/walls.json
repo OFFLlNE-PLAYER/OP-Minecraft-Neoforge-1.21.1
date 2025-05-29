@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:charcoal_wall",
+    "opminecraft:charcoal_brick_wall",
+    "opminecraft:charcoal_tile_wall",
+    "opminecraft:crying_brick_wall",
+    "opminecraft:crying_tile_wall",
+    "opminecraft:dense_stone_wall",
+    "opminecraft:dense_stone_brick_wall",
+    "opminecraft:dense_stone_tile_wall",
+    "opminecraft:stone_tile_wall"
+  ]
+}

@@ -26,15 +26,12 @@ public abstract class ItemEntityMixin {
     @Overwrite
     public float getSpin(float partialTicks) {
         ItemEntity mixedItem = (ItemEntity)(Object)this;
-        // Generate a consistent random rotation based on UUID
         long seed = mixedItem.getUUID().getLeastSignificantBits();
         Random random = new Random(seed);
         float fixedRotation = random.nextFloat() * 360F;
 
         return fixedRotation;
     }
-
-
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "0": "opminecraft:item/text_clay_sword"
+  }
+}

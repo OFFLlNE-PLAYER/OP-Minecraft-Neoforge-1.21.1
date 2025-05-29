@@ -333,6 +333,11 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> YELLOW_FEATHER = ITEMSREGISTRY.registerItem("yellow_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 	public static final DeferredItem<Item> GOLDEN_FEATHER = ITEMSREGISTRY.registerItem("golden_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
+	/*
+	public static final DeferredItem<Item> CLAY_SWORD = ITEMSREGISTRY.registerItem("clay_sword", ClaySwordItem::new);
+	public static final DeferredItem<Item> CLAYMORE = ITEMSREGISTRY.registerItem("clay_sword", ClaymoreItem::new);
+	*/
+
 	public static final DeferredItem<Item> CRYING_ESSENCE_BUCKET = ITEMSREGISTRY.register("crying_essence_bucket", CryingEssenceItem::new);
 	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.register("crying_ingot", CryingIngotItem::new);
 	public static final DeferredItem<Item> CRYING_SMITHING_TEMPLATE = ITEMSREGISTRY.register("crying_smithing_template", CryingSmithingTemplateItem::new);

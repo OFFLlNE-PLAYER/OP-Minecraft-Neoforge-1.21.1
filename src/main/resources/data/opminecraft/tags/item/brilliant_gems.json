@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:brilliant_alexandrite",
+    "opminecraft:brilliant_andalusite",
+    "opminecraft:brilliant_aquamarine",
+    "opminecraft:brilliant_chrysoberyl",
+    "opminecraft:brilliant_corundum",
+    "opminecraft:brilliant_cymophane",
+    "opminecraft:brilliant_dragonite",
+    "opminecraft:brilliant_jadeite",
+    "opminecraft:brilliant_opalite",
+    "opminecraft:brilliant_padparadscha",
+    "opminecraft:brilliant_ruby",
+    "opminecraft:brilliant_sapphire",
+    "opminecraft:brilliant_scapolite",
+    "opminecraft:brilliant_staurolite",
+    "opminecraft:brilliant_tanzanite",
+
+    "opminecraft:brilliant_amethyst",
+    "opminecraft:brilliant_diamond",
+    "opminecraft:brilliant_emerald"
+  ]
+}
