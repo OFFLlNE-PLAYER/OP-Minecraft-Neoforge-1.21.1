@@ -75,13 +75,13 @@ public class ItemEntityRendererMixin {
 
       } else if (currentEntity.onGround()) { // On ground
 
-         if (thisStack.is(OP_TagKeyUtil.Items.DONT_ROTATE_ITEMS)) {
-            instance.mulPose(Axis.XP.rotationDegrees(xRot));
-            instance.mulPose(Axis.YP.rotationDegrees(yRot));
-         } else {
+         if (thisStack.is(OP_TagKeyUtil.Items.MIXIN_ROTATE_ITEMS)) {
             instance.mulPose(Axis.XP.rotationDegrees(270F));
             instance.mulPose(Axis.YP.rotationDegrees(0));
             instance.mulPose(Axis.ZP.rotationDegrees(spinAngle));
+         } else {
+            instance.mulPose(Axis.XP.rotationDegrees(xRot));
+            instance.mulPose(Axis.YP.rotationDegrees(yRot));
          }
 
       } else { // In air

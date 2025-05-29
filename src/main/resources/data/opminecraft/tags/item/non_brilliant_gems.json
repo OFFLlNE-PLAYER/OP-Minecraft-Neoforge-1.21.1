@@ -1,0 +1,96 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:crude_alexandrite",
+    "opminecraft:alexandrite",
+    "opminecraft:flawless_alexandrite",
+    "opminecraft:perfect_alexandrite",
+
+    "opminecraft:crude_andalusite",
+    "opminecraft:andalusite",
+    "opminecraft:flawless_andalusite",
+    "opminecraft:perfect_andalusite",
+
+    "opminecraft:crude_aquamarine",
+    "opminecraft:aquamarine",
+    "opminecraft:flawless_aquamarine",
+    "opminecraft:perfect_aquamarine",
+
+    "opminecraft:crude_chrysoberyl",
+    "opminecraft:chrysoberyl",
+    "opminecraft:flawless_chrysoberyl",
+    "opminecraft:perfect_chrysoberyl",
+
+    "opminecraft:crude_corundum",
+    "opminecraft:corundum",
+    "opminecraft:flawless_corundum",
+    "opminecraft:perfect_corundum",
+
+    "opminecraft:crude_cymophane",
+    "opminecraft:cymophane",
+    "opminecraft:flawless_cymophane",
+    "opminecraft:perfect_cymophane",
+
+    "opminecraft:crude_dragonite",
+    "opminecraft:dragonite",
+    "opminecraft:flawless_dragonite",
+    "opminecraft:perfect_dragonite",
+
+    "opminecraft:crude_jadeite",
+    "opminecraft:jadeite",
+    "opminecraft:flawless_jadeite",
+    "opminecraft:perfect_jadeite",
+
+    "opminecraft:crude_opalite",
+    "opminecraft:opalite",
+    "opminecraft:flawless_opalite",
+    "opminecraft:perfect_opalite",
+
+    "opminecraft:crude_padparadscha",
+    "opminecraft:padparadscha",
+    "opminecraft:flawless_padparadscha",
+    "opminecraft:perfect_padparadscha",
+
+    "opminecraft:crude_ruby",
+    "opminecraft:ruby",
+    "opminecraft:flawless_ruby",
+    "opminecraft:perfect_ruby",
+
+    "opminecraft:crude_sapphire",
+    "opminecraft:sapphire",
+    "opminecraft:flawless_sapphire",
+    "opminecraft:perfect_sapphire",
+
+    "opminecraft:crude_scapolite",
+    "opminecraft:scapolite",
+    "opminecraft:flawless_scapolite",
+    "opminecraft:perfect_scapolite",
+
+    "opminecraft:crude_staurolite",
+    "opminecraft:staurolite",
+    "opminecraft:flawless_staurolite",
+    "opminecraft:perfect_staurolite",
+
+    "opminecraft:crude_tanzanite",
+    "opminecraft:tanzanite",
+    "opminecraft:flawless_tanzanite",
+    "opminecraft:perfect_tanzanite",
+
+    "opminecraft:crude_amethyst",
+    "opminecraft:flawless_amethyst",
+    "opminecraft:perfect_amethyst",
+
+    "opminecraft:crude_diamond",
+    "opminecraft:flawless_diamond",
+    "opminecraft:perfect_diamond",
+
+    "opminecraft:crude_emerald",
+    "opminecraft:flawless_emerald",
+    "opminecraft:perfect_emerald",
+
+
+      "minecraft:amethyst_shard",
+      "minecraft:diamond",
+      "minecraft:emerald"
+  ]
+}
