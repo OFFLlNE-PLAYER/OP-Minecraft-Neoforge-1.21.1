@@ -38,8 +38,8 @@ public class HatchetonHitEntity {
 			.ifPresent(entry -> {
 				int level = entry.getValue();
 				if (random.nextInt(level + 1) == 0) {
-					int currentDamage = projectile.getPersistentData().getInt("DMG_VALU");
-					projectile.getPersistentData().putInt("DMG_VALU", currentDamage + 1);
+					int currentDamage = projectile.getPersistentData().getInt("D4M4G3");
+					projectile.getPersistentData().putInt("D4M4G3", currentDamage + 1);
 				}
 			});
 	}

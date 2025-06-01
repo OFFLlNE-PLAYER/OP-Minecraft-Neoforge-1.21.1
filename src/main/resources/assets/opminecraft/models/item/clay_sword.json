@@ -1,5 +1,5 @@
 {
-  "parent": "item/generated",
+  "parent": "opminecraft:item/stuck_sw0rd",
   "textures": {
     "0": "opminecraft:item/text_clay_sword"
   }

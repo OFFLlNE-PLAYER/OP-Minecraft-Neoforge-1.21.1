@@ -50,6 +50,7 @@ public class OP_TagKeyUtil {
 
          public static final TagKey<Item> GUNBLADES = createTag("gunblades");
 
+         public static final TagKey<Item> OP_SWORDS = createTag("op_swords");
          public static final TagKey<Item> VANILLA_SW0RDS = createTag("vanilla_sw0rds");
 
         private static TagKey<Item> createTag(String name) {

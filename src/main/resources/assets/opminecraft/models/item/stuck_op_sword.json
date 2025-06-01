@@ -1,5 +1,5 @@
 {
-	"credit": "Made with Blockbench",
+	"credit": "Made by OP with Blockbench",
 	"textures": {
 		"0": "opminecraft:item/text_claymore",
 		"particle": "opminecraft:item/text_claymore"
@@ -345,14 +345,12 @@
 	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [0, 90, 69],
-			"translation": [5.75, 6.5, 0.5],
-			"scale": [0.8, 0.8, 0.8]
+			"rotation": [0, 90, 45],
+			"translation": [7.5, 5.5, -2]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [0, -90, -69],
-			"translation": [-5.75, 6.5, 0.5],
-			"scale": [0.8, 0.8, 0.8]
+			"rotation": [0, -90, -45],
+			"translation": [-6.5, 5.5, -2]
 		},
 		"firstperson_righthand": {
 			"rotation": [0, -90, 40],
@@ -363,7 +361,7 @@
 			"translation": [-8, 5.75, -1.75]
 		},
 		"ground": {
-			"translation": [0, 0, 0],
+			"translation": [0, 0, 3.5],
 			"scale": [0.55, 0.55, 0.55]
 		},
 		"gui": {
@@ -375,9 +373,8 @@
 			"translation": [-7.5, 7.25, -10.25]
 		},
 		"fixed": {
-			"rotation": [90, 0, 45],
-			"translation": [1.5, -6, -9.5],
-			"scale": [0.9, 0.9, 0.9]
+			"translation": [0, -3.0420, 8],
+			"scale": [1, 1, 1]
 		}
 	}
 }

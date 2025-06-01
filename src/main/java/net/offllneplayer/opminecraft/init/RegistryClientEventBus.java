@@ -14,10 +14,11 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.offllneplayer.opminecraft.client.particle.ParticleGunbladeShot;
 
 import net.offllneplayer.opminecraft.entity.sw0rd.StuckSw0rdRenderer;
-import net.offllneplayer.opminecraft.iwe.gunblade.Gunblade.StuckGunbladeRenderer;
-import net.offllneplayer.opminecraft.iwe.hatchet.Hatchet.ThrownHatchetRenderer;
+import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunbladeRenderer;
+import net.offllneplayer.opminecraft.iwe.hatchet.ThrownHatchetRenderer;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.StuckOPSwordRenderer;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFanRenderer;
-import net.offllneplayer.opminecraft.iwe.tntstick.TNTStick.ThrownTNTStickRenderer;
+import net.offllneplayer.opminecraft.iwe.tntstick.ThrownTNTStickRenderer;
 
 import static net.offllneplayer.opminecraft.OPMinecraft.Mod_ID;
 import static net.offllneplayer.opminecraft.init.RegistryFluids.CRYING_ESSENCE;
@@ -39,6 +40,7 @@ public class RegistryClientEventBus {
 
 			EntityRenderers.register(RegistryEntities.STUCK_GUNBLADE.get(), StuckGunbladeRenderer::new);
 			EntityRenderers.register(RegistryEntities.STUCK_SW0RD.get(), StuckSw0rdRenderer::new);
+			EntityRenderers.register(RegistryEntities.STUCK_OP_SWORD.get(), StuckOPSwordRenderer::new);
 
 			EntityRenderers.register(RegistryEntities.THROWN_HATCHET.get(), ThrownHatchetRenderer::new);
 			EntityRenderers.register(RegistryEntities.THROWN_TNT_STICK.get(), ThrownTNTStickRenderer::new);

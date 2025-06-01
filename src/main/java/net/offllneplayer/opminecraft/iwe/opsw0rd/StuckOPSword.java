@@ -1,20 +1,16 @@
-package net.offllneplayer.opminecraft.entity.sw0rd;
+package net.offllneplayer.opminecraft.iwe.opsw0rd;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-
 import net.minecraft.server.level.ServerLevel;
-
 import net.minecraft.util.Mth;
-
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -25,7 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -34,26 +29,25 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-
+import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.entity.sw0rd.Stuck_Sw0rd_OnClick_Method;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitEntity;
-
-import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
 
 import java.util.Map;
 
 
-public class StuckSw0rd extends AbstractArrow {
+public class StuckOPSword extends AbstractArrow {
 
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
   /*[DATA]*/
-	public static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckSw0rd.class, EntityDataSerializers.STRING);
-	public static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckSw0rd.class, EntityDataSerializers.BYTE);
-	public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckSw0rd.class, EntityDataSerializers.FLOAT);
+	public static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.STRING);
+	public static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.BYTE);
+	public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.FLOAT);
 
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -63,26 +57,26 @@ public class StuckSw0rd extends AbstractArrow {
 	public Block stuckBlock;
 
 	// Store the material of the blade
-	public Sw0rdMaterialMap.Sw0rdMaterial material;
+	public OPSwordMaterialMap.OPSwordMaterial material;
 	private float dmg;
 	private ItemStack bladeStack;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDERS]*/
-	public StuckSw0rd(EntityType<? extends StuckSw0rd> type, Level level) {
+	public StuckOPSword(EntityType<? extends StuckOPSword> type, Level level) {
 		super(type, level);
-		this.material = this.getMaterial() != null ? this.getMaterial() : Sw0rdMaterialMap.NETHERITE;
+		this.material = this.getMaterial() != null ? this.getMaterial() : OPSwordMaterialMap.CLAY;
 		this.updateBladeStackmaterial();
 	}
 
-	public StuckSw0rd(Level world, LivingEntity shooter) {
-		super(RegistryEntities.STUCK_SW0RD.get(), world);
+	public StuckOPSword(Level world, LivingEntity shooter) {
+		super(RegistryEntities.STUCK_OP_SWORD.get(), world);
 
 		this.setOwner(shooter);
-		this.material = this.getMaterial() != null ? this.getMaterial() : Sw0rdMaterialMap.NETHERITE;
+		this.material = this.getMaterial() != null ? this.getMaterial() : OPSwordMaterialMap.CLAY;
 
-		this.entityData.set(MATERIAL_NAME, "netherite");
+		this.entityData.set(MATERIAL_NAME, "clay");
 		this.updateBladeStackmaterial();
 
 		if (shooter != null) {
@@ -91,31 +85,19 @@ public class StuckSw0rd extends AbstractArrow {
 		this.pickup = Pickup.DISALLOWED;
 	}
 
-	public StuckSw0rd(Player shooter, Level world, ItemStack stack) {
+	public StuckOPSword(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
 		ResourceLocation regName = BuiltInRegistries.ITEM.getKey(stack.getItem());
 		String regPath = regName.getPath();
 
 		// check the item name
-		if (regPath.contains("wooden")) {
-			this.material = Sw0rdMaterialMap.WOODEN;
-			this.entityData.set(MATERIAL_NAME, "wooden");
-		} else if (regPath.contains("stone")) {
-			this.material = Sw0rdMaterialMap.STONE;
-			this.entityData.set(MATERIAL_NAME, "stone");
-		} else if (regPath.contains("iron")) {
-			this.material = Sw0rdMaterialMap.IRON;
-			this.entityData.set(MATERIAL_NAME, "iron");
-		} else if (regPath.contains("golden")) {
-			this.material = Sw0rdMaterialMap.GOLDEN;
-			this.entityData.set(MATERIAL_NAME, "golden");
-		} else if (regPath.contains("diamond")) {
-			this.material = Sw0rdMaterialMap.DIAMOND;
-			this.entityData.set(MATERIAL_NAME, "diamond");
-		} else if (regPath.contains("netherite")) {
-			this.material = Sw0rdMaterialMap.NETHERITE;
-			this.entityData.set(MATERIAL_NAME, "netherite");
+		if (regPath.contains("clay")) {
+			this.material = OPSwordMaterialMap.CLAY;
+			this.entityData.set(MATERIAL_NAME, "clay");
+		} else if (regPath.contains("crying")) {
+			this.material = OPSwordMaterialMap.CRYING;
+			this.entityData.set(MATERIAL_NAME, "crying");
 		}
 
 		this.updateBladeStackmaterial();
@@ -142,31 +124,23 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 	// update the bladeStack based on material
-	public Sw0rdMaterialMap.Sw0rdMaterial getMaterial() {
+	public OPSwordMaterialMap.OPSwordMaterial getMaterial() {
 		return material;
 	}
 
-	public void setMaterial(Sw0rdMaterialMap.Sw0rdMaterial material) {
+	public void setMaterial(OPSwordMaterialMap.OPSwordMaterial material) {
 		this.entityData.set(MATERIAL_NAME, material.getName());
 	}
 
 	public void updateBladeStackmaterial() {
 		Item materialItem = null;
 
-		if (material == Sw0rdMaterialMap.WOODEN) {
-			materialItem = Items.WOODEN_SWORD;
-		} else if (material == Sw0rdMaterialMap.STONE) {
-			materialItem = Items.STONE_SWORD;
-		} else if (material == Sw0rdMaterialMap.IRON) {
-			materialItem = Items.IRON_SWORD;
-		} else if (material == Sw0rdMaterialMap.GOLDEN) {
-			materialItem = Items.GOLDEN_SWORD;
-		} else if (material == Sw0rdMaterialMap.DIAMOND) {
-			materialItem = Items.DIAMOND_SWORD;
-		} else if (material == Sw0rdMaterialMap.NETHERITE) {
-			materialItem = Items.NETHERITE_SWORD;
+		if (material == OPSwordMaterialMap.CLAY) {
+			materialItem = RegistryBIBI.CLAYMORE.get();
+		} else if (material == OPSwordMaterialMap.CRYING) {
+			materialItem = RegistryBIBI.CRYING_SWORD.get();
 		} else {
-			materialItem = Items.NETHERITE_SWORD;
+			materialItem = RegistryBIBI.CLAYMORE.get();
 		}
 
 		this.bladeStack = new ItemStack(materialItem);
@@ -196,7 +170,7 @@ public class StuckSw0rd extends AbstractArrow {
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(MATERIAL_NAME, "netherite");
+		builder.define(MATERIAL_NAME, "clay");
 		builder.define(STUCK_FACE, (byte) Direction.UP.get3DDataValue());
 		builder.define(ROTATION, 0.0F);
 	}
@@ -216,7 +190,7 @@ public class StuckSw0rd extends AbstractArrow {
 		if (compound.contains("material_name")) {
 			String materialName = compound.getString("material_name");
 			this.entityData.set(MATERIAL_NAME, materialName);
-			this.material = Sw0rdMaterialMap.get(materialName);
+			this.material = OPSwordMaterialMap.get(materialName);
 			this.updateBladeStackmaterial();
 		}
 		if (compound.contains("stuck_face")) {
@@ -234,8 +208,8 @@ public class StuckSw0rd extends AbstractArrow {
 	@Override
 	public ItemStack getDefaultPickupItem() {
 		// Get the correct item for this material
-		Item materialItem = Sw0rdMaterialMap.get(this.entityData.get(MATERIAL_NAME)).getRegisteredItem();
-		return new ItemStack(materialItem != null ? materialItem : Items.NETHERITE_SWORD);
+		Item materialItem = OPSwordMaterialMap.get(this.entityData.get(MATERIAL_NAME)).getRegisteredItem();
+		return new ItemStack(materialItem != null ? materialItem : RegistryBIBI.CLAYMORE.get());
 	}
 
 	@Override
@@ -268,8 +242,8 @@ public class StuckSw0rd extends AbstractArrow {
 	public void setPos(double x, double y, double z) {
 		super.setPos(x, y, z);
 		float shortHalf = 0.0420F;
-		float longHalf = 0.22420F;
-		float height = 0.72F;
+		float longHalf = 0.3F;
+		float height = 0.82420F;
 		Direction stuckFace = this.getStuckFace();
 
 		if (stuckFace == Direction.UP) {

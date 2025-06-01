@@ -1,11 +1,12 @@
 {
   "replace": false,
   "values": [
-    "#opminecraft:fence_gates",
     "#opminecraft:gunblades",
 
     "#opminecraft:non_brilliant_gems",
     "opminecraft:gemstone_dust",
+
+    "opminecraft:claymore_sword",
 
     "opminecraft:crying_ingot",
     "opminecraft:crying_essence_bucket",
@@ -17,6 +18,7 @@
     "opminecraft:crying_pickaxe",
     "opminecraft:crying_shovel",
     "opminecraft:crying_hatchet",
+    "opminecraft:crying_hoe",
     "opminecraft:crying_paxel",
 
     "opminecraft:crying_helmet",

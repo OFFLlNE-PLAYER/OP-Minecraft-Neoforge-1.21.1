@@ -17,8 +17,7 @@ import java.util.Map;
 
 public class OP_NBTUtil {
 
-     /*whataf***ingpaininmya$$thisonewas*/
-    /**/
+    /*whataf***ingpaininmya$$thisonewas*/
    /*[WeaponData Record]*/
     public record WeaponData(String itemName, int dmgValue, Map<Enchantment,Integer> enchants) {}
 
@@ -26,14 +25,14 @@ public class OP_NBTUtil {
     /*x-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>ox-=>o*/
 	/*[read WeaponData -> Entity Class]*/
     public static WeaponData readItemStacktoClass(CompoundTag tag, Level level) {
-        String name = tag.getString("nayme");
-        int dmg = tag.getInt("DMG_VALU");
+        String name = tag.getString("N4M3");
+        int dmg = tag.getInt("D4M4G3");
 
         var registry = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
         Map<Enchantment,Integer> map = new HashMap<>();
 
         for (String key : tag.getAllKeys()) {
-            if (key.equals("nayme") || key.equals("DMG_VALU")) continue;
+            if (key.equals("N4M3") || key.equals("D4M4G3")) continue;
             int lvl = tag.getInt(key);
             if (lvl <= 0) continue;
 
@@ -60,8 +59,8 @@ public class OP_NBTUtil {
     public static void writeItemStackNBTToBlock(ItemStack stack, BlockEntity be) {
         CompoundTag data = be.getPersistentData();
 
-        data.putString("nayme",    stack.getHoverName().getString());
-        data.putInt   ("DMG_VALU", stack.getDamageValue());
+        data.putString("N4M3",    stack.getHoverName().getString());
+        data.putInt   ("D4M4G3", stack.getDamageValue());
 
         var enchants = stack.getComponents().get(DataComponents.ENCHANTMENTS);
         for (var entry : enchants.entrySet()) {
@@ -77,19 +76,19 @@ public class OP_NBTUtil {
         /*[enchant WeaponData -> itemStack]*/
     public static void enchantWeaponDataToItemstack(ItemStack stack, CompoundTag tag, Level level) {
     // restore custom name
-        String name = tag.getString("nayme");
+        String name = tag.getString("N4M3");
 
         if (!stack.getHoverName().getString().equals(name)) {
             stack.set(DataComponents.CUSTOM_NAME, Component.literal(name));
         }
 
-        stack.setDamageValue(tag.getInt("DMG_VALU"));
+        stack.setDamageValue(tag.getInt("D4M4G3"));
 
     // lookup each saved enchant by ID and re-apply
         var registry = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
 
         for (String key : tag.getAllKeys()) {
-        if (key.equals("nayme") || key.equals("DMG_VALU")) continue;
+        if (key.equals("N4M3") || key.equals("D4M4G3")) continue;
         int lvl = tag.getInt(key);
         if (lvl <= 0) continue;
 

@@ -19,7 +19,7 @@ public class itemuseOnMixin {
 		ItemStack stack = context.getItemInHand();
 
 		// sword or gunblade useon
-		if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS) || stack.is(OP_TagKeyUtil.Items.GUNBLADES)) {
+		if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS)) {
 			if (!context.getLevel().isClientSide()) {
 				StickSw0rd_Method.execute(context);
 			}

@@ -14,9 +14,10 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.StuckOPSword;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.iwe.gunblade.Gunblade.StuckGunblade;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
+import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunblade;
 
 public class StickSw0rd_Method {
 	public static InteractionResult execute(UseOnContext context) {
@@ -30,9 +31,7 @@ public class StickSw0rd_Method {
 		ItemStack stack = context.getItemInHand();
 		if (stack.isEmpty()) return InteractionResult.PASS;
 
-		// Setup stack location
-		ResourceLocation regName = BuiltInRegistries.ITEM.getKey(stack.getItem());
-		String regPath = regName.getPath();
+		boolean putsword = false;
 
 		// Set hit position
 		BlockPos hitPos = context.getClickedPos();
@@ -109,34 +108,51 @@ public class StickSw0rd_Method {
 			StuckGunblade gun = new StuckGunblade(player, level, stack.copy());
 			gun.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
 
-			// Set data
 			gun.setStuckFace(face);
 			gun.setRenderingRotation(sw0rdRotation);
-			gun.stuckPos = hitPos;
-			gun.stuckBlock = level.getBlockState(hitPos).getBlock();
+			gun.setStuckPos(hitPos);
+			gun.setStuckBlock(level.getBlockState(hitPos).getBlock());
 
 			level.addFreshEntity(gun);
+			putsword = true;
 
+		} else if (stack.is(OP_TagKeyUtil.Items.OP_SWORDS)) {
+
+			StuckOPSword op_sword = new StuckOPSword(player, level, stack.copy());
+			op_sword.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
+
+			op_sword.setStuckFace(face);
+			op_sword.setRenderingRotation(sw0rdRotation);
+			op_sword.stuckPos = hitPos;
+			op_sword.stuckBlock = level.getBlockState(hitPos).getBlock();
+
+			level.addFreshEntity(op_sword);
+			putsword = true;
 
 		} else if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS)) {
 
 			StuckSw0rd sw0rd = new StuckSw0rd(player, level, stack.copy());
 			sw0rd.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
 
-			// Set data
 			sw0rd.setStuckFace(face);
 			sw0rd.setRenderingRotation(sw0rdRotation);
 			sw0rd.stuckPos = hitPos;
 			sw0rd.stuckBlock = level.getBlockState(hitPos).getBlock();
 
 			level.addFreshEntity(sw0rd);
+			putsword = true;
 		}
 
-		level.playSound(null, hitPos, RegistrySounds.BLADE_SLASH.get(), SoundSource.BLOCKS, 0.69F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.1F));
+		if (putsword) {
 
-		stack.shrink(1);
+			level.playSound(null, hitPos, RegistrySounds.BLADE_SLASH.get(), SoundSource.BLOCKS, 0.69F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.1F));
+			stack.shrink(1);
 
-		return InteractionResult.SUCCESS;
+			return InteractionResult.SUCCESS;
+
+		} else {
+			return InteractionResult.PASS;
+		}
 	}
 }
 

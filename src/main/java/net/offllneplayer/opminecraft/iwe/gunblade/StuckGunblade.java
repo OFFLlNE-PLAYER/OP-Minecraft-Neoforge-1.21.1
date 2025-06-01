@@ -1,20 +1,14 @@
-package net.offllneplayer.opminecraft.entity.sw0rd;
+package net.offllneplayer.opminecraft.iwe.gunblade;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
-
 import net.minecraft.server.level.ServerLevel;
-
 import net.minecraft.util.Mth;
-
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -25,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -34,55 +27,56 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-
+import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.entity.sw0rd.Stuck_Sw0rd_OnClick_Method;
+import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitEntity;
-
-import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
 
 import java.util.Map;
 
 
-public class StuckSw0rd extends AbstractArrow {
+public class StuckGunblade extends AbstractArrow {
 
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
-  /*[DATA]*/
-	public static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckSw0rd.class, EntityDataSerializers.STRING);
-	public static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckSw0rd.class, EntityDataSerializers.BYTE);
-	public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckSw0rd.class, EntityDataSerializers.FLOAT);
+	/*[DATA]*/
+	private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.STRING);
+	private static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.BYTE);
+	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckGunblade.class, EntityDataSerializers.FLOAT);
 
-	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
+	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-  /*[VARIABLES]*/
+	/*[VARIABLES]*/
 
-	public BlockPos stuckPos;
-	public Block stuckBlock;
+	private BlockPos stuckPos;
+	private Block stuckBlock;
 
 	// Store the material of the blade
-	public Sw0rdMaterialMap.Sw0rdMaterial material;
+	private GunbladeMaterialMap.GunbladeMaterial material;
 	private float dmg;
 	private ItemStack bladeStack;
 
-	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-  /*[BUILDERS]*/
-	public StuckSw0rd(EntityType<? extends StuckSw0rd> type, Level level) {
+	/*[BUILDERS]*/
+	public StuckGunblade(EntityType<? extends StuckGunblade> type, Level level) {
 		super(type, level);
-		this.material = this.getMaterial() != null ? this.getMaterial() : Sw0rdMaterialMap.NETHERITE;
+		// Default to netherite material for compatibility
+		this.material = GunbladeMaterialMap.TITAN;
 		this.updateBladeStackmaterial();
 	}
 
-	public StuckSw0rd(Level world, LivingEntity shooter) {
-		super(RegistryEntities.STUCK_SW0RD.get(), world);
-
+	public StuckGunblade(Level world, LivingEntity shooter) {
+		super(RegistryEntities.STUCK_GUNBLADE.get(), world);
 		this.setOwner(shooter);
-		this.material = this.getMaterial() != null ? this.getMaterial() : Sw0rdMaterialMap.NETHERITE;
-
-		this.entityData.set(MATERIAL_NAME, "netherite");
+		// Default to netherite material
+		this.material = GunbladeMaterialMap.TITAN;
+		this.entityData.set(MATERIAL_NAME, "titan");
 		this.updateBladeStackmaterial();
 
 		if (shooter != null) {
@@ -91,31 +85,13 @@ public class StuckSw0rd extends AbstractArrow {
 		this.pickup = Pickup.DISALLOWED;
 	}
 
-	public StuckSw0rd(Player shooter, Level world, ItemStack stack) {
+	public StuckGunblade(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		ResourceLocation regName = BuiltInRegistries.ITEM.getKey(stack.getItem());
-		String regPath = regName.getPath();
-
-		// check the item name
-		if (regPath.contains("wooden")) {
-			this.material = Sw0rdMaterialMap.WOODEN;
-			this.entityData.set(MATERIAL_NAME, "wooden");
-		} else if (regPath.contains("stone")) {
-			this.material = Sw0rdMaterialMap.STONE;
-			this.entityData.set(MATERIAL_NAME, "stone");
-		} else if (regPath.contains("iron")) {
-			this.material = Sw0rdMaterialMap.IRON;
-			this.entityData.set(MATERIAL_NAME, "iron");
-		} else if (regPath.contains("golden")) {
-			this.material = Sw0rdMaterialMap.GOLDEN;
-			this.entityData.set(MATERIAL_NAME, "golden");
-		} else if (regPath.contains("diamond")) {
-			this.material = Sw0rdMaterialMap.DIAMOND;
-			this.entityData.set(MATERIAL_NAME, "diamond");
-		} else if (regPath.contains("netherite")) {
-			this.material = Sw0rdMaterialMap.NETHERITE;
-			this.entityData.set(MATERIAL_NAME, "netherite");
+		// Try to get material from the item if it's a BladeItem
+		if (stack.getItem() instanceof GunbladeItem gunbladeItem) {
+			this.material = gunbladeItem.getMaterial();
+			this.entityData.set(MATERIAL_NAME, this.material.getName());
 		}
 
 		this.updateBladeStackmaterial();
@@ -133,52 +109,52 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 
-	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
-  /*[HELP]*/
-
-	public boolean isGrounded() {
-		return inGround;
-	}
+	/*[HELP]*/
 
 	// update the bladeStack based on material
-	public Sw0rdMaterialMap.Sw0rdMaterial getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(Sw0rdMaterialMap.Sw0rdMaterial material) {
-		this.entityData.set(MATERIAL_NAME, material.getName());
-	}
+	public GunbladeMaterialMap.GunbladeMaterial getMaterial() {return material;}
 
 	public void updateBladeStackmaterial() {
 		Item materialItem = null;
 
-		if (material == Sw0rdMaterialMap.WOODEN) {
-			materialItem = Items.WOODEN_SWORD;
-		} else if (material == Sw0rdMaterialMap.STONE) {
-			materialItem = Items.STONE_SWORD;
-		} else if (material == Sw0rdMaterialMap.IRON) {
-			materialItem = Items.IRON_SWORD;
-		} else if (material == Sw0rdMaterialMap.GOLDEN) {
-			materialItem = Items.GOLDEN_SWORD;
-		} else if (material == Sw0rdMaterialMap.DIAMOND) {
-			materialItem = Items.DIAMOND_SWORD;
-		} else if (material == Sw0rdMaterialMap.NETHERITE) {
-			materialItem = Items.NETHERITE_SWORD;
+		if (material == GunbladeMaterialMap.ONYX) {
+			materialItem = RegistryBIBI.ONYX_GUNBLADE.get();
+		} else if (material == GunbladeMaterialMap.TITAN) {
+			materialItem = RegistryBIBI.TITAN_GUNBLADE.get();
+		} else if (material == GunbladeMaterialMap.CRYING) {
+			materialItem = RegistryBIBI.CRYING_GUNBLADE.get();
 		} else {
-			materialItem = Items.NETHERITE_SWORD;
+			materialItem = RegistryBIBI.TITAN_GUNBLADE.get(); // Fallback
 		}
 
 		this.bladeStack = new ItemStack(materialItem);
 		this.dmg = this.material.getAttackDamage();
 	}
 
+	public boolean isGrounded() {
+		return inGround;
+	}
+
+	public String getMaterialName() {
+		return this.entityData.get(MATERIAL_NAME);
+	}
+
 	public void setStuckFace(Direction face) {
-		this.entityData.set(STUCK_FACE, (byte) face.get3DDataValue());
+		this.entityData.set(STUCK_FACE, (byte)face.get3DDataValue());
 	}
 
 	public void setRenderingRotation(float rotation) {
 		this.entityData.set(ROTATION, rotation);
+	}
+
+	public void setStuckPos(BlockPos pos) {
+		this.stuckPos = pos;
+	}
+
+	public void setStuckBlock(Block block) {
+		this.stuckBlock = block;
 	}
 
 	public Direction getStuckFace() {
@@ -190,14 +166,14 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 
-	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
-  /*[DATA SYNC]*/
+	/*[DATA SYNC]*/
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(MATERIAL_NAME, "netherite");
-		builder.define(STUCK_FACE, (byte) Direction.UP.get3DDataValue());
+		builder.define(MATERIAL_NAME, "titan");
+		builder.define(STUCK_FACE, (byte)Direction.UP.get3DDataValue());
 		builder.define(ROTATION, 0.0F);
 	}
 
@@ -216,7 +192,7 @@ public class StuckSw0rd extends AbstractArrow {
 		if (compound.contains("material_name")) {
 			String materialName = compound.getString("material_name");
 			this.entityData.set(MATERIAL_NAME, materialName);
-			this.material = Sw0rdMaterialMap.get(materialName);
+			this.material = GunbladeMaterialMap.get(materialName);
 			this.updateBladeStackmaterial();
 		}
 		if (compound.contains("stuck_face")) {
@@ -228,14 +204,14 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 
-	 /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-  /*[BASIC Entity OVERRIDES]*/
+	/*[BASIC Entity OVERRIDES]*/
 	@Override
 	public ItemStack getDefaultPickupItem() {
 		// Get the correct item for this material
-		Item materialItem = Sw0rdMaterialMap.get(this.entityData.get(MATERIAL_NAME)).getRegisteredItem();
-		return new ItemStack(materialItem != null ? materialItem : Items.NETHERITE_SWORD);
+		Item materialItem = GunbladeMaterialMap.get(this.entityData.get(MATERIAL_NAME)).getRegisteredItem();
+		return new ItemStack(materialItem != null ? materialItem : RegistryBIBI.TITAN_GUNBLADE.get());
 	}
 
 	@Override
@@ -261,15 +237,16 @@ public class StuckSw0rd extends AbstractArrow {
 	@Override
 	public void doPostHurtEffects(LivingEntity target) {/*VOIDED Discard entity on hit*/}
 
-	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
-  /*[HITBOX]*/
+	/*[HITBOX]*/
 	@Override
 	public void setPos(double x, double y, double z) {
 		super.setPos(x, y, z);
 		float shortHalf = 0.0420F;
-		float longHalf = 0.22420F;
+		float longHalf = 0.1420F;
 		float height = 0.72F;
+		float offset = 0.1420F;
 		Direction stuckFace = this.getStuckFace();
 
 		if (stuckFace == Direction.UP) {
@@ -282,9 +259,13 @@ public class StuckSw0rd extends AbstractArrow {
 			dx = Math.max(dx, 0.0420F);  // Minimum width
 			dz = Math.max(dz, 0.0420F);  // Minimum depth
 
+			// Add offset in direction of rotation
+			x -= offset * cos;
+			z += offset * sin;
+
 			this.setBoundingBox(new AABB(
 				x - dx,
-				y,
+				y - height,
 				z - dz,
 				x + dx,
 				y + height,
@@ -300,35 +281,42 @@ public class StuckSw0rd extends AbstractArrow {
 			dx = Math.max(dx, 0.0420F);  // Minimum width
 			dz = Math.max(dz, 0.0420F);  // Minimum depth
 
+			// Add offset in direction of rotation
+			x += offset * cos;
+			z -= offset * sin;
+
 			this.setBoundingBox(new AABB(
 				x - dx,
 				y - height,
 				z - dz,
 				x + dx,
-				y,
+				y + height,
 				z + dz
 			));
 		} else if (stuckFace == Direction.NORTH) {
+			x -= offset;
 			this.setBoundingBox(new AABB(
 				x - longHalf,
 				y - shortHalf,
 				z - height,
 				x + longHalf,
 				y + shortHalf,
-				z
+				z + height
 			));
 		} else if (stuckFace == Direction.SOUTH) {
+			x += offset;
 			this.setBoundingBox(new AABB(
 				x - longHalf,
 				y - shortHalf,
-				z,
+				z - height,
 				x + longHalf,
 				y + shortHalf,
 				z + height
 			));
 		} else if (stuckFace == Direction.EAST) {
+			z -= offset;
 			this.setBoundingBox(new AABB(
-				x,
+				x - height,
 				y - shortHalf,
 				z - longHalf,
 				x + height,
@@ -336,11 +324,12 @@ public class StuckSw0rd extends AbstractArrow {
 				z + longHalf
 			));
 		} else if (stuckFace == Direction.WEST) {
+			z += offset;
 			this.setBoundingBox(new AABB(
 				x - height,
 				y - shortHalf,
 				z - longHalf,
-				x,
+				x + height,
 				y + shortHalf,
 				z + longHalf
 			));
@@ -348,9 +337,9 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 
-	 /*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
+	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
 	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
-  /*[tick]*/
+	/*[tick]*/
 	@Override
 	public void tick() {
 		super.tick();
@@ -362,6 +351,7 @@ public class StuckSw0rd extends AbstractArrow {
 		}
 
 		if (!this.inGround) {
+
 			this.setStuckFace(Direction.UP);
 
 			float currentRotation = this.getRenderingRotation();
@@ -374,24 +364,24 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 
-	 /*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
+	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
 	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
-  /*[interact]*/
+	/*[interact]*/
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
 		return Stuck_Sw0rd_OnClick_Method.execute(this.level(), this, player, hand);
 	}
 
 
-	 /*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
+	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
 	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
-  /*[on Hit Entity]*/
+	/*[on Hit Entity]*/
 	@Override
 	public void onHitEntity(EntityHitResult result) {
 		Level level = this.level();
 
 		if (!level.isClientSide()) {
-			DamageSource bladeDMG = level().damageSources().source(RegistryDamageTypes.SW0RD, this, this.getOwner());
+			DamageSource bladeDMG = level().damageSources().source(RegistryDamageTypes.GUNBLADE, this, this.getOwner());
 			Entity hitEntity = result.getEntity();
 
 			if (hitEntity instanceof LivingEntity living) {
@@ -410,6 +400,11 @@ public class StuckSw0rd extends AbstractArrow {
 					float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
 					float damage = dmg + enchantDmg;
 					living.hurt(bladeDMG, damage);
+
+					if (material == GunbladeMaterialMap.CRYING) {
+						ApplyCrying1_Method.execute(result.getEntity());
+					}
+
 				}
 			} else { // non-living entities
 				HatchetonHitEntity.miscEntityHit(this, hitEntity, level, random);
@@ -419,9 +414,9 @@ public class StuckSw0rd extends AbstractArrow {
 	}
 
 
-	 /*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
+	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
 	/*---[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]----*/
-  /*[on Hit Block]*/
+	/*[on Hit Block]*/
 	@Override
 	public void onHitBlock(BlockHitResult result) {
 		stuckPos = result.getBlockPos();
@@ -432,6 +427,7 @@ public class StuckSw0rd extends AbstractArrow {
 		super.onHitBlock(result);
 
 		if (!level().isClientSide()) {
+
 			// Use the utility SHAREDMETHODS for button interaction
 			HatchetonHitBlock.handleButtonInteraction(result, level(), this);
 

@@ -28,16 +28,18 @@ import net.offllneplayer.opminecraft.block.densestones.*;
 import net.offllneplayer.opminecraft.block.furnaces.furnace.*;
 import net.offllneplayer.opminecraft.block.onyx.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordItem;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordMaterialMap;
 import net.offllneplayer.opminecraft.item.*;
 
 import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuMaskItem;
 import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitItem;
 import net.offllneplayer.opminecraft.item.crying.*;
 import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
-import net.offllneplayer.opminecraft.iwe.gunblade.Gunblade.GunbladeItem;
-import net.offllneplayer.opminecraft.iwe.hatchet.Hatchet.HatchetItem;
+import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
+import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
-import net.offllneplayer.opminecraft.iwe.tntstick.TNTStick.TNTStickItem;
+import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterialMap;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetMaterialMap;
 
@@ -333,16 +335,10 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> YELLOW_FEATHER = ITEMSREGISTRY.registerItem("yellow_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 	public static final DeferredItem<Item> GOLDEN_FEATHER = ITEMSREGISTRY.registerItem("golden_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
-	/*
-	public static final DeferredItem<Item> CLAY_SWORD = ITEMSREGISTRY.registerItem("clay_sword", ClaySwordItem::new);
-	public static final DeferredItem<Item> CLAYMORE = ITEMSREGISTRY.registerItem("clay_sword", ClaymoreItem::new);
-	*/
-
 	public static final DeferredItem<Item> CRYING_ESSENCE_BUCKET = ITEMSREGISTRY.register("crying_essence_bucket", CryingEssenceItem::new);
 	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.register("crying_ingot", CryingIngotItem::new);
 	public static final DeferredItem<Item> CRYING_SMITHING_TEMPLATE = ITEMSREGISTRY.register("crying_smithing_template", CryingSmithingTemplateItem::new);
 
-	public static final DeferredItem<Item> CRYING_SWORD = ITEMSREGISTRY.register("crying_sword", CryingSwordItem::new);
 	public static final DeferredItem<Item> CRYING_AXE = ITEMSREGISTRY.register("crying_axe", CryingAxeItem::new);
 	public static final DeferredItem<Item> CRYING_PICKAXE = ITEMSREGISTRY.register("crying_pickaxe", CryingPickaxeItem::new);
 	public static final DeferredItem<Item> CRYING_SHOVEL = ITEMSREGISTRY.register("crying_shovel", CryingShovelItem::new);
@@ -403,6 +399,16 @@ public class RegistryBIBI {
 		() -> new GunbladeItem(GunbladeMaterialMap.TITAN, 6.0F, -2F));
 
 	public static final DeferredItem<PrototypeGunbladeItem> PROTOTYPE_GUNBLADE = ITEMSREGISTRY.register("prototype_gunblade", PrototypeGunbladeItem::new);
+
+	/*
+	public static final DeferredItem<Item> CLAY_SWORD = ITEMSREGISTRY.registerItem("clay_sword", ClaySwordItem::new);
+*/
+
+	public static final Supplier<OPSwordItem> CRYING_SWORD = ITEMSREGISTRY.register("crying_sword",
+		() -> new OPSwordItem(OPSwordMaterialMap.CRYING, 6.0F, -2F));
+
+	public static final Supplier<OPSwordItem> CLAYMORE = ITEMSREGISTRY.register("claymore_sword",
+		() -> new OPSwordItem(OPSwordMaterialMap.CLAY, 6.0F, -2F));
 
 
 	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);

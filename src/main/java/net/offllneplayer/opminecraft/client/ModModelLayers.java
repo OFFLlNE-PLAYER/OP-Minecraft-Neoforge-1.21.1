@@ -22,7 +22,4 @@ public class ModModelLayers {
     public static final ModelLayerLocation THROWN_TNT_STICK = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_tnt_stick"), "main");
 
-    public static final ModelLayerLocation THROWN_SMB_SUPER_FAN = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "thrown_smb_super_fan"), "main");
-
 }
