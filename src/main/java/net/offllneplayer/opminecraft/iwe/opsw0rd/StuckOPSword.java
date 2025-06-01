@@ -242,8 +242,9 @@ public class StuckOPSword extends AbstractArrow {
 	public void setPos(double x, double y, double z) {
 		super.setPos(x, y, z);
 		float shortHalf = 0.0420F;
-		float longHalf = 0.3F;
-		float height = 0.82420F;
+		float longHalf = 0.3420F;
+		float height = 0.830420F;
+		float op_magic_number = 0.77420F;
 		Direction stuckFace = this.getStuckFace();
 
 		if (stuckFace == Direction.UP) {
@@ -258,10 +259,10 @@ public class StuckOPSword extends AbstractArrow {
 
 			this.setBoundingBox(new AABB(
 				x - dx,
-				y,
+				y - height * op_magic_number, // down
 				z - dz,
 				x + dx,
-				y + height,
+				y + height, //up
 				z + dz
 			));
 		} else if (stuckFace == Direction.DOWN) {
@@ -276,50 +277,51 @@ public class StuckOPSword extends AbstractArrow {
 
 			this.setBoundingBox(new AABB(
 				x - dx,
-				y - height,
+				y - height,  // down
 				z - dz,
 				x + dx,
-				y,
+				y + height * op_magic_number,  // up
 				z + dz
 			));
 		} else if (stuckFace == Direction.NORTH) {
 			this.setBoundingBox(new AABB(
 				x - longHalf,
 				y - shortHalf,
-				z - height,
+				z - height,  // out
 				x + longHalf,
 				y + shortHalf,
-				z
+				z + height * op_magic_number  // in
 			));
 		} else if (stuckFace == Direction.SOUTH) {
 			this.setBoundingBox(new AABB(
 				x - longHalf,
 				y - shortHalf,
-				z,
+				z - height * op_magic_number,  // in
 				x + longHalf,
 				y + shortHalf,
-				z + height
+				z + height   // out
 			));
 		} else if (stuckFace == Direction.EAST) {
 			this.setBoundingBox(new AABB(
-				x,
+				x - height * op_magic_number, // in
 				y - shortHalf,
 				z - longHalf,
-				x + height,
+				x + height,  // out
 				y + shortHalf,
 				z + longHalf
 			));
 		} else if (stuckFace == Direction.WEST) {
 			this.setBoundingBox(new AABB(
-				x - height,
+				x - height,  // out
 				y - shortHalf,
 				z - longHalf,
-				x,
+				x + height * op_magic_number,  // in
 				y + shortHalf,
 				z + longHalf
 			));
 		}
 	}
+
 
 
 	 /*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/

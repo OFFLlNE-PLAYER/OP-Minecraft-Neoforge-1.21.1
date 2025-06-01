@@ -994,9 +994,9 @@
       "translation": [-9, 7.25, -5]
     },
     "fixed": {
-      "rotation": [0, -180, -90],
+      "rotation": [0, 180, -90],
       "translation": [4.75, 1.25, 0],
-      "scale": [1, 1, 1]
+      "scale": [0.6, 0.6, 0.6]
     }
   },
   "groups": [

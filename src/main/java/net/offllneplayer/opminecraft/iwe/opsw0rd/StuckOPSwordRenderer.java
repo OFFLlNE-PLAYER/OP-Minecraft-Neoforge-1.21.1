@@ -32,42 +32,45 @@ public class StuckOPSwordRenderer extends EntityRenderer<StuckOPSword> {
 		if (!entity.isGrounded()) {
 			poseStack.mulPose(Axis.XP.rotationDegrees(180));
 			poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
-			poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+			poseStack.mulPose(Axis.ZP.rotationDegrees(315));
 
 		} else {
 			if (stuckFace == Direction.NORTH) {
-				poseStack.translate(0, 0, -0.10420);
+				poseStack.translate(0, 0, -0.20);
 				poseStack.mulPose(Axis.XP.rotationDegrees(90));
 				poseStack.mulPose(Axis.YP.rotationDegrees(0));
-				poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+				poseStack.mulPose(Axis.ZP.rotationDegrees(315));
 
 			} else if (stuckFace == Direction.SOUTH) {
-				poseStack.translate(0, 0, 0.10420);
+				poseStack.translate(0, 0, 0.20);
 				poseStack.mulPose(Axis.XP.rotationDegrees(270));
 				poseStack.mulPose(Axis.YP.rotationDegrees(180));
-				poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+				poseStack.mulPose(Axis.ZP.rotationDegrees(315));
 
 			} else if (stuckFace == Direction.EAST) {
-				poseStack.translate(0.10420, 0, 0);
-				poseStack.mulPose(Axis.XP.rotationDegrees(270));
-				poseStack.mulPose(Axis.YP.rotationDegrees(180));
-				poseStack.mulPose(Axis.ZP.rotationDegrees(315));
-
-			} else if (stuckFace == Direction.WEST) {
-				poseStack.translate(-0.10420, 0, 0);
+				poseStack.translate(0.20, 0, 0);
 				poseStack.mulPose(Axis.XP.rotationDegrees(90));
 				poseStack.mulPose(Axis.YP.rotationDegrees(0));
-				poseStack.mulPose(Axis.ZP.rotationDegrees(315));
-
-			} else if (stuckFace == Direction.UP) {
-				poseStack.mulPose(Axis.XP.rotationDegrees(180));
-				poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
 				poseStack.mulPose(Axis.ZP.rotationDegrees(45));
 
-			} else if (stuckFace == Direction.DOWN) {
-				poseStack.mulPose(Axis.XP.rotationDegrees(180));
+			} else if (stuckFace == Direction.WEST) {
+				poseStack.translate(-0.20, 0, 0);
+				poseStack.mulPose(Axis.XP.rotationDegrees(270));
+				poseStack.mulPose(Axis.YP.rotationDegrees(180));
+				poseStack.mulPose(Axis.ZP.rotationDegrees(45));
+
+
+			} else if (stuckFace == Direction.UP) {
+				poseStack.translate(0, 0.20, 0);
+				poseStack.mulPose(Axis.XP.rotationDegrees(0));
 				poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
-				poseStack.mulPose(Axis.ZP.rotationDegrees(225));
+				poseStack.mulPose(Axis.ZP.rotationDegrees(135));
+
+			} else if (stuckFace == Direction.DOWN) {
+				poseStack.translate(0, -0.20, 0);
+				poseStack.mulPose(Axis.XP.rotationDegrees(0));
+				poseStack.mulPose(Axis.YP.rotationDegrees(rotation)); // dynamic
+				poseStack.mulPose(Axis.ZP.rotationDegrees(315));
 			}
 		}
 

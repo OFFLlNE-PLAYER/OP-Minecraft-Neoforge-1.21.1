@@ -264,88 +264,89 @@ public class StuckSw0rd extends AbstractArrow {
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
   /*[HITBOX]*/
-	@Override
-	public void setPos(double x, double y, double z) {
-		super.setPos(x, y, z);
-		float shortHalf = 0.0420F;
-		float longHalf = 0.22420F;
-		float height = 0.72F;
-		Direction stuckFace = this.getStuckFace();
+	 @Override
+	 public void setPos(double x, double y, double z) {
+		 super.setPos(x, y, z);
+		 float shortHalf = 0.0420F;
+		 float longHalf = 0.290420F;
+		 float height = 0.71420F;
+		 Direction stuckFace = this.getStuckFace();
 
-		if (stuckFace == Direction.UP) {
-			double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
-			double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
-			double dx = longHalf * Math.abs(cos) + shortHalf * Math.abs(sin);
-			double dz = longHalf * Math.abs(sin) + shortHalf * Math.abs(cos);
+		 if (stuckFace == Direction.UP) {
+			 double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
+			 double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
+			 double dx = longHalf * Math.abs(cos) + shortHalf * Math.abs(sin);
+			 double dz = longHalf * Math.abs(sin) + shortHalf * Math.abs(cos);
 
-			// Ensure minimum dimensions
-			dx = Math.max(dx, 0.0420F);  // Minimum width
-			dz = Math.max(dz, 0.0420F);  // Minimum depth
+			 // Ensure minimum dimensions
+			 dx = Math.max(dx, 0.0420F);  // Minimum width
+			 dz = Math.max(dz, 0.0420F);  // Minimum depth
 
-			this.setBoundingBox(new AABB(
-				x - dx,
-				y,
-				z - dz,
-				x + dx,
-				y + height,
-				z + dz
-			));
-		} else if (stuckFace == Direction.DOWN) {
-			double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
-			double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
-			double dx = longHalf * Math.abs(cos) + shortHalf * Math.abs(sin);
-			double dz = longHalf * Math.abs(sin) + shortHalf * Math.abs(cos);
+			 this.setBoundingBox(new AABB(
+				 x - dx,
+				 y - height, // down
+				 z - dz,
+				 x + dx,
+				 y + height, // up
+				 z + dz
+			 ));
+		 } else if (stuckFace == Direction.DOWN) {
+			 double cos = Math.cos(Math.toRadians(this.getRenderingRotation()));
+			 double sin = Math.sin(Math.toRadians(this.getRenderingRotation()));
+			 double dx = longHalf * Math.abs(cos) + shortHalf * Math.abs(sin);
+			 double dz = longHalf * Math.abs(sin) + shortHalf * Math.abs(cos);
 
-			// Ensure minimum dimensions
-			dx = Math.max(dx, 0.0420F);  // Minimum width
-			dz = Math.max(dz, 0.0420F);  // Minimum depth
+			 // Ensure minimum dimensions
+			 dx = Math.max(dx, 0.0420F);  // Minimum width
+			 dz = Math.max(dz, 0.0420F);  // Minimum depth
 
-			this.setBoundingBox(new AABB(
-				x - dx,
-				y - height,
-				z - dz,
-				x + dx,
-				y,
-				z + dz
-			));
-		} else if (stuckFace == Direction.NORTH) {
-			this.setBoundingBox(new AABB(
-				x - longHalf,
-				y - shortHalf,
-				z - height,
-				x + longHalf,
-				y + shortHalf,
-				z
-			));
-		} else if (stuckFace == Direction.SOUTH) {
-			this.setBoundingBox(new AABB(
-				x - longHalf,
-				y - shortHalf,
-				z,
-				x + longHalf,
-				y + shortHalf,
-				z + height
-			));
-		} else if (stuckFace == Direction.EAST) {
-			this.setBoundingBox(new AABB(
-				x,
-				y - shortHalf,
-				z - longHalf,
-				x + height,
-				y + shortHalf,
-				z + longHalf
-			));
-		} else if (stuckFace == Direction.WEST) {
-			this.setBoundingBox(new AABB(
-				x - height,
-				y - shortHalf,
-				z - longHalf,
-				x,
-				y + shortHalf,
-				z + longHalf
-			));
-		}
-	}
+			 this.setBoundingBox(new AABB(
+				 x - dx,
+				 y - height,  // down
+				 z - dz,
+				 x + dx,
+				 y + height,  // up
+				 z + dz
+			 ));
+		 } else if (stuckFace == Direction.NORTH) {
+			 this.setBoundingBox(new AABB(
+				 x - longHalf,
+				 y - shortHalf,
+				 z - height,  // out
+				 x + longHalf,
+				 y + shortHalf,
+				 z + height  // in
+			 ));
+		 } else if (stuckFace == Direction.SOUTH) {
+			 this.setBoundingBox(new AABB(
+				 x - longHalf,
+				 y - shortHalf,
+				 z - height,  // in
+				 x + longHalf,
+				 y + shortHalf,
+				 z + height   // out
+			 ));
+		 } else if (stuckFace == Direction.EAST) {
+			 this.setBoundingBox(new AABB(
+				 x - height, // in
+				 y - shortHalf,
+				 z - longHalf,
+				 x + height,  // out
+				 y + shortHalf,
+				 z + longHalf
+			 ));
+		 } else if (stuckFace == Direction.WEST) {
+			 this.setBoundingBox(new AABB(
+				 x - height,  // out
+				 y - shortHalf,
+				 z - longHalf,
+				 x + height,  // in
+				 y + shortHalf,
+				 z + longHalf
+			 ));
+		 }
+	 }
+
 
 
 	 /*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
