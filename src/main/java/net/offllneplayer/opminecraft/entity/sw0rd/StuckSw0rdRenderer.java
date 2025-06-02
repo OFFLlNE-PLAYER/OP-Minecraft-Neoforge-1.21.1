@@ -59,9 +59,8 @@ public class StuckSw0rdRenderer extends EntityRenderer<StuckSw0rd> {
 			}
 		}
 
-
-		String materialName = entity.getEntityData().get(StuckSw0rd.MATERIAL_NAME);
-		Sw0rdMaterialMap.Sw0rdMaterial material = Sw0rdMaterialMap.get(materialName);
+		String materialName = entity.getMaterialName();
+		Sw0rdMaterial material = Sw0rdMaterial.valueOf(materialName);
 		Item bladeItem = material.getRegisteredItem();
 
 		ItemStack bladeStack = new ItemStack(bladeItem != null ? bladeItem : Items.NETHERITE_SWORD);
@@ -75,7 +74,7 @@ public class StuckSw0rdRenderer extends EntityRenderer<StuckSw0rd> {
 
 	@Override
 	public ResourceLocation getTextureLocation(StuckSw0rd entity) {
-		String materialName = entity.getEntityData().get(StuckSw0rd.MATERIAL_NAME);
+		String materialName = entity.getMaterialName();
 		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_" + materialName + "_sword.png");
 	}
 }

@@ -4,10 +4,14 @@ package net.offllneplayer.opminecraft.iwe.hatchet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -23,12 +27,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+
 import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
@@ -41,43 +47,38 @@ import java.util.Map;
 public class ThrownHatchet extends AbstractArrow {
 
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
-	/*[DATA]*/
+  /*[DATA]*/
 	private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(ThrownHatchet.class, EntityDataSerializers.STRING);
+	private static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(ThrownHatchet.class, EntityDataSerializers.BYTE);
+	private static final EntityDataAccessor<BlockPos> STUCK_POS = SynchedEntityData.defineId(ThrownHatchet.class, EntityDataSerializers.BLOCK_POS);
+	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(ThrownHatchet.class, EntityDataSerializers.FLOAT);
 
 
-	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
+	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[VARIABLES]*/
-
-	private BlockPos stuckPos;
-	private Block stuckBlock;
-	private Direction stuckDirection = Direction.NORTH;
+  /*[VARIABLES]*/
+	private HatchetMaterial material;
+	private float dmg;
+	private ItemStack hatchetStack;
 
 	private float pullRatio = 1F;
 	private float rotation;
 
-	// Store the material of the hatchet
-	private HatchetMaterialMap.HatchetMaterial material;
-	private float dmg;
-	private ItemStack hatchetStack;
-
-
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*[BUILDERS]*/
+  /*[BUILDERS]*/
 	public ThrownHatchet(EntityType<? extends ThrownHatchet> type, Level level) {
 		super(type, level);
 		// Default to netherite material for compatibility
-		this.material = HatchetMaterialMap.NETHERITE;
+		this.material = HatchetMaterial.GOLDEN;
 		this.updateHatchetStack();
 	}
 
 	public ThrownHatchet(Level world, LivingEntity shooter) {
 		super(RegistryEntities.THROWN_HATCHET.get(), world);
 		this.setOwner(shooter);
-		// Default to netherite material
-		this.material = HatchetMaterialMap.NETHERITE;
-		this.entityData.set(MATERIAL_NAME, "netherite");
+		this.material = HatchetMaterial.GOLDEN;
+		this.entityData.set(MATERIAL_NAME, "GOLDEN");
 		this.updateHatchetStack();
 
 		if (shooter != null) {
@@ -89,10 +90,39 @@ public class ThrownHatchet extends AbstractArrow {
 	public ThrownHatchet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		// Try to get material from the item if it's a HatchetItem
-		if (stack.getItem() instanceof HatchetItem hatchetItem) {
-			this.material = hatchetItem.getMaterial();
-			this.entityData.set(MATERIAL_NAME, this.material.getName());
+		ResourceLocation regName = BuiltInRegistries.ITEM.getKey(stack.getItem());
+		String regPath = regName.getPath();
+
+		if (regPath.contains("wooden_hatchet")) {
+			this.material = HatchetMaterial.WOODEN;
+			this.entityData.set(MATERIAL_NAME, "WOODEN");
+		} else if (regPath.contains("stone_hatchet")) {
+			this.material = HatchetMaterial.STONE;
+			this.entityData.set(MATERIAL_NAME, "STONE");
+		} else if (regPath.contains("iron_hatchet")) {
+			this.material = HatchetMaterial.IRON;
+			this.entityData.set(MATERIAL_NAME, "IRON");
+		} else if (regPath.contains("golden_hatchet")) {
+			this.material = HatchetMaterial.GOLDEN;
+			this.entityData.set(MATERIAL_NAME, "GOLDEN");
+		} else if (regPath.contains("diamond_hatchet")) {
+			this.material = HatchetMaterial.DIAMOND;
+			this.entityData.set(MATERIAL_NAME, "DIAMOND");
+		} else if (regPath.contains("netherite_hatchet")) {
+			this.material = HatchetMaterial.NETHERITE;
+			this.entityData.set(MATERIAL_NAME, "NETHERITE");
+		} else if (regPath.contains("crying_hatchet")) {
+			this.material = HatchetMaterial.CRYING;
+			this.entityData.set(MATERIAL_NAME, "CRYING");
+		} else if (regPath.contains("onyx_hatchet")) {
+			this.material = HatchetMaterial.ONYX;
+			this.entityData.set(MATERIAL_NAME, "ONYX");
+		} else if (regPath.contains("titan_hatchet")) {
+			this.material = HatchetMaterial.TITAN;
+			this.entityData.set(MATERIAL_NAME, "TITAN");
+		} else {
+			this.material = HatchetMaterial.GOLDEN;
+			this.entityData.set(MATERIAL_NAME, "GOLDEN");
 		}
 
 		this.updateHatchetStack();
@@ -110,70 +140,65 @@ public class ThrownHatchet extends AbstractArrow {
 	}
 
 
-	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
-	/*[HELP]*/
-
-	// update the hatchetStack based on material
-	public HatchetMaterialMap.HatchetMaterial getMaterial() {return material;}
-	private void updateHatchetStack() {
-		Item materialItem = null;
-
-		if (material == HatchetMaterialMap.WOODEN) {
-			materialItem = RegistryBIBI.WOODEN_HATCHET.get();
-		} else if (material == HatchetMaterialMap.STONE) {
-			materialItem = RegistryBIBI.STONE_HATCHET.get();
-		} else if (material == HatchetMaterialMap.IRON) {
-			materialItem = RegistryBIBI.IRON_HATCHET.get();
-		} else if (material == HatchetMaterialMap.GOLDEN) {
-			materialItem = RegistryBIBI.GOLDEN_HATCHET.get();
-		} else if (material == HatchetMaterialMap.DIAMOND) {
-			materialItem = RegistryBIBI.DIAMOND_HATCHET.get();
-		} else if (material == HatchetMaterialMap.NETHERITE) {
-			materialItem = RegistryBIBI.NETHERITE_HATCHET.get();
-		} else if (material == HatchetMaterialMap.CRYING) {
-			materialItem = RegistryBIBI.CRYING_HATCHET.get();
-		} else {
-			materialItem = RegistryBIBI.GOLDEN_HATCHET.get(); // Fallback
-		}
-
-		this.hatchetStack = new ItemStack(materialItem);
-		this.dmg = this.material.getAttackDamage();
+  /*[HELP]*/
+	public boolean isGrounded() {
+		return inGround;
 	}
 
 	public void setPullRatio(float pullRatio) {
 		this.pullRatio = pullRatio;
 	}
 
-	public boolean isGrounded() {
-		return inGround;
+	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
+
+	private HatchetMaterial getMaterialFromName() {
+		try {
+			return HatchetMaterial.valueOf(getMaterialName());
+		} catch (IllegalArgumentException e) {
+			return HatchetMaterial.GOLDEN;
+		}
 	}
 
-	public Direction getStuckDirection() {
-		return stuckDirection != null ? stuckDirection : Direction.NORTH;
+	private void updateHatchetStack() {
+		Item materialItem = this.getMaterialFromName().getRegisteredItem();
+		this.hatchetStack = new ItemStack(materialItem != null ? materialItem : RegistryBIBI.GOLDEN_HATCHET.get());
 	}
 
-	public String getMaterialName() {
-		return this.entityData.get(MATERIAL_NAME);
-	}
+	public Direction getStuckFace() { return Direction.from3DDataValue(this.entityData.get(STUCK_FACE));}
+	public BlockPos getStuckPos() { return this.entityData.get(STUCK_POS);}
+	public float getRenderingRotation() { return this.entityData.get(ROTATION);}
 
-	public float getRenderingRotation() {
-		return rotation;
-	}
+	public void setStuckFace(Direction face) { this.entityData.set(STUCK_FACE, (byte) face.get3DDataValue());}
+	public void setStuckPos(BlockPos pos) { this.entityData.set(STUCK_POS, pos);}
+	public void setRenderingRotation(float rotation) {this.entityData.set(ROTATION, rotation);}
 
-	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+
+	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
-	/*[DATA SYNC]*/
+  /*[DATA SYNC]*/
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(MATERIAL_NAME, "golden");
+		builder.define(MATERIAL_NAME, "GOLDEN");
+		builder.define(STUCK_FACE, (byte) Direction.UP.get3DDataValue());
+		builder.define(STUCK_POS, BlockPos.ZERO);
+		builder.define(ROTATION, 0.0F);
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putString("material_name", this.entityData.get(MATERIAL_NAME));
+		compound.putByte("stuck_face", this.entityData.get(STUCK_FACE));
+		BlockPos pos = this.entityData.get(STUCK_POS);
+		if (pos != null && pos != BlockPos.ZERO) {
+			compound.putInt("stuck_pos_x", pos.getX());
+			compound.putInt("stuck_pos_y", pos.getY());
+			compound.putInt("stuck_pos_z", pos.getZ());
+		}
+		compound.putFloat("rotation", this.entityData.get(ROTATION));
 	}
 
 	@Override
@@ -183,26 +208,33 @@ public class ThrownHatchet extends AbstractArrow {
 		if (compound.contains("material_name")) {
 			String materialName = compound.getString("material_name");
 			this.entityData.set(MATERIAL_NAME, materialName);
-
-			// Update material field from saved data
-			this.material = HatchetMaterialMap.get(materialName);
+			this.material = getMaterialFromName();
 			this.updateHatchetStack();
+		}
+		if (compound.contains("stuck_face")) {
+			this.entityData.set(STUCK_FACE, compound.getByte("stuck_face"));
+		}
+		if (compound.contains("stuck_pos_x") && compound.contains("stuck_pos_y") && compound.contains("stuck_pos_z")) {
+			BlockPos pos = new BlockPos(
+				compound.getInt("stuck_pos_x"),
+				compound.getInt("stuck_pos_y"),
+				compound.getInt("stuck_pos_z")
+			);
+			this.entityData.set(STUCK_POS, pos);
+		}
+		if (compound.contains("rotation")) {
+			this.entityData.set(ROTATION, compound.getFloat("rotation"));
 		}
 	}
 
 
-	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+	 /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[BASIC Entity OVERRIDES]*/
+  /*[BASIC Entity OVERRIDES]*/
 	@Override
 	public ItemStack getDefaultPickupItem() {
-		// Use the material that was synchronized from server to client
-		String materialName = this.entityData.get(MATERIAL_NAME);
-		HatchetMaterialMap.HatchetMaterial mat = HatchetMaterialMap.get(materialName);
-
-		// Get the correct item for this material
-		Item materialItem = mat.getRegisteredItem();
-		return new ItemStack(materialItem != null ? materialItem : RegistryBIBI.NETHERITE_HATCHET.get());
+		Item materialItem = this.getMaterialFromName().getRegisteredItem();
+		return new ItemStack(materialItem != null ? materialItem : RegistryBIBI.GOLDEN_HATCHET.get());
 	}
 
 	@Override
@@ -228,9 +260,9 @@ public class ThrownHatchet extends AbstractArrow {
 	@Override
 	public void doPostHurtEffects(LivingEntity target) {/*VOIDED Discard entity on hit*/}
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
-	/*[HITBOX]*/
+  /*[HITBOX]*/
 	@Override
 	public void setPos(double x, double y, double z) {
 		super.setPos(x, y, z);
@@ -248,30 +280,36 @@ public class ThrownHatchet extends AbstractArrow {
 		}
 	}
 
-	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
+	 /*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
 	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
-	/*[tick]*/
+  /*[tick]*/
 	@Override
 	public void tick() {
 		super.tick();
 
-		if (this.inGround && stuckPos != null && level().getBlockState(stuckPos).getBlock() != stuckBlock) {
+		BlockPos stuckPos = this.getStuckPos();
+		BlockState stuckBlock = this.level().getBlockState(stuckPos);
+
+		if (this.inGround && stuckPos != null && (stuckBlock.is(OP_TagKeyUtil.Blocks.SWORD_NO_STICK))) {
 			this.inGround = false;
-			this.hasImpulse = true;
 			this.setDeltaMovement(Vec3.ZERO);
 		}
 
 		if (!this.inGround) {
+			this.hasImpulse = true;
+			this.setStuckPos(this.blockPosition());
+
 			rotation = (rotation - pullRatio * 20F) % 360F;
 			if (rotation < 0) rotation += 360F;
+			this.setRenderingRotation(rotation);
 		}
 		this.setPos(this.getX(), this.getY(), this.getZ());
 	}
 
 
-	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
+	 /*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
 	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
-	/*[interact]*/
+  /*[interact]*/
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
 		if (!this.level().isClientSide()) {
@@ -294,9 +332,9 @@ public class ThrownHatchet extends AbstractArrow {
 		return InteractionResult.PASS;
 	}
 
-	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
+	 /*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
 	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
-	/*[on Hit Entity]*/
+  /*[on Hit Entity]*/
 	@Override
 	public void onHitEntity(EntityHitResult result) {
 		Level level = this.level();
@@ -322,7 +360,7 @@ public class ThrownHatchet extends AbstractArrow {
 					float damage = dmg + enchantDmg;
 					living.hurt(hatchetDMG, damage);
 
-					if (material == HatchetMaterialMap.CRYING) {
+					if (material == HatchetMaterial.CRYING) {
 						ApplyCrying1_Method.execute(result.getEntity());
 					}
 
@@ -335,20 +373,35 @@ public class ThrownHatchet extends AbstractArrow {
 	}
 
 
-	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
+	 /*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
 	/*---[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]----*/
-	/*[on Hit Block]*/
+  /*[on Hit Block]*/
 	@Override
 	public void onHitBlock(BlockHitResult result) {
-		stuckPos = result.getBlockPos();
-		stuckBlock = level().getBlockState(stuckPos).getBlock();
-		stuckDirection = result.getDirection();
+		BlockPos hitPos = result.getBlockPos();
+
+		this.setStuckPos(hitPos);
+		this.setStuckFace(result.getDirection());
+
 		super.onHitBlock(result);
 
 		if (!level().isClientSide()) {
 
 			// Use the utility SHAREDMETHODS for button interaction
 			HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+
+			// Spawn block particles at the hit location
+			((ServerLevel)level()).sendParticles(
+				new BlockParticleOption(ParticleTypes.BLOCK, this.level().getBlockState(hitPos)),
+				result.getLocation().x,
+				result.getLocation().y,
+				result.getLocation().z,
+				10, // particle count
+				0.1D, // spread X
+				0.1D, // spread Y
+				0.1D, // spread Z
+				0.05D // speed
+			);
 
 			float tone = Mth.randomBetween(this.random, 1.3F, 1.420F);
 			this.playSound(RegistrySounds.BLADE_STICK.get(), 0.2420F, tone);

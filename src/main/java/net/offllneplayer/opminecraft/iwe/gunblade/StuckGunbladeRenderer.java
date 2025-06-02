@@ -30,6 +30,33 @@ public class StuckGunbladeRenderer extends EntityRenderer<StuckGunblade> {
 
 		Direction stuckFace = entity.getStuckFace();
 		float rotation = entity.getRenderingRotation();
+		float offset = 0.269420F;
+		float yoffs = 0.20420F;
+
+		// Apply the offset based on direction - inverting it from what was in the hitbox
+		if (stuckFace == Direction.UP) {
+			double cos = Math.cos(Math.toRadians(rotation));
+			double sin = Math.sin(Math.toRadians(rotation));
+
+			poseStack.translate(offset * cos, yoffs, -offset * sin);
+
+		} else if (stuckFace == Direction.DOWN) {
+			double cos = Math.cos(Math.toRadians(rotation));
+			double sin = Math.sin(Math.toRadians(rotation));
+			poseStack.translate(-offset * cos, -yoffs, offset * sin);
+
+		} else if (stuckFace == Direction.NORTH) {
+			poseStack.translate(offset, 0, -yoffs);
+		} else if (stuckFace == Direction.SOUTH) {
+			poseStack.translate(-offset, 0, yoffs);
+		} else if (stuckFace == Direction.EAST) {
+			poseStack.translate(yoffs, 0, offset);
+		} else if (stuckFace == Direction.WEST) {
+			poseStack.translate(-yoffs, 0, -offset);
+		}
+
+
+		poseStack.scale(1.420F, 1.420F, 1.420F);
 
 		if (!entity.isGrounded()) {
 			poseStack.mulPose(Axis.XP.rotationDegrees(0));
@@ -63,7 +90,7 @@ public class StuckGunbladeRenderer extends EntityRenderer<StuckGunblade> {
 		}
 
 		String materialName = entity.getMaterialName();
-		GunbladeMaterialMap.GunbladeMaterial material = GunbladeMaterialMap.get(materialName);
+		GunbladeMaterial material = GunbladeMaterial.valueOf(materialName);
 		Item bladeItem = material.getRegisteredItem();
 
 		ItemStack bladeStack = new ItemStack(bladeItem != null ? bladeItem : RegistryBIBI.TITAN_GUNBLADE.get());

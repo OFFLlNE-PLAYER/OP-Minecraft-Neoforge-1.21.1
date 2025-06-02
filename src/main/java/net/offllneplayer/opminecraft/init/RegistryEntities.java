@@ -30,6 +30,11 @@ public class RegistryEntities {
     public static final Supplier<EntityType<StuckSw0rd>> STUCK_SW0RD = ENTREGISTRY.register("stuck_sw0rd",
        () -> EntityType.Builder.<StuckSw0rd>of(StuckSw0rd::new, MobCategory.MISC).build("stuck_sw0rd"));
 
+    /*
+    maybe we can just use StuckSw0rd?
+    public static final Supplier<EntityType<StuckOPSw0rd>> STUCK_OP_SW0RD = ENTREGISTRY.register("stuck_op_sw0rd",
+       () -> EntityType.Builder.<StuckOPSw0rd>of(StuckOPSw0rd::new, MobCategory.MISC).build("stuck_op_sw0rd"));
+     */
 
     public static final Supplier<EntityType<StuckOPSword>> STUCK_OP_SWORD = ENTREGISTRY.register("stuck_op_sword",
        () -> EntityType.Builder.<StuckOPSword>of(StuckOPSword::new, MobCategory.MISC).build("stuck_op_sword"));

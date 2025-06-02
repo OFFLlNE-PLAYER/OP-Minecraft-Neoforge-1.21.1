@@ -239,11 +239,14 @@ public class RegistryCreative {
 
                 event.accept(RegistryBIBI.AKU_AKU_MASK);
 
-
+                event.accept(RegistryBIBI.PROTOTYPE_GUNBLADE);
+                event.accept(RegistryBIBI.GOLDEN_GUNBLADE.get());
+                event.accept(RegistryBIBI.DIAMOND_GUNBLADE.get());
+                event.accept(RegistryBIBI.NETHERITE_GUNBLADE.get());
                 event.accept(RegistryBIBI.CRYING_GUNBLADE.get());
                 event.accept(RegistryBIBI.ONYX_GUNBLADE.get());
                 event.accept(RegistryBIBI.TITAN_GUNBLADE.get());
-                event.accept(RegistryBIBI.PROTOTYPE_GUNBLADE);
+
 
               //  event.accept(RegistryBIBI.SAMURAI_EDGE);
 

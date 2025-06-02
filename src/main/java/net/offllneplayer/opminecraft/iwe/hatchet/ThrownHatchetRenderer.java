@@ -28,7 +28,7 @@ public class ThrownHatchetRenderer extends EntityRenderer<ThrownHatchet> {
 	public void render(ThrownHatchet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		poseStack.pushPose();
 		Direction dir = entity.getDirection();
-		Direction stuckFace = entity.getStuckDirection();
+		Direction stuckFace = entity.getStuckFace();
 		float rotation = entity.getRenderingRotation();
 
 		if (!entity.isGrounded()) {
@@ -65,7 +65,7 @@ public class ThrownHatchetRenderer extends EntityRenderer<ThrownHatchet> {
 
 		// Get material from synchronized data
 		String materialName = entity.getMaterialName();
-		HatchetMaterialMap.HatchetMaterial material = HatchetMaterialMap.get(materialName);
+		HatchetMaterial material = HatchetMaterial.valueOf(materialName);
 		Item hatchetItem = material.getRegisteredItem();
 
 		// Create stack with proper item

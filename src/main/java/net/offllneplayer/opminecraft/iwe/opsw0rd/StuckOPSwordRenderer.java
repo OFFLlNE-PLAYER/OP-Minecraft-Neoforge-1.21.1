@@ -74,10 +74,8 @@ public class StuckOPSwordRenderer extends EntityRenderer<StuckOPSword> {
 			}
 		}
 
-
-
-		String materialName = entity.getEntityData().get(StuckOPSword.MATERIAL_NAME);
-		OPSwordMaterialMap.OPSwordMaterial material = OPSwordMaterialMap.get(materialName);
+		String materialName = entity.getMaterialName();
+		OPSwordMaterial material = OPSwordMaterial.valueOf(materialName);
 		Item bladeItem = material.getRegisteredItem();
 
 		ItemStack bladeStack = new ItemStack(bladeItem != null ? bladeItem : RegistryBIBI.CLAYMORE.get());
@@ -91,7 +89,7 @@ public class StuckOPSwordRenderer extends EntityRenderer<StuckOPSword> {
 
 	@Override
 	public ResourceLocation getTextureLocation(StuckOPSword entity) {
-		String materialName = entity.getEntityData().get(StuckOPSword.MATERIAL_NAME);
+		String materialName = entity.getMaterialName();
 		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_" + materialName + "_sword.png");
 	}
 }

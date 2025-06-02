@@ -28,8 +28,10 @@ import net.offllneplayer.opminecraft.block.densestones.*;
 import net.offllneplayer.opminecraft.block.furnaces.furnace.*;
 import net.offllneplayer.opminecraft.block.onyx.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
+import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterial;
+import net.offllneplayer.opminecraft.iwe.hatchet.HatchetMaterial;
 import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordItem;
-import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordMaterialMap;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordMaterial;
 import net.offllneplayer.opminecraft.item.*;
 
 import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuMaskItem;
@@ -40,8 +42,6 @@ import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
 import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
-import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterialMap;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetMaterialMap;
 
 import java.util.function.Supplier;
 
@@ -362,53 +362,64 @@ public class RegistryBIBI {
 
 
 	public static final Supplier<HatchetItem> WOODEN_HATCHET = ITEMSREGISTRY.register("wooden_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.WOODEN, 4.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.WOODEN));
 
 	public static final Supplier<HatchetItem> STONE_HATCHET = ITEMSREGISTRY.register("stone_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.STONE, 4.5F, -2F));
+		() -> new HatchetItem(HatchetMaterial.STONE));
 
 	public static final Supplier<HatchetItem> IRON_HATCHET = ITEMSREGISTRY.register("iron_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.IRON, 5.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.IRON));
 
 	public static final Supplier<HatchetItem> GOLDEN_HATCHET = ITEMSREGISTRY.register("golden_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.GOLDEN, 5.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.GOLDEN));
 
 	public static final Supplier<HatchetItem> DIAMOND_HATCHET = ITEMSREGISTRY.register("diamond_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.DIAMOND, 5.5F, -2F));
+		() -> new HatchetItem(HatchetMaterial.DIAMOND));
 
 	public static final Supplier<HatchetItem> NETHERITE_HATCHET = ITEMSREGISTRY.register("netherite_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.NETHERITE, 6.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.NETHERITE));
 
 	public static final Supplier<HatchetItem> ONYX_HATCHET = ITEMSREGISTRY.register("onyx_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.ONYX, 6.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.ONYX));
 
 	public static final Supplier<HatchetItem> TITAN_HATCHET = ITEMSREGISTRY.register("titan_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.TITAN, 6.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.TITAN));
 
 	public static final Supplier<HatchetItem> CRYING_HATCHET = ITEMSREGISTRY.register("crying_hatchet",
-		() -> new HatchetItem(HatchetMaterialMap.CRYING, 6.0F, -2F));
+		() -> new HatchetItem(HatchetMaterial.CRYING));
 
-
-	public static final Supplier<GunbladeItem> CRYING_GUNBLADE = ITEMSREGISTRY.register("crying_gunblade",
-		() -> new GunbladeItem(GunbladeMaterialMap.CRYING, 6.0F, -2F));
-
-	public static final Supplier<GunbladeItem> ONYX_GUNBLADE = ITEMSREGISTRY.register("onyx_gunblade",
-		() -> new GunbladeItem(GunbladeMaterialMap.ONYX, 6.0F, -2F));
-
-	public static final Supplier<GunbladeItem> TITAN_GUNBLADE = ITEMSREGISTRY.register("titan_gunblade",
-		() -> new GunbladeItem(GunbladeMaterialMap.TITAN, 6.0F, -2F));
 
 	public static final DeferredItem<PrototypeGunbladeItem> PROTOTYPE_GUNBLADE = ITEMSREGISTRY.register("prototype_gunblade", PrototypeGunbladeItem::new);
 
+	public static final Supplier<GunbladeItem> GOLDEN_GUNBLADE = ITEMSREGISTRY.register("golden_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.GOLDEN));
+
+	public static final Supplier<GunbladeItem> DIAMOND_GUNBLADE = ITEMSREGISTRY.register("diamond_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.DIAMOND));
+
+	public static final Supplier<GunbladeItem> NETHERITE_GUNBLADE = ITEMSREGISTRY.register("netherite_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.NETHERITE));
+
+
+	public static final Supplier<GunbladeItem> ONYX_GUNBLADE = ITEMSREGISTRY.register("onyx_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.ONYX));
+
+	public static final Supplier<GunbladeItem> TITAN_GUNBLADE = ITEMSREGISTRY.register("titan_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.TITAN));
+
+	public static final Supplier<GunbladeItem> CRYING_GUNBLADE = ITEMSREGISTRY.register("crying_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.CRYING));
+
 	/*
-	public static final DeferredItem<Item> CLAY_SWORD = ITEMSREGISTRY.registerItem("clay_sword", ClaySwordItem::new);
+		public static final Supplier<OPSw0rdItem> CLAY_SWORD = ITEMSREGISTRY.register("clay_sword",
+		() -> new OPSwordItem(OPSw0rdMaterialMap.CLAY, 5.5F, -2F));
 */
 
 	public static final Supplier<OPSwordItem> CRYING_SWORD = ITEMSREGISTRY.register("crying_sword",
-		() -> new OPSwordItem(OPSwordMaterialMap.CRYING, 6.0F, -2F));
+		() -> new OPSwordItem(OPSwordMaterial.CRYING));
 
 	public static final Supplier<OPSwordItem> CLAYMORE = ITEMSREGISTRY.register("claymore_sword",
-		() -> new OPSwordItem(OPSwordMaterialMap.CLAY, 6.0F, -2F));
+		() -> new OPSwordItem(OPSwordMaterial.CLAY));
 
 
 	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);

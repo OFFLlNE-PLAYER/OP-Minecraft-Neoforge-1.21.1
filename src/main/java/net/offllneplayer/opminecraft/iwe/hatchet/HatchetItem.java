@@ -23,30 +23,22 @@ import net.offllneplayer.opminecraft.iface.DispensibleProjectile;
 public class HatchetItem extends TieredItem implements DispensibleProjectile {
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[VARIABLES]*/
-	private final HatchetMaterialMap.HatchetMaterial material;
-	private final float damage;
-	private final float attackSpeed;
+  /*[VARIABLES]*/
+	private final HatchetMaterial material;
 
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*[BUILDER]*/
-	public HatchetItem(HatchetMaterialMap.HatchetMaterial material, float damage, float attackSpeed) {
-		super(createTier(material), createItemProperties(material, damage, attackSpeed));
-
-		// Set the instance fields
+  /*[BUILDER]*/
+	public HatchetItem(HatchetMaterial material) {
+		super(createTier(material), createItemProperties(material));
 		this.material = material;
-		this.damage = damage;
-		this.attackSpeed = attackSpeed;
-
-		// Associate this item with the material
 		material.setRegisteredItem(this);
 	}
 
-	private static Item.Properties createItemProperties(HatchetMaterialMap.HatchetMaterial material, float damage, float attackSpeed) {
+	private static Item.Properties createItemProperties(HatchetMaterial material) {
 		Item.Properties itemProperties = new Item.Properties()
-			.attributes(SwordItem.createAttributes(createTier(material), damage, attackSpeed))
+			.attributes(AxeItem.createAttributes(createTier(material), material.getAttackDamage(), material.getAttackSpeed()))
 			.stacksTo(1)
 			.rarity(material.getRarity());
 
@@ -58,35 +50,39 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	}
 
 
-	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+  	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+  /*[HELP]*/
+	public HatchetMaterial getMaterial() {
+		return material;
+	}
+
+
+	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(HatchetMaterialMap.HatchetMaterial material) {
+  /*[BASIC TOOL Item OVERRIDES]*/
+	private static Tier createTier(HatchetMaterial material) {
 		return new Tier() {
+			@Override
+			public Ingredient getRepairIngredient() { return material.getRepairIngredient(); }
 			@Override
 			public int getUses() { return material.getDurability(); }
 			@Override
 			public float getSpeed() { return material.getMiningSpeed(); }
 			@Override
-			public float getAttackDamageBonus() { return 0; }
-			@Override
 			public TagKey<Block> getIncorrectBlocksForDrops() { return material.getIncorrectBlocksForDrops(); }
 			@Override
 			public int getEnchantmentValue() { return material.getEnchantability(); }
 			@Override
-			public Ingredient getRepairIngredient() { return material.getRepairIngredient(); }
+			public float getAttackDamageBonus() { return 0; }
 		};
 	}
 
-	public HatchetMaterialMap.HatchetMaterial getMaterial() {
-		return material;
-	}
 
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[Use Item OVERRIDES]*/
+  /*[Use Item OVERRIDES]*/
 	@Override
 	public int getUseDuration(ItemStack itemstack, LivingEntity user) {
 		return 60;
@@ -96,9 +92,9 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 		return UseAnim.SPEAR;
 	}
 
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[use]*/
+  /*[use]*/
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		player.startUsingItem(hand);
@@ -106,9 +102,9 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	}
 
 
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
-	/*[release Using]*/
+  /*[release Using]*/
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
 		if (!(user instanceof Player player) || level.isClientSide) return;
@@ -141,9 +137,9 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	}
 
 
-	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
+	 /* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
 	/*-----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>*/
-	/*[as Projectile]*/
+  /*[as Projectile]*/
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
 

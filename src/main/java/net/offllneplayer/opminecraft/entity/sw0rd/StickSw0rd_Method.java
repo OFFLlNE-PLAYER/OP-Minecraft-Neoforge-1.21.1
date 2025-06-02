@@ -109,9 +109,8 @@ public class StickSw0rd_Method {
 			gun.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
 
 			gun.setStuckFace(face);
-			gun.setRenderingRotation(sw0rdRotation);
 			gun.setStuckPos(hitPos);
-			gun.setStuckBlock(level.getBlockState(hitPos).getBlock());
+			gun.setRenderingRotation(sw0rdRotation);
 
 			level.addFreshEntity(gun);
 			putsword = true;
@@ -122,9 +121,8 @@ public class StickSw0rd_Method {
 			op_sword.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
 
 			op_sword.setStuckFace(face);
+			op_sword.setStuckPos(hitPos);
 			op_sword.setRenderingRotation(sw0rdRotation);
-			op_sword.stuckPos = hitPos;
-			op_sword.stuckBlock = level.getBlockState(hitPos).getBlock();
 
 			level.addFreshEntity(op_sword);
 			putsword = true;
@@ -135,9 +133,8 @@ public class StickSw0rd_Method {
 			sw0rd.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
 
 			sw0rd.setStuckFace(face);
+			sw0rd.setStuckPos(hitPos);
 			sw0rd.setRenderingRotation(sw0rdRotation);
-			sw0rd.stuckPos = hitPos;
-			sw0rd.stuckBlock = level.getBlockState(hitPos).getBlock();
 
 			level.addFreshEntity(sw0rd);
 			putsword = true;

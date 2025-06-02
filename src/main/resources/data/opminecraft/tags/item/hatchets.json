@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:wooden_hatchet",
+    "opminecraft:stone_hatchet",
+    "opminecraft:iron_hatchet",
+    "opminecraft:golden_hatchet",
+    "opminecraft:diamond_hatchet",
+    "opminecraft:netherite_hatchet",
+    "opminecraft:crying_hatchet",
+    "opminecraft:onyx_hatchet",
+    "opminecraft:titan_hatchet"
+  ]
+}

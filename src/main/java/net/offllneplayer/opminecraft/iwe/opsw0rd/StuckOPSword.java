@@ -3,6 +3,8 @@ package net.offllneplayer.opminecraft.iwe.opsw0rd;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -24,12 +26,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+
 import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
+import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.entity.sw0rd.Stuck_Sw0rd_OnClick_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
@@ -45,39 +50,35 @@ public class StuckOPSword extends AbstractArrow {
 
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
   /*[DATA]*/
-	public static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.STRING);
-	public static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.BYTE);
-	public static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.FLOAT);
+	private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.STRING);
+	private static final EntityDataAccessor<Byte> STUCK_FACE = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.BYTE);
+	private static final EntityDataAccessor<BlockPos> STUCK_POS = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.BLOCK_POS);
+	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StuckOPSword.class, EntityDataSerializers.FLOAT);
 
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
-
-	public BlockPos stuckPos;
-	public Block stuckBlock;
-
-	// Store the material of the blade
-	public OPSwordMaterialMap.OPSwordMaterial material;
+	private OPSwordMaterial material;
 	private float dmg;
 	private ItemStack bladeStack;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDERS]*/
-	public StuckOPSword(EntityType<? extends StuckOPSword> type, Level level) {
-		super(type, level);
-		this.material = this.getMaterial() != null ? this.getMaterial() : OPSwordMaterialMap.CLAY;
-		this.updateBladeStackmaterial();
-	}
+	 public StuckOPSword(EntityType<? extends StuckOPSword> type, Level level) {
+		 super(type, level);
+		 this.material = getMaterialFromName();
+		 this.updateBladeStack();
+	 }
 
 	public StuckOPSword(Level world, LivingEntity shooter) {
 		super(RegistryEntities.STUCK_OP_SWORD.get(), world);
 
 		this.setOwner(shooter);
-		this.material = this.getMaterial() != null ? this.getMaterial() : OPSwordMaterialMap.CLAY;
+		this.material = OPSwordMaterial.CLAY;
+		this.entityData.set(MATERIAL_NAME, "CLAY");
 
-		this.entityData.set(MATERIAL_NAME, "clay");
-		this.updateBladeStackmaterial();
+		this.updateBladeStack();
 
 		if (shooter != null) {
 			this.setPos(shooter.getX(), shooter.getY() + shooter.getEyeHeight(), shooter.getZ());
@@ -92,15 +93,15 @@ public class StuckOPSword extends AbstractArrow {
 		String regPath = regName.getPath();
 
 		// check the item name
-		if (regPath.contains("clay")) {
-			this.material = OPSwordMaterialMap.CLAY;
-			this.entityData.set(MATERIAL_NAME, "clay");
-		} else if (regPath.contains("crying")) {
-			this.material = OPSwordMaterialMap.CRYING;
-			this.entityData.set(MATERIAL_NAME, "crying");
+		if (regPath.contains("clay_sword")) {
+			this.material = OPSwordMaterial.CLAY;
+			this.entityData.set(MATERIAL_NAME, "CLAY");
+		} else if (regPath.contains("crying_sword")) {
+			this.material = OPSwordMaterial.CRYING;
+			this.entityData.set(MATERIAL_NAME, "CRYING");
 		}
 
-		this.updateBladeStackmaterial();
+		this.updateBladeStack();
 
 		CompoundTag data = this.getPersistentData();
 		data.putString("N4M3", stack.getHoverName().getString());
@@ -118,50 +119,32 @@ public class StuckOPSword extends AbstractArrow {
 	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
   /*[HELP]*/
+	 public boolean isGrounded() {
+		 return inGround;
+	 }
 
-	public boolean isGrounded() {
-		return inGround;
-	}
+	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
 
-	// update the bladeStack based on material
-	public OPSwordMaterialMap.OPSwordMaterial getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(OPSwordMaterialMap.OPSwordMaterial material) {
-		this.entityData.set(MATERIAL_NAME, material.getName());
-	}
-
-	public void updateBladeStackmaterial() {
-		Item materialItem = null;
-
-		if (material == OPSwordMaterialMap.CLAY) {
-			materialItem = RegistryBIBI.CLAYMORE.get();
-		} else if (material == OPSwordMaterialMap.CRYING) {
-			materialItem = RegistryBIBI.CRYING_SWORD.get();
-		} else {
-			materialItem = RegistryBIBI.CLAYMORE.get();
+	private OPSwordMaterial getMaterialFromName() {
+		try {
+			return OPSwordMaterial.valueOf(getMaterialName());
+		} catch (IllegalArgumentException e) {
+			return OPSwordMaterial.CLAY;
 		}
-
-		this.bladeStack = new ItemStack(materialItem);
-		this.dmg = this.material.getAttackDamage();
 	}
 
-	public void setStuckFace(Direction face) {
-		this.entityData.set(STUCK_FACE, (byte) face.get3DDataValue());
+	private void updateBladeStack() {
+		Item materialItem = this.getMaterialFromName().getRegisteredItem();
+		this.bladeStack = new ItemStack(materialItem != null ? materialItem : RegistryBIBI.CLAYMORE.get());
 	}
 
-	public void setRenderingRotation(float rotation) {
-		this.entityData.set(ROTATION, rotation);
-	}
+	public Direction getStuckFace() { return Direction.from3DDataValue(this.entityData.get(STUCK_FACE));}
+	public BlockPos getStuckPos() { return this.entityData.get(STUCK_POS);}
+	public float getRenderingRotation() { return this.entityData.get(ROTATION);}
 
-	public Direction getStuckFace() {
-		return Direction.from3DDataValue(this.entityData.get(STUCK_FACE));
-	}
-
-	public float getRenderingRotation() {
-		return this.entityData.get(ROTATION);
-	}
+	public void setStuckFace(Direction face) { this.entityData.set(STUCK_FACE, (byte) face.get3DDataValue());}
+	public void setStuckPos(BlockPos pos) { this.entityData.set(STUCK_POS, pos);}
+	public void setRenderingRotation(float rotation) {this.entityData.set(ROTATION, rotation);}
 
 
 	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
@@ -170,8 +153,9 @@ public class StuckOPSword extends AbstractArrow {
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(MATERIAL_NAME, "clay");
+		builder.define(MATERIAL_NAME, "CLAY");
 		builder.define(STUCK_FACE, (byte) Direction.UP.get3DDataValue());
+		builder.define(STUCK_POS, BlockPos.ZERO);
 		builder.define(ROTATION, 0.0F);
 	}
 
@@ -180,6 +164,12 @@ public class StuckOPSword extends AbstractArrow {
 		super.addAdditionalSaveData(compound);
 		compound.putString("material_name", this.entityData.get(MATERIAL_NAME));
 		compound.putByte("stuck_face", this.entityData.get(STUCK_FACE));
+		BlockPos pos = this.entityData.get(STUCK_POS);
+		if (pos != null && pos != BlockPos.ZERO) {
+			compound.putInt("stuck_pos_x", pos.getX());
+			compound.putInt("stuck_pos_y", pos.getY());
+			compound.putInt("stuck_pos_z", pos.getZ());
+		}
 		compound.putFloat("rotation", this.entityData.get(ROTATION));
 	}
 
@@ -190,11 +180,19 @@ public class StuckOPSword extends AbstractArrow {
 		if (compound.contains("material_name")) {
 			String materialName = compound.getString("material_name");
 			this.entityData.set(MATERIAL_NAME, materialName);
-			this.material = OPSwordMaterialMap.get(materialName);
-			this.updateBladeStackmaterial();
+			this.material = getMaterialFromName();
+			this.updateBladeStack();
 		}
 		if (compound.contains("stuck_face")) {
 			this.entityData.set(STUCK_FACE, compound.getByte("stuck_face"));
+		}
+		if (compound.contains("stuck_pos_x") && compound.contains("stuck_pos_y") && compound.contains("stuck_pos_z")) {
+			BlockPos pos = new BlockPos(
+				compound.getInt("stuck_pos_x"),
+				compound.getInt("stuck_pos_y"),
+				compound.getInt("stuck_pos_z")
+			);
+			this.entityData.set(STUCK_POS, pos);
 		}
 		if (compound.contains("rotation")) {
 			this.entityData.set(ROTATION, compound.getFloat("rotation"));
@@ -207,8 +205,7 @@ public class StuckOPSword extends AbstractArrow {
   /*[BASIC Entity OVERRIDES]*/
 	@Override
 	public ItemStack getDefaultPickupItem() {
-		// Get the correct item for this material
-		Item materialItem = OPSwordMaterialMap.get(this.entityData.get(MATERIAL_NAME)).getRegisteredItem();
+		Item materialItem = this.getMaterialFromName().getRegisteredItem();
 		return new ItemStack(materialItem != null ? materialItem : RegistryBIBI.CLAYMORE.get());
 	}
 
@@ -327,27 +324,31 @@ public class StuckOPSword extends AbstractArrow {
 	 /*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
 	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
   /*[tick]*/
-	@Override
-	public void tick() {
-		super.tick();
+	 @Override
+	 public void tick() {
+		 super.tick();
 
-		if (this.inGround && stuckPos != null && level().getBlockState(stuckPos).getBlock() != stuckBlock) {
-			this.inGround = false;
-			this.hasImpulse = true;
-			this.setDeltaMovement(Vec3.ZERO);
-		}
+		 BlockPos stuckPos = this.getStuckPos();
+		 BlockState stuckBlock = this.level().getBlockState(stuckPos);
 
-		if (!this.inGround) {
-			this.setStuckFace(Direction.UP);
+		 if (this.inGround && stuckPos != null && (stuckBlock.is(OP_TagKeyUtil.Blocks.SWORD_NO_STICK))) {
+			 this.inGround = false;
+			 this.setDeltaMovement(Vec3.ZERO);
+		 }
 
-			float currentRotation = this.getRenderingRotation();
-			float newRotation;
-			newRotation = (random.nextBoolean() ? currentRotation + 10F : currentRotation - 10F) % 360F;
-			if (newRotation < 0) newRotation += 360F;
-			this.setRenderingRotation(newRotation);
-		}
-		this.setPos(this.getX(), this.getY(), this.getZ());
-	}
+		 if (!this.inGround) {
+			 this.hasImpulse = true;
+			 this.setStuckPos(this.blockPosition());
+			 this.setStuckFace(Direction.UP);
+
+			 float currentRotation = this.getRenderingRotation();
+			 float newRotation;
+			 newRotation = (random.nextBoolean() ? currentRotation + 10F : currentRotation - 10F) % 360F;
+			 if (newRotation < 0) newRotation += 360F;
+			 this.setRenderingRotation(newRotation);
+		 }
+		 this.setPos(this.getX(), this.getY(), this.getZ());
+	 }
 
 
 	 /*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
@@ -386,6 +387,8 @@ public class StuckOPSword extends AbstractArrow {
 					float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
 					float damage = dmg + enchantDmg;
 					living.hurt(bladeDMG, damage);
+
+					if (material == OPSwordMaterial.CRYING) ApplyCrying1_Method.execute(hitEntity);
 				}
 			} else { // non-living entities
 				HatchetonHitEntity.miscEntityHit(this, hitEntity, level, random);
@@ -398,22 +401,35 @@ public class StuckOPSword extends AbstractArrow {
 	 /*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
 	/*---[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]----*/
   /*[on Hit Block]*/
-	@Override
-	public void onHitBlock(BlockHitResult result) {
-		stuckPos = result.getBlockPos();
-		stuckBlock = level().getBlockState(stuckPos).getBlock();
+	 @Override
+	 public void onHitBlock(BlockHitResult result) {
+		 BlockPos hitPos = result.getBlockPos();
 
-		this.setStuckFace(result.getDirection());
+		 this.setStuckPos(hitPos);
+		 this.setStuckFace(result.getDirection());
 
-		super.onHitBlock(result);
+		 super.onHitBlock(result);
 
-		if (!level().isClientSide()) {
-			// Use the utility SHAREDMETHODS for button interaction
-			HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+		 if (!level().isClientSide()) {
+			 // Use the utility SHAREDMETHODS for button interaction
+			 HatchetonHitBlock.handleButtonInteraction(result, level(), this);
 
-			float tone = Mth.randomBetween(this.random, 1.3F, 1.420F);
-			this.playSound(RegistrySounds.BLADE_STICK.get(), 0.2420F, tone);
-			this.level().broadcastEntityEvent(this, (byte) 3);
-		}
-	}
+			 // Spawn block particles at the hit location
+			 ((ServerLevel)level()).sendParticles(
+				 new BlockParticleOption(ParticleTypes.BLOCK, this.level().getBlockState(hitPos)),
+				 result.getLocation().x,
+				 result.getLocation().y,
+				 result.getLocation().z,
+				 10, // particle count
+				 0.1D, // spread X
+				 0.1D, // spread Y
+				 0.1D, // spread Z
+				 0.05D // speed
+			 );
+
+			 float tone = Mth.randomBetween(this.random, 1.3F, 1.420F);
+			 this.playSound(RegistrySounds.BLADE_STICK.get(), 0.2420F, tone);
+			 this.level().broadcastEntityEvent(this, (byte) 3);
+		 }
+	 }
 }

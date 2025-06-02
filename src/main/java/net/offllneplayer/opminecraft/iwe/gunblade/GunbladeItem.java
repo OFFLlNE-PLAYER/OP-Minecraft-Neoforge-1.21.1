@@ -16,39 +16,34 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+
+import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.entity.sw0rd.StickSw0rd_Method;
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordMaterial;
 
 import java.util.List;
+
 
 public class GunbladeItem extends SwordItem {
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*[VARIABLES]*/
-	private final GunbladeMaterialMap.GunbladeMaterial material;
-	private final float damage;
-	private final float attackSpeed;
+	private final GunbladeMaterial material;
 
-
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*[BUILDER]*/
-	public GunbladeItem(GunbladeMaterialMap.GunbladeMaterial material, float damage, float attackSpeed) {
-		super(createTier(material), createItemProperties(material, damage, attackSpeed));
-
-		// Set the instance fields
+  /*[BUILDER]*/
+	public GunbladeItem(GunbladeMaterial material) {
+		super(createTier(material), createItemProperties(material));
 		this.material = material;
-		this.damage = damage;
-		this.attackSpeed = attackSpeed;
-
-		// Associate this item with the material
 		material.setRegisteredItem(this);
 	}
 
-	private static Item.Properties createItemProperties(GunbladeMaterialMap.GunbladeMaterial material, float damage, float attackSpeed) {
+	private static Item.Properties createItemProperties(GunbladeMaterial material) {
 		Item.Properties itemProperties = new Item.Properties()
-			.attributes(SwordItem.createAttributes(createTier(material), damage, attackSpeed))
+			.attributes(SwordItem.createAttributes(createTier(material), material.getAttackDamage(), material.getAttackSpeed()))
 			.stacksTo(1)
 			.rarity(material.getRarity());
 
@@ -60,31 +55,33 @@ public class GunbladeItem extends SwordItem {
 	}
 
 
-	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+	  /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+   /*[HELP]*/
+	 public GunbladeMaterial getMaterial() {
+		 return material;
+	 }
+
+
+	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(GunbladeMaterialMap.GunbladeMaterial material) {
+  /*[BASIC TOOL Item OVERRIDES]*/
+	private static Tier createTier(GunbladeMaterial material) {
 		return new Tier() {
+			@Override
+			public Ingredient getRepairIngredient() { return material.getRepairIngredient(); }
 			@Override
 			public int getUses() { return material.getDurability(); }
 			@Override
 			public float getSpeed() { return material.getMiningSpeed(); }
 			@Override
-			public float getAttackDamageBonus() { return 0; }
-			@Override
 			public TagKey<Block> getIncorrectBlocksForDrops() { return material.getIncorrectBlocksForDrops(); }
 			@Override
 			public int getEnchantmentValue() { return material.getEnchantability(); }
 			@Override
-			public Ingredient getRepairIngredient() { return material.getRepairIngredient(); }
+			public float getAttackDamageBonus() { return 0; }
 		};
 	}
-
-	public GunbladeMaterialMap.GunbladeMaterial getMaterial() {
-		return material;
-	}
-
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
@@ -96,16 +93,18 @@ public class GunbladeItem extends SwordItem {
 	}
 
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[Use Item OVERRIDES]*/
+  /*[useOn]*/
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		return StickSw0rd_Method.execute(context);
 	}
 
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
+	/*x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-  */
+  /*[hurtEnemy]*/
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity sourceEntity) {
 
@@ -120,12 +119,18 @@ public class GunbladeItem extends SwordItem {
 				sourceEntity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.420F, Mth.nextFloat(RandomSource.create(), 0.9F, 1.0420F));
 			}
 			stack.set(RegistryDataComponents.GUNBLADE_LAST_HIT_TIME.get(), level.getGameTime());
+
+
+			if (material == GunbladeMaterial.CRYING) ApplyCrying1_Method.execute(entity);
 		}
 
 		return super.hurtEnemy(stack, entity, sourceEntity);
 	}
 
 
+	 /*x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-x<=-  */
+	/*o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o<=-o */
+  /*[interactLivingEntity]*/
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player sourceEntity, LivingEntity entity, InteractionHand hand) {
 
