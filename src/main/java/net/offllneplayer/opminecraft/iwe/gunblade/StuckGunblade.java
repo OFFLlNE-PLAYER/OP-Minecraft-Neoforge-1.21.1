@@ -356,8 +356,7 @@ public class StuckGunblade extends AbstractArrow {
 			this.setStuckFace(Direction.UP);
 
 			float currentRotation = this.getRenderingRotation();
-			float newRotation;
-			newRotation = (random.nextBoolean() ? currentRotation + 10F : currentRotation - 10F) % 360F;
+			float newRotation = (random.nextBoolean() ? currentRotation + 10F : currentRotation - 10F) % 360F;
 			if (newRotation < 0) newRotation += 360F;
 			this.setRenderingRotation(newRotation);
 		}

@@ -31,22 +31,22 @@ import net.offllneplayer.opminecraft.init.RegistrySounds;
 public class TNTStickItem extends Item implements DispensibleProjectile {
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[VARIABLES]*/
+  /*[VARIABLES]*/
 	private static final String FUSE_SOUND_PLAYING_TAG = "TNTFuseSoundPlaying";
 	private static final int FUSE_DURATION = 100;
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*[BUILDER]*/
+  /*[BUILDER]*/
 	public TNTStickItem() {
 		super(new Properties()
 			.stacksTo(4)
 			.rarity(Rarity.UNCOMMON));
 	}
 
-	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
-	/*[HELP]*/
+  /*[HELP]*/
 	private void stopFuseSound(Level level, double x, double y, double z) {
 		if (!(level instanceof ServerLevel serverLevel)) return;
 
@@ -61,9 +61,9 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 	}
 
 
-	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/* ====================================================================================*/
-	/*[Durability Bar]*/
+  /*[Durability Bar]*/
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
@@ -106,17 +106,17 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 
 
 
-	/* ====================================================================================*/
+	 /* ====================================================================================*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[Use Item OVERRIDES]*/
+  /*[Use Item OVERRIDES]*/
 	@Override
 	public int getUseDuration(ItemStack itemstack, LivingEntity user) {return FUSE_DURATION;}
 	@Override
 	public UseAnim getUseAnimation(ItemStack stack) {return UseAnim.SPEAR;}
 
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[use]*/
+  /*[use]*/
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack tstack = player.getItemInHand(hand);
@@ -184,9 +184,9 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 	}
 
 
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___*/
-	/*[on Use Tick]*/
+  /*[on Use Tick]*/
 	@Override
 	public void onUseTick(Level level, LivingEntity user, ItemStack stack, int remainingUseTicks) {
 		if (!(user instanceof Player player)) return;
@@ -227,9 +227,9 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 		}
 	}
 
-	/*-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___*/
+	 /*-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___-=- o_ <=--___*/
 	/* X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-*/
-	/*[on Stop Using]*/
+  /*[on Stop Using]*/
 	@Override
 	public void onStopUsing(ItemStack stack, LivingEntity livingEntity, int timeLeft) {
 		if (!(livingEntity instanceof Player player)) return;
@@ -241,9 +241,9 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 		}
 	}
 
-	/* X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-*/
+	 /* X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-*/
 	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
-	/*[release Using]*/
+  /*[release Using]*/
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
 		if (!(user instanceof Player player) || level.isClientSide) return;
@@ -291,9 +291,9 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 			SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 0.69F, 0.420F * randomVelo + pull);
 	}
 
-	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
+	 /* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
 	/*-----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>*/
-	/*[as Projectile]*/
+  /*[as Projectile]*/
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
 		ThrownTNTStick tstick = new ThrownTNTStick(null, level, stack.copy());

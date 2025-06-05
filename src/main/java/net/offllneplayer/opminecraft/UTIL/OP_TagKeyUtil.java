@@ -31,6 +31,7 @@ public class OP_TagKeyUtil {
 
         public static final TagKey<Block> OP_LAMPS = createTag("op_lamps");
 
+        public static final TagKey<Block> BULLET_FRAGILE = createTag("bullet_fragile");
         public static final TagKey<Block> SWORD_NO_STICK = createTag("sword_no_stick");
 
         private static TagKey<Block> createTag(String name) {

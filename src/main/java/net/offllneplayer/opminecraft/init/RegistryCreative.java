@@ -248,7 +248,7 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.TITAN_GUNBLADE.get());
 
 
-              //  event.accept(RegistryBIBI.SAMURAI_EDGE);
+                event.accept(RegistryBIBI.SAMURAI_EDGE.get());
 
                 event.accept(RegistryBIBI.TOTEM_OF_LIFE);
                 // event.accept(RegistryIBBI.TOTEM_OF_UNCRYING);

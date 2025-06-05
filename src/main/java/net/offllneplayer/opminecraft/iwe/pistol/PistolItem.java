@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.iwe.hatchet;
+package net.offllneplayer.opminecraft.iwe.pistol;
 
 
 import net.minecraft.core.Direction;
@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,25 +19,24 @@ import net.minecraft.world.level.block.Block;
 import net.offllneplayer.opminecraft.iface.DispensibleProjectile;
 
 
-public class HatchetItem extends TieredItem implements DispensibleProjectile {
+public class PistolItem extends TieredItem implements DispensibleProjectile {
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
-	private final HatchetMaterial material;
+	private final GunMaterial material;
 
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDER]*/
-	public HatchetItem(HatchetMaterial material) {
+	public PistolItem(GunMaterial material) {
 		super(createTier(material), createItemProperties(material));
 		this.material = material;
 		material.setRegisteredItem(this);
 	}
 
-	private static Item.Properties createItemProperties(HatchetMaterial material) {
-		Item.Properties itemProperties = new Item.Properties()
-			.attributes(AxeItem.createAttributes(createTier(material), material.getAttackDamage(), material.getAttackSpeed()))
+	private static Properties createItemProperties(GunMaterial material) {
+		Properties itemProperties = new Properties()
 			.stacksTo(1)
 			.rarity(material.getRarity());
 
@@ -53,7 +51,7 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
   	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
   /*[HELP]*/
-	public HatchetMaterial getMaterial() {
+	public GunMaterial getMaterial() {
 		return material;
 	}
 
@@ -61,7 +59,7 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(HatchetMaterial material) {
+	private static Tier createTier(GunMaterial material) {
 		return new Tier() {
 			@Override
 			public Ingredient getRepairIngredient() { return material.getRepairIngredient(); }
@@ -84,7 +82,7 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
   /*[Use Item OVERRIDES]*/
 	@Override
 	public int getUseDuration(ItemStack itemstack, LivingEntity user) {
-		return 60;
+		return 1;
 	}
 	@Override
 	public UseAnim getUseAnimation(ItemStack stack) {
@@ -94,46 +92,41 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
   /*[use]*/
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-		player.startUsingItem(hand);
-		return InteractionResultHolder.consume(player.getItemInHand(hand));
-	}
+	 @Override
+	 public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		 ItemStack stack = player.getItemInHand(hand);
+
+		 if (level.isClientSide) return InteractionResultHolder.consume(stack);
+
+		 double yawRad = Math.toRadians(player.getYRot());
+		 double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
+		 double rightX = forwardZ, rightZ = -forwardX;
+		 double forwardOff = 0.6;
+		 double lateralOff = hand == InteractionHand.MAIN_HAND ? -0.3 : 0.3;
+		 double spawnX = player.getX() + forwardX * forwardOff + rightX * lateralOff;
+		 double spawnY = player.getY() + player.getEyeHeight();
+		 double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
+
+		 Bullet bulletENT = new Bullet(player, level, stack.copy());
+
+		 bulletENT.setPos(spawnX, spawnY, spawnZ);
+		 bulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 6F, 0.420F);
+		 level.addFreshEntity(bulletENT);
+
+		 player.awardStat(Stats.ITEM_USED.get(this));
+		 stack.shrink(1);
+
+		 level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1, 1);
+
+		 return InteractionResultHolder.success(stack);
+	 }
+
 
 
 	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
   /*[release Using]*/
-	@Override
-	public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
-		if (!(user instanceof Player player) || level.isClientSide) return;
 
-		float pull = Mth.clamp((getUseDuration(stack, user) - timeLeft) / 20F, 0F, 1F);
-		if (pull < 0.1F) return;
-
-		InteractionHand hand = player.getUsedItemHand();
-
-		double yawRad = Math.toRadians(player.getYRot());
-		double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
-		double rightX = forwardZ, rightZ = -forwardX;
-		double forwardOff = 0.6;
-		double lateralOff = hand == InteractionHand.MAIN_HAND ? -0.3 : 0.3;
-		double spawnX = player.getX() + forwardX * forwardOff + rightX * lateralOff;
-		double spawnY = player.getY() + player.getEyeHeight();
-		double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
-
-		ThrownHatchet hatchet = new ThrownHatchet(player, level, stack.copy());
-
-		hatchet.setPullRatio(pull);
-		hatchet.setPos(spawnX, spawnY, spawnZ);
-		hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * 2.5F, 0.420F);
-		level.addFreshEntity(hatchet);
-
-		player.awardStat(Stats.ITEM_USED.get(this));
-		stack.shrink(1);
-
-		level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1, 1 + pull * 0.2F);
-	}
 
 
 	 /* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
@@ -142,12 +135,12 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
 
-		ThrownHatchet hatchet =  new ThrownHatchet(null, level, stack.copy());
+		Bullet bulletENT =  new Bullet(null, level, stack.copy());
 
-		hatchet.setPos(pos.x(), pos.y(), pos.z());
+		bulletENT.setPos(pos.x(), pos.y(), pos.z());
 
 		float speed = getDispenseSpeed();
-		hatchet.setDeltaMovement(direction.getStepX() * speed, direction.getStepY() * speed + 0.1F, direction.getStepZ() * speed);
+		bulletENT.setDeltaMovement(direction.getStepX() * speed, direction.getStepY() * speed + 0.1F, direction.getStepZ() * speed);
 
 		float yRot = switch (direction) {
 			case NORTH -> 0F;
@@ -156,8 +149,8 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 			case EAST -> 270F;
 			default -> 0F;
 		};
-		hatchet.setYRot(yRot);
+		bulletENT.setYRot(yRot);
 
-		return hatchet;
+		return bulletENT;
 	}
 }

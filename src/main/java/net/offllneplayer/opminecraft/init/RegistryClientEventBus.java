@@ -14,6 +14,9 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.offllneplayer.opminecraft.client.particle.ParticleGunbladeShot;
 
 import net.offllneplayer.opminecraft.entity.sw0rd.StuckSw0rdRenderer;
+
+import net.offllneplayer.opminecraft.iwe.pistol.BulletRenderer;
+
 import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunbladeRenderer;
 import net.offllneplayer.opminecraft.iwe.hatchet.ThrownHatchetRenderer;
 import net.offllneplayer.opminecraft.iwe.opsw0rd.StuckOPSwordRenderer;
@@ -37,6 +40,8 @@ public class RegistryClientEventBus {
 
 		/*--------------------------------------------------------------------------------------------*/
 			/*[Register Entity Renderers]*/
+
+			EntityRenderers.register(RegistryEntities.SE_BULLET.get(), BulletRenderer::new);
 
 			EntityRenderers.register(RegistryEntities.STUCK_GUNBLADE.get(), StuckGunbladeRenderer::new);
 			EntityRenderers.register(RegistryEntities.STUCK_SW0RD.get(), StuckSw0rdRenderer::new);

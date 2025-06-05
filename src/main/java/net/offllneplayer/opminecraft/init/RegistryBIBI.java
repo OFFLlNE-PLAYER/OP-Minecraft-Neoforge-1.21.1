@@ -41,6 +41,8 @@ import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
+import net.offllneplayer.opminecraft.iwe.pistol.GunMaterial;
+import net.offllneplayer.opminecraft.iwe.pistol.PistolItem;
 import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
 
 import java.util.function.Supplier;
@@ -426,7 +428,10 @@ public class RegistryBIBI {
 
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 
-	// public static final DeferredItem<SamuraiEdgeItem> SAMURAI_EDGE = ITEMSREGISTRY.register("samurai_edge", SamuraiEdge::new);
+	public static final Supplier<PistolItem> SAMURAI_EDGE = ITEMSREGISTRY.register("samurai_edge",
+		() -> new PistolItem(GunMaterial.SAMURAI_EDGE));
+
+	public static final DeferredItem<Item> SE_BULLET = ITEMSREGISTRY.registerItem("se_bullet", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
 

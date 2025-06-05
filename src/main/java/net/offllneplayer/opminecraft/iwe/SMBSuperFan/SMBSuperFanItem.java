@@ -30,9 +30,9 @@ import java.util.List;
 
 public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile {
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*[BUILDER]*/
+  /*[BUILDER]*/
 	public SMBSuperFanItem() {
 		super(TOOL_TIER, new Properties()
 			.attributes(SwordItem.createAttributes(TOOL_TIER, 4F, -2.69F))
@@ -40,9 +40,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 			.rarity(Rarity.EPIC));
 	}
 
-	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[BASIC TOOL Item OVERRIDES]*/
+  /*[BASIC TOOL Item OVERRIDES]*/
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {return 420;}
@@ -58,9 +58,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 		public Ingredient getRepairIngredient() {return Ingredient.EMPTY;}
 	};
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--*/
-	/*[TOOLTIP EXTRAS]*/
+  /*[TOOLTIP EXTRAS]*/
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
@@ -68,10 +68,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 		list.add(Component.translatable("item.opminecraft.smb_super_fan.description_0"));
 	}
 
-	/*-{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--*/
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*-{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--{}--*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[Use Item OVERRIDES]*/
+  /*[Use Item OVERRIDES]*/
 	@Override
 	public int getUseDuration(ItemStack itemstack, LivingEntity user) {
 		return 60;
@@ -82,9 +81,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 		return UseAnim.SPEAR;
 	}
 
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-	/*[use]*/
+  /*[use]*/
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		player.startUsingItem(hand);
@@ -92,9 +91,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 	}
 
 
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
+	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
-	/*[release Using]*/
+  /*[release Using]*/
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeLeft) {
 		if (!(user instanceof Player player) || level.isClientSide) return;
@@ -130,9 +129,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 	}
 
 
-	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
+	 /* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
 	/*-----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>----x-=>*/
-	/*[as Projectile]*/
+  /*[as Projectile]*/
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
 		ThrownSMBSuperFan fan = new ThrownSMBSuperFan(level, null);
