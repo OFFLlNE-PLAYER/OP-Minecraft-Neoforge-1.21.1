@@ -1,0 +1,7 @@
+{
+	"parent": "opminecraft:item/valentine_samurai_edge",
+	"textures": {
+		"0": "opminecraft:item/text_titan_samurai_edge",
+		"particle": "opminecraft:item/text_titan_samurai_edge"
+	}
+}

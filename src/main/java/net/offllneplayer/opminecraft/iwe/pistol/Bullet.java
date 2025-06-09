@@ -73,14 +73,18 @@ public class Bullet extends AbstractArrow {
 	public Bullet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		if (stack.getItem() == RegistryBIBI.SAMURAI_EDGE.get()) {
-			this.entityData.set(MATERIAL_NAME, "SAMURAI_EDGE");
-			this.material = GunMaterial.SAMURAI_EDGE;
+		if (stack.getItem() == RegistryBIBI.VALENTINE_SAMURAI_EDGE.get()) {
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
+			this.material = GunMaterial.VALENTINE_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
-		} else {
+		} else if (stack.getItem() == RegistryBIBI.TITAN_SAMURAI_EDGE.get()) {
+			this.entityData.set(MATERIAL_NAME, "TITAN_SAMURAI_EDGE");
+			this.material = GunMaterial.TITAN_SAMURAI_EDGE;
+			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
+		}else {
 			// DEFAULT
-			this.entityData.set(MATERIAL_NAME, "SAMURAI_EDGE");
-			this.material = GunMaterial.SAMURAI_EDGE;
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
+			this.material = GunMaterial.VALENTINE_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}
 
@@ -93,6 +97,7 @@ public class Bullet extends AbstractArrow {
 			);
 		}
 	}
+
 
 	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
@@ -107,7 +112,7 @@ public class Bullet extends AbstractArrow {
 		try {
 			return GunMaterial.valueOf(getMaterialName());
 		} catch (IllegalArgumentException e) {
-			return GunMaterial.SAMURAI_EDGE;
+			return GunMaterial.VALENTINE_SAMURAI_EDGE;
 		}
 	}
 
@@ -147,8 +152,8 @@ public class Bullet extends AbstractArrow {
 	 /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[BASIC Entity OVERRIDES]*/
-	@Override
-	public ItemStack getDefaultPickupItem() {return ItemStack.EMPTY;}
+	 @Override
+	 public ItemStack getDefaultPickupItem() { return new ItemStack(RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get()); }
 	@Override
 	public boolean canBeCollidedWith() {return true;}
 	@Override
@@ -156,9 +161,9 @@ public class Bullet extends AbstractArrow {
 	@Override
 	public boolean isInvulnerableTo(DamageSource source) {return true;}
 	@Override
-	public boolean isPickable() {return true;}
+	public boolean isPickable() {return false;}
 	@Override
-	public float getPickRadius() {return 0.2F;}
+	public float getPickRadius() {return 0;}
 	@Override
 	public boolean shouldRenderAtSqrDistance(double distance) {return true;}
 	@Override

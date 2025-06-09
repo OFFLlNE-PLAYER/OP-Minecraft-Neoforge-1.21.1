@@ -18,6 +18,8 @@ public class OP_TagKeyUtil {
    /*[Block Tags]*/
     public static class Blocks {
 
+        public static final TagKey<Block> EMPTY_BLOCK_TAG = createTag("empty_block_tag");
+
         public static final TagKey<Block> CRYING_PAXEL = createTag("mineable/crying_paxel");
         public static final TagKey<Block> CRYING_SWHOPAXEL = createTag("mineable/crying_swhopaxel");
 

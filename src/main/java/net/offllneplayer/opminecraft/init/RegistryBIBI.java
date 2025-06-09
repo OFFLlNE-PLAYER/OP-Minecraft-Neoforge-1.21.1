@@ -428,8 +428,11 @@ public class RegistryBIBI {
 
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 
-	public static final Supplier<PistolItem> SAMURAI_EDGE = ITEMSREGISTRY.register("samurai_edge",
-		() -> new PistolItem(GunMaterial.SAMURAI_EDGE));
+	public static final Supplier<PistolItem> TITAN_SAMURAI_EDGE = ITEMSREGISTRY.register("titan_samurai_edge",
+		() -> new PistolItem(GunMaterial.TITAN_SAMURAI_EDGE));
+	public static final Supplier<PistolItem> VALENTINE_SAMURAI_EDGE = ITEMSREGISTRY.register("valentine_samurai_edge",
+		() -> new PistolItem(GunMaterial.VALENTINE_SAMURAI_EDGE));
+
 	public static final DeferredItem<Item> SAMURAI_EDGE_BULLET = ITEMSREGISTRY.registerItem("samurai_edge_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 

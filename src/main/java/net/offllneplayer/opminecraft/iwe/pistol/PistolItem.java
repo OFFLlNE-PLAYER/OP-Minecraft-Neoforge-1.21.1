@@ -60,7 +60,7 @@ public class PistolItem extends TieredItem{
 			@Override
 			public float getSpeed() { return material.getMiningSpeed(); }
 			@Override
-			public TagKey<Block> getIncorrectBlocksForDrops() { return material.getIncorrectBlocksForDrops(); }
+			public TagKey<Block> getIncorrectBlocksForDrops() { return material.getIncorrectBlocksForDrops();}
 			@Override
 			public int getEnchantmentValue() { return material.getEnchantability(); }
 			@Override
@@ -215,9 +215,9 @@ public class PistolItem extends TieredItem{
 		stack.setDamageValue(currentDamage + 1);
 
 		// Create a new bullet with a fresh stack, not copying the original
-		Bullet bulletENT = new Bullet(player, level, new ItemStack(stack.getItem()));
+		Bullet bulletENT = new Bullet(player, level, stack.copy());
 		bulletENT.setPos(spawnX, spawnY, spawnZ);
-		bulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 10.420F, 0F);
+		bulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 14.20F, 0F);
 		level.addFreshEntity(bulletENT);
 
 		int soundIndex = new Random().nextInt(4);
