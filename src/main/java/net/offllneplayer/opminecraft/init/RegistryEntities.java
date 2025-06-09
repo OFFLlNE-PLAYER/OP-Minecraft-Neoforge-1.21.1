@@ -25,8 +25,8 @@ public class RegistryEntities {
 /*--------------------------------------------------------------------------------------------*/
     /*[Register Entities]*/
 
-    public static final Supplier<EntityType<Bullet>> SE_BULLET = ENTREGISTRY.register("se_bullet",
-       ()-> EntityType.Builder.<Bullet>of(Bullet::new, MobCategory.MISC).build("se_bullet"));
+    public static final Supplier<EntityType<Bullet>> BULLET = ENTREGISTRY.register("bullet",
+       ()-> EntityType.Builder.<Bullet>of(Bullet::new, MobCategory.MISC).build("bullet"));
 
     public static final Supplier<EntityType<StuckGunblade>> STUCK_GUNBLADE = ENTREGISTRY.register("stuck_gunblade",
        ()-> EntityType.Builder.<StuckGunblade>of(StuckGunblade::new, MobCategory.MISC).build("stuck_gunblade"));

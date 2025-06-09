@@ -36,6 +36,15 @@
   "prime_tnt": {"sounds": [{"name": "opminecraft:prime_tnt", "stream": false}]},
 
   "punch": {"sounds": [{"name": "opminecraft:punch", "stream": false}]},
+  "fleshrip_0": {"sounds": [{"name": "opminecraft:fleshrip_0", "stream": false}]},
+  "fleshrip_1": {"sounds": [{"name": "opminecraft:fleshrip_1", "stream": false}]},
+
+  "samurai_edge_r": {"sounds": [{"name": "opminecraft:samurai_edge_r", "stream": false}]},
+  "samurai_edge_0": {"sounds": [{"name": "opminecraft:samurai_edge_0", "stream": false}]},
+  "samurai_edge_1": {"sounds": [{"name": "opminecraft:samurai_edge_1", "stream": false}]},
+  "samurai_edge_2": {"sounds": [{"name": "opminecraft:samurai_edge_2", "stream": false}]},
+  "samurai_edge_3": {"sounds": [{"name": "opminecraft:samurai_edge_3", "stream": false}]},
+  "samurai_edge_4": {"sounds": [{"name": "opminecraft:samurai_edge_4", "stream": false}]},
 
   "smb_super_fan_hit": {"sounds": [{"name": "opminecraft:smb_super_fan_hit", "stream": false}]},
   "smb_super_fan_idle": {"sounds": [{"name": "opminecraft:smb_super_fan_idle", "stream": false}]},

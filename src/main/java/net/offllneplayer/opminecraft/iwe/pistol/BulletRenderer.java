@@ -10,13 +10,10 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 @OnlyIn(Dist.CLIENT)
 public class BulletRenderer extends EntityRenderer<Bullet> {
@@ -27,27 +24,36 @@ public class BulletRenderer extends EntityRenderer<Bullet> {
 	@Override
 	public void render(Bullet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		poseStack.pushPose();
-		Direction dir = entity.getDirection();
+	
 		float rotation = entity.getRenderingRotation();
+		Direction dir = entity.getDirection();
+		if (dir == Direction.EAST || dir == Direction.WEST) dir = entity.getDirection().getOpposite();
 
-		if (!entity.isGrounded()) {
-			if (dir == Direction.NORTH) poseStack.mulPose(Axis.YP.rotationDegrees(90));
-			if (dir == Direction.SOUTH) poseStack.mulPose(Axis.YP.rotationDegrees(270));
-			if (dir == Direction.EAST) poseStack.mulPose(Axis.YP.rotationDegrees(180));
-			if (dir == Direction.WEST) poseStack.mulPose(Axis.YP.rotationDegrees(0));
-			poseStack.mulPose(Axis.ZP.rotationDegrees(rotation));
-		}
+			if (dir == Direction.NORTH) {
+				poseStack.scale(0.2F, 0.2F, 0.4F);
+				poseStack.mulPose(Axis.YP.rotationDegrees(90));
+				poseStack.mulPose(Axis.XP.rotationDegrees(rotation));
+			}
+			if (dir == Direction.SOUTH) {
+				poseStack.scale(0.2F, 0.2F, 0.4F);
+				poseStack.mulPose(Axis.YP.rotationDegrees(270));
+				poseStack.mulPose(Axis.XP.rotationDegrees(rotation));
+			}
+			if (dir == Direction.EAST) {
+				poseStack.scale(0.2F, 0.4F, 0.2F);
+				poseStack.mulPose(Axis.YP.rotationDegrees(0));
+				poseStack.mulPose(Axis.XP.rotationDegrees(rotation));
+			}
+			if (dir == Direction.WEST) {
+				poseStack.scale(0.2F, 0.4F, 0.2F);
+				poseStack.mulPose(Axis.YP.rotationDegrees(180));
+				poseStack.mulPose(Axis.XP.rotationDegrees(rotation));
+			}
 
-		// Get material from synchronized data
-		String materialName = entity.getMaterialName();
-		GunMaterial material = GunMaterial.valueOf(materialName);
-		Item bulletItem = material.getRegisteredItem();
 
-		// Create stack with proper item
-		ItemStack bulletStack = new ItemStack(bulletItem != null ? bulletItem : RegistryBIBI.SE_BULLET.get());
-
-		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(bulletStack, entity.getCommandSenderWorld(), null, entity.getId());
-		Minecraft.getInstance().getItemRenderer().render(bulletStack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
+		var itemInstance = entity.getMaterialFromName().getRegisteredRenderItem().getDefaultInstance();
+		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(itemInstance, entity.getCommandSenderWorld(), null, entity.getId());
+		Minecraft.getInstance().getItemRenderer().render(itemInstance, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
 		poseStack.popPose();
 		super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);

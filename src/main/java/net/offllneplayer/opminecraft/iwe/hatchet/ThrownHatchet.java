@@ -58,7 +58,7 @@ public class ThrownHatchet extends AbstractArrow {
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
 	private HatchetMaterial material;
-	private float dmg;
+	private DamageSource hatchetDMG = level().damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
 	private ItemStack hatchetStack;
 
 	private float pullRatio = 1F;
@@ -93,31 +93,31 @@ public class ThrownHatchet extends AbstractArrow {
 		ResourceLocation regName = BuiltInRegistries.ITEM.getKey(stack.getItem());
 		String regPath = regName.getPath();
 
-		if (regPath.contains("wooden_hatchet")) {
+		if (stack.getItem() == RegistryBIBI.WOODEN_HATCHET.get()) {
 			this.material = HatchetMaterial.WOODEN;
 			this.entityData.set(MATERIAL_NAME, "WOODEN");
-		} else if (regPath.contains("stone_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.STONE_HATCHET.get()) {
 			this.material = HatchetMaterial.STONE;
 			this.entityData.set(MATERIAL_NAME, "STONE");
-		} else if (regPath.contains("iron_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.IRON_HATCHET.get()) {
 			this.material = HatchetMaterial.IRON;
 			this.entityData.set(MATERIAL_NAME, "IRON");
-		} else if (regPath.contains("golden_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.GOLDEN_HATCHET.get()) {
 			this.material = HatchetMaterial.GOLDEN;
 			this.entityData.set(MATERIAL_NAME, "GOLDEN");
-		} else if (regPath.contains("diamond_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.DIAMOND_HATCHET.get()) {
 			this.material = HatchetMaterial.DIAMOND;
 			this.entityData.set(MATERIAL_NAME, "DIAMOND");
-		} else if (regPath.contains("netherite_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.NETHERITE_HATCHET.get()) {
 			this.material = HatchetMaterial.NETHERITE;
 			this.entityData.set(MATERIAL_NAME, "NETHERITE");
-		} else if (regPath.contains("crying_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.CRYING_HATCHET.get()) {
 			this.material = HatchetMaterial.CRYING;
 			this.entityData.set(MATERIAL_NAME, "CRYING");
-		} else if (regPath.contains("onyx_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.ONYX_HATCHET.get()) {
 			this.material = HatchetMaterial.ONYX;
 			this.entityData.set(MATERIAL_NAME, "ONYX");
-		} else if (regPath.contains("titan_hatchet")) {
+		} else if (stack.getItem() == RegistryBIBI.TITAN_HATCHET.get()) {
 			this.material = HatchetMaterial.TITAN;
 			this.entityData.set(MATERIAL_NAME, "TITAN");
 		} else {
@@ -340,7 +340,6 @@ public class ThrownHatchet extends AbstractArrow {
 		Level level = this.level();
 
 		if (!level.isClientSide()) {
-			DamageSource hatchetDMG = level().damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
 			Entity hitEntity = result.getEntity();
 
 			if (hitEntity instanceof LivingEntity living) {
@@ -357,8 +356,9 @@ public class ThrownHatchet extends AbstractArrow {
 					EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, hatchetDMG, this.hatchetStack);
 
 					float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
-					float damage = dmg + enchantDmg;
-					living.hurt(hatchetDMG, damage);
+					float dmg = this.material.getAttackDamage() + enchantDmg;
+
+					living.hurt(hatchetDMG, dmg);
 
 					if (material == HatchetMaterial.CRYING) {
 						ApplyCrying1_Method.execute(result.getEntity());

@@ -29,6 +29,9 @@ public class RegistryDamageTypes {
     public static final ResourceKey<DamageType> SW0RD = ResourceKey.create(Registries.DAMAGE_TYPE,
        ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "sw0rd"));
 
+    public static final ResourceKey<DamageType> SAMURAI_EDGE = ResourceKey.create(Registries.DAMAGE_TYPE,
+       ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "samurai_edge"));
+
     public static final ResourceKey<DamageType> WUMPA_FRUIT = ResourceKey.create(Registries.DAMAGE_TYPE,
             ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "wumpa_fruit"));
 

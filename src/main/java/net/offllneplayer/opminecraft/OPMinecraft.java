@@ -51,12 +51,10 @@ public class OPMinecraft {
         RegistryBIBI.RARE_BLOCKSREGISTRY.register(modEventBus);
 
         RegistryBlockEntities.BLOCKENTREGISTRY.register(modEventBus);
-
         RegistryInventory.INVREGISTRY.register(modEventBus);
+        RegistryBIBI.ITEMSREGISTRY.register(modEventBus);
 
         RegistryEntities.ENTREGISTRY.register(modEventBus);
-
-        RegistryBIBI.ITEMSREGISTRY.register(modEventBus);
 
         RegistryPotions.POTSREGISTRY.register(modEventBus);
         RegistryMobEffects.MOBEFFECTSREGISTRY.register(modEventBus);

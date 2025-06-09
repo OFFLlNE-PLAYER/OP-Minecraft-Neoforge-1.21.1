@@ -554,8 +554,8 @@
       "scale": [0.9, 0.9, 0.9]
     },
     "ground": {
-      "translation": [0, 2.25, 0],
-      "scale": [0.4, 0.4, 0.4]
+      "translation": [0, 0, 1],
+      "scale": [0.6, 0.6, 0.6]
     },
     "gui": {
       "rotation": [0, -180, 0],

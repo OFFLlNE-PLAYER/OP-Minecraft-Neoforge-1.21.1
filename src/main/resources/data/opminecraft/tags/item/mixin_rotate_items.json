@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "#opminecraft:gunblades",
+    "opminecraft:prototype_gunblade",
+
     "#opminecraft:hatchets",
 
     "#opminecraft:non_brilliant_gems",
@@ -27,6 +29,9 @@
     "opminecraft:crying_leggings",
     "opminecraft:crying_boots",
     "opminecraft:crying_horse_armor",
+
+    "opminecraft:samurai_edge",
+    "opminecraft:ninemm_parabellum_rounds",
 
     "opminecraft:black_feather",
     "opminecraft:blue_feather",

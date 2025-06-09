@@ -41,7 +41,7 @@ public class RegistryClientEventBus {
 		/*--------------------------------------------------------------------------------------------*/
 			/*[Register Entity Renderers]*/
 
-			EntityRenderers.register(RegistryEntities.SE_BULLET.get(), BulletRenderer::new);
+			EntityRenderers.register(RegistryEntities.BULLET.get(), BulletRenderer::new);
 
 			EntityRenderers.register(RegistryEntities.STUCK_GUNBLADE.get(), StuckGunbladeRenderer::new);
 			EntityRenderers.register(RegistryEntities.STUCK_SW0RD.get(), StuckSw0rdRenderer::new);

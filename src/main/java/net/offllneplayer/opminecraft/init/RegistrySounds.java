@@ -43,12 +43,21 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> NITRO_IDLE_2 = SOUNDSREGISTRY.register("nitro_idle_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "nitro_idle_2")));
         public static final DeferredHolder<SoundEvent, SoundEvent> NITRO_IDLE_3 = SOUNDSREGISTRY.register("nitro_idle_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "nitro_idle_3")));
 
+        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_R = SOUNDSREGISTRY.register("samurai_edge_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_r")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_0 = SOUNDSREGISTRY.register("samurai_edge_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_0")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_1 = SOUNDSREGISTRY.register("samurai_edge_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_1")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_2 = SOUNDSREGISTRY.register("samurai_edge_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_2")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_3 = SOUNDSREGISTRY.register("samurai_edge_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_3")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_4 = SOUNDSREGISTRY.register("samurai_edge_4", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_4")));
+
         public static final DeferredHolder<SoundEvent, SoundEvent> PRIME_TNT = SOUNDSREGISTRY.register("prime_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "prime_tnt")));
         public static final DeferredHolder<SoundEvent, SoundEvent> FAST_TICK_TNT = SOUNDSREGISTRY.register("fast_tick_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "fast_tick_tnt")));
         public static final DeferredHolder<SoundEvent, SoundEvent> TICK_TNT = SOUNDSREGISTRY.register("tick_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "tick_tnt")));
         public static final DeferredHolder<SoundEvent, SoundEvent> TNT_BOOM = SOUNDSREGISTRY.register("tnt_boom", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "tnt_boom")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> PUNCH = SOUNDSREGISTRY.register("punch", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "punch")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> FLESHRIP_0 = SOUNDSREGISTRY.register("fleshrip_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "fleshrip_0")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> FLESHRIP_1 = SOUNDSREGISTRY.register("fleshrip_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "fleshrip_1")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> SMB_SUPER_FAN_HIT = SOUNDSREGISTRY.register("smb_super_fan_hit", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "smb_super_fan_hit")));
         public static final DeferredHolder<SoundEvent, SoundEvent> SMB_SUPER_FAN_IDLE = SOUNDSREGISTRY.register("smb_super_fan_idle", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "smb_super_fan_idle")));

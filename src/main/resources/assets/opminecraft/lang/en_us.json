@@ -373,6 +373,12 @@
   "item.opminecraft.prototype_gunblade.description_0": "[FF8]",
   "item.opminecraft.prototype_gunblade.description_1": "This needs some work, doesn't it?",
 
+  "item.opminecraft.ninemm_parabellum_rounds": "9mm Parabellum Rounds",
+
+  "item.opminecraft.samurai_edge": "Samurai Edge",
+  "item.opminecraft.samurai_edge.description_0": "[RE3]",
+  "item.opminecraft.samurai_edge.description_1": "Hold 9mm Parabellum Rounds in other hand to reload.",
+
   "item.opminecraft.tnt_stick": "§cTNT Stick§r",
 
   "item.opminecraft.smb_super_fan": "§4SMB Super Fan§r",
