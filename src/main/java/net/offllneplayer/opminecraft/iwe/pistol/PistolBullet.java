@@ -50,7 +50,7 @@ public class PistolBullet extends AbstractArrow {
 	  /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
    /*[VARIABLES]*/
-	private PistolGunMaterial material;
+	private PistolMaterial material;
 	DamageSource bulletDamage;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -75,16 +75,16 @@ public class PistolBullet extends AbstractArrow {
 
 		if (stack.getItem() == RegistryBIBI.VALENTINE_SAMURAI_EDGE.get()) {
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
-			this.material = PistolGunMaterial.VALENTINE_SAMURAI_EDGE;
+			this.material = PistolMaterial.VALENTINE_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		} else if (stack.getItem() == RegistryBIBI.TITAN_SAMURAI_EDGE.get()) {
 			this.entityData.set(MATERIAL_NAME, "TITAN_SAMURAI_EDGE");
-			this.material = PistolGunMaterial.TITAN_SAMURAI_EDGE;
+			this.material = PistolMaterial.TITAN_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}else {
 			// DEFAULT
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
-			this.material = PistolGunMaterial.VALENTINE_SAMURAI_EDGE;
+			this.material = PistolMaterial.VALENTINE_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}
 
@@ -108,11 +108,11 @@ public class PistolBullet extends AbstractArrow {
 
 	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
 
-	public PistolGunMaterial getMaterialFromName() {
+	public PistolMaterial getMaterialFromName() {
 		try {
-			return PistolGunMaterial.valueOf(getMaterialName());
+			return PistolMaterial.valueOf(getMaterialName());
 		} catch (IllegalArgumentException e) {
-			return PistolGunMaterial.VALENTINE_SAMURAI_EDGE;
+			return PistolMaterial.VALENTINE_SAMURAI_EDGE;
 		}
 	}
 

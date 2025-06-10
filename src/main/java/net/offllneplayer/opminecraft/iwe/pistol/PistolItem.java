@@ -17,6 +17,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 
@@ -24,17 +25,17 @@ public class PistolItem extends TieredItem{
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
-	private PistolGunMaterial pistolGunMaterial;
+	private PistolMaterial pistolMaterial;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDER]*/
-	public PistolItem(PistolGunMaterial material) {
+	public PistolItem(PistolMaterial material) {
 		super(createTier(material), createItemProperties(material));
-		this.pistolGunMaterial = material;
+		this.pistolMaterial = material;
 	}
 
-	private static Properties createItemProperties(PistolGunMaterial material) {
+	private static Properties createItemProperties(PistolMaterial material) {
 		Properties itemProperties = new Properties()
 			.stacksTo(1)
 			.durability(material.getDurability())
@@ -51,7 +52,7 @@ public class PistolItem extends TieredItem{
   	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(PistolGunMaterial material) {
+	private static Tier createTier(PistolMaterial material) {
 		return new Tier() {
 			@Override
 			public Ingredient getRepairIngredient() { return Ingredient.EMPTY; }
@@ -74,7 +75,7 @@ public class PistolItem extends TieredItem{
   /*[Use Item OVERRIDES]*/
 	 @Override
 	 public int getUseDuration(ItemStack itemstack, LivingEntity user) {
-		 return this.pistolGunMaterial.getAttackSpeed();
+		 return this.pistolMaterial.getAttackSpeed();
 	 }
 
 	@Override
@@ -98,28 +99,54 @@ public class PistolItem extends TieredItem{
 		if (!(entity instanceof Player player)) return stack;
 		if (level.isClientSide) return stack;
 
-		// Process the used hand
 		InteractionHand usedHand = player.getUsedItemHand();
-		processGun(stack, level, player, usedHand);
 
-		// Check if we have the same gun in the other hand
+		// Check if we have a pistol in the other hand
 		InteractionHand otherHand = usedHand == InteractionHand.MAIN_HAND ?
 			InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 		ItemStack otherHandStack = player.getItemInHand(otherHand);
 
-		// If we have the same type of gun in the other hand and it's not on cooldown, fire it too
-		if (otherHandStack.getItem() == stack.getItem() && !otherHandStack.isEmpty() &&
+		if (otherHandStack.is(OP_TagKeyUtil.Items.PISTOLS) && !otherHandStack.isEmpty() &&
 			!player.getCooldowns().isOnCooldown(otherHandStack.getItem())) {
 
-			player.getCooldowns().addCooldown(otherHandStack.getItem(), 20);
-			processGun(otherHandStack, level, player, otherHand);
-		}
+			// Check if both pistols are the same type
+			boolean sameGunType = stack.getItem() == otherHandStack.getItem();
 
-		player.awardStat(Stats.ITEM_USED.get(this));
-		player.getCooldowns().addCooldown(this, 20);
+			// Compare durabilities - lower damage value means more durability remaining
+			int stackDamage = stack.getDamageValue();
+			int otherStackDamage = otherHandStack.getDamageValue();
+
+			if (otherStackDamage < stackDamage) {
+				// Other hand gun has more durability, use it
+				processGun(otherHandStack, level, player, otherHand);
+				player.awardStat(Stats.ITEM_USED.get(otherHandStack.getItem()));
+
+				// Add cooldown to both guns if they're different types
+				player.getCooldowns().addCooldown(otherHandStack.getItem(), 20);
+				if (!sameGunType) {
+					player.getCooldowns().addCooldown(this, 20);
+				}
+			} else {
+				// Used hand gun has more or equal durability, use it
+				processGun(stack, level, player, usedHand);
+				player.awardStat(Stats.ITEM_USED.get(this));
+
+				// Add cooldown to both guns if they're different types
+				player.getCooldowns().addCooldown(this, 20);
+				if (!sameGunType) {
+					player.getCooldowns().addCooldown(otherHandStack.getItem(), 20);
+				}
+			}
+		} else {
+			// Default to used hand if other hand doesn't have a pistol
+			processGun(stack, level, player, usedHand);
+			player.awardStat(Stats.ITEM_USED.get(this));
+			player.getCooldowns().addCooldown(this, 20);
+		}
 
 		return stack;
 	}
+
 
 	/**
 	 * Handles the gun use logic
@@ -140,13 +167,25 @@ public class PistolItem extends TieredItem{
 
 		// Check if player is crouching (sneaking)
 		if (player.isShiftKeyDown()) {
-			// When crouching: Try to reload first (if needed), otherwise fire
-			if (currentDamage > 0) {
-				// Gun needs reloading
+			// Check if reload is possible before attempting it
+			InteractionHand oppositeHand = hand == InteractionHand.MAIN_HAND ?
+				InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+			ItemStack oppositeHandStack = player.getItemInHand(oppositeHand);
+			boolean hasAmmoInOtherHand = oppositeHandStack.is(this.pistolMaterial.getRegisteredItem()) &&
+				!oppositeHandStack.isEmpty();
+
+			// When crouching: Try to reload only if needed AND possible, otherwise fire if has ammo
+			if (currentDamage > 0 && hasAmmoInOtherHand) {
+				// Gun needs reloading and player has ammo
 				reloadGun(stack, level, player, hand, randomFloat);
-			} else {
-				// Gun is full, fire it
+			} else if (currentDamage < gunMaxDurability) {
+				// Gun has ammo, fire it
 				fireGun(stack, level, player, spawnX, spawnY, spawnZ, randomFloat);
+			} else {
+				// Gun is empty and no ammo to reload, play empty sound
+				level.playSound(null, player.getX(), player.getY(), player.getZ(),
+					RegistrySounds.SAMURAI_EDGE_0, SoundSource.PLAYERS,
+					0.8F, 0.9F + randomFloat * 0.2F);
 			}
 		} else {
 			// Not crouching: Try to fire first, reload only if empty
@@ -164,7 +203,7 @@ public class PistolItem extends TieredItem{
 	 * Handles the gun reloading logic
 	 */
 	private void reloadGun(ItemStack stack, Level level, Player player, InteractionHand hand, float randomFloat) {
-		int gunMaxDurability = stack.getMaxDamage();
+
 		int currentDamage = stack.getDamageValue();
 
 		// Don't reload if gun is already full
@@ -175,7 +214,7 @@ public class PistolItem extends TieredItem{
 		ItemStack oppositeHandStack = player.getItemInHand(oppositeHand);
 
 		// Check if the opposite hand holds the correct bullet type
-		if (oppositeHandStack.is(this.pistolGunMaterial.getRegisteredItem())) {
+		if (oppositeHandStack.is(this.pistolMaterial.getRegisteredItem())) {
 			// Calculate how many bullets we need to fully reload
 			int bulletsNeeded = currentDamage;
 			int bulletCount = oppositeHandStack.getCount();
