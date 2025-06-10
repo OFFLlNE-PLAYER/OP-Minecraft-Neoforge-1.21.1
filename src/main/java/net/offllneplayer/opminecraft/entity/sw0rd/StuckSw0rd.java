@@ -370,7 +370,7 @@ public class StuckSw0rd extends AbstractArrow {
   /*[interact]*/
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
-		return Stuck_Sw0rd_OnClick_Method.execute(this.level(), this, player, hand);
+		return Stuck_Sword_OnClick_Method.execute(this.level(), this, player, hand);
 	}
 
 
@@ -415,8 +415,12 @@ public class StuckSw0rd extends AbstractArrow {
   /*[on Hit Block]*/
 	 @Override
 	 public void onHitBlock(BlockHitResult result) {
-		 BlockPos hitPos = result.getBlockPos();
 
+		 if (PopSwordItem_Method.execute(result, level(), this)) {
+			 return;
+		 }
+
+		 BlockPos hitPos = result.getBlockPos();
 		 this.setStuckPos(hitPos);
 		 this.setStuckFace(result.getDirection());
 

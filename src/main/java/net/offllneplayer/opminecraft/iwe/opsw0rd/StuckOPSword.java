@@ -35,7 +35,8 @@ import net.minecraft.world.phys.Vec3;
 import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.entity.sw0rd.Stuck_Sw0rd_OnClick_Method;
+import net.offllneplayer.opminecraft.entity.sw0rd.PopSwordItem_Method;
+import net.offllneplayer.opminecraft.entity.sw0rd.Stuck_Sword_OnClick_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
@@ -356,7 +357,7 @@ public class StuckOPSword extends AbstractArrow {
   /*[interact]*/
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
-		return Stuck_Sw0rd_OnClick_Method.execute(this.level(), this, player, hand);
+		return Stuck_Sword_OnClick_Method.execute(this.level(), this, player, hand);
 	}
 
 
@@ -403,8 +404,12 @@ public class StuckOPSword extends AbstractArrow {
   /*[on Hit Block]*/
 	 @Override
 	 public void onHitBlock(BlockHitResult result) {
-		 BlockPos hitPos = result.getBlockPos();
 
+		 if (PopSwordItem_Method.execute(result, level(), this)) {
+			 return;
+		 }
+
+		 BlockPos hitPos = result.getBlockPos();
 		 this.setStuckPos(hitPos);
 		 this.setStuckFace(result.getDirection());
 

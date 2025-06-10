@@ -24,17 +24,17 @@ public class PistolItem extends TieredItem{
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
-	private GunMaterial gunMaterial;
+	private PistolGunMaterial pistolGunMaterial;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDER]*/
-	public PistolItem(GunMaterial material) {
+	public PistolItem(PistolGunMaterial material) {
 		super(createTier(material), createItemProperties(material));
-		this.gunMaterial = material;
+		this.pistolGunMaterial = material;
 	}
 
-	private static Properties createItemProperties(GunMaterial material) {
+	private static Properties createItemProperties(PistolGunMaterial material) {
 		Properties itemProperties = new Properties()
 			.stacksTo(1)
 			.durability(material.getDurability())
@@ -51,7 +51,7 @@ public class PistolItem extends TieredItem{
   	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(GunMaterial material) {
+	private static Tier createTier(PistolGunMaterial material) {
 		return new Tier() {
 			@Override
 			public Ingredient getRepairIngredient() { return Ingredient.EMPTY; }
@@ -74,7 +74,7 @@ public class PistolItem extends TieredItem{
   /*[Use Item OVERRIDES]*/
 	 @Override
 	 public int getUseDuration(ItemStack itemstack, LivingEntity user) {
-		 return this.gunMaterial.getAttackSpeed();
+		 return this.pistolGunMaterial.getAttackSpeed();
 	 }
 
 	@Override
@@ -175,7 +175,7 @@ public class PistolItem extends TieredItem{
 		ItemStack oppositeHandStack = player.getItemInHand(oppositeHand);
 
 		// Check if the opposite hand holds the correct bullet type
-		if (oppositeHandStack.is(this.gunMaterial.getRegisteredItem())) {
+		if (oppositeHandStack.is(this.pistolGunMaterial.getRegisteredItem())) {
 			// Calculate how many bullets we need to fully reload
 			int bulletsNeeded = currentDamage;
 			int bulletCount = oppositeHandStack.getCount();
@@ -215,10 +215,10 @@ public class PistolItem extends TieredItem{
 		stack.setDamageValue(currentDamage + 1);
 
 		// Create a new bullet with a fresh stack, not copying the original
-		Bullet bulletENT = new Bullet(player, level, stack.copy());
-		bulletENT.setPos(spawnX, spawnY, spawnZ);
-		bulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 14.20F, 0F);
-		level.addFreshEntity(bulletENT);
+		PistolBullet pistolBulletENT = new PistolBullet(player, level, stack.copy());
+		pistolBulletENT.setPos(spawnX, spawnY, spawnZ);
+		pistolBulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 14.20F, 0F);
+		level.addFreshEntity(pistolBulletENT);
 
 		int soundIndex = new Random().nextInt(4);
 		level.playSound(null, player.getX(), player.getY(), player.getZ(),

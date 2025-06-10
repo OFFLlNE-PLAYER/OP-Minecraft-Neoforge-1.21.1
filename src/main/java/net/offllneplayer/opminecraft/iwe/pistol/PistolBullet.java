@@ -38,30 +38,30 @@ import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
 import java.util.Random;
 
 
-public class Bullet extends AbstractArrow {
+public class PistolBullet extends AbstractArrow {
 
 
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*[DATA]*/
-	 private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(Bullet.class, EntityDataSerializers.STRING);
-	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(Bullet.class, EntityDataSerializers.FLOAT);
+	 private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(PistolBullet.class, EntityDataSerializers.STRING);
+	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(PistolBullet.class, EntityDataSerializers.FLOAT);
 
 
 	  /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
    /*[VARIABLES]*/
-	private GunMaterial material;
+	private PistolGunMaterial material;
 	DamageSource bulletDamage;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDERS]*/
-	public Bullet(EntityType<? extends Bullet> type, Level level) {
+	public PistolBullet(EntityType<? extends PistolBullet> type, Level level) {
 		super(type, level);
 	}
 
-	public Bullet(Level world, LivingEntity shooter) {
-		super(RegistryEntities.BULLET.get(), world);
+	public PistolBullet(Level world, LivingEntity shooter) {
+		super(RegistryEntities.PISTOL_BULLET.get(), world);
 		this.setOwner(shooter);
 
 		if (shooter != null) {
@@ -70,21 +70,21 @@ public class Bullet extends AbstractArrow {
 		this.pickup = Pickup.DISALLOWED;
 	}
 
-	public Bullet(Player shooter, Level world, ItemStack stack) {
+	public PistolBullet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
 		if (stack.getItem() == RegistryBIBI.VALENTINE_SAMURAI_EDGE.get()) {
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
-			this.material = GunMaterial.VALENTINE_SAMURAI_EDGE;
+			this.material = PistolGunMaterial.VALENTINE_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		} else if (stack.getItem() == RegistryBIBI.TITAN_SAMURAI_EDGE.get()) {
 			this.entityData.set(MATERIAL_NAME, "TITAN_SAMURAI_EDGE");
-			this.material = GunMaterial.TITAN_SAMURAI_EDGE;
+			this.material = PistolGunMaterial.TITAN_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}else {
 			// DEFAULT
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
-			this.material = GunMaterial.VALENTINE_SAMURAI_EDGE;
+			this.material = PistolGunMaterial.VALENTINE_SAMURAI_EDGE;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}
 
@@ -108,11 +108,11 @@ public class Bullet extends AbstractArrow {
 
 	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
 
-	public GunMaterial getMaterialFromName() {
+	public PistolGunMaterial getMaterialFromName() {
 		try {
-			return GunMaterial.valueOf(getMaterialName());
+			return PistolGunMaterial.valueOf(getMaterialName());
 		} catch (IllegalArgumentException e) {
-			return GunMaterial.VALENTINE_SAMURAI_EDGE;
+			return PistolGunMaterial.VALENTINE_SAMURAI_EDGE;
 		}
 	}
 
@@ -179,9 +179,9 @@ public class Bullet extends AbstractArrow {
 	public void setPos(double x, double y, double z) {
 		super.setPos(x, y, z);
 
-		float shortHalf = 0.1F;
-		float longHalf = 0.1F;
-		float height = 0.1F;
+		float shortHalf = 0.01F;
+		float longHalf = 0.02F;
+		float height = 0.01F;
 
 		Direction dir = Direction.fromYRot(this.getYRot());
 
@@ -201,7 +201,6 @@ public class Bullet extends AbstractArrow {
 		 // Store original delta movement before super.tick() changes it
 		 Vec3 originalDeltaMovement = this.getDeltaMovement();
 
-		 // Call the parent tick method (which will apply full gravity)
 		 super.tick();
 
 		 // If not in ground and not above build limit, adjust for reduced gravity
@@ -212,8 +211,8 @@ public class Bullet extends AbstractArrow {
 			 // Calculate how much gravity was applied (difference in Y component)
 			 double gravityApplied = currentDeltaMovement.y - originalDeltaMovement.y;
 
-			 // Counteract 80% of the applied gravity
-			 double reducedGravity = gravityApplied * 0.9;
+			 // Counteract 97% of the applied gravity
+			 double reducedGravity = gravityApplied * 0.969;
 
 			 // Set the new delta movement with reduced gravity effect
 			 this.setDeltaMovement(currentDeltaMovement.x, currentDeltaMovement.y + reducedGravity, currentDeltaMovement.z);
@@ -221,7 +220,7 @@ public class Bullet extends AbstractArrow {
 
 		 if (!this.inGround) {
 			 float currentRotation = this.getRenderingRotation();
-			 float newRotation = (currentRotation + 42.0F) % 360F;
+			 float newRotation = (currentRotation + 15.0F) % 360F;
 			 if (newRotation < 0) newRotation += 360F;
 			 this.setRenderingRotation(newRotation);
 		 }

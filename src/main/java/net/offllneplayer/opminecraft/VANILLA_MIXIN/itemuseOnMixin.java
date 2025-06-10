@@ -5,7 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
-import net.offllneplayer.opminecraft.entity.sw0rd.StickSw0rd_Method;
+import net.offllneplayer.opminecraft.entity.sw0rd.StickSword_Method;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,7 +21,7 @@ public class itemuseOnMixin {
 		// sword or gunblade useon
 		if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS)) {
 			if (!context.getLevel().isClientSide()) {
-				StickSw0rd_Method.execute(context);
+				StickSword_Method.execute(context);
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_samurai_edge_bullet"
+    "layer0": "opminecraft:item/text_pistol_bullet"
   },
   "display": {
     "firstperson_lefthand": {

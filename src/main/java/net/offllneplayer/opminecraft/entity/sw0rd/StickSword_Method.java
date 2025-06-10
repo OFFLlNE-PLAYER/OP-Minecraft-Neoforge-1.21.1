@@ -2,8 +2,6 @@ package net.offllneplayer.opminecraft.entity.sw0rd;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -19,7 +17,7 @@ import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunblade;
 
-public class StickSw0rd_Method {
+public class StickSword_Method {
 	public static InteractionResult execute(UseOnContext context) {
 
 		Level level = context.getLevel();

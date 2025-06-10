@@ -16,13 +16,13 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 @OnlyIn(Dist.CLIENT)
-public class BulletRenderer extends EntityRenderer<Bullet> {
-	public BulletRenderer(EntityRendererProvider.Context context) {
+public class BulletRenderer_old extends EntityRenderer<PistolBullet> {
+	public BulletRenderer_old(EntityRendererProvider.Context context) {
 		super(context);
 	}
 
 	@Override
-	public void render(Bullet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+	public void render(PistolBullet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		poseStack.pushPose();
 	
 		float rotation = entity.getRenderingRotation();
@@ -60,7 +60,7 @@ public class BulletRenderer extends EntityRenderer<Bullet> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Bullet entity) {
+	public ResourceLocation getTextureLocation(PistolBullet entity) {
 		String materialName = entity.getMaterialName();
 		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_" + materialName + "_bullet.png");
 	}

@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.entity.sw0rd.StickSw0rd_Method;
+import net.offllneplayer.opminecraft.entity.sw0rd.StickSword_Method;
 
 
 public class OPSwordItem extends SwordItem {
@@ -75,7 +75,7 @@ public class OPSwordItem extends SwordItem {
   /*[Use Item OVERRIDES]*/
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
-		return StickSw0rd_Method.execute(context);
+		return StickSword_Method.execute(context);
 	}
 
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/

@@ -8,7 +8,7 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 
-public enum GunMaterial {
+public enum PistolGunMaterial {
 	TITAN_SAMURAI_EDGE(16, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true),
 	VALENTINE_SAMURAI_EDGE(15, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true);
 
@@ -21,9 +21,9 @@ public enum GunMaterial {
 	private final Rarity rarity;
 	private final boolean fireResistant;
 
-	GunMaterial(int durability, float miningSpeed,
-	            TagKey<Block> incorrectBlocksForDrops, float attackDamage, int attackSpeed, int enchantability,
-	            Rarity rarity, boolean fireResistant) {
+	PistolGunMaterial(int durability, float miningSpeed,
+	                  TagKey<Block> incorrectBlocksForDrops, float attackDamage, int attackSpeed, int enchantability,
+	                  Rarity rarity, boolean fireResistant) {
 		this.durability = durability;
 		this.miningSpeed = miningSpeed;
 		this.incorrectBlocksForDrops = incorrectBlocksForDrops;
@@ -52,8 +52,8 @@ public enum GunMaterial {
 	}
 	public Item getRegisteredRenderItem() {
 		return switch(this) {
-			case TITAN_SAMURAI_EDGE -> RegistryBIBI.SAMURAI_EDGE_BULLET.get();
-			case VALENTINE_SAMURAI_EDGE -> RegistryBIBI.SAMURAI_EDGE_BULLET.get();
+			case TITAN_SAMURAI_EDGE -> RegistryBIBI.PISTOL_BULLET.get();
+			case VALENTINE_SAMURAI_EDGE -> RegistryBIBI.PISTOL_BULLET.get();
 		};
 	}
 }

@@ -18,10 +18,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.entity.sw0rd.StickSw0rd_Method;
+import net.offllneplayer.opminecraft.entity.sw0rd.StickSword_Method;
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordMaterial;
 
 import java.util.List;
 
@@ -98,7 +97,7 @@ public class GunbladeItem extends SwordItem {
   /*[useOn]*/
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
-		return StickSw0rd_Method.execute(context);
+		return StickSword_Method.execute(context);
 	}
 
 
