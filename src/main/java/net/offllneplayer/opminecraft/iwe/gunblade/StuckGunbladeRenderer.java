@@ -89,13 +89,10 @@ public class StuckGunbladeRenderer extends EntityRenderer<StuckGunblade> {
 			}
 		}
 
-		String materialName = entity.getMaterialName();
-		GunbladeMaterial material = GunbladeMaterial.valueOf(materialName);
-		Item bladeItem = material.getRegisteredItem();
-
+		Item bladeItem = GunbladeMaterial.valueOf(entity.getMaterialName()).getRegisteredItem();
 		ItemStack bladeStack = new ItemStack(bladeItem != null ? bladeItem : RegistryBIBI.TITAN_GUNBLADE.get());
-
 		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(bladeStack, entity.getCommandSenderWorld(), null, entity.getId());
+
 		Minecraft.getInstance().getItemRenderer().render(bladeStack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
 		poseStack.popPose();

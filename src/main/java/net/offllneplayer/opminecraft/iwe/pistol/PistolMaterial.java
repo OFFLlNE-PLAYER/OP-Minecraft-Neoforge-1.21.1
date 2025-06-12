@@ -21,9 +21,7 @@ public enum PistolMaterial {
 	private final Rarity rarity;
 	private final boolean fireResistant;
 
-	PistolMaterial(int durability, float miningSpeed,
-	               TagKey<Block> incorrectBlocksForDrops, float attackDamage, int attackSpeed, int enchantability,
-	               Rarity rarity, boolean fireResistant) {
+	PistolMaterial(int durability, float miningSpeed, TagKey<Block> incorrectBlocksForDrops, float attackDamage, int attackSpeed, int enchantability, Rarity rarity, boolean fireResistant) {
 		this.durability = durability;
 		this.miningSpeed = miningSpeed;
 		this.incorrectBlocksForDrops = incorrectBlocksForDrops;

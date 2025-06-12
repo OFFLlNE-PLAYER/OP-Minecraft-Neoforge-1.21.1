@@ -211,13 +211,11 @@ public class RegistryCreative {
 
             }
             if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-               /*
-                event.accept(RegistryBIBI.CLAY_SWORD);
-*/
+
+                event.accept(RegistryBIBI.CLAY_SWORD.get());
+
                 event.accept(RegistryBIBI.CLAYMORE.get());
                 event.accept(RegistryBIBI.CRYING_SWORD.get());
-
-
 
                 event.accept(RegistryBIBI.WOODEN_HATCHET.get());
                 event.accept(RegistryBIBI.STONE_HATCHET.get());

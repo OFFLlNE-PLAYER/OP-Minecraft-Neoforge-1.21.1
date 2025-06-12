@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.entity.sw0rd;
+package net.offllneplayer.opminecraft.iwe.sw0rd;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -125,7 +125,7 @@ public class StickSword_Method {
 			level.addFreshEntity(op_sword);
 			putsword = true;
 
-		} else if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS)) {
+		} else if (stack.is(OP_TagKeyUtil.Items.VANILLA_SW0RDS) || (stack.is(OP_TagKeyUtil.Items.SW0RDS))) {
 
 			StuckSw0rd sw0rd = new StuckSw0rd(player, level, stack.copy());
 			sw0rd.setPos(spawnPos.x, spawnPos.y, spawnPos.z);

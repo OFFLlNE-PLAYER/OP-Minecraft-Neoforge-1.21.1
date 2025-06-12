@@ -10,18 +10,12 @@ import net.minecraft.world.level.block.Block;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 public enum OPSwordMaterial {
-	CLAY(Ingredient.of(Items.COBBLESTONE), 200, 4F, BlockTags.INCORRECT_FOR_STONE_TOOL, 5F, -2.4F, 10,
-		Rarity.COMMON, false),
-
-	CRYING(Ingredient.of(RegistryBIBI.CRYING_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15,
-		Rarity.EPIC, false);
-
+	CLAY(Ingredient.of(Items.CLAY), 200, 4F, BlockTags.INCORRECT_FOR_STONE_TOOL, 5F, -2.4F, 10, Rarity.COMMON, false),
+	CRYING(Ingredient.of(RegistryBIBI.CRYING_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15, Rarity.EPIC, false);
     /*
-    ONYX(Ingredient.of(RegistryBIBI.ONYX_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15,
-         Rarity.EPIC, true),
-
-    TITAN(Ingredient.of(RegistryBIBI.TITANIUM_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15,
-          Rarity.EPIC, true);
+    ,
+    ONYX(Ingredient.of(RegistryBIBI.ONYX_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15, Rarity.EPIC, true),
+    TITAN(Ingredient.of(RegistryBIBI.TITANIUM_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15, Rarity.EPIC, true);
     */
 
 	private final Ingredient repairIngredient;
@@ -33,11 +27,9 @@ public enum OPSwordMaterial {
 	private final int enchantability;
 	private final Rarity rarity;
 	private final boolean fireResistant;
-	private Item registeredItem;
 
-	OPSwordMaterial(Ingredient repairIngredient, int durability, float miningSpeed,
-	                TagKey<Block> incorrectBlocksForDrops, float attackDamage, float attackSpeed,
-	                int enchantability, Rarity rarity, boolean fireResistant) {
+
+	OPSwordMaterial(Ingredient repairIngredient, int durability, float miningSpeed, TagKey<Block> incorrectBlocksForDrops, float attackDamage, float attackSpeed, int enchantability, Rarity rarity, boolean fireResistant) {
 		this.repairIngredient = repairIngredient;
 		this.durability = durability;
 		this.miningSpeed = miningSpeed;
@@ -49,7 +41,7 @@ public enum OPSwordMaterial {
 		this.fireResistant = fireResistant;
 	}
 
-	// Property getters
+
 	public Ingredient getRepairIngredient() { return repairIngredient; }
 	public int getDurability() { return durability; }
 	public float getMiningSpeed() { return miningSpeed; }
@@ -60,6 +52,13 @@ public enum OPSwordMaterial {
 	public Rarity getRarity() { return rarity; }
 	public boolean isFireResistant() { return fireResistant; }
 
-	public void setRegisteredItem(Item item) {this.registeredItem = item;}
-	public Item getRegisteredItem() {return registeredItem;}
+	public Item getRegisteredItem() {
+		return switch(this) {
+			case CLAY -> RegistryBIBI.CLAYMORE.get();
+			case CRYING -> RegistryBIBI.CRYING_SWORD.get();
+			// Uncomment when needed
+			// case ONYX -> RegistryBIBI.ONYX_SWORD.get();
+			// case TITAN -> RegistryBIBI.TITAN_SWORD.get();
+		};
+	}
 }

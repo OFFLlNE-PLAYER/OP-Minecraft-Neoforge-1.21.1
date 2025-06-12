@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 
 import net.offllneplayer.opminecraft.client.particle.ParticleGunbladeShot;
 
-import net.offllneplayer.opminecraft.entity.sw0rd.StuckSw0rdRenderer;
+import net.offllneplayer.opminecraft.iwe.sw0rd.StuckSw0rdRenderer;
 
 import net.offllneplayer.opminecraft.iwe.pistol.PistolBulletRenderer;
 

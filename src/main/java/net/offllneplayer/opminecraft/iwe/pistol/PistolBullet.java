@@ -220,7 +220,7 @@ public class PistolBullet extends AbstractArrow {
 
 		 if (!this.inGround) {
 			 float currentRotation = this.getRenderingRotation();
-			 float newRotation = (currentRotation + 15.0F) % 360F;
+			 float newRotation = (currentRotation + 10F) % 360F;
 			 if (newRotation < 0) newRotation += 360F;
 			 this.setRenderingRotation(newRotation);
 		 }

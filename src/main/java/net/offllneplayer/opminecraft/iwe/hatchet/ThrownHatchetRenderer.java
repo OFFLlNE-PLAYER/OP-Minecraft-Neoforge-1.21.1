@@ -63,15 +63,10 @@ public class ThrownHatchetRenderer extends EntityRenderer<ThrownHatchet> {
 			}
 		}
 
-		// Get material from synchronized data
-		String materialName = entity.getMaterialName();
-		HatchetMaterial material = HatchetMaterial.valueOf(materialName);
-		Item hatchetItem = material.getRegisteredItem();
-
-		// Create stack with proper item
+		Item hatchetItem = HatchetMaterial.valueOf(entity.getMaterialName()).getRegisteredItem();
 		ItemStack hatchetStack = new ItemStack(hatchetItem != null ? hatchetItem : RegistryBIBI.GOLDEN_HATCHET.get());
-
 		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(hatchetStack, entity.getCommandSenderWorld(), null, entity.getId());
+
 		Minecraft.getInstance().getItemRenderer().render(hatchetStack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
 		poseStack.popPose();

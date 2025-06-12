@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.entity.sw0rd;
+package net.offllneplayer.opminecraft.iwe.sw0rd;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

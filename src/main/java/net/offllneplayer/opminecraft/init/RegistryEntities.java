@@ -6,7 +6,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.offllneplayer.opminecraft.iwe.pistol.PistolBullet;
-import net.offllneplayer.opminecraft.entity.sw0rd.StuckSw0rd;
+import net.offllneplayer.opminecraft.iwe.sw0rd.StuckSw0rd;
 import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunblade;
 import net.offllneplayer.opminecraft.iwe.hatchet.ThrownHatchet;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFan;

@@ -74,13 +74,10 @@ public class StuckOPSwordRenderer extends EntityRenderer<StuckOPSword> {
 			}
 		}
 
-		String materialName = entity.getMaterialName();
-		OPSwordMaterial material = OPSwordMaterial.valueOf(materialName);
-		Item bladeItem = material.getRegisteredItem();
-
+		Item bladeItem = OPSwordMaterial.valueOf(entity.getMaterialName()).getRegisteredItem();
 		ItemStack bladeStack = new ItemStack(bladeItem != null ? bladeItem : RegistryBIBI.CLAYMORE.get());
-
 		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(bladeStack, entity.getCommandSenderWorld(), null, entity.getId());
+
 		Minecraft.getInstance().getItemRenderer().render(bladeStack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
 		poseStack.popPose();

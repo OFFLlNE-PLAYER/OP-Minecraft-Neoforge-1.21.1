@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.entity.sw0rd;
+package net.offllneplayer.opminecraft.iwe.sw0rd;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -59,13 +59,10 @@ public class StuckSw0rdRenderer extends EntityRenderer<StuckSw0rd> {
 			}
 		}
 
-		String materialName = entity.getMaterialName();
-		Sw0rdMaterial material = Sw0rdMaterial.valueOf(materialName);
-		Item bladeItem = material.getRegisteredItem();
-
+		Item bladeItem = Sw0rdMaterial.valueOf(entity.getMaterialName()).getRegisteredItem();
 		ItemStack bladeStack = new ItemStack(bladeItem != null ? bladeItem : Items.NETHERITE_SWORD);
-
 		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(bladeStack, entity.getCommandSenderWorld(), null, entity.getId());
+
 		Minecraft.getInstance().getItemRenderer().render(bladeStack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
 		poseStack.popPose();

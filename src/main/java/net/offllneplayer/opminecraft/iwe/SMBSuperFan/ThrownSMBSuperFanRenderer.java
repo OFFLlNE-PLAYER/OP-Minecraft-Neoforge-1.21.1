@@ -66,9 +66,7 @@ public class ThrownSMBSuperFanRenderer extends EntityRenderer<ThrownSMBSuperFan>
 		}
 
 		ItemStack stack = new ItemStack(RegistryBIBI.SMB_SUPER_FAN.get());
-		// Retrieve the BakedModel for the ItemStack.
 		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(stack, entity.getCommandSenderWorld(), null, entity.getId());
-		// Render the item using the obtained BakedModel.
 		Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
 		poseStack.popPose();
@@ -77,7 +75,6 @@ public class ThrownSMBSuperFanRenderer extends EntityRenderer<ThrownSMBSuperFan>
 
 	@Override
 	public ResourceLocation getTextureLocation(ThrownSMBSuperFan entity) {
-		// This is not used by the item renderer but must be implemented.
 		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_smb_super_fan.png");
 	}
 }

@@ -5,7 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
-import net.offllneplayer.opminecraft.entity.sw0rd.StickSword_Method;
+import net.offllneplayer.opminecraft.iwe.sw0rd.StickSword_Method;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

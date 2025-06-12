@@ -33,7 +33,6 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 	public HatchetItem(HatchetMaterial material) {
 		super(createTier(material), createItemProperties(material));
 		this.material = material;
-		material.setRegisteredItem(this);
 	}
 
 	private static Item.Properties createItemProperties(HatchetMaterial material) {

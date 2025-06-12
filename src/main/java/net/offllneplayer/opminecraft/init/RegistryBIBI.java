@@ -41,8 +41,10 @@ import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
-import net.offllneplayer.opminecraft.iwe.pistol.PistolMaterial;
 import net.offllneplayer.opminecraft.iwe.pistol.PistolItem;
+import net.offllneplayer.opminecraft.iwe.pistol.PistolMaterial;
+import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdItem;
+import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdMaterial;
 import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
 
 import java.util.function.Supplier;
@@ -412,10 +414,10 @@ public class RegistryBIBI {
 	public static final Supplier<GunbladeItem> CRYING_GUNBLADE = ITEMSREGISTRY.register("crying_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.CRYING));
 
-	/*
-		public static final Supplier<OPSw0rdItem> CLAY_SWORD = ITEMSREGISTRY.register("clay_sword",
-		() -> new OPSwordItem(OPSw0rdMaterialMap.CLAY, 5.5F, -2F));
-*/
+
+		public static final Supplier<Sw0rdItem> CLAY_SWORD = ITEMSREGISTRY.register("clay_sword",
+		() -> new Sw0rdItem(Sw0rdMaterial.CLAY));
+
 
 	public static final Supplier<OPSwordItem> CRYING_SWORD = ITEMSREGISTRY.register("crying_sword",
 		() -> new OPSwordItem(OPSwordMaterial.CRYING));

@@ -1,33 +1,29 @@
-package net.offllneplayer.opminecraft.iwe.opsw0rd;
+package net.offllneplayer.opminecraft.iwe.sw0rd;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
-import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.iwe.sw0rd.StickSword_Method;
-
-
-public class OPSwordItem extends SwordItem {
+public class Sw0rdItem extends SwordItem {
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*[VARIABLES]*/
-	private final OPSwordMaterial material;
+	private final Sw0rdMaterial material;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDER]*/
-	public OPSwordItem(OPSwordMaterial material) {
+	public Sw0rdItem(Sw0rdMaterial material) {
 			super(createTier(material), createItemProperties(material));
 		this.material = material;
 		}
 
-		private static Item.Properties createItemProperties(OPSwordMaterial material) {
-			Item.Properties itemProperties = new Item.Properties()
+		private static Properties createItemProperties(Sw0rdMaterial material) {
+			Properties itemProperties = new Properties()
 				.attributes(SwordItem.createAttributes(createTier(material), material.getAttackDamage(), material.getAttackSpeed()))
 				.stacksTo(1)
 				.rarity(material.getRarity());
@@ -43,7 +39,7 @@ public class OPSwordItem extends SwordItem {
 	    /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 		/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	  /*[HELP]*/
-	  public OPSwordMaterial getMaterial() {
+	  public Sw0rdMaterial getMaterial() {
 		  return material;
 	  }
 
@@ -51,7 +47,7 @@ public class OPSwordItem extends SwordItem {
 	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(OPSwordMaterial material) {
+	private static Tier createTier(Sw0rdMaterial material) {
 		return new Tier() {
 			@Override
 			public Ingredient getRepairIngredient() { return material.getRepairIngredient(); }
@@ -77,15 +73,5 @@ public class OPSwordItem extends SwordItem {
 		return StickSword_Method.execute(context);
 	}
 
-	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-
-	@Override
-	public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity sourceEntity) {
-
-		if (!sourceEntity.level().isClientSide()) {
-			if (material == OPSwordMaterial.CRYING) ApplyCrying1_Method.execute(entity);
-		}
-
-		return super.hurtEnemy(stack, entity, sourceEntity);
-	}
+ /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 }

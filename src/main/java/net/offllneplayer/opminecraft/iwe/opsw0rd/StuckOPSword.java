@@ -5,12 +5,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -21,7 +19,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -35,8 +32,8 @@ import net.minecraft.world.phys.Vec3;
 import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.entity.sw0rd.PopSwordItem_Method;
-import net.offllneplayer.opminecraft.entity.sw0rd.Stuck_Sword_OnClick_Method;
+import net.offllneplayer.opminecraft.iwe.sw0rd.PopSwordItem_Method;
+import net.offllneplayer.opminecraft.iwe.sw0rd.Stuck_Sword_OnClick_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
@@ -60,8 +57,8 @@ public class StuckOPSword extends AbstractArrow {
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
 	private OPSwordMaterial material;
-	private float dmg;
 	private ItemStack bladeStack;
+	private float dmg;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
@@ -69,7 +66,7 @@ public class StuckOPSword extends AbstractArrow {
 	 public StuckOPSword(EntityType<? extends StuckOPSword> type, Level level) {
 		 super(type, level);
 		 this.material = getMaterialFromName();
-		 this.updateBladeStack();
+		 this.bladeStack = new ItemStack(RegistryBIBI.CLAYMORE.get());
 	 }
 
 	public StuckOPSword(Level world, LivingEntity shooter) {
@@ -78,8 +75,7 @@ public class StuckOPSword extends AbstractArrow {
 		this.setOwner(shooter);
 		this.material = OPSwordMaterial.CLAY;
 		this.entityData.set(MATERIAL_NAME, "CLAY");
-
-		this.updateBladeStack();
+		this.bladeStack = new ItemStack(RegistryBIBI.CLAYMORE.get());
 
 		if (shooter != null) {
 			this.setPos(shooter.getX(), shooter.getY() + shooter.getEyeHeight(), shooter.getZ());
@@ -90,19 +86,16 @@ public class StuckOPSword extends AbstractArrow {
 	public StuckOPSword(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		ResourceLocation regName = BuiltInRegistries.ITEM.getKey(stack.getItem());
-		String regPath = regName.getPath();
-
-		// check the item name
-		if (regPath.contains("clay_sword")) {
+		if (stack.getItem() instanceof OPSwordItem SwordItem) {
+			this.material = SwordItem.getMaterial();
+			this.entityData.set(MATERIAL_NAME, this.material.name());
+			this.bladeStack = SwordItem.getMaterial().getRegisteredItem().getDefaultInstance();
+		} else {
+			// Fallback to default material if the item is not a SwordItem
 			this.material = OPSwordMaterial.CLAY;
 			this.entityData.set(MATERIAL_NAME, "CLAY");
-		} else if (regPath.contains("crying_sword")) {
-			this.material = OPSwordMaterial.CRYING;
-			this.entityData.set(MATERIAL_NAME, "CRYING");
+			this.bladeStack = RegistryBIBI.CLAYMORE.get().getDefaultInstance();
 		}
-
-		this.updateBladeStack();
 
 		CompoundTag data = this.getPersistentData();
 		data.putString("N4M3", stack.getHoverName().getString());
@@ -132,11 +125,6 @@ public class StuckOPSword extends AbstractArrow {
 		} catch (IllegalArgumentException e) {
 			return OPSwordMaterial.CLAY;
 		}
-	}
-
-	private void updateBladeStack() {
-		Item materialItem = this.getMaterialFromName().getRegisteredItem();
-		this.bladeStack = new ItemStack(materialItem != null ? materialItem : RegistryBIBI.CLAYMORE.get());
 	}
 
 	public Direction getStuckFace() { return Direction.from3DDataValue(this.entityData.get(STUCK_FACE));}
@@ -182,7 +170,7 @@ public class StuckOPSword extends AbstractArrow {
 			String materialName = compound.getString("material_name");
 			this.entityData.set(MATERIAL_NAME, materialName);
 			this.material = getMaterialFromName();
-			this.updateBladeStack();
+			this.bladeStack = getMaterialFromName().getRegisteredItem().getDefaultInstance();
 		}
 		if (compound.contains("stuck_face")) {
 			this.entityData.set(STUCK_FACE, compound.getByte("stuck_face"));
@@ -206,8 +194,7 @@ public class StuckOPSword extends AbstractArrow {
   /*[BASIC Entity OVERRIDES]*/
 	@Override
 	public ItemStack getDefaultPickupItem() {
-		Item materialItem = this.getMaterialFromName().getRegisteredItem();
-		return new ItemStack(materialItem != null ? materialItem : RegistryBIBI.CLAYMORE.get());
+		return this.getMaterialFromName().getRegisteredItem().getDefaultInstance();
 	}
 
 	@Override

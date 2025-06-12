@@ -18,7 +18,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
-import net.offllneplayer.opminecraft.entity.sw0rd.StickSword_Method;
+import net.offllneplayer.opminecraft.iwe.sw0rd.StickSword_Method;
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
@@ -37,7 +37,6 @@ public class GunbladeItem extends SwordItem {
 	public GunbladeItem(GunbladeMaterial material) {
 		super(createTier(material), createItemProperties(material));
 		this.material = material;
-		material.setRegisteredItem(this);
 	}
 
 	private static Item.Properties createItemProperties(GunbladeMaterial material) {
@@ -87,8 +86,6 @@ public class GunbladeItem extends SwordItem {
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("item.opminecraft.gunblade.description_0"));
-		list.add(Component.translatable("item.opminecraft.gunblade.description_1"));
-		list.add(Component.translatable("item.opminecraft.gunblade.description_2"));
 	}
 
 
