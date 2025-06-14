@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.iwe.pistol;
+package net.offllneplayer.opminecraft.iwe.beretta;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -16,13 +16,13 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 @OnlyIn(Dist.CLIENT)
-public class PistolBulletRenderer extends EntityRenderer<PistolBullet> {
-	public PistolBulletRenderer(EntityRendererProvider.Context context) {
+public class BerettaBulletRenderer extends EntityRenderer<BerettaBullet> {
+	public BerettaBulletRenderer(EntityRendererProvider.Context context) {
 		super(context);
 	}
 
 	@Override
-	public void render(PistolBullet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+	public void render(BerettaBullet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		poseStack.pushPose();
 
 
@@ -59,8 +59,8 @@ public class PistolBulletRenderer extends EntityRenderer<PistolBullet> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(PistolBullet entity) {
-		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_pistol_bullet.png");
+	public ResourceLocation getTextureLocation(BerettaBullet entity) {
+		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_beretta_bullet.png");
 	}
 }
 

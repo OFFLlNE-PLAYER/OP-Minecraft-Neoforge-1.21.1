@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.iwe.pistol;
+package net.offllneplayer.opminecraft.iwe.beretta;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,30 +38,30 @@ import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
 import java.util.Random;
 
 
-public class PistolBullet extends AbstractArrow {
+public class BerettaBullet extends AbstractArrow {
 
 
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*[DATA]*/
-	 private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(PistolBullet.class, EntityDataSerializers.STRING);
-	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(PistolBullet.class, EntityDataSerializers.FLOAT);
+	 private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(BerettaBullet.class, EntityDataSerializers.STRING);
+	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(BerettaBullet.class, EntityDataSerializers.FLOAT);
 
 
 	  /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
    /*[VARIABLES]*/
-	private PistolMaterial material;
+	private BerettaMaterial material;
 	DamageSource bulletDamage;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDERS]*/
-	public PistolBullet(EntityType<? extends PistolBullet> type, Level level) {
+	public BerettaBullet(EntityType<? extends BerettaBullet> type, Level level) {
 		super(type, level);
 	}
 
-	public PistolBullet(Level world, LivingEntity shooter) {
-		super(RegistryEntities.PISTOL_BULLET.get(), world);
+	public BerettaBullet(Level world, LivingEntity shooter) {
+		super(RegistryEntities.BERETTA_BULLET.get(), world);
 		this.setOwner(shooter);
 
 		if (shooter != null) {
@@ -70,21 +70,29 @@ public class PistolBullet extends AbstractArrow {
 		this.pickup = Pickup.DISALLOWED;
 	}
 
-	public PistolBullet(Player shooter, Level world, ItemStack stack) {
+	public BerettaBullet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		if (stack.getItem() == RegistryBIBI.VALENTINE_SAMURAI_EDGE.get()) {
-			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
-			this.material = PistolMaterial.VALENTINE_SAMURAI_EDGE;
+		if (stack.getItem() == RegistryBIBI.TITAN_BERETTA.get()) {
+			this.entityData.set(MATERIAL_NAME, "TITAN_BERETTA");
+			this.material = BerettaMaterial.TITAN_BERETTA;
+			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.BERETTA, this, this.getOwner());
+		} else if (stack.getItem() == RegistryBIBI.REDFIELD_BERETTA.get()) {
+			this.entityData.set(MATERIAL_NAME, "REDFIELD_BERETTA");
+			this.material = BerettaMaterial.REDFIELD_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
-		} else if (stack.getItem() == RegistryBIBI.TITAN_SAMURAI_EDGE.get()) {
-			this.entityData.set(MATERIAL_NAME, "TITAN_SAMURAI_EDGE");
-			this.material = PistolMaterial.TITAN_SAMURAI_EDGE;
+		} else if (stack.getItem() == RegistryBIBI.WESKER_BERETTA.get()) {
+			this.entityData.set(MATERIAL_NAME, "WESKER_BERETTA");
+			this.material = BerettaMaterial.WESKER_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
-		}else {
+		} else 	if (stack.getItem() == RegistryBIBI.VALENTINE_BERETTA.get()) {
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
+			this.material = BerettaMaterial.VALENTINE_BERETTA;
+			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
+	}else {
 			// DEFAULT
-			this.entityData.set(MATERIAL_NAME, "VALENTINE_SAMURAI_EDGE");
-			this.material = PistolMaterial.VALENTINE_SAMURAI_EDGE;
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
+			this.material = BerettaMaterial.VALENTINE_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}
 
@@ -108,11 +116,11 @@ public class PistolBullet extends AbstractArrow {
 
 	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
 
-	public PistolMaterial getMaterialFromName() {
+	public BerettaMaterial getMaterialFromName() {
 		try {
-			return PistolMaterial.valueOf(getMaterialName());
+			return BerettaMaterial.valueOf(getMaterialName());
 		} catch (IllegalArgumentException e) {
-			return PistolMaterial.VALENTINE_SAMURAI_EDGE;
+			return BerettaMaterial.VALENTINE_BERETTA;
 		}
 	}
 
@@ -126,7 +134,7 @@ public class PistolBullet extends AbstractArrow {
 	 @Override
 	 protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		 super.defineSynchedData(builder);
-		 builder.define(MATERIAL_NAME, "SAMURAI_EDGE");
+		 builder.define(MATERIAL_NAME, "VALENTINE_BERETTA");
 		 builder.define(ROTATION, 180.0F);
 	 }
 

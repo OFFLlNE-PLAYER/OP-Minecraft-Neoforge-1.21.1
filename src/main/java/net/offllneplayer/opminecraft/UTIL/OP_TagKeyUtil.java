@@ -57,7 +57,7 @@ public class OP_TagKeyUtil {
          public static final TagKey<Item> SW0RDS = createTag("sw0rds");
          public static final TagKey<Item> VANILLA_SW0RDS = createTag("vanilla_sw0rds");
 
-         public static final TagKey<Item> PISTOLS = createTag("pistols");
+         public static final TagKey<Item> BERETTAS = createTag("berettas");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));

@@ -400,12 +400,13 @@
 
   "item.opminecraft.ninemm_parabellum_rounds": "9mm Parabellum Rounds",
 
-  "item.opminecraft.titan_samurai_edge": "Titan Samurai Edge",
-  "item.opminecraft.titan_samurai_edge.description_0": "Hold 9mm Parabellum Rounds in other hand to reload.",
+  "item.opminecraft.onyx_beretta": "Onyx Beretta",
+  "item.opminecraft.titan_beretta": "Titan Beretta",
 
-  "item.opminecraft.valentine_samurai_edge": "Valentine Samurai Edge",
-  "item.opminecraft.valentine_samurai_edge.description_0": "[RE3]",
-  "item.opminecraft.valentine_samurai_edge.description_1": "Hold 9mm Parabellum Rounds in other hand to reload.",
+  "item.opminecraft.valentine_beretta": "Samurai Edge",
+  "item.opminecraft.valentine_beretta.description_0": "[RE3]",
+
+  "item.opminecraft.beretta.description_0": "Hold 9mm Parabellum Rounds in other hand to reload.",
 
   "item.opminecraft.tnt_stick": "§cTNT Stick§r",
 
@@ -468,6 +469,11 @@
 
   "death.attack.aku_aku": "%1$s §6was pummeled by Aku Aku§r",
   "death.attack.aku_aku.player": "%1$s §6was pummeled by Aku Aku protecting§r %2$s",
+
+  "death.attack.beretta": "%1$s was shot with a beretta",
+  "death.attack.beretta.player": "%2$s shot %1$s with a beretta",
+  "death.attack.samurai_edge": "%1$s was taken out like a zombie",
+  "death.attack.samurai_edge.player": "%2$s thought %1$s was a zombie",
 
   "death.attack.crying_essence": "%1$s §dblew up crying§r",
   "death.attack.crying_essence.player": "%1$s §dblew up crying by§r %2$s",

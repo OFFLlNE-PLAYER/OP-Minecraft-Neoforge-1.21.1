@@ -5,7 +5,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import net.offllneplayer.opminecraft.iwe.pistol.PistolBullet;
+import net.offllneplayer.opminecraft.iwe.beretta.BerettaBullet;
 import net.offllneplayer.opminecraft.iwe.sw0rd.StuckSw0rd;
 import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunblade;
 import net.offllneplayer.opminecraft.iwe.hatchet.ThrownHatchet;
@@ -25,8 +25,8 @@ public class RegistryEntities {
 /*--------------------------------------------------------------------------------------------*/
     /*[Register Entities]*/
 
-    public static final Supplier<EntityType<PistolBullet>> PISTOL_BULLET = ENTREGISTRY.register("pistol_bullet",
-       ()-> EntityType.Builder.<PistolBullet>of(PistolBullet::new, MobCategory.MISC).build("pistol_bullet"));
+    public static final Supplier<EntityType<BerettaBullet>> BERETTA_BULLET = ENTREGISTRY.register("beretta_bullet",
+       ()-> EntityType.Builder.<BerettaBullet>of(BerettaBullet::new, MobCategory.MISC).build("pistol_bullet"));
 
     public static final Supplier<EntityType<StuckGunblade>> STUCK_GUNBLADE = ENTREGISTRY.register("stuck_gunblade",
        ()-> EntityType.Builder.<StuckGunblade>of(StuckGunblade::new, MobCategory.MISC).build("stuck_gunblade"));
