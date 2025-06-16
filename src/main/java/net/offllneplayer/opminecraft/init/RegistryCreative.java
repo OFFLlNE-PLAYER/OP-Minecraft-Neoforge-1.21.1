@@ -18,7 +18,8 @@ public class RegistryCreative {
 
     @SubscribeEvent
         public static void addCreative(BuildCreativeModeTabContentsEvent event) {
-            if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+        
+            if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) { // ~~~BUILDING BLOCKS TAB~~~
 
                 event.accept(RegistryBIBI.BLOCK_OF_TEST);
 
@@ -120,7 +121,7 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.STONE_TILE_WALL);
 
             }
-            if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
+            if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {  // ~~~COLORED BLOCKS TAB~~~
 
                 event.accept(RegistryBIBI.GOLDEN_BED);
 
@@ -142,13 +143,135 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.ONYX_LAMP_YELLOW);
 
             }
-            if (event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS) {
+            if (event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS) { // ~~~NATURAL BLOCKS TAB~~~
 
                 event.accept(RegistryBIBI.FLOWERING_PITCHER_PLANT);
                 event.accept(RegistryBIBI.WUMPA_PLANT);
 
             }
-            if (event.getTabKey()==CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            if (event.getTabKey()==CreativeModeTabs.FUNCTIONAL_BLOCKS) { // ~~~FUNCTIONAL BLOCKS TAB~~~
+
+                event.accept(RegistryBIBI.ACACIA_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.ACACIA_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.BAMBOO_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BAMBOO_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.BIRCH_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.BIRCH_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.CHERRY_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CHERRY_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.DARK_OAK_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.DARK_OAK_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.JUNGLE_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.JUNGLE_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.MANGROVE_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.MANGROVE_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.OAK_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.OAK_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.SPRUCE_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.SPRUCE_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.CRIMSON_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.CRIMSON_NETHERITE_TRIM_LOOT_CHEST.get());
+
+                event.accept(RegistryBIBI.WARPED_COPPER_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_AMETHYST_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_IRON_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_LAPIS_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_GOLD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_EMERALD_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_REDSTONE_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_DIAMOND_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_QUARTZ_TRIM_LOOT_CHEST.get());
+                event.accept(RegistryBIBI.WARPED_NETHERITE_TRIM_LOOT_CHEST.get());
+
 
                 event.accept(RegistryBIBI.COPPER_FURNACE);
                 event.accept(RegistryBIBI.DIAMOND_FURNACE);
@@ -176,12 +299,12 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.ONYX_LAMP_YELLOW);
 
             }
-            if (event.getTabKey()==CreativeModeTabs.REDSTONE_BLOCKS) {
+            if (event.getTabKey()==CreativeModeTabs.REDSTONE_BLOCKS) { // ~~~REDSTONE BLOCKS TAB~~~
 
 //Redstone block go here ~(hah I'll probably never touch this)
 
             }
-            if (event.getTabKey()==CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            if (event.getTabKey()==CreativeModeTabs.TOOLS_AND_UTILITIES) { // ~~~TOOLS AND UTILITIES TAB~~~
 
                 event.accept(RegistryBIBI.CHISEL);
 
@@ -210,7 +333,7 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.SMB_SUPER_FAN);
 
             }
-            if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            if (event.getTabKey() == CreativeModeTabs.COMBAT) { // ~~~COMBAT TAB~~~
 
                 event.accept(RegistryBIBI.CLAY_SWORD.get());
 
@@ -260,7 +383,7 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.WUMPA_FRUIT);
 
             }
-            if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) { // ~~~INGREDIENTS TAB~~~
 
                 event.accept(RegistryBIBI.TEST_ITEM);
 
@@ -395,7 +518,7 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.GOLDEN_FEATHER);
 
             }
-        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) { // ~~~SPAWN EGGS TABS~~~
 
             //Spawn eggs go here!
 

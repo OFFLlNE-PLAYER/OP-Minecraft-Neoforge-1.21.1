@@ -24,7 +24,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -36,9 +35,8 @@ import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunblade;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitEntity;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitEntityUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -57,7 +55,8 @@ public class ThrownSMBSuperFan extends AbstractArrow {
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
-	private float pullRatio = 1F;
+	 private DamageSource fanDMG = level().damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
+
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
@@ -96,10 +95,6 @@ public class ThrownSMBSuperFan extends AbstractArrow {
   /*[HELP]*/
 	public boolean isGrounded() {
 		return inGround;
-	}
-
-	public void setPullRatio(float pullRatio) {
-		this.pullRatio = pullRatio;
 	}
 
 	public Direction getStuckFace() { return Direction.from3DDataValue(this.entityData.get(STUCK_FACE));}
@@ -223,8 +218,11 @@ public class ThrownSMBSuperFan extends AbstractArrow {
 		}
 
 		if (!this.inGround) {
+			this.hasImpulse = true;
+			this.setStuckPos(this.blockPosition());
+
 			float currentRotation = this.getRenderingRotation();
-			float newRotation = (currentRotation - pullRatio * 20F) % 360F;
+			float newRotation = (currentRotation - 15F) % 360F;
 			if (newRotation < 0) newRotation += 360F;
 			this.setRenderingRotation(newRotation);
 		}
@@ -322,18 +320,16 @@ public class ThrownSMBSuperFan extends AbstractArrow {
 				OP_NBTUtil.WeaponData wd = OP_NBTUtil.readItemStacktoClass(this.getPersistentData(), level);
 				Map<Enchantment, Integer> enchs = wd.enchants();
 
-				DamageSource fanDMG = level.damageSources().source(RegistryDamageTypes.SMB_SUPER_FAN, this, this.getOwner());
 				float dmg = 4F;
-				float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
+				float enchantDmg = OP_ProjectileonHitEntityUtil.calculateDamageBonus(living, enchs);
 				float damage = dmg + enchantDmg;
 
 				living.hurt(fanDMG, damage);
 
-				HatchetonHitEntity.processUnbreaking(this, enchs, this.random);
-
-				HatchetonHitEntity.applyFireAspect(living, enchs);
-				HatchetonHitEntity.applyKnockback(this, living, enchs);
-				HatchetonHitEntity.applyCleaving(this, enchs, this.random);
+				OP_ProjectileonHitEntityUtil.processUnbreaking(this, enchs, this.random);
+				OP_ProjectileonHitEntityUtil.applyFireAspect(living, enchs);
+				OP_ProjectileonHitEntityUtil.applyKnockback(this, living, enchs);
+				OP_ProjectileonHitEntityUtil.applyCleaving(this, enchs, this.random);
 
 				ItemStack dummyStack = new ItemStack(RegistryBIBI.SMB_SUPER_FAN.get());
 				OP_NBTUtil.enchantWeaponDataToItemstack(dummyStack, this.getPersistentData(), level());
@@ -347,7 +343,7 @@ public class ThrownSMBSuperFan extends AbstractArrow {
 			}
 		} else {
 			// Handle non-living entities utility class
-			HatchetonHitEntity.miscEntityHit(this, hitEntity, level, this.random);
+			OP_ProjectileonHitEntityUtil.miscEntityHit(this, hitEntity, level, this.random);
 		}
 		level.broadcastEntityEvent(this, (byte) 3);
 	}
@@ -367,7 +363,7 @@ public class ThrownSMBSuperFan extends AbstractArrow {
 		if (!level().isClientSide()) {
 
 			// Use the utility SHAREDMETHODS for button interaction
-			HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+			OP_ProjectileonHitBlockUtil.handleButtonInteraction(result, level(), this);
 
 			float tone = Mth.randomBetween(this.random, 1.2F, 1.420F);
 			this.playSound(RegistrySounds.BLADE_STICK.get(), 0.1420F, tone);

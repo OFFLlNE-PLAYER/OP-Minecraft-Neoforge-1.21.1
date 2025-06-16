@@ -142,7 +142,6 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 				double spawnY = player.getY() + player.getEyeHeight() + 0.22D;
 				double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
 
-				tstick.setPullRatio(minPull);
 				tstick.setPos(spawnX, spawnY, spawnZ);
 
 				float randomVelo = Mth.nextFloat(RandomSource.create(), 1.69420F, 2.2420F);
@@ -254,12 +253,11 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 			player.getPersistentData().putBoolean(FUSE_SOUND_PLAYING_TAG, false);
 		}
 
-		int timeUsed = getUseDuration(stack, user) - timeLeft;
-		float pull = Mth.clamp(timeUsed / (float) FUSE_DURATION, 0.420F, 1F);
-
-		InteractionHand hand = player.getUsedItemHand();
+		// Create and setup the thrown TNT entity
+		ThrownTNTStick tstick = new ThrownTNTStick(player, level, stack.copy());
 
 		// Calculate spawn position offset from player
+		InteractionHand hand = player.getUsedItemHand();
 		double yawRad = Math.toRadians(player.getYRot());
 		double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
 		double rightX = forwardZ, rightZ = -forwardX;
@@ -269,19 +267,16 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 		double spawnY = player.getY() + player.getEyeHeight();
 		double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
 
-		// Create and setup the thrown TNT entity
-		ThrownTNTStick tstick = new ThrownTNTStick(player, level, stack.copy());
+		tstick.setPos(spawnX, spawnY, spawnZ);
 
-		// Pass remaining fuse time to entity using our new setter SHAREDMETHODS
+		int timeUsed = getUseDuration(stack, user) - timeLeft;
 		int fuseTimeRemaining = FUSE_DURATION - timeUsed;
 		tstick.setLitTime(fuseTimeRemaining);
 
-		tstick.setPullRatio(pull);
-		tstick.setPos(spawnX, spawnY, spawnZ);
-
+		float pull = Mth.clamp(timeUsed / (float) FUSE_DURATION, 0.420F, 1F);
 		float randomVelo = Mth.nextFloat(RandomSource.create(), 1.69420F, 2.2420F);
-
 		tstick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * randomVelo, 0.420F);
+
 		level.addFreshEntity(tstick);
 
 		player.awardStat(Stats.ITEM_USED.get(this));
@@ -297,7 +292,7 @@ public class TNTStickItem extends Item implements DispensibleProjectile {
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
 		ThrownTNTStick tstick = new ThrownTNTStick(null, level, stack.copy());
-		tstick.setLitTime(100);  // Use our new setter
+		tstick.setLitTime(100);
 		tstick.setPos(pos.x(), pos.y(), pos.z());
 
 		float randomVelo = Mth.nextFloat(RandomSource.create(), 1.69420F, 2.2420F);

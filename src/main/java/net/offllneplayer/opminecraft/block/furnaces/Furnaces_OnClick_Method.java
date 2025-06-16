@@ -31,7 +31,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
-import net.offllneplayer.opminecraft.world.inventory.*;
+import net.offllneplayer.opminecraft.world.inventory.furnaces.*;
 
 public class Furnaces_OnClick_Method {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {

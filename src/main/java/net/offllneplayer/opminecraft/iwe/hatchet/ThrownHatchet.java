@@ -31,7 +31,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
 import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitEntityUtil;
 import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
@@ -56,9 +58,6 @@ public class ThrownHatchet extends AbstractArrow {
 	private HatchetMaterial material;
 	private DamageSource hatchetDMG = level().damageSources().source(RegistryDamageTypes.HATCHET, this, this.getOwner());
 	private ItemStack hatchetStack;
-
-	private float pullRatio = 1F;
-	private float rotation;
 
 	 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
@@ -115,10 +114,6 @@ public class ThrownHatchet extends AbstractArrow {
   /*[HELP]*/
 	public boolean isGrounded() {
 		return inGround;
-	}
-
-	public void setPullRatio(float pullRatio) {
-		this.pullRatio = pullRatio;
 	}
 
 	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
@@ -263,15 +258,15 @@ public class ThrownHatchet extends AbstractArrow {
 			this.hasImpulse = true;
 			this.setStuckPos(this.blockPosition());
 
-			rotation = (rotation - pullRatio * 20F) % 360F;
-			if (rotation < 0) rotation += 360F;
-			this.setRenderingRotation(rotation);
+			float currentRotation = this.getRenderingRotation();
+			float newRotation = (currentRotation - 15F) % 360F;
+			if (newRotation < 0) newRotation += 360F;
+			this.setRenderingRotation(newRotation);
 		}
-		this.setPos(this.getX(), this.getY(), this.getZ());
 	}
 
 
-	 /*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
+		/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
 	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
   /*[interact]*/
 	@Override
@@ -311,15 +306,15 @@ public class ThrownHatchet extends AbstractArrow {
 					OP_NBTUtil.WeaponData wd = OP_NBTUtil.readItemStacktoClass(this.getPersistentData(), level);
 					Map<Enchantment, Integer> enchs = wd.enchants();
 
-					HatchetonHitEntity.processUnbreaking(this, enchs, random);
-					HatchetonHitEntity.applyFireAspect(living, enchs);
-					HatchetonHitEntity.applyKnockback(this, living, enchs);
-					HatchetonHitEntity.applyCleaving(this, enchs, random);
+					OP_ProjectileonHitEntityUtil.processUnbreaking(this, enchs, random);
+					OP_ProjectileonHitEntityUtil.applyFireAspect(living, enchs);
+					OP_ProjectileonHitEntityUtil.applyKnockback(this, living, enchs);
+					OP_ProjectileonHitEntityUtil.applyCleaving(this, enchs, random);
 
 					OP_NBTUtil.enchantWeaponDataToItemstack(this.hatchetStack, this.getPersistentData(), level);
 					EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, hatchetDMG, this.hatchetStack);
 
-					float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
+					float enchantDmg = OP_ProjectileonHitEntityUtil.calculateDamageBonus(living, enchs);
 					float dmg = this.material.getAttackDamage() + enchantDmg;
 
 					living.hurt(hatchetDMG, dmg);
@@ -330,7 +325,7 @@ public class ThrownHatchet extends AbstractArrow {
 
 				}
 			} else { // non-living entities
-				HatchetonHitEntity.miscEntityHit(this, hitEntity, level, random);
+				OP_ProjectileonHitEntityUtil.miscEntityHit(this, hitEntity, level, random);
 			}
 		}
 		level.broadcastEntityEvent(this, (byte) 3);
@@ -352,7 +347,7 @@ public class ThrownHatchet extends AbstractArrow {
 		if (!level().isClientSide()) {
 
 			// Use the utility SHAREDMETHODS for button interaction
-			HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+			OP_ProjectileonHitBlockUtil.handleButtonInteraction(result, level(), this);
 
 			// Spawn block particles at the hit location
 			((ServerLevel)level()).sendParticles(

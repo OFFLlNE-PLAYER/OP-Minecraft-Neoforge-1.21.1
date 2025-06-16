@@ -268,55 +268,50 @@ public class BerettaItem extends TieredItem{
 		berettaBulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 14.20F, 0F);
 		level.addFreshEntity(berettaBulletENT);
 
+		float vol = 0.8F;
+		float basePitch = 0.5F;
+		float pitchVariance = 0.05F;
+		int 	soundIndex = 0;
 
-		if	(this.berettaMaterial == BerettaMaterial.TITAN_BERETTA) {
-			int soundIndex = new Random().nextInt(4);
-			level.playSound(null, player.getX(), player.getY(), player.getZ(),
-				switch (soundIndex) {
-					case 0 -> RegistrySounds.SAMURAI_EDGE_1;
-					case 1 -> RegistrySounds.SAMURAI_EDGE_2;
-					case 2 -> RegistrySounds.SAMURAI_EDGE_3;
-					case 3 -> RegistrySounds.SAMURAI_EDGE_4;
-					default -> RegistrySounds.SAMURAI_EDGE_1;
-				},
-				SoundSource.PLAYERS, 0.9F, 0.88F + randomFloat * 0.06F);
-
-		} else if (this.berettaMaterial == BerettaMaterial.REDFIELD_BERETTA) {
-			int soundIndex = new Random().nextInt(4);
-			level.playSound(null, player.getX(), player.getY(), player.getZ(),
-				switch (soundIndex) {
-					case 0 -> RegistrySounds.SAMURAI_EDGE_1;
-					case 1 -> RegistrySounds.SAMURAI_EDGE_2;
-					case 2 -> RegistrySounds.SAMURAI_EDGE_3;
-					case 3 -> RegistrySounds.SAMURAI_EDGE_4;
-					default -> RegistrySounds.SAMURAI_EDGE_1;
-				},
-				SoundSource.PLAYERS, 0.9F, 0.9F + randomFloat * 0.0420F);
-
-		} else if (this.berettaMaterial == BerettaMaterial.WESKER_BERETTA) {
-			int soundIndex = new Random().nextInt(4);
-			level.playSound(null, player.getX(), player.getY(), player.getZ(),
-				switch (soundIndex) {
-					case 0 -> RegistrySounds.SAMURAI_EDGE_1;
-					case 1 -> RegistrySounds.SAMURAI_EDGE_2;
-					case 2 -> RegistrySounds.SAMURAI_EDGE_3;
-					case 3 -> RegistrySounds.SAMURAI_EDGE_4;
-					default -> RegistrySounds.SAMURAI_EDGE_1;
-				},
-				SoundSource.PLAYERS, 0.7F, 0.94F + randomFloat * 0.0420F);
-
-		}	else if (this.berettaMaterial == BerettaMaterial.VALENTINE_BERETTA) {
-			int soundIndex = new Random().nextInt(4);
-			level.playSound(null, player.getX(), player.getY(), player.getZ(),
-				switch (soundIndex) {
-					case 0 -> RegistrySounds.SAMURAI_EDGE_1;
-					case 1 -> RegistrySounds.SAMURAI_EDGE_2;
-					case 2 -> RegistrySounds.SAMURAI_EDGE_3;
-					case 3 -> RegistrySounds.SAMURAI_EDGE_4;
-					default -> RegistrySounds.SAMURAI_EDGE_1;
-				},
-				SoundSource.PLAYERS, 0.8F, 0.98F + randomFloat * 0.0420F);
+		// Sound selection varies based on beretta material
+		if (this.berettaMaterial == BerettaMaterial.TITAN_BERETTA ||
+			this.berettaMaterial == BerettaMaterial.REDFIELD_BERETTA ||
+			this.berettaMaterial == BerettaMaterial.WESKER_BERETTA ||
+			this.berettaMaterial == BerettaMaterial.VALENTINE_BERETTA) {
+			soundIndex = new Random().nextInt(4);
 		}
+
+		// Define the sound based on the soundIndex
+		var sound = switch (soundIndex) {
+			case 0 -> RegistrySounds.SAMURAI_EDGE_1;
+			case 1 -> RegistrySounds.SAMURAI_EDGE_2;
+			case 2 -> RegistrySounds.SAMURAI_EDGE_3;
+			case 3 -> RegistrySounds.SAMURAI_EDGE_4;
+			default -> RegistrySounds.SAMURAI_EDGE_1;
+		};
+
+		// Set volume and basePitch based on beretta material
+		if (this.berettaMaterial == BerettaMaterial.TITAN_BERETTA) {
+			vol = 0.9F;
+			basePitch = 0.88F;
+			pitchVariance = 0.06F;
+		} else if (this.berettaMaterial == BerettaMaterial.REDFIELD_BERETTA) {
+			vol = 0.9F;
+			basePitch = 0.9F;
+			pitchVariance = 0.0420F;
+		} else if (this.berettaMaterial == BerettaMaterial.WESKER_BERETTA) {
+			vol = 0.7F;
+			basePitch = 0.94F;
+			pitchVariance = 0.0420F;
+		} else if (this.berettaMaterial == BerettaMaterial.VALENTINE_BERETTA) {
+			vol = 0.8F;
+			basePitch = 0.98F;
+			pitchVariance = 0.0420F;
+		}
+
+		// Play the sound with the determined parameters
+		level.playSound(null, player.getX(), player.getY(), player.getZ(),
+			sound, SoundSource.PLAYERS, vol, basePitch + randomFloat * pitchVariance);
 	}
 
 

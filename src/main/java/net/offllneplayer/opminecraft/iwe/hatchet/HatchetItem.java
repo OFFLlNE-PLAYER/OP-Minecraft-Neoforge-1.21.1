@@ -110,8 +110,9 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 		float pull = Mth.clamp((getUseDuration(stack, user) - timeLeft) / 20F, 0F, 1F);
 		if (pull < 0.1F) return;
 
-		InteractionHand hand = player.getUsedItemHand();
+		ThrownHatchet hatchet = new ThrownHatchet(player, level, stack.copy());
 
+		InteractionHand hand = player.getUsedItemHand();
 		double yawRad = Math.toRadians(player.getYRot());
 		double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
 		double rightX = forwardZ, rightZ = -forwardX;
@@ -121,11 +122,9 @@ public class HatchetItem extends TieredItem implements DispensibleProjectile {
 		double spawnY = player.getY() + player.getEyeHeight();
 		double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
 
-		ThrownHatchet hatchet = new ThrownHatchet(player, level, stack.copy());
-
-		hatchet.setPullRatio(pull);
 		hatchet.setPos(spawnX, spawnY, spawnZ);
-		hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * 2.5F, 0.420F);
+
+		hatchet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * 2.2F, 0.1420F);
 		level.addFreshEntity(hatchet);
 
 		player.awardStat(Stats.ITEM_USED.get(this));

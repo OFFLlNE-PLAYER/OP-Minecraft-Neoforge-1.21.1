@@ -22,7 +22,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
 
-import net.offllneplayer.opminecraft.world.inventory.NetheriteFurnaceInv;
+import net.offllneplayer.opminecraft.world.inventory.furnaces.NetheriteFurnaceInv;
 
 
 import javax.annotation.Nullable;

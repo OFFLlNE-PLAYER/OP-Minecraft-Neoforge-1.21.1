@@ -38,8 +38,8 @@ import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitEntity;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitEntityUtil;
 
 import java.util.Map;
 
@@ -364,22 +364,22 @@ public class StuckOPSword extends AbstractArrow {
 					OP_NBTUtil.WeaponData wd = OP_NBTUtil.readItemStacktoClass(this.getPersistentData(), level);
 					Map<Enchantment, Integer> enchs = wd.enchants();
 
-					HatchetonHitEntity.processUnbreaking(this, enchs, random);
-					HatchetonHitEntity.applyFireAspect(living, enchs);
-					HatchetonHitEntity.applyKnockback(this, living, enchs);
-					HatchetonHitEntity.applyCleaving(this, enchs, random);
+					OP_ProjectileonHitEntityUtil.processUnbreaking(this, enchs, random);
+					OP_ProjectileonHitEntityUtil.applyFireAspect(living, enchs);
+					OP_ProjectileonHitEntityUtil.applyKnockback(this, living, enchs);
+					OP_ProjectileonHitEntityUtil.applyCleaving(this, enchs, random);
 
 					OP_NBTUtil.enchantWeaponDataToItemstack(this.bladeStack, this.getPersistentData(), level);
 					EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, bladeDMG, this.bladeStack);
 
-					float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
+					float enchantDmg = OP_ProjectileonHitEntityUtil.calculateDamageBonus(living, enchs);
 					float damage = dmg + enchantDmg;
 					living.hurt(bladeDMG, damage);
 
 					if (material == OPSwordMaterial.CRYING) ApplyCrying1_Method.execute(hitEntity);
 				}
 			} else { // non-living entities
-				HatchetonHitEntity.miscEntityHit(this, hitEntity, level, random);
+				OP_ProjectileonHitEntityUtil.miscEntityHit(this, hitEntity, level, random);
 			}
 		}
 		level.broadcastEntityEvent(this, (byte) 3);
@@ -404,7 +404,7 @@ public class StuckOPSword extends AbstractArrow {
 
 		 if (!level().isClientSide()) {
 			 // Use the utility SHAREDMETHODS for button interaction
-			 HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+			 OP_ProjectileonHitBlockUtil.handleButtonInteraction(result, level(), this);
 
 			 // Spawn block particles at the hit location
 			 ((ServerLevel)level()).sendParticles(

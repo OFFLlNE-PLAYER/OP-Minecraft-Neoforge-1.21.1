@@ -12,6 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,23 +35,22 @@ import net.offllneplayer.opminecraft.init.RegistrySounds;
 public class ThrownTNTStick extends AbstractArrow {
 
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
-	/*[DATA]*/
+  /*[DATA]*/
 
 	private static final EntityDataAccessor<Integer> TNT_LIT_TIMER = SynchedEntityData.defineId(ThrownTNTStick.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Float> TNT_SPIN_ROTATION = SynchedEntityData.defineId(ThrownTNTStick.class, EntityDataSerializers.FLOAT);
 	private static final EntityDataAccessor<Float> TNT_GROUNDED_zROTATION = SynchedEntityData.defineId(ThrownTNTStick.class, EntityDataSerializers.FLOAT);
 
-	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
+	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[VARIABLES]*/
+  /*[VARIABLES]*/
 	private BlockPos stuckPos;
 	private Block stuckBlock;
 	private Direction stuckDirection = Direction.NORTH;
-	private float pullRatio = 1F;
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*[BUILDERS]*/
+  /*[BUILDERS]*/
 	public ThrownTNTStick(EntityType<? extends ThrownTNTStick> type, Level level) {
 		super(type, level);
 		this.noPhysics = false;
@@ -80,49 +80,40 @@ public class ThrownTNTStick extends AbstractArrow {
 	}
 
 
-	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
-	/*[HELP]*/
+  /*[HELP]*/
+	public boolean isGrounded() {
+		 return inGround;
+	 }
+
 	public int getLitTime() {
 		return this.entityData.get(TNT_LIT_TIMER);
+	}
+	public Direction getStuckDirection() {
+		return stuckDirection != null ? stuckDirection : Direction.NORTH;
+	}
+	public float getSpinRotation() {
+		return this.entityData.get(TNT_SPIN_ROTATION);
+	}
+	public float getGroundedzRotation() {
+		return this.entityData.get(TNT_GROUNDED_zROTATION);
 	}
 
 	public void setLitTime(int time) {
 		this.entityData.set(TNT_LIT_TIMER, time);
 	}
-
-	public void setPullRatio(float pullRatio) {
-		this.pullRatio = pullRatio;
-	}
-
-	public boolean isGrounded() {
-		return inGround;
-	}
-
-	public Direction getStuckDirection() {
-		return stuckDirection != null ? stuckDirection : Direction.NORTH;
-	}
-
-	public float getSpinRotation() {
-		return this.entityData.get(TNT_SPIN_ROTATION);
-	}
-
 	public void setSpinRotation(float rotation) {
 		this.entityData.set(TNT_SPIN_ROTATION, rotation);
 	}
-
-	public float getGroundedzRotation() {
-		return this.entityData.get(TNT_GROUNDED_zROTATION);
-	}
-
 	public void setGroundedzRotation(float rotation) {
 		this.entityData.set(TNT_GROUNDED_zROTATION, rotation);
 	}
 
 
-	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
+	 /*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-	/*[BASIC Entity OVERRIDES]*/
+  /*[BASIC Entity OVERRIDES]*/
 	@Override
 	public ItemStack getDefaultPickupItem() { return new ItemStack(RegistryBIBI.TNT_STICK.get());}
 	@Override
@@ -144,9 +135,9 @@ public class ThrownTNTStick extends AbstractArrow {
 	@Override
 	public void doPostHurtEffects(LivingEntity target) {/*VOIDED Discard entity on hit*/}
 
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
-	/*[DATA SYNC]*/
+  /*[DATA SYNC]*/
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
@@ -177,9 +168,9 @@ public class ThrownTNTStick extends AbstractArrow {
 		}
 	}
 
-	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+	 /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
-	/*[HITBOX]*/
+  /*[HITBOX]*/
 	@Override
 	public void setPos(double x, double y, double z) {
 		super.setPos(x, y, z);
@@ -245,8 +236,31 @@ public class ThrownTNTStick extends AbstractArrow {
 	}
 
 	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
+  /*--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--*/
+	@Override
+	public boolean hurt(DamageSource source, float amount) {
+		if (!this.level().isClientSide() && !this.isRemoved()) {
+			// Check if damage is from explosion
+			if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.FIREBALL) ||
+				source.is(DamageTypes.FIREWORKS) || source.is(DamageTypes.PLAYER_EXPLOSION)) {
+
+				// Don't ignite if already lit
+				if (this.getLitTime() <= 0) {
+					// Set a fuse time (80 ticks = 4 seconds)
+					this.setLitTime(80);
+
+					// Play the TNT ignition sound
+					this.playSound(SoundEvents.TNT_PRIMED, 1.0F, 1.0F);
+				}
+			}
+		}
+		return false;
+	}
+
+
+	 /*--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X-*/
 	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
-	/*[tick]*/
+  /*[tick]*/
 	@Override
 	public void tick() {
 		super.tick();
@@ -304,7 +318,7 @@ public class ThrownTNTStick extends AbstractArrow {
 
 
 	/*- _______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______-=- -=-_______ -*/
-	/*-- ____________________________________________________________________________________________--*/
+  /*-- ____________________________________________________________________________________________--*/
 	@Override
 	public void baseTick() {
 		super.baseTick();
@@ -320,9 +334,9 @@ public class ThrownTNTStick extends AbstractArrow {
 	}
 
 
-	/*-- ____________________________________________________________________________________________--*/
+	 /*-- ____________________________________________________________________________________________--*/
 	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
-	/*[interact]*/
+  /*[interact]*/
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
 		if (!this.level().isClientSide()) {
@@ -336,9 +350,9 @@ public class ThrownTNTStick extends AbstractArrow {
 		return InteractionResult.PASS;
 	}
 
-	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
+	 /*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
 	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
-	/*[on Hit Entity]*/
+  /*[on Hit Entity]*/
 	@Override
 	public void onHitEntity(EntityHitResult result) {
 		if (this.level().isClientSide()) return;
@@ -361,9 +375,9 @@ public class ThrownTNTStick extends AbstractArrow {
 		this.playSound(SoundEvents.BAMBOO_HIT, 0.6F, tone);
 	}
 
-	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
+	 /*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
 	/*---[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]------[x]----*/
-	/*[on Hit Block]*/
+  /*[on Hit Block]*/
 	@Override
 	public void onHitBlock(BlockHitResult result) {
 
@@ -441,7 +455,7 @@ public class ThrownTNTStick extends AbstractArrow {
 
 			// reflection with dampening based on speed
 			float dampening = 0.420F + motionLength * 0.1420F;
-			dampening = Math.min(dampening, 0.95F);
+			dampening = Math.min(dampening, 0.69420F);
 
 			Vec3 normal = Vec3.atLowerCornerOf(hitFace.getNormal());
 			Vec3 reflected = motion.subtract(normal.scale(2 * motion.dot(normal))).scale(dampening);

@@ -17,7 +17,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 
 import net.offllneplayer.opminecraft.block.furnaces.gui.FurnacesStokeButton_Method;
-import net.offllneplayer.opminecraft.world.inventory.IronFurnaceInv;
+import net.offllneplayer.opminecraft.world.inventory.furnaces.IronFurnaceInv;
 import net.offllneplayer.opminecraft.block.furnaces.gui.FurnacesExpButton_Method;
 import net.offllneplayer.opminecraft.OPMinecraft;
 

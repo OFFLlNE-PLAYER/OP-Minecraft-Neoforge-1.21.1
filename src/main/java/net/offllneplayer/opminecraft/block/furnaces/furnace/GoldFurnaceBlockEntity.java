@@ -24,7 +24,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
 
 import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
-import net.offllneplayer.opminecraft.world.inventory.GoldFurnaceInv;
+import net.offllneplayer.opminecraft.world.inventory.furnaces.GoldFurnaceInv;
 
 import javax.annotation.Nullable;
 

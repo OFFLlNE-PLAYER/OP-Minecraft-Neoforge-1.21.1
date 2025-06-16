@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.iface.DispensibleProjectile;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
@@ -51,7 +52,7 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 		@Override
 		public float getAttackDamageBonus() {return 0;}
 		@Override
-		public TagKey<Block> getIncorrectBlocksForDrops() {return BlockTags.INCORRECT_FOR_NETHERITE_TOOL;}
+		public TagKey<Block> getIncorrectBlocksForDrops() {return OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG;}
 		@Override
 		public int getEnchantmentValue() {return 20;}
 		@Override
@@ -101,8 +102,9 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 		float pull = Mth.clamp((getUseDuration(stack, user) - timeLeft) / 20F, 0F, 1F);
 		if (pull < 0.1F) return;
 
-		InteractionHand hand = player.getUsedItemHand();
+		ThrownSMBSuperFan superFan = new ThrownSMBSuperFan(player, level, stack.copy());
 
+		InteractionHand hand = player.getUsedItemHand();
 		double yawRad = Math.toRadians(player.getYRot());
 		double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
 		double rightX = forwardZ, rightZ = -forwardX;
@@ -112,11 +114,10 @@ public class SMBSuperFanItem extends TieredItem implements DispensibleProjectile
 		double spawnY = player.getY() + player.getEyeHeight();
 		double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
 
-		ThrownSMBSuperFan superFan = new ThrownSMBSuperFan(player, level, stack.copy());
-
-		superFan.setPullRatio(pull);
 		superFan.setPos(spawnX, spawnY, spawnZ);
-		superFan.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * 2.5F, 0.420F);
+
+		superFan.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * 2F, 0.1420F);
+
 		level.addFreshEntity(superFan);
 
 		player.awardStat(Stats.ITEM_USED.get(this));

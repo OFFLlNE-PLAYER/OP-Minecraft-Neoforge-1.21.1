@@ -37,8 +37,8 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitEntity;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitEntityUtil;
 
 import java.util.Map;
 
@@ -55,6 +55,7 @@ public class StuckSw0rd extends AbstractArrow {
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
+	private DamageSource bladeDMG = level().damageSources().source(RegistryDamageTypes.SW0RD, this, this.getOwner());
 	private Sw0rdMaterial material;
 	private ItemStack bladeStack;
 	private float dmg;
@@ -372,7 +373,6 @@ public class StuckSw0rd extends AbstractArrow {
 		Level level = this.level();
 
 		if (!level.isClientSide()) {
-			DamageSource bladeDMG = level().damageSources().source(RegistryDamageTypes.SW0RD, this, this.getOwner());
 			Entity hitEntity = result.getEntity();
 
 			if (hitEntity instanceof LivingEntity living) {
@@ -380,20 +380,20 @@ public class StuckSw0rd extends AbstractArrow {
 					OP_NBTUtil.WeaponData wd = OP_NBTUtil.readItemStacktoClass(this.getPersistentData(), level);
 					Map<Enchantment, Integer> enchs = wd.enchants();
 
-					HatchetonHitEntity.processUnbreaking(this, enchs, random);
-					HatchetonHitEntity.applyFireAspect(living, enchs);
-					HatchetonHitEntity.applyKnockback(this, living, enchs);
-					HatchetonHitEntity.applyCleaving(this, enchs, random);
+					OP_ProjectileonHitEntityUtil.processUnbreaking(this, enchs, random);
+					OP_ProjectileonHitEntityUtil.applyFireAspect(living, enchs);
+					OP_ProjectileonHitEntityUtil.applyKnockback(this, living, enchs);
+					OP_ProjectileonHitEntityUtil.applyCleaving(this, enchs, random);
 
 					OP_NBTUtil.enchantWeaponDataToItemstack(this.bladeStack, this.getPersistentData(), level);
 					EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, living, bladeDMG, this.bladeStack);
 
-					float enchantDmg = HatchetonHitEntity.calculateDamageBonus(living, enchs);
+					float enchantDmg = OP_ProjectileonHitEntityUtil.calculateDamageBonus(living, enchs);
 					float damage = dmg + enchantDmg;
 					living.hurt(bladeDMG, damage);
 				}
 			} else { // non-living entities
-				HatchetonHitEntity.miscEntityHit(this, hitEntity, level, random);
+				OP_ProjectileonHitEntityUtil.miscEntityHit(this, hitEntity, level, random);
 			}
 		}
 		level.broadcastEntityEvent(this, (byte) 3);
@@ -418,7 +418,7 @@ public class StuckSw0rd extends AbstractArrow {
 
 		 if (!level().isClientSide()) {
 			 // Use the utility SHAREDMETHODS for button interaction
-			 HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+			 OP_ProjectileonHitBlockUtil.handleButtonInteraction(result, level(), this);
 
 			 // Spawn block particles at the hit location
 			 ((ServerLevel)level()).sendParticles(

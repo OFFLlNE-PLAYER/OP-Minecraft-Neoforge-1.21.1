@@ -33,7 +33,7 @@ import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetonHitBlock;
+import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
 
 import java.util.Random;
 
@@ -288,7 +288,7 @@ public class BerettaBullet extends AbstractArrow {
 
 		if (!level().isClientSide()) {
 			// Use the utility SHAREDMETHODS for button interaction
-			HatchetonHitBlock.handleButtonInteraction(result, level(), this);
+			OP_ProjectileonHitBlockUtil.handleButtonInteraction(result, level(), this);
 
 			if (level().getBlockState(hitPos).is(OP_TagKeyUtil.Blocks.BULLET_FRAGILE)) {
 				level().destroyBlock(hitPos, false);

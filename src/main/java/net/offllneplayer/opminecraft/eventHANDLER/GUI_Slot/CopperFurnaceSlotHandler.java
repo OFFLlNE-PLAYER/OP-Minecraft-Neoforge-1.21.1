@@ -16,7 +16,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.world.inventory.CopperFurnaceInv;
+import net.offllneplayer.opminecraft.world.inventory.furnaces.CopperFurnaceInv;
 import net.offllneplayer.opminecraft.block.furnaces.FurnacesResetProgress_Method;
 import net.offllneplayer.opminecraft.OPMinecraft;
 

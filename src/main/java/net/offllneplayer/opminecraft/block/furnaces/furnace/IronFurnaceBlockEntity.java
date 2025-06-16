@@ -23,7 +23,7 @@ import net.minecraft.tags.ItemTags;
 
 import net.minecraft.resources.ResourceLocation;
 
-import net.offllneplayer.opminecraft.world.inventory.IronFurnaceInv;
+import net.offllneplayer.opminecraft.world.inventory.furnaces.IronFurnaceInv;
 import net.offllneplayer.opminecraft.init.RegistryBlockEntities;
 
 import javax.annotation.Nullable;

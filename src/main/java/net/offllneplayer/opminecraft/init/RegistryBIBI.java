@@ -26,6 +26,9 @@ import net.offllneplayer.opminecraft.block.crying.cryingbricks.*;
 import net.offllneplayer.opminecraft.block.crying.cryingtiles.*;
 import net.offllneplayer.opminecraft.block.densestones.*;
 import net.offllneplayer.opminecraft.block.furnaces.furnace.*;
+import net.offllneplayer.opminecraft.block.lootchest.LootChestBlock;
+import net.offllneplayer.opminecraft.block.lootchest.LootChestMaterial;
+import net.offllneplayer.opminecraft.block.lootchest.LootChestTrimMaterial;
 import net.offllneplayer.opminecraft.block.onyx.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
 import net.offllneplayer.opminecraft.iwe.beretta.BerettaMaterial;
@@ -47,6 +50,8 @@ import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdItem;
 import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdMaterial;
 import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class RegistryBIBI {
@@ -177,6 +182,260 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> ONYX_LAMP_YELLOW = registerBlock("onyx_lamp_yellow", () -> new OnyxLampBlock(DyeColor.YELLOW));
 
 
+
+	public static final Map<String, Supplier<LootChestBlock>> LOOT_CHEST_VARIANTS = new HashMap<>();
+
+	// Helper method for registering loot chest blocks
+	private static Supplier<LootChestBlock> registerLootChestBlock(String name, LootChestMaterial woodMaterial, LootChestTrimMaterial trimMaterial) {
+		Supplier<LootChestBlock> supplier = registerBlock(name,
+			() -> new LootChestBlock(woodMaterial, trimMaterial));
+		LOOT_CHEST_VARIANTS.put(name, supplier);
+		return supplier;
+	}
+
+	// All Acacia variants
+	public static final Supplier<LootChestBlock> ACACIA_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_copper_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> ACACIA_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_iron_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> ACACIA_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_gold_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> ACACIA_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_diamond_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> ACACIA_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_netherite_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> ACACIA_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_amethyst_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> ACACIA_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_emerald_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> ACACIA_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_lapis_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> ACACIA_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_quartz_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> ACACIA_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"acacia_redstone_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.REDSTONE);
+
+	// All Bamboo variants
+	public static final Supplier<LootChestBlock> BAMBOO_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_copper_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> BAMBOO_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_iron_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> BAMBOO_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_gold_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> BAMBOO_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_diamond_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> BAMBOO_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_netherite_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> BAMBOO_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_amethyst_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> BAMBOO_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_emerald_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> BAMBOO_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_lapis_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> BAMBOO_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_quartz_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> BAMBOO_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"bamboo_redstone_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.REDSTONE);
+
+	// All Birch variants
+	public static final Supplier<LootChestBlock> BIRCH_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_copper_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> BIRCH_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_iron_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> BIRCH_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_gold_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> BIRCH_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_diamond_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> BIRCH_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_netherite_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> BIRCH_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_amethyst_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> BIRCH_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_emerald_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> BIRCH_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_lapis_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> BIRCH_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_quartz_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> BIRCH_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"birch_redstone_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.REDSTONE);
+
+	// All Cherry variants
+	public static final Supplier<LootChestBlock> CHERRY_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_copper_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> CHERRY_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_iron_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> CHERRY_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_gold_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> CHERRY_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_diamond_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> CHERRY_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_netherite_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> CHERRY_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_amethyst_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> CHERRY_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_emerald_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> CHERRY_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_lapis_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> CHERRY_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_quartz_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> CHERRY_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"cherry_redstone_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.REDSTONE);
+
+	// All Dark Oak variants
+	public static final Supplier<LootChestBlock> DARK_OAK_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_copper_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> DARK_OAK_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_iron_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> DARK_OAK_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_gold_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> DARK_OAK_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_diamond_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> DARK_OAK_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_netherite_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> DARK_OAK_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_amethyst_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> DARK_OAK_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_emerald_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> DARK_OAK_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_lapis_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> DARK_OAK_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_quartz_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> DARK_OAK_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"dark_oak_redstone_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.REDSTONE);
+
+	// All Jungle variants
+	public static final Supplier<LootChestBlock> JUNGLE_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_copper_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> JUNGLE_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_iron_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> JUNGLE_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_gold_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> JUNGLE_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_diamond_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> JUNGLE_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_netherite_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> JUNGLE_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_amethyst_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> JUNGLE_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_emerald_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> JUNGLE_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_lapis_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> JUNGLE_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_quartz_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> JUNGLE_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"jungle_redstone_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.REDSTONE);
+
+	// All Mangrove variants
+	public static final Supplier<LootChestBlock> MANGROVE_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_copper_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> MANGROVE_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_iron_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> MANGROVE_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_gold_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> MANGROVE_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_diamond_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> MANGROVE_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_netherite_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> MANGROVE_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_amethyst_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> MANGROVE_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_emerald_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> MANGROVE_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_lapis_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> MANGROVE_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_quartz_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> MANGROVE_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"mangrove_redstone_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.REDSTONE);
+
+	// All Oak variants
+	public static final Supplier<LootChestBlock> OAK_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_copper_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> OAK_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_iron_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> OAK_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_gold_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> OAK_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_diamond_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> OAK_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_netherite_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> OAK_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_amethyst_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> OAK_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_emerald_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> OAK_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_lapis_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> OAK_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_quartz_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> OAK_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"oak_redstone_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.REDSTONE);
+
+	// All Spruce variants
+	public static final Supplier<LootChestBlock> SPRUCE_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_copper_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> SPRUCE_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_iron_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> SPRUCE_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_gold_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> SPRUCE_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_diamond_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> SPRUCE_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_netherite_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> SPRUCE_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_amethyst_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> SPRUCE_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_emerald_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> SPRUCE_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_lapis_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> SPRUCE_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_quartz_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> SPRUCE_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"spruce_redstone_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.REDSTONE);
+
+	// All Crimson variants
+	public static final Supplier<LootChestBlock> CRIMSON_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_copper_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> CRIMSON_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_iron_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> CRIMSON_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_gold_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> CRIMSON_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_diamond_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> CRIMSON_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_netherite_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> CRIMSON_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_amethyst_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> CRIMSON_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_emerald_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> CRIMSON_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_lapis_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> CRIMSON_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_quartz_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> CRIMSON_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"crimson_redstone_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.REDSTONE);
+
+	// All Warped variants
+	public static final Supplier<LootChestBlock> WARPED_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_copper_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.COPPER);
+	public static final Supplier<LootChestBlock> WARPED_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_iron_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.IRON);
+	public static final Supplier<LootChestBlock> WARPED_GOLD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_gold_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.GOLD);
+	public static final Supplier<LootChestBlock> WARPED_DIAMOND_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_diamond_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.DIAMOND);
+	public static final Supplier<LootChestBlock> WARPED_NETHERITE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_netherite_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.NETHERITE);
+	public static final Supplier<LootChestBlock> WARPED_AMETHYST_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_amethyst_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.AMETHYST);
+	public static final Supplier<LootChestBlock> WARPED_EMERALD_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_emerald_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.EMERALD);
+	public static final Supplier<LootChestBlock> WARPED_LAPIS_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_lapis_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.LAPIS);
+	public static final Supplier<LootChestBlock> WARPED_QUARTZ_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_quartz_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.QUARTZ);
+	public static final Supplier<LootChestBlock> WARPED_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
+		"warped_redstone_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.REDSTONE);
+
+	
 	public static final DeferredBlock<Block> STONE_TILES = registerBlock("stone_tiles", StoneTilesBlock::new);
 	public static final DeferredBlock<Block> STONE_TILE_BUTTON = registerBlock("stone_tile_button", StoneTileButtonBlock::new);
 	public static final DeferredBlock<Block> STONE_TILE_FENCE = registerBlock("stone_tile_fence", StoneTileFenceBlock::new);
@@ -363,7 +622,7 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> KAUPENJOE_SMITHING_TEMPLATE = ITEMSREGISTRY.register("kaupenjoe_armor_trim_smithing_template",
 			() -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "kaupenjoe")));
 	//-----------------------------------------------------Kaupenjoe tribute for providing horse armor and custom trims^
-
+	
 
 	public static final Supplier<HatchetItem> WOODEN_HATCHET = ITEMSREGISTRY.register("wooden_hatchet",
 		() -> new HatchetItem(HatchetMaterial.WOODEN));
