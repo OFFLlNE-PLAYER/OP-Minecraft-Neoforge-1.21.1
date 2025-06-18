@@ -1,8 +1,6 @@
 
 package net.offllneplayer.opminecraft.block.lootchest;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -36,7 +34,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import io.netty.buffer.Unpooled;
-import net.offllneplayer.opminecraft.world.inventory.lootchest.*;
 
 
 public class LootChestBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
@@ -72,10 +69,6 @@ public class LootChestBlock extends Block implements SimpleWaterloggedBlock, Ent
 	/*[HELP]*/
 	public LootChestMaterial getMaterial() {
 		return material;
-	}
-
-	public LootChestTrimMaterial getTrimMaterial() {
-		return trimMaterial;
 	}
 
 	public boolean isFireResistant() {
@@ -157,37 +150,18 @@ public class LootChestBlock extends Block implements SimpleWaterloggedBlock, Ent
 
 				@Override
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					// Use the blockstate parameter from the outer method
-					Block block = blockstate.getBlock();
-					ResourceLocation regName = BuiltInRegistries.BLOCK.getKey(block);
-					String regPath = regName.getPath();
-
-					// Use the pos parameter from the outer method
+					// Get the block at the container's position
 					FriendlyByteBuf extraData = new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos);
 
-					// Select the appropriate inventory type based on the trim material
-					if (regPath.contains("copper_trim")) {
-						return new CopperLootChestInv(id, inventory, extraData);
-					} else if (regPath.contains("iron_trim")) {
-						return new IronLootChestInv(id, inventory, extraData);
-					} else if (regPath.contains("gold_trim")) {
-						return new GoldLootChestInv(id, inventory, extraData);
-					} else if (regPath.contains("diamond_trim")) {
-						return new DiamondLootChestInv(id, inventory, extraData);
-					} else if (regPath.contains("netherite_trim")) {
-						return new NetheriteLootChestInv(id, inventory, extraData);
-					} else if (regPath.contains("amethyst_trim") || regPath.contains("emerald_trim") || regPath.contains("lapis_trim") || regPath.contains("quartz_trim") || regPath.contains("redstone_trim")) {
-						return new NLootChestInv(id, inventory, extraData);
-					} else {
-						// Default to Iron loot chest if no match
-						return new NLootChestInv(id, inventory, extraData);
-					}
-
+					// Pass these values to the NLootChestInv constructor
+					return new LootChestInv(id, inventory, extraData);
 				}
+
 			}, pos);
 		}
 		return InteractionResult.SUCCESS;
 	}
+
 
 
 	@Override

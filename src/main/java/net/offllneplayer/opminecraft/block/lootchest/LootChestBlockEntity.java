@@ -1,8 +1,5 @@
 package net.offllneplayer.opminecraft.block.lootchest;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,7 +25,6 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
-import net.offllneplayer.opminecraft.world.inventory.lootchest.*;
 
 public class LootChestBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
@@ -40,11 +36,6 @@ public class LootChestBlockEntity extends RandomizableContainerBlockEntity imple
 	/*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*[BUILDERS]*/
-	public LootChestBlockEntity(BlockPos pos, BlockState state) {
-		this(pos, state, ((LootChestBlock)state.getBlock()).getTrimMaterial());
-	}
-
-	// Constructor that takes the trim material
 	public LootChestBlockEntity(BlockPos pos, BlockState state, LootChestTrimMaterial trimMaterial) {
 		super(RegistryBlockEntities.getLootChestType(trimMaterial), pos, state);
 		this.trimMaterial = trimMaterial;
@@ -53,20 +44,12 @@ public class LootChestBlockEntity extends RandomizableContainerBlockEntity imple
 
 
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
-	/*[HELP]*/
-	public LootChestTrimMaterial getTrimMaterial() {
-		return trimMaterial;
-	}
 
-	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
 	/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 	/*[DATA SYNC]*/
 	@Override
 	public void loadAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
 		super.loadAdditional(compound, lookupProvider);
-
-		// No need to load trim material from tag since it's final and set at construction
 
 		// If inventory needs resizing or initialization
 		if (!this.tryLoadLootTable(compound)) {
@@ -131,30 +114,8 @@ public class LootChestBlockEntity extends RandomizableContainerBlockEntity imple
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		// Get block info from the current blockstate
-		BlockState state = this.getBlockState();
-		Block block = state.getBlock();
-		ResourceLocation regName = BuiltInRegistries.BLOCK.getKey(block);
-		String regPath = regName.getPath();
-
-		// Create FriendlyByteBuf with position data
 		FriendlyByteBuf extraData = new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition);
-
-		// Select the appropriate inventory type based on the trim material
-		if (regPath.contains("copper_trim")) {
-			return new CopperLootChestInv(id, inventory, extraData);
-		} else if (regPath.contains("iron_trim")) {
-			return new IronLootChestInv(id, inventory, extraData);
-		} else if (regPath.contains("gold_trim")) {
-			return new GoldLootChestInv(id, inventory, extraData);
-		} else if (regPath.contains("diamond_trim")) {
-			return new DiamondLootChestInv(id, inventory, extraData);
-		} else if (regPath.contains("netherite_trim")) {
-			return new NetheriteLootChestInv(id, inventory, extraData);
-		} else {
-			// Default to Iron loot chest if no match
-			return new IronLootChestInv(id, inventory, extraData);
-		}
+		return new LootChestInv(id, inventory, extraData);
 	}
 
 

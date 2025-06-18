@@ -120,12 +120,7 @@ public class RegistryBlockEntities {
 
         for (LootChestTrimMaterial trimMaterial : LootChestTrimMaterial.values()) {
             BlockEntityType<?> blockEntityType = TRIM_MATERIAL_TO_BLOCKENTITY.get(trimMaterial).get();
-
-            event.registerBlockEntity(
-               Capabilities.ItemHandler.BLOCK,
-               blockEntityType,
-               (blockEntity, side) -> ((LootChestBlockEntity) blockEntity).getItemHandler()
-            );
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, blockEntityType, (blockEntity, side) -> ((LootChestBlockEntity) blockEntity).getItemHandler());
         }
 
 
