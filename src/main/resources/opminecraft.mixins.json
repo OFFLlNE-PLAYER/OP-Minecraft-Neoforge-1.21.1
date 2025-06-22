@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "net.offllneplayer.opminecraft.VANILLA_MIXIN",
-  "refmap": "${mod_id}.refmap.json",
+  "refmap": "mixin.opminecraft.refmap.json",
   "mixins": [
     "ItemEntityMixin",
     "itemuseOnMixin"

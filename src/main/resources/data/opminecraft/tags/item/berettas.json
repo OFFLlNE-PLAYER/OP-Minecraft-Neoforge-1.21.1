@@ -1,8 +1,9 @@
 {
   "replace": false,
   "values": [
-    "opminecraft:onyx_beretta",
     "opminecraft:titan_beretta",
+    "opminecraft:redfield_beretta",
+    "opminecraft:wesker_beretta",
     "opminecraft:valentine_beretta"
   ]
 }

@@ -183,17 +183,17 @@ public class RegistryBIBI {
 
 
 
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	public static final Map<String, Supplier<LootChestBlock>> LOOT_CHEST_VARIANTS = new HashMap<>();
 
 	// Helper method for registering loot chest blocks
 	private static Supplier<LootChestBlock> registerLootChestBlock(String name, LootChestMaterial woodMaterial, LootChestTrimMaterial trimMaterial) {
-		Supplier<LootChestBlock> supplier = registerBlock(name,
-			() -> new LootChestBlock(woodMaterial, trimMaterial));
+		Supplier<LootChestBlock> supplier = registerBlock(name, () -> new LootChestBlock(woodMaterial, trimMaterial));
 		LOOT_CHEST_VARIANTS.put(name, supplier);
 		return supplier;
 	}
 
-	// All Acacia variants
+	//Acacia variants
 	public static final Supplier<LootChestBlock> ACACIA_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"acacia_copper_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> ACACIA_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -215,7 +215,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> ACACIA_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"acacia_redstone_trim_loot_chest", LootChestMaterial.ACACIA, LootChestTrimMaterial.REDSTONE);
 
-	// All Bamboo variants
+	//Bamboo variants
 	public static final Supplier<LootChestBlock> BAMBOO_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"bamboo_copper_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> BAMBOO_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -237,7 +237,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> BAMBOO_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"bamboo_redstone_trim_loot_chest", LootChestMaterial.BAMBOO, LootChestTrimMaterial.REDSTONE);
 
-	// All Birch variants
+	//Birch variants
 	public static final Supplier<LootChestBlock> BIRCH_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"birch_copper_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> BIRCH_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -259,7 +259,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> BIRCH_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"birch_redstone_trim_loot_chest", LootChestMaterial.BIRCH, LootChestTrimMaterial.REDSTONE);
 
-	// All Cherry variants
+	//Cherry variants
 	public static final Supplier<LootChestBlock> CHERRY_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"cherry_copper_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> CHERRY_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -281,7 +281,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> CHERRY_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"cherry_redstone_trim_loot_chest", LootChestMaterial.CHERRY, LootChestTrimMaterial.REDSTONE);
 
-	// All Dark Oak variants
+	//Dark Oak variants
 	public static final Supplier<LootChestBlock> DARK_OAK_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"dark_oak_copper_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> DARK_OAK_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -303,7 +303,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> DARK_OAK_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"dark_oak_redstone_trim_loot_chest", LootChestMaterial.DARK_OAK, LootChestTrimMaterial.REDSTONE);
 
-	// All Jungle variants
+	//Jungle variants
 	public static final Supplier<LootChestBlock> JUNGLE_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"jungle_copper_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> JUNGLE_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -325,7 +325,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> JUNGLE_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"jungle_redstone_trim_loot_chest", LootChestMaterial.JUNGLE, LootChestTrimMaterial.REDSTONE);
 
-	// All Mangrove variants
+	//Mangrove variants
 	public static final Supplier<LootChestBlock> MANGROVE_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"mangrove_copper_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> MANGROVE_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -347,7 +347,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> MANGROVE_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"mangrove_redstone_trim_loot_chest", LootChestMaterial.MANGROVE, LootChestTrimMaterial.REDSTONE);
 
-	// All Oak variants
+	//Oak variants
 	public static final Supplier<LootChestBlock> OAK_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"oak_copper_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> OAK_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -369,7 +369,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> OAK_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"oak_redstone_trim_loot_chest", LootChestMaterial.OAK, LootChestTrimMaterial.REDSTONE);
 
-	// All Spruce variants
+	//Spruce variants
 	public static final Supplier<LootChestBlock> SPRUCE_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"spruce_copper_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> SPRUCE_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -391,7 +391,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> SPRUCE_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"spruce_redstone_trim_loot_chest", LootChestMaterial.SPRUCE, LootChestTrimMaterial.REDSTONE);
 
-	// All Crimson variants
+	//Crimson variants
 	public static final Supplier<LootChestBlock> CRIMSON_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"crimson_copper_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> CRIMSON_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -413,7 +413,7 @@ public class RegistryBIBI {
 	public static final Supplier<LootChestBlock> CRIMSON_REDSTONE_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"crimson_redstone_trim_loot_chest", LootChestMaterial.CRIMSON, LootChestTrimMaterial.REDSTONE);
 
-	// All Warped variants
+	//Warped variants
 	public static final Supplier<LootChestBlock> WARPED_COPPER_TRIM_LOOT_CHEST = registerLootChestBlock(
 		"warped_copper_trim_loot_chest", LootChestMaterial.WARPED, LootChestTrimMaterial.COPPER);
 	public static final Supplier<LootChestBlock> WARPED_IRON_TRIM_LOOT_CHEST = registerLootChestBlock(
@@ -734,6 +734,7 @@ public class RegistryBIBI {
 		DeferredBlock<T> toReturn = RARE_BLOCKSREGISTRY.register(name, block);
 		registerRareBlockItem(name, toReturn); return toReturn;
 	}
+	
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register BlockItems]*/
@@ -762,5 +763,5 @@ public class RegistryBIBI {
 				new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
 	}
 
-/*--------------------------------------------------------------------------------------------*/
+ /*-----------------------------------------------------------------------------------------------------------------------*/
 }

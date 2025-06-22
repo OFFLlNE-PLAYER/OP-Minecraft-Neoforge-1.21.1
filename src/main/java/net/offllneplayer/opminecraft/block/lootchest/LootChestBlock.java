@@ -1,6 +1,8 @@
 
 package net.offllneplayer.opminecraft.block.lootchest;
 
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -142,6 +144,7 @@ public class LootChestBlock extends Block implements SimpleWaterloggedBlock, Ent
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
 		if (entity instanceof ServerPlayer player) {
+			world.playSound(null, pos, SoundEvents.BARREL_OPEN, SoundSource.BLOCKS, 0.269F, 1.420F);
 			player.openMenu(new MenuProvider() {
 				@Override
 				public Component getDisplayName() {
@@ -161,7 +164,6 @@ public class LootChestBlock extends Block implements SimpleWaterloggedBlock, Ent
 		}
 		return InteractionResult.SUCCESS;
 	}
-
 
 
 	@Override
