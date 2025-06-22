@@ -28,7 +28,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
-import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.ApplyCrying1_Method;
 
 import javax.annotation.Nullable;
 import java.util.Map;

@@ -36,6 +36,8 @@ public class OPMinecraft {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
+
+/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
     public OPMinecraft(IEventBus modEventBus, ModContainer modContainer) {
 
         modEventBus.addListener(this::registerNetworking);
@@ -74,9 +76,8 @@ public class OPMinecraft {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(FMLDispenserBehaviors::DispenserBehaviors);
-    }
+/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+
 
     private static boolean networkingRegistered = false;
     private static final Map<CustomPacketPayload.Type<?>, NetworkMessage<?>> MESSAGES = new HashMap<>();
@@ -97,6 +98,13 @@ public class OPMinecraft {
         networkingRegistered = true;
     }
 
+/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(FMLDispenserBehaviors::DispenserBehaviors);
+    }
+
+    /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+   /*[TUPLE QUE]*/
     private static final Collection<Tuple<Runnable, Integer>> TupleQueue = new ConcurrentLinkedQueue<>();
 
     public static void queueServerWork(int tick, Runnable action) {

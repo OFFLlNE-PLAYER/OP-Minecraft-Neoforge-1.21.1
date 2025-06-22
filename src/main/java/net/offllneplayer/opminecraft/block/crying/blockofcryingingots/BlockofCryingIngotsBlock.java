@@ -27,7 +27,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-import net.offllneplayer.opminecraft.block.crying.essence.CryingEssenceCollision_Method;
+import net.offllneplayer.opminecraft.block.crying.blockofcryingingots.method.BlockOfCryingIngots_OnCLIENTTick_Method;
+import net.offllneplayer.opminecraft.block.crying.blockofcryingingots.method.BlockofCryingIngots_OnTick_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.CryingEssenceCollision_Method;
 
 
 public class BlockofCryingIngotsBlock extends Block {

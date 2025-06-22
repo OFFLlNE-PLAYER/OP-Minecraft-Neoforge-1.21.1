@@ -8,7 +8,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
-import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.iwe.sw0rd.StickSword_Method;
 
 

@@ -1,9 +1,0 @@
-{
-  "parent": "opminecraft:block/acacia_gold_trim_loot_chest",
-  "textures": {
-    "0": "block/dark_oak_planks",
-    "1": "block/diamond_block",
-    "particle": "block/dark_oak_planks"
-  },
-  "render_type": "minecraft:cutout_mipped"
-}

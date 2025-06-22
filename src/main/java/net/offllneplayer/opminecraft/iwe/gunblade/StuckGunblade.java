@@ -32,7 +32,7 @@ import net.minecraft.world.phys.Vec3;
 
 import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
-import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.iwe.sw0rd.PopSwordItem_Method;
 import net.offllneplayer.opminecraft.iwe.sw0rd.Stuck_Sword_OnClick_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;

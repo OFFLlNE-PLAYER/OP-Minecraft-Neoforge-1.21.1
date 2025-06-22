@@ -34,7 +34,7 @@ import net.offllneplayer.opminecraft.UTIL.OP_NBTUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitEntityUtil;
-import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;

@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-import net.offllneplayer.opminecraft.block.crying.essence.effect.ApplyCrying1_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.ApplyCrying1_Method;
 import net.offllneplayer.opminecraft.iwe.sw0rd.StickSword_Method;
 import net.offllneplayer.opminecraft.init.RegistryDataComponents;
 import net.offllneplayer.opminecraft.init.RegistrySounds;

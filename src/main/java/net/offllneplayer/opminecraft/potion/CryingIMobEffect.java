@@ -9,8 +9,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 
-import net.offllneplayer.opminecraft.block.crying.essence.effect.Crying1_OnTick_Method;
-import net.offllneplayer.opminecraft.block.crying.essence.effect.CryingActiveTickCondition_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.Crying1_OnTick_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.effect.CryingActiveTickCondition_Method;
 
 import java.util.Set;
 

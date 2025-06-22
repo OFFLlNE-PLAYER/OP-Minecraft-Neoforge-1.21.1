@@ -16,6 +16,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 
+import net.offllneplayer.opminecraft.block.crying.essence.method.CryingEssenceCollision_Method;
+import net.offllneplayer.opminecraft.block.crying.essence.method.CryingEssence_OnTick_Method;
 import net.offllneplayer.opminecraft.init.RegistryFluids;
 
 
