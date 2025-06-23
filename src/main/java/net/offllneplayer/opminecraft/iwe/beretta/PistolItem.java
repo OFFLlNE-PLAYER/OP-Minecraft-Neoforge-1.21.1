@@ -22,21 +22,21 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 
-public class BerettaItem extends TieredItem{
+public class PistolItem extends TieredItem{
 
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
-	private BerettaMaterial berettaMaterial;
+	private PistolMaterial pistolMaterial;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDER]*/
-	public BerettaItem(BerettaMaterial material) {
+	public PistolItem(PistolMaterial material) {
 		super(createTier(material), createItemProperties(material));
-		this.berettaMaterial = material;
+		this.pistolMaterial = material;
 	}
 
-	private static Properties createItemProperties(BerettaMaterial material) {
+	private static Properties createItemProperties(PistolMaterial material) {
 		Properties itemProperties = new Properties()
 			.stacksTo(1)
 			.durability(material.getDurability())
@@ -53,7 +53,7 @@ public class BerettaItem extends TieredItem{
   	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[BASIC TOOL Item OVERRIDES]*/
-	private static Tier createTier(BerettaMaterial material) {
+	private static Tier createTier(PistolMaterial material) {
 		return new Tier() {
 			@Override
 			public Ingredient getRepairIngredient() { return Ingredient.EMPTY; }
@@ -84,7 +84,7 @@ public class BerettaItem extends TieredItem{
   /*[Use Item OVERRIDES]*/
 	 @Override
 	 public int getUseDuration(ItemStack itemstack, LivingEntity user) {
-		 return this.berettaMaterial.getAttackSpeed();
+		 return this.pistolMaterial.getAttackSpeed();
 	 }
 
 	@Override
@@ -178,10 +178,10 @@ public class BerettaItem extends TieredItem{
 		if (player.isShiftKeyDown()) {
 			// Check if reload is possible before attempting it
 			InteractionHand oppositeHand = hand == InteractionHand.MAIN_HAND ?
-				InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+					InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 			ItemStack oppositeHandStack = player.getItemInHand(oppositeHand);
-			boolean hasAmmoInOtherHand = oppositeHandStack.is(this.berettaMaterial.getRegisteredItem()) &&
-				!oppositeHandStack.isEmpty();
+			boolean hasAmmoInOtherHand = oppositeHandStack.is(this.pistolMaterial.getRegisteredItem()) &&
+					!oppositeHandStack.isEmpty();
 
 			// When crouching: Try to reload only if needed AND possible, otherwise fire if has ammo
 			if (currentDamage > 0 && hasAmmoInOtherHand) {
@@ -192,9 +192,7 @@ public class BerettaItem extends TieredItem{
 				fireGun(stack, level, player, spawnX, spawnY, spawnZ, randomFloat);
 			} else {
 				// Gun is empty and no ammo to reload, play empty sound
-				level.playSound(null, player.getX(), player.getY(), player.getZ(),
-					RegistrySounds.SAMURAI_EDGE_0, SoundSource.PLAYERS,
-					0.8F, 0.9F + randomFloat * 0.2F);
+				playEmptySound(level, player, randomFloat);
 			}
 		} else {
 			// Not crouching: Try to fire first, reload only if empty
@@ -212,18 +210,17 @@ public class BerettaItem extends TieredItem{
 	 * Handles the gun reloading logic
 	 */
 	private void reloadGun(ItemStack stack, Level level, Player player, InteractionHand hand, float randomFloat) {
-
 		int currentDamage = stack.getDamageValue();
 
 		// Don't reload if gun is already full
 		if (currentDamage == 0) return;
 
 		InteractionHand oppositeHand = hand == InteractionHand.MAIN_HAND ?
-			InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+				InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 		ItemStack oppositeHandStack = player.getItemInHand(oppositeHand);
 
 		// Check if the opposite hand holds the correct bullet type
-		if (oppositeHandStack.is(this.berettaMaterial.getRegisteredItem())) {
+		if (oppositeHandStack.is(this.pistolMaterial.getRegisteredItem())) {
 			// Calculate how many bullets we need to fully reload
 			int bulletsNeeded = currentDamage;
 			int bulletCount = oppositeHandStack.getCount();
@@ -236,20 +233,14 @@ public class BerettaItem extends TieredItem{
 				oppositeHandStack.shrink(bulletsToUse);
 
 				// Play reload sound
-				level.playSound(null, player.getX(), player.getY(), player.getZ(),
-					RegistrySounds.SAMURAI_EDGE_R, SoundSource.PLAYERS,
-					0.8F, 0.9F + randomFloat * 0.2F);
+				playReloadSound(level, player, randomFloat);
 			} else {
 				// No bullets available
-				level.playSound(null, player.getX(), player.getY(), player.getZ(),
-					RegistrySounds.SAMURAI_EDGE_0, SoundSource.PLAYERS,
-					0.8F, 0.9F + randomFloat * 0.2F);
+				playEmptySound(level, player, randomFloat);
 			}
 		} else {
 			// Play empty clip sound - no bullets of the right type
-			level.playSound(null, player.getX(), player.getY(), player.getZ(),
-				RegistrySounds.SAMURAI_EDGE_0, SoundSource.PLAYERS,
-				0.8F, 0.9F + randomFloat * 0.2F);
+			playEmptySound(level, player, randomFloat);
 		}
 	}
 
@@ -263,22 +254,24 @@ public class BerettaItem extends TieredItem{
 		stack.setDamageValue(currentDamage + 1);
 
 		// Create a new bullet with a fresh stack, not copying the original
-		BerettaBullet berettaBulletENT = new BerettaBullet(player, level, stack.copy());
-		berettaBulletENT.setPos(spawnX, spawnY, spawnZ);
-		berettaBulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 14.20F, 0F);
-		level.addFreshEntity(berettaBulletENT);
+		PistolBullet pistolBulletENT = new PistolBullet(player, level, stack.copy());
+		pistolBulletENT.setPos(spawnX, spawnY, spawnZ);
+		pistolBulletENT.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, 14.20F, 0F);
+		level.addFreshEntity(pistolBulletENT);
 
-		float vol = 0.8F;
-		float basePitch = 0.5F;
-		float pitchVariance = 0.05F;
-		int 	soundIndex = 0;
+		float vol = 1F;
+		float basePitch = 1F;
+		float pitchVariance = 0.0420F;
+		int soundIndex = 0;
 
 		// Sound selection varies based on beretta material
-		if (this.berettaMaterial == BerettaMaterial.TITAN_BERETTA ||
-			this.berettaMaterial == BerettaMaterial.REDFIELD_BERETTA ||
-			this.berettaMaterial == BerettaMaterial.WESKER_BERETTA ||
-			this.berettaMaterial == BerettaMaterial.VALENTINE_BERETTA) {
+		if (this.pistolMaterial == PistolMaterial.TITAN_BERETTA ||
+				this.pistolMaterial == PistolMaterial.REDFIELD_BERETTA ||
+				this.pistolMaterial == PistolMaterial.WESKER_BERETTA ||
+				this.pistolMaterial == PistolMaterial.VALENTINE_BERETTA) {
 			soundIndex = new Random().nextInt(4);
+		} else if (this.pistolMaterial == PistolMaterial.TITAN_HANDCANNON) {
+			soundIndex = 5;
 		}
 
 		// Define the sound based on the soundIndex
@@ -287,31 +280,105 @@ public class BerettaItem extends TieredItem{
 			case 1 -> RegistrySounds.SAMURAI_EDGE_2;
 			case 2 -> RegistrySounds.SAMURAI_EDGE_3;
 			case 3 -> RegistrySounds.SAMURAI_EDGE_4;
+			case 4 -> RegistrySounds.HANDCANNON_1;
+			case 5 -> RegistrySounds.HANDCANNON_2;
 			default -> RegistrySounds.SAMURAI_EDGE_1;
 		};
 
 		// Set volume and basePitch based on beretta material
-		if (this.berettaMaterial == BerettaMaterial.TITAN_BERETTA) {
+		if (this.pistolMaterial == PistolMaterial.TITAN_BERETTA) {
 			vol = 0.9F;
 			basePitch = 0.88F;
 			pitchVariance = 0.06F;
-		} else if (this.berettaMaterial == BerettaMaterial.REDFIELD_BERETTA) {
+		} else if (this.pistolMaterial == PistolMaterial.REDFIELD_BERETTA) {
 			vol = 0.9F;
 			basePitch = 0.9F;
 			pitchVariance = 0.0420F;
-		} else if (this.berettaMaterial == BerettaMaterial.WESKER_BERETTA) {
+		} else if (this.pistolMaterial == PistolMaterial.WESKER_BERETTA) {
 			vol = 0.7F;
 			basePitch = 0.94F;
 			pitchVariance = 0.0420F;
-		} else if (this.berettaMaterial == BerettaMaterial.VALENTINE_BERETTA) {
+		} else if (this.pistolMaterial == PistolMaterial.VALENTINE_BERETTA) {
 			vol = 0.8F;
 			basePitch = 0.98F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.TITAN_HANDCANNON) {
+			vol = 1F;
+			basePitch = 1F;
 			pitchVariance = 0.0420F;
 		}
 
 		// Play the sound with the determined parameters
 		level.playSound(null, player.getX(), player.getY(), player.getZ(),
-			sound, SoundSource.PLAYERS, vol, basePitch + randomFloat * pitchVariance);
+				sound, SoundSource.PLAYERS, vol, basePitch + randomFloat * pitchVariance);
+	}
+
+	private void playReloadSound(Level level, Player player, float randomFloat) {
+		float vol = 1F;
+		float basePitch = 1F;
+		float pitchVariance = 0.0420F;
+		var sound = RegistrySounds.SAMURAI_EDGE_R;
+
+		// Set volume and basePitch based on beretta material
+		if (this.pistolMaterial == PistolMaterial.TITAN_BERETTA) {
+			vol = 0.9F;
+			basePitch = 0.88F;
+			pitchVariance = 0.06F;
+		} else if (this.pistolMaterial == PistolMaterial.REDFIELD_BERETTA) {
+			vol = 0.9F;
+			basePitch = 0.9F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.WESKER_BERETTA) {
+			vol = 0.7F;
+			basePitch = 0.94F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.VALENTINE_BERETTA) {
+			vol = 0.8F;
+			basePitch = 0.98F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.TITAN_HANDCANNON) {
+			sound = RegistrySounds.HANDCANNON_R;
+			vol = 1F;
+			basePitch = 1F;
+			pitchVariance = 0.0420F;
+		}
+
+		level.playSound(null, player.getX(), player.getY(), player.getZ(),
+				sound, SoundSource.PLAYERS, vol, basePitch + randomFloat * pitchVariance);
+	}
+
+	private void playEmptySound(Level level, Player player, float randomFloat) {
+		float vol = 0.8F;
+		float basePitch = 0.9F;
+		float pitchVariance = 0.2F;
+		var sound = RegistrySounds.SAMURAI_EDGE_0;
+
+		// Set volume and basePitch based on beretta material
+		if (this.pistolMaterial == PistolMaterial.TITAN_BERETTA) {
+			vol = 0.9F;
+			basePitch = 0.88F;
+			pitchVariance = 0.06F;
+		} else if (this.pistolMaterial == PistolMaterial.REDFIELD_BERETTA) {
+			vol = 0.9F;
+			basePitch = 0.9F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.WESKER_BERETTA) {
+			vol = 0.7F;
+			basePitch = 0.94F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.VALENTINE_BERETTA) {
+			vol = 0.8F;
+			basePitch = 0.98F;
+			pitchVariance = 0.0420F;
+		} else if (this.pistolMaterial == PistolMaterial.TITAN_HANDCANNON) {
+			sound = RegistrySounds.HANDCANNON_0;
+			vol = 1F;
+			basePitch = 1F;
+			pitchVariance = 0.0420F;
+		}
+
+		level.playSound(null, player.getX(), player.getY(), player.getZ(),
+				sound, SoundSource.PLAYERS, vol, basePitch + randomFloat * pitchVariance);
 	}
 
 

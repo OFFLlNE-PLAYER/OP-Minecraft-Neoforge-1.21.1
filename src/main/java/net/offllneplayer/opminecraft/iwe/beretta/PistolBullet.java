@@ -38,30 +38,30 @@ import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
 import java.util.Random;
 
 
-public class BerettaBullet extends AbstractArrow {
+public class PistolBullet extends AbstractArrow {
 
 
 	 /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	/*[DATA]*/
-	 private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(BerettaBullet.class, EntityDataSerializers.STRING);
-	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(BerettaBullet.class, EntityDataSerializers.FLOAT);
+	 private static final EntityDataAccessor<String> MATERIAL_NAME = SynchedEntityData.defineId(PistolBullet.class, EntityDataSerializers.STRING);
+	private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(PistolBullet.class, EntityDataSerializers.FLOAT);
 
 
 	  /*-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x-~x~-~x-~x*/
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
    /*[VARIABLES]*/
-	private BerettaMaterial material;
+	private PistolMaterial material;
 	DamageSource bulletDamage;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDERS]*/
-	public BerettaBullet(EntityType<? extends BerettaBullet> type, Level level) {
+	public PistolBullet(EntityType<? extends PistolBullet> type, Level level) {
 		super(type, level);
 	}
 
-	public BerettaBullet(Level world, LivingEntity shooter) {
-		super(RegistryEntities.BERETTA_BULLET.get(), world);
+	public PistolBullet(Level world, LivingEntity shooter) {
+		super(RegistryEntities.PISTOL_BULLET.get(), world);
 		this.setOwner(shooter);
 
 		if (shooter != null) {
@@ -70,29 +70,29 @@ public class BerettaBullet extends AbstractArrow {
 		this.pickup = Pickup.DISALLOWED;
 	}
 
-	public BerettaBullet(Player shooter, Level world, ItemStack stack) {
+	public PistolBullet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
 		if (stack.getItem() == RegistryBIBI.TITAN_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "TITAN_BERETTA");
-			this.material = BerettaMaterial.TITAN_BERETTA;
+			this.material = PistolMaterial.TITAN_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.BERETTA, this, this.getOwner());
 		} else if (stack.getItem() == RegistryBIBI.REDFIELD_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "REDFIELD_BERETTA");
-			this.material = BerettaMaterial.REDFIELD_BERETTA;
+			this.material = PistolMaterial.REDFIELD_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		} else if (stack.getItem() == RegistryBIBI.WESKER_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "WESKER_BERETTA");
-			this.material = BerettaMaterial.WESKER_BERETTA;
+			this.material = PistolMaterial.WESKER_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		} else 	if (stack.getItem() == RegistryBIBI.VALENTINE_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
-			this.material = BerettaMaterial.VALENTINE_BERETTA;
+			this.material = PistolMaterial.VALENTINE_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 	}else {
 			// DEFAULT
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
-			this.material = BerettaMaterial.VALENTINE_BERETTA;
+			this.material = PistolMaterial.VALENTINE_BERETTA;
 			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}
 
@@ -116,11 +116,11 @@ public class BerettaBullet extends AbstractArrow {
 
 	public String getMaterialName() {return this.entityData.get(MATERIAL_NAME);}
 
-	public BerettaMaterial getMaterialFromName() {
+	public PistolMaterial getMaterialFromName() {
 		try {
-			return BerettaMaterial.valueOf(getMaterialName());
+			return PistolMaterial.valueOf(getMaterialName());
 		} catch (IllegalArgumentException e) {
-			return BerettaMaterial.VALENTINE_BERETTA;
+			return PistolMaterial.VALENTINE_BERETTA;
 		}
 	}
 

@@ -8,11 +8,13 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 
-public enum BerettaMaterial {
+public enum PistolMaterial {
 	TITAN_BERETTA(16, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true),
 	REDFIELD_BERETTA(14, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 5, 12, Rarity.EPIC, true),
 	WESKER_BERETTA(18, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true),
-	VALENTINE_BERETTA(15, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true);
+	VALENTINE_BERETTA(15, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true),
+
+	TITAN_HANDCANNON(16, 2F, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 6F, 4, 15, Rarity.EPIC, true),;
 
 	private final int durability;
 	private final float miningSpeed;
@@ -23,7 +25,7 @@ public enum BerettaMaterial {
 	private final Rarity rarity;
 	private final boolean fireResistant;
 
-	BerettaMaterial(int durability, float miningSpeed, TagKey<Block> incorrectBlocksForDrops, float attackDamage, int attackSpeed, int enchantability, Rarity rarity, boolean fireResistant) {
+	PistolMaterial(int durability, float miningSpeed, TagKey<Block> incorrectBlocksForDrops, float attackDamage, int attackSpeed, int enchantability, Rarity rarity, boolean fireResistant) {
 		this.durability = durability;
 		this.miningSpeed = miningSpeed;
 		this.incorrectBlocksForDrops = incorrectBlocksForDrops;
@@ -50,6 +52,7 @@ public enum BerettaMaterial {
 			case REDFIELD_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case WESKER_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case VALENTINE_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case TITAN_HANDCANNON -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 		};
 	}
 	public Item getRegisteredRenderItem() {
@@ -58,6 +61,7 @@ public enum BerettaMaterial {
 			case REDFIELD_BERETTA -> RegistryBIBI.PISTOL_BULLET.get();
 			case WESKER_BERETTA -> RegistryBIBI.PISTOL_BULLET.get();
 			case VALENTINE_BERETTA -> RegistryBIBI.PISTOL_BULLET.get();
+			case TITAN_HANDCANNON -> RegistryBIBI.PISTOL_BULLET.get();
 		};
 	}
 }

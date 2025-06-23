@@ -32,7 +32,7 @@ import net.offllneplayer.opminecraft.block.ancientchests.AncientChestWoodMateria
 import net.offllneplayer.opminecraft.block.ancientchests.AncientChestTrimMaterial;
 import net.offllneplayer.opminecraft.block.onyx.*;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
-import net.offllneplayer.opminecraft.iwe.beretta.BerettaMaterial;
+import net.offllneplayer.opminecraft.iwe.beretta.PistolMaterial;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterial;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetMaterial;
 import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordItem;
@@ -46,7 +46,7 @@ import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
-import net.offllneplayer.opminecraft.iwe.beretta.BerettaItem;
+import net.offllneplayer.opminecraft.iwe.beretta.PistolItem;
 import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdItem;
 import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdMaterial;
 import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
@@ -701,18 +701,21 @@ public class RegistryBIBI {
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 
 
-	public static final Supplier<BerettaItem> TITAN_BERETTA = ITEMSREGISTRY.register("titan_beretta",
-		() -> new BerettaItem(BerettaMaterial.TITAN_BERETTA));
+	public static final Supplier<PistolItem> TITAN_BERETTA = ITEMSREGISTRY.register("titan_beretta",
+		() -> new PistolItem(PistolMaterial.TITAN_BERETTA));
 
-	public static final Supplier<BerettaItem> REDFIELD_BERETTA = ITEMSREGISTRY.register("redfield_beretta",
-		() -> new BerettaItem(BerettaMaterial.REDFIELD_BERETTA));
-	public static final Supplier<BerettaItem> WESKER_BERETTA = ITEMSREGISTRY.register("wesker_beretta",
-		() -> new BerettaItem(BerettaMaterial.WESKER_BERETTA));
-	public static final Supplier<BerettaItem> VALENTINE_BERETTA = ITEMSREGISTRY.register("valentine_beretta",
-		() -> new BerettaItem(BerettaMaterial.VALENTINE_BERETTA));
+	public static final Supplier<PistolItem> REDFIELD_BERETTA = ITEMSREGISTRY.register("redfield_beretta",
+		() -> new PistolItem(PistolMaterial.REDFIELD_BERETTA));
+	public static final Supplier<PistolItem> WESKER_BERETTA = ITEMSREGISTRY.register("wesker_beretta",
+		() -> new PistolItem(PistolMaterial.WESKER_BERETTA));
+	public static final Supplier<PistolItem> VALENTINE_BERETTA = ITEMSREGISTRY.register("valentine_beretta",
+		() -> new PistolItem(PistolMaterial.VALENTINE_BERETTA));
 
 	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("beretta_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+
+	public static final Supplier<PistolItem> TITAN_HANDCANNON = ITEMSREGISTRY.register("titan_handcannon",
+			() -> new PistolItem(PistolMaterial.TITAN_HANDCANNON));
 
 
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);

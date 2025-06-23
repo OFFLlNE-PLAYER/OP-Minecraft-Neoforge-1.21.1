@@ -375,6 +375,8 @@ public class RegistryCreative {
 
                 event.accept(RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get());
 
+                event.accept(RegistryBIBI.TITAN_HANDCANNON.get());
+
                 event.accept(RegistryBIBI.TOTEM_OF_LIFE);
                 // event.accept(RegistryIBBI.TOTEM_OF_UNCRYING);
             }
