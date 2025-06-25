@@ -39,10 +39,10 @@
   "fleshrip_0": {"sounds": [{"name": "opminecraft:fleshrip_0", "stream": false}]},
   "fleshrip_1": {"sounds": [{"name": "opminecraft:fleshrip_1", "stream": false}]},
 
-  "handcannon_r": {"sounds": [{"name": "opminecraft:handcannon_r", "stream": false}]},
-  "handcannon_0": {"sounds": [{"name": "opminecraft:handcannon_0", "stream": false}]},
-  "handcannon_1": {"sounds": [{"name": "opminecraft:handcannon_1", "stream": false}]},
-  "handcannon_2": {"sounds": [{"name": "opminecraft:handcannon_2", "stream": false}]},
+  "magnum_r": {"sounds": [{"name": "opminecraft:magnum_r", "stream": false}]},
+  "magnum_0": {"sounds": [{"name": "opminecraft:magnum_0", "stream": false}]},
+  "magnum_1": {"sounds": [{"name": "opminecraft:magnum_1", "stream": false}]},
+  "magnum_2": {"sounds": [{"name": "opminecraft:magnum_2", "stream": false}]},
 
   "samurai_edge_r": {"sounds": [{"name": "opminecraft:samurai_edge_r", "stream": false}]},
   "samurai_edge_0": {"sounds": [{"name": "opminecraft:samurai_edge_0", "stream": false}]},

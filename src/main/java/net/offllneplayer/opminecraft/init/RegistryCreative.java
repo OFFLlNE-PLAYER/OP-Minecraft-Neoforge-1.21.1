@@ -368,14 +368,19 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.ONYX_GUNBLADE.get());
                 event.accept(RegistryBIBI.TITAN_GUNBLADE.get());
 
-                event.accept(RegistryBIBI.TITAN_BERETTA.get());
+
                 event.accept(RegistryBIBI.REDFIELD_BERETTA.get());
                 event.accept(RegistryBIBI.WESKER_BERETTA.get());
                 event.accept(RegistryBIBI.VALENTINE_BERETTA.get());
 
+                event.accept(RegistryBIBI.TITAN_BERETTA.get());
+                event.accept(RegistryBIBI.TITAN_HANDCANNON.get());
+                event.accept(RegistryBIBI.TITAN_DESERT_EAGLE.get());
+
+                event.accept(RegistryBIBI.FIFTY_AE_ROUNDS.get());
                 event.accept(RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get());
 
-                event.accept(RegistryBIBI.TITAN_HANDCANNON.get());
+
 
                 event.accept(RegistryBIBI.TOTEM_OF_LIFE);
                 // event.accept(RegistryIBBI.TOTEM_OF_UNCRYING);

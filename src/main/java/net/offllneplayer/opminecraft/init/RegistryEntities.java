@@ -52,5 +52,4 @@ public class RegistryEntities {
 
     public static final Supplier<EntityType<ThrownSMBSuperFan>> THROWN_SMB_SUPER_FAN = ENTREGISTRY.register("thrown_smb_super_fan",
             ()-> EntityType.Builder.<ThrownSMBSuperFan>of(ThrownSMBSuperFan::new, MobCategory.MISC).build("thrown_smb_super_fan"));
-
 }

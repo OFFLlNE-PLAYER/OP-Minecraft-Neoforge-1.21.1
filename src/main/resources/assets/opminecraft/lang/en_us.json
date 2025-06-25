@@ -396,17 +396,38 @@
   "item.opminecraft.onyx_hatchet": "Onyx Hatchet",
   "item.opminecraft.titan_hatchet": "Titan Hatchet",
   "item.opminecraft.crying_hatchet": "Crying Hatchet",
-  
 
+
+  "item.opminecraft.redfield_beretta": "Samurai Edge TSE",
+  "item.opminecraft.redfield_beretta.description_0": "\"Tactical Special Edition REDFIELD\"",
+  "item.opminecraft.redfield_beretta.description_1": "14x 9mm Parabellum Rounds",
+
+  "item.opminecraft.wesker_beretta": "Samurai Edge SSE",
+  "item.opminecraft.wesker_beretta.description_0": "\"Stealth Special Edition WESKER\"",
+  "item.opminecraft.wesker_beretta.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.valentine_beretta": "Samurai Edge Classic",
+  "item.opminecraft.valentine_beretta.description_0": "\"VALENTINE\"",
+  "item.opminecraft.valentine_beretta.description_1": "15x 9mm Parabellum Rounds",
+
+  "item.opminecraft.titan_beretta": "Titan Beretta",
+  "item.opminecraft.titan_beretta.description_0": "\"92FS OP\"",
+  "item.opminecraft.titan_beretta.description_1": "16x 9mm Parabellum Rounds",
+
+  "item.opminecraft.titan_handcannon": "Titan Handcannon",
+  "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM OP\"",
+  "item.opminecraft.titan_handcannon.description_1": "12x 9mm Parabellum Rounds",
+
+  "item.opminecraft.titan_desert_eagle": "Titan Desert Eagle",
+  "item.opminecraft.titan_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.titan_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+
+  "item.opminecraft.pistol.description_0": "Hold ammo in other hand to reload",
+
+  "item.opminecraft.fifty_ae_rounds": "0.50 AE Rounds",
   "item.opminecraft.ninemm_parabellum_rounds": "9mm Parabellum Rounds",
 
-  "item.opminecraft.onyx_beretta": "Onyx Beretta",
-  "item.opminecraft.titan_beretta": "Titan Beretta",
-
-  "item.opminecraft.valentine_beretta": "Samurai Edge",
-  "item.opminecraft.valentine_beretta.description_0": "[RE3]",
-
-  "item.opminecraft.beretta.description_0": "Hold 9mm Parabellum Rounds in other hand to reload.",
 
   "item.opminecraft.tnt_stick": "§cTNT Stick§r",
 
@@ -419,6 +440,17 @@
   "item.opminecraft.totem_of_uncrying.description_0": "sOmEhOw, tHiS kEePs yOu sAfEr",
 
   "/*-------*[OP:Items]*": "",
+
+
+  "entity.opminecraft.pistol_bullet.display_name": "",
+  "entity.opminecraft.stuck_gunblade.display_name": "",
+  "entity.opminecraft.stuck_sw0rd.display_name": "",
+  "entity.opminecraft.stuck_op_sword.display_name": "",
+  "entity.opminecraft.thrown_hatchet.display_name": "",
+  "entity.opminecraft.thrown_tnt_stick.display_name": "",
+  "entity.opminecraft.thrown_smb_super_fan.display_name": "",
+
+  "/*-------*[OP:Entities]*": "",
 
 
   "item.minecraft.netherite_scrap": "Ancient Scrap",
@@ -470,10 +502,12 @@
   "death.attack.aku_aku": "%1$s §6was pummeled by Aku Aku§r",
   "death.attack.aku_aku.player": "%1$s §6was pummeled by Aku Aku protecting§r %2$s",
 
-  "death.attack.beretta": "%1$s was shot with a beretta",
-  "death.attack.beretta.player": "%2$s shot %1$s with a beretta",
+  "death.attack.handcannon": "%1$s was shot",
+  "death.attack.handcannon.player": "%2$s put a hole in %1$s",
   "death.attack.samurai_edge": "%1$s was taken out like a zombie",
   "death.attack.samurai_edge.player": "%2$s thought %1$s was a zombie",
+  "death.attack.magnum": "%1$s was shot",
+  "death.attack.magnum.player": "%2$s put a big hole in %1$s",
 
   "death.attack.crying_essence": "%1$s §dblew up crying§r",
   "death.attack.crying_essence.player": "%1$s §dblew up crying by§r %2$s",

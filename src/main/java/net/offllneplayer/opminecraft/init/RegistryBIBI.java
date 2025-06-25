@@ -701,9 +701,6 @@ public class RegistryBIBI {
 	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 
 
-	public static final Supplier<PistolItem> TITAN_BERETTA = ITEMSREGISTRY.register("titan_beretta",
-		() -> new PistolItem(PistolMaterial.TITAN_BERETTA));
-
 	public static final Supplier<PistolItem> REDFIELD_BERETTA = ITEMSREGISTRY.register("redfield_beretta",
 		() -> new PistolItem(PistolMaterial.REDFIELD_BERETTA));
 	public static final Supplier<PistolItem> WESKER_BERETTA = ITEMSREGISTRY.register("wesker_beretta",
@@ -711,12 +708,19 @@ public class RegistryBIBI {
 	public static final Supplier<PistolItem> VALENTINE_BERETTA = ITEMSREGISTRY.register("valentine_beretta",
 		() -> new PistolItem(PistolMaterial.VALENTINE_BERETTA));
 
-	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("beretta_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
+	public static final Supplier<PistolItem> TITAN_BERETTA = ITEMSREGISTRY.register("titan_beretta",
+			() -> new PistolItem(PistolMaterial.TITAN_BERETTA));
 	public static final Supplier<PistolItem> TITAN_HANDCANNON = ITEMSREGISTRY.register("titan_handcannon",
 			() -> new PistolItem(PistolMaterial.TITAN_HANDCANNON));
 
+	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("beretta_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+	public static final DeferredItem<Item> FIFTY_AE_ROUNDS = ITEMSREGISTRY.registerItem("fifty_ae_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
+	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+
+	public static final Supplier<PistolItem> TITAN_DESERT_EAGLE = ITEMSREGISTRY.register("titan_desert_eagle",
+			() -> new PistolItem(PistolMaterial.TITAN_DESERT_EAGLE));
 
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
 

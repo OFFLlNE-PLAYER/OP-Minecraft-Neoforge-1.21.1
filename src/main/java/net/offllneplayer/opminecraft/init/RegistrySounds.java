@@ -43,11 +43,11 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> NITRO_IDLE_2 = SOUNDSREGISTRY.register("nitro_idle_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "nitro_idle_2")));
         public static final DeferredHolder<SoundEvent, SoundEvent> NITRO_IDLE_3 = SOUNDSREGISTRY.register("nitro_idle_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "nitro_idle_3")));
 
-        public static final DeferredHolder<SoundEvent, SoundEvent> HANDCANNON_R = SOUNDSREGISTRY.register("handcannon_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "handcannon_r")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> HANDCANNON_0 = SOUNDSREGISTRY.register("handcannon_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "handcannon_0")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> HANDCANNON_1 = SOUNDSREGISTRY.register("handcannon_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "handcannon_1")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> HANDCANNON_2 = SOUNDSREGISTRY.register("handcannon_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "handcannon_2")));
 
+        public static final DeferredHolder<SoundEvent, SoundEvent> MAGNUM_R = SOUNDSREGISTRY.register("magnum_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "magnum_r")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> MAGNUM_0 = SOUNDSREGISTRY.register("magnum_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "magnum_0")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> MAGNUM_1 = SOUNDSREGISTRY.register("magnum_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "magnum_1")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> MAGNUM_2 = SOUNDSREGISTRY.register("magnum_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "magnum_2")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_R = SOUNDSREGISTRY.register("samurai_edge_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_r")));
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_0 = SOUNDSREGISTRY.register("samurai_edge_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_0")));
@@ -55,6 +55,7 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_2 = SOUNDSREGISTRY.register("samurai_edge_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_2")));
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_3 = SOUNDSREGISTRY.register("samurai_edge_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_3")));
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_4 = SOUNDSREGISTRY.register("samurai_edge_4", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_4")));
+
 
         public static final DeferredHolder<SoundEvent, SoundEvent> PRIME_TNT = SOUNDSREGISTRY.register("prime_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "prime_tnt")));
         public static final DeferredHolder<SoundEvent, SoundEvent> FAST_TICK_TNT = SOUNDSREGISTRY.register("fast_tick_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "fast_tick_tnt")));

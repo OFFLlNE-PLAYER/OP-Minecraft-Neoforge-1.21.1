@@ -10,6 +10,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -30,7 +31,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
-import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
@@ -51,7 +51,7 @@ public class PistolBullet extends AbstractArrow {
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
    /*[VARIABLES]*/
 	private PistolMaterial material;
-	DamageSource bulletDamage;
+	DamageSource bulletDamageSource;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
@@ -73,28 +73,32 @@ public class PistolBullet extends AbstractArrow {
 	public PistolBullet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		if (stack.getItem() == RegistryBIBI.TITAN_BERETTA.get()) {
-			this.entityData.set(MATERIAL_NAME, "TITAN_BERETTA");
-			this.material = PistolMaterial.TITAN_BERETTA;
-			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.BERETTA, this, this.getOwner());
-		} else if (stack.getItem() == RegistryBIBI.REDFIELD_BERETTA.get()) {
+		if (stack.getItem() == RegistryBIBI.REDFIELD_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "REDFIELD_BERETTA");
 			this.material = PistolMaterial.REDFIELD_BERETTA;
-			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		} else if (stack.getItem() == RegistryBIBI.WESKER_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "WESKER_BERETTA");
 			this.material = PistolMaterial.WESKER_BERETTA;
-			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
-		} else 	if (stack.getItem() == RegistryBIBI.VALENTINE_BERETTA.get()) {
+		} else if (stack.getItem() == RegistryBIBI.VALENTINE_BERETTA.get()) {
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
 			this.material = PistolMaterial.VALENTINE_BERETTA;
-			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
-	}else {
+		} else if (stack.getItem() == RegistryBIBI.TITAN_BERETTA.get()) {
+			this.entityData.set(MATERIAL_NAME, "TITAN_BERETTA");
+			this.material = PistolMaterial.TITAN_BERETTA;
+		} else if (stack.getItem() == RegistryBIBI.TITAN_HANDCANNON.get()) {
+			this.entityData.set(MATERIAL_NAME, "TITAN_HANDCANNON");
+			this.material = PistolMaterial.TITAN_HANDCANNON;
+		} else if (stack.getItem() == RegistryBIBI.TITAN_DESERT_EAGLE.get()) {
+			this.entityData.set(MATERIAL_NAME, "TITAN_DESERT_EAGLE");
+			this.material = PistolMaterial.TITAN_DESERT_EAGLE;
+		} else {
 			// DEFAULT
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
 			this.material = PistolMaterial.VALENTINE_BERETTA;
-			this.bulletDamage = this.level().damageSources().source(RegistryDamageTypes.SAMURAI_EDGE, this, this.getOwner());
 		}
+
+		this.bulletDamageSource = this.level().damageSources().source(this.material.getDamageType(), this, this.getOwner());
+
 
 		CompoundTag data = this.getPersistentData();
 
@@ -249,34 +253,40 @@ public class PistolBullet extends AbstractArrow {
 	 /*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
 	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
   /*[on Hit Entity]*/
-	@Override
-	public void onHitEntity(EntityHitResult result) {
-		Entity hitEntity = result.getEntity();
-		Level level = hitEntity.level();
-		double x = hitEntity.getX();
-		double y = hitEntity.getY();
-		double z = hitEntity.getZ();
+	 @Override
+	 public void onHitEntity(EntityHitResult result) {
+		 Entity hitEntity = result.getEntity();
+		 Level level = hitEntity.level();
+		 double x = hitEntity.getX();
+		 double y = hitEntity.getY();
+		 double z = hitEntity.getZ();
 
-		if (hitEntity instanceof LivingEntity living) {
-			if (level() instanceof ServerLevel serverLevel) {
+		 if (hitEntity instanceof LivingEntity living) {
+			 if (level() instanceof ServerLevel serverLevel) {
+				 living.hurt(bulletDamageSource, this.material.getAttackDamage());
 
-				living.hurt(bulletDamage, this.material.getAttackDamage());
+				 if (!(hitEntity.getType() == EntityType.SKELETON || hitEntity.getType() == EntityType.WITHER_SKELETON || hitEntity.getType() == EntityType.STRAY)) {
 
-				float vol = Mth.randomBetween(this.random, 0.420F, 0.69F);
-				float tone = Mth.randomBetween(this.random, 0.8420F, 1.1420F);
-				int soundIndex = new Random().nextInt(2);
-				level.playSound(null, living.getX(), living.getY(), living.getZ(),
-					switch (soundIndex) {
-						case 0 -> RegistrySounds.FLESHRIP_0;
-						case 1 -> RegistrySounds.FLESHRIP_1;
-						default -> RegistrySounds.FLESHRIP_1;},
-					SoundSource.PLAYERS, vol, tone);
-			}
+					 // Play flesh rip sound for non-skeleton entities
+					 float vol = Mth.randomBetween(this.random, 0.420F, 0.69F);
+					 float tone = Mth.randomBetween(this.random, 0.8420F, 1.1420F);
+					 int soundIndex = new Random().nextInt(2);
 
-			level.broadcastEntityEvent(this, (byte) 3);
-			this.discard();
-		}
-	}
+					 level.playSound(null, living.getX(), living.getY(), living.getZ(),
+							 switch (soundIndex) {
+								 case 0 -> RegistrySounds.FLESHRIP_0;
+								 case 1 -> RegistrySounds.FLESHRIP_1;
+								 default -> RegistrySounds.FLESHRIP_1;
+							 },
+							 SoundSource.PLAYERS, vol, tone);
+				 }
+			 }
+
+			 level.broadcastEntityEvent(this, (byte) 3);
+			 this.discard();
+		 }
+	 }
+
 
 
 	 /*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
