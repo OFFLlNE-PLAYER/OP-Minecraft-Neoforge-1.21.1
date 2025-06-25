@@ -2,7 +2,7 @@
   "parent": "opminecraft:block/acacia_gold_trim_ancient_chest",
   "textures": {
     "0": "block/crimson_planks",
-    "1": "block/copper_block",
+    "1": "block/oxidized_copper",
     "particle": "block/crimson_planks"
   },
   "render_type": "minecraft:cutout_mipped"
