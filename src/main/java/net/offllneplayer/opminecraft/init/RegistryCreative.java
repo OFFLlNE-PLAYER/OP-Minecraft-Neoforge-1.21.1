@@ -375,8 +375,13 @@ public class RegistryCreative {
 
                 event.accept(RegistryBIBI.TITAN_BERETTA.get());
                 event.accept(RegistryBIBI.TITAN_HANDCANNON.get());
-                event.accept(RegistryBIBI.TITAN_DESERT_EAGLE.get());
 
+                event.accept(RegistryBIBI.TITAN_DESERT_EAGLE.get());
+                event.accept(RegistryBIBI.TITAN_REVOLVER.get());
+                event.accept(RegistryBIBI.VALENTINE_REVOLVER.get());
+
+                event.accept(RegistryBIBI.FOURTY_FOUR_S_AND_W_ROUNDS.get());
+                event.accept(RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get());
                 event.accept(RegistryBIBI.FIFTY_AE_ROUNDS.get());
                 event.accept(RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get());
 

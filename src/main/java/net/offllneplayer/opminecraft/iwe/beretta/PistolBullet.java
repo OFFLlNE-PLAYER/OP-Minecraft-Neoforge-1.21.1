@@ -91,7 +91,13 @@ public class PistolBullet extends AbstractArrow {
 		} else if (stack.getItem() == RegistryBIBI.TITAN_DESERT_EAGLE.get()) {
 			this.entityData.set(MATERIAL_NAME, "TITAN_DESERT_EAGLE");
 			this.material = PistolMaterial.TITAN_DESERT_EAGLE;
-		} else {
+		} else if (stack.getItem() == RegistryBIBI.TITAN_REVOLVER.get()) {
+			this.entityData.set(MATERIAL_NAME, "TITAN_REVOLVER");
+			this.material = PistolMaterial.TITAN_REVOLVER;
+		} else if (stack.getItem() == RegistryBIBI.VALENTINE_REVOLVER.get()) {
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_REVOLVER");
+			this.material = PistolMaterial.VALENTINE_REVOLVER;
+		}	else {
 			// DEFAULT
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
 			this.material = PistolMaterial.VALENTINE_BERETTA;
@@ -305,22 +311,14 @@ public class PistolBullet extends AbstractArrow {
 				level().levelEvent(2001, hitPos, Block.getId(level().getBlockState(hitPos)));
 			} else {
 
+				this.discard();
+
 				// Spawn block particles at the hit location
-				((ServerLevel)level()).sendParticles(
-					new BlockParticleOption(ParticleTypes.BLOCK, this.level().getBlockState(hitPos)),
-					result.getLocation().x,
-					result.getLocation().y,
-					result.getLocation().z,
-					10, // particle count
-					0.1D, // spread X
-					0.1D, // spread Y
-					0.1D, // spread Z
-					0.05D // speed
-				);
+				((ServerLevel)level()).sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, this.level().getBlockState(hitPos)), result.getLocation().x, result.getLocation().y, result.getLocation().z,
+					10, 0.1D, 0.1D, 0.1D, 0.05D);
 			}
 
 			this.level().broadcastEntityEvent(this, (byte) 3);
-			this.discard();
 		}
 	}
 }

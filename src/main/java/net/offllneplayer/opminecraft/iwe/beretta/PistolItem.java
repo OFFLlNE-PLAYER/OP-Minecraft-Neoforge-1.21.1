@@ -100,62 +100,86 @@ public class PistolItem extends TieredItem{
 	 /*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
   /*[use]*/
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-		ItemStack stack = player.getItemInHand(hand);
-		player.startUsingItem(hand);
-		return InteractionResultHolder.consume(stack);
-	}
+	 @Override
+	 public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		 ItemStack stack = player.getItemInHand(hand);
+
+		 // Check if we're dual wielding
+		 InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ?
+				 InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+		 ItemStack otherHandStack = player.getItemInHand(otherHand);
+
+		 // Check if both pistols are the same type
+		 boolean sameGunType = stack.getItem() == otherHandStack.getItem();
+		 boolean hasOtherHandPistol = otherHandStack.is(OP_TagKeyUtil.Items.PISTOLS) && !otherHandStack.isEmpty();
+
+		 if (hasOtherHandPistol && sameGunType) {
+			 // For same gun types, check which gun should actually fire based on durability
+			 int stackDamage = stack.getDamageValue();
+			 int otherStackDamage = otherHandStack.getDamageValue();
+
+			 if (otherStackDamage < stackDamage && !player.getCooldowns().isOnCooldown(otherHandStack.getItem())) {
+				 // Other hand gun has more durability and isn't on cooldown, use that instead
+				 player.startUsingItem(otherHand);
+				 return InteractionResultHolder.pass(stack); // Changed: Don't consume current stack
+			 } else {
+				 // Use the current hand gun
+				 player.startUsingItem(hand);
+				 return InteractionResultHolder.consume(stack);
+			 }
+		 } else if (hasOtherHandPistol && !player.getCooldowns().isOnCooldown(otherHandStack.getItem())) {
+			 // Different gun types, check durability and use the better one if other isn't on cooldown
+			 int stackDamage = stack.getDamageValue();
+			 int otherStackDamage = otherHandStack.getDamageValue();
+
+			 if (otherStackDamage < stackDamage) {
+				 // Other hand gun has more durability, use that instead
+				 player.startUsingItem(otherHand);
+				 return InteractionResultHolder.pass(stack); // Changed: Don't consume current stack
+			 } else {
+				 // Use the current hand gun
+				 player.startUsingItem(hand);
+				 return InteractionResultHolder.consume(stack);
+			 }
+		 } else {
+			 // Normal single gun usage or other gun is on cooldown
+			 player.startUsingItem(hand);
+			 return InteractionResultHolder.consume(stack);
+		 }
+	 }
+
 
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
-  /*[releaseUsingItem]*/
+	/*[releaseUsingItem]*/
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
 		if (!(entity instanceof Player player)) return stack;
 		if (level.isClientSide) return stack;
 
 		InteractionHand usedHand = player.getUsedItemHand();
+		ItemStack usedStack = player.getItemInHand(usedHand);
 
-		// Check if we have a beretta in the other hand
+		// Only process if this stack is the one being used
+		if (usedStack != stack) return stack;
+
+		// Always process only the gun that was actually used
+		processGun(stack, level, player, usedHand);
+		player.awardStat(Stats.ITEM_USED.get(this));
+
+		// Check if we're dual wielding to determine cooldown
 		InteractionHand otherHand = usedHand == InteractionHand.MAIN_HAND ?
-			InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+				InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 		ItemStack otherHandStack = player.getItemInHand(otherHand);
 
-		if (otherHandStack.is(OP_TagKeyUtil.Items.BERETTAS) && !otherHandStack.isEmpty() &&
-			!player.getCooldowns().isOnCooldown(otherHandStack.getItem())) {
+		boolean hasOtherHandPistol = otherHandStack.is(OP_TagKeyUtil.Items.PISTOLS) && !otherHandStack.isEmpty();
+		boolean sameGunType = hasOtherHandPistol && stack.getItem() == otherHandStack.getItem();
 
-			// Check if both berettas are the same type
-			boolean sameGunType = stack.getItem() == otherHandStack.getItem();
-
-			// Compare durabilities - lower damage value means more durability remaining
-			int stackDamage = stack.getDamageValue();
-			int otherStackDamage = otherHandStack.getDamageValue();
-
-			if (otherStackDamage < stackDamage) {
-				// Other hand gun has more durability, use it
-				processGun(otherHandStack, level, player, otherHand);
-				player.awardStat(Stats.ITEM_USED.get(otherHandStack.getItem()));
-
-				// Add cooldown to both guns if they're different types
-				player.getCooldowns().addCooldown(otherHandStack.getItem(), 20);
-				if (!sameGunType) {
-					player.getCooldowns().addCooldown(this, 20);
-				}
-			} else {
-				// Used hand gun has more or equal durability, use it
-				processGun(stack, level, player, usedHand);
-				player.awardStat(Stats.ITEM_USED.get(this));
-
-				// Add cooldown to both guns if they're different types
-				player.getCooldowns().addCooldown(this, 20);
-				if (!sameGunType) {
-					player.getCooldowns().addCooldown(otherHandStack.getItem(), 20);
-				}
-			}
+		if (sameGunType && otherHandStack.getDamageValue() < otherHandStack.getMaxDamage()) {
+			// Same gun type and other gun has ammo - halve the cooldown for faster alternating
+			int halfCooldown = this.pistolMaterial.getFireCooldown() / 2;
+			player.getCooldowns().addCooldown(this, halfCooldown);
 		} else {
-			// Default to used hand if other hand doesn't have a beretta
-			processGun(stack, level, player, usedHand);
-			player.awardStat(Stats.ITEM_USED.get(this));
-			player.getCooldowns().addCooldown(this, 20);
+			// Single gun or other gun is empty - normal cooldown
+			player.getCooldowns().addCooldown(this, this.pistolMaterial.getFireCooldown());
 		}
 
 		return stack;
@@ -239,6 +263,9 @@ public class PistolItem extends TieredItem{
 
 				// Play reload sound
 				playReloadSound(level, player, randomFloat);
+
+				// Apply reload cooldown using enum value
+				player.getCooldowns().addCooldown(this, this.pistolMaterial.getReloadCooldown());
 			} else {
 				// No bullets available
 				playEmptySound(level, player, randomFloat);
@@ -284,7 +311,6 @@ public class PistolItem extends TieredItem{
 				this.pistolMaterial.getVolume(),
 				this.pistolMaterial.getBasePitch() + randomFloat * this.pistolMaterial.getPitchVariance());
 	}
-
 
 	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
 }

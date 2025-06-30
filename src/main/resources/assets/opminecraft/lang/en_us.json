@@ -542,6 +542,14 @@
   "item.opminecraft.titan_desert_eagle.description_0": "\"KENNEDY\"",
   "item.opminecraft.titan_desert_eagle.description_1": "8x 0.50 AE Rounds",
 
+  "item.opminecraft.titan_revolver": "Titan .50 Revolver",
+  "item.opminecraft.titan_revolver.description_0": "\"CUSTOM OP\"",
+  "item.opminecraft.titan_revolver.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.valentine_revolver": "Titan .44 Revolver",
+  "item.opminecraft.valentine_revolver.description_0": "\"VALENTINE\"",
+  "item.opminecraft.valentine_revolver.description_1": "6x .44 S&W Rounds",
+
 
   "item.opminecraft.pistol.description_0": "Hold ammo in other hand to reload",
 

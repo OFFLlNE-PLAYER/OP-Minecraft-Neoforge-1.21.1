@@ -714,13 +714,24 @@ public class RegistryBIBI {
 	public static final Supplier<PistolItem> TITAN_HANDCANNON = ITEMSREGISTRY.register("titan_handcannon",
 			() -> new PistolItem(PistolMaterial.TITAN_HANDCANNON));
 
+	public static final Supplier<PistolItem> TITAN_DESERT_EAGLE = ITEMSREGISTRY.register("titan_desert_eagle",
+			() -> new PistolItem(PistolMaterial.TITAN_DESERT_EAGLE));
+
+	public static final Supplier<PistolItem> TITAN_REVOLVER = ITEMSREGISTRY.register("titan_revolver",
+			() -> new PistolItem(PistolMaterial.TITAN_REVOLVER));
+
+		public static final Supplier<PistolItem> VALENTINE_REVOLVER = ITEMSREGISTRY.register("valentine_revolver",
+			() -> new PistolItem(PistolMaterial.VALENTINE_REVOLVER));
+
+
 	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("beretta_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+
+	public static final DeferredItem<Item> FOURTY_FOUR_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fourty_four_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(6));
+	public static final DeferredItem<Item> FIFTY_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fifty_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(6));
 
 	public static final DeferredItem<Item> FIFTY_AE_ROUNDS = ITEMSREGISTRY.registerItem("fifty_ae_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
 	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-
-	public static final Supplier<PistolItem> TITAN_DESERT_EAGLE = ITEMSREGISTRY.register("titan_desert_eagle",
-			() -> new PistolItem(PistolMaterial.TITAN_DESERT_EAGLE));
 
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
 
