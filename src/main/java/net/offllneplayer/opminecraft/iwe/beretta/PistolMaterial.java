@@ -15,29 +15,38 @@ import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 
 public enum PistolMaterial {
-	REDFIELD_BERETTA(14, 5.5F, 5, 20, 40, 12, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.SAMURAI_EDGE_4, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 1F, 0.86F, 0.0420F),
+	REDFIELD_BERETTA(14, 5F, 5, 24, 40, 12, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_2, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 1F, 0.86F, 0.0420F),
 
-	WESKER_BERETTA(18, 4F, 3, 16, 35, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.SAMURAI_EDGE_3, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 0.420F, 1.1F, 0.0420F),
+	WESKER_BERETTA(18, 4F, 4, 22, 36, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_3, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.420F, 1.1F, 0.0420F),
 
-	VALENTINE_BERETTA(15, 5F, 4, 18, 38, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.SAMURAI_EDGE_2, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 0.8F, 0.98F, 0.0420F),
+	VALENTINE_BERETTA(15, 4.5F, 3, 20, 34, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.SAMURAI_EDGE_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.8F, 0.98F, 0.0420F),
 
-	TITAN_BERETTA(16, 4.5F, 4, 22, 42, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.SAMURAI_EDGE_1, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 0.9F, 0.9F, 0.06F),
+	GOLDEN_BERETTA(9, 3.5F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_3, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.9F, 1.05F, 0.0420F),
 
-	TITAN_HANDCANNON(12, 6F, 5, 26, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.SAMURAI_EDGE_2, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 1F, 0.78F, 0.0420F),
+	DIAMOND_BERETTA(14, 4.5F, 4, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_3, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.9F, 1F, 0.0420F),
 
-	TITAN_DESERT_EAGLE(8, 10F, 6, 30, 50, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	ONYX_BERETTA(12, 4F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.85F, 0.9F, 0.069F),
+
+	TITAN_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.9F, 0.9F, 0.0420F),
+
+	TITAN_HANDCANNON(12, 5.5F, 6, 28, 40, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_2, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 1F, 0.78F, 0.0420F),
+
+	TITAN_DESERT_EAGLE(8, 10.5F, 6, 30, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.MAGNUM_1, RegistrySounds.MAGNUM_R, RegistrySounds.MAGNUM_0, 1F, 1F, 0.0420F),
 
-	TITAN_REVOLVER(6, 12F, 7, 36, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1F, 1F, 0.0420F),
+	TITAN_REVOLVER(6, 12F, 7, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.85F, 0.0420F),
 
-	VALENTINE_REVOLVER(6, 12F, 7, 32, 55, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.VALENTINE_REVOLVER_1, RegistrySounds.VALENTINE_REVOLVER_R, RegistrySounds.VALENTINE_REVOLVER_0, 1F, 0.9F, 0.0420F);
+	VALENTINE_REVOLVER(6, 11F, 6, 36, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.REVOLVER_1, RegistrySounds.VALENTINE_REVOLVER_R, RegistrySounds.VALENTINE_REVOLVER_0, 0.9F, 1F, 0.0420F);
 
 	private final int durability;
 	private final float attackDamage;
@@ -102,7 +111,10 @@ public enum PistolMaterial {
 			case REDFIELD_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
 			case WESKER_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
 			case VALENTINE_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
-			case TITAN_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
+			case GOLDEN_BERETTA -> RegistryDamageTypes.HANDCANNON;
+			case DIAMOND_BERETTA -> RegistryDamageTypes.HANDCANNON;
+			case ONYX_BERETTA -> RegistryDamageTypes.HANDCANNON;
+			case TITAN_BERETTA -> RegistryDamageTypes.HANDCANNON;
 			case TITAN_HANDCANNON -> RegistryDamageTypes.HANDCANNON;
 			case TITAN_DESERT_EAGLE -> RegistryDamageTypes.MAGNUM;
 			case TITAN_REVOLVER -> RegistryDamageTypes.MAGNUM;
@@ -115,6 +127,9 @@ public enum PistolMaterial {
 			case REDFIELD_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case WESKER_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case VALENTINE_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case GOLDEN_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case DIAMOND_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case ONYX_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case TITAN_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case TITAN_HANDCANNON -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case TITAN_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();

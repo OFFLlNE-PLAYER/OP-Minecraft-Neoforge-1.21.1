@@ -373,6 +373,9 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.WESKER_BERETTA.get());
                 event.accept(RegistryBIBI.VALENTINE_BERETTA.get());
 
+                event.accept(RegistryBIBI.GOLDEN_BERETTA.get());
+                event.accept(RegistryBIBI.DIAMOND_BERETTA.get());
+                event.accept(RegistryBIBI.ONYX_BERETTA.get());
                 event.accept(RegistryBIBI.TITAN_BERETTA.get());
                 event.accept(RegistryBIBI.TITAN_HANDCANNON.get());
 

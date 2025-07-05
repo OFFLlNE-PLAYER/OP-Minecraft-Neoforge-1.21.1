@@ -518,24 +518,36 @@
   "item.opminecraft.crying_hatchet": "Crying Hatchet",
 
 
-  "item.opminecraft.redfield_beretta": "Samurai Edge TSE",
-  "item.opminecraft.redfield_beretta.description_0": "\"Tactical Special Edition REDFIELD\"",
+  "item.opminecraft.redfield_beretta": "92FS TE",
+  "item.opminecraft.redfield_beretta.description_0": "\"Tactical Edition REDFIELD\"",
   "item.opminecraft.redfield_beretta.description_1": "14x 9mm Parabellum Rounds",
 
-  "item.opminecraft.wesker_beretta": "Samurai Edge SSE",
-  "item.opminecraft.wesker_beretta.description_0": "\"Stealth Special Edition WESKER\"",
+  "item.opminecraft.wesker_beretta": "92FS SE",
+  "item.opminecraft.wesker_beretta.description_0": "\"Stealth Edition WESKER\"",
   "item.opminecraft.wesker_beretta.description_1": "18x 9mm Parabellum Rounds",
 
-  "item.opminecraft.valentine_beretta": "Samurai Edge Classic",
+  "item.opminecraft.valentine_beretta": "Samurai Edge",
   "item.opminecraft.valentine_beretta.description_0": "\"VALENTINE\"",
   "item.opminecraft.valentine_beretta.description_1": "15x 9mm Parabellum Rounds",
 
+  "item.opminecraft.golden_beretta": "Golden Beretta",
+  "item.opminecraft.golden_beretta.description_0": "\"92FS\"",
+  "item.opminecraft.golden_beretta.description_1": "9x 9mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_beretta": "Onyx Beretta",
+  "item.opminecraft.onyx_beretta.description_0": "\"92FS\"",
+  "item.opminecraft.onyx_beretta.description_1": "12x 9mm Parabellum Rounds",
+
+  "item.opminecraft.diamond_beretta": "Diamond Beretta",
+  "item.opminecraft.diamond_beretta.description_0": "\"92FS\"",
+  "item.opminecraft.diamond_beretta.description_1": "14x 9mm Parabellum Rounds",
+
   "item.opminecraft.titan_beretta": "Titan Beretta",
-  "item.opminecraft.titan_beretta.description_0": "\"92FS OP\"",
+  "item.opminecraft.titan_beretta.description_0": "\"92FS\"",
   "item.opminecraft.titan_beretta.description_1": "16x 9mm Parabellum Rounds",
 
   "item.opminecraft.titan_handcannon": "Titan Handcannon",
-  "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM OP\"",
+  "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM\"",
   "item.opminecraft.titan_handcannon.description_1": "12x 9mm Parabellum Rounds",
 
   "item.opminecraft.titan_desert_eagle": "Titan Desert Eagle",
@@ -543,7 +555,7 @@
   "item.opminecraft.titan_desert_eagle.description_1": "8x 0.50 AE Rounds",
 
   "item.opminecraft.titan_revolver": "Titan .50 Revolver",
-  "item.opminecraft.titan_revolver.description_0": "\"CUSTOM OP\"",
+  "item.opminecraft.titan_revolver.description_0": "\"GRIMES\"",
   "item.opminecraft.titan_revolver.description_1": "6x .50 S&W Rounds",
 
   "item.opminecraft.valentine_revolver": "Titan .44 Revolver",

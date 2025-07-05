@@ -151,6 +151,7 @@ public class PistolItem extends TieredItem{
 
 	/*<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-<=-*/
 	/*[releaseUsingItem]*/
+	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
 		if (!(entity instanceof Player player)) return stack;
 		if (level.isClientSide) return stack;

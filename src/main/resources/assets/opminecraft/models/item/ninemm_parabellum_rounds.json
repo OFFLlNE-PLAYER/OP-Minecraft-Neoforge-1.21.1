@@ -4,7 +4,7 @@
     "layer0": "opminecraft:item/text_ninemm_parabellum_rounds"
   },
   "display": {
-    "firstperson_lefthand": {
+    "firstperson_righthand": {
       "rotation": [0, 90, -35],
       "translation": [2, 3, 0],
       "scale": [0.68, 0.68, 1]

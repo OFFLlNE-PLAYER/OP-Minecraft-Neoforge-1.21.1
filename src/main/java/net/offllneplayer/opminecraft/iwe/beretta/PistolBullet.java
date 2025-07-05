@@ -21,6 +21,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -35,6 +36,7 @@ import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
 
+import java.util.Map;
 import java.util.Random;
 
 
@@ -73,32 +75,12 @@ public class PistolBullet extends AbstractArrow {
 	public PistolBullet(Player shooter, Level world, ItemStack stack) {
 		this(world, shooter);
 
-		if (stack.getItem() == RegistryBIBI.REDFIELD_BERETTA.get()) {
-			this.entityData.set(MATERIAL_NAME, "REDFIELD_BERETTA");
-			this.material = PistolMaterial.REDFIELD_BERETTA;
-		} else if (stack.getItem() == RegistryBIBI.WESKER_BERETTA.get()) {
-			this.entityData.set(MATERIAL_NAME, "WESKER_BERETTA");
-			this.material = PistolMaterial.WESKER_BERETTA;
-		} else if (stack.getItem() == RegistryBIBI.VALENTINE_BERETTA.get()) {
-			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
-			this.material = PistolMaterial.VALENTINE_BERETTA;
-		} else if (stack.getItem() == RegistryBIBI.TITAN_BERETTA.get()) {
-			this.entityData.set(MATERIAL_NAME, "TITAN_BERETTA");
-			this.material = PistolMaterial.TITAN_BERETTA;
-		} else if (stack.getItem() == RegistryBIBI.TITAN_HANDCANNON.get()) {
-			this.entityData.set(MATERIAL_NAME, "TITAN_HANDCANNON");
-			this.material = PistolMaterial.TITAN_HANDCANNON;
-		} else if (stack.getItem() == RegistryBIBI.TITAN_DESERT_EAGLE.get()) {
-			this.entityData.set(MATERIAL_NAME, "TITAN_DESERT_EAGLE");
-			this.material = PistolMaterial.TITAN_DESERT_EAGLE;
-		} else if (stack.getItem() == RegistryBIBI.TITAN_REVOLVER.get()) {
-			this.entityData.set(MATERIAL_NAME, "TITAN_REVOLVER");
-			this.material = PistolMaterial.TITAN_REVOLVER;
-		} else if (stack.getItem() == RegistryBIBI.VALENTINE_REVOLVER.get()) {
-			this.entityData.set(MATERIAL_NAME, "VALENTINE_REVOLVER");
-			this.material = PistolMaterial.VALENTINE_REVOLVER;
-		}	else {
-			// DEFAULT
+		try {
+			String materialName = stack.getItem().builtInRegistryHolder().key().location().getPath().toUpperCase();
+			this.entityData.set(MATERIAL_NAME, materialName);
+			this.material = PistolMaterial.valueOf(materialName);
+		} catch (IllegalArgumentException e) {
+			// Fallback for items that don't have a matching PistolMaterial enum
 			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
 			this.material = PistolMaterial.VALENTINE_BERETTA;
 		}

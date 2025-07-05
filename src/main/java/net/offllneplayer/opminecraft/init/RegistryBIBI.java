@@ -708,7 +708,12 @@ public class RegistryBIBI {
 	public static final Supplier<PistolItem> VALENTINE_BERETTA = ITEMSREGISTRY.register("valentine_beretta",
 		() -> new PistolItem(PistolMaterial.VALENTINE_BERETTA));
 
-
+	public static final Supplier<PistolItem> GOLDEN_BERETTA = ITEMSREGISTRY.register("golden_beretta",
+			() -> new PistolItem(PistolMaterial.GOLDEN_BERETTA));
+	public static final Supplier<PistolItem> DIAMOND_BERETTA = ITEMSREGISTRY.register("diamond_beretta",
+			() -> new PistolItem(PistolMaterial.DIAMOND_BERETTA));
+	public static final Supplier<PistolItem> ONYX_BERETTA = ITEMSREGISTRY.register("onyx_beretta",
+			() -> new PistolItem(PistolMaterial.ONYX_BERETTA));
 	public static final Supplier<PistolItem> TITAN_BERETTA = ITEMSREGISTRY.register("titan_beretta",
 			() -> new PistolItem(PistolMaterial.TITAN_BERETTA));
 	public static final Supplier<PistolItem> TITAN_HANDCANNON = ITEMSREGISTRY.register("titan_handcannon",

@@ -54,14 +54,13 @@ public class RegistrySounds {
 
         public static final DeferredHolder<SoundEvent, SoundEvent> VALENTINE_REVOLVER_R = SOUNDSREGISTRY.register("valentine_revolver_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "valentine_revolver_r")));
         public static final DeferredHolder<SoundEvent, SoundEvent> VALENTINE_REVOLVER_0 = SOUNDSREGISTRY.register("valentine_revolver_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "valentine_revolver_0")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> VALENTINE_REVOLVER_1 = SOUNDSREGISTRY.register("valentine_revolver_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "valentine_revolver_1")));
 
-        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_R = SOUNDSREGISTRY.register("samurai_edge_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_r")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_0 = SOUNDSREGISTRY.register("samurai_edge_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_0")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_R = SOUNDSREGISTRY.register("beretta_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_r")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_0 = SOUNDSREGISTRY.register("beretta_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_0")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_1 = SOUNDSREGISTRY.register("beretta_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_1")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_2 = SOUNDSREGISTRY.register("beretta_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_2")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_3 = SOUNDSREGISTRY.register("beretta_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_3")));
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_1 = SOUNDSREGISTRY.register("samurai_edge_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_1")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_2 = SOUNDSREGISTRY.register("samurai_edge_2", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_2")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_3 = SOUNDSREGISTRY.register("samurai_edge_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_3")));
-        public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_4 = SOUNDSREGISTRY.register("samurai_edge_4", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_4")));
 
 
         public static final DeferredHolder<SoundEvent, SoundEvent> PRIME_TNT = SOUNDSREGISTRY.register("prime_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "prime_tnt")));
