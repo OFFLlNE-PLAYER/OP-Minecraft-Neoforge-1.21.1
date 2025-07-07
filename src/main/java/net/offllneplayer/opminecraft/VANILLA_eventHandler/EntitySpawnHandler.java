@@ -1,9 +1,9 @@
 package net.offllneplayer.opminecraft.VANILLA_eventHandler;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -15,20 +15,26 @@ import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinBrute;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
-import net.offllneplayer.opminecraft.init.RegistryEnchantments;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
+import net.offllneplayer.opminecraft.iwe.beretta.PistolMaterial;
 
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.StreamSupport;
+
+import static net.offllneplayer.opminecraft.UTIL.Enchantment.OP_ArmorEnchantmentUtil.applyArmorEnchantments;
+import static net.offllneplayer.opminecraft.UTIL.Enchantment.OP_WeaponEnchantmentUtil.applyWeaponEnchantments;
 
 @EventBusSubscriber
 public class EntitySpawnHandler {
     private static final Random RANDOM = new Random();
+    private static final String SPAWN_HANDLED_TAG = "spawnHandled";
+
 
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinLevelEvent event) {
@@ -39,10 +45,17 @@ public class EntitySpawnHandler {
             return;
         }
 
+        // Exit if already processed
+        if (mob.getPersistentData().getBoolean(SPAWN_HANDLED_TAG)) {
+            return;
+        }
+
+
         if (mob instanceof Villager) {
             mob.setCanPickUpLoot(true);
             return;
         }
+
 
         if (!(mob instanceof Zombie || mob instanceof ZombieVillager || mob instanceof Husk || mob instanceof Drowned ||
                 mob instanceof Skeleton || mob instanceof WitherSkeleton || mob instanceof Stray ||
@@ -50,6 +63,7 @@ public class EntitySpawnHandler {
                 mob instanceof Pillager || mob instanceof Vindicator)) {
             return;
         }
+
         mob.setCanPickUpLoot(true);
 
 
@@ -57,33 +71,80 @@ public class EntitySpawnHandler {
         boolean allowHighTiers = !level.dimension().equals(Level.OVERWORLD) && RANDOM.nextBoolean();
         ItemStack weapon = getRandomVanillaWeapon(allowHighTiers);
 
-        if (RANDOM.nextInt(4) == 0) {  // 25% chance for a primary weapon.
 
-            if (mob instanceof PiglinBrute) { weapon = getBruteAxe();
-            } else if (mob instanceof Vindicator) { weapon = new ItemStack(Items.DIAMOND_AXE);
+        if (RANDOM.nextInt(4) == 0) {
+
+            // 25% chance for a primary weapon for mobs
+
+            if (mob instanceof WitherSkeleton witherSkeleton) {
+                int roll = RANDOM.nextInt(100);
+
+                // 4% chance to spawn with GOLDEN_BERETTA
+                if (roll < 4) {
+                    weapon = new ItemStack(RegistryBIBI.GOLDEN_BERETTA.get());
+
+                    // Give 18x 9mm rounds for golden beretta
+                    ItemStack ammo = new ItemStack(RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get(), 18);
+                    witherSkeleton.setItemInHand(InteractionHand.OFF_HAND, ammo);
+
+                    // 1% chance to spawn with random gun from tag
+                } else if (roll == 4) {
+                    TagKey<Item> pistolsTag = TagKey.create(Registries.ITEM, ResourceLocation.parse("opminecraft:pistols"));
+                    Registry<Item> itemRegistry = witherSkeleton.level().registryAccess().registryOrThrow(Registries.ITEM);
+
+                    List<Item> pistolItems = StreamSupport.stream(itemRegistry.getTagOrEmpty(pistolsTag).spliterator(), false).map(Holder::value).toList();
+
+                    Item randomPistol = pistolItems.get(witherSkeleton.getRandom().nextInt(pistolItems.size()));
+                    weapon = new ItemStack(randomPistol);
+
+                    // Get the corresponding ammo based on the pistol type
+                    String materialName = randomPistol.builtInRegistryHolder().key().location().getPath().toUpperCase();
+                    PistolMaterial material = PistolMaterial.valueOf(materialName);
+
+                    Item ammoItem = material.getRegisteredAmmo();
+                    int ammoCount = material.getDurability();
+                    ItemStack ammo = new ItemStack(ammoItem, ammoCount);
+                    witherSkeleton.setItemInHand(InteractionHand.OFF_HAND, ammo);
+                }
+
+                // Add pistol goal if skeleton has any pistol
+                if (roll <= 4) {
+                    witherSkeleton.goalSelector.addGoal(3, new PistolUseGoal(witherSkeleton, 1.0420D, 18F));
+                }
+
+
+            } else if (mob instanceof PiglinBrute) {
+                weapon = getBruteAxe();
+            } else if (mob instanceof Vindicator) {
+                weapon = new ItemStack(Items.DIAMOND_AXE);
+            } else if (mob instanceof Skeleton) {
+                // Regular skeletons get melee weapon from handler when they hit the 25% primary weapon chance
+                weapon = getRandomVanillaWeapon(allowHighTiers);
             }
 
-        }else // WitherSkeletons roll a 25% chance to receive a bow
-            if (mob instanceof WitherSkeleton && RANDOM.nextInt(4) == 0) {
-                weapon = new ItemStack(Items.BOW);
-        }else // 25% chance for a special item on non-piglin zombies
-            if ((mob instanceof Zombie) && !(mob instanceof ZombifiedPiglin) && RANDOM.nextInt(4) == 0) {
-                weapon = getRandomZombieItem(mob);
-        }else  // Drowned: 10% chance to receive a trident.
-            if (mob instanceof Drowned && RANDOM.nextInt(10) == 0) {
-                weapon = new ItemStack(Items.TRIDENT);
+        } else if ((mob instanceof Zombie) && !(mob instanceof ZombifiedPiglin) && RANDOM.nextInt(4) == 0) {
+            weapon = getRandomZombieItem(mob);
+        } else if (mob instanceof Drowned && RANDOM.nextInt(10) == 0) {
+            weapon = new ItemStack(Items.TRIDENT);
         }
 
-        if (RANDOM.nextBoolean()) {  // 50% chance to add enchantments.
+
+        // 50% chance to add enchantments
+        if (RANDOM.nextBoolean()) {
             applyWeaponEnchantments(level, weapon);
         }
+
         mob.setItemInHand(InteractionHand.MAIN_HAND, weapon);
+
 
         // --- Armor Equipping ---
         equipRandomArmor(mob, level);
 
     // --- Zombified Piglin Off-hand ---
         if (mob instanceof ZombifiedPiglin && RANDOM.nextInt(420) == 0) mob.setItemInHand(InteractionHand.OFF_HAND, new ItemStack(Items.NETHERITE_SCRAP));
+
+        // --- Put persistant data that entity ran this script allready ---
+        mob.getPersistentData().putBoolean(SPAWN_HANDLED_TAG, true);
 
     }
 
@@ -110,94 +171,33 @@ public class EntitySpawnHandler {
             {Items.NETHERITE_AXE, Items.NETHERITE_SWORD}
     };
 
-    private static ItemStack getRandomVanillaWeapon(boolean allowHighTiers) {
+    static ItemStack getRandomVanillaWeapon(boolean allowHighTiers) {
         int maxTier = allowHighTiers ? 5 : 3;
-        int tier    = RANDOM.nextInt(maxTier + 1);
-        if (tier >= 3 && allowHighTiers) tier = RANDOM.nextInt(maxTier + 1);
+        int minTier = allowHighTiers ? 2 : 0; // Start from iron (tier 2) when high tiers
+        int tier = RANDOM.nextInt(minTier, maxTier + 1);
+        if (tier <= 2 && allowHighTiers) tier = RANDOM.nextInt(minTier, maxTier + 1);
+
 
         Item[] pair = WEAPONZ[tier];
         return new ItemStack(RANDOM.nextBoolean() ? pair[0] : pair[1]);
     }
 
-    // Applies weapon enchantments.
-    private static void applyWeaponEnchantments(Level level, ItemStack weapon) {
-
-        Item witem = weapon.getItem();
-        boolean isSword = (witem instanceof SwordItem || witem.builtInRegistryHolder().is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/sword"))));
-        boolean isAxeLike = (witem instanceof AxeItem);
-
-
-        if (isSword) {
-            if (RANDOM.nextInt(40) == 4) applyRandomLevelEnchant(level, weapon, Enchantments.FIRE_ASPECT, 2);
-            if (RANDOM.nextInt(40) == 4) applyRandomLevelEnchant(level, weapon, Enchantments.LOOTING, 2);
-            if (RANDOM.nextInt(20) == 4) applyRandomLevelEnchant(level, weapon, Enchantments.KNOCKBACK, 2);
-            if (RANDOM.nextInt(20) == 4) applyRandomLevelEnchant(level, weapon, Enchantments.SWEEPING_EDGE, 3);
-        }
-
-        if (witem.builtInRegistryHolder().is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/mining")))) {
-            if (RANDOM.nextInt(20) == 0) applyRandomLevelEnchant(level, weapon, Enchantments.EFFICIENCY, 5);
-        }
-
-        if (witem.builtInRegistryHolder().is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/mining_loot")))) {
-            boolean fortune = (RANDOM.nextInt(40) == 0);
-            boolean silk = (RANDOM.nextInt(40) == 0);
-            if (fortune && silk) {
-                if (RANDOM.nextBoolean()) {
-                    silk = false;
-                } else {
-                    fortune = false;
-                }
-            }
-            if (fortune) {
-                applyRandomLevelEnchant(level, weapon, Enchantments.FORTUNE, 2);
-            } else if (silk) applyRandomLevelEnchant(level, weapon, Enchantments.SILK_TOUCH, 1);
-        }
-        
-        if (witem == Items.TRIDENT) {
-            if (RANDOM.nextInt(10) == 0) applyRandomLevelEnchant(level, weapon, Enchantments.IMPALING, 5);
-            if (RANDOM.nextInt(10) == 0) applyRandomLevelEnchant(level, weapon, Enchantments.UNBREAKING, 3);
-            if (RANDOM.nextInt(1000) == 0) applyRandomLevelEnchant(level, weapon, Enchantments.MENDING, 1);
-
-            if (RANDOM.nextInt(40) == 0) {
-                applyRandomLevelEnchant(level, weapon, Enchantments.LOYALTY, 3);
-            } else if (RANDOM.nextInt(40) == 0) applyRandomLevelEnchant(level, weapon, Enchantments.RIPTIDE, 3);
-
-            if (RANDOM.nextInt(20) == 0) {
-                applyRandomLevelEnchant(level, weapon, Enchantments.CHANNELING, 1);
-            } else if (RANDOM.nextInt(10) == 0) applyRandomLevelEnchant(level, weapon, RegistryEnchantments.TEMPEST, 3);
-        }
-        
-        if (witem.builtInRegistryHolder().is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/sharp_weapon")))) {
-            if (RANDOM.nextInt(4) == 0) {
-                switch (RANDOM.nextInt(3)) {
-                    case 0 -> applyRandomLevelEnchant(level, weapon, Enchantments.SHARPNESS, 5);
-                    case 1 -> applyRandomLevelEnchant(level, weapon, Enchantments.SMITE, 5);
-                    case 2 -> applyRandomLevelEnchant(level, weapon, Enchantments.BANE_OF_ARTHROPODS, 5);
-                }
-            }
-        }
-        
-        if (witem.builtInRegistryHolder().is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/durability")))) {
-            if (RANDOM.nextInt(4) == 0) {
-                applyRandomLevelEnchant(level, weapon, Enchantments.UNBREAKING, 3);
-            }
-            if (RANDOM.nextInt(1000) == 4) {
-                applyRandomLevelEnchant(level, weapon, Enchantments.MENDING, 1);
-            }
-        }
-        
-        if (witem.builtInRegistryHolder().is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/weapon")))) {
-            if (RANDOM.nextInt(20) == 4) applyRandomLevelEnchant(level, weapon, RegistryEnchantments.TEMPEST, 1);
-        }
-    }
 
     private static ItemStack getRandomZombieItem(Mob mob) {
         for (int attempt = 0; attempt < 4; attempt++) {
             Item miscItem = switch (RANDOM.nextInt(10)) {
-                case 0 -> Items.ICE; case 1 -> Items.PACKED_ICE; case 2 -> Items.BLUE_ICE;
-                case 3 -> Items.BLAZE_POWDER; case 4 -> Items.LAVA_BUCKET;
-                case 5 ->  Items.SPIDER_EYE; case 6 -> Items.POISONOUS_POTATO;
-                case 7 -> Items.FIRE_CHARGE; case 8 -> Items.WIND_CHARGE;
+                case 0 -> Items.ICE;
+                case 1 -> Items.PACKED_ICE;
+                case 2 -> Items.BLUE_ICE;
+
+                case 3 -> Items.BLAZE_POWDER;
+                case 4 -> Items.LAVA_BUCKET;
+                case 5 ->  Items.FIRE_CHARGE;
+
+                case 6 -> Items.POISONOUS_POTATO;
+                case 7 -> Items.SPIDER_EYE;
+
+                case 8 -> Items.WIND_CHARGE;
                 case 9 -> RegistryBIBI.AKU_AKU_MASK.get();
                 default -> Items.POISONOUS_POTATO;
             };
@@ -248,55 +248,5 @@ private static final String[] MATERIALS = {"leather", "chainmail", "iron", "gold
                 mob.setItemSlot(SLOTS[i], stack);
             }
         }
-    }
-
-    // Applies armor enchantments, including a 50% chance roll before selecting one protection enchantment.
-    private static void applyArmorEnchantments(Level level, ItemStack armor, EquipmentSlot slot) {
-
-        if (RANDOM.nextInt(10) == 0) applyRandomLevelEnchant(level, armor, Enchantments.UNBREAKING, 3);
-        if (RANDOM.nextInt(1000) == 0) applyRandomLevelEnchant(level, armor, Enchantments.MENDING, 1);
-
-        if (RANDOM.nextInt(20) == 0) applyRandomLevelEnchant(level, armor, Enchantments.THORNS, 3);
-
-        if (RANDOM.nextInt(6) == 0) {
-            switch (RANDOM.nextInt(4)) {
-                case 0 -> applyRandomLevelEnchant(level, armor, Enchantments.PROTECTION, 4);
-                case 1 -> applyRandomLevelEnchant(level, armor, Enchantments.PROJECTILE_PROTECTION, 4);
-                case 2 -> applyRandomLevelEnchant(level, armor, Enchantments.BLAST_PROTECTION, 4);
-                case 3 -> applyRandomLevelEnchant(level, armor, Enchantments.FIRE_PROTECTION, 4);
-            }
-        }
-        // Slot-specific enchantments.
-        switch (slot) {
-            case HEAD:
-                if (RANDOM.nextInt(20) == 0) applyRandomLevelEnchant(level, armor, Enchantments.AQUA_AFFINITY, 1);
-                if (RANDOM.nextInt(20) == 0) applyRandomLevelEnchant(level, armor, Enchantments.RESPIRATION, 3);
-                break;
-            case CHEST:
-                break;
-            case LEGS:
-                if (RANDOM.nextInt(1000) == 0) applyRandomLevelEnchant(level, armor, Enchantments.SWIFT_SNEAK, 3);
-                break;
-            case FEET:
-                // roll a 1% chance to apply Frost Walker (rare), otherwise apply Depth Strider.
-                if (RANDOM.nextInt(100) == 0) {
-                    applyRandomLevelEnchant(level, armor, Enchantments.FROST_WALKER, 2);
-                } else if (RANDOM.nextInt(10) == 0) applyRandomLevelEnchant(level, armor, Enchantments.DEPTH_STRIDER, 3);
-
-                if (RANDOM.nextInt(40) == 0) applyRandomLevelEnchant(level, armor, Enchantments.FEATHER_FALLING, 4);
-                break;
-
-            default: break;
-        }
-    }
-
-/*--------------------------------------------------------------------------------------------*/
-    /*[Handle Enchanting]*/
-    private static void applyRandomLevelEnchant(Level level, ItemStack stack, ResourceKey<net.minecraft.world.item.enchantment.Enchantment> enchantKey, int maxLevel) {
-        Holder<net.minecraft.world.item.enchantment.Enchantment> holder =
-            level.registryAccess().registryOrThrow(Registries.ENCHANTMENT)
-                .getHolder(enchantKey).orElseThrow(() -> new IllegalStateException("Enchantment not found: " + enchantKey.location()));
-        int chosenLevel = 1 + RANDOM.nextInt(maxLevel);
-        stack.enchant(holder, chosenLevel);
     }
 }

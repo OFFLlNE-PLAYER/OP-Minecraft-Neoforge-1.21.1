@@ -10,7 +10,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -19,9 +18,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -34,9 +33,8 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
+import net.offllneplayer.opminecraft.UTIL.Projectile.OP_ProjectileonHitBlockUtil;
 
-import java.util.Map;
 import java.util.Random;
 
 
@@ -98,8 +96,35 @@ public class PistolBullet extends AbstractArrow {
 		}
 	}
 
+	//FOR ENTITIES
+	public PistolBullet(Mob mob, Level level, ItemStack stack) {
+		this(level, mob); // Call the LivingEntity constructor
 
-	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
+		try {
+			String materialName = stack.getItem().builtInRegistryHolder().key().location().getPath().toUpperCase();
+			this.entityData.set(MATERIAL_NAME, materialName);
+			this.material = PistolMaterial.valueOf(materialName);
+		} catch (IllegalArgumentException e) {
+			// Fallback for items that don't have a matching PistolMaterial enum
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
+			this.material = PistolMaterial.VALENTINE_BERETTA;
+		}
+
+		this.bulletDamageSource = this.level().damageSources().source(this.material.getDamageType(), this, this.getOwner());
+
+		CompoundTag data = this.getPersistentData();
+
+		var enchants = stack.getComponents().get(DataComponents.ENCHANTMENTS);
+		for (var entry : enchants.entrySet()) {
+			entry.getKey().unwrapKey().ifPresent(key ->
+					data.putInt(key.location().toString(), entry.getIntValue())
+			);
+		}
+	}
+
+
+
+	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
   /*[HELP]*/
 	public boolean isGrounded() {

@@ -37,8 +37,8 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.init.RegistryDamageTypes;
 import net.offllneplayer.opminecraft.init.RegistryEntities;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitBlockUtil;
-import net.offllneplayer.opminecraft.UTIL.OP_ProjectileonHitEntityUtil;
+import net.offllneplayer.opminecraft.UTIL.Projectile.OP_ProjectileonHitBlockUtil;
+import net.offllneplayer.opminecraft.UTIL.Projectile.OP_ProjectileonHitEntityUtil;
 
 import java.util.Map;
 

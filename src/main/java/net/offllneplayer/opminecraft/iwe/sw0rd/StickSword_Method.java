@@ -12,6 +12,8 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
+import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordItem;
 import net.offllneplayer.opminecraft.iwe.opsw0rd.StuckOPSword;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
@@ -99,7 +101,7 @@ public class StickSword_Method {
 			}
 		}
 
-		if (stack.is(OP_TagKeyUtil.Items.GUNBLADES)) {
+			if (stack.getItem() instanceof GunbladeItem) {
 
 			sw0rdRotation = (sw0rdRotation + 90F) % 360F;
 
@@ -113,7 +115,7 @@ public class StickSword_Method {
 			level.addFreshEntity(gun);
 			putsword = true;
 
-		} else if (stack.is(OP_TagKeyUtil.Items.OP_SWORDS)) {
+		} else if (stack.getItem() instanceof OPSwordItem) {
 
 			StuckOPSword op_sword = new StuckOPSword(player, level, stack.copy());
 			op_sword.setPos(spawnPos.x, spawnPos.y, spawnPos.z);

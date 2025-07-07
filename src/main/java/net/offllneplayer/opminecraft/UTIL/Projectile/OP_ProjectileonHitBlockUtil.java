@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.UTIL;
+package net.offllneplayer.opminecraft.UTIL.Projectile;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

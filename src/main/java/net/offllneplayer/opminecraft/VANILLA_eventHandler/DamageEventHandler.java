@@ -1,18 +1,21 @@
 package net.offllneplayer.opminecraft.VANILLA_eventHandler;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,11 +30,18 @@ import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuActivate_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuReflect_Method;
+import net.offllneplayer.opminecraft.iwe.beretta.PistolItem;
+import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeShot_Method;
 import net.offllneplayer.opminecraft.iwe.gunblade.PrototypeGunbladeShot_Method;
 
+import static net.offllneplayer.opminecraft.UTIL.Enchantment.OP_WeaponEnchantmentUtil.applyWeaponEnchantments;
+
 @EventBusSubscriber
 public class DamageEventHandler {
+
+    private static final RandomSource RANDOM = RandomSource.create();
+
     @SubscribeEvent
     public static void onEntityDamage(LivingIncomingDamageEvent event) {
 
@@ -47,7 +57,7 @@ public class DamageEventHandler {
         boolean cancelaku = false;
 
         /*--------------------------------------------------------------------------------------------*/
-       /*[CRASH CRATES]*/
+        /*[CRASH CRATES]*/
         if (event.getSource().is(DamageTypes.FALL)) {
             BlockState belowBlock = level.getBlockState(targetEntity.blockPosition().below());
             if (belowBlock.is(OP_TagKeyUtil.Blocks.CRASH_CRATES)) {
@@ -57,7 +67,7 @@ public class DamageEventHandler {
         }
 
         /*--------------------------------------------------------------------------------------------*/
-       /*[AKUAKU]*/
+        /*[AKUAKU]*/
         if (!cancelaku) {
             if (targetEntity.hasEffect(RegistryMobEffects.AKU_AKU)) {
                 if (!level.isClientSide() && sourceEntity != null) {
@@ -66,7 +76,7 @@ public class DamageEventHandler {
                 event.setCanceled(true);
                 return;
             } else if (targetEntity.getMainHandItem().getItem() == RegistryBIBI.AKU_AKU_MASK.get()
-                    || targetEntity.getOffhandItem().getItem() == RegistryBIBI.AKU_AKU_MASK.get()) {
+                  || targetEntity.getOffhandItem().getItem() == RegistryBIBI.AKU_AKU_MASK.get()) {
 
                 event.setCanceled(true);
                 AkuAkuActivate_Method.execute(level, xtarg, ytarg, ztarg, targetEntity);
@@ -75,33 +85,52 @@ public class DamageEventHandler {
         }
 
         /*--------------------------------------------------------------------------------------------*/
-       /*[ITEM-BASED EFFECTS]*/
+        /*[ITEM-BASED EFFECTS]*/
         if (sourceEntity instanceof LivingEntity livingAttacker && !(sourceEntity instanceof Player)) {
             Item held = livingAttacker.getMainHandItem().getItem();
+            ItemStack heldStack = livingAttacker.getMainHandItem();
 
             /*--------------------------------------------------------------------------------------------*/
-           /*[FIRE]*/
-            if (held == Items.BLAZE_ROD || held == Items.BLAZE_POWDER || held == Items.FIRE_CHARGE || held == Items.LAVA_BUCKET) {
+            /*[FIRE]*/
+            if (held == Items.BLAZE_ROD) {
                 targetEntity.setRemainingFireTicks(3 * 20);
+            } else if (held == Items.BLAZE_POWDER || held == Items.FIRE_CHARGE) {
+                targetEntity.setRemainingFireTicks(3 * 20);
+                heldStack.shrink(1);
             }
 
             /*--------------------------------------------------------------------------------------------*/
-           /*[ICE]*/
+            /*[LAVA]*/
+            else if (held == Items.LAVA_BUCKET) {
+                targetEntity.setRemainingFireTicks(3 * 20);
+
+                // Place lava at the target entity's position
+                BlockPos targetPos = targetEntity.blockPosition();
+                if (targetEntity.level().getBlockState(targetPos).isAir()) {
+                    targetEntity.level().setBlock(targetPos, Blocks.LAVA.defaultBlockState(), 3);
+                }
+
+                // Replace lava bucket with empty bucket in attacker's hand
+                livingAttacker.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.BUCKET));
+            }
+
+
+            /*--------------------------------------------------------------------------------------------*/
+            /*[ICE]*/
             else if (held == Items.ICE || held == Items.PACKED_ICE || held == Items.BLUE_ICE) {
                 targetEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3 * 20, 1));
             }
 
             /*--------------------------------------------------------------------------------------------*/
-           /*[POISON]*/
+            /*[POISON]*/
             else if (held == Items.POISONOUS_POTATO || held == Items.SPIDER_EYE) {
                 targetEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 3 * 20, 1));
+                heldStack.shrink(1);
             }
 
             /*--------------------------------------------------------------------------------------------*/
-           /*[WIND CHARGE]*/
+            /*[WIND CHARGE]*/
             else if (held == Items.WIND_CHARGE) {
-
-                livingAttacker.getMainHandItem().shrink(1);
 
                 Vec3 direction = targetEntity.position().subtract(livingAttacker.position()).normalize();
 
@@ -110,9 +139,16 @@ public class DamageEventHandler {
                 float zpush = Mth.nextFloat(RandomSource.create(), 0.2F, 1.6F);
 
                 float volume = (xpush + ypush + zpush - 0.8F) / 3;
-                if (volume <= 0.7F) { volume = 0.7F; }
-                else if (volume >= 1F) { volume = 1F; }
+                if (volume <= 0.7F) {
+                    volume = 0.7F;
+                } else if (volume >= 1F) {
+                    volume = 1F;
+                }
                 targetEntity.push(direction.x * xpush, ypush, direction.z * zpush);
+
+
+                heldStack.shrink(1);
+
 
                 float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.1F);
 
@@ -131,7 +167,7 @@ public class DamageEventHandler {
             }
 
             /*--------------------------------------------------------------------------------------------*/
-           /*[PROTOTYPE GUNBLADE]*/
+            /*[PROTOTYPE GUNBLADE]*/
             else if (held == RegistryBIBI.PROTOTYPE_GUNBLADE.get()) {
                 float tone = Mth.nextFloat(RandomSource.create(), 0.8F, 1F);
                 level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.3F, tone);
@@ -139,12 +175,54 @@ public class DamageEventHandler {
             }
 
             /*--------------------------------------------------------------------------------------------*/
-           /*[GUNBLADE]*/
-            else if (livingAttacker.getMainHandItem().is(OP_TagKeyUtil.Items.GUNBLADES)) {
+            /*[GUNBLADE]*/
+            else if (livingAttacker.getMainHandItem().getItem() instanceof GunbladeItem) {
                 float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.1420F);
                 level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.42F, tone);
                 GunbladeShot_Method.execute(level, xtarg, ytarg, ztarg, targetEntity, sourceEntity);
             }
         }
+
+
+        /*--------------------------------------------------------------------------------------------*/
+        /*~[Wither Skeleton]~*/
+        if (targetEntity instanceof WitherSkeleton witherSkeleton && sourceEntity instanceof LivingEntity livingAttacker) {
+            ItemStack mainHand = witherSkeleton.getMainHandItem();
+
+            // Only switch weapons if skeleton is holding a pistol that's out of ammo
+            if (mainHand.getItem() instanceof PistolItem pistolItem && mainHand.getDamageValue() >= mainHand.getMaxDamage()) {
+                ItemStack offHand = witherSkeleton.getOffhandItem();
+
+                // Get the required ammo type for this pistol
+                Item requiredAmmo = pistolItem.getPistolMaterial().getRegisteredAmmo();
+
+                // Only switch if pistol is empty AND no matching ammo in off-hand
+                if (offHand.isEmpty() || !offHand.is(requiredAmmo)) {
+                    Item attackerWeapon = livingAttacker.getMainHandItem().getItem();
+                    ItemStack newWeapon;
+
+                    // If attacker has sword or axe AND it's a direct hit, give skeleton a melee weapon else bow
+                    if (event.getSource().getDirectEntity() == sourceEntity && (attackerWeapon instanceof SwordItem || attackerWeapon instanceof AxeItem)) {
+                        newWeapon = new ItemStack(Items.DIAMOND_AXE);
+                    } else {
+                        newWeapon = new ItemStack(Items.BOW);
+                    }
+
+                    // 50% chance to add enchantments
+                    if (RANDOM.nextBoolean()) {
+                        applyWeaponEnchantments(level, newWeapon);
+                    }
+
+                    witherSkeleton.setItemInHand(InteractionHand.MAIN_HAND, newWeapon);
+
+                    // Clear off-hand to remove any leftover ammo
+                    witherSkeleton.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+
+                    // Play sound effect for weapon switch
+                    level.playSound(null, xtarg, ytarg, ztarg, SoundEvents.WOOL_PLACE, SoundSource.HOSTILE, 0.420F, 0.9F);
+                }
+            }
+        }
     }
 }
+

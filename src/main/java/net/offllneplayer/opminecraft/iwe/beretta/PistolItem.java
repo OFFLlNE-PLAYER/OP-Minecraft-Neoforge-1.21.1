@@ -11,6 +11,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 
 
 public class PistolItem extends TieredItem{
@@ -51,7 +51,14 @@ public class PistolItem extends TieredItem{
 
   	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-  /*[BASIC TOOL Item OVERRIDES]*/
+	/*[HELP]*/
+	public PistolMaterial getPistolMaterial() {
+		return this.pistolMaterial;
+	}
+
+
+	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	/*[BASIC TOOL Item OVERRIDES]*/
 	private static Tier createTier(PistolMaterial material) {
 		return new Tier() {
 			@Override
@@ -89,8 +96,14 @@ public class PistolItem extends TieredItem{
   /*[Use Item OVERRIDES]*/
 	 @Override
 	 public int getUseDuration(ItemStack itemstack, LivingEntity user) {
-		 return this.pistolMaterial.getAttackSpeed();
+		 if (user instanceof Player) {
+			 return this.pistolMaterial.getAttackSpeed();
+		 } else {
+			 // For mobs, add a small buffer to prevent auto-stopping
+			 return this.pistolMaterial.getAttackSpeed() + 2;
+		 }
 	 }
+
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack stack) {
@@ -111,7 +124,7 @@ public class PistolItem extends TieredItem{
 
 		 // Check if both pistols are the same type
 		 boolean sameGunType = stack.getItem() == otherHandStack.getItem();
-		 boolean hasOtherHandPistol = otherHandStack.is(OP_TagKeyUtil.Items.PISTOLS) && !otherHandStack.isEmpty();
+		 boolean hasOtherHandPistol = otherHandStack.getItem() instanceof PistolItem && !otherHandStack.isEmpty();
 
 		 if (hasOtherHandPistol && sameGunType) {
 			 // For same gun types, check which gun should actually fire based on durability
@@ -171,7 +184,7 @@ public class PistolItem extends TieredItem{
 				InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 		ItemStack otherHandStack = player.getItemInHand(otherHand);
 
-		boolean hasOtherHandPistol = otherHandStack.is(OP_TagKeyUtil.Items.PISTOLS) && !otherHandStack.isEmpty();
+		boolean hasOtherHandPistol = otherHandStack.getItem() instanceof PistolItem && !otherHandStack.isEmpty();
 		boolean sameGunType = hasOtherHandPistol && stack.getItem() == otherHandStack.getItem();
 
 		if (sameGunType && otherHandStack.getDamageValue() < otherHandStack.getMaxDamage()) {
@@ -314,4 +327,67 @@ public class PistolItem extends TieredItem{
 	}
 
 	/* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/
+
+	@Override
+	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
+		if (entity instanceof Player) {
+			// Players use the finishUsingItem method instead
+			return;
+		}
+
+		// Mob usage
+		if (!level.isClientSide && entity instanceof Mob mob) {
+			int currentDamage = stack.getDamageValue();
+
+			// Check if gun needs reloading
+			if (currentDamage >= stack.getMaxDamage()) {
+				// Gun is empty, try to reload
+				ItemStack offhand = mob.getOffhandItem();
+				if (offhand.getItem() == this.pistolMaterial.getRegisteredAmmo() && offhand.getCount() > 0) {
+					// Reload the gun
+					int bulletsNeeded = currentDamage;
+					int bulletCount = offhand.getCount();
+					int bulletsToUse = Math.min(bulletsNeeded, bulletCount);
+
+					stack.setDamageValue(currentDamage - bulletsToUse);
+					offhand.shrink(bulletsToUse);
+
+					// Play reload sound
+					float randomFloat = level.getRandom().nextFloat();
+					level.playSound(null, mob.getX(), mob.getY(), mob.getZ(),
+							this.pistolMaterial.getReloadSound(), SoundSource.HOSTILE,
+							this.pistolMaterial.getVolume(),
+							this.pistolMaterial.getBasePitch() + randomFloat * this.pistolMaterial.getPitchVariance());
+					return;
+				}
+			}
+
+			// Fire bullet if gun has ammo
+			if (currentDamage < stack.getMaxDamage()) {
+				LivingEntity target = mob.getTarget();
+				if (target != null) {
+
+				PistolBullet bullet = new PistolBullet(mob, level, stack.copy());
+
+					double deltaX = target.getX() - mob.getX();
+					double deltaY = target.getY(0.33D) - bullet.getY();
+					double deltaZ = target.getZ() - mob.getZ();
+					bullet.shoot(deltaX, deltaY, deltaZ, 14.20F, 0F);
+
+
+				level.addFreshEntity(bullet);
+
+				// Consume ammo
+				stack.setDamageValue(currentDamage + 1);
+
+				// Play sound
+				float randomFloat = level.getRandom().nextFloat();
+				level.playSound(null, mob.getX(), mob.getY(), mob.getZ(),
+						this.pistolMaterial.getFireSound(), SoundSource.HOSTILE,
+						this.pistolMaterial.getVolume(),
+						this.pistolMaterial.getBasePitch() + randomFloat * this.pistolMaterial.getPitchVariance());
+				}
+			}
+		}
+	}
 }

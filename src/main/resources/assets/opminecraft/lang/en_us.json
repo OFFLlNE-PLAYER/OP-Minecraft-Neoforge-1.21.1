@@ -565,8 +565,13 @@
 
   "item.opminecraft.pistol.description_0": "Hold ammo in other hand to reload",
 
-  "item.opminecraft.fifty_ae_rounds": "0.50 AE Rounds",
+
   "item.opminecraft.ninemm_parabellum_rounds": "9mm Parabellum Rounds",
+
+  "item.opminecraft.fifty_ae_rounds": "0.50 AE Rounds",
+
+  "item.opminecraft.fourty_four_s_and_w_rounds": "0.44 S&W Rounds",
+  "item.opminecraft.fifty_s_and_w_rounds": "0.50 S&W Rounds",
 
 
   "item.opminecraft.tnt_stick": "§cTNT Stick§r",

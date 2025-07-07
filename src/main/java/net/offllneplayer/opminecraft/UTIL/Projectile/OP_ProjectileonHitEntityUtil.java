@@ -1,4 +1,4 @@
-package net.offllneplayer.opminecraft.UTIL;
+package net.offllneplayer.opminecraft.UTIL.Projectile;
 
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
@@ -21,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 
 import java.util.Map;
 
