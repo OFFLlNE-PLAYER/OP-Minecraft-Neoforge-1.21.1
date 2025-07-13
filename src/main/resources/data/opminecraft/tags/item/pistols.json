@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "opminecraft:redfield_beretta",
+    "opminecraft:wesker_beretta",
+    "opminecraft:valentine_beretta",
+
+    "opminecraft:golden_beretta",
+    "opminecraft:diamond_beretta",
+    "opminecraft:onyx_beretta",
+    "opminecraft:titan_beretta",
+    "opminecraft:titan_handcannon",
+    "opminecraft:titan_desert_eagle",
+    "opminecraft:titan_revolver",
+
+    "opminecraft:protektor_beretta",
+    "opminecraft:protektor_handcannon",
+    "opminecraft:protektor_desert_eagle",
+    "opminecraft:protektor_revolver",
+
+    "opminecraft:valentine_revolver"
+  ]
+}

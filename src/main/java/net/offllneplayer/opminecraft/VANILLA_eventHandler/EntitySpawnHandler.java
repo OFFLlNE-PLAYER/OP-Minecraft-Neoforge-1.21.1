@@ -198,6 +198,7 @@ public class EntitySpawnHandler {
                 case 7 -> Items.SPIDER_EYE;
 
                 case 8 -> Items.WIND_CHARGE;
+
                 case 9 -> RegistryBIBI.AKU_AKU_MASK.get();
                 default -> Items.POISONOUS_POTATO;
             };

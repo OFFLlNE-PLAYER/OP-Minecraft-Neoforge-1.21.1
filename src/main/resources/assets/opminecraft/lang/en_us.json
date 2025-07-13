@@ -558,6 +558,22 @@
   "item.opminecraft.titan_revolver.description_0": "\"GRIMES\"",
   "item.opminecraft.titan_revolver.description_1": "6x .50 S&W Rounds",
 
+  "item.opminecraft.protektor_beretta": "Protektor Beretta",
+  "item.opminecraft.protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.protektor_handcannon": "Protektor TYPE-75",
+  "item.opminecraft.protektor_handcannon.description_0": "\"LSTR\"",
+  "item.opminecraft.protektor_handcannon.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.protektor_desert_eagle": "Protektor Desert Eagle",
+  "item.opminecraft.protektor_desert_eagle.description_0": "\"STCR\"",
+  "item.opminecraft.protektor_desert_eagle.description_1": "6x 0.50 AE Rounds",
+
+  "item.opminecraft.protektor_revolver": "Protektor .50 Revolver",
+  "item.opminecraft.protektor_revolver.description_0": "\"STAR\"",
+  "item.opminecraft.protektor_revolver.description_1": "6x .50 S&W Rounds",
+
   "item.opminecraft.valentine_revolver": "Titan .44 Revolver",
   "item.opminecraft.valentine_revolver.description_0": "\"VALENTINE\"",
   "item.opminecraft.valentine_revolver.description_1": "6x .44 S&W Rounds",
@@ -567,6 +583,7 @@
 
 
   "item.opminecraft.ninemm_parabellum_rounds": "9mm Parabellum Rounds",
+  "item.opminecraft.tenmm_parabellum_rounds": "10mm Parabellum Rounds",
 
   "item.opminecraft.fifty_ae_rounds": "0.50 AE Rounds",
 
