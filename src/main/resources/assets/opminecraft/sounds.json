@@ -56,9 +56,9 @@
   "beretta_2": {"sounds": [{"name": "opminecraft:beretta_2", "stream": false}]},
   "beretta_3": {"sounds": [{"name": "opminecraft:beretta_3", "stream": false}]},
 
-  "beretta_r": {"sounds": [{"name": "opminecraft:beretta_protektor_r", "stream": false}]},
-  "beretta_0": {"sounds": [{"name": "opminecraft:beretta_protektor_0", "stream": false}]},
-  "beretta_1": {"sounds": [{"name": "opminecraft:beretta_protektor_1", "stream": false}]},
+  "protektor_beretta_r": {"sounds": [{"name": "opminecraft:protektor_beretta_r", "stream": false}]},
+  "protektor_beretta_0": {"sounds": [{"name": "opminecraft:protektor_beretta_0", "stream": false}]},
+  "protektor_beretta_1": {"sounds": [{"name": "opminecraft:protektor_beretta_1", "stream": false}]},
   "samurai_edge_1": {"sounds": [{"name": "opminecraft:samurai_edge_1", "stream": false}]},
 
   "smb_super_fan_hit": {"sounds": [{"name": "opminecraft:smb_super_fan_hit", "stream": false}]},
