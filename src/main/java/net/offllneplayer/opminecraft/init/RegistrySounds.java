@@ -62,6 +62,9 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_3 = SOUNDSREGISTRY.register("beretta_3", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_3")));
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_1 = SOUNDSREGISTRY.register("samurai_edge_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_1")));
 
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_PROTEKTOR_R = SOUNDSREGISTRY.register("beretta_protektor_r", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_protektor_r")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_PROTEKTOR_0 = SOUNDSREGISTRY.register("beretta_protektor_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_protektor_0")));
+        public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_PROTEKTOR_1 = SOUNDSREGISTRY.register("beretta_protektor_1", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "beretta_protektor_1")));
 
         public static final DeferredHolder<SoundEvent, SoundEvent> PRIME_TNT = SOUNDSREGISTRY.register("prime_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "prime_tnt")));
         public static final DeferredHolder<SoundEvent, SoundEvent> FAST_TICK_TNT = SOUNDSREGISTRY.register("fast_tick_tnt", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "fast_tick_tnt")));

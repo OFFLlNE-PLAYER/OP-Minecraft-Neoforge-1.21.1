@@ -46,10 +46,10 @@ public enum PistolMaterial {
 			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.85F, 0.0420F),
 
 	PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.9F, 0.9F, 0.0420F),
+			RegistrySounds.BERETTA_PROTEKTOR_1, RegistrySounds.BERETTA_PROTEKTOR_R, RegistrySounds.BERETTA_PROTEKTOR_0, 0.9F, 0.9F, 0.0420F),
 
 	PROTEKTOR_HANDCANNON(12, 5.5F, 6, 28, 40, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.BERETTA_2, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 1F, 0.78F, 0.0420F),
+			RegistrySounds.BERETTA_PROTEKTOR_1, RegistrySounds.BERETTA_PROTEKTOR_R, RegistrySounds.BERETTA_PROTEKTOR_0, 1F, 0.78F, 0.0420F),
 
 	PROTEKTOR_DESERT_EAGLE(8, 10.5F, 6, 30, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.MAGNUM_1, RegistrySounds.MAGNUM_R, RegistrySounds.MAGNUM_0, 1F, 1F, 0.0420F),
