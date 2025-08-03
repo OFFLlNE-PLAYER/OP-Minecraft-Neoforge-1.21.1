@@ -724,6 +724,15 @@ public class RegistryBIBI {
 	public static final Supplier<PistolItem> TITAN_REVOLVER = ITEMSREGISTRY.register("titan_revolver",
 			() -> new PistolItem(PistolMaterial.TITAN_REVOLVER));
 
+	public static final Supplier<PistolItem> ONYX_PROTEKTOR_BERETTA = ITEMSREGISTRY.register("onyx_protektor_beretta",
+			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_BERETTA));
+	public static final Supplier<PistolItem> ONYX_PROTEKTOR_HANDCANNON = ITEMSREGISTRY.register("onyx_protektor_handcannon",
+			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_HANDCANNON));
+	public static final Supplier<PistolItem> ONYX_PROTEKTOR_DESERT_EAGLE = ITEMSREGISTRY.register("onyx_protektor_desert_eagle",
+			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_DESERT_EAGLE));
+	public static final Supplier<PistolItem> ONYX_PROTEKTOR_REVOLVER = ITEMSREGISTRY.register("onyx_protektor_revolver",
+			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_REVOLVER));
+	
 	public static final Supplier<PistolItem> PROTEKTOR_BERETTA = ITEMSREGISTRY.register("protektor_beretta",
 			() -> new PistolItem(PistolMaterial.PROTEKTOR_BERETTA));
 	public static final Supplier<PistolItem> PROTEKTOR_HANDCANNON = ITEMSREGISTRY.register("protektor_handcannon",
@@ -741,7 +750,7 @@ public class RegistryBIBI {
 
 
 	public static final DeferredItem<Item> FOURTY_FOUR_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fourty_four_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(6));
-	public static final DeferredItem<Item> FIFTY_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fifty_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(6));
+	public static final DeferredItem<Item> FIFTY_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fifty_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(12));
 
 	public static final DeferredItem<Item> FIFTY_AE_ROUNDS = ITEMSREGISTRY.registerItem("fifty_ae_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
 	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(32));

@@ -1,0 +1,7 @@
+{
+	"parent": "opminecraft:item/protektor_revolver",
+	"textures": {
+		"0": "opminecraft:item/text_onyx_protektor_revolver",
+		"particle": "opminecraft:item/text_onyx_protektor_revolver"
+	}
+}

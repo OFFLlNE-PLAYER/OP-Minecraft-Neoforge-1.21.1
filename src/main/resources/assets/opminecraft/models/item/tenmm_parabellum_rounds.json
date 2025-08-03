@@ -1,6 +1,6 @@
 {
 	"format_version": "1.9.0",
-	"credit": "Made with Blockbench",
+	"credit": "Made by OP with Blockbench :D",
 	"texture_size": [128, 128],
 	"textures": {
 		"0": "opminecraft:item/text_tenmm_parabellum_rounds",
@@ -8,8 +8,9 @@
 	},
 	"elements": [
 		{
-			"from": [5.5, 0, 6.5],
-			"to": [10.5, 1.7, 10],
+			"name": "box",
+			"from": [5.5, 0, 6.4],
+			"to": [10.5, 1.7, 9.6],
 			"rotation": {"angle": 0, "axis": "y", "origin": [5.5, 0, 6.5]},
 			"faces": {
 				"north": {"uv": [0, 8.125, 7, 10.75], "texture": "#0"},
@@ -21,6 +22,7 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"translation": [0, 6.35, 0.5],
@@ -43,10 +45,10 @@
 		},
 		"ground": {
 			"translation": [0, 3.5, 0],
-			"scale": [0.8, 0.8, 0.8]
+			"scale": [0.9, 0.9, 0.9]
 		},
 		"gui": {
-			"rotation": [40, 141, 0],
+			"rotation": [40, 140, 0],
 			"translation": [0, 8, 0],
 			"scale": [1.5, 1.5, 1.5]
 		},

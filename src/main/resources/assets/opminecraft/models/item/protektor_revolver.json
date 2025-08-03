@@ -1,5 +1,5 @@
 {
-	"format_version": "1.9.0",
+	"format_version": "1.21.6",
 	"credit": "Made by OP with Blockbench :D",
 	"texture_size": [128, 128],
 	"textures": {
@@ -615,10 +615,10 @@
 			"to": [13.5, 13, 11.75],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 11.5, 7]},
 			"faces": {
-				"north": {"uv": [4.5, 1.625, 6, 1.75], "texture": "#0"},
-				"east": {"uv": [4.5, 1.625, 4.625, 1.75], "texture": "#0"},
+				"north": {"uv": [5.25, 1, 6.75, 1.125], "texture": "#0"},
+				"east": {"uv": [5.25, 1, 5.375, 1.125], "texture": "#0"},
 				"south": {"uv": [10, 1.625, 11.5, 1.75], "texture": "#0"},
-				"west": {"uv": [5.875, 1.625, 6, 1.75], "texture": "#0"},
+				"west": {"uv": [6.625, 1, 6.75, 1.125], "texture": "#0"},
 				"up": {"uv": [10, 1.625, 11.5, 1.75], "texture": "#0"},
 				"down": {"uv": [10, 1.625, 11.5, 1.75], "texture": "#0"}
 			}
@@ -1740,7 +1740,7 @@
 		},
 		"ground": {
 			"translation": [0, 0, 2.5],
-			"scale": [0.18, 0.2, 0.17]
+			"scale": [0.16, 0.2, 0.17]
 		},
 		"gui": {
 			"rotation": [0, 45, 30],

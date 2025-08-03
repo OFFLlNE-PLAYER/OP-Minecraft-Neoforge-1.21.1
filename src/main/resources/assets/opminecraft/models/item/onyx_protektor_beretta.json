@@ -1,0 +1,7 @@
+{
+	"parent": "opminecraft:item/protektor_beretta",
+	"textures": {
+		"0": "opminecraft:item/text_onyx_protektor_beretta",
+		"particle": "opminecraft:item/text_onyx_protektor_beretta"
+	}
+}

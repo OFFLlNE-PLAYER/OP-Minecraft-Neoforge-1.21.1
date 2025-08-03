@@ -548,7 +548,7 @@
 
   "item.opminecraft.titan_handcannon": "Titan Handcannon",
   "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM\"",
-  "item.opminecraft.titan_handcannon.description_1": "12x 9mm Parabellum Rounds",
+  "item.opminecraft.titan_handcannon.description_1": "12x 10mm Parabellum Rounds",
 
   "item.opminecraft.titan_desert_eagle": "Titan Desert Eagle",
   "item.opminecraft.titan_desert_eagle.description_0": "\"KENNEDY\"",
@@ -557,6 +557,24 @@
   "item.opminecraft.titan_revolver": "Titan .50 Revolver",
   "item.opminecraft.titan_revolver.description_0": "\"GRIMES\"",
   "item.opminecraft.titan_revolver.description_1": "6x .50 S&W Rounds",
+
+
+  "item.opminecraft.onyx_protektor_beretta": "Onyx Protektor Beretta",
+  "item.opminecraft.onyx_protektor_beretta.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_protektor_handcannon": "Onyx Protektor TYPE-75",
+  "item.opminecraft.onyx_protektor_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_protektor_handcannon.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_protektor_desert_eagle": "Onyx Protektor Desert Eagle",
+  "item.opminecraft.onyx_protektor_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_protektor_desert_eagle.description_1": "6x 0.50 AE Rounds",
+
+  "item.opminecraft.onyx_protektor_revolver": "Onyx Protektor .50 Revolver",
+  "item.opminecraft.onyx_protektor_revolver.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_protektor_revolver.description_1": "6x .50 S&W Rounds",
+
 
   "item.opminecraft.protektor_beretta": "Protektor Beretta",
   "item.opminecraft.protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
@@ -573,6 +591,7 @@
   "item.opminecraft.protektor_revolver": "Protektor .50 Revolver",
   "item.opminecraft.protektor_revolver.description_0": "\"STAR\"",
   "item.opminecraft.protektor_revolver.description_1": "6x .50 S&W Rounds",
+
 
   "item.opminecraft.valentine_revolver": "Titan .44 Revolver",
   "item.opminecraft.valentine_revolver.description_0": "\"VALENTINE\"",

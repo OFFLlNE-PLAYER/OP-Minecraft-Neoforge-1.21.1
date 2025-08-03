@@ -382,6 +382,11 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.TITAN_DESERT_EAGLE.get());
                 event.accept(RegistryBIBI.TITAN_REVOLVER.get());
 
+                event.accept(RegistryBIBI.ONYX_PROTEKTOR_BERETTA.get());
+                event.accept(RegistryBIBI.ONYX_PROTEKTOR_HANDCANNON.get());
+                event.accept(RegistryBIBI.ONYX_PROTEKTOR_DESERT_EAGLE.get());
+                event.accept(RegistryBIBI.ONYX_PROTEKTOR_REVOLVER.get());
+
                 event.accept(RegistryBIBI.PROTEKTOR_BERETTA.get());
                 event.accept(RegistryBIBI.PROTEKTOR_HANDCANNON.get());
                 event.accept(RegistryBIBI.PROTEKTOR_DESERT_EAGLE.get());
