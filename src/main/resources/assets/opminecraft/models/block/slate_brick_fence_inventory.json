@@ -1,0 +1,8 @@
+{
+  "parent": "block/fence_inventory",
+  "textures": {
+    "texture": "opminecraft:block/text_slate_bricks",
+    "particle": "opminecraft:block/text_slate_bricks"
+  },
+  "render_type": "solid"
+}

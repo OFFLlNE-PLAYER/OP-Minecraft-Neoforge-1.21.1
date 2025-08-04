@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_fence_gate_wall",
+  "textures": {
+    "texture": "opminecraft:block/text_slate_bricks",
+    "particle": "opminecraft:block/text_slate_bricks"
+  },
+  "render_type": "solid"
+}

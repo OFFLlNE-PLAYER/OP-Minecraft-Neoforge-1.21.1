@@ -44,7 +44,7 @@ public class ItemEntityRendererMixin {
       float waterSurfaceFactor = 0.0F;
 
       if (currentEntity.onGround()) { // On ground
-         if (thisStack.is(OP_TagKeyUtil.Items.MIXIN_ROTATE_ITEMS)) {
+         if (!thisStack.is(OP_TagKeyUtil.Items.MIXIN_NON_ROTATE_ITEMS)) {
             instance.mulPose(Axis.XP.rotationDegrees(270F));
             instance.mulPose(Axis.YP.rotationDegrees(0));
             instance.mulPose(Axis.ZP.rotationDegrees(spinAngle));

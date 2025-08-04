@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:slate"},
+  "result": "opminecraft:slate_pressure_plate",
+  "count": 1
+}

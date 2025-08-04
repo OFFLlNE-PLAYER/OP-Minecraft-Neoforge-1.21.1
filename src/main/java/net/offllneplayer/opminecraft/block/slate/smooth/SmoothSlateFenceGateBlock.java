@@ -1,0 +1,24 @@
+package net.offllneplayer.opminecraft.block.slate.smooth;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
+
+public class SmoothSlateFenceGateBlock extends FenceGateBlock {
+	public SmoothSlateFenceGateBlock() {
+		super(WoodType.OAK, Properties.of()
+				.mapColor(MapColor.STONE)
+				.sound(SoundType.STONE)
+				.strength(3.5F, 10F)
+				.requiresCorrectToolForDrops()
+				.forceSolidOn());
+	}
+	@Override
+	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+		return 0;
+	}
+}

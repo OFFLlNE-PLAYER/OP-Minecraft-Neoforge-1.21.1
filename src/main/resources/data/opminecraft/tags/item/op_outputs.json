@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "opminecraft:dense_stone",
+    "opminecraft:smooth_slate",
     "minecraft:nether_bricks",
     "minecraft:iron_block",
     "minecraft:copper_block",

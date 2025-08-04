@@ -6,9 +6,10 @@
     "opminecraft:charcoal_tile_trapdoor",
     "opminecraft:crying_brick_trapdoor",
     "opminecraft:crying_tile_trapdoor",
-    "opminecraft:dense_stone_trapdoor",
-    "opminecraft:dense_stone_brick_trapdoor",
-    "opminecraft:dense_stone_tile_trapdoor",
-    "opminecraft:stone_tile_trapdoor"
+    "opminecraft:stone_tile_trapdoor",
+    "opminecraft:slate_trapdoor",
+    "opminecraft:smooth_slate_trapdoor",
+    "opminecraft:slate_brick_trapdoor",
+    "opminecraft:slate_tile_trapdoor"
   ]
 }

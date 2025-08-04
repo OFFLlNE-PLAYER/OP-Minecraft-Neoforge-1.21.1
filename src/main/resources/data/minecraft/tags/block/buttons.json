@@ -6,9 +6,10 @@
     "opminecraft:charcoal_tile_button",
     "opminecraft:crying_brick_button",
     "opminecraft:crying_tile_button",
-    "opminecraft:dense_stone_button",
-    "opminecraft:dense_stone_brick_button",
-    "opminecraft:dense_stone_tile_button",
-    "opminecraft:stone_tile_button"
+    "opminecraft:stone_tile_button",
+    "opminecraft:slate_button",
+    "opminecraft:smooth_slate_button",
+    "opminecraft:slate_brick_button",
+    "opminecraft:slate_tile_button"
   ]
 }

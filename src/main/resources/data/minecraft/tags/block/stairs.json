@@ -6,9 +6,10 @@
     "opminecraft:charcoal_tile_stairs",
     "opminecraft:crying_brick_stairs",
     "opminecraft:crying_tile_stairs",
-    "opminecraft:dense_stone_stairs",
-    "opminecraft:dense_stone_brick_stairs",
-    "opminecraft:dense_stone_tile_stairs",
-    "opminecraft:stone_tile_stairs"
+    "opminecraft:stone_tile_stairs",
+    "opminecraft:slate_stairs",
+    "opminecraft:smooth_slate_stairs",
+    "opminecraft:slate_brick_stairs",
+    "opminecraft:slate_tile_stairs"
   ]
 }

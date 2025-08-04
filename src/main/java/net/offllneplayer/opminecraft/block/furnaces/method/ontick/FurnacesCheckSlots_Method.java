@@ -89,7 +89,7 @@ public class FurnacesCheckSlots_Method {
 				return 0;
 			}
 		}.getAmount(world, BlockPos.containing(x, y, z), 5);
-		if (Stack_of_Slot_0.getItem() == Blocks.COBBLESTONE.asItem() && (Stack_of_Slot_5.getItem() == RegistryBIBI.DENSE_STONE.get().asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
+		if (Stack_of_Slot_0.getItem() == Blocks.COBBLESTONE.asItem() && (Stack_of_Slot_5.getItem() == RegistryBIBI.SMOOTH_SLATE.get().asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {
 			Number_of_Item = 1;
 
 		} else if (Stack_of_Slot_0.getItem() == Blocks.NETHERRACK.asItem() && (Stack_of_Slot_5.getItem() == Blocks.NETHER_BRICKS.asItem() && Number_of_Slot_5 < 64 || Stack_of_Slot_5.getItem() == Blocks.AIR.asItem())) {

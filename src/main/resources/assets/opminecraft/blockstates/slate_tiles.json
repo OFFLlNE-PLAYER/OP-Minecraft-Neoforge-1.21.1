@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": {"model": "opminecraft:block/slate_tiles", "x": 90, "y": 90},
+    "axis=y": {"model": "opminecraft:block/slate_tiles"},
+    "axis=z": {"model": "opminecraft:block/slate_tiles", "x": 90}
+  }
+}

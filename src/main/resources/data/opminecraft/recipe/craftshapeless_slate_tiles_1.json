@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {"item": "opminecraft:slate_bricks"},
+    {"item": "opminecraft:slate_bricks"},
+    {"item": "opminecraft:slate_bricks"},
+    {"item": "opminecraft:slate_bricks"}
+  ],
+  "result": {"id": "opminecraft:slate_tiles", "count": 4}
+}

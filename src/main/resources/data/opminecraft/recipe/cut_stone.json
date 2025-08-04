@@ -1,8 +1,0 @@
-
-{
-  "type": "minecraft:stonecutting",
-
-  "ingredient": {"item": "opminecraft:dense_stone"},
-
-  "result": {"id": "minecraft:stone", "count": 4}
-}

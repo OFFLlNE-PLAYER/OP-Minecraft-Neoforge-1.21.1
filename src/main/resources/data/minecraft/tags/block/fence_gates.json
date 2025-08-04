@@ -6,9 +6,10 @@
     "opminecraft:charcoal_tile_fence_gate",
     "opminecraft:crying_brick_fence_gate",
     "opminecraft:crying_tile_fence_gate",
-    "opminecraft:dense_stone_fence_gate",
-    "opminecraft:dense_stone_brick_fence_gate",
-    "opminecraft:dense_stone_tile_fence_gate",
-    "opminecraft:stone_tile_fence_gate"
+    "opminecraft:stone_tile_fence_gate",
+    "opminecraft:slate_fence_gate",
+    "opminecraft:smooth_slate_fence_gate",
+    "opminecraft:slate_brick_fence_gate",
+    "opminecraft:slate_tile_fence_gate"
   ]
 }

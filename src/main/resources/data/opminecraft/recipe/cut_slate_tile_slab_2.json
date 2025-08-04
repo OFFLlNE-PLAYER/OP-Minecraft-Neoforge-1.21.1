@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:slate_bricks"},
+  "result": "opminecraft:slate_tile_slab",
+  "count": 2
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "opminecraft:block/text_smooth_slate",
+    "bottom": "opminecraft:block/text_smooth_slate",
+    "top": "opminecraft:block/text_smooth_slate",
+    "side": "opminecraft:block/text_smooth_slate"
+  },
+  "render_type": "solid"
+}

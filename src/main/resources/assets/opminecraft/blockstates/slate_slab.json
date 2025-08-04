@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": {"model": "opminecraft:block/slate_slab"},
+    "type=top": {"model": "opminecraft:block/slate_slab_top"},
+    "type=double": {"model": "opminecraft:block/slate_slab_full"}
+  }
+}

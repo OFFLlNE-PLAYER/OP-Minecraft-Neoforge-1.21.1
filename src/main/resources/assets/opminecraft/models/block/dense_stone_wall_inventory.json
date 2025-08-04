@@ -1,8 +1,0 @@
-{
-  "parent": "block/wall_inventory",
-  "textures": {
-    "wall": "opminecraft:block/text_dense_stone",
-    "particle": "opminecraft:block/text_dense_stone"
-  },
-  "render_type": "solid"
-}

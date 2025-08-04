@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": {"model": "opminecraft:block/slate_bricks", "x": 90, "y": 90},
+    "axis=y": {"model": "opminecraft:block/slate_bricks"},
+    "axis=z": {"model": "opminecraft:block/slate_bricks", "x": 90}
+  }
+}

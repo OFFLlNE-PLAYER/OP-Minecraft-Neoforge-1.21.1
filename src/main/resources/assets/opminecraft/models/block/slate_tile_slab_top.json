@@ -1,0 +1,10 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "particle": "opminecraft:block/text_slate_tiles",
+    "bottom": "opminecraft:block/text_slate_tiles",
+    "top": "opminecraft:block/text_slate_tiles",
+    "side": "opminecraft:block/text_slate_tiles"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {"item": "opminecraft:smooth_slate"},
+    {"item": "opminecraft:smooth_slate"},
+    {"item": "opminecraft:smooth_slate"},
+    {"item": "opminecraft:smooth_slate"}
+  ],
+  "result": {"id": "opminecraft:slate_bricks", "count": 4}
+}

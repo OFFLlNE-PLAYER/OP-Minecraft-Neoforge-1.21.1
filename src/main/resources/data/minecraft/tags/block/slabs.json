@@ -6,9 +6,10 @@
     "opminecraft:charcoal_tile_slab",
     "opminecraft:crying_brick_slab",
     "opminecraft:crying_tile_slab",
-    "opminecraft:dense_stone_slab",
-    "opminecraft:dense_stone_brick_slab",
-    "opminecraft:dense_stone_tile_slab",
-    "opminecraft:stone_tile_slab"
+    "opminecraft:stone_tile_slab",
+    "opminecraft:slate_slab",
+    "opminecraft:smooth_slate_slab",
+    "opminecraft:slate_brick_slab",
+    "opminecraft:slate_tile_slab"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:smooth_slate"},
+  "result": "opminecraft:slate_tile_slab",
+  "count": 2
+}

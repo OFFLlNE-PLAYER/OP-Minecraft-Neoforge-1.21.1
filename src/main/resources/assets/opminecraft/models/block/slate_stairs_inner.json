@@ -1,0 +1,10 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "particle": "opminecraft:block/text_slate",
+    "bottom": "opminecraft:block/text_slate",
+    "top": "opminecraft:block/text_slate_top",
+    "side": "opminecraft:block/text_slate"
+  },
+  "render_type": "solid"
+}

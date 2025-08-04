@@ -1,8 +1,0 @@
-{
-  "parent": "block/template_wall_side",
-  "textures": {
-    "wall": "opminecraft:block/text_dense_stone",
-    "particle": "opminecraft:block/text_dense_stone"
-  },
-  "render_type": "solid"
-}

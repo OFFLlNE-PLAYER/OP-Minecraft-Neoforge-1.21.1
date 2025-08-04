@@ -325,7 +325,7 @@ public class FurnacesCooking_Method {
 					/*--------------------------------------------------------------------------------------------*/
 					if (Number_of_Item == 1) {
 						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(RegistryBIBI.DENSE_STONE.get()).copy();
+							ItemStack _setstack = new ItemStack(RegistryBIBI.SMOOTH_SLATE.get()).copy();
 							_setstack.setCount((int) (Number_of_Slot_5 + 1));
 							_itemHandlerModifiable.setStackInSlot(5, _setstack);
 						}

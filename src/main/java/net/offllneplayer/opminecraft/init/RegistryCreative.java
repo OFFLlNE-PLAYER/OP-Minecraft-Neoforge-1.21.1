@@ -78,35 +78,45 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.CRYING_TILE_TRAPDOOR);
                 event.accept(RegistryBIBI.CRYING_TILE_WALL);
 
-                event.accept(RegistryBIBI.DENSE_STONE);
-                event.accept(RegistryBIBI.DENSE_STONE_BUTTON);
-                event.accept(RegistryBIBI.DENSE_STONE_FENCE);
-                event.accept(RegistryBIBI.DENSE_STONE_FENCE_GATE);
-                event.accept(RegistryBIBI.DENSE_STONE_PRESSURE_PLATE);
-                event.accept(RegistryBIBI.DENSE_STONE_SLAB);
-                event.accept(RegistryBIBI.DENSE_STONE_STAIRS);
-                event.accept(RegistryBIBI.DENSE_STONE_TRAPDOOR);
-                event.accept(RegistryBIBI.DENSE_STONE_WALL);
+                event.accept(RegistryBIBI.SLATE);
+                event.accept(RegistryBIBI.SLATE_BUTTON);
+                event.accept(RegistryBIBI.SLATE_FENCE);
+                event.accept(RegistryBIBI.SLATE_FENCE_GATE);
+                event.accept(RegistryBIBI.SLATE_PRESSURE_PLATE);
+                event.accept(RegistryBIBI.SLATE_SLAB);
+                event.accept(RegistryBIBI.SLATE_STAIRS);
+                event.accept(RegistryBIBI.SLATE_TRAPDOOR);
+                event.accept(RegistryBIBI.SLATE_WALL);
 
-                event.accept(RegistryBIBI.DENSE_STONE_BRICKS);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_BUTTON);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_FENCE);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_FENCE_GATE);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_PRESSURE_PLATE);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_SLAB);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_STAIRS);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_TRAPDOOR);
-                event.accept(RegistryBIBI.DENSE_STONE_BRICK_WALL);
+                event.accept(RegistryBIBI.SMOOTH_SLATE);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_BUTTON);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_FENCE);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_FENCE_GATE);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_PRESSURE_PLATE);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_SLAB);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_STAIRS);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_TRAPDOOR);
+                event.accept(RegistryBIBI.SMOOTH_SLATE_WALL);
 
-                event.accept(RegistryBIBI.DENSE_STONE_TILES);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_BUTTON);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_FENCE);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_FENCE_GATE);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_PRESSURE_PLATE);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_SLAB);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_STAIRS);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_TRAPDOOR);
-                event.accept(RegistryBIBI.DENSE_STONE_TILE_WALL);
+                event.accept(RegistryBIBI.SLATE_BRICKS);
+                event.accept(RegistryBIBI.SLATE_BRICK_BUTTON);
+                event.accept(RegistryBIBI.SLATE_BRICK_FENCE);
+                event.accept(RegistryBIBI.SLATE_BRICK_FENCE_GATE);
+                event.accept(RegistryBIBI.SLATE_BRICK_PRESSURE_PLATE);
+                event.accept(RegistryBIBI.SLATE_BRICK_SLAB);
+                event.accept(RegistryBIBI.SLATE_BRICK_STAIRS);
+                event.accept(RegistryBIBI.SLATE_BRICK_TRAPDOOR);
+                event.accept(RegistryBIBI.SLATE_BRICK_WALL);
+
+                event.accept(RegistryBIBI.SLATE_TILES);
+                event.accept(RegistryBIBI.SLATE_TILE_BUTTON);
+                event.accept(RegistryBIBI.SLATE_TILE_FENCE);
+                event.accept(RegistryBIBI.SLATE_TILE_FENCE_GATE);
+                event.accept(RegistryBIBI.SLATE_TILE_PRESSURE_PLATE);
+                event.accept(RegistryBIBI.SLATE_TILE_SLAB);
+                event.accept(RegistryBIBI.SLATE_TILE_STAIRS);
+                event.accept(RegistryBIBI.SLATE_TILE_TRAPDOOR);
+                event.accept(RegistryBIBI.SLATE_TILE_WALL);
 
                 event.accept(RegistryBIBI.BLOCK_OF_ONYX);
 
@@ -405,7 +415,25 @@ public class RegistryCreative {
 
 
                 event.accept(RegistryBIBI.TOTEM_OF_LIFE);
-                // event.accept(RegistryIBBI.TOTEM_OF_UNCRYING);
+                event.accept(RegistryBIBI.TOTEM_OF_UNCRYING);
+                
+                // Colored Balloons
+                event.accept(RegistryBIBI.BALLOON_WHITE);
+                event.accept(RegistryBIBI.BALLOON_ORANGE);
+                event.accept(RegistryBIBI.BALLOON_MAGENTA);
+                event.accept(RegistryBIBI.BALLOON_LIGHT_BLUE);
+                event.accept(RegistryBIBI.BALLOON_YELLOW);
+                event.accept(RegistryBIBI.BALLOON_LIME);
+                event.accept(RegistryBIBI.BALLOON_PINK);
+                event.accept(RegistryBIBI.BALLOON_GRAY);
+                event.accept(RegistryBIBI.BALLOON_LIGHT_GRAY);
+                event.accept(RegistryBIBI.BALLOON_CYAN);
+                event.accept(RegistryBIBI.BALLOON_PURPLE);
+                event.accept(RegistryBIBI.BALLOON_BLUE);
+                event.accept(RegistryBIBI.BALLOON_BROWN);
+                event.accept(RegistryBIBI.BALLOON_GREEN);
+                event.accept(RegistryBIBI.BALLOON_RED);
+                event.accept(RegistryBIBI.BALLOON_BLACK);
             }
             if (event.getTabKey()==CreativeModeTabs.FOOD_AND_DRINKS) {
 
@@ -529,22 +557,22 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.CRYING_SMITHING_TEMPLATE);
                 event.accept(RegistryBIBI.CRYING_RESIN);
 
-                event.accept(RegistryBIBI.BLACK_FEATHER);
-                event.accept(RegistryBIBI.BLUE_FEATHER);
-                event.accept(RegistryBIBI.BROWN_FEATHER);
-                event.accept(RegistryBIBI.CYAN_FEATHER);
-                event.accept(RegistryBIBI.GRAY_FEATHER);
-                event.accept(RegistryBIBI.GREEN_FEATHER);
-                event.accept(RegistryBIBI.LIGHT_BLUE_FEATHER);
-                event.accept(RegistryBIBI.LIGHT_GRAY_FEATHER);
-                event.accept(RegistryBIBI.LIME_FEATHER);
-                event.accept(RegistryBIBI.MAGENTA_FEATHER);
-                event.accept(RegistryBIBI.ORANGE_FEATHER);
-                event.accept(RegistryBIBI.PINK_FEATHER);
-                event.accept(RegistryBIBI.PURPLE_FEATHER);
-                event.accept(RegistryBIBI.RED_FEATHER);
-                event.accept(RegistryBIBI.YELLOW_FEATHER);
-                event.accept(RegistryBIBI.GOLDEN_FEATHER);
+                event.accept(RegistryBIBI.FEATHER_BLACK);
+                event.accept(RegistryBIBI.FEATHER_BLUE);
+                event.accept(RegistryBIBI.FEATHER_BROWN);
+                event.accept(RegistryBIBI.FEATHER_CYAN);
+                event.accept(RegistryBIBI.FEATHER_GRAY);
+                event.accept(RegistryBIBI.FEATHER_GREEN);
+                event.accept(RegistryBIBI.FEATHER_LIGHT_BLUE);
+                event.accept(RegistryBIBI.FEATHER_LIGHT_GRAY);
+                event.accept(RegistryBIBI.FEATHER_LIME);
+                event.accept(RegistryBIBI.FEATHER_MAGENTA);
+                event.accept(RegistryBIBI.FEATHER_ORANGE);
+                event.accept(RegistryBIBI.FEATHER_PINK);
+                event.accept(RegistryBIBI.FEATHER_PURPLE);
+                event.accept(RegistryBIBI.FEATHER_RED);
+                event.accept(RegistryBIBI.FEATHER_YELLOW);
+                event.accept(RegistryBIBI.FEATHER_GOLDEN);
 
             }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) { // ~~~SPAWN EGGS TABS~~~

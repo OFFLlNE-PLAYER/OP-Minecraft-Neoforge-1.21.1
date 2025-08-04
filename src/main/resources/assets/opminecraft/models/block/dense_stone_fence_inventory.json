@@ -1,8 +1,0 @@
-{
-  "parent": "block/fence_inventory",
-  "textures": {
-    "texture": "opminecraft:block/text_dense_stone",
-    "particle": "opminecraft:block/text_dense_stone"
-  },
-  "render_type": "solid"
-}

@@ -15,7 +15,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.core.BlockPos;
 
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
-import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 public class WumpaPlant_OnClick_Method {
@@ -29,21 +28,20 @@ public class WumpaPlant_OnClick_Method {
 			}
 			world.levelEvent(2001, BlockPos.containing(x, y + 1, z), Block.getId(RegistryBIBI.WUMPA_PLANT.get().defaultBlockState()));
 			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
-			OPMinecraft.queueServerWork(4, () -> {
-				if ((world instanceof Level _level) && (!_level.isClientSide())) {
-					_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.WUMPA_FRUIT.get(), SoundSource.MASTER, 1, 1);
-				}
-				if (world instanceof ServerLevel _level) {
-					ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.WUMPA_FRUIT.get()));
-					entityToSpawn.setPickUpDelay(0);
-					_level.addFreshEntity(entityToSpawn);
-				}
-				if (world instanceof ServerLevel _level) {
-					ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.PITCHER_POD));
-					entityToSpawn.setPickUpDelay(0);
-					_level.addFreshEntity(entityToSpawn);
-				}
-			});
+
+			if ((world instanceof Level _level) && (!_level.isClientSide())) {
+				_level.playSound(null, BlockPos.containing(x, y, z), RegistrySounds.WUMPA_FRUIT.get(), SoundSource.MASTER, 1, 1);
+			}
+			if (world instanceof ServerLevel _level) {
+				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(RegistryBIBI.WUMPA_FRUIT.get()));
+				entityToSpawn.setPickUpDelay(0);
+				_level.addFreshEntity(entityToSpawn);
+			}
+			if (world instanceof ServerLevel _level) {
+				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.PITCHER_POD));
+				entityToSpawn.setPickUpDelay(0);
+				_level.addFreshEntity(entityToSpawn);
+			}
 		}
 	}
 }

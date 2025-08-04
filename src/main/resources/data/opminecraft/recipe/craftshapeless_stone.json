@@ -1,9 +1,0 @@
-
-{
-  "type": "minecraft:crafting_shapeless",
-  "category": "building",
-  "ingredients": [
-    {"item": "opminecraft:dense_stone"}
-  ],
-  "result": {"id": "minecraft:stone", "count": 4}
-}

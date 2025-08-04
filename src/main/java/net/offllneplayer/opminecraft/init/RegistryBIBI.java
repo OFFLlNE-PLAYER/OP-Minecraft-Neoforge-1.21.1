@@ -25,12 +25,14 @@ import net.offllneplayer.opminecraft.block.crying.blockofcryingingots.BlockofCry
 import net.offllneplayer.opminecraft.block.crying.essence.CryingEssenceBlock;
 import net.offllneplayer.opminecraft.block.crying.cryingbricks.*;
 import net.offllneplayer.opminecraft.block.crying.cryingtiles.*;
-import net.offllneplayer.opminecraft.block.densestones.*;
+import net.offllneplayer.opminecraft.block.slate.smooth.*;
+import net.offllneplayer.opminecraft.block.slate.*;
 import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceBlock;
 import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceMaterial;
 import net.offllneplayer.opminecraft.block.ancientchests.AncientChestWoodMaterial;
 import net.offllneplayer.opminecraft.block.ancientchests.AncientChestTrimMaterial;
 import net.offllneplayer.opminecraft.block.onyx.*;
+import net.offllneplayer.opminecraft.block.slate.smooth.SmoothSlateBlock;
 import net.offllneplayer.opminecraft.block.stonetiles.*;
 import net.offllneplayer.opminecraft.iwe.beretta.PistolMaterial;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterial;
@@ -42,7 +44,10 @@ import net.offllneplayer.opminecraft.item.*;
 import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuMaskItem;
 import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitItem;
 import net.offllneplayer.opminecraft.item.crying.*;
+import net.offllneplayer.opminecraft.item.balloon.BalloonItem;
+import net.offllneplayer.opminecraft.item.balloon.BalloonColor;
 import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
+import net.offllneplayer.opminecraft.item.tou.TotemOfUncryingItem;
 import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
@@ -125,39 +130,45 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> CRYING_TILE_TRAPDOOR = registerBlock("crying_tile_trapdoor", CryingTileTrapdoorBlock::new);
 	public static final DeferredBlock<Block> CRYING_TILE_WALL = registerBlock("crying_tile_wall", CryingTileWallBlock::new);
 
+	public static final DeferredBlock<Block> SLATE = registerBlock("slate", SlateBlock::new);
+	public static final DeferredBlock<Block> SLATE_BUTTON = registerBlock("slate_button", SlateButtonBlock::new);
+	public static final DeferredBlock<Block> SLATE_FENCE = registerBlock("slate_fence", SlateFenceBlock::new);
+	public static final DeferredBlock<Block> SLATE_FENCE_GATE = registerBlock("slate_fence_gate", SlateFenceGateBlock::new);
+	public static final DeferredBlock<Block> SLATE_PRESSURE_PLATE = registerBlock("slate_pressure_plate", SlatePressurePlateBlock::new);
+	public static final DeferredBlock<Block> SLATE_SLAB = registerBlock("slate_slab", SlateSlabBlock::new);
+	public static final DeferredBlock<Block> SLATE_STAIRS = registerBlock("slate_stairs", SlateStairsBlock::new);
+	public static final DeferredBlock<Block> SLATE_TRAPDOOR = registerBlock("slate_trapdoor", SlateTrapdoorBlock::new);
+	public static final DeferredBlock<Block> SLATE_WALL = registerBlock("slate_wall", SlateWallBlock::new);
 
+	public static final DeferredBlock<Block> SMOOTH_SLATE = registerBlock("smooth_slate", SmoothSlateBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_BUTTON = registerBlock("smooth_slate_button", SmoothSlateButtonBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_FENCE = registerBlock("smooth_slate_fence", SmoothSlateFenceBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_FENCE_GATE = registerBlock("smooth_slate_fence_gate", SmoothSlateFenceGateBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_PRESSURE_PLATE = registerBlock("smooth_slate_pressure_plate", SmoothSlatePressurePlateBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_SLAB = registerBlock("smooth_slate_slab", SmoothSlateSlabBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_STAIRS = registerBlock("smooth_slate_stairs", SmoothSlateStairsBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_TRAPDOOR = registerBlock("smooth_slate_trapdoor", SmoothSlateTrapdoorBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE_WALL = registerBlock("smooth_slate_wall", SmoothSlateWallBlock::new);
 
+	public static final DeferredBlock<Block> SLATE_BRICKS = registerBlock("slate_bricks", SmoothSlateBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_BUTTON = registerBlock("slate_brick_button", SmoothSlateButtonBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_FENCE = registerBlock("slate_brick_fence", SmoothSlateFenceBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_FENCE_GATE = registerBlock("slate_brick_fence_gate", SmoothSlateFenceGateBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_PRESSURE_PLATE = registerBlock("slate_brick_pressure_plate", SmoothSlatePressurePlateBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_SLAB = registerBlock("slate_brick_slab", SmoothSlateSlabBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_STAIRS = registerBlock("slate_brick_stairs", SmoothSlateStairsBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_TRAPDOOR = registerBlock("slate_brick_trapdoor", SmoothSlateTrapdoorBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICK_WALL = registerBlock("slate_brick_wall", SmoothSlateWallBlock::new);
 
-
-	public static final DeferredBlock<Block> DENSE_STONE = registerBlock("dense_stone", DenseStoneBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BUTTON = registerBlock("dense_stone_button", DenseStoneButtonBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_FENCE = registerBlock("dense_stone_fence", DenseStoneFenceBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_FENCE_GATE = registerBlock("dense_stone_fence_gate", DenseStoneFenceGateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_PRESSURE_PLATE = registerBlock("dense_stone_pressure_plate", DenseStonePressurePlateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_SLAB = registerBlock("dense_stone_slab", DenseStoneSlabBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_STAIRS = registerBlock("dense_stone_stairs", DenseStoneStairsBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TRAPDOOR = registerBlock("dense_stone_trapdoor", DenseStoneTrapdoorBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_WALL = registerBlock("dense_stone_wall", DenseStoneWallBlock::new);
-
-	public static final DeferredBlock<Block> DENSE_STONE_BRICKS = registerBlock("dense_stone_bricks", DenseStoneBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_BUTTON = registerBlock("dense_stone_brick_button", DenseStoneButtonBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_FENCE = registerBlock("dense_stone_brick_fence", DenseStoneFenceBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_FENCE_GATE = registerBlock("dense_stone_brick_fence_gate", DenseStoneFenceGateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_PRESSURE_PLATE = registerBlock("dense_stone_brick_pressure_plate", DenseStonePressurePlateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_SLAB = registerBlock("dense_stone_brick_slab", DenseStoneSlabBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_STAIRS = registerBlock("dense_stone_brick_stairs", DenseStoneStairsBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_TRAPDOOR = registerBlock("dense_stone_brick_trapdoor", DenseStoneTrapdoorBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_BRICK_WALL = registerBlock("dense_stone_brick_wall", DenseStoneWallBlock::new);
-
-	public static final DeferredBlock<Block> DENSE_STONE_TILES = registerBlock("dense_stone_tiles", DenseStoneBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_BUTTON = registerBlock("dense_stone_tile_button", DenseStoneButtonBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_FENCE = registerBlock("dense_stone_tile_fence", DenseStoneFenceBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_FENCE_GATE = registerBlock("dense_stone_tile_fence_gate", DenseStoneFenceGateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_PRESSURE_PLATE = registerBlock("dense_stone_tile_pressure_plate", DenseStonePressurePlateBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_SLAB = registerBlock("dense_stone_tile_slab", DenseStoneSlabBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_STAIRS = registerBlock("dense_stone_tile_stairs", DenseStoneStairsBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_TRAPDOOR = registerBlock("dense_stone_tile_trapdoor", DenseStoneTrapdoorBlock::new);
-	public static final DeferredBlock<Block> DENSE_STONE_TILE_WALL = registerBlock("dense_stone_tile_wall", DenseStoneWallBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILES = registerBlock("slate_tiles", SmoothSlateBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_BUTTON = registerBlock("slate_tile_button", SmoothSlateButtonBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_FENCE = registerBlock("slate_tile_fence", SmoothSlateFenceBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_FENCE_GATE = registerBlock("slate_tile_fence_gate", SmoothSlateFenceGateBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_PRESSURE_PLATE = registerBlock("slate_tile_pressure_plate", SmoothSlatePressurePlateBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_SLAB = registerBlock("slate_tile_slab", SmoothSlateSlabBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_STAIRS = registerBlock("slate_tile_stairs", SmoothSlateStairsBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_TRAPDOOR = registerBlock("slate_tile_trapdoor", SmoothSlateTrapdoorBlock::new);
+	public static final DeferredBlock<Block> SLATE_TILE_WALL = registerBlock("slate_tile_wall", SmoothSlateWallBlock::new);
 
 	public static final DeferredBlock<OPFurnaceBlock> COPPER_FURNACE = registerBlock("copper_furnace",
 			() -> new OPFurnaceBlock(OPFurnaceMaterial.COPPER));
@@ -592,22 +603,22 @@ public class RegistryBIBI {
 
 	public static final DeferredItem<Item> GEMSTONE_DUST = ITEMSREGISTRY.registerItem("gemstone_dust", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
-	public static final DeferredItem<Item> BLACK_FEATHER = ITEMSREGISTRY.registerItem("black_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> BLUE_FEATHER = ITEMSREGISTRY.registerItem("blue_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> BROWN_FEATHER = ITEMSREGISTRY.registerItem("brown_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> CYAN_FEATHER = ITEMSREGISTRY.registerItem("cyan_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> GRAY_FEATHER = ITEMSREGISTRY.registerItem("gray_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> GREEN_FEATHER = ITEMSREGISTRY.registerItem("green_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> LIGHT_BLUE_FEATHER = ITEMSREGISTRY.registerItem("light_blue_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> LIGHT_GRAY_FEATHER = ITEMSREGISTRY.registerItem("light_gray_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> LIME_FEATHER = ITEMSREGISTRY.registerItem("lime_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> MAGENTA_FEATHER = ITEMSREGISTRY.registerItem("magenta_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> ORANGE_FEATHER = ITEMSREGISTRY.registerItem("orange_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> PINK_FEATHER = ITEMSREGISTRY.registerItem("pink_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> PURPLE_FEATHER = ITEMSREGISTRY.registerItem("purple_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> RED_FEATHER = ITEMSREGISTRY.registerItem("red_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> YELLOW_FEATHER = ITEMSREGISTRY.registerItem("yellow_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> GOLDEN_FEATHER = ITEMSREGISTRY.registerItem("golden_feather", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_BLACK = ITEMSREGISTRY.registerItem("feather_black", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_BLUE = ITEMSREGISTRY.registerItem("feather_blue", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_BROWN = ITEMSREGISTRY.registerItem("feather_brown", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_CYAN = ITEMSREGISTRY.registerItem("feather_cyan", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_GRAY = ITEMSREGISTRY.registerItem("feather_gray", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_GREEN = ITEMSREGISTRY.registerItem("feather_green", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_LIGHT_BLUE = ITEMSREGISTRY.registerItem("feather_light_blue", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_LIGHT_GRAY = ITEMSREGISTRY.registerItem("feather_light_gray", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_LIME = ITEMSREGISTRY.registerItem("feather_lime", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_MAGENTA = ITEMSREGISTRY.registerItem("feather_magenta", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_ORANGE = ITEMSREGISTRY.registerItem("feather_orange", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_PINK = ITEMSREGISTRY.registerItem("feather_pink", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_PURPLE = ITEMSREGISTRY.registerItem("feather_purple", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_RED = ITEMSREGISTRY.registerItem("feather_red", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_YELLOW = ITEMSREGISTRY.registerItem("feather_yellow", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_GOLDEN = ITEMSREGISTRY.registerItem("feather_golden", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
 	public static final DeferredItem<Item> CRYING_ESSENCE_BUCKET = ITEMSREGISTRY.register("crying_essence_bucket", CryingEssenceItem::new);
 	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.register("crying_ingot", CryingIngotItem::new);
@@ -758,7 +769,41 @@ public class RegistryBIBI {
 
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
 
-	// public static final DeferredItem<Item> TOTEM_OF_UNCRYING = ITEMSREGISTRY.register("totem_of_uncrying", TotemOfUncryingItem::new);
+	public static final DeferredItem<Item> TOTEM_OF_UNCRYING = ITEMSREGISTRY.register("totem_of_uncrying", TotemOfUncryingItem::new);
+	
+	// Colored Balloons
+	public static final DeferredItem<Item> BALLOON_WHITE = ITEMSREGISTRY.register("balloon_white", 
+			() -> new BalloonItem(BalloonColor.WHITE));
+	public static final DeferredItem<Item> BALLOON_ORANGE = ITEMSREGISTRY.register("balloon_orange", 
+			() -> new BalloonItem(BalloonColor.ORANGE));
+	public static final DeferredItem<Item> BALLOON_MAGENTA = ITEMSREGISTRY.register("balloon_magenta", 
+			() -> new BalloonItem(BalloonColor.MAGENTA));
+	public static final DeferredItem<Item> BALLOON_LIGHT_BLUE = ITEMSREGISTRY.register("balloon_light_blue", 
+			() -> new BalloonItem(BalloonColor.LIGHT_BLUE));
+	public static final DeferredItem<Item> BALLOON_YELLOW = ITEMSREGISTRY.register("balloon_yellow", 
+			() -> new BalloonItem(BalloonColor.YELLOW));
+	public static final DeferredItem<Item> BALLOON_LIME = ITEMSREGISTRY.register("balloon_lime", 
+			() -> new BalloonItem(BalloonColor.LIME));
+	public static final DeferredItem<Item> BALLOON_PINK = ITEMSREGISTRY.register("balloon_pink", 
+			() -> new BalloonItem(BalloonColor.PINK));
+	public static final DeferredItem<Item> BALLOON_GRAY = ITEMSREGISTRY.register("balloon_gray", 
+			() -> new BalloonItem(BalloonColor.GRAY));
+	public static final DeferredItem<Item> BALLOON_LIGHT_GRAY = ITEMSREGISTRY.register("balloon_light_gray", 
+			() -> new BalloonItem(BalloonColor.LIGHT_GRAY));
+	public static final DeferredItem<Item> BALLOON_CYAN = ITEMSREGISTRY.register("balloon_cyan", 
+			() -> new BalloonItem(BalloonColor.CYAN));
+	public static final DeferredItem<Item> BALLOON_PURPLE = ITEMSREGISTRY.register("balloon_purple", 
+			() -> new BalloonItem(BalloonColor.PURPLE));
+	public static final DeferredItem<Item> BALLOON_BLUE = ITEMSREGISTRY.register("balloon_blue", 
+			() -> new BalloonItem(BalloonColor.BLUE));
+	public static final DeferredItem<Item> BALLOON_BROWN = ITEMSREGISTRY.register("balloon_brown", 
+			() -> new BalloonItem(BalloonColor.BROWN));
+	public static final DeferredItem<Item> BALLOON_GREEN = ITEMSREGISTRY.register("balloon_green", 
+			() -> new BalloonItem(BalloonColor.GREEN));
+	public static final DeferredItem<Item> BALLOON_RED = ITEMSREGISTRY.register("balloon_red", 
+			() -> new BalloonItem(BalloonColor.RED));
+	public static final DeferredItem<Item> BALLOON_BLACK = ITEMSREGISTRY.register("balloon_black", 
+			() -> new BalloonItem(BalloonColor.BLACK));
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Blocks]*/

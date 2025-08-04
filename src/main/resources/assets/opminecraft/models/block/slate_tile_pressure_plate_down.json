@@ -1,0 +1,8 @@
+{
+  "parent": "block/pressure_plate_down",
+  "textures": {
+    "texture": "opminecraft:block/text_slate_tiles",
+    "particle": "opminecraft:block/text_slate_tiles"
+  },
+  "render_type": "solid"
+}

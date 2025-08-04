@@ -1,0 +1,8 @@
+{
+  "parent": "block/button_pressed",
+  "textures": {
+    "particle": "opminecraft:block/text_smooth_slate",
+    "texture": "opminecraft:block/text_smooth_slate"
+  },
+  "render_type": "solid"
+}

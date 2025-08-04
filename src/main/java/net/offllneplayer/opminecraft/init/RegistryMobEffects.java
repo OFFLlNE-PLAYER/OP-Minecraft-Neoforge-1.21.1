@@ -15,6 +15,7 @@ import net.minecraft.core.registries.Registries;
 import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuEnd_Method;
 import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitEnd_Method;
 import net.offllneplayer.opminecraft.potion.*;
+import net.offllneplayer.opminecraft.potion.TOUMobEffect;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 @EventBusSubscriber
@@ -27,6 +28,9 @@ public class RegistryMobEffects {
 
 	public static final DeferredHolder<MobEffect, MobEffect> AKU_AKU = MOBEFFECTSREGISTRY.register("aku_aku", AkuAkuMobEffect::new);
 	public static final DeferredHolder<MobEffect, MobEffect> TOTEM_OF_LIFE = MOBEFFECTSREGISTRY.register("totem_of_life", TOLMobEffect::new);
+	public static final DeferredHolder<MobEffect, MobEffect> TOTEM_OF_UNCRYING = MOBEFFECTSREGISTRY.register("totem_of_uncrying", TOUMobEffect::new);
+
+	public static final DeferredHolder<MobEffect, MobEffect> BALLOON = MOBEFFECTSREGISTRY.register("balloon", BalloonMobEffect::new);
 
 	public static final DeferredHolder<MobEffect, MobEffect> WUMPA_FRUIT = MOBEFFECTSREGISTRY.register("wumpa_fruit", WumpaFruitMobEffect::new);
 
@@ -53,7 +57,6 @@ public class RegistryMobEffects {
 		}else if (effectInstance.getEffect().equals(WUMPA_FRUIT)){
 			WumpaFruitEnd_Method.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
 		}
-
 	}
 }
 

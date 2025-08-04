@@ -1,8 +1,0 @@
-{
-  "parent": "block/button_pressed",
-  "textures": {
-    "particle": "opminecraft:block/text_dense_stone_bricks",
-    "texture": "opminecraft:block/text_dense_stone_bricks"
-  },
-  "render_type": "solid"
-}

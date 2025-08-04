@@ -72,9 +72,9 @@ public class ChiselItem extends Item {
         else if (block == Blocks.STONE_BRICKS) { newBlock = RegistryBIBI.STONE_TILES.get(); }
         else if (block == RegistryBIBI.STONE_TILES.get()) { newBlock = Blocks.CHISELED_STONE_BRICKS; }
         else if (block == Blocks.CHISELED_STONE_BRICKS) { newBlock = Blocks.STONE; }
-        else if (block == RegistryBIBI.DENSE_STONE.get()) { newBlock = RegistryBIBI.DENSE_STONE_BRICKS.get(); }
-        else if (block == RegistryBIBI.DENSE_STONE_BRICKS.get()) { newBlock = RegistryBIBI.DENSE_STONE_TILES.get(); }
-        else if (block == RegistryBIBI.DENSE_STONE_TILES.get()) { newBlock = RegistryBIBI.DENSE_STONE.get(); }
+        else if (block == RegistryBIBI.SLATE.get()) { newBlock = RegistryBIBI.SLATE_BRICKS.get(); }
+        else if (block == RegistryBIBI.SLATE_BRICKS.get()) { newBlock = RegistryBIBI.SLATE_TILES.get(); }
+        else if (block == RegistryBIBI.SLATE_TILES.get()) { newBlock = RegistryBIBI.SLATE.get(); }
         else if (block == Blocks.DIAMOND_BLOCK) { newBlock = RegistryBIBI.CHISELED_DIAMOND.get(); }
         else if (block == RegistryBIBI.CHISELED_DIAMOND.get()) { newBlock = Blocks.DIAMOND_BLOCK; }
         else if (block == Blocks.GOLD_BLOCK) { newBlock = RegistryBIBI.CHISELED_GOLD.get(); }

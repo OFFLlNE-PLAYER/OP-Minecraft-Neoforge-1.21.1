@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:smooth_slate"},
+  "result": {"id": "opminecraft:smooth_slate_fence", "count": 1}
+}

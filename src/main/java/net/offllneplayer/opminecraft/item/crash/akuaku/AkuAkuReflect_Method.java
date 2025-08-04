@@ -37,7 +37,7 @@ public class AkuAkuReflect_Method {
                     attacker.getX() + xOffset, attacker.getY() + yOffset, attacker.getZ() + zOffset,
                     1, 0, 0, 0, 0);
 
-            Item[] feathers = {RegistryBIBI.ORANGE_FEATHER.get(), RegistryBIBI.PINK_FEATHER.get(), RegistryBIBI.PURPLE_FEATHER.get(), RegistryBIBI.YELLOW_FEATHER.get()};
+            Item[] feathers = {RegistryBIBI.FEATHER_ORANGE.get(), RegistryBIBI.FEATHER_PINK.get(), RegistryBIBI.FEATHER_PURPLE.get(), RegistryBIBI.FEATHER_YELLOW.get()};
 
             for (Item feather : feathers) {
                 int sendChance = Mth.nextInt(RandomSource.create(), 1, 4);

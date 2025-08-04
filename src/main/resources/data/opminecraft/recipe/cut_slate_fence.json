@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:slate"},
+  "result": "opminecraft:slate_fence",
+  "count": 1
+}

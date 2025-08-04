@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": {"model": "opminecraft:block/smooth_slate", "x": 90, "y": 90},
+    "axis=y": {"model": "opminecraft:block/smooth_slate"},
+    "axis=z": {"model": "opminecraft:block/smooth_slate", "x": 90}
+  }
+}
