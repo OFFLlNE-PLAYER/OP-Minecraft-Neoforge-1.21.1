@@ -1,368 +1,413 @@
 package net.offllneplayer.opminecraft.entity.goal;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.Path;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-
-import net.offllneplayer.opminecraft.items._item.balloon.BalloonActivate_Method;
 import net.offllneplayer.opminecraft.items._item.balloon.BalloonItem;
+import net.offllneplayer.opminecraft.items._item.balloon.BalloonActivate_Method;
 
 import java.util.EnumSet;
 
-/**
- * Intelligent balloon jumping goal that helps mobs navigate obstacles using balloon physics.
- */
 public class GOAL_BalloonJump extends Goal {
+
+	// We run logic every tick
+	private enum State { IDLE, PREPARE, JUMPING, AIRBORNE }
+
 	private final Mob mob;
-	private int cooldownTicks;
-	private int stuckTicks = 0;
-	private int balloonActivationCooldown = 0;
-	private Vec3 lastPosition;
-	private static final int JUMP_COOLDOWN = 12;
-	private static final int BALLOON_ACTIVATION_COOLDOWN = 20; // 1 second - consistent with player use
-	private static final double STUCK_THRESHOLD = 0.02;
-	private static final int MAX_STUCK_TIME = 30;
+	private State state = State.IDLE;
+	private int stateTicks = 0;
+
+	private static final int JUMP_COOLDOWN = 26;
+	private static final int PREPARE_TICKS_NORMAL = 2;
+	private static final int PREPARE_TICKS_GAP = 1; // commit faster on edge
+	private int lastJumpTick = -200;
+
+	private final Analysis an = new Analysis();
 
 	public GOAL_BalloonJump(Mob mob) {
 		this.mob = mob;
 		this.setFlags(EnumSet.noneOf(Flag.class));
-		this.lastPosition = mob.position();
 	}
+
+	private static class Analysis {
+		boolean hasTarget;
+		Vec3 mobPos = Vec3.ZERO;
+		Vec3 targetPos = Vec3.ZERO;
+		Vec3 horizDir = Vec3.ZERO;
+		Direction faceDir = Direction.NORTH;
+
+		double distance;
+		double dy;
+
+		boolean headroomOK;
+
+		// Decisions (melee-only)
+		boolean gapJump;
+		boolean up1;
+		boolean up2;
+
+		// Runtime aids
+		Vec3 landingHint = Vec3.ZERO;
+		int prepareTicks = PREPARE_TICKS_NORMAL;
+		boolean forceJumpNow = false; // edge trigger bypasses cooldown
+
+		void reset() {
+			gapJump = false;
+			up1 = false;
+			up2 = false;
+			forceJumpNow = false;
+			landingHint = Vec3.ZERO;
+			prepareTicks = PREPARE_TICKS_NORMAL;
+		}
+	}
+
+	/* ------------------------------- Scheduling ------------------------------- */
 
 	@Override
 	public boolean canUse() {
-		return true;
+		return !mob.level().isClientSide() && holdsBalloon();
 	}
 
 	@Override
 	public boolean canContinueToUse() {
-		return true;
+		return holdsBalloon();
 	}
 
 	@Override
 	public void start() {
-		super.start();
-		cooldownTicks = 0;
-		stuckTicks = 0;
-		balloonActivationCooldown = 0;
-		lastPosition = mob.position();
+		state = State.IDLE;
+		stateTicks = 0;
 	}
 
 	@Override
 	public void stop() {
-		// Never actually stop - this goal stays with the mob
+		state = State.IDLE;
+		stateTicks = 0;
+		an.reset();
 	}
+
+	/* --------------------------------- Tick ---------------------------------- */
 
 	@Override
 	public void tick() {
-		// Balloon activation logic - only when airborne
-		if (holdsBalloon() && !mob.onGround()) {
-			if (balloonActivationCooldown <= 0) {
-				BalloonActivate_Method.execute(mob);
-				balloonActivationCooldown = BALLOON_ACTIVATION_COOLDOWN;
-			}
-		}
+		stateTicks++;
 
-		// Always count down the cooldown regardless of ground state
-		if (balloonActivationCooldown > 0) {
-			balloonActivationCooldown--;
-		}
-
-		// Jump logic - only if we have balloons
-		if (!holdsBalloon()) {
-			return;
-		}
-
-		updateStuckDetection();
-
-		if (cooldownTicks > 0) {
-			cooldownTicks--;
-			return;
-		}
-
-		if (shouldJump()) {
-			performJump();
-			cooldownTicks = JUMP_COOLDOWN;
-			stuckTicks = 0;
-		}
-	}
-
-
-	/* ---------------------------------------- Intelligence Methods ---------------------------------------- */
-
-	private boolean shouldJump() {
-		if (!mob.onGround()) return false;
-
-		// PRIORITY 1: Threat detection - jump away from close threats
 		LivingEntity target = mob.getTarget();
-		if (target != null) {
-			Vec3 mobPos = mob.position();
-			Vec3 targetPos = target.position();
+		updateAnalysis(target);
 
-			double horizontalDistance = Math.sqrt(
-					Math.pow(targetPos.x - mobPos.x, 2) + Math.pow(targetPos.z - mobPos.z, 2)
-			);
-
-			// If target is within 3 blocks, jump with direction
-			if (horizontalDistance <= 3.0) {
-				BlockPos mobBlockPos = mob.blockPosition();
-				Level level = mob.level();
-
-				// Quick clearance check
-				for (int i = 1; i <= 3; i++) {
-					if (level.getBlockState(mobBlockPos.above(i)).isSolid()) {
-						break;
-					}
-					if (i == 3) {
-						return true; // Have clearance, will jump with threat evasion
-					}
-				}
-			}
-
-			// PRIORITY 2: Target-based jumping for higher targets
-			double heightDiff = targetPos.y - mobPos.y;
-			if (heightDiff >= 1.0 && horizontalDistance <= 2.0) {
-				if (isOptimalJumpPosition(mobPos, targetPos, heightDiff)) {
-					return true;
-				}
-			}
-		}
-
-		// PRIORITY 3: Stuck detection
-		if (stuckTicks > MAX_STUCK_TIME) {
-			return true; // Will jump toward target/path
-		}
-
-		// PRIORITY 4: Navigation jumping
-		if (needsToJumpForNavigation()) {
-			return true;
-		}
-
-		// PRIORITY 5: Obstacle detection
-		if (hasJumpableObstacleAhead() || hasJumpableGapAhead()) {
-			return true;
-		}
-
-		return false;
-	}
-
-	private void performJump() {
-		if (!mob.level().isClientSide() && mob.onGround()) {
-			Vec3 jumpDirection = calculateJumpDirection();
-
-			mob.getJumpControl().jump();
-			mob.setJumping(true);
-
-			// Apply horizontal momentum in the calculated direction
-			if (jumpDirection != null) {
-				Vec3 currentMotion = mob.getDeltaMovement();
-				mob.setDeltaMovement(currentMotion.x + jumpDirection.x * 0.3, currentMotion.y, currentMotion.z + jumpDirection.z * 0.3);
-			}
+		switch (state) {
+			case IDLE -> doIdle();
+			case PREPARE -> doPrepare();
+			case JUMPING -> doJumping();
+			case AIRBORNE -> doAirborne();
 		}
 	}
 
-	private Vec3 calculateJumpDirection() {
-		LivingEntity target = mob.getTarget();
-		Vec3 mobPos = mob.position();
-
-		if (target != null) {
-			Vec3 targetPos = target.position();
-			double horizontalDistance = Math.sqrt(
-					Math.pow(targetPos.x - mobPos.x, 2) + Math.pow(targetPos.z - mobPos.z, 2)
-			);
-
-			// Threat evasion - jump away from close targets
-			if (horizontalDistance <= 3.0) {
-				Vec3 awayFromThreat = mobPos.subtract(targetPos).normalize();
-				return new Vec3(awayFromThreat.x, 0, awayFromThreat.z);
-			}
-
-			// Target approach - jump toward distant targets
-			Vec3 towardTarget = targetPos.subtract(mobPos).normalize();
-			return new Vec3(towardTarget.x, 0, towardTarget.z);
-		}
-
-		// Stuck recovery - try to move toward navigation path or random direction
-		if (stuckTicks > MAX_STUCK_TIME) {
-			PathNavigation navigation = mob.getNavigation();
-			Path path = navigation.getPath();
-
-			if (path != null && !path.isDone()) {
-				Vec3 pathPos = path.getEntityPosAtNode(mob, Math.min(path.getNextNodeIndex() + 1, path.getNodeCount() - 1));
-				if (pathPos != null) {
-					Vec3 towardPath = pathPos.subtract(mobPos).normalize();
-					return new Vec3(towardPath.x, 0, towardPath.z);
-				}
-			}
-
-			// Random direction if no path available
-			double angle = mob.getRandom().nextDouble() * Math.PI * 2;
-			return new Vec3(Math.cos(angle), 0, Math.sin(angle));
-		}
-
-		// Default: jump using preferred probe direction (movement/path/look)
-		Vec3 dir = getProbeDirection();
-		return new Vec3(dir.x, 0, dir.z);
-	}
-
-	private boolean isOptimalJumpPosition(Vec3 mobPos, Vec3 targetPos, double heightDiff) {
-		BlockPos mobBlockPos = mob.blockPosition();
-		Level level = mob.level();
-
-		// Check ceiling clearance
-		int clearanceNeeded = (int)Math.ceil(heightDiff) + 1;
-		for (int i = 1; i <= clearanceNeeded; i++) {
-			// ensure the mob's AABB can move upward by i blocks without collision
-			if (!level.noCollision(mob, mob.getBoundingBox().move(0, i, 0))) {
-				return false;
-			}
-		}
-
-		// Check directional alignment
-		Vec3 lookDir = mob.getLookAngle();
-		Vec3 toTarget = targetPos.subtract(mobPos).normalize();
-		return lookDir.dot(toTarget) > 0.5;
-	}
-
-	private boolean needsToJumpForNavigation() {
-		PathNavigation navigation = mob.getNavigation();
-		Path path = navigation.getPath();
-
-		if (path == null || path.isDone()) return false;
-
-		Vec3 targetPos = path.getEntityPosAtNode(mob, Math.min(path.getNextNodeIndex() + 1, path.getNodeCount() - 1));
-		if (targetPos == null) return false;
-
-		BlockPos currentPos = mob.blockPosition();
-		BlockPos targetBlockPos = BlockPos.containing(targetPos);
-
-		int heightDiff = targetBlockPos.getY() - currentPos.getY();
-		if (heightDiff >= 1 && heightDiff <= 2) {
-			Level level = mob.level();
-
-			for (int i = 1; i <= heightDiff + 1; i++) {
-				// ensure vertical clearance above the mob's current position
-				if (!level.noCollision(mob, mob.getBoundingBox().move(0, i, 0))) {
-					return false;
-				}
-			}
-
-			// landing must have a collidable surface below
-			BlockPos below = targetBlockPos.below();
-			return !level.getBlockState(below).getCollisionShape(level, below).isEmpty();
-		}
-
-		return false;
-	}
-
-	private boolean hasJumpableObstacleAhead() {
-		BlockPos mobPos = mob.blockPosition();
-		Level level = mob.level();
-		Vec3 dir = getProbeDirection();
-
-		for (int distance = 1; distance <= 2; distance++) {
-			BlockPos checkPos = mobPos.offset(
-					(int)Math.round(dir.x * distance),
-					0,
-					(int)Math.round(dir.z * distance)
-			);
-
-			BlockPos above1 = checkPos.above();
-			BlockPos above2 = checkPos.above(2);
-
-			boolean obstacleAtFeet = !level.getBlockState(checkPos).getCollisionShape(level, checkPos).isEmpty();
-			boolean obstacleAtHead = !level.getBlockState(above1).getCollisionShape(level, above1).isEmpty();
-			boolean spaceAbove2 = level.getBlockState(above2).getCollisionShape(level, above2).isEmpty();
-
-			if ((obstacleAtFeet || obstacleAtHead) && spaceAbove2) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	private boolean hasJumpableGapAhead() {
-		BlockPos mobPos = mob.blockPosition();
-		Level level = mob.level();
-		Vec3 dir = getProbeDirection();
-
-		for (int distance = 1; distance <= 2; distance++) {
-			BlockPos checkGround = mobPos.offset(
-					(int)Math.round(dir.x * distance),
-					-1,
-					(int)Math.round(dir.z * distance)
-			);
-
-			boolean groundSolid = !level.getBlockState(checkGround).getCollisionShape(level, checkGround).isEmpty();
-			if (!groundSolid) {
-				for (int depth = 0; depth <= 3; depth++) {
-					BlockPos below = checkGround.below(depth);
-					if (!level.getBlockState(below).getCollisionShape(level, below).isEmpty()) {
-						return true;
-					}
-				}
-			}
-		}
-
-		return false;
-	}
-
-	private void updateStuckDetection() {
+	private void doIdle() {
+		// If already airborne by any means, maintain balloon + steer
 		if (!mob.onGround()) {
-			stuckTicks = 0;
-			lastPosition = mob.position();
+			ensureBalloonActive();
+			state = State.AIRBORNE;
+			stateTicks = 0;
 			return;
 		}
 
-		Vec3 currentPos = mob.position();
-		double distanceMoved = currentPos.distanceTo(lastPosition);
-		double threshold = mob.getTarget() != null ? STUCK_THRESHOLD * 0.4 : STUCK_THRESHOLD;
+		if (!an.hasTarget) return;
 
-		if (distanceMoved < threshold) {
-			stuckTicks++;
-		} else {
-			stuckTicks = Math.max(0, stuckTicks - 3);
+		an.reset();
+		if (!an.headroomOK) return;
+
+		// Only melee logic
+		meleeDecision();
+
+		// Cooldown check, but allow bypass when on the ledge of a gap
+		boolean cooldownReady = (mob.tickCount - lastJumpTick) >= JUMP_COOLDOWN;
+		if (!(an.gapJump || an.up2 || an.up1)) return;
+		if (!cooldownReady && !an.forceJumpNow) return;
+
+		// Critical for gaps: stop pathing now and settle heading; also shorter PREPARE for gaps
+		if (an.gapJump) {
+			mob.getNavigation().stop();
+			an.prepareTicks = PREPARE_TICKS_GAP;
 		}
+		alignLook(an.horizDir);
 
-		lastPosition = currentPos;
+		state = State.PREPARE;
+		stateTicks = 0;
 	}
 
-	// Returns a horizontal unit vector representing the best direction to probe ahead.
-	private Vec3 getProbeDirection() {
-		Vec3 motion = mob.getDeltaMovement();
-		if (motion.lengthSqr() > 1.0E-4) {
-			Vec3 d = new Vec3(motion.x, 0, motion.z);
-			if (d.lengthSqr() > 1.0E-6) return d.normalize();
+	private void doPrepare() {
+		// Keep looking where we intend to go
+		alignLook(an.horizDir);
+
+		// If preparing a gap jump, freeze horizontal motion so we don't shuffle off the edge
+		if (an.gapJump && mob.onGround()) {
+			Vec3 cur = mob.getDeltaMovement();
+			mob.setDeltaMovement(0.0, Math.max(0.0, cur.y * 0.5), 0.0);
 		}
 
-		PathNavigation navigation = mob.getNavigation();
-		Path path = navigation.getPath();
-		if (path != null && !path.isDone()) {
-			Vec3 node = path.getEntityPosAtNode(mob, Math.min(path.getNextNodeIndex() + 1, path.getNodeCount() - 1));
-			if (node != null) {
-				Vec3 toward = node.subtract(mob.position());
-				Vec3 d = new Vec3(toward.x, 0, toward.z);
-				if (d.lengthSqr() > 1.0E-6) return d.normalize();
+		if (stateTicks >= an.prepareTicks) {
+			fireJumpImpulse();
+			lastJumpTick = mob.tickCount;
+			state = State.JUMPING;
+			stateTicks = 0;
+		}
+	}
+
+	private void doJumping() {
+		ensureBalloonActive();
+
+		// Keep navigation pointed to landing/target so the chase continues
+		if (!an.landingHint.equals(Vec3.ZERO)) {
+			mob.getNavigation().moveTo(an.landingHint.x, an.landingHint.y, an.landingHint.z, 1.22);
+		} else if (an.hasTarget) {
+			mob.getNavigation().moveTo(an.targetPos.x, an.targetPos.y, an.targetPos.z, 1.22);
+		}
+
+		if (!mob.onGround()) {
+			state = State.AIRBORNE;
+			stateTicks = 0;
+		}
+	}
+
+	private void doAirborne() {
+		ensureBalloonActive();
+
+		// Forward bias mid-air; stronger while crossing gaps
+		double nudgeMag = an.gapJump ? 0.05 : 0.02;
+		if (an.hasTarget) {
+			Vec3 cur = mob.getDeltaMovement();
+			Vec3 bias = an.horizDir.scale(nudgeMag);
+			mob.setDeltaMovement(cur.x + bias.x, cur.y, cur.z + bias.z);
+		}
+
+		// Keep pursuing
+		if (!an.landingHint.equals(Vec3.ZERO)) {
+			mob.getNavigation().moveTo(an.landingHint.x, an.landingHint.y, an.landingHint.z, 1.22);
+		} else if (an.hasTarget) {
+			mob.getNavigation().moveTo(an.targetPos.x, an.targetPos.y, an.targetPos.z, 1.22);
+		}
+
+		// Reset when landed
+		if (mob.onGround()) {
+			state = State.IDLE;
+			stateTicks = 0;
+			an.reset();
+		}
+	}
+
+	/* ----------------------------- Melee decisions ----------------------------- */
+
+	private void meleeDecision() {
+		BlockPos bp = mob.blockPosition();
+
+		// Check gap first
+		boolean gap = isOneBlockGapAhead(mob.level(), bp, an.faceDir);
+		if (gap) {
+			an.gapJump = true;
+
+			// Edge trigger: if we're close to the ledge, force jump now (bypass cooldown)
+			double edgeDist = distanceToFrontEdge(bp, an.faceDir);
+			if (edgeDist <= 0.40) {
+				an.forceJumpNow = true;
 			}
+
+			// Pick landing top 2 blocks forward (scan up/down for the real surface)
+			an.landingHint = findLandingTopCenter(mob.level(), bp.relative(an.faceDir, 2), 2, 2);
+			return;
 		}
 
-		Vec3 look = mob.getLookAngle();
-		Vec3 d = new Vec3(look.x, 0, look.z);
-		if (d.lengthSqr() > 1.0E-6) return d.normalize();
+		// Ledge mantling
+		boolean up2 = hasUpStepAhead(mob.level(), bp, an.faceDir, 2);
+		boolean up1 = hasUpStepAhead(mob.level(), bp, an.faceDir, 1);
 
-		// final fallback: don't leave zero vector
-		return new Vec3(1, 0, 0);
+		if ((an.dy >= 1.5 || an.distance < 4.25) && up2) {
+			an.up2 = true;
+			an.landingHint = Vec3.atCenterOf(bp.relative(an.faceDir).above(2));
+			return;
+		}
+
+		if ((an.dy >= 0.5 || an.distance < 4.0) && up1) {
+			an.up1 = true;
+			an.landingHint = Vec3.atCenterOf(bp.relative(an.faceDir).above(1));
+		}
 	}
+
+	/* ------------------------------ Jump impulse ------------------------------ */
+
+	private void fireJumpImpulse() {
+		// Forward/up tuned to reliably clear gaps and mantle 1–2 blocks
+		double baseForward = 0.45;
+		double baseUp = 0.42;
+		double bonusUp = 0.0;
+		double forwardScale = 1.0;
+
+		if (an.gapJump) {
+			forwardScale = 1.45; // aggressive push to cross the gap
+			bonusUp = 0.20;      // a bit more loft helps clear the lip consistently
+		} else if (an.up2) {
+			forwardScale = 0.95;
+			bonusUp = 0.38;
+		} else if (an.up1) {
+			forwardScale = 1.00;
+			bonusUp = 0.18;
+		} else {
+			bonusUp = 0.08;
+		}
+
+		double speedScale = 1.0 + clamp01(horizontalSpeed() * 1.5);
+		Vec3 forward = an.horizDir.scale(baseForward * forwardScale * speedScale);
+
+		// Trigger jump and then override motion
+		mob.getJumpControl().jump();
+		Vec3 cur = mob.getDeltaMovement();
+		Vec3 next = new Vec3(
+				cur.x * 0.25 + forward.x,
+				Math.max(cur.y, baseUp + bonusUp),
+				cur.z * 0.25 + forward.z
+		);
+		mob.setDeltaMovement(next);
+		alignLook(an.horizDir);
+
+		// Keep chase going
+		if (!an.landingHint.equals(Vec3.ZERO)) {
+			mob.getNavigation().moveTo(an.landingHint.x, an.landingHint.y, an.landingHint.z, 1.22);
+		} else if (an.hasTarget) {
+			mob.getNavigation().moveTo(an.targetPos.x, an.targetPos.y, an.targetPos.z, 1.22);
+		}
+	}
+
+	/* ------------------------------ Analysis/terrain ------------------------------ */
+
+	private void updateAnalysis(LivingEntity target) {
+		an.mobPos = mob.position();
+		an.hasTarget = target != null && target.isAlive();
+
+		if (!an.hasTarget) {
+			an.horizDir = Vec3.ZERO;
+			an.distance = 0;
+			an.dy = 0;
+			an.headroomOK = true;
+			return;
+		}
+
+		an.targetPos = target.position();
+		Vec3 to = an.targetPos.subtract(an.mobPos);
+		Vec3 horiz = new Vec3(to.x, 0, to.z);
+		an.horizDir = horiz.lengthSqr() > 1.0e-4 ? horiz.normalize() : Vec3.ZERO;
+		an.faceDir = Direction.getNearest(an.horizDir.x, 0, an.horizDir.z);
+		an.distance = an.mobPos.distanceTo(an.targetPos);
+		an.dy = an.targetPos.y - an.mobPos.y;
+		an.headroomOK = hasVerticalClearance(mob.level(), mob.blockPosition(), 3);
+	}
+
+	private boolean hasVerticalClearance(Level level, BlockPos pos, int height) {
+		for (int i = 1; i <= height; i++) {
+			BlockPos p = pos.above(i);
+			if (!level.getBlockState(p).getCollisionShape(level, p).isEmpty()) return false;
+		}
+		return true;
+	}
+
+	// Gap: front and front-below are air; landing 2 forward has a solid surface (we find top),
+	// and there's headroom at landing.
+	private boolean isOneBlockGapAhead(Level level, BlockPos mobPos, Direction dir) {
+		BlockPos front = mobPos.relative(dir);
+		BlockPos frontBelow = front.below();
+
+		boolean airFront = isAir(level, front) && isAir(level, frontBelow);
+		if (!airFront) return false;
+
+		BlockPos landingCol = mobPos.relative(dir, 2);
+		BlockPos landingTop = findLandingTop(level, landingCol, 2, 2);
+		if (landingTop == null) return false;
+
+		boolean landingHeadroom = isAir(level, landingTop.above()) && isAir(level, landingTop.above(2));
+		return landingHeadroom;
+	}
+
+	// Up-step: can we stand h blocks higher one forward, with headroom?
+	private boolean hasUpStepAhead(Level level, BlockPos mobPos, Direction dir, int h) {
+		h = Mth.clamp(h, 1, 2);
+		BlockPos stand = mobPos.relative(dir).above(h);
+		if (!isSolid(level, stand.below())) return false;
+		return isAir(level, stand) && isAir(level, stand.above());
+	}
+
+	// Distance from mob position to the front edge of the current block along faceDir.
+	private double distanceToFrontEdge(BlockPos mobPos, Direction dir) {
+		double px = mob.getX();
+		double pz = mob.getZ();
+		return switch (dir) {
+			case EAST -> (mobPos.getX() + 1.0) - px;
+			case WEST -> px - mobPos.getX();
+			case SOUTH -> (mobPos.getZ() + 1.0) - pz;
+			case NORTH -> pz - mobPos.getZ();
+			default -> 1.0;
+		};
+	}
+
+	private BlockPos findLandingTop(Level level, BlockPos col, int searchDown, int searchUp) {
+		BlockPos p = col;
+		for (int i = 0; i < searchDown; i++) {
+			if (isSolid(level, p)) return p;
+			p = p.below();
+		}
+		p = col.above();
+		for (int i = 0; i < searchUp; i++) {
+			if (isSolid(level, p)) return p;
+			p = p.above();
+		}
+		return null;
+	}
+
+	private Vec3 findLandingTopCenter(Level level, BlockPos col, int searchDown, int searchUp) {
+		BlockPos top = findLandingTop(level, col, searchDown, searchUp);
+		return top == null ? Vec3.atCenterOf(col) : Vec3.atCenterOf(top.above());
+	}
+
+	private boolean isAir(Level level, BlockPos pos) {
+		BlockState s = level.getBlockState(pos);
+		return s.getCollisionShape(level, pos).isEmpty();
+	}
+
+	private boolean isSolid(Level level, BlockPos pos) {
+		BlockState s = level.getBlockState(pos);
+		return !s.getCollisionShape(level, pos).isEmpty();
+	}
+
+	/* ------------------------------ Utilities ------------------------------ */
 
 	private boolean holdsBalloon() {
 		return (mob.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof BalloonItem) ||
 				(mob.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof BalloonItem);
+	}
+
+	private void ensureBalloonActive() {
+		BalloonActivate_Method.execute(mob);
+	}
+
+	private void alignLook(Vec3 dir) {
+		if (dir.lengthSqr() < 1.0e-6) return;
+		float yaw = (float) (Mth.atan2(dir.z, dir.x) * (180F / Math.PI)) - 90.0F;
+		mob.setYRot(yaw);
+		mob.setYHeadRot(yaw);
+		mob.setYBodyRot(yaw);
+	}
+
+	private double horizontalSpeed() {
+		Vec3 v = mob.getDeltaMovement();
+		return Math.sqrt(v.x * v.x + v.z * v.z);
+	}
+
+	private static double clamp01(double v) {
+		return v < 0 ? 0 : (v > 1 ? 1 : v);
 	}
 }

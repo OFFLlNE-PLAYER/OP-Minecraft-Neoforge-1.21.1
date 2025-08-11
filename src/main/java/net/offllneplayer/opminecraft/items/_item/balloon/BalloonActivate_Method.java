@@ -20,7 +20,20 @@ public class BalloonActivate_Method {
 				balloonCount++;
 			}
 
-			if (balloonCount > 0) {
+			if (balloonCount <= 0) {
+				return;
+			}
+
+			// If the balloon buff is not present, apply immediately.
+			boolean hasBalloonBuff = living.getEffect(RegistryMobEffects.BALLOON) != null;
+			if (!hasBalloonBuff) {
+				living.addEffect(new MobEffectInstance(RegistryMobEffects.BALLOON, 22, balloonCount - 1, false, true));
+				living.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 22, 0, false, true));
+				return;
+			}
+
+			// If effect is already applied, refresh once per second to keep it up (duration is 22 ticks).
+			if (living.tickCount % 20 == 0) {
 				living.addEffect(new MobEffectInstance(RegistryMobEffects.BALLOON, 22, balloonCount - 1, false, true));
 				living.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 22, 0, false, true));
 			}

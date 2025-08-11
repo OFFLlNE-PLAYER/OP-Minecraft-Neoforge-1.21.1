@@ -55,7 +55,7 @@ public final class SpawnEquipWeapons {
 
     public static void maybeEquipOffhand(Mob mob) {
         // Zombie off-hand: 5% chance, excluding Zombified Piglin
-		 if (RANDOM.nextInt(20) == 0) {
+		 if (RANDOM.nextInt(1) == 0) {
 			 if ((mob instanceof Zombie) && !(mob instanceof ZombifiedPiglin)) {
 				 ItemStack off = getRandomZombieItem(mob);
 				 if (!off.isEmpty()) {
@@ -64,22 +64,6 @@ public final class SpawnEquipWeapons {
 					 if (off.getItem() instanceof BalloonItem) {
 						 mob.goalSelector.addGoal(1, new GOAL_BalloonJump(mob));
 					 }
-				 }
-			 } else if (mob instanceof Skeleton) {
-				 if (RANDOM.nextInt(1) == 0) {
-					 Registry<Item> itemRegistry = mob.level().registryAccess().registryOrThrow(Registries.ITEM);
-					 Iterable<Holder<Item>> balloonEntries = itemRegistry.getTagOrEmpty(OP_TagKeyUtil.Items.BALLOONS);
-					 Item randomBalloon = null;
-					 int seen = 0;
-					 for (Holder<Item> holder : balloonEntries) {
-						 seen++;
-						 if (mob.getRandom().nextInt(seen) == 0) {
-							 randomBalloon = holder.value();
-						 }
-					 }
-					 ItemStack off = randomBalloon == null ? ItemStack.EMPTY : new ItemStack(randomBalloon);
-					 mob.setItemInHand(InteractionHand.OFF_HAND, off);
-					 mob.goalSelector.addGoal(1, new GOAL_BalloonJump(mob));
 				 }
 			 }
 		 }

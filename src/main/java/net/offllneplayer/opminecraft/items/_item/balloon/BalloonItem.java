@@ -59,23 +59,27 @@ public class BalloonItem extends Item {
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
 		if (entity instanceof Player player) {
-			if ((entity.tickCount % 20 == 0) && (!entity.onGround())) {
+			// Only care while airborne for players; mobs use GOAL_BalloonJump/Balloon_OnTick_Method
+			if (!entity.onGround()) {
 				if (!world.isClientSide()) {
+					// Activate balloon effects: call every tick while airborne; execute() handles refresh cadence
 					if (selected || slot == 40) {
 						BalloonActivate_Method.execute(player);
 					} else if ((player.getMainHandItem() == itemstack) && (player.getOffhandItem() == itemstack)) {
 						BalloonActivate_Method.execute(player);
 					}
 
-					// Check where this itemstack is being held by the player and apply damage
-					boolean isHeld = (player.getMainHandItem() == itemstack) || (player.getOffhandItem() == itemstack);
-					if (isHeld) {
-						int cur = itemstack.getDamageValue();
-						int max = itemstack.getMaxDamage();
-						if (cur + 1 >= max) {
-							PopBalloons_Method.execute(player);
-						} else {
-							itemstack.setDamageValue(cur + 1);
+					// Apply durability damage once per second while airborne and holding
+					if (entity.tickCount % 20 == 0) {
+						boolean isHeld = (player.getMainHandItem() == itemstack) || (player.getOffhandItem() == itemstack);
+						if (isHeld) {
+							int cur = itemstack.getDamageValue();
+							int max = itemstack.getMaxDamage();
+							if (cur + 1 >= max) {
+								PopBalloons_Method.execute(player);
+							} else {
+								itemstack.setDamageValue(cur + 1);
+							}
 						}
 					}
 				}
