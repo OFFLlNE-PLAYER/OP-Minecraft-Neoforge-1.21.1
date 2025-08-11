@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "opminecraft:blocks/cobbled_slate_slab",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "opminecraft:cobbled_slate_slab",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 2,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "opminecraft:cobbled_slate_slab",
+                  "properties": { "type": "double" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

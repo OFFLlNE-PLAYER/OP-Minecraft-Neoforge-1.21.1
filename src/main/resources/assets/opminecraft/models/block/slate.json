@@ -1,7 +1,12 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "opminecraft:block/text_slate",
+    "down": "opminecraft:block/text_slate",
+    "up": "opminecraft:block/text_slate_top",
+    "north": "opminecraft:block/text_slate",
+    "south": "opminecraft:block/text_slate",
+    "west": "opminecraft:block/text_slate",
+    "east": "opminecraft:block/text_slate",
     "particle": "opminecraft:block/text_slate"
   },
   "render_type": "solid"

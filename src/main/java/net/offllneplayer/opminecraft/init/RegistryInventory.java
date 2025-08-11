@@ -9,8 +9,8 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.core.registries.Registries;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestInv;
-import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceInv;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestInv;
+import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceInv;
 
 public class RegistryInventory {
 	public static final DeferredRegister<MenuType<?>> INVREGISTRY = DeferredRegister.create(Registries.MENU, OPMinecraft.Mod_ID);

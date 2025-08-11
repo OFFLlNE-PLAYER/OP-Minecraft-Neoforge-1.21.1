@@ -1,12 +1,11 @@
 {
-  "replace": false,
   "values": [
-
-    "#opminecraft:non_solid_corals",
-
-    "#minecraft:replaceable",
+    "#minecraft:banners",
+    "#minecraft:crops",
     "#minecraft:candles",
     "#minecraft:flowers",
+    "#minecraft:non_solid_corals",
+    "#minecraft:replaceable",
 
     "minecraft:torch",
     "minecraft:wall_torch",

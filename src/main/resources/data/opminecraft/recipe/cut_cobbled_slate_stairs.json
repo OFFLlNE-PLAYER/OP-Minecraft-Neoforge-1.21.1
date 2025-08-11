@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:cobbled_slate"},
+  "result": {"id": "opminecraft:cobbled_slate_stairs", "count": 1}
+}

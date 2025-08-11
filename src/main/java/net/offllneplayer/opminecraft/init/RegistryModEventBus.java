@@ -7,7 +7,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 import net.offllneplayer.opminecraft.client.ModModelLayers;
 
-import net.offllneplayer.opminecraft.iwe.tntstick.ThrownTNTStickModel;
+import net.offllneplayer.opminecraft.items._iwe.tntstick.ThrownTNTStickModel;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 

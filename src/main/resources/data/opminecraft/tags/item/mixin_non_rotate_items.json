@@ -1,9 +1,9 @@
 {
-  "replace": false,
   "values": [
     "opminecraft:block_of_test",
 
     "opminecraft:block_of_onyx",
+
     "opminecraft:onyx_lamp_black",
     "opminecraft:onyx_lamp_blue",
     "opminecraft:onyx_lamp_brown",
@@ -20,7 +20,6 @@
     "opminecraft:onyx_lamp_red",
     "opminecraft:onyx_lamp_white",
     "opminecraft:onyx_lamp_yellow",
-
 
     "opminecraft:block_of_crying_ingots",
     "opminecraft:crying_essence",
@@ -43,7 +42,6 @@
     "opminecraft:crying_tile_trapdoor",
     "opminecraft:crying_tile_wall",
 
-
     "opminecraft:block_of_charcoal",
     "opminecraft:charcoal_button",
     "opminecraft:charcoal_fence",
@@ -53,6 +51,7 @@
     "opminecraft:charcoal_stairs",
     "opminecraft:charcoal_trapdoor",
     "opminecraft:charcoal_wall",
+
     "opminecraft:charcoal_bricks",
     "opminecraft:charcoal_brick_button",
     "opminecraft:charcoal_brick_fence",
@@ -62,6 +61,7 @@
     "opminecraft:charcoal_brick_stairs",
     "opminecraft:charcoal_brick_trapdoor",
     "opminecraft:charcoal_brick_wall",
+
     "opminecraft:charcoal_tiles",
     "opminecraft:charcoal_tile_button",
     "opminecraft:charcoal_tile_fence",
@@ -81,6 +81,16 @@
     "opminecraft:slate_stairs",
     "opminecraft:slate_trapdoor",
     "opminecraft:slate_wall",
+
+    "opminecraft:cobbled_slate",
+    "opminecraft:cobbled_slate_button",
+    "opminecraft:cobbled_slate_fence",
+    "opminecraft:cobbled_slate_fence_gate",
+    "opminecraft:cobbled_slate_pressure_plate",
+    "opminecraft:cobbled_slate_slab",
+    "opminecraft:cobbled_slate_stairs",
+    "opminecraft:cobbled_slate_trapdoor",
+    "opminecraft:cobbled_slate_wall",
 
     "opminecraft:smooth_slate",
     "opminecraft:smooth_slate_button",
@@ -122,12 +132,10 @@
     "opminecraft:stone_tile_trapdoor",
     "opminecraft:stone_tile_wall",
 
-
     "opminecraft:chiseled_iron",
     "opminecraft:chiseled_gold",
     "opminecraft:chiseled_diamond",
     "opminecraft:chiseled_netherite",
-
 
     "opminecraft:copper_furnace",
     "opminecraft:iron_furnace",
@@ -135,8 +143,6 @@
     "opminecraft:diamond_furnace",
     "opminecraft:netherite_furnace",
 
-
-    "opminecraft:golden_bed",
     "opminecraft:bounce_crate",
     "opminecraft:crash_crate",
     "opminecraft:crash_tnt",
@@ -144,7 +150,6 @@
     "opminecraft:aku_aku_crate",
     "opminecraft:flowering_pitcher_plant",
     "opminecraft:wumpa_plant",
-
 
     "opminecraft:acacia_copper_trim_ancient_chest",
     "opminecraft:acacia_iron_trim_ancient_chest",
@@ -156,7 +161,7 @@
     "opminecraft:acacia_lapis_trim_ancient_chest",
     "opminecraft:acacia_quartz_trim_ancient_chest",
     "opminecraft:acacia_redstone_trim_ancient_chest",
-    
+
     "opminecraft:bamboo_copper_trim_ancient_chest",
     "opminecraft:bamboo_iron_trim_ancient_chest",
     "opminecraft:bamboo_gold_trim_ancient_chest",
@@ -167,7 +172,7 @@
     "opminecraft:bamboo_lapis_trim_ancient_chest",
     "opminecraft:bamboo_quartz_trim_ancient_chest",
     "opminecraft:bamboo_redstone_trim_ancient_chest",
-    
+
     "opminecraft:birch_copper_trim_ancient_chest",
     "opminecraft:birch_iron_trim_ancient_chest",
     "opminecraft:birch_gold_trim_ancient_chest",
@@ -178,7 +183,7 @@
     "opminecraft:birch_lapis_trim_ancient_chest",
     "opminecraft:birch_quartz_trim_ancient_chest",
     "opminecraft:birch_redstone_trim_ancient_chest",
-    
+
     "opminecraft:cherry_copper_trim_ancient_chest",
     "opminecraft:cherry_iron_trim_ancient_chest",
     "opminecraft:cherry_gold_trim_ancient_chest",
@@ -189,7 +194,7 @@
     "opminecraft:cherry_lapis_trim_ancient_chest",
     "opminecraft:cherry_quartz_trim_ancient_chest",
     "opminecraft:cherry_redstone_trim_ancient_chest",
-    
+
     "opminecraft:dark_oak_copper_trim_ancient_chest",
     "opminecraft:dark_oak_iron_trim_ancient_chest",
     "opminecraft:dark_oak_gold_trim_ancient_chest",
@@ -200,7 +205,7 @@
     "opminecraft:dark_oak_lapis_trim_ancient_chest",
     "opminecraft:dark_oak_quartz_trim_ancient_chest",
     "opminecraft:dark_oak_redstone_trim_ancient_chest",
-    
+
     "opminecraft:jungle_copper_trim_ancient_chest",
     "opminecraft:jungle_iron_trim_ancient_chest",
     "opminecraft:jungle_gold_trim_ancient_chest",
@@ -211,7 +216,7 @@
     "opminecraft:jungle_lapis_trim_ancient_chest",
     "opminecraft:jungle_quartz_trim_ancient_chest",
     "opminecraft:jungle_redstone_trim_ancient_chest",
-    
+
     "opminecraft:mangrove_copper_trim_ancient_chest",
     "opminecraft:mangrove_iron_trim_ancient_chest",
     "opminecraft:mangrove_gold_trim_ancient_chest",
@@ -222,7 +227,7 @@
     "opminecraft:mangrove_lapis_trim_ancient_chest",
     "opminecraft:mangrove_quartz_trim_ancient_chest",
     "opminecraft:mangrove_redstone_trim_ancient_chest",
-    
+
     "opminecraft:oak_copper_trim_ancient_chest",
     "opminecraft:oak_iron_trim_ancient_chest",
     "opminecraft:oak_gold_trim_ancient_chest",
@@ -233,7 +238,7 @@
     "opminecraft:oak_lapis_trim_ancient_chest",
     "opminecraft:oak_quartz_trim_ancient_chest",
     "opminecraft:oak_redstone_trim_ancient_chest",
-    
+
     "opminecraft:spruce_copper_trim_ancient_chest",
     "opminecraft:spruce_iron_trim_ancient_chest",
     "opminecraft:spruce_gold_trim_ancient_chest",
@@ -244,7 +249,7 @@
     "opminecraft:spruce_lapis_trim_ancient_chest",
     "opminecraft:spruce_quartz_trim_ancient_chest",
     "opminecraft:spruce_redstone_trim_ancient_chest",
-    
+
     "opminecraft:crimson_copper_trim_ancient_chest",
     "opminecraft:crimson_iron_trim_ancient_chest",
     "opminecraft:crimson_gold_trim_ancient_chest",
@@ -255,7 +260,7 @@
     "opminecraft:crimson_lapis_trim_ancient_chest",
     "opminecraft:crimson_quartz_trim_ancient_chest",
     "opminecraft:crimson_redstone_trim_ancient_chest",
-    
+
     "opminecraft:warped_copper_trim_ancient_chest",
     "opminecraft:warped_iron_trim_ancient_chest",
     "opminecraft:warped_gold_trim_ancient_chest",
@@ -267,12 +272,46 @@
     "opminecraft:warped_quartz_trim_ancient_chest",
     "opminecraft:warped_redstone_trim_ancient_chest",
 
+    "#opminecraft:balloons",
+    "#opminecraft:pistols",
 
+    "opminecraft:brilliant_amethyst",
+    "opminecraft:brilliant_diamond",
+    "opminecraft:brilliant_emerald",
+
+    "opminecraft:brilliant_alexandrite",
+    "opminecraft:brilliant_andalusite",
+    "opminecraft:brilliant_aquamarine",
+    "opminecraft:brilliant_chrysoberyl",
+    "opminecraft:brilliant_corundum",
+    "opminecraft:brilliant_cymophane",
+    "opminecraft:brilliant_dragonite",
+    "opminecraft:brilliant_jadeite",
+    "opminecraft:brilliant_opalite",
+    "opminecraft:brilliant_padparadscha",
+    "opminecraft:brilliant_ruby",
+    "opminecraft:brilliant_sapphire",
+    "opminecraft:brilliant_scapolite",
+    "opminecraft:brilliant_staurolite",
+    "opminecraft:brilliant_tanzanite",
+
+    "opminecraft:fourty_four_s_and_w_rounds",
+    "opminecraft:fifty_s_and_w_rounds",
+    "opminecraft:tenmm_parabellum_rounds",
+
+    "opminecraft:totem_of_life",
+    "opminecraft:totem_of_uncrying",
+
+
+    "#minecraft:banners",
+    "#minecraft:beds",
+    "#minecraft:candles",
+    "#minecraft:flowers",
 
     "#minecraft:buttons",
     "#minecraft:fences",
     "#minecraft:fence_gates",
-    "#minecraft:pressure_plate",
+    "#minecraft:pressure_plates",
     "#minecraft:slabs",
     "#minecraft:stairs",
     "#minecraft:trapdoors",
@@ -290,8 +329,6 @@
     "minecraft:muddy_mangrove_roots",
 
     "minecraft:armor_stand",
-    "minecraft:item_frame",
-    "minecraft:glow_item_frame",
 
     "minecraft:barrel",
     "minecraft:chest",
@@ -333,19 +370,43 @@
     "minecraft:daylight_detector",
     "minecraft:dispenser",
     "minecraft:dropper",
+    "minecraft:flower_pot",
     "minecraft:lodestone",
     "minecraft:observer",
     "minecraft:piston",
+    "minecraft:redstone_lamp",
     "minecraft:repeater",
     "minecraft:respawn_anchor",
     "minecraft:sticky_piston",
     "minecraft:target",
+    "minecraft:tnt",
 
+    "minecraft:torch",
+    "minecraft:redstone_torch",
     "minecraft:campfire",
     "minecraft:lantern",
     "minecraft:soul_campfire",
     "minecraft:soul_lantern",
 
+    "minecraft:candle",
+    "minecraft:black_candle",
+    "minecraft:blue_candle",
+    "minecraft:brown_candle",
+    "minecraft:cyan_candle",
+    "minecraft:gray_candle",
+    "minecraft:green_candle",
+    "minecraft:light_blue_candle",
+    "minecraft:light_gray_candle",
+    "minecraft:lime_candle",
+    "minecraft:magenta_candle",
+    "minecraft:orange_candle",
+    "minecraft:pink_candle",
+    "minecraft:purple_candle",
+    "minecraft:red_candle",
+    "minecraft:white_candle",
+    "minecraft:yellow_candle",
+
+    "minecraft:shulker_box",
     "minecraft:black_shulker_box",
     "minecraft:blue_shulker_box",
     "minecraft:brown_shulker_box",
@@ -369,6 +430,7 @@
 
     "minecraft:cobblestone",
     "minecraft:stone",
+    "minecraft:smooth_stone",
     "minecraft:stone_bricks",
     "minecraft:mossy_stone_bricks",
     "minecraft:cracked_stone_bricks",
@@ -389,34 +451,43 @@
     "minecraft:polished_blackstone_bricks",
     "minecraft:cracked_polished_blackstone_bricks",
 
+    "minecraft:bricks",
+    
     "minecraft:granite",
     "minecraft:polished_granite",
     "minecraft:diorite",
     "minecraft:polished_diorite",
     "minecraft:andesite",
     "minecraft:polished_andesite",
-    "minecraft:deepslate",
-    "minecraft:cobbled_deepslate",
-    "minecraft:polished_deepslate",
+    
     "minecraft:calcite",
-    "minecraft:tuff",
     "minecraft:dripstone_block",
-
+    
     "minecraft:basalt",
     "minecraft:polished_basalt",
     "minecraft:smooth_basalt",
 
     "minecraft:netherrack",
     "minecraft:nether_bricks",
+    "minecraft:red_nether_bricks",
     "minecraft:cracked_nether_bricks",
     "minecraft:chiseled_nether_bricks",
 
+    "minecraft:deepslate",
+    "minecraft:cobbled_deepslate",
+    "minecraft:polished_deepslate",
     "minecraft:deepslate_bricks",
     "minecraft:cracked_deepslate_bricks",
     "minecraft:deepslate_tiles",
     "minecraft:cracked_deepslate_tiles",
     "minecraft:chiseled_deepslate",
 
+    "minecraft:tuff",
+    "minecraft:polished_tuff",
+    "minecraft:tuff_bricks",
+    "minecraft:chiseled_tuff",
+    "minecraft:chiseled_tuff_bricks",
+    
     "minecraft:end_stone",
     "minecraft:end_stone_bricks",
 
@@ -424,6 +495,7 @@
     "minecraft:purpur_pillar",
 
     "minecraft:quartz_block",
+    "minecraft:quartz_bricks",
     "minecraft:chiseled_quartz_block",
     "minecraft:quartz_pillar",
     "minecraft:smooth_quartz",
@@ -451,48 +523,71 @@
     "minecraft:nether_gold_ore",
     "minecraft:nether_quartz_ore",
     "minecraft:ancient_debris",
-    "minecraft:coal_block",
+
     "minecraft:raw_iron_block",
     "minecraft:raw_copper_block",
     "minecraft:raw_gold_block",
-    "minecraft:amethyst_block",
-    "minecraft:iron_block",
-    "minecraft:copper_block",
-    "minecraft:gold_block",
-    "minecraft:diamond_block",
-    "minecraft:netherite_block",
 
+    "minecraft:amethyst_block",
+    "minecraft:coal_block",
+    "minecraft:diamond_block",
+    "minecraft:emerald_block",
+    "minecraft:lapis_block",
+    "minecraft:iron_block",
+    "minecraft:gold_block",
+    "minecraft:netherite_block",
+    "minecraft:redstone_block",
+
+    "minecraft:copper_block",
     "minecraft:exposed_copper",
     "minecraft:weathered_copper",
     "minecraft:oxidized_copper",
-    "minecraft:cut_copper",
-    "minecraft:exposed_cut_copper",
-    "minecraft:weathered_cut_copper",
-    "minecraft:oxidized_cut_copper",
-    "minecraft:cut_copper_stairs",
-    "minecraft:exposed_cut_copper_stairs",
-    "minecraft:weathered_cut_copper_stairs",
-    "minecraft:oxidized_cut_copper_stairs",
-    "minecraft:cut_copper_slab",
-    "minecraft:exposed_cut_copper_slab",
-    "minecraft:weathered_cut_copper_slab",
-    "minecraft:oxidized_cut_copper_slab",
     "minecraft:waxed_copper_block",
     "minecraft:waxed_exposed_copper",
     "minecraft:waxed_weathered_copper",
     "minecraft:waxed_oxidized_copper",
+
+    "minecraft:cut_copper",
+    "minecraft:exposed_cut_copper",
+    "minecraft:weathered_cut_copper",
+    "minecraft:oxidized_cut_copper",
     "minecraft:waxed_cut_copper",
     "minecraft:waxed_exposed_cut_copper",
     "minecraft:waxed_weathered_cut_copper",
     "minecraft:waxed_oxidized_cut_copper",
-    "minecraft:waxed_cut_copper_stairs",
-    "minecraft:waxed_exposed_cut_copper_stairs",
-    "minecraft:waxed_weathered_cut_copper_stairs",
-    "minecraft:waxed_oxidized_cut_copper_stairs",
-    "minecraft:waxed_cut_copper_slab",
-    "minecraft:waxed_exposed_cut_copper_slab",
-    "minecraft:waxed_weathered_cut_copper_slab",
-    "minecraft:waxed_oxidized_cut_copper_slab",
+
+    "minecraft:copper_grate",
+    "minecraft:exposed_copper_grate",
+    "minecraft:weathered_copper_grate",
+    "minecraft:oxidized_copper_grate",
+    "minecraft:waxed_copper_grate",
+    "minecraft:waxed_exposed_copper_grate",
+    "minecraft:waxed_weathered_copper_grate",
+    "minecraft:waxed_oxidized_copper_grate",
+
+    "minecraft:copper_bulb",
+    "minecraft:exposed_copper_bulb",
+    "minecraft:weathered_copper_bulb",
+    "minecraft:oxidized_copper_bulb",
+    "minecraft:waxed_copper_bulb",
+    "minecraft:waxed_exposed_copper_bulb",
+    "minecraft:waxed_weathered_copper_bulb",
+    "minecraft:waxed_oxidized_copper_bulb",
+
+    "minecraft:oak_planks",
+    "minecraft:spruce_planks",
+    "minecraft:birch_planks",
+    "minecraft:jungle_planks",
+    "minecraft:acacia_planks",
+    "minecraft:dark_oak_planks",
+    "minecraft:mangrove_planks",
+    "minecraft:cherry_planks",
+    "minecraft:bamboo_planks",
+    "minecraft:crimson_planks",
+    "minecraft:warped_planks",
+
+    "minecraft:bamboo_block",
+    "minecraft:stripped_bamboo_block",
 
     "minecraft:oak_log",
     "minecraft:spruce_log",
@@ -532,17 +627,17 @@
     "minecraft:stripped_cherry_wood",
     "minecraft:stripped_crimson_hyphae",
     "minecraft:stripped_warped_hyphae",
-    "minecraft:oak_planks",
-    "minecraft:spruce_planks",
-    "minecraft:birch_planks",
-    "minecraft:jungle_planks",
-    "minecraft:acacia_planks",
-    "minecraft:dark_oak_planks",
-    "minecraft:mangrove_planks",
-    "minecraft:cherry_planks",
-    "minecraft:bamboo_planks",
-    "minecraft:crimson_planks",
-    "minecraft:warped_planks",
+
+    "minecraft:acacia_leaves",
+    "minecraft:azalea_leaves",
+    "minecraft:birch_leaves",
+    "minecraft:cherry_leaves",
+    "minecraft:dark_oak_leaves",
+    "minecraft:flowering_azalea_leaves",
+    "minecraft:jungle_leaves",
+    "minecraft:mangrove_leaves",
+    "minecraft:oak_leaves",
+    "minecraft:spruce_leaves",
 
     "minecraft:sand",
     "minecraft:red_sand",
@@ -588,6 +683,17 @@
     "minecraft:obsidian",
     "minecraft:crying_obsidian",
 
+    "minecraft:brain_coral_block",
+    "minecraft:bubble_coral_block",
+    "minecraft:dead_brain_coral_block",
+    "minecraft:dead_bubble_coral_block",
+    "minecraft:dead_fire_coral_block",
+    "minecraft:dead_horn_coral_block",
+    "minecraft:dead_tube_coral_block",
+    "minecraft:fire_coral_block",
+    "minecraft:horn_coral_block",
+    "minecraft:tube_coral_block",
+
     "minecraft:sea_lantern",
     "minecraft:sponge",
     "minecraft:wet_sponge",
@@ -595,6 +701,10 @@
     "minecraft:ice",
     "minecraft:packed_ice",
     "minecraft:blue_ice",
+
+    "minecraft:brown_mushroom_block",
+    "minecraft:mushroom_stem",
+    "minecraft:red_mushroom_block",
 
     "minecraft:ochre_froglight",
     "minecraft:verdant_froglight",
@@ -657,6 +767,59 @@
     "minecraft:brown_concrete",
     "minecraft:green_concrete",
     "minecraft:red_concrete",
-    "minecraft:black_concrete"
+    "minecraft:black_concrete",
+
+    "minecraft:black_concrete_powder",
+    "minecraft:blue_concrete_powder",
+    "minecraft:brown_concrete_powder",
+    "minecraft:cyan_concrete_powder",
+    "minecraft:gray_concrete_powder",
+    "minecraft:green_concrete_powder",
+    "minecraft:light_blue_concrete_powder",
+    "minecraft:light_gray_concrete_powder",
+    "minecraft:lime_concrete_powder",
+    "minecraft:magenta_concrete_powder",
+    "minecraft:orange_concrete_powder",
+    "minecraft:pink_concrete_powder",
+    "minecraft:purple_concrete_powder",
+    "minecraft:red_concrete_powder",
+    "minecraft:white_concrete_powder",
+    "minecraft:yellow_concrete_powder",
+
+    "minecraft:black_wool",
+    "minecraft:blue_wool",
+    "minecraft:brown_wool",
+    "minecraft:cyan_wool",
+    "minecraft:gray_wool",
+    "minecraft:green_wool",
+    "minecraft:light_blue_wool",
+    "minecraft:light_gray_wool",
+    "minecraft:lime_wool",
+    "minecraft:magenta_wool",
+    "minecraft:orange_wool",
+    "minecraft:pink_wool",
+    "minecraft:purple_wool",
+    "minecraft:red_wool",
+    "minecraft:white_wool",
+    "minecraft:yellow_wool",
+
+    "minecraft:black_carpet",
+    "minecraft:blue_carpet",
+    "minecraft:brown_carpet",
+    "minecraft:cyan_carpet",
+    "minecraft:gray_carpet",
+    "minecraft:green_carpet",
+    "minecraft:light_blue_carpet",
+    "minecraft:light_gray_carpet",
+    "minecraft:lime_carpet",
+    "minecraft:magenta_carpet",
+    "minecraft:orange_carpet",
+    "minecraft:pink_carpet",
+    "minecraft:purple_carpet",
+    "minecraft:red_carpet",
+    "minecraft:white_carpet",
+    "minecraft:yellow_carpet",
+
+    "minecraft:totem_of_undying"
   ]
 }

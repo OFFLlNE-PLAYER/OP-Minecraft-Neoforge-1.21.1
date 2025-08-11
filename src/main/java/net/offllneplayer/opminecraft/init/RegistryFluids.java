@@ -9,8 +9,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.block._fluid.CryingEssenceFluid;
-import net.offllneplayer.opminecraft.block._fluid.types.CryingEssenceFluidType;
+import net.offllneplayer.opminecraft.blocks._fluid.CryingEssenceFluid;
+import net.offllneplayer.opminecraft.blocks._fluid.types.CryingEssenceFluidType;
 
 import static net.offllneplayer.opminecraft.OPMinecraft.Mod_ID;
 

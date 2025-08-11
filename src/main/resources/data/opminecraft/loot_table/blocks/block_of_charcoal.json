@@ -5,15 +5,10 @@
     {
       "rolls": 1.0,
       "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
+        { "condition": "minecraft:survives_explosion" }
       ],
       "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "opminecraft:block_of_charcoal"
-        }
+        { "type": "minecraft:item", "name": "opminecraft:block_of_charcoal" }
       ]
     }
   ]

@@ -1,0 +1,8 @@
+{
+  "parent": "block/fence_side",
+  "textures": {
+    "texture": "opminecraft:block/cobbled_slate",
+    "particle": "opminecraft:block/cobbled_slate"
+  },
+  "render_type": "solid"
+}

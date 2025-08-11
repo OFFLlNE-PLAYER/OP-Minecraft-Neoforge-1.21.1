@@ -1,6 +1,5 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {"item": "opminecraft:slate_bricks"},
-  "result": "opminecraft:slate_brick_trapdoor",
-  "count": 1
+  "result": {"id": "opminecraft:slate_brick_trapdoor", "count": 1}
 }

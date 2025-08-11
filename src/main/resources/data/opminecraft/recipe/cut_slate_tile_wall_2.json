@@ -1,6 +1,5 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {"item": "opminecraft:slate_tiles"},
-  "result": "opminecraft:slate_tile_wall",
-  "count": 1
+  "result": {"id": "opminecraft:slate_tile_wall", "count": 1}
 }

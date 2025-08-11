@@ -13,15 +13,15 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 
 import net.offllneplayer.opminecraft.client.particle.ParticleGunbladeShot;
 
-import net.offllneplayer.opminecraft.iwe.sw0rd.StuckSw0rdRenderer;
+import net.offllneplayer.opminecraft.items._iwe.sw0rd.StuckSw0rdRenderer;
 
-import net.offllneplayer.opminecraft.iwe.beretta.PistolBulletRenderer;
+import net.offllneplayer.opminecraft.items._iwe.beretta.PistolBulletRenderer;
 
-import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunbladeRenderer;
-import net.offllneplayer.opminecraft.iwe.hatchet.ThrownHatchetRenderer;
-import net.offllneplayer.opminecraft.iwe.opsw0rd.StuckOPSwordRenderer;
-import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFanRenderer;
-import net.offllneplayer.opminecraft.iwe.tntstick.ThrownTNTStickRenderer;
+import net.offllneplayer.opminecraft.items._iwe.gunblade.StuckGunbladeRenderer;
+import net.offllneplayer.opminecraft.items._iwe.hatchet.ThrownHatchetRenderer;
+import net.offllneplayer.opminecraft.items._iwe.opsw0rd.StuckOPSwordRenderer;
+import net.offllneplayer.opminecraft.items._iwe.SMBSuperFan.ThrownSMBSuperFanRenderer;
+import net.offllneplayer.opminecraft.items._iwe.tntstick.ThrownTNTStickRenderer;
 
 import static net.offllneplayer.opminecraft.OPMinecraft.Mod_ID;
 import static net.offllneplayer.opminecraft.init.RegistryFluids.CRYING_ESSENCE;

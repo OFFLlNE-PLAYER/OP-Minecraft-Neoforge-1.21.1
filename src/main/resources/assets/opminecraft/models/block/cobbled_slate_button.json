@@ -1,0 +1,8 @@
+{
+  "parent": "block/button",
+  "textures": {
+    "particle": "opminecraft:block/cobbled_slate",
+    "texture": "opminecraft:block/cobbled_slate"
+  },
+  "render_type": "solid"
+}

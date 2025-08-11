@@ -20,7 +20,6 @@
   "tnt_fuse": {"sounds": [{"name": "opminecraft:tnt_fuse", "stream": false}]},
   "tnt_sizzle": {"sounds": [{"name": "opminecraft:tnt_sizzle", "stream": false}]},
 
-  "gunblade_break": {"sounds": [{"name": "opminecraft:gunblade_break", "stream": false}]},
   "gunblade_shot": {"sounds": [{"name": "opminecraft:gunblade_shot", "stream": false}]},
 
   "lamp_use": {"sounds": [{"name": "opminecraft:lamp_use", "stream": false}]},

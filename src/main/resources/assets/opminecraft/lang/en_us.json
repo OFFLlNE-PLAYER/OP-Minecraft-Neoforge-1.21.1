@@ -130,6 +130,16 @@
   "block.opminecraft.slate_trapdoor": "Slate Trapdoor",
   "block.opminecraft.slate_wall": "Slate Wall",
 
+  "block.opminecraft.cobbled_slate": "Cobbled Slate",
+  "block.opminecraft.cobbled_slate_button": "Cobbled Slate Button",
+  "block.opminecraft.cobbled_slate_fence": "Cobbled Slate Fence",
+  "block.opminecraft.cobbled_slate_fence_gate": "Cobbled Slate Fence Gate",
+  "block.opminecraft.cobbled_slate_pressure_plate": "Cobbled Slate Pressure Plate",
+  "block.opminecraft.cobbled_slate_slab": "Cobbled Slate Slab",
+  "block.opminecraft.cobbled_slate_stairs": "Cobbled Slate Stairs",
+  "block.opminecraft.cobbled_slate_trapdoor": "Cobbled Slate Trapdoor",
+  "block.opminecraft.cobbled_slate_wall": "Cobbled Slate Wall",
+
   "block.opminecraft.smooth_slate": "Smooth Slate",
   "block.opminecraft.smooth_slate_button": "Smooth Slate Button",
   "block.opminecraft.smooth_slate_fence": "Smooth Slate Fence",
@@ -614,7 +624,7 @@
   "item.opminecraft.ninemm_parabellum_rounds": "9mm Parabellum Rounds",
   "item.opminecraft.tenmm_parabellum_rounds": "10mm Parabellum Rounds",
 
-  "item.opminecraft.fifty_ae_rounds": "0.50 AE Rounds",
+  "item.opminecraft.fifty_ae_rounds": "0.50 AE Magazine",
 
   "item.opminecraft.fourty_four_s_and_w_rounds": "0.44 S&W Rounds",
   "item.opminecraft.fifty_s_and_w_rounds": "0.50 S&W Rounds",

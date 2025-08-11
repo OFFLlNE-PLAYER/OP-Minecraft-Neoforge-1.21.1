@@ -88,6 +88,16 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.SLATE_TRAPDOOR);
                 event.accept(RegistryBIBI.SLATE_WALL);
 
+                                event.accept(RegistryBIBI.COBBLED_SLATE);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_BUTTON);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_FENCE);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_FENCE_GATE);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_PRESSURE_PLATE);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_SLAB);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_STAIRS);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_TRAPDOOR);
+                                event.accept(RegistryBIBI.COBBLED_SLATE_WALL);
+
                 event.accept(RegistryBIBI.SMOOTH_SLATE);
                 event.accept(RegistryBIBI.SMOOTH_SLATE_BUTTON);
                 event.accept(RegistryBIBI.SMOOTH_SLATE_FENCE);
@@ -311,7 +321,7 @@ public class RegistryCreative {
             }
             if (event.getTabKey()==CreativeModeTabs.REDSTONE_BLOCKS) { // ~~~REDSTONE BLOCKS TAB~~~
 
-//Redstone block go here ~(hah I'll probably never touch this)
+//Redstone blocks go here ~(hah I'll probably never touch this)
 
             }
             if (event.getTabKey()==CreativeModeTabs.TOOLS_AND_UTILITIES) { // ~~~TOOLS AND UTILITIES TAB~~~

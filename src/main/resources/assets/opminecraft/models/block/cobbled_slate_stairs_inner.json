@@ -1,0 +1,10 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "particle": "opminecraft:block/cobbled_slate",
+    "bottom": "opminecraft:block/cobbled_slate",
+    "top": "opminecraft:block/cobbled_slate",
+    "side": "opminecraft:block/cobbled_slate"
+  },
+  "render_type": "solid"
+}

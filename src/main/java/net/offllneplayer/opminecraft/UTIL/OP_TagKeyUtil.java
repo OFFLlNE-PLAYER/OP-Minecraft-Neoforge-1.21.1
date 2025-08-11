@@ -47,13 +47,15 @@ public class OP_TagKeyUtil {
    /*[Item Tags]*/
     public static class Items {
 
-         public static final TagKey<Item> MIXIN_ROTATE_ITEMS = createTag("mixin_rotate_items");
          public static final TagKey<Item> MIXIN_NON_ROTATE_ITEMS = createTag("mixin_non_rotate_items");
 
         public static final TagKey<Item> CRYING_ITEMS = createTag("crying_items");
 
          public static final TagKey<Item> SW0RDS = createTag("sw0rds");
          public static final TagKey<Item> VANILLA_SW0RDS = createTag("vanilla_sw0rds");
+
+		  public static final TagKey<Item> BALLOONS = createTag("balloons");
+		  public static final TagKey<Item> ZOMBIE_MISC_ITEMS = createTag("zombie_misc_items");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));

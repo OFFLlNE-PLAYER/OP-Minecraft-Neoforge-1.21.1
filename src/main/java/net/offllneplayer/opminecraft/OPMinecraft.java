@@ -18,8 +18,9 @@ import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.common.NeoForge;
 
-import net.offllneplayer.opminecraft.init.fml.FMLDispenserBehaviors;
+import net.offllneplayer.opminecraft.init.fml.dispenser.FMLDispenser;
 import net.offllneplayer.opminecraft.init.*;
+import net.offllneplayer.opminecraft.UTIL.debug.sound.DEBUG_SoundPool;
 
 import org.slf4j.Logger;
 
@@ -74,6 +75,9 @@ public class OPMinecraft {
         NeoForge.EVENT_BUS.register(this);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        // Initialize sound pool debugger
+        DEBUG_SoundPool.init();
     }
 
 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
@@ -100,7 +104,7 @@ public class OPMinecraft {
 
 /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(FMLDispenserBehaviors::DispenserBehaviors);
+        event.enqueueWork(FMLDispenser::DispenserBehaviors);
     }
 
     /*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/

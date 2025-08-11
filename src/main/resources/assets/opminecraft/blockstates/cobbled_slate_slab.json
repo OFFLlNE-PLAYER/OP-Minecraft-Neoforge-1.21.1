@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": {"model": "opminecraft:block/cobbled_slate_slab"},
+    "type=double": {"model": "opminecraft:block/cobbled_slate"},
+    "type=top": {"model": "opminecraft:block/cobbled_slate_slab_top"}
+  }
+}

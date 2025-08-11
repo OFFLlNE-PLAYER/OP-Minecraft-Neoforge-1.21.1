@@ -59,7 +59,7 @@ public class OP_ProjectileonHitBlockUtil {
 					level.updateNeighborsAt(pos.relative(faceDirection), block);
 				}
 
-				// Create block event to notify neighbors
+				// Create blocks event to notify neighbors
 				// Get the owner if it's a projectile, otherwise use the entity itself
 				Entity source = entity;
 				if (entity instanceof Projectile projectile && projectile.getOwner() != null) {

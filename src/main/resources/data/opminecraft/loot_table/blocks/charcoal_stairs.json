@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "opminecraft:blocks/charcoal_stairs",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" }
+      ],
+      "entries": [
+        { "type": "minecraft:item", "name": "opminecraft:charcoal_stairs" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": {"model": "opminecraft:block/cobbled_slate", "x": 90, "y": 90},
+    "axis=y": {"model": "opminecraft:block/cobbled_slate"},
+    "axis=z": {"model": "opminecraft:block/cobbled_slate", "x": 90}
+  }
+}

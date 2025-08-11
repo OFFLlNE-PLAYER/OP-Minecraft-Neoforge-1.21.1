@@ -12,10 +12,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.registries.Registries;
 
-import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuEnd_Method;
-import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitEnd_Method;
-import net.offllneplayer.opminecraft.potion.*;
-import net.offllneplayer.opminecraft.potion.TOUMobEffect;
+import net.offllneplayer.opminecraft.items._item.crash.akuaku.AkuAkuEnd_Method;
+import net.offllneplayer.opminecraft.items._item.crash.wumpafruit.WumpaFruitEnd_Method;
+import net.offllneplayer.opminecraft.mobeffect.*;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 @EventBusSubscriber

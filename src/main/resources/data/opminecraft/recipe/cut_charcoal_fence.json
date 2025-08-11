@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {"item": "opminecraft:block_of_charcoal"},
+  "result": {"id": "opminecraft:charcoal_fence", "count": 1}
+}

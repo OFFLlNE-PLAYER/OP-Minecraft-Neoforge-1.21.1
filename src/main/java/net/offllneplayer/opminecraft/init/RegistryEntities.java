@@ -5,13 +5,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import net.offllneplayer.opminecraft.iwe.beretta.PistolBullet;
-import net.offllneplayer.opminecraft.iwe.sw0rd.StuckSw0rd;
-import net.offllneplayer.opminecraft.iwe.gunblade.StuckGunblade;
-import net.offllneplayer.opminecraft.iwe.hatchet.ThrownHatchet;
-import net.offllneplayer.opminecraft.iwe.SMBSuperFan.ThrownSMBSuperFan;
-import net.offllneplayer.opminecraft.iwe.opsw0rd.StuckOPSword;
-import net.offllneplayer.opminecraft.iwe.tntstick.ThrownTNTStick;
+import net.offllneplayer.opminecraft.items._iwe.beretta.PistolBullet;
+import net.offllneplayer.opminecraft.items._iwe.sw0rd.StuckSw0rd;
+import net.offllneplayer.opminecraft.items._iwe.gunblade.StuckGunblade;
+import net.offllneplayer.opminecraft.items._iwe.hatchet.ThrownHatchet;
+import net.offllneplayer.opminecraft.items._iwe.SMBSuperFan.ThrownSMBSuperFan;
+import net.offllneplayer.opminecraft.items._iwe.opsw0rd.StuckOPSword;
+import net.offllneplayer.opminecraft.items._iwe.tntstick.ThrownTNTStick;
 import net.offllneplayer.opminecraft.OPMinecraft;
 
 import java.util.function.Supplier;

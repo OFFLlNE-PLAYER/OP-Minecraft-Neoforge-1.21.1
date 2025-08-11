@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_fence_gate_wall",
+  "textures": {
+    "texture": "opminecraft:block/cobbled_slate",
+    "particle": "opminecraft:block/cobbled_slate"
+  }
+}

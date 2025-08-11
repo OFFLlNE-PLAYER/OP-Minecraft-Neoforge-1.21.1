@@ -1,6 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/totem_of_undying",
   "textures": {
-    "layer0": "opminecraft:item/text_totem_of_life"
+    "0": "opminecraft:item/text_totem_of_life",
+    "particle": "opminecraft:item/text_totem_of_life"
   }
 }

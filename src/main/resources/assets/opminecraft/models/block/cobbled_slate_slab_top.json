@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "opminecraft:block/cobbled_slate",
+    "top": "opminecraft:block/cobbled_slate",
+    "side": "opminecraft:block/cobbled_slate"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:item/generated",
-  "textures": {"layer0": "opminecraft:item/text_sunflower"
+  "textures": {
+    "layer0": "opminecraft:item/text_sunflower"
   }
 }

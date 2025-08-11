@@ -10,15 +10,15 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestBlock;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestBlockEntity;
-import net.offllneplayer.opminecraft.block.crash.crates.crashtnt.CrashTNTBlockEntity;
-import net.offllneplayer.opminecraft.block.crash.crates.nitro.NitroBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlock;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.crashtnt.CrashTNTBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.nitro.NitroBlockEntity;
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceBlockEntity;
-import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceMaterial;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestWoodMaterial;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestTrimMaterial;
+import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceMaterial;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestWoodMaterial;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestTrimMaterial;
 
 import java.util.ArrayList;
 import java.util.HashMap;

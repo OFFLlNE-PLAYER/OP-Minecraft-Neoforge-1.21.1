@@ -4,57 +4,58 @@ package net.offllneplayer.opminecraft.init;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.block.GoldenBedBlock;
-import net.offllneplayer.opminecraft.block.OnyxLampBlock;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestBlock;
-import net.offllneplayer.opminecraft.block.charcoal.*;
-import net.offllneplayer.opminecraft.block.chiseledore.*;
-import net.offllneplayer.opminecraft.block.crash.crates.crashtnt.CrashTNTBlock;
-import net.offllneplayer.opminecraft.block.crash.crates.crate.BounceCrateBlock;
-import net.offllneplayer.opminecraft.block.crash.crates.akuaku.AkuAkuCrateBlock;
-import net.offllneplayer.opminecraft.block.crash.crates.crate.CrashCrateBlock;
-import net.offllneplayer.opminecraft.block.crash.crates.nitro.NitroBlock;
-import net.offllneplayer.opminecraft.block.crash.wumpaplant.FloweringPitcherPlantBlock;
-import net.offllneplayer.opminecraft.block.crash.wumpaplant.WumpaPlantBlock;
-import net.offllneplayer.opminecraft.block.crying.blockofcryingingots.BlockofCryingIngotsBlock;
-import net.offllneplayer.opminecraft.block.crying.essence.CryingEssenceBlock;
-import net.offllneplayer.opminecraft.block.crying.cryingbricks.*;
-import net.offllneplayer.opminecraft.block.crying.cryingtiles.*;
-import net.offllneplayer.opminecraft.block.slate.smooth.*;
-import net.offllneplayer.opminecraft.block.slate.*;
-import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceBlock;
-import net.offllneplayer.opminecraft.block.furnaces.OPFurnaceMaterial;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestWoodMaterial;
-import net.offllneplayer.opminecraft.block.ancientchests.AncientChestTrimMaterial;
-import net.offllneplayer.opminecraft.block.onyx.*;
-import net.offllneplayer.opminecraft.block.slate.smooth.SmoothSlateBlock;
-import net.offllneplayer.opminecraft.block.stonetiles.*;
-import net.offllneplayer.opminecraft.iwe.beretta.PistolMaterial;
-import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeMaterial;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetMaterial;
-import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordItem;
-import net.offllneplayer.opminecraft.iwe.opsw0rd.OPSwordMaterial;
-import net.offllneplayer.opminecraft.item.*;
+import net.offllneplayer.opminecraft.blocks._block.GoldenBedBlock;
+import net.offllneplayer.opminecraft.blocks._block.OnyxLampBlock;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlock;
+import net.offllneplayer.opminecraft.blocks._block.charcoal.*;
+import net.offllneplayer.opminecraft.blocks._block.chiseledore.*;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.crashtnt.CrashTNTBlock;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.crate.BounceCrateBlock;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.akuaku.AkuAkuCrateBlock;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.crate.CrashCrateBlock;
+import net.offllneplayer.opminecraft.blocks._block.crash.crates.nitro.NitroBlock;
+import net.offllneplayer.opminecraft.blocks._block.crash.wumpaplant.FloweringPitcherPlantBlock;
+import net.offllneplayer.opminecraft.blocks._block.crash.wumpaplant.WumpaPlantBlock;
+import net.offllneplayer.opminecraft.blocks._block.crying.blockofcryingingots.BlockofCryingIngotsBlock;
+import net.offllneplayer.opminecraft.blocks._block.crying.essence.CryingEssenceBlock;
+import net.offllneplayer.opminecraft.blocks._block.crying.cryingbricks.*;
+import net.offllneplayer.opminecraft.blocks._block.crying.cryingtiles.*;
+import net.offllneplayer.opminecraft.blocks._block.slate.*;
+import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceBlock;
+import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceMaterial;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestWoodMaterial;
+import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestTrimMaterial;
+import net.offllneplayer.opminecraft.blocks._block.onyx.*;
+import net.offllneplayer.opminecraft.blocks._block.stonetiles.*;
+import net.offllneplayer.opminecraft.items._item.ChiselItem;
+import net.offllneplayer.opminecraft.items._item.PrototypeGunbladeItem;
+import net.offllneplayer.opminecraft.items._item.SculkHammerItem;
+import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
+import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeMaterial;
+import net.offllneplayer.opminecraft.items._iwe.hatchet.HatchetMaterial;
+import net.offllneplayer.opminecraft.items._iwe.opsw0rd.OPSwordItem;
+import net.offllneplayer.opminecraft.items._iwe.opsw0rd.OPSwordMaterial;
 
-import net.offllneplayer.opminecraft.item.crash.akuaku.AkuAkuMaskItem;
-import net.offllneplayer.opminecraft.item.crash.wumpafruit.WumpaFruitItem;
-import net.offllneplayer.opminecraft.item.crying.*;
-import net.offllneplayer.opminecraft.item.balloon.BalloonItem;
-import net.offllneplayer.opminecraft.item.balloon.BalloonColor;
-import net.offllneplayer.opminecraft.item.tol.TotemOfLifeItem;
-import net.offllneplayer.opminecraft.item.tou.TotemOfUncryingItem;
-import net.offllneplayer.opminecraft.iwe.gunblade.GunbladeItem;
-import net.offllneplayer.opminecraft.iwe.hatchet.HatchetItem;
-import net.offllneplayer.opminecraft.iwe.SMBSuperFan.SMBSuperFanItem;
-import net.offllneplayer.opminecraft.iwe.beretta.PistolItem;
-import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdItem;
-import net.offllneplayer.opminecraft.iwe.sw0rd.Sw0rdMaterial;
-import net.offllneplayer.opminecraft.iwe.tntstick.TNTStickItem;
+import net.offllneplayer.opminecraft.items._item.crash.akuaku.AkuAkuMaskItem;
+import net.offllneplayer.opminecraft.items._item.crash.wumpafruit.WumpaFruitItem;
+import net.offllneplayer.opminecraft.items._item.crying.*;
+import net.offllneplayer.opminecraft.items._item.balloon.BalloonItem;
+import net.offllneplayer.opminecraft.items._item.balloon.BalloonColor;
+import net.offllneplayer.opminecraft.items._item.tol.TotemOfLifeItem;
+import net.offllneplayer.opminecraft.items._item.tou.TotemOfUncryingItem;
+import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeItem;
+import net.offllneplayer.opminecraft.items._iwe.hatchet.HatchetItem;
+import net.offllneplayer.opminecraft.items._iwe.SMBSuperFan.SMBSuperFanItem;
+import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
+import net.offllneplayer.opminecraft.items._iwe.sw0rd.Sw0rdItem;
+import net.offllneplayer.opminecraft.items._iwe.sw0rd.Sw0rdMaterial;
+import net.offllneplayer.opminecraft.items._iwe.tntstick.TNTStickItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -140,35 +141,91 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> SLATE_TRAPDOOR = registerBlock("slate_trapdoor", SlateTrapdoorBlock::new);
 	public static final DeferredBlock<Block> SLATE_WALL = registerBlock("slate_wall", SlateWallBlock::new);
 
-	public static final DeferredBlock<Block> SMOOTH_SLATE = registerBlock("smooth_slate", SmoothSlateBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_BUTTON = registerBlock("smooth_slate_button", SmoothSlateButtonBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_FENCE = registerBlock("smooth_slate_fence", SmoothSlateFenceBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_FENCE_GATE = registerBlock("smooth_slate_fence_gate", SmoothSlateFenceGateBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_PRESSURE_PLATE = registerBlock("smooth_slate_pressure_plate", SmoothSlatePressurePlateBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_SLAB = registerBlock("smooth_slate_slab", SmoothSlateSlabBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_STAIRS = registerBlock("smooth_slate_stairs", SmoothSlateStairsBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_TRAPDOOR = registerBlock("smooth_slate_trapdoor", SmoothSlateTrapdoorBlock::new);
-	public static final DeferredBlock<Block> SMOOTH_SLATE_WALL = registerBlock("smooth_slate_wall", SmoothSlateWallBlock::new);
+	public static final DeferredBlock<Block> COBBLED_SLATE = registerBlock("cobbled_slate",
+			() -> new SlateBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_BUTTON = registerBlock("cobbled_slate_button",
+			() -> new SlateButtonBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_FENCE = registerBlock("cobbled_slate_fence",
+			() -> new SlateFenceBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_FENCE_GATE = registerBlock("cobbled_slate_fence_gate",
+			() -> new SlateFenceGateBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_PRESSURE_PLATE = registerBlock("cobbled_slate_pressure_plate",
+			() -> new SlatePressurePlateBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_SLAB = registerBlock("cobbled_slate_slab",
+			() -> new SlateSlabBlock(Properties.of().strength(3.5F, 9F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_STAIRS = registerBlock("cobbled_slate_stairs",
+			() -> new SlateStairsBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_TRAPDOOR = registerBlock("cobbled_slate_trapdoor",
+			() -> new SlateTrapdoorBlock(Properties.of().strength(3.5F, 8F)));
+	public static final DeferredBlock<Block> COBBLED_SLATE_WALL = registerBlock("cobbled_slate_wall",
+			() -> new SlateWallBlock(Properties.of().strength(3.5F, 8F)));
 
-	public static final DeferredBlock<Block> SLATE_BRICKS = registerBlock("slate_bricks", SmoothSlateBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_BUTTON = registerBlock("slate_brick_button", SmoothSlateButtonBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_FENCE = registerBlock("slate_brick_fence", SmoothSlateFenceBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_FENCE_GATE = registerBlock("slate_brick_fence_gate", SmoothSlateFenceGateBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_PRESSURE_PLATE = registerBlock("slate_brick_pressure_plate", SmoothSlatePressurePlateBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_SLAB = registerBlock("slate_brick_slab", SmoothSlateSlabBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_STAIRS = registerBlock("slate_brick_stairs", SmoothSlateStairsBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_TRAPDOOR = registerBlock("slate_brick_trapdoor", SmoothSlateTrapdoorBlock::new);
-	public static final DeferredBlock<Block> SLATE_BRICK_WALL = registerBlock("slate_brick_wall", SmoothSlateWallBlock::new);
+	public static final DeferredBlock<Block> SMOOTH_SLATE = registerBlock("smooth_slate",
+			() -> new SlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_BUTTON = registerBlock("smooth_slate_button",
+			() -> new SlateButtonBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_FENCE = registerBlock("smooth_slate_fence",
+			() -> new SlateFenceBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_FENCE_GATE = registerBlock("smooth_slate_fence_gate",
+			() -> new SlateFenceGateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_PRESSURE_PLATE = registerBlock("smooth_slate_pressure_plate",
+			() -> new SlatePressurePlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_SLAB = registerBlock("smooth_slate_slab",
+			() -> new SlateSlabBlock(Properties.of().strength(3.5F, 12F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_STAIRS = registerBlock("smooth_slate_stairs",
+			() -> new SlateStairsBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_TRAPDOOR = registerBlock("smooth_slate_trapdoor",
+			() -> new SlateTrapdoorBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_SLATE_WALL = registerBlock("smooth_slate_wall",
+			() -> new SlateWallBlock(Properties.of().strength(3.5F, 10F)));
 
-	public static final DeferredBlock<Block> SLATE_TILES = registerBlock("slate_tiles", SmoothSlateBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_BUTTON = registerBlock("slate_tile_button", SmoothSlateButtonBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_FENCE = registerBlock("slate_tile_fence", SmoothSlateFenceBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_FENCE_GATE = registerBlock("slate_tile_fence_gate", SmoothSlateFenceGateBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_PRESSURE_PLATE = registerBlock("slate_tile_pressure_plate", SmoothSlatePressurePlateBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_SLAB = registerBlock("slate_tile_slab", SmoothSlateSlabBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_STAIRS = registerBlock("slate_tile_stairs", SmoothSlateStairsBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_TRAPDOOR = registerBlock("slate_tile_trapdoor", SmoothSlateTrapdoorBlock::new);
-	public static final DeferredBlock<Block> SLATE_TILE_WALL = registerBlock("slate_tile_wall", SmoothSlateWallBlock::new);
+	public static final DeferredBlock<Block> SLATE_BRICKS = registerBlock("slate_bricks",
+			() -> new SlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_BUTTON = registerBlock("slate_brick_button",
+			() -> new SlateButtonBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_FENCE = registerBlock("slate_brick_fence",
+			() -> new SlateFenceBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_FENCE_GATE = registerBlock("slate_brick_fence_gate",
+			() -> new SlateFenceGateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_PRESSURE_PLATE = registerBlock("slate_brick_pressure_plate",
+			() -> new SlatePressurePlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_SLAB = registerBlock("slate_brick_slab",
+			() -> new SlateSlabBlock(Properties.of().strength(3.5F, 12F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_STAIRS = registerBlock("slate_brick_stairs",
+			() -> new SlateStairsBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_TRAPDOOR = registerBlock("slate_brick_trapdoor",
+			() -> new SlateTrapdoorBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_BRICK_WALL = registerBlock("slate_brick_wall",
+			() -> new SlateWallBlock(Properties.of().strength(3.5F, 10F)));
+
+	public static final DeferredBlock<Block> SLATE_TILES = registerBlock("slate_tiles",
+			() -> new SlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_BUTTON = registerBlock("slate_tile_button",
+			() -> new SlateButtonBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_FENCE = registerBlock("slate_tile_fence",
+			() -> new SlateFenceBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_FENCE_GATE = registerBlock("slate_tile_fence_gate",
+			() -> new SlateFenceGateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_PRESSURE_PLATE = registerBlock("slate_tile_pressure_plate",
+			() -> new SlatePressurePlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_SLAB = registerBlock("slate_tile_slab",
+			() -> new SlateSlabBlock(Properties.of().strength(3.5F, 12F)));
+	public static final DeferredBlock<Block> SLATE_TILE_STAIRS = registerBlock("slate_tile_stairs",
+			() -> new SlateStairsBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_TRAPDOOR = registerBlock("slate_tile_trapdoor",
+			() -> new SlateTrapdoorBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SLATE_TILE_WALL = registerBlock("slate_tile_wall",
+			() -> new SlateWallBlock(Properties.of().strength(3.5F, 10F)));
+
+	public static final DeferredBlock<Block> STONE_TILES = registerBlock("stone_tiles", StoneTilesBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_BUTTON = registerBlock("stone_tile_button", StoneTileButtonBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_FENCE = registerBlock("stone_tile_fence", StoneTileFenceBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_FENCE_GATE = registerBlock("stone_tile_fence_gate", StoneTileFenceGateBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_PRESSURE_PLATE = registerBlock("stone_tile_pressure_plate", StoneTilePressurePlateBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_SLAB = registerBlock("stone_tile_slab", StoneTileSlabBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_STAIRS = registerBlock("stone_tile_stairs", StoneTileStairsBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_TRAPDOOR = registerBlock("stone_tile_trapdoor", StoneTileTrapdoorBlock::new);
+	public static final DeferredBlock<Block> STONE_TILE_WALL = registerBlock("stone_tile_wall", StoneTileWallBlock::new);
 
 	public static final DeferredBlock<OPFurnaceBlock> COPPER_FURNACE = registerBlock("copper_furnace",
 			() -> new OPFurnaceBlock(OPFurnaceMaterial.COPPER));
@@ -459,17 +516,6 @@ public class RegistryBIBI {
 		"warped_quartz_trim_ancient_chest", AncientChestWoodMaterial.WARPED, AncientChestTrimMaterial.QUARTZ);
 	public static final Supplier<AncientChestBlock> WARPED_REDSTONE_TRIM_ANCIENT_CHEST = registerLootChestBlock(
 		"warped_redstone_trim_ancient_chest", AncientChestWoodMaterial.WARPED, AncientChestTrimMaterial.REDSTONE);
-
-	
-	public static final DeferredBlock<Block> STONE_TILES = registerBlock("stone_tiles", StoneTilesBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_BUTTON = registerBlock("stone_tile_button", StoneTileButtonBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_FENCE = registerBlock("stone_tile_fence", StoneTileFenceBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_FENCE_GATE = registerBlock("stone_tile_fence_gate", StoneTileFenceGateBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_PRESSURE_PLATE = registerBlock("stone_tile_pressure_plate", StoneTilePressurePlateBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_SLAB = registerBlock("stone_tile_slab", StoneTileSlabBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_STAIRS = registerBlock("stone_tile_stairs", StoneTileStairsBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_TRAPDOOR = registerBlock("stone_tile_trapdoor", StoneTileTrapdoorBlock::new);
-	public static final DeferredBlock<Block> STONE_TILE_WALL = registerBlock("stone_tile_wall", StoneTileWallBlock::new);
 
 	// public static final DeferredBlock<Block> BLOCK_OF_FIRERES_EPICNESS = registerFREpicBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
 

@@ -65,6 +65,16 @@
     "opminecraft:crying_tile_trapdoor",
     "opminecraft:crying_tile_wall",
 
+    "opminecraft:cobbled_slate",
+    "opminecraft:cobbled_slate_button",
+    "opminecraft:cobbled_slate_fence",
+    "opminecraft:cobbled_slate_fence_gate",
+    "opminecraft:cobbled_slate_pressure_plate",
+    "opminecraft:cobbled_slate_stairs",
+    "opminecraft:cobbled_slate_slab",
+    "opminecraft:cobbled_slate_trapdoor",
+    "opminecraft:cobbled_slate_wall",
+
     "opminecraft:slate",
     "opminecraft:slate_button",
     "opminecraft:slate_fence",
