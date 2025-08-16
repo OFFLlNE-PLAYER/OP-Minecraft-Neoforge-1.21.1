@@ -65,8 +65,6 @@ public class BalloonItem extends Item {
 					// Activate balloon effects: call every tick while airborne; execute() handles refresh cadence
 					if (selected || slot == 40) {
 						BalloonActivate_Method.execute(player);
-					} else if ((player.getMainHandItem() == itemstack) && (player.getOffhandItem() == itemstack)) {
-						BalloonActivate_Method.execute(player);
 					}
 
 					// Apply durability damage once per second while airborne and holding

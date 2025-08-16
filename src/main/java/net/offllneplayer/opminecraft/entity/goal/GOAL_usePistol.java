@@ -10,7 +10,7 @@ import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
 
 import java.util.EnumSet;
 
-public class GOAL_PistolUse extends Goal {
+public class GOAL_usePistol extends Goal {
 	private final Mob mob;
 	private final double speedModifier;
 	private final float attackRadiusSqr;
@@ -20,7 +20,7 @@ public class GOAL_PistolUse extends Goal {
 	private boolean strafingBackwards;
 	private int strafingTime = -1;
 
-	public GOAL_PistolUse(Mob mob, double speedModifier, float attackRadius) {
+	public GOAL_usePistol(Mob mob, double speedModifier, float attackRadius) {
 		this.mob = mob;
 		this.speedModifier = speedModifier;
 		this.attackRadiusSqr = attackRadius * attackRadius;

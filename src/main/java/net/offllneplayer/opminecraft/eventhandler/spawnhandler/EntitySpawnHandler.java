@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.offllneplayer.opminecraft.entity.goal.GOAL_useJump;
 
 @EventBusSubscriber
 public class EntitySpawnHandler {
@@ -20,6 +21,11 @@ public class EntitySpawnHandler {
 	public static void onEntityJoin(EntityJoinLevelEvent event) {
 		Entity entity = event.getEntity();
 		Level level = event.getLevel();
+
+		// Run equip/goal logic on the server only
+		if (level.isClientSide()) {
+			return;
+		}
 
 		// Exit if not a mob or already processed
 		if (!(entity instanceof Mob mob)) {
@@ -42,6 +48,7 @@ public class EntitySpawnHandler {
 		}
 
 		mob.setCanPickUpLoot(true);
+		mob.goalSelector.addGoal(3, new GOAL_useJump(mob));
 
 
 // ~---= [ WEAPON ] =---~

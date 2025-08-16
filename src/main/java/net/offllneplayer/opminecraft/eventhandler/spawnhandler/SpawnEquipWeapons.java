@@ -12,9 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.*;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
-import net.offllneplayer.opminecraft.entity.goal.GOAL_PistolUse;
-import net.offllneplayer.opminecraft.entity.goal.GOAL_BalloonJump;
-import net.offllneplayer.opminecraft.items._item.balloon.BalloonItem;
+import net.offllneplayer.opminecraft.entity.goal.GOAL_usePistol;
 import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
@@ -31,7 +29,7 @@ public final class SpawnEquipWeapons {
         if (mob instanceof WitherSkeleton witherSkeleton) {
             int roll = RANDOM.nextInt(100);
             if (roll <= 4) {
-                weapon = equipWitherPistolAndReturn(witherSkeleton, roll);
+                weapon = setupWitherPistol(witherSkeleton, roll);
             } else {
                 weapon = getRandomNonWoodenVanillaWeapon(allowHighTiers);
             }
@@ -55,15 +53,11 @@ public final class SpawnEquipWeapons {
 
     public static void maybeEquipOffhand(Mob mob) {
         // Zombie off-hand: 5% chance, excluding Zombified Piglin
-		 if (RANDOM.nextInt(1) == 0) {
+		 if (RANDOM.nextInt(2) == 0) {
 			 if ((mob instanceof Zombie) && !(mob instanceof ZombifiedPiglin)) {
 				 ItemStack off = getRandomZombieItem(mob);
 				 if (!off.isEmpty()) {
 					 mob.setItemInHand(InteractionHand.OFF_HAND, off);
-					 // If we just equipped a balloon, add the balloon jump goal for this mob
-					 if (off.getItem() instanceof BalloonItem) {
-						 mob.goalSelector.addGoal(1, new GOAL_BalloonJump(mob));
-					 }
 				 }
 			 }
 		 }
@@ -151,7 +145,7 @@ public final class SpawnEquipWeapons {
 
 
     // Equip pistol for Wither Skeleton when roll <= 4, and return the weapon stack for main-hand.
-    public static ItemStack equipWitherPistolAndReturn(WitherSkeleton witherSkeleton, int roll) {
+    public static ItemStack setupWitherPistol(WitherSkeleton witherSkeleton, int roll) {
         if (roll > 4) {
             return ItemStack.EMPTY;
         }
@@ -186,7 +180,7 @@ public final class SpawnEquipWeapons {
             witherSkeleton.setItemInHand(InteractionHand.OFF_HAND, ammo);
 
             // Add pistol usage goal
-            witherSkeleton.goalSelector.addGoal(3, new GOAL_PistolUse(witherSkeleton, 1.0420D, 18F));
+            witherSkeleton.goalSelector.addGoal(3, new GOAL_usePistol(witherSkeleton, 1.0420D, 18F));
         }
 
         return weapon;
