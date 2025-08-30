@@ -71,6 +71,8 @@
   "smb_super_fan_hit": {"sounds": [{"name": "opminecraft:smb_super_fan_hit", "stream": false}]},
   "smb_super_fan_idle": {"sounds": [{"name": "opminecraft:smb_super_fan_idle", "stream": false}]},
 
-  "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]}
+  "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]},
+
+  "md_p1ng_p0ng": {"sounds": [{"name": "opminecraft:md_p1ng_p0ng", "stream": false}]}
 
 }

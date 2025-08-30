@@ -21,6 +21,11 @@ public abstract class ItemEntityMixin {
 	@Shadow
 	public abstract ItemStack getItem();
 
+	/**
+	 * @author OffllnePlayer
+	 * @return no spin on vanilla items
+	 * @reason bc it looks better! (bc fu that's why frign java errors without this documentation)
+	 */
 	@Overwrite
 	public float getSpin(float partialTicks) {
 		return ((ItemEntity)(Object)this).getYRot();

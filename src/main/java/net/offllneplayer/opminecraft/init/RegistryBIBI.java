@@ -36,6 +36,7 @@ import net.offllneplayer.opminecraft.blocks._block.stonetiles.*;
 import net.offllneplayer.opminecraft.items._item.ChiselItem;
 import net.offllneplayer.opminecraft.items._item.PrototypeGunbladeItem;
 import net.offllneplayer.opminecraft.items._item.SculkHammerItem;
+import net.offllneplayer.opminecraft.items._item._musik_disk.MD_P1NGP0NGItem;
 import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
 import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeMaterial;
 import net.offllneplayer.opminecraft.items._iwe.hatchet.HatchetMaterial;
@@ -792,6 +793,10 @@ public class RegistryBIBI {
 	
 	public static final Supplier<PistolItem> PROTEKTOR_BERETTA = ITEMSREGISTRY.register("protektor_beretta",
 			() -> new PistolItem(PistolMaterial.PROTEKTOR_BERETTA));
+	public static final Supplier<PistolItem> DIAMOND_PROTEKTOR_BERETTA = ITEMSREGISTRY.register("diamond_protektor_beretta",
+			() -> new PistolItem(PistolMaterial.DIAMOND_PROTEKTOR_BERETTA));
+	public static final Supplier<PistolItem> GOLDEN_PROTEKTOR_BERETTA = ITEMSREGISTRY.register("golden_protektor_beretta",
+			() -> new PistolItem(PistolMaterial.GOLDEN_PROTEKTOR_BERETTA));
 	public static final Supplier<PistolItem> PROTEKTOR_HANDCANNON = ITEMSREGISTRY.register("protektor_handcannon",
 			() -> new PistolItem(PistolMaterial.PROTEKTOR_HANDCANNON));
 	public static final Supplier<PistolItem> PROTEKTOR_DESERT_EAGLE = ITEMSREGISTRY.register("protektor_desert_eagle",
@@ -816,6 +821,9 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
 
 	public static final DeferredItem<Item> TOTEM_OF_UNCRYING = ITEMSREGISTRY.register("totem_of_uncrying", TotemOfUncryingItem::new);
+
+	// Musik Disks
+	public static final DeferredItem<Item> MD_P1NG_P0NG = ITEMSREGISTRY.register("md_p1ng_p0ng", MD_P1NGP0NGItem::new);
 	
 	// Colored Balloons
 	public static final DeferredItem<Item> BALLOON_WHITE = ITEMSREGISTRY.register("balloon_white", 

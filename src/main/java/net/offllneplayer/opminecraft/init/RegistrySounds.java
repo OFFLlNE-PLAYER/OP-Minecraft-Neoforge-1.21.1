@@ -97,5 +97,8 @@ public class RegistrySounds {
         // Item sounds - 16 blocks range
         public static final DeferredHolder<SoundEvent, SoundEvent> WUMPA_FRUIT = SOUNDSREGISTRY.register("wumpa_fruit", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "wumpa_fruit"), 8F));
 
+        // Music disk
+		  public static final DeferredHolder<SoundEvent, SoundEvent> MD_P1NG_P0NG = SOUNDSREGISTRY.register("md_p1ng_p0ng", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "md_p1ng_p0ng")));
+
 }
 

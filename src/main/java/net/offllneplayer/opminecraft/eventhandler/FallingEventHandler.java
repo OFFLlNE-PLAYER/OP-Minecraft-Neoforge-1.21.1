@@ -3,12 +3,10 @@ package net.offllneplayer.opminecraft.eventhandler;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.items._item.balloon.BalloonActivate_Method;
 import net.offllneplayer.opminecraft.items._item.balloon.BalloonItem;
 
@@ -20,7 +18,7 @@ import net.offllneplayer.opminecraft.items._item.balloon.BalloonItem;
  *  - Check B: entity is holding a Balloon in either hand.
  * If both are true, we call BalloonActivate_Method.execute(entity).
  */
-@EventBusSubscriber(modid = OPMinecraft.Mod_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber
 public class FallingEventHandler {
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {

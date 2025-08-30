@@ -219,6 +219,9 @@ public class ThrownHatchet extends AbstractArrow {
 	@Override
 	public void doPostHurtEffects(LivingEntity target) {/*VOIDED Discard entity on hit*/}
 
+	@Override
+	public boolean shouldBeSaved() { return true; }
+
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]--[]-*/
   /*[HITBOX]*/

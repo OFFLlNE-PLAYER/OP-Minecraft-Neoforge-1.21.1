@@ -24,20 +24,17 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
+import net.offllneplayer.opminecraft.eventhandler.spawnhandler.SpawnEnchantments;
 import net.offllneplayer.opminecraft.init.RegistryMobEffects;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
-import net.offllneplayer.opminecraft.items._item.crash.akuaku.AkuAkuActivate_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
-import net.offllneplayer.opminecraft.items._item.crash.akuaku.AkuAkuReflect_Method;
-import net.offllneplayer.opminecraft.items._item.balloon.BalloonItem;
-import net.offllneplayer.opminecraft.items._item.balloon.PopBalloons_Method;
-import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
-import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeItem;
-import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeShot_Method;
-import net.offllneplayer.opminecraft.items._iwe.gunblade.PrototypeGunbladeShot_Method;
 
-import static net.offllneplayer.opminecraft.eventhandler.spawnhandler.SpawnEnchantments.applyWeaponEnchantments;
+import net.offllneplayer.opminecraft.items._item.crash.akuaku.*;
+import net.offllneplayer.opminecraft.items._item.balloon.*;
+import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
+import net.offllneplayer.opminecraft.items._iwe.gunblade.*;
+
 
 @EventBusSubscriber
 public class DamageEventHandler {
@@ -46,10 +43,12 @@ public class DamageEventHandler {
 
     @SubscribeEvent
     public static void onEntityDamage(LivingIncomingDamageEvent event) {
+		 Entity sourceEntity = event.getSource().getEntity();
+		 LivingEntity targetEntity = event.getEntity();
+		 Level level = targetEntity.level();
 
-        Entity sourceEntity = event.getSource().getEntity();
-        LivingEntity targetEntity = event.getEntity();
-        Level level = targetEntity.level();
+		 if (level.isClientSide()) return;
+
         float incomingDmg = event.getAmount();
 
         double xtarg = targetEntity.getX();
@@ -98,8 +97,23 @@ public class DamageEventHandler {
         /*--------------------------------------------------------------------------------------------*/
         /*[ITEM-BASED EFFECTS]*/
         if (sourceEntity instanceof LivingEntity livingAttacker && !(sourceEntity instanceof Player)) {
-            Item held = livingAttacker.getMainHandItem().getItem();
-            ItemStack heldStack = livingAttacker.getMainHandItem();
+            // Prefer OFF_HAND for effect items; fallback to MAIN_HAND
+            ItemStack offStack = livingAttacker.getItemInHand(InteractionHand.OFF_HAND);
+            ItemStack mainStack = livingAttacker.getItemInHand(InteractionHand.MAIN_HAND);
+
+            // An item is considered eligible if it's in the zombie-misc tag or is one of our explicit effect/weapon items
+            boolean offEligible = offStack.is(OP_TagKeyUtil.Items.ZOMBIE_MISC_ITEMS)
+                    || offStack.getItem() == Items.BLAZE_ROD
+                    || offStack.getItem() == RegistryBIBI.PROTOTYPE_GUNBLADE.get()
+                    || offStack.getItem() instanceof GunbladeItem;
+            boolean mainEligible = mainStack.is(OP_TagKeyUtil.Items.ZOMBIE_MISC_ITEMS)
+                    || mainStack.getItem() == Items.BLAZE_ROD
+                    || mainStack.getItem() == RegistryBIBI.PROTOTYPE_GUNBLADE.get()
+                    || mainStack.getItem() instanceof GunbladeItem;
+
+            InteractionHand useHand = offEligible ? InteractionHand.OFF_HAND : (mainEligible ? InteractionHand.MAIN_HAND : null);
+            ItemStack heldStack = useHand != null ? livingAttacker.getItemInHand(useHand) : mainStack;
+            Item held = heldStack.getItem();
 
             /*--------------------------------------------------------------------------------------------*/
             /*[FIRE]*/
@@ -121,8 +135,13 @@ public class DamageEventHandler {
                     targetEntity.level().setBlock(targetPos, Blocks.LAVA.defaultBlockState(), 3);
                 }
 
-                // Replace lava bucket with empty bucket in attacker's hand
-                livingAttacker.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.BUCKET));
+                // Replace lava bucket with empty bucket in the same hand used
+                if (useHand != null) {
+                    livingAttacker.setItemInHand(useHand, new ItemStack(Items.BUCKET));
+                } else {
+                    // Fallback (shouldn't normally happen if eligible): assume main hand
+                    livingAttacker.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.BUCKET));
+                }
             }
 
 
@@ -130,6 +149,7 @@ public class DamageEventHandler {
             /*[ICE]*/
             else if (held == Items.ICE || held == Items.PACKED_ICE || held == Items.BLUE_ICE) {
                 targetEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3 * 20, 1));
+                heldStack.shrink(1);
             }
 
             /*--------------------------------------------------------------------------------------------*/
@@ -157,9 +177,7 @@ public class DamageEventHandler {
                 }
                 targetEntity.push(direction.x * xpush, ypush, direction.z * zpush);
 
-
                 heldStack.shrink(1);
-
 
                 float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.1F);
 
@@ -178,6 +196,20 @@ public class DamageEventHandler {
             }
 
             /*--------------------------------------------------------------------------------------------*/
+            /*[TNT STICK]*/
+            else if (held == RegistryBIBI.TNT_STICK.get()) {
+                // Simulate the TNT Stick explosion immediately on hit
+                level.explode(livingAttacker, xtarg, ytarg, ztarg, 3.0F, false, Level.ExplosionInteraction.TNT);
+
+                // Always remove the entire stack from the used hand
+                if (useHand != null) {
+                    livingAttacker.setItemInHand(useHand, ItemStack.EMPTY);
+                } else {
+                    livingAttacker.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+                }
+            }
+
+            /*--------------------------------------------------------------------------------------------*/
             /*[PROTOTYPE GUNBLADE]*/
             else if (held == RegistryBIBI.PROTOTYPE_GUNBLADE.get()) {
                 float tone = Mth.nextFloat(RandomSource.create(), 0.8F, 1F);
@@ -187,7 +219,7 @@ public class DamageEventHandler {
 
             /*--------------------------------------------------------------------------------------------*/
             /*[GUNBLADE]*/
-            else if (livingAttacker.getMainHandItem().getItem() instanceof GunbladeItem) {
+            else if (held instanceof GunbladeItem) {
                 float tone = Mth.nextFloat(RandomSource.create(), 0.9F, 1.1420F);
                 level.playSound(null, xtarg, ytarg, ztarg, RegistrySounds.BLADE_SLASH.get(), SoundSource.MASTER, 0.42F, tone);
                 GunbladeShot_Method.execute(level, xtarg, ytarg, ztarg, targetEntity, sourceEntity);
@@ -221,7 +253,7 @@ public class DamageEventHandler {
 
                     // 50% chance to add enchantments
                     if (RANDOM.nextBoolean()) {
-                        applyWeaponEnchantments(level, newWeapon);
+							  SpawnEnchantments.applyWeaponEnchantments(level, newWeapon);
                     }
 
                     witherSkeleton.setItemInHand(InteractionHand.MAIN_HAND, newWeapon);

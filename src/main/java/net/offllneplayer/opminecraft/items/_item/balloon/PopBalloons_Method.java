@@ -13,14 +13,13 @@ import net.minecraft.world.level.Level;
 /**
  * Method class for popping balloons held by entities
  */
-public class PopBalloons_Method {
+public final class PopBalloons_Method {
     /**
-     * Pops any balloons held by the entity
-     * @param entity The entity holding balloons
-     * @return True if any balloons were popped, false otherwise
+     * Pops a balloon held by the entity
+     * @param entity The entity holding balloon(s)
      */
-	 public static boolean execute(Entity entity) {
-		 if (entity == null) return false;
+	 public static void execute(Entity entity) {
+		 if (entity == null) return;
 
 		 if (entity instanceof LivingEntity livingEntity) {
 			 Level level = livingEntity.level();
@@ -29,57 +28,41 @@ public class PopBalloons_Method {
 			 boolean hasBalloonMainHand = livingEntity.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof BalloonItem;
 			 boolean hasBalloonOffHand = livingEntity.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof BalloonItem;
 
-			 if (hasBalloonMainHand || hasBalloonOffHand) {
-				 // If both hands have balloons, randomly choose one to pop
-				 if (hasBalloonMainHand && hasBalloonOffHand) {
-					 boolean popMainHand = level.random.nextBoolean();
-					 if (popMainHand) {
-						 playPopFx(livingEntity);
-						 livingEntity.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-					 } else {
-						 playPopFx(livingEntity);
-						 livingEntity.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
-					 }
-					 return true;
+			 playPopFx(livingEntity);
+
+			 // If both hands have balloons, randomly choose one to pop
+			 if (hasBalloonMainHand && hasBalloonOffHand) {
+				 boolean popMainHand = level.random.nextBoolean();
+				 if (popMainHand) {
+					 livingEntity.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
 				 } else {
-					 boolean popMainHand = hasBalloonMainHand && level.random.nextBoolean();
-					 boolean popOffHand = hasBalloonOffHand && level.random.nextBoolean();
-
-					 if (popMainHand || popOffHand) {
-						 playPopFx(livingEntity);
-
-						 // Remove balloons from hands
-						 if (popMainHand) {
-							 livingEntity.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-						 }
-						 if (popOffHand) {
-							 livingEntity.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
-						 }
-
-						 return true;
-					 }
+					 livingEntity.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+				 }
+			 } else {
+				 // Remove balloon from hand
+				 if (hasBalloonMainHand) {
+					 livingEntity.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+				 } else if (hasBalloonOffHand) {
+					 livingEntity.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
 				 }
 			 }
 		 }
-		 return false;
 	 }
 
     /**
-     * Pops only the balloon in the specified hand, intended for durability break or targeted popping
+     * Pops only the balloon in the specified hand (intended for durability break).
      * @param livingEntity entity holding the balloon
      * @param hand which hand to pop
      * @return true if a balloon was popped in that hand
      */
-    public static boolean popHand(LivingEntity livingEntity, InteractionHand hand) {
-        if (livingEntity == null) return false;
+    public static void popHand(LivingEntity livingEntity, InteractionHand hand) {
+        if (livingEntity == null) return;
         ItemStack stack = livingEntity.getItemInHand(hand);
         if (!(stack.getItem() instanceof BalloonItem)) {
-            return false;
+            return;
         }
         playPopFx(livingEntity);
-        // Clear that hand
         livingEntity.setItemInHand(hand, ItemStack.EMPTY);
-        return true;
     }
 
     private static void playPopFx(LivingEntity livingEntity) {

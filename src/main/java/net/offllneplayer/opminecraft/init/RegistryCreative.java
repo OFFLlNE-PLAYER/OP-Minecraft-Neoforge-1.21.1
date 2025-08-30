@@ -352,6 +352,9 @@ public class RegistryCreative {
 
                 event.accept(RegistryBIBI.SMB_SUPER_FAN);
 
+                // Music disks
+                event.accept(RegistryBIBI.MD_P1NG_P0NG);
+
             }
             if (event.getTabKey() == CreativeModeTabs.COMBAT) { // ~~~COMBAT TAB~~~
 
@@ -407,7 +410,9 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.ONYX_PROTEKTOR_DESERT_EAGLE.get());
                 event.accept(RegistryBIBI.ONYX_PROTEKTOR_REVOLVER.get());
 
-                event.accept(RegistryBIBI.PROTEKTOR_BERETTA.get());
+					event.accept(RegistryBIBI.DIAMOND_PROTEKTOR_BERETTA.get());
+					event.accept(RegistryBIBI.GOLDEN_PROTEKTOR_BERETTA.get());
+					event.accept(RegistryBIBI.PROTEKTOR_BERETTA.get());
                 event.accept(RegistryBIBI.PROTEKTOR_HANDCANNON.get());
                 event.accept(RegistryBIBI.PROTEKTOR_DESERT_EAGLE.get());
                 event.accept(RegistryBIBI.PROTEKTOR_REVOLVER.get());

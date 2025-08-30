@@ -53,7 +53,7 @@ public final class SpawnEquipWeapons {
 
     public static void maybeEquipOffhand(Mob mob) {
         // Zombie off-hand: 5% chance, excluding Zombified Piglin
-		 if (RANDOM.nextInt(2) == 0) {
+		 if (RANDOM.nextInt(20) == 0) {
 			 if ((mob instanceof Zombie) && !(mob instanceof ZombifiedPiglin)) {
 				 ItemStack off = getRandomZombieItem(mob);
 				 if (!off.isEmpty()) {
@@ -62,8 +62,8 @@ public final class SpawnEquipWeapons {
 			 }
 		 }
 
-        // Zombified Piglin off-hand: 1/420 Netherite Scrap
-        if (mob instanceof ZombifiedPiglin && RANDOM.nextInt(420) == 0) {
+        // Zombified Piglin off-hand: 1/1420 Netherite Scrap
+        if (mob instanceof ZombifiedPiglin && RANDOM.nextInt(1420) == 0) {
             mob.setItemInHand(InteractionHand.OFF_HAND, new ItemStack(Items.NETHERITE_SCRAP));
         }
     }

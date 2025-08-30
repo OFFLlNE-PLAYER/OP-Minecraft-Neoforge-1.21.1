@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "opminecraft:item/text_md_p1ng_p0ng"
+  }
+}

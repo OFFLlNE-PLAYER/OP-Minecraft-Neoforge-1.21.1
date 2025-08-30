@@ -190,11 +190,31 @@ public class PistolBullet extends AbstractArrow {
 	@Override
 	public float getPickRadius() {return 0;}
 	@Override
-	public boolean shouldRenderAtSqrDistance(double distance) {return true;}
+	public boolean shouldRenderAtSqrDistance(double distance) {return super.shouldRenderAtSqrDistance(distance);}
 	@Override
 	public boolean displayFireAnimation() {return false;}
 	@Override
 	protected void updateRotation() {/*VOIDED vanilla abstract arrow rot*/}
+
+	@Override
+	public boolean shouldBeSaved() {
+		// Never write this entity to chunk NBT
+		return false;
+	}
+
+	@Override
+	public void checkDespawn() {
+		if (this.tickCount > 420) {
+			this.discard();
+		}
+	}
+
+	@Override
+	public void tickDespawn() {
+		if (this.tickCount > 420) { // 21 seconds age
+			this.discard();
+		}
+	}
 
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -228,29 +248,69 @@ public class PistolBullet extends AbstractArrow {
 
 		 super.tick();
 
-		 // If not in ground and not above build limit, adjust for reduced gravity
-		 if (this.getY() <= this.level().getMaxBuildHeight()) {
-			 // Get the current delta movement after super.tick() has applied gravity
-			 Vec3 currentDeltaMovement = this.getDeltaMovement();
+			 if (!this.level().isClientSide) {
+				 if (this.tickCount > 200) { // 10 seconds
+					 this.discard();
+					 return;
+				 }
 
-			 // Calculate how much gravity was applied (difference in Y component)
-			 double gravityApplied = currentDeltaMovement.y - originalDeltaMovement.y;
+				 // Server: preemptively despawn if the next two chunks along motion (favored axis) are not loaded.
+				 Vec3 motion = this.getDeltaMovement();
+				 double dx = motion.x;
+				 double dz = motion.z;
+				 if (dx != 0.0D || dz != 0.0D) {
+					 // Determine current chunk
+					 int currChunkX = Mth.floor(this.getX()) >> 4;
+					 int currChunkZ = Mth.floor(this.getZ()) >> 4;
+					 // Choose favored axis: the one with the larger magnitude of movement (tie -> X)
+					 double absX = Math.abs(dx);
+					 double absZ = Math.abs(dz);
+					 int stepX = 0;
+					 int stepZ = 0;
+					 if (absX >= absZ && dx != 0.0D) {
+						 stepX = dx > 0.0D ? 1 : -1;
+					 } else if (absZ > absX && dz != 0.0D) {
+						 stepZ = dz > 0.0D ? 1 : -1;
+					 }
+					 int nextChunkX = currChunkX + stepX;
+					 int nextChunkZ = currChunkZ + stepZ;
+					 int next2ChunkX = currChunkX + (stepX * 2);
+					 int next2ChunkZ = currChunkZ + (stepZ * 2);
+					 if (stepX != 0 || stepZ != 0) {
+						 ServerLevel sl = (ServerLevel) this.level();
+						 boolean nextLoaded = sl.getChunkSource().getChunkNow(nextChunkX, nextChunkZ) != null;
+						 boolean next2Loaded = sl.getChunkSource().getChunkNow(next2ChunkX, next2ChunkZ) != null;
+						 if (!nextLoaded || !next2Loaded) {
+							 this.discard();
+							 return;
+						 }
+					 }
+				 }
 
-			 // Counteract 97% of the applied gravity
-			 double reducedGravity = gravityApplied * 0.969;
+			 // If not in ground and not above build limit, adjust for reduced gravity
+			 if (this.getY() <= this.level().getMaxBuildHeight()) {
+				 // Get the current delta movement after super.tick() has applied gravity
+				 Vec3 currentDeltaMovement = this.getDeltaMovement();
 
-			 // Set the new delta movement with reduced gravity effect
-			 this.setDeltaMovement(currentDeltaMovement.x, currentDeltaMovement.y + reducedGravity, currentDeltaMovement.z);
+				 // Calculate how much gravity was applied (difference in Y component)
+				 double gravityApplied = currentDeltaMovement.y - originalDeltaMovement.y;
+
+				 // Counteract 97% of the applied gravity
+				 double reducedGravity = gravityApplied * 0.969;
+
+				 // Set the new delta movement with reduced gravity effect
+				 this.setDeltaMovement(currentDeltaMovement.x, currentDeltaMovement.y + reducedGravity, currentDeltaMovement.z);
+			 }
+
+			 if (!this.inGround) {
+				 float currentRotation = this.getRenderingRotation();
+				 float newRotation = (currentRotation + 10F) % 360F;
+				 if (newRotation < 0) newRotation += 360F;
+				 this.setRenderingRotation(newRotation);
+			 }
+
+			 this.setPos(this.getX(), this.getY(), this.getZ());
 		 }
-
-		 if (!this.inGround) {
-			 float currentRotation = this.getRenderingRotation();
-			 float newRotation = (currentRotation + 10F) % 360F;
-			 if (newRotation < 0) newRotation += 360F;
-			 this.setRenderingRotation(newRotation);
-		 }
-
-		 this.setPos(this.getX(), this.getY(), this.getZ());
 	 }
 
 

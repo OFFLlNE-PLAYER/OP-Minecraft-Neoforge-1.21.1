@@ -34,9 +34,14 @@ Advanced mod developers familiar with Minecraft 1.21.1, NeoForge, Gradle, and Ja
 -----------------------------------------------------------------------
 
 ||| 3) BUILDING AND RUNNING |||
+- * do not build unless unconfirmed changes are present.
+- * consider build successful if there are no errors in all edited files.
+- * if build succeeds or is considered successful as described above, do not build again.
+- 
 - Full build: .\gradlew.bat build
 - Local publish: .\gradlew.bat publishToMavenLocal (or publishes to repo/ via maven-publish).
-- Dev runs:
+- 
+- * Dev runs: (do not run, EVER)
   - Client: .\gradlew.bat runClient
   - Server: .\gradlew.bat runServer --args "--nogui"
   - Data gen: .\gradlew.bat runData

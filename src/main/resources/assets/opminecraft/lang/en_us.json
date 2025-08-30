@@ -600,6 +600,14 @@
   "item.opminecraft.protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
   "item.opminecraft.protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
 
+  "item.opminecraft.diamond_protektor_beretta": "Diamond Protektor Beretta",
+  "item.opminecraft.diamond_protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.diamond_protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.golden_protektor_beretta": "Golden Protektor Beretta",
+  "item.opminecraft.golden_protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.golden_protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
+
   "item.opminecraft.protektor_handcannon": "Protektor TYPE-75",
   "item.opminecraft.protektor_handcannon.description_0": "\"LSTR\"",
   "item.opminecraft.protektor_handcannon.description_1": "10x 10mm Parabellum Rounds",
@@ -659,6 +667,9 @@
   "item.opminecraft.balloon_black": "§0Black Balloon§r",
 
   "/*-------*[OP:Items]*": "",
+
+  "item.opminecraft.md_p1ng_p0ng": "P1NG P0NG",
+  "item.opminecraft.md_p1ng_p0ng.desc": "'SHAWN LEE && OP",
 
 
   "entity.opminecraft.pistol_bullet.display_name": "",

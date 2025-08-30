@@ -70,7 +70,13 @@ public enum PistolMaterial {
 
 	PROTEKTOR_REVOLVER(6, 12F, 6, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.85F, 0.0420F),
-
+	
+	DIAMOND_PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.9F, 1.01F, 0.0420F),
+	
+	GOLDEN_PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.9F, 1.01F, 0.0420F),
+	
 	VALENTINE_REVOLVER(6, 11F, 6, 36, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.REVOLVER_1, RegistrySounds.VALENTINE_REVOLVER_R, RegistrySounds.VALENTINE_REVOLVER_0, 0.9F, 1F, 0.0420F);
 
@@ -152,6 +158,8 @@ public enum PistolMaterial {
 			case PROTEKTOR_HANDCANNON -> RegistryDamageTypes.HANDCANNON;
 			case PROTEKTOR_DESERT_EAGLE -> RegistryDamageTypes.MAGNUM;
 			case PROTEKTOR_REVOLVER -> RegistryDamageTypes.MAGNUM;
+			case DIAMOND_PROTEKTOR_BERETTA -> RegistryDamageTypes.HANDCANNON;
+			case GOLDEN_PROTEKTOR_BERETTA -> RegistryDamageTypes.HANDCANNON;
 			case VALENTINE_REVOLVER -> RegistryDamageTypes.MAGNUM;
 		};
 	}
@@ -161,7 +169,7 @@ public enum PistolMaterial {
 			case REDFIELD_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case WESKER_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case VALENTINE_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-
+		
 			case GOLDEN_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case DIAMOND_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case ONYX_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
@@ -169,17 +177,19 @@ public enum PistolMaterial {
 			case TITAN_HANDCANNON -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
 			case TITAN_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();
 			case TITAN_REVOLVER -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
-
+		
 			case ONYX_PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case ONYX_PROTEKTOR_HANDCANNON -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
 			case ONYX_PROTEKTOR_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();
 			case ONYX_PROTEKTOR_REVOLVER -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
-
+		
 			case PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 			case PROTEKTOR_HANDCANNON -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
 			case PROTEKTOR_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();
 			case PROTEKTOR_REVOLVER -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
-
+			case DIAMOND_PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case GOLDEN_PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			
 			case VALENTINE_REVOLVER -> RegistryBIBI.FOURTY_FOUR_S_AND_W_ROUNDS.get();
 		};
 	}
