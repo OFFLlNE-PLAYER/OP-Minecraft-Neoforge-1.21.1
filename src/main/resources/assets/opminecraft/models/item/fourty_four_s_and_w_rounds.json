@@ -1,7 +1,7 @@
 {
   "parent": "opminecraft:item/fifty_s_and_w_rounds",
   "textures": {
-    "0": "opminecraft:item/text_fourty_four_s_and_w_rounds",
-    "particle": "opminecraft:item/text_fourty_four_s_and_w_rounds"
+    "0": "opminecraft:item/pistol/ammo/text_fourty_four_s_and_w_rounds",
+    "particle": "opminecraft:item/pistol/ammo/text_fourty_four_s_and_w_rounds"
   }
 }

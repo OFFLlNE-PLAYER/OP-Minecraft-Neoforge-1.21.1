@@ -1,7 +1,0 @@
-{
-  "parent": "opminecraft:item/wesker_beretta",
-  "textures": {
-    "0": "opminecraft:item/text_golden_beretta",
-    "particle": "opminecraft:item/text_golden_beretta"
-  }
-}

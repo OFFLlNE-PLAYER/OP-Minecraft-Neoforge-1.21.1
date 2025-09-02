@@ -19,18 +19,19 @@ import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
  */
 public final class JumpContext {
 
+    public boolean hasPlan() {
+        return !(this.landingPos.equals(Vec3.ZERO) || this.jumpFromPos.equals(Vec3.ZERO));
+    }
+
 	public final Mob mob;
 
 	// Jump cooldown, gates planning/pathfinding
 	public static final int JUMP_COOLDOWN = 20;
 
-	public enum State { GROUNDED, PATHFINDING, AIRBORNE }
+ public enum State { GROUNDED, PATHFINDING, AIRBORNE }
 
-	public static final double AIR_CARRY = 0.369420D;
-   public static final double AIRBORNE_MAX_SPEED = 0.79420D;
-
-   public static final double RANGED_MIN_HOLD_CHECK_DIST = 16.0D;  // 4 blocks
-   public static final double RANGED_MAX_HOLD_CHECK_DIST = 256.0D; // 16 blocks
+    public static final double RANGED_MIN_HOLD_CHECK_DIST = 16.0D;  // 4 blocks
+    public static final double RANGED_MAX_HOLD_CHECK_DIST = 256.0D; // 16 blocks
 
    // Capability flags
    public boolean balloonJump = false; // has balloon check
@@ -50,7 +51,13 @@ public final class JumpContext {
    public Vec3 jumpFromPos = Vec3.ZERO;
    public Vec3 airCarryXZ = Vec3.ZERO;
    public Vec3 targetExactPos = Vec3.ZERO;
+
+   // Cached: current stand-to-target horizontal distance squared (set each planner decideJump)
+   public double horizontalDistSqr = Double.NaN;
  
+   // Prevalidated takeoff for the current candidate (used to avoid recomputation between prevalidate and finalize)
+   public Vec3 prevalidatedTakeoff = Vec3.ZERO;
+
    // Per-scan failure memory: last failed jump-from position (takeoff) to avoid reusing next cycle
    public Vec3 failedJumpFromPos = Vec3.ZERO;
  
@@ -65,7 +72,8 @@ public final class JumpContext {
 
    // PATHFINDING error tracking
    public double lastTakeoffErrorSqr = Double.MAX_VALUE;
-   public int takeoffNotImprovingTicks = 0;
+   // Latest measured horizontal error to the takeoff (computed each PATHFINDING tick)
+      public int takeoffNotImprovingTicks = 0;
 
 
 	public JumpContext(Mob mob) {

@@ -1,10 +1,9 @@
 {
-	"format_version": "1.9.0",
 	"credit": "Made by OP with Blockbench :D",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "opminecraft:item/text_titan_desert_eagle",
-		"particle": "opminecraft:item/text_titan_desert_eagle"
+		"0": "opminecraft:item/pistol/text_titan_desert_eagle",
+		"particle": "opminecraft:item/pistol/text_titan_desert_eagle"
 	},
 	"elements": [
 		{

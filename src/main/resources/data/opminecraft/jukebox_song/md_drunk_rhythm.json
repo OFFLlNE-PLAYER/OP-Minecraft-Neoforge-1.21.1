@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "item.opminecraft.md_drunk_rhythm.desc"
+  },
+  "length_in_seconds": 161,
+  "sound_event": "opminecraft:md_drunk_rhythm"
+}

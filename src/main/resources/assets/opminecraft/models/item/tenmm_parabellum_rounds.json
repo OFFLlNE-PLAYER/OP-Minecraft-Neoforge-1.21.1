@@ -3,8 +3,8 @@
 	"credit": "Made by OP with Blockbench :D",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "opminecraft:item/text_tenmm_parabellum_rounds",
-		"particle": "opminecraft:item/text_tenmm_parabellum_rounds"
+		"0": "opminecraft:item/pistol/ammo/text_tenmm_parabellum_rounds",
+		"particle": "opminecraft:item/pistol/ammo/text_tenmm_parabellum_rounds"
 	},
 	"elements": [
 		{

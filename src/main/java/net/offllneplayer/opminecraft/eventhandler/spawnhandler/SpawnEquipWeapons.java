@@ -152,7 +152,7 @@ public final class SpawnEquipWeapons {
 
         ItemStack weapon;
         if (roll < 4) {
-            weapon = new ItemStack(RegistryBIBI.GOLDEN_BERETTA.get());
+            weapon = new ItemStack(RegistryBIBI.GOLDEN_92FS.get());
         } else {
             // roll == 4 -> pick a random pistol from tag
             TagKey<Item> pistolsTag = TagKey.create(Registries.ITEM, ResourceLocation.parse("opminecraft:pistols"));

@@ -1,7 +1,0 @@
-{
-	"parent": "opminecraft:item/protektor_handcannon",
-	"textures": {
-		"0": "opminecraft:item/text_onyx_protektor_handcannon",
-		"particle": "opminecraft:item/text_onyx_protektor_handcannon"
-	}
-}

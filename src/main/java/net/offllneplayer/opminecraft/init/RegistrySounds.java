@@ -74,7 +74,12 @@ public class RegistrySounds {
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_2 = SOUNDSREGISTRY.register("samurai_edge_2", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_2"), 16F));
         public static final DeferredHolder<SoundEvent, SoundEvent> SAMURAI_EDGE_3 = SOUNDSREGISTRY.register("samurai_edge_3", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "samurai_edge_3"), 16F));
 
-        // Crash TNT
+	public static final DeferredHolder<SoundEvent, SoundEvent> IMI_DESERT_EAGLE_R = SOUNDSREGISTRY.register("imi_desert_eagle_r", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "imi_desert_eagle_r"), 12F));
+	public static final DeferredHolder<SoundEvent, SoundEvent> IMI_DESERT_EAGLE_0 = SOUNDSREGISTRY.register("imi_desert_eagle_0", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "imi_desert_eagle_0"), 12F));
+	public static final DeferredHolder<SoundEvent, SoundEvent> IMI_DESERT_EAGLE_1 = SOUNDSREGISTRY.register("imi_desert_eagle_1", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "imi_desert_eagle_1"), 16F));
+
+
+	// Crash TNT
         public static final DeferredHolder<SoundEvent, SoundEvent> PRIME_TNT = SOUNDSREGISTRY.register("prime_tnt", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "prime_tnt"), 16F));
         public static final DeferredHolder<SoundEvent, SoundEvent> FAST_TICK_TNT = SOUNDSREGISTRY.register("fast_tick_tnt", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "fast_tick_tnt"), 16F));
         public static final DeferredHolder<SoundEvent, SoundEvent> TICK_TNT = SOUNDSREGISTRY.register("tick_tnt", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "tick_tnt"), 16F));
@@ -97,8 +102,11 @@ public class RegistrySounds {
         // Item sounds - 16 blocks range
         public static final DeferredHolder<SoundEvent, SoundEvent> WUMPA_FRUIT = SOUNDSREGISTRY.register("wumpa_fruit", () -> SoundEvent.createFixedRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "wumpa_fruit"), 8F));
 
-        // Music disk
+     			// Music disk
 		  public static final DeferredHolder<SoundEvent, SoundEvent> MD_P1NG_P0NG = SOUNDSREGISTRY.register("md_p1ng_p0ng", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "md_p1ng_p0ng")));
+		  public static final DeferredHolder<SoundEvent, SoundEvent> MD_CANT_GET_YOU_OUT_OF_MY_HEAD = SOUNDSREGISTRY.register("md_cant_get_you_out_of_my_head", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "md_cant_get_you_out_of_my_head")));
+		  public static final DeferredHolder<SoundEvent, SoundEvent> MD_AQUAA = SOUNDSREGISTRY.register("md_aquaa", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "md_aquaa")));
+		  public static final DeferredHolder<SoundEvent, SoundEvent> MD_DRUNK_RHYTHM = SOUNDSREGISTRY.register("md_drunk_rhythm", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("opminecraft", "md_drunk_rhythm")));
 
 }
 

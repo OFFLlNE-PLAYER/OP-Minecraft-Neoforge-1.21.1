@@ -37,22 +37,28 @@ public class EntitySpawnHandler {
 			return;
 		}
 
-		// ~---= [ PICKUP LOOT ] =---~
-		if (mob instanceof Villager) {
-			mob.setCanPickUpLoot(true);
-			return;
-		}
-
 		// mob filter for jump goal and random equipment
 		if (!(mob instanceof Zombie || mob instanceof ZombieVillager || mob instanceof Husk || mob instanceof Drowned ||
 				mob instanceof Skeleton || mob instanceof WitherSkeleton || mob instanceof Stray || mob instanceof Bogged ||
 				mob instanceof Piglin || mob instanceof PiglinBrute || mob instanceof ZombifiedPiglin ||
-				mob instanceof Pillager || mob instanceof Vindicator)) {
+				mob instanceof Pillager || mob instanceof Vindicator ||
+				mob instanceof Creeper || mob instanceof Villager)) {
+			return;
+		}
+
+		if (mob instanceof Villager) {
+			mob.setCanPickUpLoot(true);
+			return;
+		} else {
+		mob.goalSelector.addGoal(3, new GOAL_useJump(mob));
+		}
+
+		if (mob instanceof Creeper) {
 			return;
 		}
 
 		mob.setCanPickUpLoot(true);
-		mob.goalSelector.addGoal(3, new GOAL_useJump(mob));
+
 
 		// ~---= [ WEAPON ] =---~
 		SpawnEquipWeapons.equipPrimaryWeapon(mob, level);

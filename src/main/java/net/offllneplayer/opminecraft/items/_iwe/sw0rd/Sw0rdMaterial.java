@@ -11,13 +11,13 @@ import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 
 public enum Sw0rdMaterial {
-	WOODEN(Ingredient.of(Items.OAK_PLANKS), 59, 2F, BlockTags.INCORRECT_FOR_WOODEN_TOOL, 4F, -3.2F, 15, Rarity.COMMON, false),
-	STONE(Ingredient.of(Items.COBBLESTONE), 131, 4F, BlockTags.INCORRECT_FOR_STONE_TOOL, 5F, -3.2F, 5, Rarity.COMMON, false),
-	CLAY(Ingredient.of(Items.CLAY), 169, 5F, BlockTags.INCORRECT_FOR_STONE_TOOL, 5.5F, -3.2F, 16, Rarity.UNCOMMON, false),
-	IRON(Ingredient.of(Items.IRON_INGOT), 250, 6F, BlockTags.INCORRECT_FOR_IRON_TOOL, 6F, -3.1F, 14, Rarity.COMMON, false),
-	GOLDEN(Ingredient.of(Items.GOLD_INGOT), 420, 11F, BlockTags.INCORRECT_FOR_GOLD_TOOL, 5F, -3.0F, 22, Rarity.EPIC, false),
-	DIAMOND(Ingredient.of(Items.DIAMOND), 1561, 8F, BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 6F, -3.0F, 10, Rarity.UNCOMMON, false),
-	NETHERITE(Ingredient.of(Items.NETHERITE_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -3.0F, 15, Rarity.EPIC, true);
+	WOODEN(Ingredient.of(Items.OAK_PLANKS), 59, 2F, BlockTags.INCORRECT_FOR_WOODEN_TOOL, 4F, -2.6F, 15, Rarity.COMMON, false),
+	CLAY(Ingredient.of(Items.CLAY), 96, 3.5F, BlockTags.INCORRECT_FOR_STONE_TOOL, 4.5F, -2.6F, 16, Rarity.UNCOMMON, false),
+	STONE(Ingredient.of(Items.COBBLESTONE), 131, 4F, BlockTags.INCORRECT_FOR_STONE_TOOL, 5F, -2.6F, 5, Rarity.UNCOMMON, false),
+	GOLDEN(Ingredient.of(Items.GOLD_INGOT), 420, 11F, BlockTags.INCORRECT_FOR_GOLD_TOOL, 4.5F, -2.6F, 22, Rarity.RARE, false),
+	IRON(Ingredient.of(Items.IRON_INGOT), 250, 6F, BlockTags.INCORRECT_FOR_IRON_TOOL, 6F, -2.6F, 14, Rarity.UNCOMMON, false),
+	DIAMOND(Ingredient.of(Items.DIAMOND), 1561, 8F, BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 6F, -2.6F, 10, Rarity.UNCOMMON, false),
+	NETHERITE(Ingredient.of(Items.NETHERITE_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.6F, 15, Rarity.EPIC, true);
 
 	private final Ingredient repairIngredient;
 	private final int durability;
@@ -56,8 +56,8 @@ public enum Sw0rdMaterial {
 	public Item getRegisteredItem() {
 		return switch(this) {
 			case WOODEN -> Items.WOODEN_SWORD;
-			case STONE -> Items.STONE_SWORD;
 			case CLAY -> RegistryBIBI.CLAY_SWORD.get();
+			case STONE -> Items.STONE_SWORD;
 			case IRON -> Items.IRON_SWORD;
 			case GOLDEN -> Items.GOLDEN_SWORD;
 			case DIAMOND -> Items.DIAMOND_SWORD;

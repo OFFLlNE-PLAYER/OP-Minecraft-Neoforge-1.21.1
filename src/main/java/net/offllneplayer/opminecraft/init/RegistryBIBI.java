@@ -36,7 +36,7 @@ import net.offllneplayer.opminecraft.blocks._block.stonetiles.*;
 import net.offllneplayer.opminecraft.items._item.ChiselItem;
 import net.offllneplayer.opminecraft.items._item.PrototypeGunbladeItem;
 import net.offllneplayer.opminecraft.items._item.SculkHammerItem;
-import net.offllneplayer.opminecraft.items._item._musik_disk.MD_P1NGP0NGItem;
+import net.offllneplayer.opminecraft.items._item._musik_disk.*;
 import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
 import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeMaterial;
 import net.offllneplayer.opminecraft.items._iwe.hatchet.HatchetMaterial;
@@ -263,7 +263,6 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> ONYX_LAMP_RED = registerBlock("onyx_lamp_red", () -> new OnyxLampBlock(DyeColor.RED));
 	public static final DeferredBlock<Block> ONYX_LAMP_WHITE = registerBlock("onyx_lamp_white", () -> new OnyxLampBlock(DyeColor.WHITE));
 	public static final DeferredBlock<Block> ONYX_LAMP_YELLOW = registerBlock("onyx_lamp_yellow", () -> new OnyxLampBlock(DyeColor.YELLOW));
-
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -531,6 +530,7 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> AKU_AKU_CRATE = registerRareBlock("aku_aku_crate", AkuAkuCrateBlock::new);
 	public static final DeferredBlock<Block> WUMPA_PLANT = registerRareBlock("wumpa_plant", WumpaPlantBlock::new);
 
+
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Items]*/
 	public static final DeferredItem<Item> TEST_ITEM = ITEMSREGISTRY.registerItem("test_item", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
@@ -650,23 +650,6 @@ public class RegistryBIBI {
 
 	public static final DeferredItem<Item> GEMSTONE_DUST = ITEMSREGISTRY.registerItem("gemstone_dust", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
-	public static final DeferredItem<Item> FEATHER_BLACK = ITEMSREGISTRY.registerItem("feather_black", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_BLUE = ITEMSREGISTRY.registerItem("feather_blue", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_BROWN = ITEMSREGISTRY.registerItem("feather_brown", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_CYAN = ITEMSREGISTRY.registerItem("feather_cyan", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_GRAY = ITEMSREGISTRY.registerItem("feather_gray", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_GREEN = ITEMSREGISTRY.registerItem("feather_green", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_LIGHT_BLUE = ITEMSREGISTRY.registerItem("feather_light_blue", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_LIGHT_GRAY = ITEMSREGISTRY.registerItem("feather_light_gray", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_LIME = ITEMSREGISTRY.registerItem("feather_lime", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_MAGENTA = ITEMSREGISTRY.registerItem("feather_magenta", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_ORANGE = ITEMSREGISTRY.registerItem("feather_orange", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_PINK = ITEMSREGISTRY.registerItem("feather_pink", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_PURPLE = ITEMSREGISTRY.registerItem("feather_purple", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_RED = ITEMSREGISTRY.registerItem("feather_red", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_YELLOW = ITEMSREGISTRY.registerItem("feather_yellow", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-	public static final DeferredItem<Item> FEATHER_GOLDEN = ITEMSREGISTRY.registerItem("feather_golden", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
-
 	public static final DeferredItem<Item> CRYING_ESSENCE_BUCKET = ITEMSREGISTRY.register("crying_essence_bucket", CryingEssenceItem::new);
 	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.register("crying_ingot", CryingIngotItem::new);
 	public static final DeferredItem<Item> CRYING_SMITHING_TEMPLATE = ITEMSREGISTRY.register("crying_smithing_template", CryingSmithingTemplateItem::new);
@@ -695,34 +678,29 @@ public class RegistryBIBI {
 
 	public static final Supplier<HatchetItem> WOODEN_HATCHET = ITEMSREGISTRY.register("wooden_hatchet",
 		() -> new HatchetItem(HatchetMaterial.WOODEN));
-
+	public static final Supplier<HatchetItem> CLAY_HATCHET = ITEMSREGISTRY.register("clay_hatchet",
+			() -> new HatchetItem(HatchetMaterial.CLAY));
 	public static final Supplier<HatchetItem> STONE_HATCHET = ITEMSREGISTRY.register("stone_hatchet",
 		() -> new HatchetItem(HatchetMaterial.STONE));
-
+	public static final Supplier<HatchetItem> GOLDEN_HATCHET = ITEMSREGISTRY.register("golden_hatchet",
+			() -> new HatchetItem(HatchetMaterial.GOLDEN));
 	public static final Supplier<HatchetItem> IRON_HATCHET = ITEMSREGISTRY.register("iron_hatchet",
 		() -> new HatchetItem(HatchetMaterial.IRON));
-
-	public static final Supplier<HatchetItem> GOLDEN_HATCHET = ITEMSREGISTRY.register("golden_hatchet",
-		() -> new HatchetItem(HatchetMaterial.GOLDEN));
-
+	public static final Supplier<HatchetItem> EMERALD_HATCHET = ITEMSREGISTRY.register("emerald_hatchet",
+		() -> new HatchetItem(HatchetMaterial.EMERALD));
 	public static final Supplier<HatchetItem> DIAMOND_HATCHET = ITEMSREGISTRY.register("diamond_hatchet",
 		() -> new HatchetItem(HatchetMaterial.DIAMOND));
-
 	public static final Supplier<HatchetItem> NETHERITE_HATCHET = ITEMSREGISTRY.register("netherite_hatchet",
 		() -> new HatchetItem(HatchetMaterial.NETHERITE));
-
 	public static final Supplier<HatchetItem> ONYX_HATCHET = ITEMSREGISTRY.register("onyx_hatchet",
 		() -> new HatchetItem(HatchetMaterial.ONYX));
-
 	public static final Supplier<HatchetItem> TITAN_HATCHET = ITEMSREGISTRY.register("titan_hatchet",
 		() -> new HatchetItem(HatchetMaterial.TITAN));
-
 	public static final Supplier<HatchetItem> CRYING_HATCHET = ITEMSREGISTRY.register("crying_hatchet",
 		() -> new HatchetItem(HatchetMaterial.CRYING));
 
 
 	public static final DeferredItem<PrototypeGunbladeItem> PROTOTYPE_GUNBLADE = ITEMSREGISTRY.register("prototype_gunblade", PrototypeGunbladeItem::new);
-
 	public static final Supplier<GunbladeItem> GOLDEN_GUNBLADE = ITEMSREGISTRY.register("golden_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.GOLDEN));
 
@@ -731,14 +709,10 @@ public class RegistryBIBI {
 
 	public static final Supplier<GunbladeItem> NETHERITE_GUNBLADE = ITEMSREGISTRY.register("netherite_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.NETHERITE));
-
-
 	public static final Supplier<GunbladeItem> ONYX_GUNBLADE = ITEMSREGISTRY.register("onyx_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.ONYX));
-
 	public static final Supplier<GunbladeItem> TITAN_GUNBLADE = ITEMSREGISTRY.register("titan_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.TITAN));
-
 	public static final Supplier<GunbladeItem> CRYING_GUNBLADE = ITEMSREGISTRY.register("crying_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.CRYING));
 
@@ -749,83 +723,96 @@ public class RegistryBIBI {
 
 	public static final Supplier<OPSwordItem> CRYING_SWORD = ITEMSREGISTRY.register("crying_sword",
 		() -> new OPSwordItem(OPSwordMaterial.CRYING));
-
 	public static final Supplier<OPSwordItem> CLAYMORE = ITEMSREGISTRY.register("claymore_sword",
 		() -> new OPSwordItem(OPSwordMaterial.CLAY));
 
 
-	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);
+	public static final Supplier<PistolItem> GOLDEN_92FS = ITEMSREGISTRY.register("golden_92fs",
+			() -> new PistolItem(PistolMaterial.GOLDEN_92FS));
+	public static final Supplier<PistolItem> IRON_92FS = ITEMSREGISTRY.register("iron_92fs",
+			() -> new PistolItem(PistolMaterial.IRON_92FS));
+	public static final Supplier<PistolItem> EMERALD_92FS = ITEMSREGISTRY.register("emerald_92fs",
+			() -> new PistolItem(PistolMaterial.EMERALD_92FS));
+	public static final Supplier<PistolItem> DIAMOND_92FS = ITEMSREGISTRY.register("diamond_92fs",
+			() -> new PistolItem(PistolMaterial.DIAMOND_92FS));
+	public static final Supplier<PistolItem> NETHERITE_92FS = ITEMSREGISTRY.register("netherite_92fs",
+			() -> new PistolItem(PistolMaterial.NETHERITE_92FS));
+	public static final Supplier<PistolItem> ONYX_92FS = ITEMSREGISTRY.register("onyx_92fs",
+			() -> new PistolItem(PistolMaterial.ONYX_92FS));
+	public static final Supplier<PistolItem> TITAN_92FS = ITEMSREGISTRY.register("titan_92fs",
+			() -> new PistolItem(PistolMaterial.TITAN_92FS));
+	public static final Supplier<PistolItem> VALENTINE_92FS = ITEMSREGISTRY.register("valentine_92fs",
+			() -> new PistolItem(PistolMaterial.VALENTINE_92FS));
 
-	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
+	public static final Supplier<PistolItem> GOLDEN_M9A1 = ITEMSREGISTRY.register("golden_m9a1",
+			() -> new PistolItem(PistolMaterial.GOLDEN_M9A1));
+	public static final Supplier<PistolItem> IRON_M9A1 = ITEMSREGISTRY.register("iron_m9a1",
+			() -> new PistolItem(PistolMaterial.IRON_M9A1));
+	public static final Supplier<PistolItem> EMERALD_M9A1 = ITEMSREGISTRY.register("emerald_m9a1",
+			() -> new PistolItem(PistolMaterial.EMERALD_M9A1));
+	public static final Supplier<PistolItem> DIAMOND_M9A1 = ITEMSREGISTRY.register("diamond_m9a1",
+			() -> new PistolItem(PistolMaterial.DIAMOND_M9A1));
+	public static final Supplier<PistolItem> NETHERITE_M9A1 = ITEMSREGISTRY.register("netherite_m9a1",
+			() -> new PistolItem(PistolMaterial.NETHERITE_M9A1));
+	public static final Supplier<PistolItem> ONYX_M9A1 = ITEMSREGISTRY.register("onyx_m9a1",
+			() -> new PistolItem(PistolMaterial.ONYX_M9A1));
+	public static final Supplier<PistolItem> TITAN_M9A1 = ITEMSREGISTRY.register("titan_m9a1",
+			() -> new PistolItem(PistolMaterial.TITAN_M9A1));
+
+	public static final Supplier<PistolItem> GOLDEN_CZ75 = ITEMSREGISTRY.register("golden_cz75",
+			() -> new PistolItem(PistolMaterial.GOLDEN_CZ75));
+	public static final Supplier<PistolItem> IRON_CZ75 = ITEMSREGISTRY.register("iron_cz75",
+			() -> new PistolItem(PistolMaterial.IRON_CZ75));
+	public static final Supplier<PistolItem> DIAMOND_CZ75 = ITEMSREGISTRY.register("diamond_cz75",
+			() -> new PistolItem(PistolMaterial.DIAMOND_CZ75));
+	public static final Supplier<PistolItem> EMERALD_CZ75 = ITEMSREGISTRY.register("emerald_cz75",
+			() -> new PistolItem(PistolMaterial.EMERALD_CZ75));
+	public static final Supplier<PistolItem> NETHERITE_CZ75 = ITEMSREGISTRY.register("netherite_cz75",
+			() -> new PistolItem(PistolMaterial.NETHERITE_CZ75));
+	public static final Supplier<PistolItem> ONYX_CZ75 = ITEMSREGISTRY.register("onyx_cz75",
+			() -> new PistolItem(PistolMaterial.ONYX_CZ75));
+	public static final Supplier<PistolItem> TITAN_CZ75 = ITEMSREGISTRY.register("titan_cz75",
+			() -> new PistolItem(PistolMaterial.TITAN_CZ75));
 
 
-	public static final Supplier<PistolItem> REDFIELD_BERETTA = ITEMSREGISTRY.register("redfield_beretta",
-		() -> new PistolItem(PistolMaterial.REDFIELD_BERETTA));
-	public static final Supplier<PistolItem> WESKER_BERETTA = ITEMSREGISTRY.register("wesker_beretta",
-		() -> new PistolItem(PistolMaterial.WESKER_BERETTA));
-	public static final Supplier<PistolItem> VALENTINE_BERETTA = ITEMSREGISTRY.register("valentine_beretta",
-		() -> new PistolItem(PistolMaterial.VALENTINE_BERETTA));
-
-	public static final Supplier<PistolItem> GOLDEN_BERETTA = ITEMSREGISTRY.register("golden_beretta",
-			() -> new PistolItem(PistolMaterial.GOLDEN_BERETTA));
-	public static final Supplier<PistolItem> DIAMOND_BERETTA = ITEMSREGISTRY.register("diamond_beretta",
-			() -> new PistolItem(PistolMaterial.DIAMOND_BERETTA));
-	public static final Supplier<PistolItem> ONYX_BERETTA = ITEMSREGISTRY.register("onyx_beretta",
-			() -> new PistolItem(PistolMaterial.ONYX_BERETTA));
-
-	public static final Supplier<PistolItem> TITAN_BERETTA = ITEMSREGISTRY.register("titan_beretta",
-			() -> new PistolItem(PistolMaterial.TITAN_BERETTA));
 	public static final Supplier<PistolItem> TITAN_HANDCANNON = ITEMSREGISTRY.register("titan_handcannon",
 			() -> new PistolItem(PistolMaterial.TITAN_HANDCANNON));
+
+	public static final Supplier<PistolItem> ONYX_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("onyx_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_TYPE_75));
+
+
+	public static final Supplier<PistolItem> ONYX_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("onyx_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.ONYX_IMI_DESERT_EAGLE));
+
 	public static final Supplier<PistolItem> TITAN_DESERT_EAGLE = ITEMSREGISTRY.register("titan_desert_eagle",
 			() -> new PistolItem(PistolMaterial.TITAN_DESERT_EAGLE));
-	public static final Supplier<PistolItem> TITAN_REVOLVER = ITEMSREGISTRY.register("titan_revolver",
-			() -> new PistolItem(PistolMaterial.TITAN_REVOLVER));
 
-	public static final Supplier<PistolItem> ONYX_PROTEKTOR_BERETTA = ITEMSREGISTRY.register("onyx_protektor_beretta",
-			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_BERETTA));
-	public static final Supplier<PistolItem> ONYX_PROTEKTOR_HANDCANNON = ITEMSREGISTRY.register("onyx_protektor_handcannon",
-			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_HANDCANNON));
-	public static final Supplier<PistolItem> ONYX_PROTEKTOR_DESERT_EAGLE = ITEMSREGISTRY.register("onyx_protektor_desert_eagle",
-			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_DESERT_EAGLE));
-	public static final Supplier<PistolItem> ONYX_PROTEKTOR_REVOLVER = ITEMSREGISTRY.register("onyx_protektor_revolver",
-			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_REVOLVER));
-	
-	public static final Supplier<PistolItem> PROTEKTOR_BERETTA = ITEMSREGISTRY.register("protektor_beretta",
-			() -> new PistolItem(PistolMaterial.PROTEKTOR_BERETTA));
-	public static final Supplier<PistolItem> DIAMOND_PROTEKTOR_BERETTA = ITEMSREGISTRY.register("diamond_protektor_beretta",
-			() -> new PistolItem(PistolMaterial.DIAMOND_PROTEKTOR_BERETTA));
-	public static final Supplier<PistolItem> GOLDEN_PROTEKTOR_BERETTA = ITEMSREGISTRY.register("golden_protektor_beretta",
-			() -> new PistolItem(PistolMaterial.GOLDEN_PROTEKTOR_BERETTA));
-	public static final Supplier<PistolItem> PROTEKTOR_HANDCANNON = ITEMSREGISTRY.register("protektor_handcannon",
-			() -> new PistolItem(PistolMaterial.PROTEKTOR_HANDCANNON));
-	public static final Supplier<PistolItem> PROTEKTOR_DESERT_EAGLE = ITEMSREGISTRY.register("protektor_desert_eagle",
-			() -> new PistolItem(PistolMaterial.PROTEKTOR_DESERT_EAGLE));
-	public static final Supplier<PistolItem> PROTEKTOR_REVOLVER = ITEMSREGISTRY.register("protektor_revolver",
-			() -> new PistolItem(PistolMaterial.PROTEKTOR_REVOLVER));
 
-		public static final Supplier<PistolItem> VALENTINE_REVOLVER = ITEMSREGISTRY.register("valentine_revolver",
-			() -> new PistolItem(PistolMaterial.VALENTINE_REVOLVER));
+	public static final Supplier<PistolItem> ONYX_RRAR = ITEMSREGISTRY.register("onyx_rrar",
+			() -> new PistolItem(PistolMaterial.ONYX_RRAR));
+
+	public static final Supplier<PistolItem> TITAN_COLT_ANACONDA = ITEMSREGISTRY.register("titan_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.TITAN_COLT_ANACONDA));
+
+	public static final Supplier<PistolItem> TITAN_S_AND_W_M629C = ITEMSREGISTRY.register("titan_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.TITAN_S_AND_W_500));
+
+	public static final Supplier<PistolItem> TITAN_S_AND_W_500 = ITEMSREGISTRY.register("titan_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.TITAN_S_AND_W_500));
 
 
 	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("beretta_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-
-	public static final DeferredItem<Item> FOURTY_FOUR_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fourty_four_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(6));
-	public static final DeferredItem<Item> FIFTY_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fifty_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(12));
+	public static final DeferredItem<Item> FOURTY_FOUR_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fourty_four_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(12));
+	public static final DeferredItem<Item> FIFTY_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fifty_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(12));
 
 	public static final DeferredItem<Item> FIFTY_AE_ROUNDS = ITEMSREGISTRY.registerItem("fifty_ae_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(8));
 	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(32));
 	public static final DeferredItem<Item> TENmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("tenmm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(20));
 
-	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
-
-	public static final DeferredItem<Item> TOTEM_OF_UNCRYING = ITEMSREGISTRY.register("totem_of_uncrying", TotemOfUncryingItem::new);
-
-	// Musik Disks
-	public static final DeferredItem<Item> MD_P1NG_P0NG = ITEMSREGISTRY.register("md_p1ng_p0ng", MD_P1NGP0NGItem::new);
 	
-	// Colored Balloons
+	// Balloons
 	public static final DeferredItem<Item> BALLOON_WHITE = ITEMSREGISTRY.register("balloon_white", 
 			() -> new BalloonItem(BalloonColor.WHITE));
 	public static final DeferredItem<Item> BALLOON_ORANGE = ITEMSREGISTRY.register("balloon_orange", 
@@ -858,6 +845,40 @@ public class RegistryBIBI {
 			() -> new BalloonItem(BalloonColor.RED));
 	public static final DeferredItem<Item> BALLOON_BLACK = ITEMSREGISTRY.register("balloon_black", 
 			() -> new BalloonItem(BalloonColor.BLACK));
+
+	// feathers
+	public static final DeferredItem<Item> FEATHER_BLACK = ITEMSREGISTRY.registerItem("feather_black", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_BLUE = ITEMSREGISTRY.registerItem("feather_blue", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_BROWN = ITEMSREGISTRY.registerItem("feather_brown", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_CYAN = ITEMSREGISTRY.registerItem("feather_cyan", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_GRAY = ITEMSREGISTRY.registerItem("feather_gray", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_GREEN = ITEMSREGISTRY.registerItem("feather_green", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_LIGHT_BLUE = ITEMSREGISTRY.registerItem("feather_light_blue", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_LIGHT_GRAY = ITEMSREGISTRY.registerItem("feather_light_gray", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_LIME = ITEMSREGISTRY.registerItem("feather_lime", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_MAGENTA = ITEMSREGISTRY.registerItem("feather_magenta", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_ORANGE = ITEMSREGISTRY.registerItem("feather_orange", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_PINK = ITEMSREGISTRY.registerItem("feather_pink", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_PURPLE = ITEMSREGISTRY.registerItem("feather_purple", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_RED = ITEMSREGISTRY.registerItem("feather_red", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_YELLOW = ITEMSREGISTRY.registerItem("feather_yellow", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+	public static final DeferredItem<Item> FEATHER_GOLDEN = ITEMSREGISTRY.registerItem("feather_golden", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
+
+
+	//totems
+	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
+	public static final DeferredItem<Item> TOTEM_OF_UNCRYING = ITEMSREGISTRY.register("totem_of_uncrying", TotemOfUncryingItem::new);
+
+	// Musik Disks
+	public static final DeferredItem<Item> MD_P1NG_P0NG = ITEMSREGISTRY.register("md_p1ng_p0ng", MD_P1NGP0NGItem::new);
+	public static final DeferredItem<Item> MD_CANT_GET_YOU_OUT_OF_MY_HEAD = ITEMSREGISTRY.register("md_cant_get_you_out_of_my_head", MD_CANT_GET_YOU_OUT_OF_MY_HEADItem::new);
+	public static final DeferredItem<Item> MD_AQUAA = ITEMSREGISTRY.register("md_aquaa", MD_AQUAAItem::new);
+	public static final DeferredItem<Item> MD_DRUNK_RHYTHM = ITEMSREGISTRY.register("md_drunk_rhythm", MD_DRUNK_RHYTHMItem::new);
+
+
+	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);
+
+	public static final DeferredItem<SMBSuperFanItem> SMB_SUPER_FAN = ITEMSREGISTRY.register("smb_super_fan", SMBSuperFanItem::new);
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 	/*[Register Blocks]*/

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "opminecraft:item/text_wooden_hatchet"
+    "layer0": "opminecraft:item/hatchet/text_wooden_hatchet"
   }
 }

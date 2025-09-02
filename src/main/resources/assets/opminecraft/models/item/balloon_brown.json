@@ -1,7 +1,7 @@
 ﻿{
   "parent": "opminecraft:item/balloon_red",
   "textures": {
-    "0": "opminecraft:item/text_balloon_brown",
-    "particle": "opminecraft:item/text_balloon_brown"
+    "0": "opminecraft:item/balloon/text_balloon_brown",
+    "particle": "opminecraft:item/balloon/text_balloon_brown"
   }
 }

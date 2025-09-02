@@ -15,69 +15,82 @@ import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 
 public enum PistolMaterial {
-	REDFIELD_BERETTA(14, 5F, 5, 24, 40, 12, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	
+	GOLDEN_92FS(15, 3F, 3, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
+	IRON_92FS(15, 3.5F, 3, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.UNCOMMON, false,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
+	EMERALD_92FS(15, 4F, 4, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
+	DIAMOND_92FS(15, 4.5F, 4, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
+	NETHERITE_92FS(15, 5F, 4, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
+	ONYX_92FS(14, 5F, 5, 26, 40, 12, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.SAMURAI_EDGE_2, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 1F, 0.86F, 0.0420F),
-
-	WESKER_BERETTA(18, 4F, 4, 22, 36, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	TITAN_92FS(18, 4F, 4, 26, 36, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.SAMURAI_EDGE_3, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 0.420F, 1.1F, 0.0420F),
 
-	VALENTINE_BERETTA(15, 4.5F, 3, 20, 34, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	VALENTINE_92FS(15, 4.5F, 4, 20, 34, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.SAMURAI_EDGE_1, RegistrySounds.SAMURAI_EDGE_R, RegistrySounds.SAMURAI_EDGE_0, 0.84F, 0.98F, 0.0420F),
 
-	GOLDEN_BERETTA(9, 3.5F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
 
-	DIAMOND_BERETTA(14, 4.5F, 4, 26, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
-
-	ONYX_BERETTA(12, 4F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	GOLDEN_M9A1(10, 3.5F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.069F),
-
-	TITAN_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	IRON_M9A1(10, 3F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.UNCOMMON, false,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.069F),
+	EMERALD_M9A1(10, 4F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.RARE, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.069F),
+	DIAMOND_M9A1(10, 4.5F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.069F),
+	NETHERITE_M9A1(10, 5F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.069F),
+	ONYX_M9A1(10, 5.5F, 4, 24, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.069F),
+	TITAN_M9A1(10, 6F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.BERETTA_1, RegistrySounds.BERETTA_R, RegistrySounds.BERETTA_0, 0.98F, 1.04F, 0.0420F),
+
+
+	GOLDEN_CZ75(18, 2F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+	IRON_CZ75(18, 2.5F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.UNCOMMON, false,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+	EMERALD_CZ75(18, 3F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.RARE, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+	DIAMOND_CZ75(18, 3.5F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+	NETHERITE_CZ75(18, 4F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+	ONYX_CZ75(18, 4.5F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+	TITAN_CZ75(18, 5F, 3, 20, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.85F, 1.0420F, 0.0420F),
+
+
+	ONYX_PROTEKTOR_TYPE_75(10, 5.5F, 6, 28, 40, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 1F, 1F, 0.0420F),
 
 	TITAN_HANDCANNON(12, 5.5F, 6, 28, 40, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.B3R3TT4_1, RegistrySounds.B3R3TT4_R, RegistrySounds.B3R3TT4_0, 1F, 0.9F, 0.0420F),
 
+
+	ONYX_IMI_DESERT_EAGLE(8, 10.5F, 6, 30, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.IMI_DESERT_EAGLE_1, RegistrySounds.IMI_DESERT_EAGLE_R, RegistrySounds.IMI_DESERT_EAGLE_0, 1F, 1F, 0.0420F),
+
 	TITAN_DESERT_EAGLE(8, 10.5F, 6, 30, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.MAGNUM_1, RegistrySounds.MAGNUM_R, RegistrySounds.MAGNUM_0, 0.9F, 1F, 0.0420F),
 
-	TITAN_REVOLVER(6, 12F, 6, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.85F, 0.0420F),
 
-
-	ONYX_PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.9F, 1.02F, 0.0420F),
-
-	ONYX_PROTEKTOR_HANDCANNON(12, 5.5F, 6, 28, 40, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 1F, 0.92F, 0.0420F),
-
-	ONYX_PROTEKTOR_DESERT_EAGLE(8, 10.5F, 6, 30, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.MAGNUM_1, RegistrySounds.MAGNUM_R, RegistrySounds.MAGNUM_0, 0.86F, 0.92F, 0.0420F),
-
-	ONYX_PROTEKTOR_REVOLVER(6, 12F, 6, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	ONYX_RRAR(6, 12F, 6, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.86F, 0.0420F),
 
+	TITAN_S_AND_W_M629C(6, 11F, 6, 36, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+			RegistrySounds.REVOLVER_1, RegistrySounds.VALENTINE_REVOLVER_R, RegistrySounds.VALENTINE_REVOLVER_0, 0.9F, 1F, 0.0420F),
 
-	PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.9F, 1.01F, 0.0420F),
+	TITAN_COLT_ANACONDA(6, 12F, 6, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+							RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.85F, 0.0420F),
 
-	PROTEKTOR_HANDCANNON(12, 5.5F, 6, 28, 40, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 1F, 0.9F, 0.0420F),
-
-	PROTEKTOR_DESERT_EAGLE(8, 10.5F, 6, 30, 45, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.MAGNUM_1, RegistrySounds.MAGNUM_R, RegistrySounds.MAGNUM_0, 0.96F, 0.86F, 0.0420F),
-
-	PROTEKTOR_REVOLVER(6, 12F, 6, 40, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.REVOLVER_1, RegistrySounds.REVOLVER_R, RegistrySounds.REVOLVER_0, 1.F, 0.85F, 0.0420F),
-	
-	DIAMOND_PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.9F, 1.01F, 0.0420F),
-	
-	GOLDEN_PROTEKTOR_BERETTA(16, 4.5F, 4, 22, 32, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
-			RegistrySounds.PROTEKTOR_BERETTA_1, RegistrySounds.PROTEKTOR_BERETTA_R, RegistrySounds.PROTEKTOR_BERETTA_0, 0.9F, 1.01F, 0.0420F),
-	
-	VALENTINE_REVOLVER(6, 11F, 6, 36, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
+	TITAN_S_AND_W_500(6, 11F, 6, 36, 60, 15, OP_TagKeyUtil.Blocks.EMPTY_BLOCK_TAG, 2F, Rarity.EPIC, true,
 			RegistrySounds.REVOLVER_1, RegistrySounds.VALENTINE_REVOLVER_R, RegistrySounds.VALENTINE_REVOLVER_0, 0.9F, 1F, 0.0420F);
 
 	private final int durability;
@@ -140,57 +153,94 @@ public enum PistolMaterial {
 
 	public ResourceKey<DamageType> getDamageType() {
 		return switch(this) {
-			case REDFIELD_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
-			case WESKER_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
-			case VALENTINE_BERETTA -> RegistryDamageTypes.SAMURAI_EDGE;
-			case GOLDEN_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case DIAMOND_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case ONYX_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case TITAN_BERETTA -> RegistryDamageTypes.HANDCANNON;
+
+			case GOLDEN_92FS -> RegistryDamageTypes.HANDCANNON;
+			case IRON_92FS -> RegistryDamageTypes.HANDCANNON;
+			case EMERALD_92FS -> RegistryDamageTypes.HANDCANNON;
+			case DIAMOND_92FS -> RegistryDamageTypes.HANDCANNON;
+			case NETHERITE_92FS -> RegistryDamageTypes.HANDCANNON;
+			case ONYX_92FS -> RegistryDamageTypes.SAMURAI_EDGE;
+			case TITAN_92FS -> RegistryDamageTypes.SAMURAI_EDGE;
+			case VALENTINE_92FS -> RegistryDamageTypes.SAMURAI_EDGE;
+
+			case GOLDEN_M9A1 -> RegistryDamageTypes.HANDCANNON;
+			case IRON_M9A1 -> RegistryDamageTypes.HANDCANNON;
+			case EMERALD_M9A1 -> RegistryDamageTypes.HANDCANNON;
+			case DIAMOND_M9A1 -> RegistryDamageTypes.HANDCANNON;
+			case NETHERITE_M9A1 -> RegistryDamageTypes.HANDCANNON;
+			case ONYX_M9A1 -> RegistryDamageTypes.HANDCANNON;
+			case TITAN_M9A1 -> RegistryDamageTypes.HANDCANNON;
+
+			case GOLDEN_CZ75 -> RegistryDamageTypes.HANDCANNON;
+			case IRON_CZ75 -> RegistryDamageTypes.HANDCANNON;
+			case EMERALD_CZ75 -> RegistryDamageTypes.HANDCANNON;
+			case DIAMOND_CZ75 -> RegistryDamageTypes.HANDCANNON;
+			case NETHERITE_CZ75 -> RegistryDamageTypes.HANDCANNON;
+			case ONYX_CZ75 -> RegistryDamageTypes.HANDCANNON;
+			case TITAN_CZ75 -> RegistryDamageTypes.HANDCANNON;
+
+
+			case ONYX_PROTEKTOR_TYPE_75 -> RegistryDamageTypes.HANDCANNON;
+
 			case TITAN_HANDCANNON -> RegistryDamageTypes.HANDCANNON;
+
+
+			case ONYX_IMI_DESERT_EAGLE -> RegistryDamageTypes.MAGNUM;
+
 			case TITAN_DESERT_EAGLE -> RegistryDamageTypes.MAGNUM;
-			case TITAN_REVOLVER -> RegistryDamageTypes.MAGNUM;
-			case ONYX_PROTEKTOR_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case ONYX_PROTEKTOR_HANDCANNON -> RegistryDamageTypes.HANDCANNON;
-			case ONYX_PROTEKTOR_DESERT_EAGLE -> RegistryDamageTypes.MAGNUM;
-			case ONYX_PROTEKTOR_REVOLVER -> RegistryDamageTypes.MAGNUM;
-			case PROTEKTOR_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case PROTEKTOR_HANDCANNON -> RegistryDamageTypes.HANDCANNON;
-			case PROTEKTOR_DESERT_EAGLE -> RegistryDamageTypes.MAGNUM;
-			case PROTEKTOR_REVOLVER -> RegistryDamageTypes.MAGNUM;
-			case DIAMOND_PROTEKTOR_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case GOLDEN_PROTEKTOR_BERETTA -> RegistryDamageTypes.HANDCANNON;
-			case VALENTINE_REVOLVER -> RegistryDamageTypes.MAGNUM;
+
+
+			case ONYX_RRAR -> RegistryDamageTypes.MAGNUM;
+			case TITAN_S_AND_W_M629C -> RegistryDamageTypes.MAGNUM;
+			case TITAN_COLT_ANACONDA -> RegistryDamageTypes.MAGNUM;
+
+			case TITAN_S_AND_W_500 -> RegistryDamageTypes.MAGNUM;
 		};
 	}
 
 	public Item getRegisteredAmmo() {
 		return switch(this) {
-			case REDFIELD_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case WESKER_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case VALENTINE_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
 		
-			case GOLDEN_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case DIAMOND_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case ONYX_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case TITAN_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case GOLDEN_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case IRON_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case EMERALD_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case DIAMOND_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case NETHERITE_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case ONYX_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case TITAN_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case VALENTINE_92FS -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+
+			case GOLDEN_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case IRON_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case EMERALD_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case DIAMOND_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case NETHERITE_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case ONYX_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case TITAN_M9A1 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+
+			case GOLDEN_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case IRON_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case EMERALD_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case DIAMOND_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case NETHERITE_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case ONYX_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+			case TITAN_CZ75 -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
+
+
+			case ONYX_PROTEKTOR_TYPE_75 -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
+
 			case TITAN_HANDCANNON -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
+
+
 			case TITAN_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();
-			case TITAN_REVOLVER -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
-		
-			case ONYX_PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case ONYX_PROTEKTOR_HANDCANNON -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
-			case ONYX_PROTEKTOR_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();
-			case ONYX_PROTEKTOR_REVOLVER -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
-		
-			case PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case PROTEKTOR_HANDCANNON -> RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get();
-			case PROTEKTOR_DESERT_EAGLE -> RegistryBIBI.FIFTY_AE_ROUNDS.get();
-			case PROTEKTOR_REVOLVER -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
-			case DIAMOND_PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			case GOLDEN_PROTEKTOR_BERETTA -> RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get();
-			
-			case VALENTINE_REVOLVER -> RegistryBIBI.FOURTY_FOUR_S_AND_W_ROUNDS.get();
+
+			case ONYX_IMI_DESERT_EAGLE -> RegistryBIBI.FOURTY_FOUR_S_AND_W_ROUNDS.get();
+
+			case ONYX_RRAR -> RegistryBIBI.FOURTY_FOUR_S_AND_W_ROUNDS.get();
+			case TITAN_S_AND_W_M629C -> RegistryBIBI.FOURTY_FOUR_S_AND_W_ROUNDS.get();
+			case TITAN_COLT_ANACONDA -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
+
+			case TITAN_S_AND_W_500 -> RegistryBIBI.FIFTY_S_AND_W_ROUNDS.get();
 		};
 	}
 

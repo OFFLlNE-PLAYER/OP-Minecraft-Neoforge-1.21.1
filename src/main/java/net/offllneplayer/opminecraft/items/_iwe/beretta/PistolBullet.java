@@ -79,8 +79,8 @@ public class PistolBullet extends AbstractArrow {
 			this.material = PistolMaterial.valueOf(materialName);
 		} catch (IllegalArgumentException e) {
 			// Fallback for items that don't have a matching PistolMaterial enum
-			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
-			this.material = PistolMaterial.VALENTINE_BERETTA;
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_92FS");
+			this.material = PistolMaterial.VALENTINE_92FS;
 		}
 
 		this.bulletDamageSource = this.level().damageSources().source(this.material.getDamageType(), this, this.getOwner());
@@ -106,8 +106,8 @@ public class PistolBullet extends AbstractArrow {
 			this.material = PistolMaterial.valueOf(materialName);
 		} catch (IllegalArgumentException e) {
 			// Fallback for items that don't have a matching PistolMaterial enum
-			this.entityData.set(MATERIAL_NAME, "VALENTINE_BERETTA");
-			this.material = PistolMaterial.VALENTINE_BERETTA;
+			this.entityData.set(MATERIAL_NAME, "VALENTINE_92FS");
+			this.material = PistolMaterial.VALENTINE_92FS;
 		}
 
 		this.bulletDamageSource = this.level().damageSources().source(this.material.getDamageType(), this, this.getOwner());
@@ -137,7 +137,7 @@ public class PistolBullet extends AbstractArrow {
 		try {
 			return PistolMaterial.valueOf(getMaterialName());
 		} catch (IllegalArgumentException e) {
-			return PistolMaterial.VALENTINE_BERETTA;
+			return PistolMaterial.VALENTINE_92FS;
 		}
 	}
 
@@ -151,7 +151,7 @@ public class PistolBullet extends AbstractArrow {
 	 @Override
 	 protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		 super.defineSynchedData(builder);
-		 builder.define(MATERIAL_NAME, "VALENTINE_BERETTA");
+		 builder.define(MATERIAL_NAME, "VALENTINE_92FS");
 		 builder.define(ROTATION, 180.0F);
 	 }
 

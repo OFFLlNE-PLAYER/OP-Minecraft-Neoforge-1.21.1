@@ -1,7 +1,0 @@
-{
-	"parent": "opminecraft:item/protektor_desert_eagle",
-	"textures": {
-		"0": "opminecraft:item/text_onyx_protektor_desert_eagle",
-		"particle": "opminecraft:item/text_onyx_protektor_desert_eagle"
-	}
-}

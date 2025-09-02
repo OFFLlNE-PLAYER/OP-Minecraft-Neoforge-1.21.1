@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "item.opminecraft.md_cant_get_you_out_of_my_head.desc"
+  },
+  "length_in_seconds": 152,
+  "sound_event": "opminecraft:md_cant_get_you_out_of_my_head"
+}

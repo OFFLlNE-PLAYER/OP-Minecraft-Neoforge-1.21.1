@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_feather_red"
+    "layer0": "opminecraft:item/feather/text_feather_red"
   },
   "display": {
     "firstperson_lefthand": {

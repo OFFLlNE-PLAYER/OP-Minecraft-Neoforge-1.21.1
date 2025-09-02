@@ -1,7 +1,8 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_ninemm_parabellum_rounds"
+    "layer0": "opminecraft:item/pistol/ammo/text_ninemm_parabellum_rounds",
+    "particle": "opminecraft:item/pistol/ammo/text_ninemm_parabellum_round"
   },
   "display": {
     "firstperson_righthand": {

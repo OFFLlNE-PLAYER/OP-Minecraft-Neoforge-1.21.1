@@ -28,8 +28,8 @@ import java.util.*;
  *        [diamond_src] [protektor_src] [output] [paletteSize] [dither]
  *
  * Defaults:
- *   paletteSize  = 32
- *   dither       = true
+ *   paletteSize = 32
+ *   dither = true
  */
 public class TextureTransfer {
 

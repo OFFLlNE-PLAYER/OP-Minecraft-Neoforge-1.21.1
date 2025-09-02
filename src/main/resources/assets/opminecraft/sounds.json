@@ -38,17 +38,6 @@
   "fleshrip_0": {"sounds": [{"name": "opminecraft:fleshrip_0", "stream": false}]},
   "fleshrip_1": {"sounds": [{"name": "opminecraft:fleshrip_1", "stream": false}]},
 
-  "magnum_r": {"sounds": [{"name": "opminecraft:magnum_r", "stream": false}]},
-  "magnum_0": {"sounds": [{"name": "opminecraft:magnum_0", "stream": false}]},
-  "magnum_1": {"sounds": [{"name": "opminecraft:magnum_1", "stream": false}]},
-
-  "revolver_r": {"sounds": [{"name": "opminecraft:revolver_r", "stream": false}]},
-  "revolver_0": {"sounds": [{"name": "opminecraft:revolver_0", "stream": false}]},
-  "revolver_1": {"sounds": [{"name": "opminecraft:revolver_1", "stream": false}]},
-
-  "valentine_revolver_r": {"sounds": [{"name": "opminecraft:valentine_revolver_r", "stream": false}]},
-  "valentine_revolver_0": {"sounds": [{"name": "opminecraft:valentine_revolver_0", "stream": false}]},
-
   "b3r3tt4_r": {"sounds": [{"name": "opminecraft:b3r3tt4_r", "stream": false}]},
   "b3r3tt4_0": {"sounds": [{"name": "opminecraft:b3r3tt4_0", "stream": false}]},
   "b3r3tt4_1": {"sounds": [{"name": "opminecraft:b3r3tt4_1", "stream": false}]},
@@ -67,12 +56,30 @@
   "samurai_edge_2": {"sounds": [{"name": "opminecraft:samurai_edge_2", "stream": false}]},
   "samurai_edge_3": {"sounds": [{"name": "opminecraft:samurai_edge_3", "stream": false}]},
 
+  "magnum_r": {"sounds": [{"name": "opminecraft:magnum_r", "stream": false}]},
+  "magnum_0": {"sounds": [{"name": "opminecraft:magnum_0", "stream": false}]},
+  "magnum_1": {"sounds": [{"name": "opminecraft:magnum_1", "stream": false}]},
+
+  "imi_ desert_eagle_r": {"sounds": [{"name": "opminecraft:imi_ desert_eagle_r", "stream": false}]},
+  "imi_ desert_eagle_0": {"sounds": [{"name": "opminecraft:imi_ desert_eagle_0", "stream": false}]},
+  "imi_ desert_eagle_1": {"sounds": [{"name": "opminecraft:imi_ desert_eagle_1", "stream": false}]},
+
+  "revolver_r": {"sounds": [{"name": "opminecraft:revolver_r", "stream": false}]},
+  "revolver_0": {"sounds": [{"name": "opminecraft:revolver_0", "stream": false}]},
+  "revolver_1": {"sounds": [{"name": "opminecraft:revolver_1", "stream": false}]},
+
+  "valentine_revolver_r": {"sounds": [{"name": "opminecraft:valentine_revolver_r", "stream": false}]},
+  "valentine_revolver_0": {"sounds": [{"name": "opminecraft:valentine_revolver_0", "stream": false}]},
+
 
   "smb_super_fan_hit": {"sounds": [{"name": "opminecraft:smb_super_fan_hit", "stream": false}]},
   "smb_super_fan_idle": {"sounds": [{"name": "opminecraft:smb_super_fan_idle", "stream": false}]},
 
   "wumpa_fruit": {"sounds": [{"name": "opminecraft:wumpa_fruit", "stream": false}]},
 
-  "md_p1ng_p0ng": {"sounds": [{"name": "opminecraft:md_p1ng_p0ng", "stream": false}]}
+  "md_cant_get_you_out_of_my_head": {"sounds": [{"name": "opminecraft:md_cant_get_you_out_of_my_head", "stream": false}]},
+  "md_p1ng_p0ng": {"sounds": [{"name": "opminecraft:md_p1ng_p0ng", "stream": false}]},
+  "md_aquaa": {"sounds": [{"name": "opminecraft:md_aquaa", "stream": false}]},
+  "md_drunk_rhythm": {"sounds": [{"name": "opminecraft:md_drunk_rhythm", "stream": false}]}
 
 }

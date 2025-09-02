@@ -2,8 +2,8 @@
 	"credit": "Made by OP with Blockbench :D",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "opminecraft:item/text_balloon_red",
-		"particle": "opminecraft:item/text_balloon_red"
+		"0": "opminecraft:item/balloon/text_balloon_red",
+		"particle": "opminecraft:item/balloon/text_balloon_red"
 	},
 	"elements": [
 		{

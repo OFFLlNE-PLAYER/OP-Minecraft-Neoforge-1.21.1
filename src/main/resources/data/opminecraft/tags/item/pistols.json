@@ -1,30 +1,47 @@
 {
   "replace": false,
   "values": [
-    "opminecraft:redfield_beretta",
-    "opminecraft:wesker_beretta",
-    "opminecraft:valentine_beretta",
+    "opminecraft:golden_92fs",
+    "opminecraft:iron_92fs",
+    "opminecraft:emerald_92fs",
+    "opminecraft:diamond_92fs",
+    "opminecraft:netherite_92fs",
+    "opminecraft:onyx_92fs",
+    "opminecraft:titan_92fs",
+    "opminecraft:valentine_92fs",
 
-    "opminecraft:golden_beretta",
-    "opminecraft:diamond_beretta",
-    "opminecraft:onyx_beretta",
-    "opminecraft:titan_beretta",
+    "opminecraft:golden_m9a1",
+    "opminecraft:iron_m9a1",
+    "opminecraft:emerald_m9a1",
+    "opminecraft:diamond_m9a1",
+    "opminecraft:netherite_m9a1",
+    "opminecraft:onyx_m9a1",
+    "opminecraft:titan_m9a1",
+
     "opminecraft:titan_handcannon",
     "opminecraft:titan_desert_eagle",
     "opminecraft:titan_revolver",
 
-    "opminecraft:onyx_protektor_beretta",
+    "opminecraft:golden_cz75",
+    "opminecraft:iron_cz75",
+    "opminecraft:emerald_cz75",
+    "opminecraft:diamond_cz75",
+    "opminecraft:netherite_cz75",
+    "opminecraft:onyx_cz75",
+    "opminecraft:titan_cz75",
+    "opminecraft:protektor_cz75",
+
     "opminecraft:onyx_protektor_handcannon",
-    "opminecraft:onyx_protektor_desert_eagle",
-    "opminecraft:onyx_protektor_revolver",
-
-    "opminecraft:golden_protektor_beretta",
-    "opminecraft:diamond_protektor_beretta",
-    "opminecraft:protektor_beretta",
-
     "opminecraft:protektor_handcannon",
+
+
+    "opminecraft:onyx_protektor_desert_eagle",
     "opminecraft:protektor_desert_eagle",
+
+    "opminecraft:onyx_protektor_revolver",
     "opminecraft:protektor_revolver",
+
+    "opminecraft:titan_revolver",
 
     "opminecraft:valentine_revolver"
   ]

@@ -1,5 +1,6 @@
 package net.offllneplayer.opminecraft.entity.goal.jump;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 
 /**
@@ -9,8 +10,10 @@ import net.minecraft.world.phys.Vec3;
 public final class JumpTick {
 
 	// ---- GROUNDED: planning only ----
-	public static void groundedTick(JumpContext ctx) {
-		boolean hasPlan = !ctx.landingPos.equals(Vec3.ZERO) && !ctx.jumpFromPos.equals(Vec3.ZERO);
+ public static void groundedTick(JumpContext ctx) {
+
+        // Refresh capability-derived context each tick
+        JumpContext.setupContext(ctx);
 
 		if (ctx.mob.isInLiquid()) return;
 
@@ -27,7 +30,7 @@ public final class JumpTick {
 		}
 
 		// Back out and let state management handle transition to PATHFINDING
-		if (hasPlan) {
+		if (ctx.hasPlan()) {
 			return;
 		}
 
@@ -44,11 +47,12 @@ public final class JumpTick {
 		}
 
   // No plan; Try to make one, but only if a jump could plausibly improve pursuit
-        // Quick lethargy pre-check: if there is no forward/diagonal obstacle within capability and target is not above, skip planning
+        // Quick pre-check: if there is no forward/diagonal obstacle within capability and target is not above, skip planning
         int mobY = ctx.mob.blockPosition().getY();
-        int targetY = net.minecraft.core.BlockPos.containing(ctx.targetExactPos.x, ctx.targetExactPos.y, ctx.targetExactPos.z).getY();
+        int targetY = BlockPos.containing(ctx.targetExactPos.x, ctx.targetExactPos.y, ctx.targetExactPos.z).getY();
         boolean needElevNow = mobY < targetY;
-        if (!needElevNow && !JumpUtils.hasForwardOrDiagonalObstacle(ctx.mob.level(), ctx.mob.blockPosition(), grid, Math.min(ctx.maxGap + 1, 6))) {
+        int forwardLimit = Math.min(ctx.maxGap + 1, ctx.balloonJump ? 6 : 3);
+        if (!needElevNow && !JumpUtils.hasForwardOrDiagonalObstacle(ctx.mob.level(), ctx.mob.blockPosition(), grid, forwardLimit)) {
             // nothing forcing a jump this tick; let vanilla pursue
             return;
         }
@@ -57,12 +61,14 @@ public final class JumpTick {
 
 
 	// ---- PATHFINDING: execution ----
-	public static void pathfindTick(JumpContext ctx) {
+ public static void pathfindTick(JumpContext ctx) {
+
+         // Refresh capability-derived context each tick
+         JumpContext.setupContext(ctx);
 
 		// Bounce back to GROUNDED and let the next cycle plan
-		boolean hasPlan = !ctx.landingPos.equals(Vec3.ZERO) && !ctx.jumpFromPos.equals(Vec3.ZERO);
-		if (!hasPlan) {
-			JumpState.resetToGrounded(ctx, false, true);
+		if (!ctx.hasPlan() || ctx.mob.isInLiquid()) {
+			JumpState.resetToGrounded(ctx, false, false);
 			return;
 		}
 
@@ -79,23 +85,21 @@ public final class JumpTick {
 		}
 
 		// Compute toward/grid for this tick to avoid stale facing
-		Vec3 toward = JumpUtils.exactToward(ctx.mob, ctx.landingPos, ctx.targetExactPos);
-		var grid = JumpUtils.cardinalFrom(toward, ctx.faceDir);
-		ctx.faceDir = grid;
+		ctx.faceDir = JumpUtils.cardinalFrom(JumpUtils.exactToward(ctx.mob, ctx.landingPos, ctx.targetExactPos), ctx.faceDir);
 
 		// Ranged hold
-		if (JumpContext.rangedHoldGate(ctx, grid)) {
+		if (JumpContext.rangedHoldGate(ctx, ctx.faceDir)) {
 			ctx.mob.setDeltaMovement(0,  ctx.mob.getDeltaMovement().y, 0);
 			JumpState.resetToGrounded(ctx, true, true);
 			return;
 		}
 
 		// Distance from mob current to jumpFromPos
-	  double horizontalDistSqr = JumpUtils.horizontalDistSqr(ctx.mob.position(), ctx.jumpFromPos);
+	 	double currentTakeoffErrorSqr = JumpUtils.horizontalDistSqr(ctx.mob.position(), ctx.jumpFromPos);
 
-	  // If distance does not improve for 1 second, fail plan and cooldown
-      if (horizontalDistSqr < ctx.lastTakeoffErrorSqr) {
-          ctx.lastTakeoffErrorSqr = horizontalDistSqr;
+		// If distance does not improve for 1 second, fail plan and cooldown
+      if (currentTakeoffErrorSqr < ctx.lastTakeoffErrorSqr) {
+          ctx.lastTakeoffErrorSqr = currentTakeoffErrorSqr;
           ctx.takeoffNotImprovingTicks = 0;
       } else {
 			ctx.takeoffNotImprovingTicks++;
@@ -105,8 +109,8 @@ public final class JumpTick {
 			}
 		}
 
-  // Execute the plan
-  JumpExecutor.executeNavOrJump(ctx);
+	// Execute the plan
+	JumpExecutor.executeNavOrJump(ctx);
 	}
 
 

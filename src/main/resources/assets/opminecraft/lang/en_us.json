@@ -527,10 +527,11 @@
 
 
   "item.opminecraft.wooden_hatchet": "Wooden Hatchet",
-  "item.opminecraft.stone_hatchet": "Stone Hatchet",
   "item.opminecraft.clay_hatchet": "Clay Hatchet",
-  "item.opminecraft.iron_hatchet": "Iron Hatchet",
+  "item.opminecraft.stone_hatchet": "Stone Hatchet",
   "item.opminecraft.golden_hatchet": "Golden Hatchet",
+  "item.opminecraft.iron_hatchet": "Iron Hatchet",
+  "item.opminecraft.emerald_hatchet": "Emerald Hatchet",
   "item.opminecraft.diamond_hatchet": "Diamond Hatchet",
   "item.opminecraft.netherite_hatchet": "Netherite Hatchet",
   "item.opminecraft.onyx_hatchet": "Onyx Hatchet",
@@ -538,92 +539,153 @@
   "item.opminecraft.crying_hatchet": "Crying Hatchet",
 
 
-  "item.opminecraft.redfield_beretta": "92FS TE",
-  "item.opminecraft.redfield_beretta.description_0": "\"Tactical Edition REDFIELD\"",
-  "item.opminecraft.redfield_beretta.description_1": "14x 9mm Parabellum Rounds",
+  "item.opminecraft.golden_92fs": "Golden Beretta",
+  "item.opminecraft.golden_92fs.description_0": "\"92FS\"",
+  "item.opminecraft.golden_92fs.description_1": "15x 9mm Parabellum Rounds",
 
-  "item.opminecraft.wesker_beretta": "92FS SE",
-  "item.opminecraft.wesker_beretta.description_0": "\"Stealth Edition WESKER\"",
-  "item.opminecraft.wesker_beretta.description_1": "18x 9mm Parabellum Rounds",
+  "item.opminecraft.iron_92fs": "Iron Beretta",
+  "item.opminecraft.iron_92fs.description_0": "\"92FS\"",
+  "item.opminecraft.iron_92fs.description_1": "15x 9mm Parabellum Rounds",
 
-  "item.opminecraft.valentine_beretta": "Samurai Edge",
-  "item.opminecraft.valentine_beretta.description_0": "\"VALENTINE\"",
-  "item.opminecraft.valentine_beretta.description_1": "15x 9mm Parabellum Rounds",
+  "item.opminecraft.emerald_92fs": "Emerald Beretta",
+  "item.opminecraft.emerald_92fs.description_0": "\"92FS\"",
+  "item.opminecraft.emerald_92fs.description_1": "15x 9mm Parabellum Rounds",
 
-  "item.opminecraft.golden_beretta": "Golden Beretta",
-  "item.opminecraft.golden_beretta.description_0": "\"92FS\"",
-  "item.opminecraft.golden_beretta.description_1": "9x 9mm Parabellum Rounds",
+  "item.opminecraft.diamond_92fs": "Diamond Beretta",
+  "item.opminecraft.diamond_92fs.description_0": "\"92FS\"",
+  "item.opminecraft.diamond_92fs.description_1": "15x 9mm Parabellum Rounds",
 
-  "item.opminecraft.onyx_beretta": "Onyx Beretta",
-  "item.opminecraft.onyx_beretta.description_0": "\"92FS\"",
-  "item.opminecraft.onyx_beretta.description_1": "12x 9mm Parabellum Rounds",
+  "item.opminecraft.netherite_92fs": "Netherite Beretta",
+  "item.opminecraft.netherite_92fs.description_0": "\"92FS\"",
+  "item.opminecraft.netherite_92fs.description_1": "15x 9mm Parabellum Rounds",
 
-  "item.opminecraft.diamond_beretta": "Diamond Beretta",
-  "item.opminecraft.diamond_beretta.description_0": "\"92FS\"",
-  "item.opminecraft.diamond_beretta.description_1": "14x 9mm Parabellum Rounds",
+  "item.opminecraft.onyx_92fs": "Onyx Beretta TE",
+  "item.opminecraft.onyx_92fs.description_0": "\"Tactical Edition REDFIELD\"",
+  "item.opminecraft.onyx_92fs.description_1": "14x 9mm Parabellum Rounds",
 
-  "item.opminecraft.titan_beretta": "Titan Beretta",
-  "item.opminecraft.titan_beretta.description_0": "\"92FS\"",
-  "item.opminecraft.titan_beretta.description_1": "16x 9mm Parabellum Rounds",
+  "item.opminecraft.titan_92fs": "Titan Beretta SE",
+  "item.opminecraft.titan_92fs.description_0": "\"Stealth Edition WESKER\"",
+  "item.opminecraft.titan_92fs.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.valentine_92fs": "Samurai Edge OG",
+  "item.opminecraft.valentine_92fs.description_0": "\"VALENTINE\"",
+  "item.opminecraft.valentine_92fs.description_1": "15x 9mm Parabellum Rounds",
+
+
+  "item.opminecraft.golden_m9a1": "Golden Beretta",
+  "item.opminecraft.golden_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.golden_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.iron_m9a1": "Iron Beretta",
+  "item.opminecraft.iron_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.iron_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.emerald_m9a1": "Emerald Beretta",
+  "item.opminecraft.emerald_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.emerald_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.diamond_m9a1": "Diamond Beretta",
+  "item.opminecraft.diamond_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.diamond_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.netherite_m9a1": "Netherite Beretta",
+  "item.opminecraft.netherite_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.netherite_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_m9a1": "Onyx Beretta",
+  "item.opminecraft.onyx_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.onyx_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+  "item.opminecraft.titan_m9a1": "Titan Beretta",
+  "item.opminecraft.titan_m9a1.description_0": "\"M9A1\"",
+  "item.opminecraft.titan_m9a1.description_1": "10x 9mm Parabellum Rounds",
+
+
+  "item.opminecraft.golden_cz75": "Golden Beretta",
+  "item.opminecraft.golden_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.golden_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.iron_cz75": "Iron Beretta",
+  "item.opminecraft.iron_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.iron_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.emerald_cz75": "Emerald Beretta",
+  "item.opminecraft.emerald_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.emerald_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.diamond_cz75": "Diamond Beretta",
+  "item.opminecraft.diamond_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.diamond_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.netherite_cz75": "Netherite Beretta",
+  "item.opminecraft.netherite_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.netherite_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_cz75": "Onyx Beretta",
+  "item.opminecraft.onyx_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.onyx_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.titan_cz75": "Titan Beretta",
+  "item.opminecraft.titan_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.titan_cz75.description_1": "18x 9mm Parabellum Rounds",
+
 
   "item.opminecraft.titan_handcannon": "Titan Handcannon",
   "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM\"",
-  "item.opminecraft.titan_handcannon.description_1": "12x 10mm Parabellum Rounds",
+  "item.opminecraft.titan_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.golden_protektor_type_75": "Golden Protektor Beretta",
+  "item.opminecraft.golden_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.golden_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.iron_protektor_type_75": "Iron Protektor Beretta",
+  "item.opminecraft.iron_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.iron_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.emerald_protektor_type_75": "Emerald Protektor Beretta",
+  "item.opminecraft.emerald_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.emerald_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.diamond_protektor_type_75": "Diamond Protektor Beretta",
+  "item.opminecraft.diamond_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.diamond_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.netherite_protektor_type_75": "Netherite Protektor Beretta",
+  "item.opminecraft.netherite_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.netherite_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_protektor_type_75": "Onyx Protektor TYPE-75",
+  "item.opminecraft.onyx_protektor_type_75.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+  "item.opminecraft.titan_protektor_type_75": "Titan Protektor TYPE-75",
+  "item.opminecraft.titan_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
+  "item.opminecraft.titan_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
+
+
+  "item.opminecraft.onyx_rrar": "Onyx Ruger R.A. Revolver",
+  "item.opminecraft.onyx_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_rrar.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.onyx_imi_desert_eagle": "Onyx IMI Desert Eagle",
+  "item.opminecraft.onyx_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
+
+  "item.opminecraft.titan_s_and_w_m629c": "Titan S&W M629C Revolver",
+  "item.opminecraft.titan_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.titan_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.titan_colt_anaconda": "Titan Colt Anaconda Revolver",
+  "item.opminecraft.titan_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.titan_colt_anaconda.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.titan_s_and_w_500": "Titan S&W 500 Revolver",
+  "item.opminecraft.titan_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.titan_s_and_w_500.description_1": "6x .50 S&W Rounds",
 
   "item.opminecraft.titan_desert_eagle": "Titan Desert Eagle",
   "item.opminecraft.titan_desert_eagle.description_0": "\"KENNEDY\"",
   "item.opminecraft.titan_desert_eagle.description_1": "8x 0.50 AE Rounds",
-
-  "item.opminecraft.titan_revolver": "Titan .50 Revolver",
-  "item.opminecraft.titan_revolver.description_0": "\"GRIMES\"",
-  "item.opminecraft.titan_revolver.description_1": "6x .50 S&W Rounds",
-
-
-  "item.opminecraft.onyx_protektor_beretta": "Onyx Protektor Beretta",
-  "item.opminecraft.onyx_protektor_beretta.description_0": "\"CUSTOM\"",
-  "item.opminecraft.onyx_protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
-
-  "item.opminecraft.onyx_protektor_handcannon": "Onyx Protektor TYPE-75",
-  "item.opminecraft.onyx_protektor_handcannon.description_0": "\"CUSTOM\"",
-  "item.opminecraft.onyx_protektor_handcannon.description_1": "10x 10mm Parabellum Rounds",
-
-  "item.opminecraft.onyx_protektor_desert_eagle": "Onyx Protektor Desert Eagle",
-  "item.opminecraft.onyx_protektor_desert_eagle.description_0": "\"CUSTOM\"",
-  "item.opminecraft.onyx_protektor_desert_eagle.description_1": "6x 0.50 AE Rounds",
-
-  "item.opminecraft.onyx_protektor_revolver": "Onyx Protektor .50 Revolver",
-  "item.opminecraft.onyx_protektor_revolver.description_0": "\"CUSTOM\"",
-  "item.opminecraft.onyx_protektor_revolver.description_1": "6x .50 S&W Rounds",
-
-
-  "item.opminecraft.protektor_beretta": "Protektor Beretta",
-  "item.opminecraft.protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
-  "item.opminecraft.protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
-
-  "item.opminecraft.diamond_protektor_beretta": "Diamond Protektor Beretta",
-  "item.opminecraft.diamond_protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
-  "item.opminecraft.diamond_protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
-
-  "item.opminecraft.golden_protektor_beretta": "Golden Protektor Beretta",
-  "item.opminecraft.golden_protektor_beretta.description_0": "\"TYPE-75 CUSTOM\"",
-  "item.opminecraft.golden_protektor_beretta.description_1": "10x 9mm Parabellum Rounds",
-
-  "item.opminecraft.protektor_handcannon": "Protektor TYPE-75",
-  "item.opminecraft.protektor_handcannon.description_0": "\"LSTR\"",
-  "item.opminecraft.protektor_handcannon.description_1": "10x 10mm Parabellum Rounds",
-
-  "item.opminecraft.protektor_desert_eagle": "Protektor Desert Eagle",
-  "item.opminecraft.protektor_desert_eagle.description_0": "\"STCR\"",
-  "item.opminecraft.protektor_desert_eagle.description_1": "6x 0.50 AE Rounds",
-
-  "item.opminecraft.protektor_revolver": "Protektor .50 Revolver",
-  "item.opminecraft.protektor_revolver.description_0": "\"STAR\"",
-  "item.opminecraft.protektor_revolver.description_1": "6x .50 S&W Rounds",
-
-
-  "item.opminecraft.valentine_revolver": "Titan .44 Revolver",
-  "item.opminecraft.valentine_revolver.description_0": "\"VALENTINE\"",
-  "item.opminecraft.valentine_revolver.description_1": "6x .44 S&W Rounds",
 
 
   "item.opminecraft.pistol.description_0": "Hold ammo in other hand to reload",
@@ -670,6 +732,15 @@
 
   "item.opminecraft.md_p1ng_p0ng": "P1NG P0NG",
   "item.opminecraft.md_p1ng_p0ng.desc": "'SHAWN LEE && OP",
+
+  "item.opminecraft.md_cant_get_you_out_of_my_head": "Can't Get You Out Of My Head",
+  "item.opminecraft.md_cant_get_you_out_of_my_head.desc": "'Kylie Minogue && OP",
+
+  "item.opminecraft.md_aquaa": "Aquaa",
+  "item.opminecraft.md_aquaa.desc": "'KTrek && OP",
+
+  "item.opminecraft.md_drunk_rhythm": "Drunk Rhythm",
+  "item.opminecraft.md_drunk_rhythm.desc": "'CRASPORE && OP",
 
 
   "entity.opminecraft.pistol_bullet.display_name": "",

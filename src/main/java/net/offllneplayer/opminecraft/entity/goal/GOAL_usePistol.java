@@ -127,7 +127,7 @@ public class GOAL_usePistol extends Goal {
 				String materialName = pistol.getItem().builtInRegistryHolder().key().location().getPath().toUpperCase();
 				return PistolMaterial.valueOf(materialName);
 			} catch (IllegalArgumentException e) {
-				return PistolMaterial.VALENTINE_BERETTA;
+				return PistolMaterial.VALENTINE_92FS;
 			}
 		}
 		return null;

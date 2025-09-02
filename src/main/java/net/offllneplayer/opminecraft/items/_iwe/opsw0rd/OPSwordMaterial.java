@@ -10,10 +10,10 @@ import net.minecraft.world.level.block.Block;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 public enum OPSwordMaterial {
-	CLAY(Ingredient.of(Items.CLAY), 200, 4F, BlockTags.INCORRECT_FOR_STONE_TOOL, 5F, -2.4F, 10, Rarity.COMMON, false),
-	CRYING(Ingredient.of(RegistryBIBI.CRYING_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15, Rarity.EPIC, false);
-    /*
-    ,
+	CLAY(Ingredient.of(Items.CLAY), 192, 4F, BlockTags.INCORRECT_FOR_STONE_TOOL, 6F, -3.2F, 16, Rarity.RARE, false),
+	CRYING(Ingredient.of(RegistryBIBI.CRYING_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -3.2F, 15, Rarity.EPIC, false);
+
+	/*
     ONYX(Ingredient.of(RegistryBIBI.ONYX_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15, Rarity.EPIC, true),
     TITAN(Ingredient.of(RegistryBIBI.TITANIUM_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7F, -2.4F, 15, Rarity.EPIC, true);
     */
@@ -55,10 +55,11 @@ public enum OPSwordMaterial {
 	public Item getRegisteredItem() {
 		return switch(this) {
 			case CLAY -> RegistryBIBI.CLAYMORE.get();
+			/* Uncomment when needed
+			case ONYX -> RegistryBIBI.ONYX_SWORD.get();
+			case TITAN -> RegistryBIBI.TITAN_SWORD.get();
+			*/
 			case CRYING -> RegistryBIBI.CRYING_SWORD.get();
-			// Uncomment when needed
-			// case ONYX -> RegistryBIBI.ONYX_SWORD.get();
-			// case TITAN -> RegistryBIBI.TITAN_SWORD.get();
 		};
 	}
 }

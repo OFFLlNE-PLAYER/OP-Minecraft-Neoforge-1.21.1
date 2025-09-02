@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/protektor_cz75",
+  "textures": {
+    "0": "opminecraft:item/pistol/text_iron_cz75",
+    "particle": "opminecraft:item/pistol/text_iron_cz75"
+  }
+}
