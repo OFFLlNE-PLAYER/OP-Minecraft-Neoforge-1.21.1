@@ -1,8 +1,9 @@
 {
-	"credit": "Made by OP with Blockbench",
+	"credit": "Made by OP with Blockbench :D",
+    "ambientocclusion": false,
 	"textures": {
-		"0": "opminecraft:item/text_golden_sword",
-		"particle": "opminecraft:item/text_golden_sword"
+		"0": "opminecraft:item/sw0rd/text_golden_sword",
+		"particle": "opminecraft:item/sw0rd/text_golden_sword"
 	},
 	"elements": [
 		{

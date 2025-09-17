@@ -1,0 +1,8 @@
+{
+  "parent": "block/pressure_plate_down",
+  "textures": {
+    "texture": "opminecraft:block/geode/text_crystal_block",
+    "particle": "opminecraft:block/geode/text_crystal_block"
+  },
+  "render_type": "solid"
+}

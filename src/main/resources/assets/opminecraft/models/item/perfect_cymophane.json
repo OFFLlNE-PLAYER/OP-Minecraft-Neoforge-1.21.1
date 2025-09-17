@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_perfect_cymophane"
+    "layer0": "opminecraft:item/gem/text_perfect_cymophane"
   },
   "display": {
     "firstperson_lefthand": {

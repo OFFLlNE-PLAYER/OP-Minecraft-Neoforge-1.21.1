@@ -371,41 +371,56 @@ public class ThrownTNTStick extends AbstractArrow {
 	 /*-- ____________________________________________________________________________________________--*/
 	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
   /*[interact]*/
-	@Override
-	public InteractionResult interact(Player player, InteractionHand hand) {
-		if (!this.level().isClientSide()) {
-			ItemStack handItem = player.getItemInHand(hand);
-			ItemStack tntStickItem = new ItemStack(RegistryBIBI.TNT_STICK.get());
-			
-			// Check if player is holding TNT sticks with count < 4
-			if (handItem.getItem() == RegistryBIBI.TNT_STICK.get() && handItem.getCount() < 4) {
-				// Add to existing stack
-				handItem.grow(1);
-				this.discard();
-				return InteractionResult.SUCCESS;
-			} 
-			// Check if hand is empty
-			else if (handItem.isEmpty()) {
-				// Put in empty hand
-				player.setItemInHand(hand, tntStickItem);
-				this.discard();
-				return InteractionResult.SUCCESS;
-			} 
-			// Try to add to inventory if hands are full or stack is at max
-			else {
-				// Try to add to inventory
-				boolean added = player.getInventory().add(tntStickItem);
-				if (added) {
-					this.discard();
-					return InteractionResult.SUCCESS;
-				}
-				// If inventory is full, leave on ground (do nothing)
-			}
-		}
-		return InteractionResult.PASS;
-	}
+	 @Override
+	 public InteractionResult interact(Player player, InteractionHand hand) {
+		 if (!this.level().isClientSide()) {
+			 ItemStack handItem = player.getItemInHand(hand);
+			 ItemStack otherHandItem = player.getItemInHand(hand == InteractionHand.MAIN_HAND ?
+					 InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND);
+			 ItemStack tntStickItem = new ItemStack(RegistryBIBI.TNT_STICK.get());
 
-	 /*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
+			 // Check if current hand has TNT sticks with count < 4
+			 if (handItem.getItem() == RegistryBIBI.TNT_STICK.get() && handItem.getCount() < TNTStickItem.STACK_SIZE) {
+				 // Add to existing stack in current hand
+				 handItem.grow(1);
+				 this.discard();
+				 return InteractionResult.SUCCESS;
+			 }
+			 // Check if other hand has TNT sticks with count < 4
+			 else if (otherHandItem.getItem() instanceof TNTStickItem && otherHandItem.getCount() < TNTStickItem.STACK_SIZE) {
+				 // Add to existing stack in other hand
+				 otherHandItem.grow(1);
+				 this.discard();
+			     return InteractionResult.SUCCESS;
+
+				 // Check if either hand is empty
+			 } else if (handItem.isEmpty()) {
+				 // Put in empty hand
+				 player.setItemInHand(hand, tntStickItem);
+				 this.discard();
+				 return InteractionResult.SUCCESS;
+
+			 } else if (otherHandItem.isEmpty()) {
+				 // Put in empty other hand
+				 player.setItemInHand(hand == InteractionHand.MAIN_HAND ?
+						 InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND, tntStickItem);
+				 this.discard();
+				 return InteractionResult.SUCCESS;
+
+				 // Try to add to inventory if hands are full or stacks are at max
+			 } else {
+				 boolean added = player.getInventory().add(tntStickItem);
+				 if (added) {
+					 this.discard();
+					 return InteractionResult.SUCCESS;
+				 }
+				 // If inventory is full, leave on ground (do nothing)
+			 }
+		 }
+		 return InteractionResult.PASS;
+	 }
+
+	/*-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>-=>*/
 	/*--x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---x---*/
   /*[on Hit Entity]*/
 	@Override

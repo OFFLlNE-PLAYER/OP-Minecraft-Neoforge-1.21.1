@@ -1,0 +1,9 @@
+{
+  "parent": "opminecraft:block/titan_oplamp_black_hanging",
+  "textures": {
+    "0": "opminecraft:block/oplamp/text_oplamp_pink",
+    "1": "minecraft:block/diamond_block",
+    "particle": "opminecraft:block/oplamp/text_oplamp_pink"
+  },
+  "render_type": "minecraft:cutout_mipped"
+}

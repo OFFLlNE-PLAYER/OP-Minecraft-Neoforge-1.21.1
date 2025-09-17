@@ -1,6 +1,6 @@
 {
   "parent": "opminecraft:item/brilliant_gem",
   "textures": {
-    "0": "opminecraft:item/text_brilliant_jadeite"
+    "0": "opminecraft:item/gem/text_brilliant_jadeite"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/titan_rrar",
+  "textures": {
+    "0": "opminecraft:item/pistol/text_diamond_rrar",
+    "particle": "opminecraft:item/pistol/text_diamond_rrar"
+  }
+}

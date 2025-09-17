@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": {"model": "opminecraft:block/block_of_titanium", "x": 90, "y": 90},
+    "axis=y": {"model": "opminecraft:block/block_of_titanium"},
+    "axis=z": {"model": "opminecraft:block/block_of_titanium", "x": 90}
+  }
+}

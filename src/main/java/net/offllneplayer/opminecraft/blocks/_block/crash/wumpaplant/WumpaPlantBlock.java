@@ -1,32 +1,30 @@
 
 package net.offllneplayer.opminecraft.blocks._block.crash.wumpaplant;
 
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.*;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
+import net.offllneplayer.opminecraft.UTIL.SilkTouchCheck_Method;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
-import net.offllneplayer.opminecraft.init.RegistrySounds;
 
 public class WumpaPlantBlock extends Block {
 	public WumpaPlantBlock() {
@@ -36,6 +34,7 @@ public class WumpaPlantBlock extends Block {
 				.strength(1, 1)
 				.noCollission()
 				.noOcclusion()
+				.pushReaction(PushReaction.DESTROY)
 				.isRedstoneConductor((bs, br, bp) -> false));
 	}
 
@@ -91,40 +90,47 @@ public class WumpaPlantBlock extends Block {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		WumpaPlant_OnClick_Method.execute(world, x, y, z, entity);
+
+		if (entity.getMainHandItem().getItem() == Blocks.AIR.asItem()) {
+			world.levelEvent(2001, BlockPos.containing(x, y + 1, z), Block.getId(RegistryBIBI.WUMPA_PLANT.get().defaultBlockState()));
+			world.setBlock(BlockPos.containing(x, y, z), Blocks.AIR.defaultBlockState(), 3);
+			WumpaPlantDestroyed_Method.execute(world, x, y, z);
+		}
+
 		return InteractionResult.SUCCESS;
 	}
 
 	@Override
 	public void onProjectileHit(Level world, BlockState blockstate, BlockHitResult hit, Projectile entity) {
-		WumpaPlant_OnClick_Method.execute(world, hit.getBlockPos().getX(), hit.getBlockPos().getY(), hit.getBlockPos().getZ(), entity);
+		WumpaPlantDestroyed_Method.execute(world, hit.getBlockPos().getX(), hit.getBlockPos().getY(), hit.getBlockPos().getZ());
 	}
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return super.canHarvestBlock(state, world, pos, player) && WumpaPlant_SilkTouch_Method.execute(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+		return super.canHarvestBlock(state, world, pos, player) && SilkTouchCheck_Method.hasSilkTouch(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
 	}
 
 	@Override
+	public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+		// If the tool does NOT have Silk Touch, handle custom drops here.
+		boolean hasSilk = SilkTouchCheck_Method.hasSilkTouch(level, pos.getX(), pos.getY(), pos.getZ(), player);
+		if (!hasSilk) {
+			WumpaPlantDestroyed_Method.execute(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+		}
+		return level.isClientSide() ? level.setBlock(pos, fluid.createLegacyBlock(), 11) : level.removeBlock(pos, false);
+	}
+
+	// Mimic non-silk break: play sound and pop off fruit
+	@Override
+	public void onDestroyedByPushReaction(BlockState state, Level level, BlockPos pos, Direction pushDirection, FluidState fluid) {
+		WumpaPlantDestroyed_Method.execute(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+		level.setBlock(pos, Blocks.AIR.defaultBlockState(), 18);
+		level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
+	}
+
+	// Delegate to centralized destroy logic so sounds and drops are consistent on explosion.
+	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
-		super.wasExploded(world, pos, e);
-
-		if ((world instanceof Level _level) && (!_level.isClientSide())) {
-			_level.playSound(null, pos, RegistrySounds.WUMPA_FRUIT.get(), SoundSource.MASTER, 1, 1);
-		}
-
-		if (world instanceof ServerLevel serverLevel) {
-			double spawnX = pos.getX() + 0.5;
-			double spawnY = pos.getY();
-			double spawnZ = pos.getZ() + 0.5;
-
-			ItemEntity fruitEntity = new ItemEntity(serverLevel, spawnX, spawnY, spawnZ, new ItemStack(RegistryBIBI.WUMPA_FRUIT.get()));
-			fruitEntity.setPickUpDelay(0);
-			serverLevel.addFreshEntity(fruitEntity);
-
-			ItemEntity podEntity = new ItemEntity(serverLevel, spawnX, spawnY, spawnZ, new ItemStack(Items.PITCHER_POD));
-			podEntity.setPickUpDelay(0);
-			serverLevel.addFreshEntity(podEntity);
-		}
+		WumpaPlantDestroyed_Method.execute(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 	}
 }

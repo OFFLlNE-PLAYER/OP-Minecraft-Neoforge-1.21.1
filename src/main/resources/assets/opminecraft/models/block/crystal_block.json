@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "opminecraft:block/geode/text_crystal_block"
+  }
+}

@@ -11,10 +11,22 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.blocks._block.GoldenBedBlock;
-import net.offllneplayer.opminecraft.blocks._block.OnyxLampBlock;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlock;
+import net.offllneplayer.opminecraft.blocks._block._geode.crystal.*;
+import net.offllneplayer.opminecraft.blocks._block._geode.geode.*;
+import net.offllneplayer.opminecraft.blocks._block._geode.geode_method.GeodeMaterial;
+import net.offllneplayer.opminecraft.blocks._block._oplamp.OPLampBlock;
+import net.offllneplayer.opminecraft.blocks._block._oplamp.OPLampColor;
+import net.offllneplayer.opminecraft.blocks._block._oplamp.OPLampMaterial;
+import net.offllneplayer.opminecraft.blocks._block._ore.chiseled_ore.ChiseledDiamondBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.chiseled_ore.ChiseledGoldBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.chiseled_ore.ChiseledIronBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.chiseled_ore.ChiseledNetheriteBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.onyx.BlockofOnyxBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.onyx.OnyxBlockBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.titanium.BlockofTitaniumBlock;
+import net.offllneplayer.opminecraft.blocks._block._ore.titanium.TitaniumBlockBlock;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestBlock;
 import net.offllneplayer.opminecraft.blocks._block.charcoal.*;
-import net.offllneplayer.opminecraft.blocks._block.chiseledore.*;
 import net.offllneplayer.opminecraft.blocks._block.crash.crates.crashtnt.CrashTNTBlock;
 import net.offllneplayer.opminecraft.blocks._block.crash.crates.crate.BounceCrateBlock;
 import net.offllneplayer.opminecraft.blocks._block.crash.crates.akuaku.AkuAkuCrateBlock;
@@ -27,17 +39,16 @@ import net.offllneplayer.opminecraft.blocks._block.crying.essence.CryingEssenceB
 import net.offllneplayer.opminecraft.blocks._block.crying.cryingbricks.*;
 import net.offllneplayer.opminecraft.blocks._block.crying.cryingtiles.*;
 import net.offllneplayer.opminecraft.blocks._block.slate.*;
-import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceBlock;
-import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceMaterial;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestWoodMaterial;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestTrimMaterial;
-import net.offllneplayer.opminecraft.blocks._block.onyx.*;
-import net.offllneplayer.opminecraft.blocks._block.stonetiles.*;
+import net.offllneplayer.opminecraft.blocks._block._furnace.OPFurnaceBlock;
+import net.offllneplayer.opminecraft.blocks._block._furnace.OPFurnaceMaterial;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestWoodMaterial;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestTrimMaterial;
+import net.offllneplayer.opminecraft.blocks._block.stonetile.*;
 import net.offllneplayer.opminecraft.items._item.ChiselItem;
 import net.offllneplayer.opminecraft.items._item.PrototypeGunbladeItem;
 import net.offllneplayer.opminecraft.items._item.SculkHammerItem;
 import net.offllneplayer.opminecraft.items._item._musik_disk.*;
-import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
+import net.offllneplayer.opminecraft.items._iwe.pistol.PistolMaterial;
 import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeMaterial;
 import net.offllneplayer.opminecraft.items._iwe.hatchet.HatchetMaterial;
 import net.offllneplayer.opminecraft.items._iwe.opsw0rd.OPSwordItem;
@@ -53,7 +64,7 @@ import net.offllneplayer.opminecraft.items._item.tou.TotemOfUncryingItem;
 import net.offllneplayer.opminecraft.items._iwe.gunblade.GunbladeItem;
 import net.offllneplayer.opminecraft.items._iwe.hatchet.HatchetItem;
 import net.offllneplayer.opminecraft.items._iwe.SMBSuperFan.SMBSuperFanItem;
-import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
+import net.offllneplayer.opminecraft.items._iwe.pistol.PistolItem;
 import net.offllneplayer.opminecraft.items._iwe.sw0rd.Sw0rdItem;
 import net.offllneplayer.opminecraft.items._iwe.sw0rd.Sw0rdMaterial;
 import net.offllneplayer.opminecraft.items._iwe.tntstick.TNTStickItem;
@@ -228,44 +239,169 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> STONE_TILE_TRAPDOOR = registerBlock("stone_tile_trapdoor", StoneTileTrapdoorBlock::new);
 	public static final DeferredBlock<Block> STONE_TILE_WALL = registerBlock("stone_tile_wall", StoneTileWallBlock::new);
 
-	public static final DeferredBlock<OPFurnaceBlock> COPPER_FURNACE = registerBlock("copper_furnace",
-			() -> new OPFurnaceBlock(OPFurnaceMaterial.COPPER));
-	public static final DeferredBlock<OPFurnaceBlock> IRON_FURNACE = registerBlock("iron_furnace",
-			() -> new OPFurnaceBlock(OPFurnaceMaterial.IRON));
-	public static final DeferredBlock<OPFurnaceBlock> GOLD_FURNACE = registerBlock("gold_furnace",
-			() -> new OPFurnaceBlock(OPFurnaceMaterial.GOLD));
-	public static final DeferredBlock<OPFurnaceBlock> DIAMOND_FURNACE = registerBlock("diamond_furnace",
-			() -> new OPFurnaceBlock(OPFurnaceMaterial.DIAMOND));
-	public static final DeferredBlock<OPFurnaceBlock> NETHERITE_FURNACE = registerFRBlock("netherite_furnace",
-			() -> new OPFurnaceBlock(OPFurnaceMaterial.NETHERITE));
-
 
 	public static final DeferredBlock<Block> CHISELED_IRON = registerBlock("chiseled_iron", ChiseledIronBlock::new);
 	public static final DeferredBlock<Block> CHISELED_GOLD = registerBlock("chiseled_gold", ChiseledGoldBlock::new);
 	public static final DeferredBlock<Block> CHISELED_DIAMOND = registerBlock("chiseled_diamond", ChiseledDiamondBlock::new);
 	public static final DeferredBlock<Block> CHISELED_NETHERITE = registerFRBlock("chiseled_netherite", ChiseledNetheriteBlock::new);
 
-	public static final DeferredBlock<Block> BLOCK_OF_ONYX = registerBlock("block_of_onyx", BlockofOnyxBlock::new);
 
-	public static final DeferredBlock<Block> ONYX_LAMP_BLACK = registerBlock("onyx_lamp_black", () -> new OnyxLampBlock(DyeColor.BLACK));
-	public static final DeferredBlock<Block> ONYX_LAMP_BLUE = registerBlock("onyx_lamp_blue", () -> new OnyxLampBlock(DyeColor.BLUE));
-	public static final DeferredBlock<Block> ONYX_LAMP_BROWN = registerBlock("onyx_lamp_brown", () -> new OnyxLampBlock(DyeColor.BROWN));
-	public static final DeferredBlock<Block> ONYX_LAMP_CYAN = registerBlock("onyx_lamp_cyan", () -> new OnyxLampBlock(DyeColor.CYAN));
-	public static final DeferredBlock<Block> ONYX_LAMP_GRAY = registerBlock("onyx_lamp_gray", () -> new OnyxLampBlock(DyeColor.GRAY));
-	public static final DeferredBlock<Block> ONYX_LAMP_GREEN = registerBlock("onyx_lamp_green", () -> new OnyxLampBlock(DyeColor.GREEN));
-	public static final DeferredBlock<Block> ONYX_LAMP_LIGHT_BLUE = registerBlock("onyx_lamp_light_blue", () -> new OnyxLampBlock(DyeColor.LIGHT_BLUE));
-	public static final DeferredBlock<Block> ONYX_LAMP_LIGHT_GRAY = registerBlock("onyx_lamp_light_gray", () -> new OnyxLampBlock(DyeColor.LIGHT_GRAY));
-	public static final DeferredBlock<Block> ONYX_LAMP_LIME = registerBlock("onyx_lamp_lime", () -> new OnyxLampBlock(DyeColor.LIME));
-	public static final DeferredBlock<Block> ONYX_LAMP_MAGENTA = registerBlock("onyx_lamp_magenta", () -> new OnyxLampBlock(DyeColor.MAGENTA));
-	public static final DeferredBlock<Block> ONYX_LAMP_ORANGE = registerBlock("onyx_lamp_orange", () -> new OnyxLampBlock(DyeColor.ORANGE));
-	public static final DeferredBlock<Block> ONYX_LAMP_PINK = registerBlock("onyx_lamp_pink", () -> new OnyxLampBlock(DyeColor.PINK));
-	public static final DeferredBlock<Block> ONYX_LAMP_PURPLE = registerBlock("onyx_lamp_purple", () -> new OnyxLampBlock(DyeColor.PURPLE));
-	public static final DeferredBlock<Block> ONYX_LAMP_RED = registerBlock("onyx_lamp_red", () -> new OnyxLampBlock(DyeColor.RED));
-	public static final DeferredBlock<Block> ONYX_LAMP_WHITE = registerBlock("onyx_lamp_white", () -> new OnyxLampBlock(DyeColor.WHITE));
-	public static final DeferredBlock<Block> ONYX_LAMP_YELLOW = registerBlock("onyx_lamp_yellow", () -> new OnyxLampBlock(DyeColor.YELLOW));
+	public static final DeferredBlock<Block> BLOCK_OF_ONYX = registerBlock("block_of_onyx", BlockofOnyxBlock::new);
+	public static final DeferredBlock<Block> BLOCK_OF_TITANIUM = registerBlock("block_of_titanium", BlockofTitaniumBlock::new);
+	public static final DeferredBlock<Block> ONYX_BLOCK = registerBlock("onyx_block", OnyxBlockBlock::new);
+	public static final DeferredBlock<Block> TITANIUM_BLOCK = registerBlock("titanium_block", TitaniumBlockBlock::new);
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	//map for ent registry
+	public static final Map<String, Supplier<OPFurnaceBlock>> FURNACE_VARIANTS = new HashMap<>();
+
+	// Helper method for registering furnace blocks
+	private static Supplier<OPFurnaceBlock> registerFurnaceBlock(String name, OPFurnaceMaterial material) {
+		Supplier<OPFurnaceBlock> supplier;
+
+		if (material == OPFurnaceMaterial.NETHERITE) { // special case for netherite furnace block is fireproof!
+			supplier = registerFRBlock(name, () -> new OPFurnaceBlock(material));
+		} else {
+			supplier = registerBlock(name, () -> new OPFurnaceBlock(material));
+		}
+
+		FURNACE_VARIANTS.put(name, supplier);
+		return supplier;
+	}
+
+	// Furnace variants
+	public static final Supplier<OPFurnaceBlock> COPPER_FURNACE = registerFurnaceBlock("copper_furnace", OPFurnaceMaterial.COPPER);
+	public static final Supplier<OPFurnaceBlock> IRON_FURNACE = registerFurnaceBlock("iron_furnace", OPFurnaceMaterial.IRON);
+	public static final Supplier<OPFurnaceBlock> GOLD_FURNACE = registerFurnaceBlock("gold_furnace", OPFurnaceMaterial.GOLD);
+	public static final Supplier<OPFurnaceBlock> DIAMOND_FURNACE = registerFurnaceBlock("diamond_furnace", OPFurnaceMaterial.DIAMOND);
+	public static final Supplier<OPFurnaceBlock> NETHERITE_FURNACE = registerFurnaceBlock("netherite_furnace", OPFurnaceMaterial.NETHERITE);
+
+
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	// Helper method for registering lamp blocks
+	private static Supplier<OPLampBlock> registerOPLampBlock(String name, OPLampMaterial lampMaterial, OPLampColor lampcolor) {
+		Supplier<OPLampBlock> supplier = registerBlock(name, () -> new OPLampBlock(lampMaterial, lampcolor));
+		return supplier;
+	}
+
+	// Golden lamp variants
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_BLACK = registerOPLampBlock("golden_oplamp_black", OPLampMaterial.GOLDEN, OPLampColor.BLACK);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_BLUE = registerOPLampBlock("golden_oplamp_blue", OPLampMaterial.GOLDEN, OPLampColor.BLUE);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_BROWN = registerOPLampBlock("golden_oplamp_brown", OPLampMaterial.GOLDEN, OPLampColor.BROWN);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_CYAN = registerOPLampBlock("golden_oplamp_cyan", OPLampMaterial.GOLDEN, OPLampColor.CYAN);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_GOLDEN = registerOPLampBlock("golden_oplamp_golden", OPLampMaterial.GOLDEN, OPLampColor.GOLDEN);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_GRAY = registerOPLampBlock("golden_oplamp_gray", OPLampMaterial.GOLDEN, OPLampColor.GRAY);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_GREEN = registerOPLampBlock("golden_oplamp_green", OPLampMaterial.GOLDEN, OPLampColor.GREEN);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_LIGHT_BLUE = registerOPLampBlock("golden_oplamp_light_blue", OPLampMaterial.GOLDEN, OPLampColor.LIGHT_BLUE);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_LIGHT_GRAY = registerOPLampBlock("golden_oplamp_light_gray", OPLampMaterial.GOLDEN, OPLampColor.LIGHT_GRAY);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_LIME = registerOPLampBlock("golden_oplamp_lime", OPLampMaterial.GOLDEN, OPLampColor.LIME);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_MAGENTA = registerOPLampBlock("golden_oplamp_magenta", OPLampMaterial.GOLDEN, OPLampColor.MAGENTA);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_ORANGE = registerOPLampBlock("golden_oplamp_orange", OPLampMaterial.GOLDEN, OPLampColor.ORANGE);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_PINK = registerOPLampBlock("golden_oplamp_pink", OPLampMaterial.GOLDEN, OPLampColor.PINK);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_PURPLE = registerOPLampBlock("golden_oplamp_purple", OPLampMaterial.GOLDEN, OPLampColor.PURPLE);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_RED = registerOPLampBlock("golden_oplamp_red", OPLampMaterial.GOLDEN, OPLampColor.RED);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_WHITE = registerOPLampBlock("golden_oplamp_white", OPLampMaterial.GOLDEN, OPLampColor.WHITE);
+	public static final Supplier<OPLampBlock> GOLDEN_OPLAMP_YELLOW = registerOPLampBlock("golden_oplamp_yellow", OPLampMaterial.GOLDEN, OPLampColor.YELLOW);
+
+	// Iron lamp variants  
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_BLACK = registerOPLampBlock("iron_oplamp_black", OPLampMaterial.IRON, OPLampColor.BLACK);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_BLUE = registerOPLampBlock("iron_oplamp_blue", OPLampMaterial.IRON, OPLampColor.BLUE);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_BROWN = registerOPLampBlock("iron_oplamp_brown", OPLampMaterial.IRON, OPLampColor.BROWN);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_CYAN = registerOPLampBlock("iron_oplamp_cyan", OPLampMaterial.IRON, OPLampColor.CYAN);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_GOLDEN = registerOPLampBlock("iron_oplamp_golden", OPLampMaterial.IRON, OPLampColor.GOLDEN);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_GRAY = registerOPLampBlock("iron_oplamp_gray", OPLampMaterial.IRON, OPLampColor.GRAY);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_GREEN = registerOPLampBlock("iron_oplamp_green", OPLampMaterial.IRON, OPLampColor.GREEN);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_LIGHT_BLUE = registerOPLampBlock("iron_oplamp_light_blue", OPLampMaterial.IRON, OPLampColor.LIGHT_BLUE);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_LIGHT_GRAY = registerOPLampBlock("iron_oplamp_light_gray", OPLampMaterial.IRON, OPLampColor.LIGHT_GRAY);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_LIME = registerOPLampBlock("iron_oplamp_lime", OPLampMaterial.IRON, OPLampColor.LIME);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_MAGENTA = registerOPLampBlock("iron_oplamp_magenta", OPLampMaterial.IRON, OPLampColor.MAGENTA);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_ORANGE = registerOPLampBlock("iron_oplamp_orange", OPLampMaterial.IRON, OPLampColor.ORANGE);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_PINK = registerOPLampBlock("iron_oplamp_pink", OPLampMaterial.IRON, OPLampColor.PINK);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_PURPLE = registerOPLampBlock("iron_oplamp_purple", OPLampMaterial.IRON, OPLampColor.PURPLE);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_RED = registerOPLampBlock("iron_oplamp_red", OPLampMaterial.IRON, OPLampColor.RED);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_WHITE = registerOPLampBlock("iron_oplamp_white", OPLampMaterial.IRON, OPLampColor.WHITE);
+	public static final Supplier<OPLampBlock> IRON_OPLAMP_YELLOW = registerOPLampBlock("iron_oplamp_yellow", OPLampMaterial.IRON, OPLampColor.YELLOW);
+
+	// Diamond lamp variants
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_BLACK = registerOPLampBlock("diamond_oplamp_black", OPLampMaterial.DIAMOND, OPLampColor.BLACK);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_BLUE = registerOPLampBlock("diamond_oplamp_blue", OPLampMaterial.DIAMOND, OPLampColor.BLUE);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_BROWN = registerOPLampBlock("diamond_oplamp_brown", OPLampMaterial.DIAMOND, OPLampColor.BROWN);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_CYAN = registerOPLampBlock("diamond_oplamp_cyan", OPLampMaterial.DIAMOND, OPLampColor.CYAN);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_GOLDEN = registerOPLampBlock("diamond_oplamp_golden", OPLampMaterial.DIAMOND, OPLampColor.GOLDEN);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_GRAY = registerOPLampBlock("diamond_oplamp_gray", OPLampMaterial.DIAMOND, OPLampColor.GRAY);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_GREEN = registerOPLampBlock("diamond_oplamp_green", OPLampMaterial.DIAMOND, OPLampColor.GREEN);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_LIGHT_BLUE = registerOPLampBlock("diamond_oplamp_light_blue", OPLampMaterial.DIAMOND, OPLampColor.LIGHT_BLUE);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_LIGHT_GRAY = registerOPLampBlock("diamond_oplamp_light_gray", OPLampMaterial.DIAMOND, OPLampColor.LIGHT_GRAY);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_LIME = registerOPLampBlock("diamond_oplamp_lime", OPLampMaterial.DIAMOND, OPLampColor.LIME);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_MAGENTA = registerOPLampBlock("diamond_oplamp_magenta", OPLampMaterial.DIAMOND, OPLampColor.MAGENTA);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_ORANGE = registerOPLampBlock("diamond_oplamp_orange", OPLampMaterial.DIAMOND, OPLampColor.ORANGE);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_PINK = registerOPLampBlock("diamond_oplamp_pink", OPLampMaterial.DIAMOND, OPLampColor.PINK);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_PURPLE = registerOPLampBlock("diamond_oplamp_purple", OPLampMaterial.DIAMOND, OPLampColor.PURPLE);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_RED = registerOPLampBlock("diamond_oplamp_red", OPLampMaterial.DIAMOND, OPLampColor.RED);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_WHITE = registerOPLampBlock("diamond_oplamp_white", OPLampMaterial.DIAMOND, OPLampColor.WHITE);
+	public static final Supplier<OPLampBlock> DIAMOND_OPLAMP_YELLOW = registerOPLampBlock("diamond_oplamp_yellow", OPLampMaterial.DIAMOND, OPLampColor.YELLOW);
+
+	// Netherite lamp variants
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_BLACK = registerOPLampBlock("netherite_oplamp_black", OPLampMaterial.NETHERITE, OPLampColor.BLACK);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_BLUE = registerOPLampBlock("netherite_oplamp_blue", OPLampMaterial.NETHERITE, OPLampColor.BLUE);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_BROWN = registerOPLampBlock("netherite_oplamp_brown", OPLampMaterial.NETHERITE, OPLampColor.BROWN);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_CYAN = registerOPLampBlock("netherite_oplamp_cyan", OPLampMaterial.NETHERITE, OPLampColor.CYAN);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_GOLDEN = registerOPLampBlock("netherite_oplamp_golden", OPLampMaterial.NETHERITE, OPLampColor.GOLDEN);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_GRAY = registerOPLampBlock("netherite_oplamp_gray", OPLampMaterial.NETHERITE, OPLampColor.GRAY);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_GREEN = registerOPLampBlock("netherite_oplamp_green", OPLampMaterial.NETHERITE, OPLampColor.GREEN);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_LIGHT_BLUE = registerOPLampBlock("netherite_oplamp_light_blue", OPLampMaterial.NETHERITE, OPLampColor.LIGHT_BLUE);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_LIGHT_GRAY = registerOPLampBlock("netherite_oplamp_light_gray", OPLampMaterial.NETHERITE, OPLampColor.LIGHT_GRAY);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_LIME = registerOPLampBlock("netherite_oplamp_lime", OPLampMaterial.NETHERITE, OPLampColor.LIME);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_MAGENTA = registerOPLampBlock("netherite_oplamp_magenta", OPLampMaterial.NETHERITE, OPLampColor.MAGENTA);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_ORANGE = registerOPLampBlock("netherite_oplamp_orange", OPLampMaterial.NETHERITE, OPLampColor.ORANGE);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_PINK = registerOPLampBlock("netherite_oplamp_pink", OPLampMaterial.NETHERITE, OPLampColor.PINK);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_PURPLE = registerOPLampBlock("netherite_oplamp_purple", OPLampMaterial.NETHERITE, OPLampColor.PURPLE);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_RED = registerOPLampBlock("netherite_oplamp_red", OPLampMaterial.NETHERITE, OPLampColor.RED);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_WHITE = registerOPLampBlock("netherite_oplamp_white", OPLampMaterial.NETHERITE, OPLampColor.WHITE);
+	public static final Supplier<OPLampBlock> NETHERITE_OPLAMP_YELLOW = registerOPLampBlock("netherite_oplamp_yellow", OPLampMaterial.NETHERITE, OPLampColor.YELLOW);
+
+	// Onyx lamp variants
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_BLACK = registerOPLampBlock("onyx_oplamp_black", OPLampMaterial.ONYX, OPLampColor.BLACK);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_BLUE = registerOPLampBlock("onyx_oplamp_blue", OPLampMaterial.ONYX, OPLampColor.BLUE);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_BROWN = registerOPLampBlock("onyx_oplamp_brown", OPLampMaterial.ONYX, OPLampColor.BROWN);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_CYAN = registerOPLampBlock("onyx_oplamp_cyan", OPLampMaterial.ONYX, OPLampColor.CYAN);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_GOLDEN = registerOPLampBlock("onyx_oplamp_golden", OPLampMaterial.ONYX, OPLampColor.GOLDEN);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_GRAY = registerOPLampBlock("onyx_oplamp_gray", OPLampMaterial.ONYX, OPLampColor.GRAY);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_GREEN = registerOPLampBlock("onyx_oplamp_green", OPLampMaterial.ONYX, OPLampColor.GREEN);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_LIGHT_BLUE = registerOPLampBlock("onyx_oplamp_light_blue", OPLampMaterial.ONYX, OPLampColor.LIGHT_BLUE);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_LIGHT_GRAY = registerOPLampBlock("onyx_oplamp_light_gray", OPLampMaterial.ONYX, OPLampColor.LIGHT_GRAY);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_LIME = registerOPLampBlock("onyx_oplamp_lime", OPLampMaterial.ONYX, OPLampColor.LIME);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_MAGENTA = registerOPLampBlock("onyx_oplamp_magenta", OPLampMaterial.ONYX, OPLampColor.MAGENTA);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_ORANGE = registerOPLampBlock("onyx_oplamp_orange", OPLampMaterial.ONYX, OPLampColor.ORANGE);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_PINK = registerOPLampBlock("onyx_oplamp_pink", OPLampMaterial.ONYX, OPLampColor.PINK);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_PURPLE = registerOPLampBlock("onyx_oplamp_purple", OPLampMaterial.ONYX, OPLampColor.PURPLE);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_RED = registerOPLampBlock("onyx_oplamp_red", OPLampMaterial.ONYX, OPLampColor.RED);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_WHITE = registerOPLampBlock("onyx_oplamp_white", OPLampMaterial.ONYX, OPLampColor.WHITE);
+	public static final Supplier<OPLampBlock> ONYX_OPLAMP_YELLOW = registerOPLampBlock("onyx_oplamp_yellow", OPLampMaterial.ONYX, OPLampColor.YELLOW);
+
+	// Titan lamp variants
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_BLACK = registerOPLampBlock("titan_oplamp_black", OPLampMaterial.TITAN, OPLampColor.BLACK);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_BLUE = registerOPLampBlock("titan_oplamp_blue", OPLampMaterial.TITAN, OPLampColor.BLUE);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_BROWN = registerOPLampBlock("titan_oplamp_brown", OPLampMaterial.TITAN, OPLampColor.BROWN);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_CYAN = registerOPLampBlock("titan_oplamp_cyan", OPLampMaterial.TITAN, OPLampColor.CYAN);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_GOLDEN = registerOPLampBlock("titan_oplamp_golden", OPLampMaterial.TITAN, OPLampColor.GOLDEN);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_GRAY = registerOPLampBlock("titan_oplamp_gray", OPLampMaterial.TITAN, OPLampColor.GRAY);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_GREEN = registerOPLampBlock("titan_oplamp_green", OPLampMaterial.TITAN, OPLampColor.GREEN);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_LIGHT_BLUE = registerOPLampBlock("titan_oplamp_light_blue", OPLampMaterial.TITAN, OPLampColor.LIGHT_BLUE);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_LIGHT_GRAY = registerOPLampBlock("titan_oplamp_light_gray", OPLampMaterial.TITAN, OPLampColor.LIGHT_GRAY);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_LIME = registerOPLampBlock("titan_oplamp_lime", OPLampMaterial.TITAN, OPLampColor.LIME);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_MAGENTA = registerOPLampBlock("titan_oplamp_magenta", OPLampMaterial.TITAN, OPLampColor.MAGENTA);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_ORANGE = registerOPLampBlock("titan_oplamp_orange", OPLampMaterial.TITAN, OPLampColor.ORANGE);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_PINK = registerOPLampBlock("titan_oplamp_pink", OPLampMaterial.TITAN, OPLampColor.PINK);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_PURPLE = registerOPLampBlock("titan_oplamp_purple", OPLampMaterial.TITAN, OPLampColor.PURPLE);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_RED = registerOPLampBlock("titan_oplamp_red", OPLampMaterial.TITAN, OPLampColor.RED);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_WHITE = registerOPLampBlock("titan_oplamp_white", OPLampMaterial.TITAN, OPLampColor.WHITE);
+	public static final Supplier<OPLampBlock> TITAN_OPLAMP_YELLOW = registerOPLampBlock("titan_oplamp_yellow", OPLampMaterial.TITAN, OPLampColor.YELLOW);
+
+	
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	//map for ent registry
 	public static final Map<String, Supplier<AncientChestBlock>> ANCIENT_CHEST_VARIANTS = new HashMap<>();
 
 	// Helper method for registering loot chest blocks
@@ -519,6 +655,35 @@ public class RegistryBIBI {
 
 	// public static final DeferredBlock<Block> BLOCK_OF_FIRERES_EPICNESS = registerFREpicBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
 
+
+	public static final DeferredBlock<Block> BUDDING_CRYSTAL_BLOCK = registerBlock("budding_crystal_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.CRYSTAL));
+
+	public static final DeferredBlock<Block> SMALL_CRYSTAL_BUD = registerBlock("small_crystal_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.CRYSTAL));
+	public static final DeferredBlock<Block> MEDIUM_CRYSTAL_BUD = registerBlock("medium_crystal_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.CRYSTAL));
+	public static final DeferredBlock<Block> LARGE_CRYSTAL_BUD = registerBlock("large_crystal_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.CRYSTAL));
+	public static final DeferredBlock<Block> CRYSTAL_CLUSTER = registerBlock("crystal_cluster", () -> new GeodeClusterBlock(GeodeMaterial.CRYSTAL));
+
+	public static final DeferredBlock<Block> CRYSTAL_BLOCK = registerBlock("crystal_block", () -> new GeodeBlockBlock(GeodeMaterial.CRYSTAL));
+	public static final DeferredBlock<Block> CRYSTAL_BUTTON = registerBlock("crystal_button", CrystalButtonBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_FENCE = registerBlock("crystal_fence", CrystalFenceBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_FENCE_GATE = registerBlock("crystal_fence_gate", CrystalFenceGateBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_PRESSURE_PLATE = registerBlock("crystal_pressure_plate", CrystalPressurePlateBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_SLAB = registerBlock("crystal_slab", CrystalSlabBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_STAIRS = registerBlock("crystal_stairs", CrystalStairsBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_WALL = registerBlock("crystal_wall", CrystalWallBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_TRAPDOOR = registerBlock("crystal_trapdoor", CrystalTrapdoorBlock::new);
+
+	public static final DeferredBlock<Block> CRYSTAL_BRICKS = registerBlock("crystal_bricks", CrystalBricksBlock::new);
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_BUTTON = registerBlock("crystal_brick_button", () -> new CrystalButtonBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_FENCE = registerBlock("crystal_brick_fence", () -> new CrystalFenceBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_FENCE_GATE = registerBlock("crystal_brick_fence_gate", () -> new CrystalFenceGateBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_PRESSURE_PLATE = registerBlock("crystal_brick_pressure_plate", () -> new CrystalPressurePlateBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5F, 12F).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_SLAB = registerBlock("crystal_brick_slab", () -> new CrystalSlabBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_STAIRS = registerBlock("crystal_brick_stairs", () -> new CrystalStairsBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_TRAPDOOR = registerBlock("crystal_brick_trapdoor", () -> new CrystalTrapdoorBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> CRYSTAL_BRICK_WALL = registerBlock("crystal_brick_wall", () -> new CrystalWallBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
+
+
 	public static final DeferredBlock<Block> BOUNCE_CRATE = registerUncommonBlock("bounce_crate", BounceCrateBlock::new);
 	public static final DeferredBlock<Block> CRASH_CRATE = registerUncommonBlock("crash_crate", CrashCrateBlock::new);
 	public static final DeferredBlock<Block> CRASH_TNT = registerUncommonBlock("crash_tnt", CrashTNTBlock::new);
@@ -650,6 +815,10 @@ public class RegistryBIBI {
 
 	public static final DeferredItem<Item> GEMSTONE_DUST = ITEMSREGISTRY.registerItem("gemstone_dust", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
+
+	public static final DeferredItem<Item> CRYSTAL_SHARD = ITEMSREGISTRY.registerItem("crystal_shard", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+
+
 	public static final DeferredItem<Item> CRYING_ESSENCE_BUCKET = ITEMSREGISTRY.register("crying_essence_bucket", CryingEssenceItem::new);
 	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.register("crying_ingot", CryingIngotItem::new);
 	public static final DeferredItem<Item> CRYING_SMITHING_TEMPLATE = ITEMSREGISTRY.register("crying_smithing_template", CryingSmithingTemplateItem::new);
@@ -703,6 +872,10 @@ public class RegistryBIBI {
 	public static final DeferredItem<PrototypeGunbladeItem> PROTOTYPE_GUNBLADE = ITEMSREGISTRY.register("prototype_gunblade", PrototypeGunbladeItem::new);
 	public static final Supplier<GunbladeItem> GOLDEN_GUNBLADE = ITEMSREGISTRY.register("golden_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.GOLDEN));
+	public static final Supplier<GunbladeItem> IRON_GUNBLADE = ITEMSREGISTRY.register("iron_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.IRON));
+	public static final Supplier<GunbladeItem> EMERALD_GUNBLADE = ITEMSREGISTRY.register("emerald_gunblade",
+		() -> new GunbladeItem(GunbladeMaterial.EMERALD));
 
 	public static final Supplier<GunbladeItem> DIAMOND_GUNBLADE = ITEMSREGISTRY.register("diamond_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.DIAMOND));
@@ -726,6 +899,21 @@ public class RegistryBIBI {
 	public static final Supplier<OPSwordItem> CLAYMORE = ITEMSREGISTRY.register("claymore_sword",
 		() -> new OPSwordItem(OPSwordMaterial.CLAY));
 
+
+	public static final Supplier<PistolItem> GOLDEN_CZ75 = ITEMSREGISTRY.register("golden_cz75",
+			() -> new PistolItem(PistolMaterial.GOLDEN_CZ75));
+	public static final Supplier<PistolItem> IRON_CZ75 = ITEMSREGISTRY.register("iron_cz75",
+			() -> new PistolItem(PistolMaterial.IRON_CZ75));
+	public static final Supplier<PistolItem> EMERALD_CZ75 = ITEMSREGISTRY.register("emerald_cz75",
+			() -> new PistolItem(PistolMaterial.EMERALD_CZ75));
+	public static final Supplier<PistolItem> DIAMOND_CZ75 = ITEMSREGISTRY.register("diamond_cz75",
+			() -> new PistolItem(PistolMaterial.DIAMOND_CZ75));
+	public static final Supplier<PistolItem> NETHERITE_CZ75 = ITEMSREGISTRY.register("netherite_cz75",
+			() -> new PistolItem(PistolMaterial.NETHERITE_CZ75));
+	public static final Supplier<PistolItem> ONYX_CZ75 = ITEMSREGISTRY.register("onyx_cz75",
+			() -> new PistolItem(PistolMaterial.ONYX_CZ75));
+	public static final Supplier<PistolItem> TITAN_CZ75 = ITEMSREGISTRY.register("titan_cz75",
+			() -> new PistolItem(PistolMaterial.TITAN_CZ75));
 
 	public static final Supplier<PistolItem> GOLDEN_92FS = ITEMSREGISTRY.register("golden_92fs",
 			() -> new PistolItem(PistolMaterial.GOLDEN_92FS));
@@ -759,50 +947,140 @@ public class RegistryBIBI {
 	public static final Supplier<PistolItem> TITAN_M9A1 = ITEMSREGISTRY.register("titan_m9a1",
 			() -> new PistolItem(PistolMaterial.TITAN_M9A1));
 
-	public static final Supplier<PistolItem> GOLDEN_CZ75 = ITEMSREGISTRY.register("golden_cz75",
-			() -> new PistolItem(PistolMaterial.GOLDEN_CZ75));
-	public static final Supplier<PistolItem> IRON_CZ75 = ITEMSREGISTRY.register("iron_cz75",
-			() -> new PistolItem(PistolMaterial.IRON_CZ75));
-	public static final Supplier<PistolItem> DIAMOND_CZ75 = ITEMSREGISTRY.register("diamond_cz75",
-			() -> new PistolItem(PistolMaterial.DIAMOND_CZ75));
-	public static final Supplier<PistolItem> EMERALD_CZ75 = ITEMSREGISTRY.register("emerald_cz75",
-			() -> new PistolItem(PistolMaterial.EMERALD_CZ75));
-	public static final Supplier<PistolItem> NETHERITE_CZ75 = ITEMSREGISTRY.register("netherite_cz75",
-			() -> new PistolItem(PistolMaterial.NETHERITE_CZ75));
-	public static final Supplier<PistolItem> ONYX_CZ75 = ITEMSREGISTRY.register("onyx_cz75",
-			() -> new PistolItem(PistolMaterial.ONYX_CZ75));
-	public static final Supplier<PistolItem> TITAN_CZ75 = ITEMSREGISTRY.register("titan_cz75",
-			() -> new PistolItem(PistolMaterial.TITAN_CZ75));
+
+	public static final Supplier<PistolItem> GOLDEN_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("golden_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.GOLDEN_PROTEKTOR_TYPE_75));
+	public static final Supplier<PistolItem> IRON_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("iron_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.IRON_PROTEKTOR_TYPE_75));
+	public static final Supplier<PistolItem> EMERALD_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("emerald_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.EMERALD_PROTEKTOR_TYPE_75));
+	public static final Supplier<PistolItem> DIAMOND_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("diamond_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.DIAMOND_PROTEKTOR_TYPE_75));
+	public static final Supplier<PistolItem> NETHERITE_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("netherite_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.NETHERITE_PROTEKTOR_TYPE_75));
+	public static final Supplier<PistolItem> ONYX_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("onyx_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_TYPE_75));
+	public static final Supplier<PistolItem> TITAN_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("titan_protektor_type_75",
+			() -> new PistolItem(PistolMaterial.TITAN_PROTEKTOR_TYPE_75));
 
 
+	public static final Supplier<PistolItem> GOLDEN_HANDCANNON = ITEMSREGISTRY.register("golden_handcannon",
+			() -> new PistolItem(PistolMaterial.GOLDEN_HANDCANNON));
+	public static final Supplier<PistolItem> IRON_HANDCANNON = ITEMSREGISTRY.register("iron_handcannon",
+			() -> new PistolItem(PistolMaterial.IRON_HANDCANNON));
+	public static final Supplier<PistolItem> EMERALD_HANDCANNON = ITEMSREGISTRY.register("emerald_handcannon",
+			() -> new PistolItem(PistolMaterial.EMERALD_HANDCANNON));
+	public static final Supplier<PistolItem> DIAMOND_HANDCANNON = ITEMSREGISTRY.register("diamond_handcannon",
+			() -> new PistolItem(PistolMaterial.DIAMOND_HANDCANNON));
+	public static final Supplier<PistolItem> NETHERITE_HANDCANNON = ITEMSREGISTRY.register("netherite_handcannon",
+			() -> new PistolItem(PistolMaterial.NETHERITE_HANDCANNON));
+	public static final Supplier<PistolItem> ONYX_HANDCANNON = ITEMSREGISTRY.register("onyx_handcannon",
+			() -> new PistolItem(PistolMaterial.ONYX_HANDCANNON));
 	public static final Supplier<PistolItem> TITAN_HANDCANNON = ITEMSREGISTRY.register("titan_handcannon",
 			() -> new PistolItem(PistolMaterial.TITAN_HANDCANNON));
 
-	public static final Supplier<PistolItem> ONYX_PROTEKTOR_TYPE_75 = ITEMSREGISTRY.register("onyx_protektor_type_75",
-			() -> new PistolItem(PistolMaterial.ONYX_PROTEKTOR_TYPE_75));
 
-
+	public static final Supplier<PistolItem> GOLDEN_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("golden_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.GOLDEN_IMI_DESERT_EAGLE));
+	public static final Supplier<PistolItem> IRON_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("iron_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.IRON_IMI_DESERT_EAGLE));
+	public static final Supplier<PistolItem> EMERALD_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("emerald_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.EMERALD_IMI_DESERT_EAGLE));
+	public static final Supplier<PistolItem> DIAMOND_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("diamond_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.DIAMOND_IMI_DESERT_EAGLE));
+	public static final Supplier<PistolItem> NETHERITE_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("netherite_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.NETHERITE_IMI_DESERT_EAGLE));
 	public static final Supplier<PistolItem> ONYX_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("onyx_imi_desert_eagle",
 			() -> new PistolItem(PistolMaterial.ONYX_IMI_DESERT_EAGLE));
+	public static final Supplier<PistolItem> TITAN_IMI_DESERT_EAGLE = ITEMSREGISTRY.register("titan_imi_desert_eagle",
+			() -> new PistolItem(PistolMaterial.TITAN_IMI_DESERT_EAGLE));
 
+
+	public static final Supplier<PistolItem> GOLDEN_RRAR = ITEMSREGISTRY.register("golden_rrar",
+			() -> new PistolItem(PistolMaterial.GOLDEN_RRAR));
+	public static final Supplier<PistolItem> IRON_RRAR = ITEMSREGISTRY.register("iron_rrar",
+			() -> new PistolItem(PistolMaterial.IRON_RRAR));
+	public static final Supplier<PistolItem> EMERALD_RRAR = ITEMSREGISTRY.register("emerald_rrar",
+			() -> new PistolItem(PistolMaterial.EMERALD_RRAR));
+	public static final Supplier<PistolItem> DIAMOND_RRAR = ITEMSREGISTRY.register("diamond_rrar",
+			() -> new PistolItem(PistolMaterial.DIAMOND_RRAR));
+	public static final Supplier<PistolItem> NETHERITE_RRAR = ITEMSREGISTRY.register("netherite_rrar",
+			() -> new PistolItem(PistolMaterial.NETHERITE_RRAR));
+
+	public static final Supplier<PistolItem> ONYX_RRAR = ITEMSREGISTRY.register("onyx_rrar",
+			() -> new PistolItem(PistolMaterial.ONYX_RRAR));
+	public static final Supplier<PistolItem> TITAN_RRAR = ITEMSREGISTRY.register("titan_rrar",
+			() -> new PistolItem(PistolMaterial.TITAN_RRAR));
+
+
+	public static final Supplier<PistolItem> GOLDEN_COLT_ANACONDA = ITEMSREGISTRY.register("golden_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.GOLDEN_COLT_ANACONDA));
+	public static final Supplier<PistolItem> IRON_COLT_ANACONDA = ITEMSREGISTRY.register("iron_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.IRON_COLT_ANACONDA));
+	public static final Supplier<PistolItem> EMERALD_COLT_ANACONDA = ITEMSREGISTRY.register("emerald_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.EMERALD_COLT_ANACONDA));
+	public static final Supplier<PistolItem> DIAMOND_COLT_ANACONDA = ITEMSREGISTRY.register("diamond_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.DIAMOND_COLT_ANACONDA));
+	public static final Supplier<PistolItem> NETHERITE_COLT_ANACONDA = ITEMSREGISTRY.register("netherite_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.NETHERITE_COLT_ANACONDA));
+
+	public static final Supplier<PistolItem> ONYX_COLT_ANACONDA = ITEMSREGISTRY.register("onyx_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.ONYX_COLT_ANACONDA));
+	public static final Supplier<PistolItem> TITAN_COLT_ANACONDA = ITEMSREGISTRY.register("titan_colt_anaconda",
+			() -> new PistolItem(PistolMaterial.TITAN_COLT_ANACONDA));
+
+	public static final Supplier<PistolItem> GOLDEN_S_AND_W_M629C = ITEMSREGISTRY.register("golden_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.GOLDEN_S_AND_W_M629C));
+	public static final Supplier<PistolItem> IRON_S_AND_W_M629C = ITEMSREGISTRY.register("iron_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.IRON_S_AND_W_M629C));
+	public static final Supplier<PistolItem> EMERALD_S_AND_W_M629C = ITEMSREGISTRY.register("emerald_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.EMERALD_S_AND_W_M629C));
+	public static final Supplier<PistolItem> DIAMOND_S_AND_W_M629C = ITEMSREGISTRY.register("diamond_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.DIAMOND_S_AND_W_M629C));
+	public static final Supplier<PistolItem> NETHERITE_S_AND_W_M629C = ITEMSREGISTRY.register("netherite_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.NETHERITE_S_AND_W_M629C));
+	
+	public static final Supplier<PistolItem> ONYX_S_AND_W_M629C = ITEMSREGISTRY.register("onyx_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.ONYX_S_AND_W_M629C));
+	public static final Supplier<PistolItem> TITAN_S_AND_W_M629C = ITEMSREGISTRY.register("titan_s_and_w_m629c",
+			() -> new PistolItem(PistolMaterial.TITAN_S_AND_W_M629C));
+
+
+	public static final Supplier<PistolItem> GOLDEN_DESERT_EAGLE = ITEMSREGISTRY.register("golden_desert_eagle",
+			() -> new PistolItem(PistolMaterial.GOLDEN_DESERT_EAGLE));
+	public static final Supplier<PistolItem> IRON_DESERT_EAGLE = ITEMSREGISTRY.register("iron_desert_eagle",
+			() -> new PistolItem(PistolMaterial.IRON_DESERT_EAGLE));
+	public static final Supplier<PistolItem> EMERALD_DESERT_EAGLE = ITEMSREGISTRY.register("emerald_desert_eagle",
+			() -> new PistolItem(PistolMaterial.EMERALD_DESERT_EAGLE));
+	public static final Supplier<PistolItem> DIAMOND_DESERT_EAGLE = ITEMSREGISTRY.register("diamond_desert_eagle",
+			() -> new PistolItem(PistolMaterial.DIAMOND_DESERT_EAGLE));
+	public static final Supplier<PistolItem> NETHERITE_DESERT_EAGLE = ITEMSREGISTRY.register("netherite_desert_eagle",
+			() -> new PistolItem(PistolMaterial.NETHERITE_DESERT_EAGLE));
+	
+	public static final Supplier<PistolItem> ONYX_DESERT_EAGLE = ITEMSREGISTRY.register("onyx_desert_eagle",
+			() -> new PistolItem(PistolMaterial.ONYX_DESERT_EAGLE));
 	public static final Supplier<PistolItem> TITAN_DESERT_EAGLE = ITEMSREGISTRY.register("titan_desert_eagle",
 			() -> new PistolItem(PistolMaterial.TITAN_DESERT_EAGLE));
 
 
-	public static final Supplier<PistolItem> ONYX_RRAR = ITEMSREGISTRY.register("onyx_rrar",
-			() -> new PistolItem(PistolMaterial.ONYX_RRAR));
-
-	public static final Supplier<PistolItem> TITAN_COLT_ANACONDA = ITEMSREGISTRY.register("titan_colt_anaconda",
-			() -> new PistolItem(PistolMaterial.TITAN_COLT_ANACONDA));
-
-	public static final Supplier<PistolItem> TITAN_S_AND_W_M629C = ITEMSREGISTRY.register("titan_s_and_w_m629c",
-			() -> new PistolItem(PistolMaterial.TITAN_S_AND_W_500));
-
+	public static final Supplier<PistolItem> GOLDEN_S_AND_W_500 = ITEMSREGISTRY.register("golden_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.GOLDEN_S_AND_W_500));
+	public static final Supplier<PistolItem> IRON_S_AND_W_500 = ITEMSREGISTRY.register("iron_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.IRON_S_AND_W_500));
+	public static final Supplier<PistolItem> EMERALD_S_AND_W_500 = ITEMSREGISTRY.register("emerald_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.EMERALD_S_AND_W_500));
+	public static final Supplier<PistolItem> DIAMOND_S_AND_W_500 = ITEMSREGISTRY.register("diamond_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.DIAMOND_S_AND_W_500));
+	public static final Supplier<PistolItem> NETHERITE_S_AND_W_500 = ITEMSREGISTRY.register("netherite_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.NETHERITE_S_AND_W_500));
+	
+	public static final Supplier<PistolItem> ONYX_S_AND_W_500 = ITEMSREGISTRY.register("onyx_s_and_w_500",
+			() -> new PistolItem(PistolMaterial.ONYX_S_AND_W_500));
 	public static final Supplier<PistolItem> TITAN_S_AND_W_500 = ITEMSREGISTRY.register("titan_s_and_w_500",
 			() -> new PistolItem(PistolMaterial.TITAN_S_AND_W_500));
 
 
-	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("beretta_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> PISTOL_BULLET = ITEMSREGISTRY.registerItem("pistol_bullet", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> FOURTY_FOUR_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fourty_four_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(12));
 	public static final DeferredItem<Item> FIFTY_S_AND_W_ROUNDS = ITEMSREGISTRY.registerItem("fifty_s_and_w_rounds", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(12));
@@ -811,11 +1089,15 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> NINEmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("ninemm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(32));
 	public static final DeferredItem<Item> TENmm_PARABELLUM_ROUNDS = ITEMSREGISTRY.registerItem("tenmm_parabellum_rounds", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(20));
 
+	public static final DeferredItem<Item> JAR_GUNPOWDER_A = ITEMSREGISTRY.registerItem("jar_gunpowder_a", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(1));
+	public static final DeferredItem<Item> JAR_GUNPOWDER_B = ITEMSREGISTRY.registerItem("jar_gunpowder_b", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(1));
+	public static final DeferredItem<Item> JAR_GUNPOWDER_C = ITEMSREGISTRY.registerItem("jar_gunpowder_c", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(1));
+	public static final DeferredItem<Item> JAR_GUNPOWDER_D = ITEMSREGISTRY.registerItem("jar_gunpowder_d", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(1));
 	
 	// Balloons
 	public static final DeferredItem<Item> BALLOON_WHITE = ITEMSREGISTRY.register("balloon_white", 
 			() -> new BalloonItem(BalloonColor.WHITE));
-	public static final DeferredItem<Item> BALLOON_ORANGE = ITEMSREGISTRY.register("balloon_orange", 
+	public static final DeferredItem<Item> BALLOON_ORANGE = ITEMSREGISTRY.register("balloon_orange",
 			() -> new BalloonItem(BalloonColor.ORANGE));
 	public static final DeferredItem<Item> BALLOON_MAGENTA = ITEMSREGISTRY.register("balloon_magenta", 
 			() -> new BalloonItem(BalloonColor.MAGENTA));
@@ -864,6 +1146,7 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> FEATHER_YELLOW = ITEMSREGISTRY.registerItem("feather_yellow", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 	public static final DeferredItem<Item> FEATHER_GOLDEN = ITEMSREGISTRY.registerItem("feather_golden", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
+	public static final DeferredItem<Item> GOLDEN_DYE = ITEMSREGISTRY.registerItem("golden_dye", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
 	//totems
 	public static final DeferredItem<Item> TOTEM_OF_LIFE = ITEMSREGISTRY.register("totem_of_life", TotemOfLifeItem::new);
@@ -874,7 +1157,6 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> MD_CANT_GET_YOU_OUT_OF_MY_HEAD = ITEMSREGISTRY.register("md_cant_get_you_out_of_my_head", MD_CANT_GET_YOU_OUT_OF_MY_HEADItem::new);
 	public static final DeferredItem<Item> MD_AQUAA = ITEMSREGISTRY.register("md_aquaa", MD_AQUAAItem::new);
 	public static final DeferredItem<Item> MD_DRUNK_RHYTHM = ITEMSREGISTRY.register("md_drunk_rhythm", MD_DRUNK_RHYTHMItem::new);
-
 
 	public static final DeferredItem<TNTStickItem> TNT_STICK = ITEMSREGISTRY.register("tnt_stick", TNTStickItem::new);
 

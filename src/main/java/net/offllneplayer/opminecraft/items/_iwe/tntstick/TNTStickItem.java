@@ -32,21 +32,22 @@ public class TNTStickItem extends Item {
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
   /*[VARIABLES]*/
 	private static final String FUSE_SOUND_PLAYING_TAG = "TNTFuseSoundPlaying";
+	// Key used in Player persistent data; the stored value is a boolean
+	private static final String IS_LIT = "isLIT";
 	private static final int FUSE_DURATION = 100;
+ 	public static final int STACK_SIZE = 4;
 
 	 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
   /*[BUILDER]*/
 	public TNTStickItem() {
-		super(new Properties()
-			.stacksTo(4)
-			.rarity(Rarity.UNCOMMON));
+		super(new Properties().stacksTo(STACK_SIZE).rarity(Rarity.UNCOMMON));
 	}
 
 	 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 	/*^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^*/
   /*[HELP]*/
-	private void stopFuseSound(Level level, double x, double y, double z) {
+		private void stopFuseSound(Level level, double x, double y, double z) {
 		if (!(level instanceof ServerLevel serverLevel)) return;
 
 		double hearingRadius = 24.0;
@@ -57,6 +58,13 @@ public class TNTStickItem extends Item {
 			p.distanceToSqr(x, y, z) <= hearingRadius * hearingRadius)) {
 			player.connection.send(packet);
 		}
+	}
+
+	private static boolean getIsLit(Player player) {
+		return player.getPersistentData().getBoolean(IS_LIT);
+	}
+	private static void setIsLit(Player player, boolean value) {
+		player.getPersistentData().putBoolean(IS_LIT, value);
 	}
 
 
@@ -78,9 +86,14 @@ public class TNTStickItem extends Item {
 		Player player = Minecraft.getInstance().player;
 		if (player == null || player.getUseItem() != stack) return 13; // Full bar when not in use
 
-		// Calculate how much of the fuse duration has elapsed
+		// Calculate progress (0..1)
 		int remainingUseTicks = player.getUseItemRemainingTicks();
-		// Map the remaining ticks to the bar width (13 = full, 0 = empty)
+		float progress = 1.0F - (float) remainingUseTicks / (float) FUSE_DURATION;
+
+		// When beyond 95% progress, ignore timer and show full bar
+		if (progress >= 0.95F) return 13;
+
+		// Otherwise map remaining ticks to bar width (13 = full, 0 = empty)
 		return Math.round(13.0F * remainingUseTicks / (float)FUSE_DURATION);
 	}
 
@@ -95,12 +108,10 @@ public class TNTStickItem extends Item {
 		float progress = 1.0F - (float) player.getUseItemRemainingTicks() / FUSE_DURATION;
 
 		return tntStickBarColor_Method.countdownBarColor(progress,
-			"BDFF2A",  // Early stage - pastel yellow (189, 255, 42)
-			"A9B92A",  // Mid stage (169, 185, 42)
-			"A90016",  // Late stage - dark red (169, 0, 22)
-			"8B000C",  // Final base - darker red (139, 0, 12)
-			"1E160A",  // Final pulse amounts (30, 22, 10)
-			8.0F);     // Pulse frequency, higher = more pulses
+			"FFC800",  // 0% color - yellow (255, 200, 0)
+			"FF0000",  // 80% color - bright red (255, 0, 0)
+			"9B0000"  // 95% color - dark red (155, 0, 0)
+			);
 	}
 
 
@@ -122,60 +133,40 @@ public class TNTStickItem extends Item {
 		InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 		ItemStack otherHandStack = player.getItemInHand(otherHand);
 
-		// Check if player is crouching and other hand does not have flint and steel
-		if (player.isCrouching() && !(otherHandStack.getItem() instanceof FlintAndSteelItem)) {
-			if (player.isUnderWater() || player.getCooldowns().isOnCooldown(this)) {
+		// Use when crouching OR when holding flint and steel in the other hand
+		boolean hasFlintAndSteel = otherHandStack.getItem() instanceof FlintAndSteelItem;
+		boolean canThrowByCrouch = player.isCrouching();
+		boolean canUse = hasFlintAndSteel || canThrowByCrouch;
+		if (canUse) {
+			// Separate cooldown from underwater logic
+			if (player.getCooldowns().isOnCooldown(this)) {
 				return InteractionResultHolder.fail(tstack);
 			}
 
-			if (!level.isClientSide) {
-				// Create and setup the thrown TNT entity with minimum pull
-				ThrownTNTStick tstick = new ThrownTNTStick(player, level, tstack.copy());
-				float minPull = 0.420F;
-				double yawRad = Math.toRadians(player.getYRot());
-				double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
-				double rightX = forwardZ, rightZ = -forwardX;
-				double forwardOff = 0.7;
-				double lateralOff = hand == InteractionHand.MAIN_HAND ? -0.5 : 0.5;
-				double spawnX = player.getX() + forwardX * forwardOff + rightX * lateralOff;
-				double spawnY = player.getY() + player.getEyeHeight() + 0.22D;
-				double spawnZ = player.getZ() + forwardZ * forwardOff + rightZ * lateralOff;
+			boolean lit = hasFlintAndSteel && !player.isUnderWater();
 
-				tstick.setPos(spawnX, spawnY, spawnZ);
-
-				float randomVelo = Mth.nextFloat(RandomSource.create(), 1.69420F, 2.2420F);
-
-				// Throw immediately with minimum pull
-				tstick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, minPull * randomVelo, 0.420F);
-				level.addFreshEntity(tstick);
-
-				player.awardStat(Stats.ITEM_USED.get(this));
-				tstack.shrink(1);
-
-				level.playSound(null, player.getX(), player.getY(), player.getZ(),
-					SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 0.69F, 0.420F * randomVelo + minPull);
-
-				player.getCooldowns().addCooldown(this, 20);
+			// Handle sounds/consumption and animation
+			if (hasFlintAndSteel) {
+				level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1F, 1F);
+				otherHandStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(otherHand));
+				player.swing(otherHand, true);
+				if (lit) {
+					level.playSound(null, player.getX(), player.getY(), player.getZ(), RegistrySounds.TNT_FUSE.get(), SoundSource.NEUTRAL, 1F, 1.1420F);
+				}
+			} else {
+				// Crouch path: unlit throw, no fuse sound
+				player.swing(hand, true);
 			}
 
-			return InteractionResultHolder.sidedSuccess(tstack, level.isClientSide);
-		}
+			// Mark unlit behavior so releaseUsing knows to throw unlit
+			setIsLit(player, lit);
 
-		// Original code for when player is not crouching
-		if (otherHandStack.getItem() instanceof FlintAndSteelItem) {
-			if (player.isUnderWater() || player.getCooldowns().isOnCooldown(this)) {
-				return InteractionResultHolder.fail(tstack);
-			}
-			level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1F, 1F);
-			level.playSound(null, player.getX(), player.getY(), player.getZ(), RegistrySounds.TNT_FUSE.get(), SoundSource.NEUTRAL, 1F, 1.1420F);
-			otherHandStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(otherHand));
-			player.swing(otherHand, true);
 			player.getCooldowns().addCooldown(this, 20);
 			player.startUsingItem(hand);
 			return InteractionResultHolder.consume(tstack);
 		}
 
-		// If no flint and steel in other hand
+		// If neither crouching nor has flint and steel in other hand
 		player.displayClientMessage(Component.literal("Jack Black's words echoed... FLINT AND STEEL!"), true);
 		player.swing(hand, true);
 		return InteractionResultHolder.fail(tstack);
@@ -192,7 +183,8 @@ public class TNTStickItem extends Item {
 		int timeUsed = getUseDuration(stack, user) - remainingUseTicks;
 
 		// Start playing sound on first tick
-		if (timeUsed == 1) {
+		boolean lit = getIsLit(player);
+		if (timeUsed == 1 && lit) {
 			player.getPersistentData().putBoolean(FUSE_SOUND_PLAYING_TAG, true);
 		}
 
@@ -207,8 +199,8 @@ public class TNTStickItem extends Item {
 		double particleY = player.getY() + player.getEyeHeight() + 0.24D;
 		double particleZ = player.getZ() + forwardZ * forwardOff + rightZ * handOffset;
 
-		// Spawn flame particles at hand position every 2 ticks
-		if (level.isClientSide() && timeUsed > 1 && timeUsed % 2 == 0) {
+		// Spawn flame particles at hand position every 2 ticks (lit)
+		if (lit && level.isClientSide() && timeUsed > 1 && timeUsed % 2 == 0) {
 			level.addParticle(ParticleTypes.FLAME,
 				particleX, particleY, particleZ,
 				Mth.nextDouble(level.getRandom(), 0.01D, 0.02D),
@@ -220,8 +212,11 @@ public class TNTStickItem extends Item {
 		// If we've reached the end of use duration
 		if (remainingUseTicks <= 1) {
 			player.swing(player.getUsedItemHand(), true);
-			level.playSound(null, user.getX(), user.getY(), user.getZ(),
-				SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.0F, 1.5F);
+			// Only play extinguish if we actually had a burning fuse (lit)
+			if (lit) {
+				level.playSound(null, user.getX(), user.getY(), user.getZ(),
+					SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.0F, 1.5F);
+			}
 		}
 	}
 
@@ -237,6 +232,8 @@ public class TNTStickItem extends Item {
 			stopFuseSound(livingEntity.level(), livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
 			player.getPersistentData().putBoolean(FUSE_SOUND_PLAYING_TAG, false);
 		}
+		// Always clear lit flag on stop using
+		setIsLit(player, false);
 	}
 
 	 /* X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-=X-<=-*/
@@ -270,19 +267,28 @@ public class TNTStickItem extends Item {
 
 		int timeUsed = getUseDuration(stack, user) - timeLeft;
 		int fuseTimeRemaining = FUSE_DURATION - timeUsed;
-		tstick.setLitTime(fuseTimeRemaining);
+
+		// pass isLit to entity
+		if (getIsLit(player)) {
+			tstick.setLitTime(fuseTimeRemaining);
+		} else {
+			tstick.setLitTime(-1);
+		}
 
 		float pull = Mth.clamp(timeUsed / (float) FUSE_DURATION, 0.420F, 1F);
 		float randomVelo = Mth.nextFloat(RandomSource.create(), 1.69420F, 2.2420F);
 		tstick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0F, pull * randomVelo, 0.420F);
 
 		level.addFreshEntity(tstick);
-
+		
 		player.awardStat(Stats.ITEM_USED.get(this));
 		stack.shrink(1);
-
+		
 		level.playSound(null, player.getX(), player.getY(), player.getZ(),
 			SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 0.69F, 0.420F * randomVelo + pull);
+		
+		// Clear unlit flag after successful throw
+		setIsLit(player, false);
 	}
 
 	 /* ----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_----_*/

@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/jar_gunpowder_d",
+  "textures": {
+    "0": "opminecraft:item/pistol/ammo/text_jar_gunpowder_c",
+    "particle": "opminecraft:item/pistol/ammo/text_jar_gunpowder_c"
+  }
+}

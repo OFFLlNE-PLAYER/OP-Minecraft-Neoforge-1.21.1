@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_opalite"
+    "layer0": "opminecraft:item/gem/text_opalite"
   },
   "display": {
     "firstperson_lefthand": {

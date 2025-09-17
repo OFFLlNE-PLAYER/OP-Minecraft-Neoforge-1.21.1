@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
-	"textures": {
-		"0": "opminecraft:item/text_brilliant_corundum",
-		"particle": "opminecraft:item/text_brilliant_corundum"
+ "textures": {
+    "0": "opminecraft:item/gem/text_brilliant_corundum",
+    "particle": "opminecraft:item/gem/text_brilliant_corundum"
 	},
 	"elements": [
 		{

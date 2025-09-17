@@ -1,5 +1,5 @@
 {
-  "parent": "opminecraft:item/protektor_cz75",
+  "parent": "opminecraft:item/titan_cz75",
   "textures": {
     "0": "opminecraft:item/pistol/text_iron_cz75",
     "particle": "opminecraft:item/pistol/text_iron_cz75"

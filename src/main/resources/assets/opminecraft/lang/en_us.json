@@ -120,6 +120,33 @@
   "block.opminecraft.flowering_pitcher_plant": "Flowering Pitcher Plant",
   "block.opminecraft.wumpa_plant": "§6Wumpa Plant§r",
 
+
+  "block.opminecraft.budding_crystal_block": "§bBudding Crystal Block",
+  "block.opminecraft.small_crystal_bud": "§bSmall Crystal Bud",
+  "block.opminecraft.medium_crystal_bud": "§bMedium Crystal Bud",
+  "block.opminecraft.large_crystal_bud": "§bLarge Crystal Bud",
+  "block.opminecraft.crystal_cluster": "§bCrystal Cluster",
+  
+  "block.opminecraft.crystal_block": "§bCrystal Block§r",
+  "block.opminecraft.crystal_button": "§bCrystal Button§r",
+  "block.opminecraft.crystal_fence": "§bCrystal Fence§r",
+  "block.opminecraft.crystal_fence_gate": "§bCrystal Fence Gate§r",
+  "block.opminecraft.crystal_pressure_plate": "§bCrystal Pressure Plate§r",
+  "block.opminecraft.crystal_slab": "§bCrystal Slab§r",
+  "block.opminecraft.crystal_stairs": "§bCrystal Stairs§r",
+  "block.opminecraft.crystal_trapdoor": "§bCrystal Trapdoor§r",
+  "block.opminecraft.crystal_wall": "§bCrystal Wall§r",
+
+  "block.opminecraft.crystal_bricks": "§bCrystal Bricks§r",
+  "block.opminecraft.crystal_brick_button": "§bCrystal Brick Button§r",
+  "block.opminecraft.crystal_brick_fence": "§bCrystal Brick Fence§r",
+  "block.opminecraft.crystal_brick_fence_gate": "§bCrystal Brick Fence Gate§r",
+  "block.opminecraft.crystal_brick_pressure_plate": "§bCrystal Brick Pressure Plate§r",
+  "block.opminecraft.crystal_brick_slab": "§bCrystal Brick Slab§r",
+  "block.opminecraft.crystal_brick_stairs": "§bCrystal Brick Stairs§r",
+  "block.opminecraft.crystal_brick_trapdoor": "§bCrystal Brick Trapdoor§r",
+  "block.opminecraft.crystal_brick_wall": "§bCrystal Brick Wall§r",
+
   "block.opminecraft.slate": "Slate",
   "block.opminecraft.slate_button": "Slate Button",
   "block.opminecraft.slate_fence": "Slate Fence",
@@ -171,25 +198,120 @@
   "block.opminecraft.slate_tile_wall": "Slate Tile Wall",
 
   "block.opminecraft.block_of_onyx": "§8Block Of Onyx§r",
+  "block.opminecraft.block_of_titanium": "§7Block Of Titanium§r",
+  "block.opminecraft.onyx_block": "§8Onyx Block§r",
+  "block.opminecraft.titanium_block": "§7Titanium Block§r",
 
-  "block.opminecraft.onyx_lamp": "§8Onyx Lamp§r",
-  "block.opminecraft.onyx_lamp_black": "§8Onyx Lamp Black§r",
-  "block.opminecraft.onyx_lamp_blue": "§8Onyx Lamp Blue§r",
-  "block.opminecraft.onyx_lamp_brown": "§8Onyx Lamp Brown§r",
-  "block.opminecraft.onyx_lamp_cyan": "§8Onyx Lamp Cyan§r",
-  "block.opminecraft.onyx_lamp_gray": "§8Onyx Lamp Gray§r",
-  "block.opminecraft.onyx_lamp_green": "§8Onyx Lamp Green§r",
-  "block.opminecraft.onyx_lamp_light_blue": "§8Onyx Lamp Light Blue§r",
-  "block.opminecraft.onyx_lamp_light_gray": "§8Onyx Lamp Light Gray§r",
-  "block.opminecraft.onyx_lamp_lime": "§8Onyx Lamp Lime§r",
-  "block.opminecraft.onyx_lamp_magenta": "§8Onyx Lamp Magenta§r",
-  "block.opminecraft.onyx_lamp_orange": "§8Onyx Lamp Orange§r",
-  "block.opminecraft.onyx_lamp_pink": "§8Onyx Lamp Pink§r",
-  "block.opminecraft.onyx_lamp_purple": "§8Onyx Lamp Purple§r",
-  "block.opminecraft.onyx_lamp_red": "§8Onyx Lamp Red§r",
-  "block.opminecraft.onyx_lamp_white": "§8Onyx Lamp White§r",
-  "block.opminecraft.onyx_lamp_yellow": "§8Onyx Lamp Yellow§r",
 
+  "block.opminecraft.golden_oplamp_black": "§8Golden Lamp Black§r",
+  "block.opminecraft.golden_oplamp_blue": "§9Golden Lamp Blue§r",
+  "block.opminecraft.golden_oplamp_brown": "§4Golden Lamp Brown§r",
+  "block.opminecraft.golden_oplamp_cyan": "§3Golden Lamp Cyan§r",
+  "block.opminecraft.golden_oplamp_golden": "§eGolden Lamp Golden§r",
+  "block.opminecraft.golden_oplamp_gray": "§8Golden Lamp Gray§r",
+  "block.opminecraft.golden_oplamp_green": "§2Golden Lamp Green§r",
+  "block.opminecraft.golden_oplamp_light_blue": "§bGolden Lamp Light Blue§r",
+  "block.opminecraft.golden_oplamp_light_gray": "§7Golden Lamp Light Gray§r",
+  "block.opminecraft.golden_oplamp_lime": "§aGolden Lamp Lime§r",
+  "block.opminecraft.golden_oplamp_magenta": "§dGolden Lamp Magenta§r",
+  "block.opminecraft.golden_oplamp_orange": "§6Golden Lamp Orange§r",
+  "block.opminecraft.golden_oplamp_pink": "§dGolden Lamp Pink§r",
+  "block.opminecraft.golden_oplamp_purple": "§5Golden Lamp Purple§r",
+  "block.opminecraft.golden_oplamp_red": "§cGolden Lamp Red§r",
+  "block.opminecraft.golden_oplamp_white": "§fGolden Lamp White§r",
+  "block.opminecraft.golden_oplamp_yellow": "§eGolden Lamp Yellow§r",
+
+  "block.opminecraft.iron_oplamp_black": "§8Iron Lamp Black§r",
+  "block.opminecraft.iron_oplamp_blue": "§9Iron Lamp Blue§r",
+  "block.opminecraft.iron_oplamp_brown": "§4Iron Lamp Brown§r",
+  "block.opminecraft.iron_oplamp_cyan": "§3Iron Lamp Cyan§r",
+  "block.opminecraft.iron_oplamp_golden": "§eIron Lamp Golden§r",
+  "block.opminecraft.iron_oplamp_gray": "§8Iron Lamp Gray§r",
+  "block.opminecraft.iron_oplamp_green": "§2Iron Lamp Green§r",
+  "block.opminecraft.iron_oplamp_light_blue": "§bIron Lamp Light Blue§r",
+  "block.opminecraft.iron_oplamp_light_gray": "§7Iron Lamp Light Gray§r",
+  "block.opminecraft.iron_oplamp_lime": "§aIron Lamp Lime§r",
+  "block.opminecraft.iron_oplamp_magenta": "§dIron Lamp Magenta§r",
+  "block.opminecraft.iron_oplamp_orange": "§6Iron Lamp Orange§r",
+  "block.opminecraft.iron_oplamp_pink": "§dIron Lamp Pink§r",
+  "block.opminecraft.iron_oplamp_purple": "§5Iron Lamp Purple§r",
+  "block.opminecraft.iron_oplamp_red": "§cIron Lamp Red§r",
+  "block.opminecraft.iron_oplamp_white": "§fIron Lamp White§r",
+  "block.opminecraft.iron_oplamp_yellow": "§eIron Lamp Yellow§r",
+
+  "block.opminecraft.diamond_oplamp_black": "§8Diamond Lamp Black§r",
+  "block.opminecraft.diamond_oplamp_blue": "§9Diamond Lamp Blue§r",
+  "block.opminecraft.diamond_oplamp_brown": "§4Diamond Lamp Brown§r",
+  "block.opminecraft.diamond_oplamp_cyan": "§3Diamond Lamp Cyan§r",
+  "block.opminecraft.diamond_oplamp_golden": "§eDiamond Lamp Golden§r",
+  "block.opminecraft.diamond_oplamp_gray": "§8Diamond Lamp Gray§r",
+  "block.opminecraft.diamond_oplamp_green": "§2Diamond Lamp Green§r",
+  "block.opminecraft.diamond_oplamp_light_blue": "§bDiamond Lamp Light Blue§r",
+  "block.opminecraft.diamond_oplamp_light_gray": "§7Diamond Lamp Light Gray§r",
+  "block.opminecraft.diamond_oplamp_lime": "§aDiamond Lamp Lime§r",
+  "block.opminecraft.diamond_oplamp_magenta": "§dDiamond Lamp Magenta§r",
+  "block.opminecraft.diamond_oplamp_orange": "§6Diamond Lamp Orange§r",
+  "block.opminecraft.diamond_oplamp_pink": "§dDiamond Lamp Pink§r",
+  "block.opminecraft.diamond_oplamp_purple": "§5Diamond Lamp Purple§r",
+  "block.opminecraft.diamond_oplamp_red": "§cDiamond Lamp Red§r",
+  "block.opminecraft.diamond_oplamp_white": "§fDiamond Lamp White§r",
+  "block.opminecraft.diamond_oplamp_yellow": "§eDiamond Lamp Yellow§r",
+
+  "block.opminecraft.netherite_oplamp_black": "§8Netherite Lamp Black§r",
+  "block.opminecraft.netherite_oplamp_blue": "§9Netherite Lamp Blue§r",
+  "block.opminecraft.netherite_oplamp_brown": "§4Netherite Lamp Brown§r",
+  "block.opminecraft.netherite_oplamp_cyan": "§3Netherite Lamp Cyan§r",
+  "block.opminecraft.netherite_oplamp_golden": "§eNetherite Lamp Golden§r",
+  "block.opminecraft.netherite_oplamp_gray": "§8Netherite Lamp Gray§r",
+  "block.opminecraft.netherite_oplamp_green": "§2Netherite Lamp Green§r",
+  "block.opminecraft.netherite_oplamp_light_blue": "§bNetherite Lamp Light Blue§r",
+  "block.opminecraft.netherite_oplamp_light_gray": "§7Netherite Lamp Light Gray§r",
+  "block.opminecraft.netherite_oplamp_lime": "§aNetherite Lamp Lime§r",
+  "block.opminecraft.netherite_oplamp_magenta": "§dNetherite Lamp Magenta§r",
+  "block.opminecraft.netherite_oplamp_orange": "§6Netherite Lamp Orange§r",
+  "block.opminecraft.netherite_oplamp_pink": "§dNetherite Lamp Pink§r",
+  "block.opminecraft.netherite_oplamp_purple": "§5Netherite Lamp Purple§r",
+  "block.opminecraft.netherite_oplamp_red": "§cNetherite Lamp Red§r",
+  "block.opminecraft.netherite_oplamp_white": "§fNetherite Lamp White§r",
+  "block.opminecraft.netherite_oplamp_yellow": "§eNetherite Lamp Yellow§r",
+  
+  "block.opminecraft.onyx_oplamp_black": "§8Onyx Lamp Black§r",
+  "block.opminecraft.onyx_oplamp_blue": "§8Onyx Lamp Blue§r",
+  "block.opminecraft.onyx_oplamp_brown": "§8Onyx Lamp Brown§r",
+  "block.opminecraft.onyx_oplamp_cyan": "§8Onyx Lamp Cyan§r",
+  "block.opminecraft.onyx_oplamp_golden": "§8Onyx Lamp Golden§r",
+  "block.opminecraft.onyx_oplamp_gray": "§8Onyx Lamp Gray§r",
+  "block.opminecraft.onyx_oplamp_green": "§8Onyx Lamp Green§r",
+  "block.opminecraft.onyx_oplamp_light_blue": "§8Onyx Lamp Light Blue§r",
+  "block.opminecraft.onyx_oplamp_light_gray": "§8Onyx Lamp Light Gray§r",
+  "block.opminecraft.onyx_oplamp_lime": "§8Onyx Lamp Lime§r",
+  "block.opminecraft.onyx_oplamp_magenta": "§8Onyx Lamp Magenta§r",
+  "block.opminecraft.onyx_oplamp_orange": "§8Onyx Lamp Orange§r",
+  "block.opminecraft.onyx_oplamp_pink": "§8Onyx Lamp Pink§r",
+  "block.opminecraft.onyx_oplamp_purple": "§8Onyx Lamp Purple§r",
+  "block.opminecraft.onyx_oplamp_red": "§8Onyx Lamp Red§r",
+  "block.opminecraft.onyx_oplamp_white": "§8Onyx Lamp White§r",
+  "block.opminecraft.onyx_oplamp_yellow": "§8Onyx Lamp Yellow§r",
+  
+  "block.opminecraft.titan_oplamp_black": "§8Titan Lamp Black§r",
+  "block.opminecraft.titan_oplamp_blue": "§8Titan Lamp Blue§r",
+  "block.opminecraft.titan_oplamp_brown": "§8Titan Lamp Brown§r",
+  "block.opminecraft.titan_oplamp_cyan": "§8Titan Lamp Cyan§r",
+  "block.opminecraft.titan_oplamp_golden": "§8Titan Lamp Golden§r",
+  "block.opminecraft.titan_oplamp_gray": "§8Titan Lamp Gray§r",
+  "block.opminecraft.titan_oplamp_green": "§8Titan Lamp Green§r",
+  "block.opminecraft.titan_oplamp_light_blue": "§8Titan Lamp Light Blue§r",
+  "block.opminecraft.titan_oplamp_light_gray": "§8Titan Lamp Light Gray§r",
+  "block.opminecraft.titan_oplamp_lime": "§8Titan Lamp Lime§r",
+  "block.opminecraft.titan_oplamp_magenta": "§8Titan Lamp Magenta§r",
+  "block.opminecraft.titan_oplamp_orange": "§8Titan Lamp Orange§r",
+  "block.opminecraft.titan_oplamp_pink": "§8Titan Lamp Pink§r",
+  "block.opminecraft.titan_oplamp_purple": "§8Titan Lamp Purple§r",
+  "block.opminecraft.titan_oplamp_red": "§8Titan Lamp Red§r",
+  "block.opminecraft.titan_oplamp_white": "§8Titan Lamp White§r",
+  "block.opminecraft.titan_oplamp_yellow": "§8Titan Lamp Yellow§r",
+  
+  
   "block.opminecraft.stone_tiles": "Stone Tiles",
   "block.opminecraft.stone_tile_button": "Stone Tile Button",
   "block.opminecraft.stone_tile_fence": "Stone Tile Fence",
@@ -355,15 +477,66 @@
 
   "item.opminecraft.ancient_chunk": "Ancient Chunk",
 
+  "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
+  "item.opminecraft.crying_ingot": "Crying Ingot",
+  "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
+
+
+  "item.opminecraft.balloon.description_0": "The weight of the world feels lighter. Fragile.",
+  "item.opminecraft.balloon_black": "§0Black Balloon§r",
+  "item.opminecraft.balloon_blue": "§9Blue Balloon§r",
+  "item.opminecraft.balloon_brown": "§4Brown Balloon§r",
+  "item.opminecraft.balloon_cyan": "§3Cyan Balloon§r",
+  "item.opminecraft.balloon_gray": "§8Gray Balloon§r",
+  "item.opminecraft.balloon_green": "§2Green Balloon§r",
+  "item.opminecraft.balloon_light_blue": "§bLight Blue Balloon§r",
+  "item.opminecraft.balloon_light_gray": "§7Light Gray Balloon§r",
+  "item.opminecraft.balloon_lime": "§aLime Balloon§r",
+  "item.opminecraft.balloon_orange": "§6Orange Balloon§r",
+  "item.opminecraft.balloon_magenta": "§dMagenta Balloon§r",
+  "item.opminecraft.balloon_pink": "§dPink Balloon§r",
+  "item.opminecraft.balloon_purple": "§5Purple Balloon§r",
+  "item.opminecraft.balloon_red": "§cRed Balloon§r",
+  "item.opminecraft.balloon_white": "§fWhite Balloon§r",
+  "item.opminecraft.balloon_yellow": "§eYellow Balloon§r",
+
+
+  "item.opminecraft.feather_black": "§0Black Feather§r",
+  "item.opminecraft.feather_blue": "§9Blue Feather§r",
+  "item.opminecraft.feather_brown": "§4Brown Feather§r",
+  "item.opminecraft.feather_cyan": "§3Cyan Feather§r",
+  "item.opminecraft.feather_gray": "§8Gray Feather§r",
+  "item.opminecraft.feather_green": "§2Green Feather§r",
+  "item.opminecraft.feather_light_blue": "§bLight Blue Feather§r",
+  "item.opminecraft.feather_light_gray": "§7Light Gray Feather§r",
+  "item.opminecraft.feather_lime": "§aLime Feather§r",
+  "item.opminecraft.feather_magenta": "§dMagenta Feather§r",
+  "item.opminecraft.feather_orange": "§6Orange Feather§r",
+  "item.opminecraft.feather_pink": "§dPink Feather§r",
+  "item.opminecraft.feather_purple": "§5Purple Feather§r",
+  "item.opminecraft.feather_red": "§cRed Feather§r",
+  "item.opminecraft.feather_yellow": "§eYellow Feather§r",
+  "item.opminecraft.feather_golden": "§6Golden Feather§r",
+
+
+  "item.opminecraft.jar_gunpowder_a": "Jar Of Gunpowder §cA§r",
+  "item.opminecraft.jar_gunpowder_b": "Jar Of Gunpowder §bB§r",
+  "item.opminecraft.jar_gunpowder_c": "Jar Of Gunpowder §aC§r",
+  "item.opminecraft.jar_gunpowder_d": "Jar Of Gunpowder §5D§r",
+
+
   "item.opminecraft.chisel": "Chisel",
   "item.opminecraft.chisel.description_0": "Changes certain blocks at will",
   "item.opminecraft.sculk_hammer": "Sculk Hammer",
   "item.opminecraft.sculk_hammer.description_0": "Repair anything.. at it's own expense",
 
+
   "item.opminecraft.aku_aku_mask": "§5A§ak§eu §6A§dk§au§r",
   "item.opminecraft.aku_aku_mask.description_0": "§6P§5O§eO§aD§dA§6B§5E§eE§aG§dA§r",
   "item.opminecraft.wumpa_fruit": "§6Wumpa Fruit§r",
   "item.opminecraft.wumpa_fruit.description_0": "..Probably shouldn't eat these.",
+
+
   "item.opminecraft.crude_alexandrite": "§5Crude Alexandrite§r",
   "item.opminecraft.alexandrite": "§5Alexandrite§r",
   "item.opminecraft.flawless_alexandrite": "§5Flawless Alexandrite§r",
@@ -465,26 +638,6 @@
 
   "item.opminecraft.gemstone_dust": "Gemstone Dust",
 
-  "item.opminecraft.feather_black": "Black Feather",
-  "item.opminecraft.feather_blue": "Blue Feather",
-  "item.opminecraft.feather_brown": "Brown Feather",
-  "item.opminecraft.feather_cyan": "Cyan Feather",
-  "item.opminecraft.feather_gray": "Gray Feather",
-  "item.opminecraft.feather_green": "Green Feather",
-  "item.opminecraft.feather_light_blue": "Light Blue Feather",
-  "item.opminecraft.feather_light_gray": "Light Gray Feather",
-  "item.opminecraft.feather_lime": "Lime Feather",
-  "item.opminecraft.feather_magenta": "Magenta Feather",
-  "item.opminecraft.feather_orange": "Orange Feather",
-  "item.opminecraft.feather_pink": "Pink Feather",
-  "item.opminecraft.feather_purple": "Purple Feather",
-  "item.opminecraft.feather_red": "Red Feather",
-  "item.opminecraft.feather_yellow": "Yellow Feather",
-  "item.opminecraft.feather_golden": "Golden Feather",
-
-  "item.opminecraft.crying_essence_bucket": "Bucket of Crying Essence",
-  "item.opminecraft.crying_ingot": "Crying Ingot",
-  "item.opminecraft.crying_smithing_template": "Crying Smithing Template",
 
   "item.opminecraft.clay_sword": "Clay Sword",
   "item.opminecraft.clay_axe": "Clay Axe",
@@ -514,11 +667,14 @@
 
 
   "item.opminecraft.golden_gunblade": "Golden Gunblade",
+  "item.opminecraft.iron_gunblade": "Iron Gunblade",
+  "item.opminecraft.emerald_gunblade": "Emerald Gunblade",
   "item.opminecraft.diamond_gunblade": "Diamond Gunblade",
   "item.opminecraft.netherite_gunblade": "Netherite Gunblade",
   "item.opminecraft.onyx_gunblade": "Onyx Gunblade",
   "item.opminecraft.titan_gunblade": "Titan Gunblade",
   "item.opminecraft.crying_gunblade": "Crying Gunblade",
+
 
   "item.opminecraft.gunblade.description_0": "Slash an entity, then use to fire",
 
@@ -537,6 +693,35 @@
   "item.opminecraft.onyx_hatchet": "Onyx Hatchet",
   "item.opminecraft.titan_hatchet": "Titan Hatchet",
   "item.opminecraft.crying_hatchet": "Crying Hatchet",
+
+
+  "item.opminecraft.golden_cz75": "Golden Beretta",
+  "item.opminecraft.golden_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.golden_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.iron_cz75": "Iron Beretta",
+  "item.opminecraft.iron_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.iron_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.emerald_cz75": "Emerald Beretta",
+  "item.opminecraft.emerald_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.emerald_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.diamond_cz75": "Diamond Beretta",
+  "item.opminecraft.diamond_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.diamond_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.netherite_cz75": "Netherite Beretta",
+  "item.opminecraft.netherite_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.netherite_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_cz75": "Onyx Beretta",
+  "item.opminecraft.onyx_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.onyx_cz75.description_1": "18x 9mm Parabellum Rounds",
+
+  "item.opminecraft.titan_cz75": "Titan Beretta",
+  "item.opminecraft.titan_cz75.description_0": "\"CZ-75\"",
+  "item.opminecraft.titan_cz75.description_1": "18x 9mm Parabellum Rounds",
 
 
   "item.opminecraft.golden_92fs": "Golden Beretta",
@@ -601,38 +786,6 @@
   "item.opminecraft.titan_m9a1.description_1": "10x 9mm Parabellum Rounds",
 
 
-  "item.opminecraft.golden_cz75": "Golden Beretta",
-  "item.opminecraft.golden_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.golden_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-  "item.opminecraft.iron_cz75": "Iron Beretta",
-  "item.opminecraft.iron_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.iron_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-  "item.opminecraft.emerald_cz75": "Emerald Beretta",
-  "item.opminecraft.emerald_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.emerald_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-  "item.opminecraft.diamond_cz75": "Diamond Beretta",
-  "item.opminecraft.diamond_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.diamond_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-  "item.opminecraft.netherite_cz75": "Netherite Beretta",
-  "item.opminecraft.netherite_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.netherite_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-  "item.opminecraft.onyx_cz75": "Onyx Beretta",
-  "item.opminecraft.onyx_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.onyx_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-  "item.opminecraft.titan_cz75": "Titan Beretta",
-  "item.opminecraft.titan_cz75.description_0": "\"CZ-75\"",
-  "item.opminecraft.titan_cz75.description_1": "18x 9mm Parabellum Rounds",
-
-
-  "item.opminecraft.titan_handcannon": "Titan Handcannon",
-  "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM\"",
-  "item.opminecraft.titan_handcannon.description_1": "9x 10mm Parabellum Rounds",
 
   "item.opminecraft.golden_protektor_type_75": "Golden Protektor Beretta",
   "item.opminecraft.golden_protektor_type_75.description_0": "\"TYPE-75 CUSTOM\"",
@@ -663,29 +816,207 @@
   "item.opminecraft.titan_protektor_type_75.description_1": "10x 10mm Parabellum Rounds",
 
 
+  "item.opminecraft.golden_handcannon": "Golden Handcannon",
+  "item.opminecraft.golden_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.golden_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.iron_handcannon": "Iron Handcannon",
+  "item.opminecraft.iron_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.iron_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.emerald_handcannon": "Emerald Handcannon",
+  "item.opminecraft.emerald_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.emerald_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.diamond_handcannon": "Diamond Handcannon",
+  "item.opminecraft.diamond_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.diamond_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.netherite_handcannon": "Netherite Handcannon",
+  "item.opminecraft.netherite_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.netherite_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.onyx_handcannon": "Onyx Handcannon",
+  "item.opminecraft.onyx_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+  "item.opminecraft.titan_handcannon": "Titan Handcannon",
+  "item.opminecraft.titan_handcannon.description_0": "\"CUSTOM\"",
+  "item.opminecraft.titan_handcannon.description_1": "9x 10mm Parabellum Rounds",
+
+
+  "item.opminecraft.golden_rrar": "Golden Ruger R.A. Revolver",
+  "item.opminecraft.golden_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.golden_rrar.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.iron_rrar": "Iron Ruger R.A. Revolver",
+  "item.opminecraft.iron_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.iron_rrar.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.emerald_rrar": "Emerald Ruger R.A. Revolver",
+  "item.opminecraft.emerald_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.emerald_rrar.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.diamond_rrar": "Diamond Ruger R.A. Revolver",
+  "item.opminecraft.diamond_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.diamond_rrar.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.netherite_rrar": "Netherite Ruger R.A. Revolver",
+  "item.opminecraft.netherite_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.netherite_rrar.description_1": "6x .44 S&W Rounds",
+
   "item.opminecraft.onyx_rrar": "Onyx Ruger R.A. Revolver",
   "item.opminecraft.onyx_rrar.description_0": "\"CUSTOM\"",
   "item.opminecraft.onyx_rrar.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.titan_rrar": "Titan Ruger R.A. Revolver",
+  "item.opminecraft.titan_rrar.description_0": "\"CUSTOM\"",
+  "item.opminecraft.titan_rrar.description_1": "6x .44 S&W Rounds",
+
+  
+  "item.opminecraft.golden_imi_desert_eagle": "Golden IMI Desert Eagle",
+  "item.opminecraft.golden_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.golden_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
+
+  "item.opminecraft.iron_imi_desert_eagle": "Iron IMI Desert Eagle",
+  "item.opminecraft.iron_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.iron_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
+
+  "item.opminecraft.emerald_imi_desert_eagle": "Emerald IMI Desert Eagle",
+  "item.opminecraft.emerald_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.emerald_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
+
+  "item.opminecraft.diamond_imi_desert_eagle": "Diamond IMI Desert Eagle",
+  "item.opminecraft.diamond_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.diamond_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
+
+  "item.opminecraft.netherite_imi_desert_eagle": "Netherite IMI Desert Eagle",
+  "item.opminecraft.netherite_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.netherite_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
 
   "item.opminecraft.onyx_imi_desert_eagle": "Onyx IMI Desert Eagle",
   "item.opminecraft.onyx_imi_desert_eagle.description_0": "\"CUSTOM\"",
   "item.opminecraft.onyx_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
 
+  "item.opminecraft.titan_imi_desert_eagle": "Titan IMI Desert Eagle",
+  "item.opminecraft.titan_imi_desert_eagle.description_0": "\"CUSTOM\"",
+  "item.opminecraft.titan_imi_desert_eagle.description_1": "9x .44 S&W Rounds",
+
+
+  "item.opminecraft.golden_s_and_w_m629c": "Golden S&W M629C Revolver",
+  "item.opminecraft.golden_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.golden_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.iron_s_and_w_m629c": "Iron S&W M629C Revolver",
+  "item.opminecraft.iron_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.iron_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.emerald_s_and_w_m629c": "Emerald S&W M629C Revolver",
+  "item.opminecraft.emerald_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.emerald_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.diamond_s_and_w_m629c": "Diamond S&W M629C Revolver",
+  "item.opminecraft.diamond_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.diamond_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.netherite_s_and_w_m629c": "Netherite S&W M629C Revolver",
+  "item.opminecraft.netherite_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.netherite_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.onyx_s_and_w_m629c": "Onyx S&W M629C Revolver",
+  "item.opminecraft.onyx_s_and_w_m629c.description_0": "\"VALENTINE\"",
+  "item.opminecraft.onyx_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
   "item.opminecraft.titan_s_and_w_m629c": "Titan S&W M629C Revolver",
   "item.opminecraft.titan_s_and_w_m629c.description_0": "\"VALENTINE\"",
   "item.opminecraft.titan_s_and_w_m629c.description_1": "6x .44 S&W Rounds",
+
+
+  "item.opminecraft.golden_colt_anaconda": "Golden Colt Anaconda Revolver",
+  "item.opminecraft.golden_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.golden_colt_anaconda.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.iron_colt_anaconda": "Iron Colt Anaconda Revolver",
+  "item.opminecraft.iron_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.iron_colt_anaconda.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.emerald_colt_anaconda": "Emerald Colt Anaconda Revolver",
+  "item.opminecraft.emerald_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.emerald_colt_anaconda.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.diamond_colt_anaconda": "Diamond Colt Anaconda Revolver",
+  "item.opminecraft.diamond_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.diamond_colt_anaconda.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.netherite_colt_anaconda": "Netherite Colt Anaconda Revolver",
+  "item.opminecraft.netherite_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.netherite_colt_anaconda.description_1": "6x .44 S&W Rounds",
+
+  "item.opminecraft.onyx_colt_anaconda": "Onyx Colt Anaconda Revolver",
+  "item.opminecraft.onyx_colt_anaconda.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_colt_anaconda.description_1": "6x .44 S&W Rounds",
 
   "item.opminecraft.titan_colt_anaconda": "Titan Colt Anaconda Revolver",
   "item.opminecraft.titan_colt_anaconda.description_0": "\"CUSTOM\"",
   "item.opminecraft.titan_colt_anaconda.description_1": "6x .44 S&W Rounds",
 
-  "item.opminecraft.titan_s_and_w_500": "Titan S&W 500 Revolver",
-  "item.opminecraft.titan_s_and_w_500.description_0": "\"CUSTOM\"",
-  "item.opminecraft.titan_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.golden_desert_eagle": "Golden Desert Eagle",
+  "item.opminecraft.golden_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.golden_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+  "item.opminecraft.iron_desert_eagle": "Iron Desert Eagle",
+  "item.opminecraft.iron_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.iron_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+  "item.opminecraft.emerald_desert_eagle": "Emerald Desert Eagle",
+  "item.opminecraft.emerald_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.emerald_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+  "item.opminecraft.diamond_desert_eagle": "Diamond Desert Eagle",
+  "item.opminecraft.diamond_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.diamond_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+  "item.opminecraft.netherite_desert_eagle": "Netherite Desert Eagle",
+  "item.opminecraft.netherite_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.netherite_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+  "item.opminecraft.onyx_desert_eagle": "Onyx Desert Eagle",
+  "item.opminecraft.onyx_desert_eagle.description_0": "\"KENNEDY\"",
+  "item.opminecraft.onyx_desert_eagle.description_1": "8x 0.50 AE Rounds",
 
   "item.opminecraft.titan_desert_eagle": "Titan Desert Eagle",
   "item.opminecraft.titan_desert_eagle.description_0": "\"KENNEDY\"",
   "item.opminecraft.titan_desert_eagle.description_1": "8x 0.50 AE Rounds",
+
+
+  "item.opminecraft.golden_s_and_w_500": "Golden S&W 500 Revolver",
+  "item.opminecraft.golden_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.golden_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.iron_s_and_w_500": "Iron S&W 500 Revolver",
+  "item.opminecraft.iron_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.iron_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.emerald_s_and_w_500": "Emerald S&W 500 Revolver",
+  "item.opminecraft.emerald_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.emerald_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.diamond_s_and_w_500": "Diamond S&W 500 Revolver",
+  "item.opminecraft.diamond_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.diamond_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.netherite_s_and_w_500": "Netherite S&W 500 Revolver",
+  "item.opminecraft.netherite_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.netherite_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.onyx_s_and_w_500": "Onyx S&W 500 Revolver",
+  "item.opminecraft.onyx_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.onyx_s_and_w_500.description_1": "6x .50 S&W Rounds",
+
+  "item.opminecraft.titan_s_and_w_500": "Titan S&W 500 Revolver",
+  "item.opminecraft.titan_s_and_w_500.description_0": "\"CUSTOM\"",
+  "item.opminecraft.titan_s_and_w_500.description_1": "6x .50 S&W Rounds",
 
 
   "item.opminecraft.pistol.description_0": "Hold ammo in other hand to reload",
@@ -709,24 +1040,7 @@
   "item.opminecraft.totem_of_life.description_0": "Somehow, it feels safer holding this",
   "item.opminecraft.totem_of_uncrying": "§5Totem of Uncrying§r",
   "item.opminecraft.totem_of_uncrying.description_0": "Holding it you feel strangely.. empty",
-  
-  "item.opminecraft.balloon.description_0": "The weight of the world feels lighter. Fragile.",
-  "item.opminecraft.balloon_white": "§fWhite Balloon§r",
-  "item.opminecraft.balloon_orange": "§6Orange Balloon§r",
-  "item.opminecraft.balloon_magenta": "§dMagenta Balloon§r",
-  "item.opminecraft.balloon_light_blue": "§bLight Blue Balloon§r",
-  "item.opminecraft.balloon_yellow": "§eYellow Balloon§r",
-  "item.opminecraft.balloon_lime": "§aLime Balloon§r",
-  "item.opminecraft.balloon_pink": "§dPink Balloon§r",
-  "item.opminecraft.balloon_gray": "§8Gray Balloon§r",
-  "item.opminecraft.balloon_light_gray": "§7Light Gray Balloon§r",
-  "item.opminecraft.balloon_cyan": "§3Cyan Balloon§r",
-  "item.opminecraft.balloon_purple": "§5Purple Balloon§r",
-  "item.opminecraft.balloon_blue": "§9Blue Balloon§r",
-  "item.opminecraft.balloon_brown": "§4Brown Balloon§r",
-  "item.opminecraft.balloon_green": "§2Green Balloon§r",
-  "item.opminecraft.balloon_red": "§cRed Balloon§r",
-  "item.opminecraft.balloon_black": "§0Black Balloon§r",
+
 
   "/*-------*[OP:Items]*": "",
 

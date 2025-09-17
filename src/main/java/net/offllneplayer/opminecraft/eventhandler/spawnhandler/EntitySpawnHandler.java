@@ -10,7 +10,9 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.offllneplayer.opminecraft.entity.goal.GOAL_usePistol;
 import net.offllneplayer.opminecraft.entity.goal.jump.GOAL_useJump;
+import net.offllneplayer.opminecraft.items._iwe.pistol.PistolItem;
 
 @EventBusSubscriber
 public class EntitySpawnHandler {
@@ -22,20 +24,9 @@ public class EntitySpawnHandler {
 		Entity entity = event.getEntity();
 		Level level = event.getLevel();
 
-		// Server only
-		if (level.isClientSide()) {
-			return;
-		}
+		if (level.isClientSide()) return;
 
-		// Exit if not a mob immediately
-		if (!(entity instanceof Mob mob)) {
-			return;
-		}
-
-		// --- Check persistant data; exit if mob ran this script allready (for chunk reloading) ---
-		if (mob.getPersistentData().getBoolean(SPAWN_HANDLED_TAG)) {
-			return;
-		}
+		if (!(entity instanceof Mob mob)) return;  // Exit if not a mob immediately
 
 		// mob filter for jump goal and random equipment
 		if (!(mob instanceof Zombie || mob instanceof ZombieVillager || mob instanceof Husk || mob instanceof Drowned ||
@@ -48,16 +39,23 @@ public class EntitySpawnHandler {
 
 		if (mob instanceof Villager) {
 			mob.setCanPickUpLoot(true);
-			return;
+			return; // Villager is done here
+
 		} else {
 		mob.goalSelector.addGoal(3, new GOAL_useJump(mob));
 		}
 
-		if (mob instanceof Creeper) {
-			return;
-		}
+		if (mob instanceof Creeper) return; // Creeper is done here
 
 		mob.setCanPickUpLoot(true);
+
+		// --- Check persistant data; if already handled, still ensure pistol goal is present when holding a pistol ---
+		if (mob.getPersistentData().getBoolean(SPAWN_HANDLED_TAG)) {
+			if (mob.getMainHandItem().getItem() instanceof PistolItem) {
+					mob.goalSelector.addGoal(3, new GOAL_usePistol(mob, 1.0420D, 18F));
+			}
+			return;
+		}
 
 
 		// ~---= [ WEAPON ] =---~

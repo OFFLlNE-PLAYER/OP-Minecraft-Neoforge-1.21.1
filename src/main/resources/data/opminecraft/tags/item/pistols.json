@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
+    "opminecraft:golden_cz75",
+    "opminecraft:iron_cz75",
+    "opminecraft:emerald_cz75",
+    "opminecraft:diamond_cz75",
+    "opminecraft:netherite_cz75",
+    "opminecraft:onyx_cz75",
+    "opminecraft:titan_cz75",
+
     "opminecraft:golden_92fs",
     "opminecraft:iron_92fs",
     "opminecraft:emerald_92fs",
@@ -18,31 +26,68 @@
     "opminecraft:onyx_m9a1",
     "opminecraft:titan_m9a1",
 
+    "opminecraft:golden_protektor_type_75",
+    "opminecraft:iron_protektor_type_75",
+    "opminecraft:emerald_protektor_type_75",
+    "opminecraft:diamond_protektor_type_75",
+    "opminecraft:netherite_protektor_type_75",
+    "opminecraft:onyx_protektor_type_75",
+    "opminecraft:titan_protektor_type_75",
+
+    "opminecraft:golden_handcannon",
+    "opminecraft:iron_handcannon",
+    "opminecraft:emerald_handcannon",
+    "opminecraft:diamond_handcannon",
+    "opminecraft:netherite_handcannon",
+    "opminecraft:onyx_handcannon",
     "opminecraft:titan_handcannon",
+
+    "opminecraft:golden_imi_desert_eagle",
+    "opminecraft:iron_imi_desert_eagle",
+    "opminecraft:emerald_imi_desert_eagle",
+    "opminecraft:diamond_imi_desert_eagle",
+    "opminecraft:netherite_imi_desert_eagle",
+    "opminecraft:onyx_imi_desert_eagle",
+    "opminecraft:titan_imi_desert_eagle",
+
+    "opminecraft:golden_rrar",
+    "opminecraft:iron_rrar",
+    "opminecraft:emerald_rrar",
+    "opminecraft:diamond_rrar",
+    "opminecraft:netherite_rrar",
+    "opminecraft:onyx_rrar",
+    "opminecraft:titan_rrar",
+
+    "opminecraft:golden_s_and_w_m629c",
+    "opminecraft:iron_s_and_w_m629c",
+    "opminecraft:emerald_s_and_w_m629c",
+    "opminecraft:diamond_s_and_w_m629c",
+    "opminecraft:netherite_s_and_w_m629c",
+    "opminecraft:onyx_s_and_w_m629c",
+    "opminecraft:titan_s_and_w_m629c",
+
+    "opminecraft:golden_colt_anaconda",
+    "opminecraft:iron_colt_anaconda",
+    "opminecraft:emerald_colt_anaconda",
+    "opminecraft:diamond_colt_anaconda",
+    "opminecraft:netherite_colt_anaconda",
+    "opminecraft:onyx_colt_anaconda",
+    "opminecraft:titan_colt_anaconda",
+
+    "opminecraft:golden_desert_eagle",
+    "opminecraft:iron_desert_eagle",
+    "opminecraft:emerald_desert_eagle",
+    "opminecraft:diamond_desert_eagle",
+    "opminecraft:netherite_desert_eagle",
+    "opminecraft:onyx_desert_eagle",
     "opminecraft:titan_desert_eagle",
-    "opminecraft:titan_revolver",
 
-    "opminecraft:golden_cz75",
-    "opminecraft:iron_cz75",
-    "opminecraft:emerald_cz75",
-    "opminecraft:diamond_cz75",
-    "opminecraft:netherite_cz75",
-    "opminecraft:onyx_cz75",
-    "opminecraft:titan_cz75",
-    "opminecraft:protektor_cz75",
-
-    "opminecraft:onyx_protektor_handcannon",
-    "opminecraft:protektor_handcannon",
-
-
-    "opminecraft:onyx_protektor_desert_eagle",
-    "opminecraft:protektor_desert_eagle",
-
-    "opminecraft:onyx_protektor_revolver",
-    "opminecraft:protektor_revolver",
-
-    "opminecraft:titan_revolver",
-
-    "opminecraft:valentine_revolver"
+    "opminecraft:golden_s_and_w_500",
+    "opminecraft:iron_s_and_w_500",
+    "opminecraft:emerald_s_and_w_500",
+    "opminecraft:diamond_s_and_w_500",
+    "opminecraft:netherite_s_and_w_500",
+    "opminecraft:onyx_s_and_w_500",
+    "opminecraft:titan_s_and_w_500"
   ]
 }

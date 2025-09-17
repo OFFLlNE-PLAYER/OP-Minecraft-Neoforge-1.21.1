@@ -1,6 +1,6 @@
 {
   "parent": "opminecraft:item/brilliant_gem_pointed",
   "textures": {
-    "layer0": "opminecraft:item/text_brilliant_diamond"
+    "layer0": "opminecraft:item/gem/text_brilliant_diamond"
   }
 }

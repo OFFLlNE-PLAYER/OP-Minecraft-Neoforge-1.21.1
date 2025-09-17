@@ -2,7 +2,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_onyx_hatchet_new"
+    "layer0": "opminecraft:item/hatchet/text_onyx_hatchet"
   },
   "display": {
     "thirdperson_righthand": {

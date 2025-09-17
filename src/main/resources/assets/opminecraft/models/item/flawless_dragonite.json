@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_flawless_dragonite"
+    "layer0": "opminecraft:item/gem/text_flawless_dragonite"
   },
   "display": {
     "firstperson_lefthand": {

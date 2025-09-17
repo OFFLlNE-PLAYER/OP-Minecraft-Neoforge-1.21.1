@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_tanzanite"
+    "layer0": "opminecraft:item/gem/text_tanzanite"
   },
   "display": {
     "firstperson_lefthand": {

@@ -1,6 +1,6 @@
 {
   "parent": "opminecraft:item/stuck_sw0rd",
   "textures": {
-    "0": "opminecraft:item/text_clay_sword"
+    "0": "opminecraft:item/sw0rd/text_clay_sword"
   }
 }

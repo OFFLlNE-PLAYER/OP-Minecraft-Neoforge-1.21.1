@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_andalusite"
+    "layer0": "opminecraft:item/gem/text_andalusite"
   },
   "display": {
     "firstperson_lefthand": {

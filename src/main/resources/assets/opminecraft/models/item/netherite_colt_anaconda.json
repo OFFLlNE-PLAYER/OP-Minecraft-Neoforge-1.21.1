@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/titan_colt_anaconda",
+  "textures": {
+    "0": "opminecraft:item/pistol/text_netherite_colt_anaconda",
+    "particle": "opminecraft:item/pistol/text_netherite_colt_anaconda"
+  }
+}

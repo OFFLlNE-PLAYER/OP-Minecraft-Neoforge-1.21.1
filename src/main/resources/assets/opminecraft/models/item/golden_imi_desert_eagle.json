@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/titan_imi_desert_eagle",
+  "textures": {
+    "0": "opminecraft:item/pistol/text_golden_imi_desert_eagle",
+    "particle": "opminecraft:item/pistol/text_golden_imi_desert_eagle"
+  }
+}

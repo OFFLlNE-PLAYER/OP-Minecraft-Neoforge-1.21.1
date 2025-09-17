@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/titan_handcannon",
+  "textures": {
+    "0": "opminecraft:item/pistol/text_diamond_m9a1",
+    "particle": "opminecraft:item/pistol/text_diamond_m9a1"
+  }
+}

@@ -5,7 +5,6 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -20,8 +19,8 @@ import net.offllneplayer.opminecraft.OPMinecraft;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlockEntity;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestTrimMaterial;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestTrimMaterial;
 
 import java.util.ArrayList;
 import java.util.HashMap;

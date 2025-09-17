@@ -12,6 +12,8 @@ import net.offllneplayer.opminecraft.init.RegistryBIBI;
 
 public enum GunbladeMaterial {
 	GOLDEN(Ingredient.of(Items.GOLD_INGOT), 420, 11F, BlockTags.INCORRECT_FOR_GOLD_TOOL, 6F, -3.0F, 22, Rarity.EPIC, false),
+	IRON(Ingredient.of(Items.IRON_INGOT), 250, 6F, BlockTags.INCORRECT_FOR_IRON_TOOL, 7F, -3.0F, 14, Rarity.UNCOMMON, false),
+	EMERALD(Ingredient.of(Items.EMERALD), 900, 7F, BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 8F, -3.0F, 12, Rarity.RARE, false),
 	DIAMOND(Ingredient.of(Items.DIAMOND), 1561, 8F, BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 9F, -3.0F, 10, Rarity.UNCOMMON, false),
 	NETHERITE(Ingredient.of(Items.NETHERITE_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 10F, -3.0F, 15, Rarity.EPIC, true),
 	ONYX(Ingredient.of(Items.NETHERITE_INGOT), 2031, 9F, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 10.5F, -3.0F, 20, Rarity.EPIC, true),
@@ -55,6 +57,8 @@ public enum GunbladeMaterial {
 	public Item getRegisteredItem() {
 		return switch(this) {
 			case GOLDEN -> RegistryBIBI.GOLDEN_GUNBLADE.get();
+			case IRON -> RegistryBIBI.IRON_GUNBLADE.get();
+			case EMERALD -> RegistryBIBI.EMERALD_GUNBLADE.get();
 			case DIAMOND -> RegistryBIBI.DIAMOND_GUNBLADE.get();
 			case NETHERITE -> RegistryBIBI.NETHERITE_GUNBLADE.get();
 			case ONYX -> RegistryBIBI.ONYX_GUNBLADE.get();

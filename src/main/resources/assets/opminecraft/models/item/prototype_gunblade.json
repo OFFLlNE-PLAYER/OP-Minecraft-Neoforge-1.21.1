@@ -1,11 +1,10 @@
 {
-  "credit": "Made by OP with Blockbench",
+  "credit": "Made by OP with Blockbench :D",
   "texture_size": [32, 32],
-  "ambientocclusion": false,
   "render_type": "cutout_mipped",
   "textures": {
-    "0": "opminecraft:block/text_gunblade_prototype",
-    "particle": "opminecraft:item/text_gunblade_prototype"
+    "0": "opminecraft:item/gunblade/text_prototype_gunblade",
+    "particle": "opminecraft:item/gunblade/text_prototype_gunblade"
   },
   "elements": [
     {

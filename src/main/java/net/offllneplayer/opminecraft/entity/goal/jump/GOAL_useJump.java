@@ -37,25 +37,19 @@ public class GOAL_useJump extends Goal {
     @Override
     public boolean canUse() {
         if (ctx.mob.level().isClientSide()) return false;
-        if (ctx.mob.getJumpControl() == null) return false;
-        LivingEntity t = ctx.mob.getTarget();
-        return t != null && t.isAlive();
+        return ctx.mob.getTarget() != null && ctx.mob.getTarget().isAlive();
     }
 
     @Override
     public boolean canContinueToUse() {
-        LivingEntity t = ctx.mob.getTarget();
-        return t != null && t.isAlive();
+        return ctx.mob.getTarget() != null && ctx.mob.getTarget().isAlive();
     }
 
     @Override
     public void start() {
         // Reset full context relevant to goal lifecycle to avoid stale state across activations
         ctx.landingPos = Vec3.ZERO;
-        ctx.jumpFromPos = Vec3.ZERO;
         ctx.airCarryXZ = Vec3.ZERO;
-        ctx.lastTakeoffErrorSqr = Double.MAX_VALUE;
-        ctx.takeoffNotImprovingTicks = 0;
         ctx.state = JumpContext.State.GROUNDED;
         ctx.wasOnGround = ctx.mob.onGround();
     }
@@ -64,7 +58,6 @@ public class GOAL_useJump extends Goal {
     public void stop() {
         // Clear plan and motion; also reset improvement tracking
         ctx.landingPos = Vec3.ZERO;
-        ctx.jumpFromPos = Vec3.ZERO;
         ctx.airCarryXZ = Vec3.ZERO;
         ctx.state = JumpContext.State.GROUNDED;
         ctx.wasOnGround = ctx.mob.onGround();
@@ -72,29 +65,25 @@ public class GOAL_useJump extends Goal {
 
     @Override
     public void tick() {
-        LivingEntity target = ctx.mob.getTarget();
-        if (target == null || !target.isAlive()) return;
-
+		 var target = ctx.mob.getTarget();
+       if (target == null || !target.isAlive()) return;
+			
         // Refresh capabilities and state
-        JumpContext.setupContext(ctx);
-        JumpState.updateState(ctx);
+       JumpContext.setupContext(ctx);
+       JumpState.updateState(ctx);
 
-        // Claims proper MOVE/LOOK/JUMP flags based on current state each tick
-        JumpState.updateFlags(this, ctx);
+       // Claims proper MOVE/LOOK/JUMP flags based on current state each tick
+       JumpState.updateFlags(this, ctx);
 
-        switch (ctx.state) {
-            case GROUNDED:
-                // Plan
-                JumpTick.groundedTick(ctx);
-                break;
-            case PATHFINDING:
-                // Execute
-                JumpTick.pathfindTick(ctx);
-                break;
-            case AIRBORNE:
-					// Move/Steer
-					JumpTick.airborneTick(ctx);
-                break;
-        }
+       switch (ctx.state) {
+         case GROUNDED:
+               // Plan or execute (combined)
+               JumpTick.groundedTick(ctx);
+               break;
+         case AIRBORNE:
+               // Move/Steer
+               JumpTick.airborneTick(ctx);
+               break;
+       }
     }
 }

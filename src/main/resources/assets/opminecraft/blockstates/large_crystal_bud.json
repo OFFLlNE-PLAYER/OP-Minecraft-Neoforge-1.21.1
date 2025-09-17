@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "opminecraft:block/large_crystal_bud",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "opminecraft:block/large_crystal_bud",
+      "x":90, "y": 90
+    },
+    "facing=south": {
+      "model": "opminecraft:block/large_crystal_bud",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "opminecraft:block/large_crystal_bud",
+      "x": 270, "y":90
+    },
+    "facing=up": {
+      "model": "opminecraft:block/large_crystal_bud"
+    },
+    "facing=down": {
+      "model": "opminecraft:block/large_crystal_bud",
+      "x": 180
+    }
+  }
+}

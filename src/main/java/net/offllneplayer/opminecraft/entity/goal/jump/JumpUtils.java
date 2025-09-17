@@ -34,14 +34,16 @@ public final class JumpUtils {
 
 	/**
 	 * Unified rejection: returns true if the vertical column (feet-air up to collisionHeight) at 'feet'
-	 * contains any solid (non-air) block or any hazard (fluid). Use this to reject path columns, stand
-	 * columns, and landing stand spaces uniformly.
+	 * contains any hazard (fluid) or any true solid (colliding) block. Non-air blocks with empty collision
+	 * (e.g., carpets, tall grass, flowers, snow layers, torches) are allowed.
+	 * Use this to reject path columns, stand columns, and landing stand spaces uniformly.
 	 */
 	public static boolean isNoPathHere(Level level, BlockPos feet, int collisionHeight) {
 		if (level == null || feet == null || collisionHeight <= 0) return false;
 		for (int h = 0; h < collisionHeight; h++) {
 			BlockPos p = feet.above(h);
-			if (!isAir(level, p) || isHazard(level, p) || isSolid(level, p)) return true;
+			// Reject only hazards (fluids) or blocks with non-empty collision; allow non-air with empty collision like carpets/grass
+			if (isHazard(level, p) || isSolid(level, p)) return true;
 		}
 		return false;
 	}

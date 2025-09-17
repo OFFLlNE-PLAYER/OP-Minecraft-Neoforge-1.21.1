@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_gemstone_dust"
+    "layer0": "opminecraft:item/gem/text_gemstone_dust"
   },
   "display": {
     "firstperson_lefthand": {

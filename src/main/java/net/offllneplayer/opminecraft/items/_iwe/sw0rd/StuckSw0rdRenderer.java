@@ -72,6 +72,6 @@ public class StuckSw0rdRenderer extends EntityRenderer<StuckSw0rd> {
 	@Override
 	public ResourceLocation getTextureLocation(StuckSw0rd entity) {
 		String materialName = entity.getMaterialName();
-		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/text_" + materialName + "_sword.png");
+		return ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, "item/sw0rd/text_" + materialName + "_sword.png");
 	}
 }

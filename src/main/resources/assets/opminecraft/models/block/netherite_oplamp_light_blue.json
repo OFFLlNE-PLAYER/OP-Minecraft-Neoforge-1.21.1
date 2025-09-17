@@ -1,0 +1,9 @@
+{
+  "parent": "opminecraft:block/titan_oplamp_black",
+  "textures": {
+    "0": "opminecraft:block/oplamp/text_oplamp_light_blue",
+    "1": "minecraft:block/netherite_block",
+    "particle": "opminecraft:block/oplamp/text_oplamp_light_blue"
+  },
+  "render_type": "minecraft:cutout_mipped"
+}

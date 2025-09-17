@@ -12,7 +12,6 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
@@ -24,7 +23,6 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-import net.offllneplayer.opminecraft.eventhandler.spawnhandler.SpawnEnchantments;
 import net.offllneplayer.opminecraft.init.RegistryMobEffects;
 import net.offllneplayer.opminecraft.init.RegistrySounds;
 import net.offllneplayer.opminecraft.init.RegistryBIBI;
@@ -32,14 +30,11 @@ import net.offllneplayer.opminecraft.UTIL.OP_TagKeyUtil;
 
 import net.offllneplayer.opminecraft.items._item.crash.akuaku.*;
 import net.offllneplayer.opminecraft.items._item.balloon.*;
-import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
 import net.offllneplayer.opminecraft.items._iwe.gunblade.*;
 
 
 @EventBusSubscriber
 public class DamageEventHandler {
-
-    private static final RandomSource RANDOM = RandomSource.create();
 
     @SubscribeEvent
     public static void onEntityDamage(LivingIncomingDamageEvent event) {
@@ -199,7 +194,7 @@ public class DamageEventHandler {
             /*[TNT STICK]*/
             else if (held == RegistryBIBI.TNT_STICK.get()) {
                 // Simulate the TNT Stick explosion immediately on hit
-                level.explode(livingAttacker, xtarg, ytarg, ztarg, 3.0F, false, Level.ExplosionInteraction.TNT);
+                level.explode(null, xtarg, ytarg, ztarg, 2.0F, false, Level.ExplosionInteraction.TNT);
 
                 // Always remove the entire stack from the used hand
                 if (useHand != null) {
@@ -228,44 +223,6 @@ public class DamageEventHandler {
 
 
         /*--------------------------------------------------------------------------------------------*/
-        /*~[Wither Skeleton]~*/
-        if (targetEntity instanceof WitherSkeleton witherSkeleton && sourceEntity instanceof LivingEntity livingAttacker) {
-            ItemStack mainHand = witherSkeleton.getMainHandItem();
-
-            // Only switch weapons if skeleton is holding a pistol that's out of ammo
-            if (mainHand.getItem() instanceof PistolItem pistolItem && mainHand.getDamageValue() >= mainHand.getMaxDamage()) {
-                ItemStack offHand = witherSkeleton.getOffhandItem();
-
-                // Get the required ammo type for this pistol
-                Item requiredAmmo = pistolItem.getPistolMaterial().getRegisteredAmmo();
-
-                // Only switch if pistol is empty AND no matching ammo in off-hand
-                if (offHand.isEmpty() || !offHand.is(requiredAmmo)) {
-                    Item attackerWeapon = livingAttacker.getMainHandItem().getItem();
-                    ItemStack newWeapon;
-
-                    // If attacker has sword or axe AND it's a direct hit, give skeleton a melee weapon else bow
-                    if (event.getSource().getDirectEntity() == sourceEntity && (attackerWeapon instanceof SwordItem || attackerWeapon instanceof AxeItem)) {
-                        newWeapon = new ItemStack(Items.DIAMOND_AXE);
-                    } else {
-                        newWeapon = new ItemStack(Items.BOW);
-                    }
-
-                    // 50% chance to add enchantments
-                    if (RANDOM.nextBoolean()) {
-							  SpawnEnchantments.applyWeaponEnchantments(level, newWeapon);
-                    }
-
-                    witherSkeleton.setItemInHand(InteractionHand.MAIN_HAND, newWeapon);
-
-                    // Clear off-hand to remove any leftover ammo
-                    witherSkeleton.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
-
-                    // Play sound effect for weapon switch
-                    level.playSound(null, xtarg, ytarg, ztarg, SoundEvents.WOOL_PLACE, SoundSource.HOSTILE, 0.420F, 0.9F);
-                }
-            }
-        }
     }
 }
 

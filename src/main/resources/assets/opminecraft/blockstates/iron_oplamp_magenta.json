@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "blockisabove=false,facing=north": { "model": "opminecraft:block/iron_oplamp_magenta" },
+    "blockisabove=false,facing=south": { "model": "opminecraft:block/iron_oplamp_magenta", "y": 180 },
+    "blockisabove=false,facing=east":  { "model": "opminecraft:block/iron_oplamp_magenta", "y": 90 },
+    "blockisabove=false,facing=west":  { "model": "opminecraft:block/iron_oplamp_magenta", "y": 270 },
+
+    "blockisabove=true,facing=north": { "model": "opminecraft:block/iron_oplamp_magenta_hanging" },
+    "blockisabove=true,facing=south": { "model": "opminecraft:block/iron_oplamp_magenta_hanging", "y": 180 },
+    "blockisabove=true,facing=east":  { "model": "opminecraft:block/iron_oplamp_magenta_hanging", "y": 90 },
+    "blockisabove=true,facing=west":  { "model": "opminecraft:block/iron_oplamp_magenta_hanging", "y": 270 }
+  }
+}

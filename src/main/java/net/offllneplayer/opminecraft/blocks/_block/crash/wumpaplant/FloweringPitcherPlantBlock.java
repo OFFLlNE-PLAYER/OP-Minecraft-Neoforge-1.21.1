@@ -1,10 +1,17 @@
 
 package net.offllneplayer.opminecraft.blocks._block.crash.wumpaplant;
 
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.*;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -18,6 +25,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.offllneplayer.opminecraft.UTIL.SilkTouchCheck_Method;
 
 public class FloweringPitcherPlantBlock extends Block {
 	public FloweringPitcherPlantBlock() {
@@ -28,6 +36,7 @@ public class FloweringPitcherPlantBlock extends Block {
 				.noCollission()
 				.noOcclusion()
 				.randomTicks()
+				.pushReaction(PushReaction.DESTROY)
 				.isRedstoneConductor((bs, br, bp) -> false));
 	}
 
@@ -78,8 +87,26 @@ public class FloweringPitcherPlantBlock extends Block {
 	}
 
 	@Override
+	public void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile entity) {
+		level.playSound(null, hit.getBlockPos(), SoundEvents.CROP_BREAK, SoundSource.MASTER, 1.0F, 1.1F);
+		level.gameEvent(GameEvent.BLOCK_DESTROY, hit.getBlockPos(), GameEvent.Context.of(state));
+		level.setBlock(hit.getBlockPos(), Blocks.AIR.defaultBlockState(), 18);
+	}
+	
+	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		return true;
+		return super.canHarvestBlock(state, world, pos, player) && SilkTouchCheck_Method.hasSilkTouch(player.level(), pos.getX(), pos.getY(), pos.getZ(), player);
+	}
+
+	@Override
+	public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+		boolean hasSilk = SilkTouchCheck_Method.hasSilkTouch(level, pos.getX(), pos.getY(), pos.getZ(), player);
+		if (!hasSilk) {
+			level.playSound(null, pos, SoundEvents.CROP_BREAK, SoundSource.MASTER, 1.0F, 1.1F);
+			level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
+			level.setBlock(pos, Blocks.AIR.defaultBlockState(), 18);
+		}
+		return level.isClientSide() ? level.setBlock(pos, fluid.createLegacyBlock(), 11) : level.removeBlock(pos, false);
 	}
 
 	@Override

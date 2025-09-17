@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_flawless_alexandrite"
+    "layer0": "opminecraft:item/gem/text_flawless_alexandrite"
   },
   "display": {
     "firstperson_lefthand": {

@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/titan_gunblade",
+  "textures": {
+    "0": "opminecraft:item/gunblade/text_emerald_gunblade",
+    "particle": "opminecraft:item/gunblade/text_emerald_gunblade"
+  }
+}

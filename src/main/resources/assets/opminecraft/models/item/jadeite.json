@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_jadeite"
+    "layer0": "opminecraft:item/gem/text_jadeite"
   },
   "display": {
     "firstperson_lefthand": {

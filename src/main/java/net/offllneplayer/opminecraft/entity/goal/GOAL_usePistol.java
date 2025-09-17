@@ -1,21 +1,30 @@
 package net.offllneplayer.opminecraft.entity.goal;
 
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.item.ItemStack;
-import net.offllneplayer.opminecraft.items._iwe.beretta.PistolItem;
-import net.offllneplayer.opminecraft.items._iwe.beretta.PistolMaterial;
+import net.minecraft.world.item.*;
+import net.offllneplayer.opminecraft.eventhandler.spawnhandler.SpawnEnchantments;
+import net.offllneplayer.opminecraft.items._iwe.pistol.PistolItem;
+import net.offllneplayer.opminecraft.items._iwe.pistol.PistolMaterial;
 
 import java.util.EnumSet;
 
+
+/**
+ *  Goal which enables minecraft entities to use pistols, simple as that.
+ *  When mob is out of ammo and has reloaded, switches to dynamic sidearm - remember - it's faster than reloading!
+ *  When the main-hand of the user does not contain a pistol, passes to vanilla behavior. (regular mêlée/bow engagement)
+ */
 public class GOAL_usePistol extends Goal {
 	private final Mob mob;
 	private final double speedModifier;
 	private final float attackRadiusSqr;
-	private int attackTime = 0; // Changed from -1 to 0
-	private int seeTime;
+	private int cooldownTicks = 0;
 	private boolean strafingClockwise;
 	private boolean strafingBackwards;
 	private int strafingTime = -1;
@@ -30,7 +39,7 @@ public class GOAL_usePistol extends Goal {
 	@Override
 	public boolean canUse() {
 		// don't run this goal if its running already
-		if (this.attackTime > 0) {
+		if (this.cooldownTicks > 0) {
 			return false;
 		}
 
@@ -38,25 +47,25 @@ public class GOAL_usePistol extends Goal {
 		if (this.mob.getTarget() == null || !this.mob.getSensing().hasLineOfSight(this.mob.getTarget())) {
 			return false;
 		}
-
+		
 		// Must have pistol in main hand - if not, pass to next goal
 		ItemStack pistol = this.mob.getMainHandItem();
 		if (pistol.isEmpty() || !(pistol.getItem() instanceof PistolItem)) {
 			return false;
 		}
-
-		// Get material for ammo check
-		PistolMaterial material = getPistolMaterial();
+		
+		// Get material for ammo check from the pistol item
+		PistolMaterial material = ((PistolItem)pistol.getItem()).getPistolMaterial();
 		ItemStack offhand = this.mob.getOffhandItem();
 
-		// Can use if pistol has ammo OR if we have correct ammo in offhand for reloading
-		if (pistol.getDamageValue() < pistol.getMaxDamage() ||
-				(material != null && offhand.is(material.getRegisteredAmmo()) && offhand.getCount() > 0)) {
-			return true;
-		}
+		// Check if we have any usable ammo
+		boolean hasAmmoInGun = pistol.getDamageValue() < pistol.getMaxDamage();
+		boolean hasAmmoInOffhand = material != null && offhand.is(material.getRegisteredAmmo()) && offhand.getCount() > 0;
 
-		return false; // Pass to next goal when completely out of ammo
+		// Can use if pistol has ammo OR if we have correct ammo in offhand for reloading
+		return (hasAmmoInGun) || (pistol.getDamageValue() == pistol.getMaxDamage() && (hasAmmoInOffhand));// Pass to next goal when completely out of ammo
 	}
+
 
 	@Override
 	public boolean canContinueToUse() {
@@ -66,8 +75,8 @@ public class GOAL_usePistol extends Goal {
 			return false;
 		}
 
-		// Get material for ammo check
-		PistolMaterial material = getPistolMaterial();
+		// Get material for ammo check from the pistol item
+		PistolMaterial material = ((PistolItem)pistol.getItem()).getPistolMaterial();
 		ItemStack offhand = this.mob.getOffhandItem();
 
 		// Check if we have any usable ammo
@@ -90,7 +99,7 @@ public class GOAL_usePistol extends Goal {
 		}
 
 		// Continue if we're still in attack cooldown
-		if (this.attackTime > 0) {
+		if (this.cooldownTicks > 0) {
 			return true;
 		}
 
@@ -109,29 +118,52 @@ public class GOAL_usePistol extends Goal {
 		super.start();
 	}
 
+
 	@Override
 	public void stop() {
 		super.stop();
 		this.mob.setAggressive(false);
-		this.seeTime = 0;
-		this.attackTime = 0;
+		this.cooldownTicks = 0;
 		if (this.mob.isUsingItem()) {
 			this.mob.stopUsingItem();
 		}
-	}
 
-	private PistolMaterial getPistolMaterial() {
+		// Add weapon switching logic when stopping due to being out of ammo
 		ItemStack pistol = this.mob.getMainHandItem();
-		if (pistol.getItem() instanceof PistolItem pistolItem) {
-			try {
-				String materialName = pistol.getItem().builtInRegistryHolder().key().location().getPath().toUpperCase();
-				return PistolMaterial.valueOf(materialName);
-			} catch (IllegalArgumentException e) {
-				return PistolMaterial.VALENTINE_92FS;
+		LivingEntity target = this.mob.getTarget();
+
+		if (target != null && pistol.getItem() instanceof PistolItem pistolItem &&
+				pistol.getDamageValue() >= pistol.getMaxDamage()) {
+
+			ItemStack offhand = this.mob.getOffhandItem();
+			Item requiredAmmo = pistolItem.getPistolMaterial().getRegisteredAmmo();
+
+			// Only switch if pistol is empty AND no matching ammo in off-hand
+			if (offhand.isEmpty() || !offhand.is(requiredAmmo)) {
+				ItemStack newWeapon;
+				Item targetWeapon = target.getMainHandItem().getItem();
+
+				if (targetWeapon instanceof SwordItem || targetWeapon instanceof AxeItem) {
+					newWeapon = new ItemStack(Items.DIAMOND_AXE);
+				} else {
+					newWeapon = new ItemStack(Items.BOW);
+				}
+
+				if (RandomSource.create().nextBoolean()) {
+					SpawnEnchantments.applyWeaponEnchantments(this.mob.level(), newWeapon);
+				}
+
+				this.mob.setItemInHand(InteractionHand.MAIN_HAND, newWeapon);
+				this.mob.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);
+
+				double x = this.mob.getX();
+				double y = this.mob.getY();
+				double z = this.mob.getZ();
+				this.mob.level().playSound(null, x, y, z, SoundEvents.WOOL_PLACE, SoundSource.HOSTILE, 0.420F, 0.9F);
 			}
 		}
-		return null;
 	}
+
 
 	@Override
 	public void tick() {
@@ -139,128 +171,97 @@ public class GOAL_usePistol extends Goal {
 		LivingEntity target = this.mob.getTarget();
 		if (target == null) return;
 
-		PistolMaterial material = getPistolMaterial();
-		if (material == null) return;
-
 		ItemStack pistol = this.mob.getMainHandItem();
-		if (pistol.isEmpty() || !(pistol.getItem() instanceof PistolItem)) return;
+		if (pistol.isEmpty()) return;
 
-		ItemStack offhand = this.mob.getOffhandItem();
-		boolean hasAmmoInGun = pistol.getDamageValue() < pistol.getMaxDamage();
-		boolean hasAmmoInOffhand = material != null && offhand.is(material.getRegisteredAmmo()) && offhand.getCount() > 0;
+		if (pistol.getItem() instanceof PistolItem pistolItem) {
 
-		// If we have no ammo at all, exit early
-		if (!hasAmmoInGun && !hasAmmoInOffhand) {
-			return;
-		}
+			PistolMaterial material = pistolItem.getPistolMaterial();
+			ItemStack offhand = this.mob.getOffhandItem();
+			boolean hasAmmoInGun = pistol.getDamageValue() < pistol.getMaxDamage();
+			boolean hasAmmoInOffhand = offhand.is(material.getRegisteredAmmo()) && offhand.getCount() > 0;
 
-		// Decrement attack time
-		if (this.attackTime > 0) {
-			this.attackTime--;
-		}
+			// If we have no ammo at all, exit (should never get here, this is fallback exit)
+			if (!hasAmmoInGun && !hasAmmoInOffhand) return;
 
-		double distanceSqr = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
-		boolean hasLineOfSight = this.mob.getSensing().hasLineOfSight(target);
-
-		// Update see time for line of sight
-		if (hasLineOfSight) {
-			++this.seeTime;
-		} else {
-			this.seeTime = 0;
-		}
-
-		// Movement and strafing logic
-		if (!(distanceSqr > (double)this.attackRadiusSqr)) {
-			this.mob.getNavigation().stop();
-			++this.strafingTime;
-		} else {
-			this.mob.getNavigation().moveTo(target, this.speedModifier);
-			this.strafingTime = -1;
-		}
-
-		if (this.strafingTime >= 20) {
-			if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
-				this.strafingClockwise = !this.strafingClockwise;
-			}
-			if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
-				this.strafingBackwards = !this.strafingBackwards;
-			}
-			this.strafingTime = 0;
-		}
-
-		if (this.strafingTime > -1) {
-			if (distanceSqr > (double)(this.attackRadiusSqr * 0.75F)) {
-				this.strafingBackwards = false;
-			} else if (distanceSqr < (double)(this.attackRadiusSqr * 0.25F)) {
-				this.strafingBackwards = true;
-			}
-			this.mob.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
-			this.mob.lookAt(target, 30.0F, 30.0F);
-		} else {
-			this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
-		}
-
-		// Animation and attack logic
-		if (this.mob.isUsingItem()) {
-			int useTime = this.mob.getTicksUsingItem();
-			int requiredTicks = material.getAttackSpeed();
-
-			// Set aggressive state for aiming animation
-			this.mob.setAggressive(true);
-
-			// Check if gun is empty (reloading) or has ammo (shooting)
-			boolean gunEmpty = pistol.getDamageValue() >= pistol.getMaxDamage();
-
-			// Cancel shot if line of sight is lost while shooting (but allow reloading to continue)
-			if (!gunEmpty && !hasLineOfSight) {
-				this.mob.stopUsingItem();
-				this.mob.setAggressive(false);
-				this.attackTime = 10; // Small cooldown before trying again
-				return;
+			// Decrement attack time
+			if (this.cooldownTicks > 0) {
+				this.cooldownTicks--;
 			}
 
-			// Fire/reload when we reach the required ticks
-			if (useTime >= requiredTicks) {
-				boolean wasEmpty = pistol.getDamageValue() >= pistol.getMaxDamage();
+			double distanceSqr = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
+			boolean hasLineOfSight = this.mob.getSensing().hasLineOfSight(target);
 
-				// Release the items - let releaseUsing handle reload vs fire logic
-				if (pistol.getItem() instanceof PistolItem pistolItem) {
+			// Movement and strafing logic
+			if (!(distanceSqr > (double)this.attackRadiusSqr)) {
+				this.mob.getNavigation().stop();
+				++this.strafingTime;
+			} else {
+				this.mob.getNavigation().moveTo(target, this.speedModifier);
+				this.strafingTime = -1;
+			}
+
+			if (this.strafingTime >= 20) {
+				if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
+					this.strafingClockwise = !this.strafingClockwise;
+				}
+				if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
+					this.strafingBackwards = !this.strafingBackwards;
+				}
+				this.strafingTime = 0;
+			}
+
+			if (this.strafingTime > -1) {
+				if (distanceSqr > (double)(this.attackRadiusSqr * 0.75F)) {
+					this.strafingBackwards = false;
+				} else if (distanceSqr < (double)(this.attackRadiusSqr * 0.25F)) {
+					this.strafingBackwards = true;
+				}
+				this.mob.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
+				this.mob.lookAt(target, 30.0F, 30.0F);
+			} else {
+				this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
+			}
+
+			// Animation and attack logic
+			if (this.mob.isUsingItem()) {
+				int useTime = this.mob.getTicksUsingItem();
+
+				// Set aggressive state for aiming animation
+				this.mob.setAggressive(true);
+
+				// Cancel shot if line of sight is lost
+				if (hasAmmoInGun && !hasLineOfSight) {
+					this.mob.stopUsingItem();
+					this.cooldownTicks = 10; // Small cooldown before trying again
+					return;
+				}
+
+				// Release use (fire) after useTime; let releaseUsing handle reload vs fire logic
+				if (useTime >= PistolItem.useTime) {
+					boolean wasEmpty = pistol.getDamageValue() >= pistol.getMaxDamage();
+
+
 					int remainingUseTicks = pistol.getUseDuration(this.mob) - useTime;
 					pistolItem.releaseUsing(pistol, this.mob.level(), this.mob, remainingUseTicks);
+
+					// Set appropriate cooldown based on whether we reloaded or fired
+					if (wasEmpty) {
+						// just reloaded - use reload cooldown
+						this.cooldownTicks = material.getReloadCooldown();
+					} else {
+						// just fired - use fire cooldown
+						this.cooldownTicks = material.getFireCooldown();
+					}
+
+					this.mob.stopUsingItem();
 				}
-
-				this.mob.stopUsingItem();
-				this.mob.setAggressive(false);
-
-				// Set appropriate cooldown based on whether we reloaded or fired
-				if (wasEmpty) {
-					// We just reloaded - use reload cooldown
-					this.attackTime = material.getReloadCooldown();
-				} else {
-					// We just fired - use fire cooldown
-					this.attackTime = material.getFireCooldown();
-				}
-			}
-		} else {
-			// Not using items
-			this.mob.setAggressive(false);
-
-			if (this.attackTime <= 0) {
-				// Check if gun is empty and needs reloading
-				boolean gunEmpty = pistol.getDamageValue() >= pistol.getMaxDamage();
-
-				// Only start using if we actually have ammo or reload capability
-				if (gunEmpty && hasAmmoInOffhand) {
-					// Gun is empty but we have ammo to reload
-					this.mob.startUsingItem(InteractionHand.MAIN_HAND);
+			} else { // Not using item, start using
+				if (this.cooldownTicks == 0) {
 					this.mob.setAggressive(true);
-				} else if (!gunEmpty && hasLineOfSight) {
-					// Gun has ammo and we have line of sight to shoot
 					this.mob.startUsingItem(InteractionHand.MAIN_HAND);
-					this.mob.setAggressive(true);
 				}
 			}
 		}
 	}
 }
-

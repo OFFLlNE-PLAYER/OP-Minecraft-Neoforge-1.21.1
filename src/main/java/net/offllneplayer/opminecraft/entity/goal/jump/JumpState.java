@@ -10,65 +10,58 @@ import java.util.EnumSet;
  */
 public final class JumpState {
 
+    // Tolerance for detecting increasing distance to landing (matches 0.1 close-enough policy squared)
+    private static final double INCREASING_TOL_SQR = 0.0420D;
+
     public static void updateState(JumpContext ctx) {
+
+        // While airborne, if we are getting farther from the landing, abort and reset to grounded
+        if (ctx.state == JumpContext.State.AIRBORNE && !ctx.mob.onGround() && ctx.landingPos != null && !ctx.landingPos.equals(Vec3.ZERO)) {
+            double d2 = JumpUtils.horizontalDistSqr(ctx.mob.position(), ctx.landingPos);
+            if (!Double.isNaN(ctx.lastLandingDistSqr)) {
+                if (d2 > ctx.lastLandingDistSqr + INCREASING_TOL_SQR) {
+                    // Getting farther away from landing: reset to grounded (no cooldown, stop nav)
+                    resetToGrounded(ctx, true, true);
+                    ctx.lastLandingDistSqr = Double.NaN;
+                    return;
+                }
+            }
+            ctx.lastLandingDistSqr = d2;
+        }
 
         boolean landed = ctx.mob.onGround() && !ctx.wasOnGround;
 		 ctx.wasOnGround = ctx.mob.onGround();
 
-		 // Grounded with a plan -> Pathfinding (unless we are explicitly holding for ranged)
-        // PATHFINDING with no plan -> GROUNDED so it plans
-        if (ctx.hasPlan() && ctx.state == JumpContext.State.GROUNDED) {
-			 ctx.state = JumpContext.State.PATHFINDING;
-		 } else if (ctx.state == JumpContext.State.PATHFINDING && !ctx.hasPlan()) {
-			 ctx.state = JumpContext.State.GROUNDED;
-		 }
-
 		 //reset to grounded if we landed
 		 // Clear any existing plan and airborne carry so next cycle plans fresh
         if (landed && ctx.state == JumpContext.State.AIRBORNE) {
-                    ctx.state = JumpContext.State.GROUNDED;
+
+            ctx.state = JumpContext.State.GROUNDED;
             ctx.landingPos = Vec3.ZERO;
             ctx.jumpFromPos = Vec3.ZERO;
             ctx.airCarryXZ = Vec3.ZERO;
-            ctx.lastTakeoffErrorSqr = Double.MAX_VALUE;
-            ctx.takeoffNotImprovingTicks = 0;
-            ctx.planFailedRecently = false;
-            // Successful landing; clear any remembered failed landing avoidance
-            ctx.failedJumpFromPos = Vec3.ZERO;
+            ctx.lastLandingDistSqr = Double.NaN;
         }
     }
 
     public static void updateFlags(Goal goal, JumpContext ctx) {
-        if (ctx.state == JumpContext.State.PATHFINDING) {
-            goal.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE, Goal.Flag.LOOK));
-        } else if (ctx.state == JumpContext.State.AIRBORNE) {
+        if (ctx.state == JumpContext.State.AIRBORNE) {
             goal.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-		  } else { // GROUNDED state - relinquish all flags
-			  goal.setFlags(EnumSet.noneOf(Goal.Flag.class));
-		  }
-	 }
+        } else { // GROUNDED state - relinquish all flags
+            goal.setFlags(EnumSet.noneOf(Goal.Flag.class));
+        }
+    }
 
     public static void resetToGrounded(JumpContext ctx, boolean applyCooldown, boolean stopNavigation) {
 		 if (applyCooldown) ctx.lastJumpTick = ctx.mob.tickCount;
-       if (stopNavigation) ctx.mob.getNavigation().stop();
+      if (stopNavigation) ctx.mob.getNavigation().stop();
 
-       ctx.state = JumpContext.State.GROUNDED;
+      ctx.state = JumpContext.State.GROUNDED;
 
 		// Clear current motion state for a fresh plan
     	ctx.landingPos = Vec3.ZERO;
 		ctx.jumpFromPos = Vec3.ZERO;
 		ctx.airCarryXZ = Vec3.ZERO;
-      ctx.lastTakeoffErrorSqr = Double.MAX_VALUE;
-		ctx.takeoffNotImprovingTicks = 0;
+        ctx.lastLandingDistSqr = Double.NaN;
     }
-
-	// --- plan failure handling ---
-	public static void failPlanAndCooldown(JumpContext ctx) {
-		// Record failure using the jump-from (takeoff) position so we avoid reusing the same jump-from next cycle
-		ctx.failedJumpFromPos = ctx.jumpFromPos;
-		ctx.planFailedRecently = true;
-
-		// plan failed; apply cooldown and reset
-		resetToGrounded(ctx, true, true);
-	}
 }

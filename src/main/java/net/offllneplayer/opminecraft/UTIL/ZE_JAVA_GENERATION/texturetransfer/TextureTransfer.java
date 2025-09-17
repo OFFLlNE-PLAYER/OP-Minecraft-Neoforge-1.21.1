@@ -79,28 +79,28 @@ public class TextureTransfer {
         Files.createDirectories(output.getParent());
 
         System.out.println(Colors.PINK + "[PaletteTransfer] Loading palette source from: " + colorPalletteTexture.toAbsolutePath() + Colors.RESET);
-        BufferedImage diamondRead = ImageIO.read(colorPalletteTexture.toFile());
-        if (diamondRead == null) throw new IOException("Failed to decode image (unsupported/invalid PNG): " + colorPalletteTexture.toAbsolutePath());
-        BufferedImage diamondImg = forceARGB(diamondRead);
+        BufferedImage palletteRead = ImageIO.read(colorPalletteTexture.toFile());
+        if (palletteRead == null) throw new IOException("Failed to decode image (unsupported/invalid PNG): " + colorPalletteTexture.toAbsolutePath());
+        BufferedImage palletteImg = forceARGB(palletteRead);
 
         System.out.println(Colors.PINK + "[PaletteTransfer] Loading target from: " + shapeTexture.toAbsolutePath() + Colors.RESET);
-        BufferedImage protektorRead = ImageIO.read(shapeTexture.toFile());
-        if (protektorRead == null) throw new IOException("Failed to decode image (unsupported/invalid PNG): " + shapeTexture.toAbsolutePath());
-        BufferedImage protektorImg = forceARGB(protektorRead);
+        BufferedImage shapeRead = ImageIO.read(shapeTexture.toFile());
+        if (shapeRead == null) throw new IOException("Failed to decode image (unsupported/invalid PNG): " + shapeTexture.toAbsolutePath());
+        BufferedImage shapeImg = forceARGB(shapeRead);
 
         // Optional dimension validation
         if (cfg.expectedWidth > 0 && cfg.expectedHeight > 0) {
-            if (diamondImg.getWidth() != cfg.expectedWidth || diamondImg.getHeight() != cfg.expectedHeight) {
-                System.out.println(Colors.PINK + "[PaletteTransfer] WARN: Palette source dimensions " + diamondImg.getWidth() + "x" + diamondImg.getHeight() +
+            if (palletteImg.getWidth() != cfg.expectedWidth || palletteImg.getHeight() != cfg.expectedHeight) {
+                System.out.println(Colors.PINK + "[PaletteTransfer] WARN: Palette source dimensions " + palletteImg.getWidth() + "x" + palletteImg.getHeight() +
                         " != expected " + cfg.expectedWidth + "x" + cfg.expectedHeight + ". Proceeding." + Colors.RESET);
             }
-            if (protektorImg.getWidth() != cfg.expectedWidth || protektorImg.getHeight() != cfg.expectedHeight) {
-                System.out.println(Colors.PINK + "[PaletteTransfer] WARN: Target source dimensions " + protektorImg.getWidth() + "x" + protektorImg.getHeight() +
+            if (shapeImg.getWidth() != cfg.expectedWidth || shapeImg.getHeight() != cfg.expectedHeight) {
+                System.out.println(Colors.PINK + "[PaletteTransfer] WARN: Target source dimensions " + shapeImg.getWidth() + "x" + shapeImg.getHeight() +
                         " != expected " + cfg.expectedWidth + "x" + cfg.expectedHeight + ". Proceeding." + Colors.RESET);
             }
         }
 
-        Palette palette = buildDiamondPalette(diamondImg, cfg.paletteSize, cfg.opaqueAlphaThreshold);
+        Palette palette = buildPalette(palletteImg, cfg.paletteSize, cfg.opaqueAlphaThreshold);
         System.out.println(Colors.PINK + "[PaletteTransfer] Palette size: " + palette.size() + Colors.RESET);
         if (palette.size() < cfg.paletteSize) {
             System.out.println(Colors.PINK + "[PaletteTransfer] INFO: only found \"" + palette.size() + "\" colors instead of desired \"" + cfg.paletteSize + "\" colors set in config." + Colors.RESET);
@@ -109,7 +109,7 @@ public class TextureTransfer {
             throw new IllegalStateException("Palette is empty. Ensure palette source has opaque pixels.");
         }
 
-        BufferedImage out = applyPaletteToTarget(protektorImg, palette, cfg.dither, cfg.targetTransparentThreshold);
+        BufferedImage out = applyPaletteToTarget(shapeImg, palette, cfg.dither, cfg.targetTransparentThreshold);
 
         // Resolve a non-clobbering output path if the desired one exists already
         Path finalOutput = nextAvailableOutput(output);
@@ -147,7 +147,7 @@ public class TextureTransfer {
         int size() { return colors.length; }
     }
 
-    private static Palette buildDiamondPalette(BufferedImage diamondImg, int desiredSize, int opaqueAlphaThreshold) {
+    private static Palette buildPalette(BufferedImage diamondImg, int desiredSize, int opaqueAlphaThreshold) {
         int w = diamondImg.getWidth();
         int h = diamondImg.getHeight();
 

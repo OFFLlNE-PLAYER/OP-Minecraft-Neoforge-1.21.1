@@ -60,9 +60,9 @@ public class ConfigTextureTransfer {
 	public String vanilla_ass_path = "src\\main\\resources\\assets\\minecraft\\textures\\";
 	public String mod_ass_path = "src\\main\\resources\\assets\\opminecraft\\textures\\";
 
-	public String sourceColorPaletteTexture = "item\\pistol\\text_emerald_92fs.png";
-	public String sourceShapeTexture = "item\\pistol\\text_golden_m9a1.png";
-	public String outputTexturePath = "item\\pistol\\text_emerald_m9a1.png";
+	public String sourceColorPaletteTexture = "item\\pistol\\text_netherite_92fs.png";
+	public String sourceShapeTexture = "item\\pistol\\text_netherite_imi_desert_eagle.png";
+	public String outputTexturePath = "item\\pistol\\text_netherite_imi_desert_eagle.png";
 
 
 	public static ConfigTextureTransfer getFieldsFromConfig() {
@@ -70,7 +70,8 @@ public class ConfigTextureTransfer {
 		cnfgTextureTransfer.paletteSourcePath = Paths.get(cnfgTextureTransfer.mod_ass_path + cnfgTextureTransfer.sourceColorPaletteTexture);
 		cnfgTextureTransfer.targetSourcePath = Paths.get(cnfgTextureTransfer.mod_ass_path + cnfgTextureTransfer.sourceShapeTexture);
 		cnfgTextureTransfer.outputPath = Paths.get(cnfgTextureTransfer.mod_ass_path + cnfgTextureTransfer.outputTexturePath);
-        cnfgTextureTransfer.paletteSize = 1000;            // Adjust if you want a coarser/finer palette
+
+        cnfgTextureTransfer.paletteSize = 500;            // Adjust if you want a coarser/finer palette
         cnfgTextureTransfer.dither = true;               // Disable if you prefer a cleaner, non-dithered look
         cnfgTextureTransfer.opaqueAlphaThreshold = 0;    // Treat only alpha==0 as transparent in the palette source
         cnfgTextureTransfer.targetTransparentThreshold = 0; // Preserve exact transparency for alpha==0 in the target

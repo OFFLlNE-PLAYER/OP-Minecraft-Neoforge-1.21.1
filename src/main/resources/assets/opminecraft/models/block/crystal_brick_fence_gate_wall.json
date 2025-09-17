@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_fence_gate_wall",
+  "textures": {
+    "texture": "opminecraft:block/geode/text_crystal_bricks",
+    "particle": "opminecraft:block/geode/text_crystal_bricks"
+  },
+  "render_type": "solid"
+}

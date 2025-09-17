@@ -10,15 +10,16 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlock;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestBlock;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block._furnace.OPFurnaceBlock;
 import net.offllneplayer.opminecraft.blocks._block.crash.crates.crashtnt.CrashTNTBlockEntity;
 import net.offllneplayer.opminecraft.blocks._block.crash.crates.nitro.NitroBlockEntity;
 import net.offllneplayer.opminecraft.OPMinecraft;
-import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceBlockEntity;
-import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceMaterial;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestWoodMaterial;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestTrimMaterial;
+import net.offllneplayer.opminecraft.blocks._block._furnace.OPFurnaceBlockEntity;
+import net.offllneplayer.opminecraft.blocks._block._furnace.OPFurnaceMaterial;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestWoodMaterial;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestTrimMaterial;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,51 +38,31 @@ public class RegistryBlockEntities {
     private static final Map<OPFurnaceMaterial, DeferredHolder<BlockEntityType<?>, BlockEntityType<?>>> FURNACE_MATERIAL_TO_BLOCKENTITY = new HashMap<>();
 
     // Register one BlockEntity type per furnace material
-    static {
-        for (OPFurnaceMaterial material : OPFurnaceMaterial.values()) {
-            String registryName = material.name().toLowerCase() + "_furnace";
+	 static {
+		 for (OPFurnaceMaterial material : OPFurnaceMaterial.values()) {
+			 String registryName = material.name().toLowerCase() + "_furnace";
 
-            // Register the BlockEntity type with a lazy supplier
-            DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> holder =
-                  BLOCKENTREGISTRY.register(registryName,
-                        () -> {
-                            Block furnaceBlock = null;
+			 // Register the BlockEntity type with a lazy supplier
+			 DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> holder =
+					 BLOCKENTREGISTRY.register(registryName,
+							 () -> {
+								 String key = material.name().toLowerCase() + "_furnace";
+								 Supplier<OPFurnaceBlock> blockSupplier = RegistryBIBI.FURNACE_VARIANTS.get(key);
+								 Block furnaceBlock = blockSupplier != null ? blockSupplier.get() : null;
 
-                            switch (material) {
-                                case COPPER:
-                                    furnaceBlock = RegistryBIBI.COPPER_FURNACE.get();
-                                    break;
-                                case IRON:
-                                    furnaceBlock = RegistryBIBI.IRON_FURNACE.get();
-                                    break;
-                                case GOLD:
-                                    furnaceBlock = RegistryBIBI.GOLD_FURNACE.get();
-                                    break;
-                                case DIAMOND:
-                                    furnaceBlock = RegistryBIBI.DIAMOND_FURNACE.get();
-                                    break;
-                                case NETHERITE:
-                                    furnaceBlock = RegistryBIBI.NETHERITE_FURNACE.get();
-                                    break;
-                                default:
-                                    throw new IllegalStateException("Unknown furnace material: " + material);
-                            }
+								 return BlockEntityType.Builder.of((pos, state) ->
+										 new OPFurnaceBlockEntity(pos, state, material), furnaceBlock).build(null);
+							 });
 
+			 // Store in map for lookup
+			 FURNACE_MATERIAL_TO_BLOCKENTITY.put(material, holder);
+		 }
+	 }
 
-                            return BlockEntityType.Builder.of((pos, state) ->
-                                  new OPFurnaceBlockEntity(pos, state, material), furnaceBlock).build(null);
-                        });
-
-            // Store in map for lookup
-            FURNACE_MATERIAL_TO_BLOCKENTITY.put(material, holder);
-        }
-    }
-
-    // Helper method to get the BlockEntity type for a furnace material
-    public static BlockEntityType<?> getOPFurnaceType(OPFurnaceMaterial material) {
-        return FURNACE_MATERIAL_TO_BLOCKENTITY.get(material).get();
-    }
-
+	// Helper method to get the BlockEntity type for a furnace material
+	public static BlockEntityType<?> getOPFurnaceType(OPFurnaceMaterial material) {
+		return FURNACE_MATERIAL_TO_BLOCKENTITY.get(material).get();
+	}
 
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -36,6 +36,8 @@ public class OP_TagKeyUtil {
         public static final TagKey<Block> BULLET_FRAGILE = createTag("bullet_fragile");
         public static final TagKey<Block> SWORD_NO_STICK = createTag("sword_no_stick");
 
+		 public static final TagKey<Block> BREAKS_CRYSTAL = createTag("breaks_crystal");
+
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(OPMinecraft.Mod_ID, name));
         }
@@ -54,7 +56,6 @@ public class OP_TagKeyUtil {
          public static final TagKey<Item> SW0RDS = createTag("sw0rds");
          public static final TagKey<Item> VANILLA_SW0RDS = createTag("vanilla_sw0rds");
 
-		  public static final TagKey<Item> BALLOONS = createTag("balloons");
 		  public static final TagKey<Item> ZOMBIE_MISC_ITEMS = createTag("zombie_misc_items");
 
         private static TagKey<Item> createTag(String name) {

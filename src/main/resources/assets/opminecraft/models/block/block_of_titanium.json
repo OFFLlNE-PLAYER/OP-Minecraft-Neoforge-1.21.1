@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "opminecraft:block/text_block_of_titanium",
+    "particle": "opminecraft:block/text_block_of_titanium"
+  },
+  "render_type": "solid"
+}

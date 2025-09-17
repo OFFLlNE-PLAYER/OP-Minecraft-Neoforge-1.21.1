@@ -4,8 +4,8 @@
   "ambientocclusion": false,
   "render_type": "cutout_mipped",
   "textures": {
-    "0": "opminecraft:item/text_titan_gunblade",
-    "particle": "opminecraft:item/text_titan_gunblade"
+    "0": "opminecraft:item/gunblade/text_titan_gunblade",
+    "particle": "opminecraft:item/gunblade/text_titan_gunblade"
   },
   "elements": [
     {

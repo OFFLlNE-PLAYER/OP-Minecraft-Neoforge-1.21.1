@@ -34,8 +34,8 @@ public class CryingEssenceFluidType extends FluidType {
 	@SubscribeEvent
 	public static void registerFluidTypeExtensions(RegisterClientExtensionsEvent event) {
 		event.registerFluidType(new IClientFluidTypeExtensions() {
-			private static final ResourceLocation STILL_TEXTURE = ResourceLocation.parse("opminecraft:blocks/text_crying_essence_still");
-			private static final ResourceLocation FLOWING_TEXTURE = ResourceLocation.parse("opminecraft:blocks/text_crying_essence_flowing");
+			private static final ResourceLocation STILL_TEXTURE = ResourceLocation.parse("opminecraft:block/text_crying_essence_still");
+			private static final ResourceLocation FLOWING_TEXTURE = ResourceLocation.parse("opminecraft:block/text_crying_essence_flowing");
 
 			@Override
 			public ResourceLocation getStillTexture() {

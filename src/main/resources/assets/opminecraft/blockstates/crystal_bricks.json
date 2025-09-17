@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "opminecraft:block/crystal_bricks",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "opminecraft:block/crystal_bricks"
+    },
+    "axis=z": {
+      "model": "opminecraft:block/crystal_bricks",
+      "x": 90
+    }
+  }
+}

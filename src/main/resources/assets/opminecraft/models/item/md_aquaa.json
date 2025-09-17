@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/music_disc_mall",
   "textures": {
-    "layer0": "opminecraft:item/text_md_aquaa"
+    "layer0": "opminecraft:item/musik_disk/text_md_aquaa"
   }
 }

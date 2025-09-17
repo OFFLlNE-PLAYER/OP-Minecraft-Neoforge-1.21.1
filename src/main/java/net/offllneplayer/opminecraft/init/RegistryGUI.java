@@ -8,8 +8,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
 
-import net.offllneplayer.opminecraft.blocks._block.furnaces.OPFurnaceGUI;
-import net.offllneplayer.opminecraft.blocks._block.ancientchests.AncientChestGUI;
+import net.offllneplayer.opminecraft.blocks._block._furnace.OPFurnaceGUI;
+import net.offllneplayer.opminecraft.blocks._block._ancientchest.AncientChestGUI;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RegistryGUI {

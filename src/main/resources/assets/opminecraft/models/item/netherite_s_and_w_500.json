@@ -1,0 +1,7 @@
+{
+  "parent": "opminecraft:item/titan_s_and_w_500",
+  "textures": {
+    "0": "opminecraft:item/pistol/text_netherite_s_and_w_m629c",
+    "particle": "opminecraft:item/pistol/text_netherite_s_and_w_m629c"
+  }
+}

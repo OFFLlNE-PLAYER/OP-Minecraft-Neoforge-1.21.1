@@ -131,6 +131,9 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.SLATE_TILE_WALL);
 
 					event.accept(RegistryBIBI.BLOCK_OF_ONYX);
+					event.accept(RegistryBIBI.BLOCK_OF_TITANIUM);
+					event.accept(RegistryBIBI.ONYX_BLOCK);
+					event.accept(RegistryBIBI.TITANIUM_BLOCK);
 
 					event.accept(RegistryBIBI.STONE_TILES);
 					event.accept(RegistryBIBI.STONE_TILE_BUTTON);
@@ -149,22 +152,133 @@ public class RegistryCreative {
 
 					event.accept(RegistryBIBI.GOLDEN_BED);
 
-					event.accept(RegistryBIBI.ONYX_LAMP_BLACK);
-					event.accept(RegistryBIBI.ONYX_LAMP_BLUE);
-					event.accept(RegistryBIBI.ONYX_LAMP_BROWN);
-					event.accept(RegistryBIBI.ONYX_LAMP_CYAN);
-					event.accept(RegistryBIBI.ONYX_LAMP_GRAY);
-					event.accept(RegistryBIBI.ONYX_LAMP_GREEN);
-					event.accept(RegistryBIBI.ONYX_LAMP_LIGHT_BLUE);
-					event.accept(RegistryBIBI.ONYX_LAMP_LIGHT_GRAY);
-					event.accept(RegistryBIBI.ONYX_LAMP_LIME);
-					event.accept(RegistryBIBI.ONYX_LAMP_MAGENTA);
-					event.accept(RegistryBIBI.ONYX_LAMP_ORANGE);
-					event.accept(RegistryBIBI.ONYX_LAMP_PINK);
-					event.accept(RegistryBIBI.ONYX_LAMP_PURPLE);
-					event.accept(RegistryBIBI.ONYX_LAMP_RED);
-					event.accept(RegistryBIBI.ONYX_LAMP_WHITE);
-					event.accept(RegistryBIBI.ONYX_LAMP_YELLOW);
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.IRON_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.ONYX_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.TITAN_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_YELLOW.get());
+
+					// Crystal blocks
+					event.accept(RegistryBIBI.CRYSTAL_SLAB);
+					event.accept(RegistryBIBI.CRYSTAL_STAIRS);
+					event.accept(RegistryBIBI.CRYSTAL_WALL);
+					event.accept(RegistryBIBI.CRYSTAL_FENCE);
+					event.accept(RegistryBIBI.CRYSTAL_FENCE_GATE);
+					event.accept(RegistryBIBI.CRYSTAL_TRAPDOOR);
+					event.accept(RegistryBIBI.CRYSTAL_BUTTON);
+					event.accept(RegistryBIBI.CRYSTAL_PRESSURE_PLATE);
+
+					event.accept(RegistryBIBI.CRYSTAL_BRICKS);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_SLAB);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_STAIRS);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_WALL);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_FENCE);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_FENCE_GATE);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_TRAPDOOR);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_BUTTON);
+					event.accept(RegistryBIBI.CRYSTAL_BRICK_PRESSURE_PLATE);
 
             }
 
@@ -173,6 +287,14 @@ public class RegistryCreative {
 
 					event.accept(RegistryBIBI.FLOWERING_PITCHER_PLANT);
 					event.accept(RegistryBIBI.WUMPA_PLANT);
+
+					// Crystal geode
+					event.accept(RegistryBIBI.CRYSTAL_BLOCK);
+					event.accept(RegistryBIBI.BUDDING_CRYSTAL_BLOCK);
+					event.accept(RegistryBIBI.SMALL_CRYSTAL_BUD);
+					event.accept(RegistryBIBI.MEDIUM_CRYSTAL_BUD);
+					event.accept(RegistryBIBI.LARGE_CRYSTAL_BUD);
+					event.accept(RegistryBIBI.CRYSTAL_CLUSTER);
 
             }
 
@@ -301,31 +423,121 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.WARPED_NETHERITE_TRIM_ANCIENT_CHEST.get());
 
 
-					event.accept(RegistryBIBI.COPPER_FURNACE);
-					event.accept(RegistryBIBI.DIAMOND_FURNACE);
-					event.accept(RegistryBIBI.GOLD_FURNACE);
-					event.accept(RegistryBIBI.IRON_FURNACE);
-					event.accept(RegistryBIBI.NETHERITE_FURNACE);
+					event.accept(RegistryBIBI.COPPER_FURNACE.get());
+					event.accept(RegistryBIBI.DIAMOND_FURNACE.get());
+					event.accept(RegistryBIBI.GOLD_FURNACE.get());
+					event.accept(RegistryBIBI.IRON_FURNACE.get());
+					event.accept(RegistryBIBI.NETHERITE_FURNACE.get());
 
 					event.accept(RegistryBIBI.GOLDEN_BED);
 
-					event.accept(RegistryBIBI.ONYX_LAMP_BLACK);
-					event.accept(RegistryBIBI.ONYX_LAMP_BLUE);
-					event.accept(RegistryBIBI.ONYX_LAMP_BROWN);
-					event.accept(RegistryBIBI.ONYX_LAMP_CYAN);
-					event.accept(RegistryBIBI.ONYX_LAMP_GRAY);
-					event.accept(RegistryBIBI.ONYX_LAMP_GREEN);
-					event.accept(RegistryBIBI.ONYX_LAMP_LIGHT_BLUE);
-					event.accept(RegistryBIBI.ONYX_LAMP_LIGHT_GRAY);
-					event.accept(RegistryBIBI.ONYX_LAMP_LIME);
-					event.accept(RegistryBIBI.ONYX_LAMP_MAGENTA);
-					event.accept(RegistryBIBI.ONYX_LAMP_ORANGE);
-					event.accept(RegistryBIBI.ONYX_LAMP_PINK);
-					event.accept(RegistryBIBI.ONYX_LAMP_PURPLE);
-					event.accept(RegistryBIBI.ONYX_LAMP_RED);
-					event.accept(RegistryBIBI.ONYX_LAMP_WHITE);
-					event.accept(RegistryBIBI.ONYX_LAMP_YELLOW);
 
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.GOLDEN_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.IRON_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.IRON_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.DIAMOND_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.NETHERITE_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.ONYX_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.ONYX_OPLAMP_YELLOW.get());
+
+					event.accept(RegistryBIBI.TITAN_OPLAMP_BLACK.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_BLUE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_BROWN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_CYAN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_GOLDEN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_GRAY.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_GREEN.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_LIGHT_BLUE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_LIGHT_GRAY.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_LIME.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_MAGENTA.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_ORANGE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_PINK.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_PURPLE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_RED.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_WHITE.get());
+					event.accept(RegistryBIBI.TITAN_OPLAMP_YELLOW.get());
             }
 
 // ~~~REDSTONE BLOCKS TAB~~~
@@ -419,12 +631,22 @@ public class RegistryCreative {
 
                event.accept(RegistryBIBI.PROTOTYPE_GUNBLADE);
                event.accept(RegistryBIBI.GOLDEN_GUNBLADE.get());
+               event.accept(RegistryBIBI.IRON_GUNBLADE.get());
+               event.accept(RegistryBIBI.EMERALD_GUNBLADE.get());
                event.accept(RegistryBIBI.DIAMOND_GUNBLADE.get());
                event.accept(RegistryBIBI.NETHERITE_GUNBLADE.get());
                event.accept(RegistryBIBI.CRYING_GUNBLADE.get());
                event.accept(RegistryBIBI.ONYX_GUNBLADE.get());
                event.accept(RegistryBIBI.TITAN_GUNBLADE.get());
 
+
+					event.accept(RegistryBIBI.GOLDEN_CZ75.get());
+					event.accept(RegistryBIBI.IRON_CZ75.get());
+					event.accept(RegistryBIBI.EMERALD_CZ75.get());
+					event.accept(RegistryBIBI.DIAMOND_CZ75.get());
+					event.accept(RegistryBIBI.NETHERITE_CZ75.get());
+					event.accept(RegistryBIBI.ONYX_CZ75.get());
+					event.accept(RegistryBIBI.TITAN_CZ75.get());
 
                event.accept(RegistryBIBI.GOLDEN_92FS.get());
 					event.accept(RegistryBIBI.IRON_92FS.get());
@@ -445,31 +667,74 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.ONYX_M9A1.get());
 					event.accept(RegistryBIBI.TITAN_M9A1.get());
 
-					event.accept(RegistryBIBI.GOLDEN_CZ75.get());
-					event.accept(RegistryBIBI.IRON_CZ75.get());
-					event.accept(RegistryBIBI.EMERALD_CZ75.get());
-					event.accept(RegistryBIBI.DIAMOND_CZ75.get());
-					event.accept(RegistryBIBI.NETHERITE_CZ75.get());
-					event.accept(RegistryBIBI.ONYX_CZ75.get());
-					event.accept(RegistryBIBI.TITAN_CZ75.get());
 
-
+					event.accept(RegistryBIBI.GOLDEN_PROTEKTOR_TYPE_75.get());
+					event.accept(RegistryBIBI.IRON_PROTEKTOR_TYPE_75.get());
+					event.accept(RegistryBIBI.EMERALD_PROTEKTOR_TYPE_75.get());
+					event.accept(RegistryBIBI.DIAMOND_PROTEKTOR_TYPE_75.get());
+					event.accept(RegistryBIBI.NETHERITE_PROTEKTOR_TYPE_75.get());
 					event.accept(RegistryBIBI.ONYX_PROTEKTOR_TYPE_75.get());
+					event.accept(RegistryBIBI.TITAN_PROTEKTOR_TYPE_75.get());
 
+					event.accept(RegistryBIBI.GOLDEN_HANDCANNON.get());
+					event.accept(RegistryBIBI.IRON_HANDCANNON.get());
+					event.accept(RegistryBIBI.EMERALD_HANDCANNON.get());
+					event.accept(RegistryBIBI.DIAMOND_HANDCANNON.get());
+					event.accept(RegistryBIBI.NETHERITE_HANDCANNON.get());
+					event.accept(RegistryBIBI.ONYX_HANDCANNON.get());
 					event.accept(RegistryBIBI.TITAN_HANDCANNON.get());
 
-
+					event.accept(RegistryBIBI.GOLDEN_IMI_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.IRON_IMI_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.EMERALD_IMI_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.DIAMOND_IMI_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.NETHERITE_IMI_DESERT_EAGLE.get());
 					event.accept(RegistryBIBI.ONYX_IMI_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.TITAN_IMI_DESERT_EAGLE.get());
+					
 
-					event.accept(RegistryBIBI.TITAN_DESERT_EAGLE.get());
-
-
+					event.accept(RegistryBIBI.GOLDEN_RRAR.get());
+					event.accept(RegistryBIBI.IRON_RRAR.get());
+					event.accept(RegistryBIBI.EMERALD_RRAR.get());
+					event.accept(RegistryBIBI.DIAMOND_RRAR.get());
+					event.accept(RegistryBIBI.NETHERITE_RRAR.get());
 					event.accept(RegistryBIBI.ONYX_RRAR.get());
+					event.accept(RegistryBIBI.TITAN_RRAR.get());
 
+					
+					event.accept(RegistryBIBI.GOLDEN_COLT_ANACONDA.get());
+					event.accept(RegistryBIBI.IRON_COLT_ANACONDA.get());
+					event.accept(RegistryBIBI.EMERALD_COLT_ANACONDA.get());
+					event.accept(RegistryBIBI.DIAMOND_COLT_ANACONDA.get());
+					event.accept(RegistryBIBI.NETHERITE_COLT_ANACONDA.get());
+					event.accept(RegistryBIBI.ONYX_COLT_ANACONDA.get());
 					event.accept(RegistryBIBI.TITAN_COLT_ANACONDA.get());
 
+					
+					event.accept(RegistryBIBI.GOLDEN_S_AND_W_M629C.get());
+					event.accept(RegistryBIBI.IRON_S_AND_W_M629C.get());
+					event.accept(RegistryBIBI.EMERALD_S_AND_W_M629C.get());
+					event.accept(RegistryBIBI.DIAMOND_S_AND_W_M629C.get());
+					event.accept(RegistryBIBI.NETHERITE_S_AND_W_M629C.get());
+					event.accept(RegistryBIBI.ONYX_S_AND_W_M629C.get());
 					event.accept(RegistryBIBI.TITAN_S_AND_W_M629C.get());
 
+					
+					event.accept(RegistryBIBI.GOLDEN_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.IRON_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.EMERALD_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.DIAMOND_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.NETHERITE_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.ONYX_DESERT_EAGLE.get());
+					event.accept(RegistryBIBI.TITAN_DESERT_EAGLE.get());
+
+					
+					event.accept(RegistryBIBI.GOLDEN_S_AND_W_500.get());
+					event.accept(RegistryBIBI.IRON_S_AND_W_500.get());
+					event.accept(RegistryBIBI.EMERALD_S_AND_W_500.get());
+					event.accept(RegistryBIBI.DIAMOND_S_AND_W_500.get());
+					event.accept(RegistryBIBI.NETHERITE_S_AND_W_500.get());
+					event.accept(RegistryBIBI.ONYX_S_AND_W_500.get());
 					event.accept(RegistryBIBI.TITAN_S_AND_W_500.get());
 
 
@@ -504,6 +769,32 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.TEST_ITEM);
 
 					event.accept(RegistryBIBI.ANCIENT_CHUNK);
+
+					event.accept(RegistryBIBI.CRYING_INGOT);
+					event.accept(RegistryBIBI.CRYING_SMITHING_TEMPLATE);
+					event.accept(RegistryBIBI.CRYING_RESIN);
+
+					event.accept(RegistryBIBI.FEATHER_BLACK);
+					event.accept(RegistryBIBI.FEATHER_BLUE);
+					event.accept(RegistryBIBI.FEATHER_BROWN);
+					event.accept(RegistryBIBI.FEATHER_CYAN);
+					event.accept(RegistryBIBI.FEATHER_GRAY);
+					event.accept(RegistryBIBI.FEATHER_GREEN);
+					event.accept(RegistryBIBI.FEATHER_LIGHT_BLUE);
+					event.accept(RegistryBIBI.FEATHER_LIGHT_GRAY);
+					event.accept(RegistryBIBI.FEATHER_LIME);
+					event.accept(RegistryBIBI.FEATHER_MAGENTA);
+					event.accept(RegistryBIBI.FEATHER_ORANGE);
+					event.accept(RegistryBIBI.FEATHER_PINK);
+					event.accept(RegistryBIBI.FEATHER_PURPLE);
+					event.accept(RegistryBIBI.FEATHER_RED);
+					event.accept(RegistryBIBI.FEATHER_YELLOW);
+					event.accept(RegistryBIBI.FEATHER_GOLDEN);
+
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_A);
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_B);
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_C);
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_D);
 
 					event.accept(RegistryBIBI.CRUDE_ALEXANDRITE);
 					event.accept(RegistryBIBI.ALEXANDRITE);
@@ -604,6 +895,9 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.FLAWLESS_EMERALD);
 					event.accept(RegistryBIBI.PERFECT_EMERALD);
 					event.accept(RegistryBIBI.BRILLIANT_EMERALD);
+					
+					// OP Minecraft crystals
+					event.accept(RegistryBIBI.CRYSTAL_SHARD);
 
 					event.accept(RegistryBIBI.CRUDE_DIAMOND);
 					event.accept(RegistryBIBI.FLAWLESS_DIAMOND);
@@ -611,28 +905,6 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.BRILLIANT_DIAMOND);
 
 					event.accept(RegistryBIBI.GEMSTONE_DUST);
-
-					event.accept(RegistryBIBI.CRYING_INGOT);
-					event.accept(RegistryBIBI.CRYING_SMITHING_TEMPLATE);
-					event.accept(RegistryBIBI.CRYING_RESIN);
-
-					event.accept(RegistryBIBI.FEATHER_BLACK);
-					event.accept(RegistryBIBI.FEATHER_BLUE);
-					event.accept(RegistryBIBI.FEATHER_BROWN);
-					event.accept(RegistryBIBI.FEATHER_CYAN);
-					event.accept(RegistryBIBI.FEATHER_GRAY);
-					event.accept(RegistryBIBI.FEATHER_GREEN);
-					event.accept(RegistryBIBI.FEATHER_LIGHT_BLUE);
-					event.accept(RegistryBIBI.FEATHER_LIGHT_GRAY);
-					event.accept(RegistryBIBI.FEATHER_LIME);
-					event.accept(RegistryBIBI.FEATHER_MAGENTA);
-					event.accept(RegistryBIBI.FEATHER_ORANGE);
-					event.accept(RegistryBIBI.FEATHER_PINK);
-					event.accept(RegistryBIBI.FEATHER_PURPLE);
-					event.accept(RegistryBIBI.FEATHER_RED);
-					event.accept(RegistryBIBI.FEATHER_YELLOW);
-					event.accept(RegistryBIBI.FEATHER_GOLDEN);
-
             }
 
 // ~~~SPAWN EGGS TABS~~~

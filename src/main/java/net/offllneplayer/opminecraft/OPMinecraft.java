@@ -74,8 +74,6 @@ public class OPMinecraft {
 
         NeoForge.EVENT_BUS.register(this);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
         // Initialize sound pool debugger
         DEBUG_SoundPool.init();
     }

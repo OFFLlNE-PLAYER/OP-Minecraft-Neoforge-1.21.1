@@ -1,0 +1,14 @@
+﻿{
+  "variants": {
+    "blockisabove=false,facing=north": { "model": "opminecraft:block/titan_oplamp_golden" },
+    "blockisabove=false,facing=south": { "model": "opminecraft:block/titan_oplamp_golden", "y": 180 },
+    "blockisabove=false,facing=east":  { "model": "opminecraft:block/titan_oplamp_golden", "y": 90 },
+    "blockisabove=false,facing=west":  { "model": "opminecraft:block/titan_oplamp_golden", "y": 270 },
+
+    "blockisabove=true,facing=north": { "model": "opminecraft:block/titan_oplamp_golden_hanging" },
+    "blockisabove=true,facing=south": { "model": "opminecraft:block/titan_oplamp_golden_hanging", "y": 180 },
+    "blockisabove=true,facing=east":  { "model": "opminecraft:block/titan_oplamp_golden_hanging", "y": 90 },
+    "blockisabove=true,facing=west":  { "model": "opminecraft:block/titan_oplamp_golden_hanging", "y": 270 }
+  }
+}
+

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "opminecraft:item/text_sapphire"
+    "layer0": "opminecraft:item/gem/text_sapphire"
   },
   "display": {
     "firstperson_lefthand": {

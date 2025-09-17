@@ -1,8 +1,9 @@
 {
-  "credit": "Made by OP with Blockbench",
+  "credit": "Made by OP with Blockbench :D",
   "ambientocclusion": false,
   "render_type": "cutout_mipped",
-  "emissive": false, "light": 0,
+  "emissive": false,
+  "light": 0,
   "textures": {
     "1": "opminecraft:block/text_pitcher_plant_wumpa",
     "particle": "opminecraft:block/text_pitcher_plant_wumpa",
