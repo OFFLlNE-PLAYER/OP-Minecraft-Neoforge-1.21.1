@@ -145,6 +145,16 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.STONE_TILE_TRAPDOOR);
 					event.accept(RegistryBIBI.STONE_TILE_WALL);
 
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_BUTTON);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_FENCE);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_FENCE_GATE);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_PRESSURE_PLATE);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_SLAB);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_STAIRS);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_TRAPDOOR);
+					event.accept(RegistryBIBI.SMOOTH_DEEPSLATE_WALL);
+
             }
 
 // ~~~COLORED BLOCKS TAB~~~
@@ -287,6 +297,10 @@ public class RegistryCreative {
 
 					event.accept(RegistryBIBI.FLOWERING_PITCHER_PLANT);
 					event.accept(RegistryBIBI.WUMPA_PLANT);
+
+					//ores
+
+					event.accept((RegistryBIBI.DEEPSLATE_ONYX_ORE));
 
 					// Crystal geode
 					event.accept(RegistryBIBI.CRYSTAL_BLOCK);

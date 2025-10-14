@@ -1,13 +1,11 @@
-{"parent": "block/cube",
+{
+  "parent": "opminecraft:block/netherite_furnace",
+  "ambientocclusion": false,
+  "render_type": "cutout_mipped",
+  "emissive": true, "light": 15,
   "textures": {
-    "down": "opminecraft:block/text_chiseled_gold",
-    "up": "opminecraft:block/text_chiseled_gold",
-    "north": "opminecraft:block/text_gold_furnace_lit",
-    "east": "opminecraft:block/text_chiseled_gold",
-    "south": "opminecraft:block/text_chiseled_gold",
-    "west": "opminecraft:block/text_chiseled_gold",
-    "particle": "opminecraft:block/text_chiseled_gold"
-  },
-  "render_type": "solid",
-  "emissive": true, "light": 15
+    "1": "opminecraft:block/text_chiseled_gold",
+    "2": "opminecraft:block/text_gold_furnace_lit",
+    "particle": "opminecraft:block/text_gold_furnace"
+  }
 }

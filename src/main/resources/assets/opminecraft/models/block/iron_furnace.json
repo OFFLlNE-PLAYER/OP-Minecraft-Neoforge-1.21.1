@@ -1,14 +1,11 @@
 {
-  "parent": "block/cube",
+  "parent": "opminecraft:block/netherite_furnace",
+  "ambientocclusion": false,
+  "render_type": "cutout_mipped",
+  "emissive": false, "light": 0,
   "textures": {
-    "down": "opminecraft:block/text_chiseled_iron",
-    "up": "opminecraft:block/text_chiseled_iron",
-    "north": "opminecraft:block/text_iron_furnace",
-    "east": "opminecraft:block/text_chiseled_iron",
-    "south": "opminecraft:block/text_chiseled_iron",
-    "west": "opminecraft:block/text_chiseled_iron",
-    "particle": "opminecraft:block/text_chiseled_iron"
-  },
-  "render_type": "solid",
-  "emissive": false, "light": 0
+    "1": "opminecraft:block/text_chiseled_iron",
+    "2": "opminecraft:block/text_iron_furnace",
+    "particle": "opminecraft:block/text_iron_furnace"
+  }
 }

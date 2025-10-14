@@ -229,6 +229,25 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> SLATE_TILE_WALL = registerBlock("slate_tile_wall",
 			() -> new SlateWallBlock(Properties.of().strength(3.5F, 10F)));
 
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE = registerBlock("smooth_deepslate",
+			() -> new SlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_BUTTON = registerBlock("smooth_deepslate_button",
+			() -> new SlateButtonBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_FENCE = registerBlock("smooth_deepslate_fence",
+			() -> new SlateFenceBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_FENCE_GATE = registerBlock("smooth_deepslate_fence_gate",
+			() -> new SlateFenceGateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_PRESSURE_PLATE = registerBlock("smooth_deepslate_pressure_plate",
+			() -> new SlatePressurePlateBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_SLAB = registerBlock("smooth_deepslate_slab",
+			() -> new SlateSlabBlock(Properties.of().strength(3.5F, 12F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_STAIRS = registerBlock("smooth_deepslate_stairs",
+			() -> new SlateStairsBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_TRAPDOOR = registerBlock("smooth_deepslate_trapdoor",
+			() -> new SlateTrapdoorBlock(Properties.of().strength(3.5F, 10F)));
+	public static final DeferredBlock<Block> SMOOTH_DEEPSLATE_WALL = registerBlock("smooth_deepslate_wall",
+			() -> new SlateWallBlock(Properties.of().strength(3.5F, 10F)));
+
 	public static final DeferredBlock<Block> STONE_TILES = registerBlock("stone_tiles", StoneTilesBlock::new);
 	public static final DeferredBlock<Block> STONE_TILE_BUTTON = registerBlock("stone_tile_button", StoneTileButtonBlock::new);
 	public static final DeferredBlock<Block> STONE_TILE_FENCE = registerBlock("stone_tile_fence", StoneTileFenceBlock::new);
@@ -250,6 +269,7 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> BLOCK_OF_TITANIUM = registerBlock("block_of_titanium", BlockofTitaniumBlock::new);
 	public static final DeferredBlock<Block> ONYX_BLOCK = registerBlock("onyx_block", OnyxBlockBlock::new);
 	public static final DeferredBlock<Block> TITANIUM_BLOCK = registerBlock("titanium_block", TitaniumBlockBlock::new);
+	public static final DeferredBlock<Block> DEEPSLATE_ONYX_ORE = registerBlock("deepslate_onyx_ore", () -> new Block(Properties.of().strength(4.5F, 3.0F).requiresCorrectToolForDrops()));
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

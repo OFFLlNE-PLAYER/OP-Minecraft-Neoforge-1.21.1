@@ -1,0 +1,62 @@
+{
+  "type": "minecraft:geode",
+  "config": {
+    "blocks": {
+      "filling_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "minecraft:water" }
+      },
+      "inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "opminecraft:crystal_block" }
+      },
+      "alternate_inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": { "Name": "opminecraft:budding_crystal_block" }
+      },
+      "middle_layer_provider": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          { "data": { "Name": "minecraft:calcite" }, "weight": 3 },
+          { "data": { "Name": "minecraft:diorite" }, "weight": 1 }
+        ]
+      },
+      "outer_layer_provider": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          { "data": { "Name": "minecraft:obsidian" }, "weight": 1 },
+          { "data": { "Name": "minecraft:blackstone" }, "weight": 2 }
+        ]
+      },
+      "inner_placements": [
+        { "Name": "opminecraft:crystal_cluster", "Properties": { "facing": "north", "waterlogged": "false" } },
+        { "Name": "opminecraft:crystal_cluster", "Properties": { "facing": "south", "waterlogged": "false" } },
+        { "Name": "opminecraft:crystal_cluster", "Properties": { "facing": "east",  "waterlogged": "false" } },
+        { "Name": "opminecraft:crystal_cluster", "Properties": { "facing": "west",  "waterlogged": "false" } },
+        { "Name": "opminecraft:crystal_cluster", "Properties": { "facing": "up",    "waterlogged": "false" } },
+        { "Name": "opminecraft:crystal_cluster", "Properties": { "facing": "down",  "waterlogged": "false" } }
+      ],
+      "cannot_replace": "#opminecraft:geode_will_not_replace",
+      "invalid_blocks": "#opminecraft:geode_will_not_replace"
+    },
+    "layers": {
+      "filling": 1.7,
+      "inner_layer": 2.2,
+      "middle_layer": 3.2,
+      "outer_layer": 4.2
+    },
+    "crack": {
+      "generate_crack_chance": 1.0,
+      "base_crack_size": 2.0,
+      "crack_point_offset": 2
+    },
+    "noise_multiplier": 0.05,
+    "use_potential_placements_chance": 0.35,
+    "placements_require_layer0_alternate": true,
+    "invalid_blocks_threshold": 1,
+    "use_alternate_layer0_chance": 0.083,
+    "outer_wall_distance": { "type": "minecraft:uniform", "value": { "min_inclusive": 4, "max_inclusive": 6 } },
+    "distribution_points": { "type": "minecraft:uniform", "value": { "min_inclusive": 3, "max_inclusive": 4 } },
+    "point_offset": { "type": "minecraft:uniform", "value": { "min_inclusive": 1, "max_inclusive": 2 } }
+  }
+}

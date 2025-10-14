@@ -20,10 +20,12 @@ public final class JumpState {
             double d2 = JumpUtils.horizontalDistSqr(ctx.mob.position(), ctx.landingPos);
             if (!Double.isNaN(ctx.lastLandingDistSqr)) {
                 if (d2 > ctx.lastLandingDistSqr + INCREASING_TOL_SQR) {
-                    // Getting farther away from landing: reset to grounded (no cooldown, stop nav)
-                    resetToGrounded(ctx, true, true);
-                    ctx.lastLandingDistSqr = Double.NaN;
-                    return;
+                   // Getting farther away from landing: reset to grounded (no cooldown, stop nav)
+                   resetToGrounded(ctx, true, true);
+                   ctx.lastLandingDistSqr = Double.NaN;
+						 // Prevent repeating the same jump
+						 ctx.recordAvoidLanding(ctx.landingPos);
+                   return;
                 }
             }
             ctx.lastLandingDistSqr = d2;

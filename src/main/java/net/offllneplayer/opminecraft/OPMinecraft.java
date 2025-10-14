@@ -39,7 +39,7 @@ public class OPMinecraft {
 
 
 /*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
-    public OPMinecraft(IEventBus modEventBus, ModContainer modContainer) {
+    public OPMinecraft(IEventBus modEventBus) {
 
         modEventBus.addListener(this::registerNetworking);
         modEventBus.addListener(this::commonSetup);

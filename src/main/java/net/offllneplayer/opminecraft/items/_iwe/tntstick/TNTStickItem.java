@@ -193,19 +193,20 @@ public class TNTStickItem extends Item {
 		double forwardX = -Math.sin(yawRad), forwardZ = Math.cos(yawRad);
 		double rightX = forwardZ, rightZ = -forwardX;
 		double fuseProgress = 1.0F - (float) remainingUseTicks / FUSE_DURATION;
-		double forwardOff = -0.8D + (0.14D * fuseProgress);
+
 		double handOffset = player.getUsedItemHand() == InteractionHand.MAIN_HAND ? -0.3D : 0.3D;
-		double particleX = player.getX() + forwardX * forwardOff + rightX * handOffset;
-		double particleY = player.getY() + player.getEyeHeight() + 0.24D;
-		double particleZ = player.getZ() + forwardZ * forwardOff + rightZ * handOffset;
+		double forwardOffset = user.isCrouching() ? (0.069D * fuseProgress) + 0.2420D : (0.069D * fuseProgress) - 0.2420D;
+
+		double particleX = player.getX() + forwardX * forwardOffset + rightX * handOffset;
+		double particleY = player.getY() + player.getEyeHeight() + 0.420D;
+		double particleZ = player.getZ() + forwardZ * forwardOffset + rightZ * handOffset;
 
 		// Spawn flame particles at hand position every 2 ticks (lit)
 		if (lit && level.isClientSide() && timeUsed > 1 && timeUsed % 2 == 0) {
-			level.addParticle(ParticleTypes.FLAME,
-				particleX, particleY, particleZ,
-				Mth.nextDouble(level.getRandom(), 0.01D, 0.02D),
-				Mth.nextDouble(level.getRandom(), 0.01D, 0.02D),
-				Mth.nextDouble(level.getRandom(), 0.01D, 0.02D));
+			level.addParticle(ParticleTypes.FLAME, particleX, particleY, particleZ,
+				Mth.nextDouble(level.getRandom(), 0, 0.02420D),
+				Mth.nextDouble(level.getRandom(), 0, 0.02420D),
+				Mth.nextDouble(level.getRandom(), 0, 0.02420D));
 		}
 
 

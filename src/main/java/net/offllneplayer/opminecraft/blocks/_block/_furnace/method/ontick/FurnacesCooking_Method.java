@@ -9,6 +9,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
@@ -325,7 +326,7 @@ public class FurnacesCooking_Method {
 					/*--------------------------------------------------------------------------------------------*/
 					if (Number_of_Item == 1) {
 						if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-							ItemStack _setstack = new ItemStack(RegistryBIBI.SMOOTH_SLATE.get()).copy();
+							ItemStack _setstack = new ItemStack(Blocks.SMOOTH_STONE).copy();
 							_setstack.setCount((int) (Number_of_Slot_5 + 1));
 							_itemHandlerModifiable.setStackInSlot(5, _setstack);
 						}
@@ -439,29 +440,6 @@ public class FurnacesCooking_Method {
 						}
 					} else /*--------------------------------------------------------------------------------------------*/
 						if (Number_of_Item == 6) {
-								if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
-									ItemStack _setstack = new ItemStack(RegistryBIBI.ANCIENT_CHUNK.get()).copy();
-									_setstack.setCount((int) (Number_of_Slot_5 + 1));
-									_itemHandlerModifiable.setStackInSlot(5, _setstack);
-								}
-								if (!world.isClientSide()) {
-									BlockPos _bp = BlockPos.containing(x, y, z);
-									BlockEntity _blockEntity = world.getBlockEntity(_bp);
-									BlockState _bs = world.getBlockState(_bp);
-									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("Stored_EXP", (new Object() {
-											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
-												BlockEntity blockEntity = world.getBlockEntity(pos);
-												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
-												return -1;
-											}
-										}.getValue(world, BlockPos.containing(x, y, z), "Stored_EXP") + 16));
-									if (world instanceof Level _level)
-										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
-								}
-					} else /*--------------------------------------------------------------------------------------------*/
-						if (Number_of_Item == 7) {
 							if (!world.isClientSide()) {
 								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);

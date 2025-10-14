@@ -22,15 +22,13 @@ public final class JumpPlanner {
 	  * Drops are only considered if they strictly reduce horizontal distance to the target.
 	  * Returns true if a validated plan was written to ctx (jumpFromPos, landingPos).
 	  */
-    public static void decideJump(JumpContext ctx, Level level, BlockPos mobPos, Direction baseGrid) {
-        // Compute current stand
-        BlockPos top = JumpUtils.getLandingTop(level, mobPos, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT);
-        if (top == null) return;
-        int mobY = (int)ctx.mob.getY();
-        // Derive simple integer target Y like mob.blockPosition().getY()
-        int targetY = BlockPos.containing(ctx.targetExactPos.x, ctx.targetExactPos.y, ctx.targetExactPos.z).getY();
-        boolean needElev = mobY < targetY;
-        boolean allowDrop = targetY < mobY;
+    public static void decideJump(JumpContext ctx, Level level, Direction baseGrid) {
+        // Use block Y coordinates consistently
+        BlockPos stand = BlockPos.containing(ctx.jumpFromPos);
+        int mobBlockY = stand.getY();
+        int targetBlockY = BlockPos.containing(ctx.targetExactPos.x, ctx.targetExactPos.y, ctx.targetExactPos.z).getY();
+        boolean needElev = ctx.desiredYGain > 0;
+        boolean allowDrop = targetBlockY < mobBlockY;
 
 
         // Scan facings: compute toward cardinal and exclude its opposite to disreguard backward jumps immediately.
@@ -56,34 +54,33 @@ public final class JumpPlanner {
 		 Vec3 bestGap = null; double bestGapScore = Double.MAX_VALUE;
 		 Vec3 bestDrop = null; double bestDropScore = Double.MAX_VALUE;
 
-		 BlockPos stand = BlockPos.containing(ctx.jumpFromPos);
 
 		 // Elevation: try each cardinal facing using planElevation which already laterally samples
-			 if (needElev) {
-				 for (Direction fd : cardinals) {
-					 Vec3 elevLanding = planElevation(level, stand, fd, ctx.maxGap, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT, ctx.targetExactPos);
-					 if (elevLanding == null) continue;
-					 if (validateCandidatePos(ctx, level, stand, fd, elevLanding)) {
-						 double score = scoreCandidatePos(ctx, stand, elevLanding, true, false);
-						 if (score < bestElevScore) {
-							 bestElevScore = score;
-							 bestElev = elevLanding;
+				 if (needElev) {
+					 for (Direction fd : cardinals) {
+						 Vec3 elevLanding = planElevation(level, stand, mobBlockY, fd, ctx.maxGap, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT, ctx.targetExactPos);
+						 if (elevLanding == null) continue;
+						 if (validateCandidatePos(ctx, level, fd, elevLanding , needElev, allowDrop)) {
+							 double score = scoreCandidatePos(ctx, stand, elevLanding, true, false);
+							 if (score < bestElevScore) {
+								 bestElevScore = score;
+								 bestElev = elevLanding;
+							 }
 						 }
 					 }
+					 if (bestElev != null) {
+						 bestScore = bestElevScore;
+						 chosen = bestElev;
+					 }
 				 }
-				 if (bestElev != null) {
-					 bestScore = bestElevScore;
-					 chosen = bestElev;
-				 }
-			 }
 
 		 // Gap: enumerate straight for all cardinals, distances 2..maxGap+1
 		 for (Direction fd : cardinals) {
-			 Vec3 straight = planGapJump(level, stand, mobY, fd, ctx.maxGap, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT);
+			 Vec3 straight = planGapJump(level, stand, fd, mobBlockY, targetBlockY, ctx.maxGap, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT);
 			 if (straight == null) continue;
-			 if (validateCandidatePos(ctx, level, stand, fd, straight)) {
+			 if (validateCandidatePos(ctx, level, fd, straight, needElev, allowDrop)) {
 				 double score = scoreCandidatePos(ctx, stand, straight, false, false);
-				 if (!ctx.balloonJump) {
+				 if (!ctx.hasBalloon) {
 					 double runup = JumpUtils.horizontalDistSqr(new Vec3(stand.getX() + 0.5, 0, stand.getZ() + 0.5), straight);
 					 score += 0.5D * runup;
 				 }
@@ -99,22 +96,22 @@ public final class JumpPlanner {
 		 }
 
 		 if (allowDrop) {
-			 for (Direction fd : cardinals) {
-				 Vec3 dropLanding = planJumpDown(level, stand, mobY, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT, fd);
-				 if (dropLanding == null) continue;
-				 if (validateCandidatePos(ctx, level, stand, fd, dropLanding)) {
-					 double score = scoreCandidatePos(ctx, stand, dropLanding, false, true);
-					 if (score < bestDropScore) {
-						 bestDropScore = score;
-						 bestDrop = dropLanding;
-					 }
+ 		 for (Direction fd : cardinals) {
+ 			 Vec3 dropLanding = planJumpDown(level, stand, mobBlockY, targetBlockY, ctx.maxUp, ctx.maxDown, ctx.COLLISION_HEIGHT, fd);
+ 			 if (dropLanding == null) continue;
+			 if (validateCandidatePos(ctx, level, fd, dropLanding, needElev, allowDrop)) {
+				 double score = scoreCandidatePos(ctx, stand, dropLanding, false, true);
+				 if (score < bestDropScore) {
+					 bestDropScore = score;
+					 bestDrop = dropLanding;
 				 }
 			 }
+		}
 			 if (bestDrop != null && bestDropScore < bestScore) {
 				 bestScore = bestDropScore;
 				 chosen = bestDrop;
 			 }
-		 }
+		}
 
 		 // decide jump if any exists
 		 if (chosen != null) {
@@ -122,29 +119,58 @@ public final class JumpPlanner {
 
 			// Fallback: melee-only swinging poke if no valid jump was selected and within range
 		 } else if (!ctx.hasRangedWep) {
-            double horizD2 = JumpUtils.horizontalDistSqr(ctx.jumpFromPos, ctx.targetExactPos);
-            int dy = targetY - mobY;
-            if (horizD2 <= (0.9D) && dy == (ctx.maxUp + 1)) {
-                    Vec3 upward = new Vec3(ctx.jumpFromPos.x, ctx.jumpFromPos.y + ctx.maxUp, ctx.jumpFromPos.z);
-                    Vec3 dirToTarget = ctx.targetExactPos.subtract(ctx.jumpFromPos).normalize();
-                    Vec3 fwd = new Vec3(dirToTarget.x * 0.1F, 0.0D, dirToTarget.z * 0.1F);
-                    ctx.landingPos = upward;
-                    ctx.airCarryXZ = fwd;
-            }
-        }
+			 double horizD2 = JumpUtils.horizontalDistSqr(ctx.jumpFromPos, ctx.targetExactPos);
+			 int dy = targetBlockY - mobBlockY;
+			 if (horizD2 <= (0.9D) && dy == (ctx.maxUp + 1)) {
+				 Vec3 upward = new Vec3(ctx.jumpFromPos.x, ctx.jumpFromPos.y + ctx.maxUp, ctx.jumpFromPos.z);
+				 Vec3 dirToTarget = ctx.targetExactPos.subtract(ctx.jumpFromPos).normalize();
+				 Vec3 fwd = new Vec3(dirToTarget.x * 0.1F, 0.0D, dirToTarget.z * 0.1F);
+				 ctx.landingPos = upward;
+				 ctx.airCarryXZ = fwd;
+			 }
+		 }
 	 }
 
-	private static boolean validateCandidatePos(JumpContext ctx, Level level, BlockPos standPos, Direction grid, Vec3 landing) {
+	private static boolean validateCandidatePos(JumpContext ctx, Level level, Direction grid, Vec3 landing, boolean needsElevation , boolean allowDrop) {
 		if (landing == null || landing.equals(Vec3.ZERO)) return false;
-		// Check clearance at current position and landing position
-		if (JumpUtils.isNoPathHere(level, standPos, ctx.COLLISION_HEIGHT)) return false;
 		BlockPos landingStand = BlockPos.containing(landing.x, landing.y, landing.z);
+
+		// check selected against stored previous jumps
+		if (landing == ctx.failLandingPos) {
+			ctx.failLandingPosOld = ctx.failLandingPos;
+			ctx.failLandingPos = Vec3.ZERO;
+			return false;
+		}
+
+		// push out old if reselected
+		if (landing == ctx.failLandingPosOld) {
+			ctx.failLandingPosOld = Vec3.ZERO;
+			return false;
+		}
+
+		// reject wrong y
+		if (!allowDrop) {
+			if (landing.y < ctx.targetExactPos.y - ctx.desiredYGain) return false;
+		}
+
+		// Check selected landing pos is solid ground
+		if (!JumpUtils.isSolid(level, landingStand.below())) return false;
+
+		// Check clearance at landing position
 		if (JumpUtils.isNoPathHere(level, landingStand, ctx.COLLISION_HEIGHT)) return false;
 
-		//check landingStand distance to target is not greater than current; prevent jumping away!
-		if (JumpUtils.horizontalDistSqr(new Vec3(landingStand.getX() + 0.5, landingStand.getY(), landingStand.getZ() + 0.5), ctx.targetExactPos) >
-				JumpUtils.horizontalDistSqr(ctx.jumpFromPos, ctx.targetExactPos)) return false;
-		
+		// Check distance improvement based on whether we need elevation
+		if (needsElevation) {
+			// For climbing, check total 3D distance improvement to promote upward movement toward target
+			double currentTotalDist = ctx.jumpFromPos.distanceToSqr(ctx.targetExactPos);
+			double landingTotalDist = new Vec3(landingStand.getX() + 0.5, landingStand.getY(), landingStand.getZ() + 0.5).distanceToSqr(ctx.targetExactPos);
+			if (landingTotalDist > currentTotalDist) return false;
+		} else {
+			// For horizontal movement, prevent jumping away from target
+			if (JumpUtils.horizontalDistSqr(new Vec3(landingStand.getX() + 0.5, landingStand.getY(), landingStand.getZ() + 0.5), ctx.targetExactPos) >
+					JumpUtils.horizontalDistSqr(ctx.jumpFromPos, ctx.targetExactPos)) return false;
+		}
+
 		return validateTakeoffClearancetoLanding(ctx, level, grid, ctx.jumpFromPos, landing);
 	}
 
@@ -167,7 +193,7 @@ public final class JumpPlanner {
 			if ((grid == Direction.SOUTH && dz < 0) || (grid == Direction.NORTH && dz > 0)) return false;
 		}
 
-		// Walk strictly along the provided grid direction, checking intermediate columns (exclude start, exclude end)
+		// check columns (excluding standPos and landingStand already checked)
 		for (int s = 1; s < steps; s++) {
 			BlockPos col = start.relative(grid, s);
 			if (JumpUtils.isNoPathHere(level, col, h)) return false;
@@ -211,45 +237,47 @@ public final class JumpPlanner {
     /**
      * Plan: elevation step toward desiredYGain
      */
-    public static Vec3 planElevation(Level level, BlockPos mobPos, Direction fd, int maxGap, int maxUp, int maxDown, int collisionHeight, Vec3 targetExactPos) {
-        Vec3 bestLanding = null;
-        double bestScore = Double.MAX_VALUE;
-        for (int fwd = 1; fwd < maxGap; fwd++) {
-            for (int lat = -2; lat <= 2; lat++) {
-                BlockPos candidate = mobPos.relative(fd, fwd).relative(fd.getClockWise(), lat);
-                BlockPos landingTop = JumpUtils.getLandingTop(level, candidate, maxUp, maxDown, collisionHeight);
-                if (landingTop != null) {
-                    if (JumpUtils.isNoPathHere(level, landingTop.above(), collisionHeight)) continue;
-                    int landingStandY = landingTop.getY() + 1;
-                    if (landingStandY > mobPos.getY() + maxUp || landingStandY < mobPos.getY() - maxDown) continue;
-                    if (landingStandY <= mobPos.getY()) continue;
-                    // Allow elevation beyond desiredYLocal; rely on scoring to prefer closer-to-target results
-                    // if (landingStandY > desiredYLocal) continue;
-                    // Ensure corridor clearance between stand and candidate
-                    boolean clear = true;
-                    for (int step = 0; step < fwd; step++) {
-                        BlockPos col = mobPos.relative(fd, step);
-                        if (JumpUtils.isNoPathHere(level, col, collisionHeight)) { clear = false; break; }
-                    }
-                    if (!clear) continue;
-                    double elevationGain = (landingTop.getY() + 1) - mobPos.getY();
-                    Vec3 landingCenter = JumpUtils.surfaceCenter(landingTop);
-                    double targetDist = JumpUtils.horizontalDistSqr(landingCenter, targetExactPos);
-                    double score = targetDist - (elevationGain * elevationGain * 2.0);
-                    if (score < bestScore) {
-							  bestScore = score;
-							  bestLanding = landingCenter;
-						  }
-                }
-            }
-        }
+	 public static Vec3 planElevation(Level level, BlockPos mobPos, int mobY, Direction fd, int maxGap, int maxUp, int maxDown, int collisionHeight, Vec3 targetExactPos) {
+		 Vec3 bestLanding = null;
+		 double bestScore = Double.MAX_VALUE;
+		 for (int fwd = 1; fwd < maxGap; fwd++) {
+			 for (int lat = -2; lat <= 2; lat++) {
+				 BlockPos candidate = mobPos.relative(fd, fwd).relative(fd.getClockWise(), lat);
+				 BlockPos landingTop = getLandingTop(level, candidate, maxUp, maxDown, collisionHeight);
+				 if (landingTop != null) {
+					 int landingStandY = landingTop.getY() + 1;
+					 if (landingStandY > mobY + maxUp || landingStandY < mobY - maxDown) continue;
+					 if (landingStandY <= mobY) continue;
+
+					 // Ensure corridor clearance between stand and candidate
+					 boolean canJump = true;
+					 for (int step = 1; step <= fwd; step++) {
+						 BlockPos col = mobPos.relative(fd, step);
+						 if (JumpUtils.isNoPathHere(level, col, collisionHeight)) {
+							 canJump = false;
+							 break;
+						 }
+					 }
+					 if (!canJump) continue;
+
+                double elevationGain = (landingTop.getY() + 1) - mobY;
+                Vec3 landingCenter = JumpUtils.surfaceCenter(landingTop);
+                double targetDist = JumpUtils.horizontalDistSqr(landingCenter, targetExactPos);
+                double score = targetDist - (elevationGain * elevationGain * 2.0);
+                if (score < bestScore) {
+                	bestScore = score;
+                	bestLanding = landingCenter;
+					 }
+				 }
+			 }
+		 }
         return bestLanding;
     }
 
     /**
      * Plan: gap crossing (straight only). Returns landing center or null.
      */
-	 public static Vec3 planGapJump(Level level, BlockPos mobPos, int mobY, Direction fd, int maxGap, int maxUp, int maxDown, int collisionHeight) {
+	 public static Vec3 planGapJump(Level level, BlockPos mobPos, Direction fd, int mobY, int targetY, int maxGap, int maxUp, int maxDown, int collisionHeight) {
 
 		 int maxLanding = maxGap + 1;
 		 Vec3 best = null;
@@ -261,7 +289,7 @@ public final class JumpPlanner {
 			 boolean canJump = true;
 
 			 // Check the path for gaps and clearance in one pass
-			 for (int fwd = 1; fwd < checkDist; fwd++) {
+			 for (int fwd = 0; fwd < checkDist; fwd++) {
 				 BlockPos pathPos = mobPos.relative(fd, fwd);
 				 boolean gapBelow = JumpUtils.isGapOpen(level, pathPos.below());
 
@@ -280,12 +308,12 @@ public final class JumpPlanner {
 			 // Must have at least one gap to jump over, not too many gaps, and clear path
 			 if (anyGap && gaps <= maxGap && canJump) {
 				 BlockPos candidate = mobPos.relative(fd, checkDist);
-				 BlockPos landingTop = JumpUtils.getLandingTop(level, candidate, maxUp, maxDown, collisionHeight);
+				 BlockPos landingTop = getLandingTop(level, candidate, maxUp, maxDown, collisionHeight);
 
-				 if (landingTop != null && !JumpUtils.isNoPathHere(level, landingTop.above(), collisionHeight)) {
+				 if (landingTop != null) {
 					 int landingStandY = landingTop.getY() + 1;
 
-					 if (landingStandY <= mobY + maxUp && landingStandY >= mobY - maxDown) {
+					 if (landingStandY <= mobY + maxUp && landingStandY >= targetY - maxUp) {
 						 Vec3 center = JumpUtils.surfaceCenter(landingTop);
 						 double localScore = -checkDist; // prefer farther jumps
 						 if (localScore < bestLocal) {
@@ -301,20 +329,41 @@ public final class JumpPlanner {
 
 
 	/** Plan: downward pursuit (ledge jump-off) */
-    public static Vec3 planJumpDown(Level level, BlockPos mobPos, int mobY, int maxUp, int maxDown, int collisionHeight, Direction faceDir) {
-        // caller ensures allowDrop by comparing targetY and mobY; no check here
-        BlockPos fwdCol = mobPos.relative(faceDir, 1);
+	public static Vec3 planJumpDown(Level level, BlockPos mobPos, int mobY, int targetY, int maxUp, int maxDown, int collisionHeight, Direction faceDir) {
+		// caller ensures allowDrop by comparing targetY and mobY; no check here
+		BlockPos fwdCol = mobPos.relative(faceDir, 1);
 
-        if (!JumpUtils.isGapOpen(level, fwdCol) || !JumpUtils.isGapOpen(level, fwdCol.above()) || !JumpUtils.isGapOpen(level, fwdCol.below())) return null;
-        BlockPos landingTop = JumpUtils.getLandingTop(level, fwdCol, maxUp, maxDown, collisionHeight);
-        if (landingTop == null) return null;
-		 // check fwdCol and landing for clearance
-		 if (JumpUtils.isNoPathHere(level, fwdCol.below(), collisionHeight+1) || JumpUtils.isNoPathHere(level, landingTop.above(), collisionHeight)) return null;
+		if (!JumpUtils.isGapOpen(level, fwdCol) || !JumpUtils.isGapOpen(level, fwdCol.above()) || !JumpUtils.isGapOpen(level, fwdCol.below())) return null;
+		BlockPos landingTop = getLandingTop(level, fwdCol, maxUp, maxDown, collisionHeight);
+		if (landingTop == null) return null;
+		// check fwdCol and landing for clearance
+		if (JumpUtils.isNoPathHere(level, fwdCol.below(), collisionHeight+1) || JumpUtils.isNoPathHere(level, landingTop.above(), collisionHeight)) return null;
 
-        int landingStandY = landingTop.getY() + 1;
-        if (landingStandY < mobY && landingStandY >= mobY - maxDown) {
-            return JumpUtils.surfaceCenter(landingTop);
-        }
-        return null;
-    }
+		int landingStandY = landingTop.getY() + 1;
+		if (landingStandY <= targetY + maxUp && landingStandY >= mobY && mobY - landingStandY <= maxDown) {
+			return JumpUtils.surfaceCenter(landingTop);
+		}
+		return null;
+	}
+
+
+	public static BlockPos getLandingTop(Level level, BlockPos col, int maxUp, int maxDown, int collisionHeight) {
+		// Search upward first for a solid floor with clear stand-space (feet-air column) above it
+		for (int up = 0; up <= maxUp; up++) {
+			BlockPos p = col.above(up);
+			if (JumpUtils.isSolid(level, p)) {
+				// Validate stand-space using unified rejection (feet = p.above())
+				if (!JumpUtils.isNoPathHere(level, p.above(), collisionHeight)) return p;
+			}
+		}
+		// Then search downward for a solid floor with clear stand-space above it
+		int searchDown = Math.max(0, maxDown);
+		for (int down = 1; down <= searchDown; down++) {
+			BlockPos p = col.below(down);
+			if (JumpUtils.isSolid(level, p)) {
+				if (!JumpUtils.isNoPathHere(level, p.above(), collisionHeight)) return p;
+			}
+		}
+		return null;
+	}
 }
