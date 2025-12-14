@@ -43,7 +43,7 @@ public class BuddingGeodeBlockBlock extends Block {
 
 	@Override
 	public Integer getBeaconColorMultiplier(BlockState state, LevelReader world, BlockPos pos, BlockPos beaconPos) {
-		return 0x00E7FF; // Converted RGB(0, 231, 255) to hex color code
+		return material.beaconColor();
 	}
 
 	@Override

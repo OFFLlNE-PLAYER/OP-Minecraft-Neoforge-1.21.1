@@ -1,7 +1,7 @@
 {
   "type": "minecraft:ore",
   "config": {
-    "size": 2,
+    "size": 4,
     "discard_chance_on_air_exposure": 0,
     "targets": [
       {
@@ -9,23 +9,7 @@
           "predicate_type": "tag_match",
           "tag": "minecraft:deepslate_ore_replaceables"
         },
-        "state": {
-          "Name": "opminecraft:deepslate_onyx_ore"
-        }
-      },
-      {
-        "target": {
-          "predicate_type": "blockstate_match",
-          "block_state": {
-            "Name": "minecraft:deepslate",
-            "Properties": {
-              "axis": "y"
-            }
-          }
-        },
-        "state": {
-          "Name": "opminecraft:deepslate_onyx_ore"
-        }
+        "state": { "Name": "opminecraft:deepslate_onyx_ore" }
       }
     ]
   }

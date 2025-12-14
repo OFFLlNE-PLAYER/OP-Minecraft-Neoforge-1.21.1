@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/fence_inventory",
   "textures": {
     "texture": "opminecraft:block/text_charcoal_bricks",

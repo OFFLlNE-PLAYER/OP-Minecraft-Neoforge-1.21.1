@@ -1,6 +1,6 @@
-{
+﻿{
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "opminecraft:block/text_deepslate_onyx_ore"
+    "all": "opminecraft:block/ore/deepslate/deepslate_onyx_ore"
   }
 }

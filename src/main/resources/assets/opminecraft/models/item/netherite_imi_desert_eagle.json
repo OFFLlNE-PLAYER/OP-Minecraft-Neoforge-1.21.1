@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "opminecraft:item/titan_imi_desert_eagle",
   "textures": {
     "0": "opminecraft:item/pistol/text_netherite_imi_desert_eagle",

@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "minecraft:item/music_disc_mall",
   "textures": {
     "layer0": "opminecraft:item/musik_disk/text_md_p1ng_p0ng"

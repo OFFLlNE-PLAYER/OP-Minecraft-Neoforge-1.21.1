@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/template_fence_gate_wall_open",
   "textures": {
     "particle": "opminecraft:block/text_slate_tiles",

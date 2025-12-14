@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/template_fence_gate_open",
   "textures": {
     "texture": "opminecraft:block/cobbled_slate",

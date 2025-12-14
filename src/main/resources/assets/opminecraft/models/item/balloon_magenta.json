@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "opminecraft:item/balloon_red",
   "textures": {
     "0": "opminecraft:item/balloon/text_balloon_magenta",

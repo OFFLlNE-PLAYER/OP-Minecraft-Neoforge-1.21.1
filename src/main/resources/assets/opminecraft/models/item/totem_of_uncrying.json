@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "minecraft:item/totem_of_undying",
   "textures": {
     "0": "opminecraft:item/text_totem_of_uncrying",

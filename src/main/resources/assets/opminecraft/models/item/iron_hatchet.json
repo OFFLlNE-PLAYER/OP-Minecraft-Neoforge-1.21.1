@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "item/handheld",
   "textures": {
     "layer0": "opminecraft:item/hatchet/text_iron_hatchet"

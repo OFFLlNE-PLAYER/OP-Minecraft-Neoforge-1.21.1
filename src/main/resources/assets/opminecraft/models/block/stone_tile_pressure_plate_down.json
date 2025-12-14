@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/pressure_plate_down",
   "textures": {
     "particle": "opminecraft:block/text_stone_tiles",

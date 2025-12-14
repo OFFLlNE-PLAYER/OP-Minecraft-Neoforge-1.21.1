@@ -1,13 +1,13 @@
-{
+﻿{
   "parent": "block/cube",
   "textures": {
-    "down": "opminecraft:block/geode/text_budding_crystal",
-    "up": "opminecraft:block/geode/text_budding_crystal",
-    "north": "opminecraft:block/geode/text_budding_crystal",
-    "east": "opminecraft:block/geode/text_budding_crystal",
-    "south": "opminecraft:block/geode/text_budding_crystal",
-    "west": "opminecraft:block/geode/text_budding_crystal",
-    "particle": "opminecraft:block/geode/text_budding_crystal"
+    "down": "opminecraft:block/geode/crystal/text_budding_crystal",
+    "up": "opminecraft:block/geode/crystal/text_budding_crystal",
+    "north": "opminecraft:block/geode/crystal/text_budding_crystal",
+    "east": "opminecraft:block/geode/crystal/text_budding_crystal",
+    "south": "opminecraft:block/geode/crystal/text_budding_crystal",
+    "west": "opminecraft:block/geode/crystal/text_budding_crystal",
+    "particle": "opminecraft:block/geode/crystal/text_budding_crystal"
   },
   "render_type": "solid"
 }

@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/outer_stairs",
   "textures": {
     "particle": "opminecraft:block/text_slate",

@@ -51,7 +51,7 @@ public class LargeGeodeBudBlock extends Block implements SimpleWaterloggedBlock 
 
     @Override
     public Integer getBeaconColorMultiplier(BlockState state, LevelReader world, BlockPos pos, BlockPos beaconPos) {
-        return 0xff00e7ff;
+        return material.beaconColor();
     }
 
     @Override

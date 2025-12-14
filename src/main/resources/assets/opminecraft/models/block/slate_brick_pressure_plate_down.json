@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/pressure_plate_down",
   "textures": {
     "texture": "opminecraft:block/text_slate_bricks",

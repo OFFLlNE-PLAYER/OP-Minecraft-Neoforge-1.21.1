@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.offllneplayer.opminecraft.OPMinecraft;
 import net.offllneplayer.opminecraft.blocks._block.GoldenBedBlock;
-import net.offllneplayer.opminecraft.blocks._block._geode.crystal.*;
+import net.offllneplayer.opminecraft.blocks._block._geode.building.*;
 import net.offllneplayer.opminecraft.blocks._block._geode.geode.*;
 import net.offllneplayer.opminecraft.blocks._block._geode.geode_method.GeodeMaterial;
 import net.offllneplayer.opminecraft.blocks._block._oplamp.OPLampBlock;
@@ -269,8 +269,25 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> BLOCK_OF_TITANIUM = registerBlock("block_of_titanium", BlockofTitaniumBlock::new);
 	public static final DeferredBlock<Block> ONYX_BLOCK = registerBlock("onyx_block", OnyxBlockBlock::new);
 	public static final DeferredBlock<Block> TITANIUM_BLOCK = registerBlock("titanium_block", TitaniumBlockBlock::new);
-	public static final DeferredBlock<Block> DEEPSLATE_ONYX_ORE = registerBlock("deepslate_onyx_ore", () -> new Block(Properties.of().strength(4.5F, 3.0F).requiresCorrectToolForDrops()));
 
+	public static final DeferredBlock<Block> DEEPSLATE_ONYX_ORE = registerBlock("deepslate_onyx_ore", () -> new Block(Properties.of().strength(4.5F, 3.0F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_TITANIUM_ORE = registerBlock("deepslate_titanium_ore", () -> new Block(Properties.of().strength(5F, 4.2F).requiresCorrectToolForDrops()));
+
+	public static final DeferredBlock<Block> DEEPSLATE_ALEXANDRITE_ORE = registerBlock("deepslate_alexandrite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_ANDALUSITE_ORE = registerBlock("deepslate_andalusite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_AQUAMARINE_ORE = registerBlock("deepslate_aquamarine_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_CHRYSOBERYL_ORE = registerBlock("deepslate_chrysoberyl_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_CORUNDUM_ORE = registerBlock("deepslate_corundum_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_CYMOPHANE_ORE = registerBlock("deepslate_cymophane_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_DRAGONITE_ORE = registerBlock("deepslate_dragonite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_JADEITE_ORE = registerBlock("deepslate_jadeite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_OPALITE_ORE = registerBlock("deepslate_opalite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_PADPARADSCHA_ORE = registerBlock("deepslate_padparadscha_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_SCAPOLITE_ORE = registerBlock("deepslate_scapolite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_STAUROLITE_ORE = registerBlock("deepslate_staurolite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DEEPSLATE_TANZANITE_ORE = registerBlock("deepslate_tanzanite_ore", () -> new Block(Properties.of().strength(4F, 3.5F).requiresCorrectToolForDrops()));
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	//map for ent registry
@@ -675,33 +692,314 @@ public class RegistryBIBI {
 
 	// public static final DeferredBlock<Block> BLOCK_OF_FIRERES_EPICNESS = registerFREpicBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
 
+	// Geode natural blocks
+	
+		// Alexandrite
+		public static final DeferredBlock<Block> BUDDING_ALEXANDRITE_BLOCK = registerBlock("budding_alexandrite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.ALEXANDRITE));
+		public static final DeferredBlock<Block> SMALL_ALEXANDRITE_BUD = registerBlock("small_alexandrite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.ALEXANDRITE));
+		public static final DeferredBlock<Block> MEDIUM_ALEXANDRITE_BUD = registerBlock("medium_alexandrite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.ALEXANDRITE));
+		public static final DeferredBlock<Block> LARGE_ALEXANDRITE_BUD = registerBlock("large_alexandrite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.ALEXANDRITE));
+		public static final DeferredBlock<Block> ALEXANDRITE_CLUSTER = registerBlock("alexandrite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.ALEXANDRITE));
 
-	public static final DeferredBlock<Block> BUDDING_CRYSTAL_BLOCK = registerBlock("budding_crystal_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.CRYSTAL));
+	// Alexandrite building variants
+	public static final DeferredBlock<Block> ALEXANDRITE_BLOCK = registerBlock("alexandrite_block", () -> new GeodeBlockBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_BUTTON = registerBlock("alexandrite_button", () -> new GeodeButtonBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_FENCE = registerBlock("alexandrite_fence", () -> new GeodeFenceBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_FENCE_GATE = registerBlock("alexandrite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_PRESSURE_PLATE = registerBlock("alexandrite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_SLAB = registerBlock("alexandrite_slab", () -> new GeodeSlabBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_STAIRS = registerBlock("alexandrite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_TRAPDOOR = registerBlock("alexandrite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.ALEXANDRITE));
+	public static final DeferredBlock<Block> ALEXANDRITE_WALL = registerBlock("alexandrite_wall", () -> new GeodeWallBlock(GeodeMaterial.ALEXANDRITE));
 
-	public static final DeferredBlock<Block> SMALL_CRYSTAL_BUD = registerBlock("small_crystal_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.CRYSTAL));
-	public static final DeferredBlock<Block> MEDIUM_CRYSTAL_BUD = registerBlock("medium_crystal_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.CRYSTAL));
-	public static final DeferredBlock<Block> LARGE_CRYSTAL_BUD = registerBlock("large_crystal_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.CRYSTAL));
-	public static final DeferredBlock<Block> CRYSTAL_CLUSTER = registerBlock("crystal_cluster", () -> new GeodeClusterBlock(GeodeMaterial.CRYSTAL));
+		// Andalusite
+		public static final DeferredBlock<Block> BUDDING_ANDALUSITE_BLOCK = registerBlock("budding_andalusite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.ANDALUSITE));
+		public static final DeferredBlock<Block> SMALL_ANDALUSITE_BUD = registerBlock("small_andalusite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.ANDALUSITE));
+		public static final DeferredBlock<Block> MEDIUM_ANDALUSITE_BUD = registerBlock("medium_andalusite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.ANDALUSITE));
+		public static final DeferredBlock<Block> LARGE_ANDALUSITE_BUD = registerBlock("large_andalusite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.ANDALUSITE));
+		public static final DeferredBlock<Block> ANDALUSITE_CLUSTER = registerBlock("andalusite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.ANDALUSITE));
 
-	public static final DeferredBlock<Block> CRYSTAL_BLOCK = registerBlock("crystal_block", () -> new GeodeBlockBlock(GeodeMaterial.CRYSTAL));
-	public static final DeferredBlock<Block> CRYSTAL_BUTTON = registerBlock("crystal_button", CrystalButtonBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_FENCE = registerBlock("crystal_fence", CrystalFenceBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_FENCE_GATE = registerBlock("crystal_fence_gate", CrystalFenceGateBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_PRESSURE_PLATE = registerBlock("crystal_pressure_plate", CrystalPressurePlateBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_SLAB = registerBlock("crystal_slab", CrystalSlabBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_STAIRS = registerBlock("crystal_stairs", CrystalStairsBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_WALL = registerBlock("crystal_wall", CrystalWallBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_TRAPDOOR = registerBlock("crystal_trapdoor", CrystalTrapdoorBlock::new);
+	// Andalusite building variants
+	public static final DeferredBlock<Block> ANDALUSITE_BLOCK = registerBlock("andalusite_block", () -> new GeodeBlockBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_BUTTON = registerBlock("andalusite_button", () -> new GeodeButtonBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_FENCE = registerBlock("andalusite_fence", () -> new GeodeFenceBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_FENCE_GATE = registerBlock("andalusite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_PRESSURE_PLATE = registerBlock("andalusite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_SLAB = registerBlock("andalusite_slab", () -> new GeodeSlabBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_STAIRS = registerBlock("andalusite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_TRAPDOOR = registerBlock("andalusite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.ANDALUSITE));
+	public static final DeferredBlock<Block> ANDALUSITE_WALL = registerBlock("andalusite_wall", () -> new GeodeWallBlock(GeodeMaterial.ANDALUSITE));
 
-	public static final DeferredBlock<Block> CRYSTAL_BRICKS = registerBlock("crystal_bricks", CrystalBricksBlock::new);
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_BUTTON = registerBlock("crystal_brick_button", () -> new CrystalButtonBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_FENCE = registerBlock("crystal_brick_fence", () -> new CrystalFenceBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_FENCE_GATE = registerBlock("crystal_brick_fence_gate", () -> new CrystalFenceGateBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_PRESSURE_PLATE = registerBlock("crystal_brick_pressure_plate", () -> new CrystalPressurePlateBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5F, 12F).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_SLAB = registerBlock("crystal_brick_slab", () -> new CrystalSlabBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_STAIRS = registerBlock("crystal_brick_stairs", () -> new CrystalStairsBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_TRAPDOOR = registerBlock("crystal_brick_trapdoor", () -> new CrystalTrapdoorBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> CRYSTAL_BRICK_WALL = registerBlock("crystal_brick_wall", () -> new CrystalWallBlock(Properties.of().sound(SoundType.AMETHYST).strength(5.5f, 12f).lightLevel(s -> 2).requiresCorrectToolForDrops().forceSolidOn()));
+		// Aquamarine
+		public static final DeferredBlock<Block> BUDDING_AQUAMARINE_BLOCK = registerBlock("budding_aquamarine_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.AQUAMARINE));
+		public static final DeferredBlock<Block> SMALL_AQUAMARINE_BUD = registerBlock("small_aquamarine_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.AQUAMARINE));
+		public static final DeferredBlock<Block> MEDIUM_AQUAMARINE_BUD = registerBlock("medium_aquamarine_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.AQUAMARINE));
+		public static final DeferredBlock<Block> LARGE_AQUAMARINE_BUD = registerBlock("large_aquamarine_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.AQUAMARINE));
+		public static final DeferredBlock<Block> AQUAMARINE_CLUSTER = registerBlock("aquamarine_cluster", () -> new GeodeClusterBlock(GeodeMaterial.AQUAMARINE));
+
+	// Aquamarine building variants
+	public static final DeferredBlock<Block> AQUAMARINE_BLOCK = registerBlock("aquamarine_block", () -> new GeodeBlockBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_BUTTON = registerBlock("aquamarine_button", () -> new GeodeButtonBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_FENCE = registerBlock("aquamarine_fence", () -> new GeodeFenceBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_FENCE_GATE = registerBlock("aquamarine_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_PRESSURE_PLATE = registerBlock("aquamarine_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_SLAB = registerBlock("aquamarine_slab", () -> new GeodeSlabBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_STAIRS = registerBlock("aquamarine_stairs", () -> new GeodeStairsBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_TRAPDOOR = registerBlock("aquamarine_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.AQUAMARINE));
+	public static final DeferredBlock<Block> AQUAMARINE_WALL = registerBlock("aquamarine_wall", () -> new GeodeWallBlock(GeodeMaterial.AQUAMARINE));
+
+		// Chrysoberyl
+		public static final DeferredBlock<Block> BUDDING_CHRYSOBERYL_BLOCK = registerBlock("budding_chrysoberyl_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.CHRYSOBERYL));
+		public static final DeferredBlock<Block> SMALL_CHRYSOBERYL_BUD = registerBlock("small_chrysoberyl_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.CHRYSOBERYL));
+		public static final DeferredBlock<Block> MEDIUM_CHRYSOBERYL_BUD = registerBlock("medium_chrysoberyl_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.CHRYSOBERYL));
+		public static final DeferredBlock<Block> LARGE_CHRYSOBERYL_BUD = registerBlock("large_chrysoberyl_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.CHRYSOBERYL));
+		public static final DeferredBlock<Block> CHRYSOBERYL_CLUSTER = registerBlock("chrysoberyl_cluster", () -> new GeodeClusterBlock(GeodeMaterial.CHRYSOBERYL));
+
+	// Chrysoberyl building variants
+	public static final DeferredBlock<Block> CHRYSOBERYL_BLOCK = registerBlock("chrysoberyl_block", () -> new GeodeBlockBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_BUTTON = registerBlock("chrysoberyl_button", () -> new GeodeButtonBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_FENCE = registerBlock("chrysoberyl_fence", () -> new GeodeFenceBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_FENCE_GATE = registerBlock("chrysoberyl_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_PRESSURE_PLATE = registerBlock("chrysoberyl_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_SLAB = registerBlock("chrysoberyl_slab", () -> new GeodeSlabBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_STAIRS = registerBlock("chrysoberyl_stairs", () -> new GeodeStairsBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_TRAPDOOR = registerBlock("chrysoberyl_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.CHRYSOBERYL));
+	public static final DeferredBlock<Block> CHRYSOBERYL_WALL = registerBlock("chrysoberyl_wall", () -> new GeodeWallBlock(GeodeMaterial.CHRYSOBERYL));
+
+		// Corundum
+		public static final DeferredBlock<Block> BUDDING_CORUNDUM_BLOCK = registerBlock("budding_corundum_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.CORUNDUM));
+		public static final DeferredBlock<Block> SMALL_CORUNDUM_BUD = registerBlock("small_corundum_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.CORUNDUM));
+		public static final DeferredBlock<Block> MEDIUM_CORUNDUM_BUD = registerBlock("medium_corundum_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.CORUNDUM));
+		public static final DeferredBlock<Block> LARGE_CORUNDUM_BUD = registerBlock("large_corundum_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.CORUNDUM));
+		public static final DeferredBlock<Block> CORUNDUM_CLUSTER = registerBlock("corundum_cluster", () -> new GeodeClusterBlock(GeodeMaterial.CORUNDUM));
+
+	// Corundum building variants
+	public static final DeferredBlock<Block> CORUNDUM_BLOCK = registerBlock("corundum_block", () -> new GeodeBlockBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_BUTTON = registerBlock("corundum_button", () -> new GeodeButtonBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_FENCE = registerBlock("corundum_fence", () -> new GeodeFenceBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_FENCE_GATE = registerBlock("corundum_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_PRESSURE_PLATE = registerBlock("corundum_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_SLAB = registerBlock("corundum_slab", () -> new GeodeSlabBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_STAIRS = registerBlock("corundum_stairs", () -> new GeodeStairsBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_TRAPDOOR = registerBlock("corundum_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.CORUNDUM));
+	public static final DeferredBlock<Block> CORUNDUM_WALL = registerBlock("corundum_wall", () -> new GeodeWallBlock(GeodeMaterial.CORUNDUM));
+
+	// Cymophane
+		public static final DeferredBlock<Block> BUDDING_CYMOPHANE_BLOCK = registerBlock("budding_cymophane_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.CYMOPHANE));
+		public static final DeferredBlock<Block> SMALL_CYMOPHANE_BUD = registerBlock("small_cymophane_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.CYMOPHANE));
+		public static final DeferredBlock<Block> MEDIUM_CYMOPHANE_BUD = registerBlock("medium_cymophane_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.CYMOPHANE));
+		public static final DeferredBlock<Block> LARGE_CYMOPHANE_BUD = registerBlock("large_cymophane_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.CYMOPHANE));
+		public static final DeferredBlock<Block> CYMOPHANE_CLUSTER = registerBlock("cymophane_cluster", () -> new GeodeClusterBlock(GeodeMaterial.CYMOPHANE));
+
+	// Cymophane building variants
+	public static final DeferredBlock<Block> CYMOPHANE_BLOCK = registerBlock("cymophane_block", () -> new GeodeBlockBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_BUTTON = registerBlock("cymophane_button", () -> new GeodeButtonBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_FENCE = registerBlock("cymophane_fence", () -> new GeodeFenceBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_FENCE_GATE = registerBlock("cymophane_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_PRESSURE_PLATE = registerBlock("cymophane_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_SLAB = registerBlock("cymophane_slab", () -> new GeodeSlabBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_STAIRS = registerBlock("cymophane_stairs", () -> new GeodeStairsBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_TRAPDOOR = registerBlock("cymophane_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.CYMOPHANE));
+	public static final DeferredBlock<Block> CYMOPHANE_WALL = registerBlock("cymophane_wall", () -> new GeodeWallBlock(GeodeMaterial.CYMOPHANE));
+
+	// Dragonite
+		public static final DeferredBlock<Block> BUDDING_DRAGONITE_BLOCK = registerBlock("budding_dragonite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.DRAGONITE));
+		public static final DeferredBlock<Block> SMALL_DRAGONITE_BUD = registerBlock("small_dragonite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.DRAGONITE));
+		public static final DeferredBlock<Block> MEDIUM_DRAGONITE_BUD = registerBlock("medium_dragonite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.DRAGONITE));
+		public static final DeferredBlock<Block> LARGE_DRAGONITE_BUD = registerBlock("large_dragonite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.DRAGONITE));
+		public static final DeferredBlock<Block> DRAGONITE_CLUSTER = registerBlock("dragonite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.DRAGONITE));
+
+	// Dragonite building variants
+	public static final DeferredBlock<Block> DRAGONITE_BLOCK = registerBlock("dragonite_block", () -> new GeodeBlockBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_BUTTON = registerBlock("dragonite_button", () -> new GeodeButtonBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_FENCE = registerBlock("dragonite_fence", () -> new GeodeFenceBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_FENCE_GATE = registerBlock("dragonite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_PRESSURE_PLATE = registerBlock("dragonite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_SLAB = registerBlock("dragonite_slab", () -> new GeodeSlabBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_STAIRS = registerBlock("dragonite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_TRAPDOOR = registerBlock("dragonite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.DRAGONITE));
+	public static final DeferredBlock<Block> DRAGONITE_WALL = registerBlock("dragonite_wall", () -> new GeodeWallBlock(GeodeMaterial.DRAGONITE));
+
+		// Diamond
+		public static final DeferredBlock<Block> BUDDING_DIAMOND_BLOCK = registerBlock("budding_diamond_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.DIAMOND));
+		public static final DeferredBlock<Block> SMALL_DIAMOND_BUD = registerBlock("small_diamond_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.DIAMOND));
+		public static final DeferredBlock<Block> MEDIUM_DIAMOND_BUD = registerBlock("medium_diamond_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.DIAMOND));
+		public static final DeferredBlock<Block> LARGE_DIAMOND_BUD = registerBlock("large_diamond_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.DIAMOND));
+		public static final DeferredBlock<Block> DIAMOND_CLUSTER = registerBlock("diamond_cluster", () -> new GeodeClusterBlock(GeodeMaterial.DIAMOND));
+
+	// Diamond building variants
+	public static final DeferredBlock<Block> DIAMOND_BLOCK = registerBlock("diamond_block", () -> new GeodeBlockBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_BUTTON = registerBlock("diamond_button", () -> new GeodeButtonBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_FENCE = registerBlock("diamond_fence", () -> new GeodeFenceBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_FENCE_GATE = registerBlock("diamond_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_PRESSURE_PLATE = registerBlock("diamond_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_SLAB = registerBlock("diamond_slab", () -> new GeodeSlabBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_STAIRS = registerBlock("diamond_stairs", () -> new GeodeStairsBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_TRAPDOOR = registerBlock("diamond_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.DIAMOND));
+	public static final DeferredBlock<Block> DIAMOND_WALL = registerBlock("diamond_wall", () -> new GeodeWallBlock(GeodeMaterial.DIAMOND));
+
+		// Jadeite
+		public static final DeferredBlock<Block> BUDDING_JADEITE_BLOCK = registerBlock("budding_jadeite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.JADEITE));
+		public static final DeferredBlock<Block> SMALL_JADEITE_BUD = registerBlock("small_jadeite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.JADEITE));
+		public static final DeferredBlock<Block> MEDIUM_JADEITE_BUD = registerBlock("medium_jadeite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.JADEITE));
+		public static final DeferredBlock<Block> LARGE_JADEITE_BUD = registerBlock("large_jadeite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.JADEITE));
+		public static final DeferredBlock<Block> JADEITE_CLUSTER = registerBlock("jadeite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.JADEITE));
+
+	// Jadeite building variants
+	public static final DeferredBlock<Block> JADEITE_BLOCK = registerBlock("jadeite_block", () -> new GeodeBlockBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_BUTTON = registerBlock("jadeite_button", () -> new GeodeButtonBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_FENCE = registerBlock("jadeite_fence", () -> new GeodeFenceBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_FENCE_GATE = registerBlock("jadeite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_PRESSURE_PLATE = registerBlock("jadeite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_SLAB = registerBlock("jadeite_slab", () -> new GeodeSlabBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_STAIRS = registerBlock("jadeite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_TRAPDOOR = registerBlock("jadeite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.JADEITE));
+	public static final DeferredBlock<Block> JADEITE_WALL = registerBlock("jadeite_wall", () -> new GeodeWallBlock(GeodeMaterial.JADEITE));
+
+		// Emerald
+		public static final DeferredBlock<Block> BUDDING_EMERALD_BLOCK = registerBlock("budding_emerald_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.EMERALD));
+		public static final DeferredBlock<Block> SMALL_EMERALD_BUD = registerBlock("small_emerald_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.EMERALD));
+		public static final DeferredBlock<Block> MEDIUM_EMERALD_BUD = registerBlock("medium_emerald_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.EMERALD));
+		public static final DeferredBlock<Block> LARGE_EMERALD_BUD = registerBlock("large_emerald_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.EMERALD));
+		public static final DeferredBlock<Block> EMERALD_CLUSTER = registerBlock("emerald_cluster", () -> new GeodeClusterBlock(GeodeMaterial.EMERALD));
+
+	// Emerald building variants
+	public static final DeferredBlock<Block> EMERALD_BLOCK = registerBlock("emerald_block", () -> new GeodeBlockBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_BUTTON = registerBlock("emerald_button", () -> new GeodeButtonBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_FENCE = registerBlock("emerald_fence", () -> new GeodeFenceBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_FENCE_GATE = registerBlock("emerald_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_PRESSURE_PLATE = registerBlock("emerald_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_SLAB = registerBlock("emerald_slab", () -> new GeodeSlabBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_STAIRS = registerBlock("emerald_stairs", () -> new GeodeStairsBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_TRAPDOOR = registerBlock("emerald_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.EMERALD));
+	public static final DeferredBlock<Block> EMERALD_WALL = registerBlock("emerald_wall", () -> new GeodeWallBlock(GeodeMaterial.EMERALD));
+
+		// Opalite
+		public static final DeferredBlock<Block> BUDDING_OPALITE_BLOCK = registerBlock("budding_opalite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.OPALITE));
+		public static final DeferredBlock<Block> SMALL_OPALITE_BUD = registerBlock("small_opalite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.OPALITE));
+		public static final DeferredBlock<Block> MEDIUM_OPALITE_BUD = registerBlock("medium_opalite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.OPALITE));
+		public static final DeferredBlock<Block> LARGE_OPALITE_BUD = registerBlock("large_opalite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.OPALITE));
+		public static final DeferredBlock<Block> OPALITE_CLUSTER = registerBlock("opalite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.OPALITE));
+
+	// Opalite building variants
+	public static final DeferredBlock<Block> OPALITE_BLOCK = registerBlock("opalite_block", () -> new GeodeBlockBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_BUTTON = registerBlock("opalite_button", () -> new GeodeButtonBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_FENCE = registerBlock("opalite_fence", () -> new GeodeFenceBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_FENCE_GATE = registerBlock("opalite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_PRESSURE_PLATE = registerBlock("opalite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_SLAB = registerBlock("opalite_slab", () -> new GeodeSlabBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_STAIRS = registerBlock("opalite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_TRAPDOOR = registerBlock("opalite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.OPALITE));
+	public static final DeferredBlock<Block> OPALITE_WALL = registerBlock("opalite_wall", () -> new GeodeWallBlock(GeodeMaterial.OPALITE));
+
+		// Padparadscha
+		public static final DeferredBlock<Block> BUDDING_PADPARADSCHA_BLOCK = registerBlock("budding_padparadscha_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.PADPARADSCHA));
+		public static final DeferredBlock<Block> SMALL_PADPARADSCHA_BUD = registerBlock("small_padparadscha_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.PADPARADSCHA));
+		public static final DeferredBlock<Block> MEDIUM_PADPARADSCHA_BUD = registerBlock("medium_padparadscha_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.PADPARADSCHA));
+		public static final DeferredBlock<Block> LARGE_PADPARADSCHA_BUD = registerBlock("large_padparadscha_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.PADPARADSCHA));
+		public static final DeferredBlock<Block> PADPARADSCHA_CLUSTER = registerBlock("padparadscha_cluster", () -> new GeodeClusterBlock(GeodeMaterial.PADPARADSCHA));
+
+	// Padparadscha building variants
+	public static final DeferredBlock<Block> PADPARADSCHA_BLOCK = registerBlock("padparadscha_block", () -> new GeodeBlockBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_BUTTON = registerBlock("padparadscha_button", () -> new GeodeButtonBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_FENCE = registerBlock("padparadscha_fence", () -> new GeodeFenceBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_FENCE_GATE = registerBlock("padparadscha_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_PRESSURE_PLATE = registerBlock("padparadscha_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_SLAB = registerBlock("padparadscha_slab", () -> new GeodeSlabBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_STAIRS = registerBlock("padparadscha_stairs", () -> new GeodeStairsBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_TRAPDOOR = registerBlock("padparadscha_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.PADPARADSCHA));
+	public static final DeferredBlock<Block> PADPARADSCHA_WALL = registerBlock("padparadscha_wall", () -> new GeodeWallBlock(GeodeMaterial.PADPARADSCHA));
+
+		// Ruby
+		 public static final DeferredBlock<Block> BUDDING_RUBY_BLOCK = registerBlock("budding_ruby_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.RUBY));
+		 public static final DeferredBlock<Block> SMALL_RUBY_BUD = registerBlock("small_ruby_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.RUBY));
+		 public static final DeferredBlock<Block> MEDIUM_RUBY_BUD = registerBlock("medium_ruby_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.RUBY));
+		 public static final DeferredBlock<Block> LARGE_RUBY_BUD = registerBlock("large_ruby_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.RUBY));
+		 public static final DeferredBlock<Block> RUBY_CLUSTER = registerBlock("ruby_cluster", () -> new GeodeClusterBlock(GeodeMaterial.RUBY));
+
+	// Ruby building variants
+	public static final DeferredBlock<Block> RUBY_BLOCK = registerBlock("ruby_block", () -> new GeodeBlockBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_BUTTON = registerBlock("ruby_button", () -> new GeodeButtonBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_FENCE = registerBlock("ruby_fence", () -> new GeodeFenceBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_FENCE_GATE = registerBlock("ruby_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_PRESSURE_PLATE = registerBlock("ruby_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_SLAB = registerBlock("ruby_slab", () -> new GeodeSlabBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_STAIRS = registerBlock("ruby_stairs", () -> new GeodeStairsBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_WALL = registerBlock("ruby_wall", () -> new GeodeWallBlock(GeodeMaterial.RUBY));
+	public static final DeferredBlock<Block> RUBY_TRAPDOOR = registerBlock("ruby_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.RUBY));
+
+		// Sapphire
+		public static final DeferredBlock<Block> BUDDING_SAPPHIRE_BLOCK = registerBlock("budding_sapphire_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.SAPPHIRE));
+		public static final DeferredBlock<Block> SMALL_SAPPHIRE_BUD = registerBlock("small_sapphire_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.SAPPHIRE));
+		public static final DeferredBlock<Block> MEDIUM_SAPPHIRE_BUD = registerBlock("medium_sapphire_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.SAPPHIRE));
+		public static final DeferredBlock<Block> LARGE_SAPPHIRE_BUD = registerBlock("large_sapphire_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.SAPPHIRE));
+		public static final DeferredBlock<Block> SAPPHIRE_CLUSTER = registerBlock("sapphire_cluster", () -> new GeodeClusterBlock(GeodeMaterial.SAPPHIRE));
+
+	// Sapphire building variants
+	public static final DeferredBlock<Block> SAPPHIRE_BLOCK = registerBlock("sapphire_block", () -> new GeodeBlockBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_BUTTON = registerBlock("sapphire_button", () -> new GeodeButtonBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_FENCE = registerBlock("sapphire_fence", () -> new GeodeFenceBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_FENCE_GATE = registerBlock("sapphire_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_PRESSURE_PLATE = registerBlock("sapphire_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_SLAB = registerBlock("sapphire_slab", () -> new GeodeSlabBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_STAIRS = registerBlock("sapphire_stairs", () -> new GeodeStairsBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_TRAPDOOR = registerBlock("sapphire_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.SAPPHIRE));
+	public static final DeferredBlock<Block> SAPPHIRE_WALL = registerBlock("sapphire_wall", () -> new GeodeWallBlock(GeodeMaterial.SAPPHIRE));
+
+		// Scapolite
+		public static final DeferredBlock<Block> BUDDING_SCAPOLITE_BLOCK = registerBlock("budding_scapolite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.SCAPOLITE));
+		public static final DeferredBlock<Block> SMALL_SCAPOLITE_BUD = registerBlock("small_scapolite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.SCAPOLITE));
+		public static final DeferredBlock<Block> MEDIUM_SCAPOLITE_BUD = registerBlock("medium_scapolite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.SCAPOLITE));
+		public static final DeferredBlock<Block> LARGE_SCAPOLITE_BUD = registerBlock("large_scapolite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.SCAPOLITE));
+		public static final DeferredBlock<Block> SCAPOLITE_CLUSTER = registerBlock("scapolite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.SCAPOLITE));
+
+	// Scapolite building variants
+	public static final DeferredBlock<Block> SCAPOLITE_BLOCK = registerBlock("scapolite_block", () -> new GeodeBlockBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_BUTTON = registerBlock("scapolite_button", () -> new GeodeButtonBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_FENCE = registerBlock("scapolite_fence", () -> new GeodeFenceBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_FENCE_GATE = registerBlock("scapolite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_PRESSURE_PLATE = registerBlock("scapolite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_SLAB = registerBlock("scapolite_slab", () -> new GeodeSlabBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_STAIRS = registerBlock("scapolite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_TRAPDOOR = registerBlock("scapolite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.SCAPOLITE));
+	public static final DeferredBlock<Block> SCAPOLITE_WALL = registerBlock("scapolite_wall", () -> new GeodeWallBlock(GeodeMaterial.SCAPOLITE));
+
+		// Staurolite
+		public static final DeferredBlock<Block> BUDDING_STAUROLITE_BLOCK = registerBlock("budding_staurolite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.STAUROLITE));
+		public static final DeferredBlock<Block> SMALL_STAUROLITE_BUD = registerBlock("small_staurolite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.STAUROLITE));
+		public static final DeferredBlock<Block> MEDIUM_STAUROLITE_BUD = registerBlock("medium_staurolite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.STAUROLITE));
+		public static final DeferredBlock<Block> LARGE_STAUROLITE_BUD = registerBlock("large_staurolite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.STAUROLITE));
+		public static final DeferredBlock<Block> STAUROLITE_CLUSTER = registerBlock("staurolite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.STAUROLITE));
+
+	// Staurolite building variants
+	public static final DeferredBlock<Block> STAUROLITE_BLOCK = registerBlock("staurolite_block", () -> new GeodeBlockBlock(GeodeMaterial.STAUROLITE));
+	public static final DeferredBlock<Block> STAUROLITE_BUTTON = registerBlock("staurolite_button", () -> new GeodeButtonBlock(GeodeMaterial.STAUROLITE));
+	public static final DeferredBlock<Block> STAUROLITE_FENCE = registerBlock("staurolite_fence", () -> new GeodeFenceBlock(GeodeMaterial.STAUROLITE));
+	public static final DeferredBlock<Block> STAUROLITE_FENCE_GATE = registerBlock("staurolite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.STAUROLITE));
+	public static final DeferredBlock<Block> STAUROLITE_PRESSURE_PLATE = registerBlock("staurolite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.STAUROLITE));
+	public static final DeferredBlock<Block> STAUROLITE_SLAB = registerBlock("staurolite_slab", () -> new GeodeSlabBlock(GeodeMaterial.STAUROLITE));
+	public static final DeferredBlock<Block> STAUROLITE_STAIRS = registerBlock("staurolite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.STAUROLITE));
+		public static final DeferredBlock<Block> STAUROLITE_TRAPDOOR = registerBlock("staurolite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.STAUROLITE));
+		public static final DeferredBlock<Block> STAUROLITE_WALL = registerBlock("staurolite_wall", () -> new GeodeWallBlock(GeodeMaterial.STAUROLITE));
+
+		// Tanzanite
+		public static final DeferredBlock<Block> BUDDING_TANZANITE_BLOCK = registerBlock("budding_tanzanite_block", () -> new BuddingGeodeBlockBlock(GeodeMaterial.TANZANITE));
+		public static final DeferredBlock<Block> SMALL_TANZANITE_BUD = registerBlock("small_tanzanite_bud", () -> new SmallGeodeBudBlock(GeodeMaterial.TANZANITE));
+		public static final DeferredBlock<Block> MEDIUM_TANZANITE_BUD = registerBlock("medium_tanzanite_bud", () -> new MediumGeodeBudBlock(GeodeMaterial.TANZANITE));
+		public static final DeferredBlock<Block> LARGE_TANZANITE_BUD = registerBlock("large_tanzanite_bud", () -> new LargeGeodeBudBlock(GeodeMaterial.TANZANITE));
+		public static final DeferredBlock<Block> TANZANITE_CLUSTER = registerBlock("tanzanite_cluster", () -> new GeodeClusterBlock(GeodeMaterial.TANZANITE));
+
+	// Tanzanite building variants
+	public static final DeferredBlock<Block> TANZANITE_BLOCK = registerBlock("tanzanite_block", () -> new GeodeBlockBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_BUTTON = registerBlock("tanzanite_button", () -> new GeodeButtonBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_FENCE = registerBlock("tanzanite_fence", () -> new GeodeFenceBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_FENCE_GATE = registerBlock("tanzanite_fence_gate", () -> new GeodeFenceGateBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_PRESSURE_PLATE = registerBlock("tanzanite_pressure_plate", () -> new GeodePressurePlateBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_SLAB = registerBlock("tanzanite_slab", () -> new GeodeSlabBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_STAIRS = registerBlock("tanzanite_stairs", () -> new GeodeStairsBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_TRAPDOOR = registerBlock("tanzanite_trapdoor", () -> new GeodeTrapdoorBlock(GeodeMaterial.TANZANITE));
+	public static final DeferredBlock<Block> TANZANITE_WALL = registerBlock("tanzanite_wall", () -> new GeodeWallBlock(GeodeMaterial.TANZANITE));
+
 
 
 	public static final DeferredBlock<Block> BOUNCE_CRATE = registerUncommonBlock("bounce_crate", BounceCrateBlock::new);
@@ -720,8 +1018,6 @@ public class RegistryBIBI {
 	/*[Register Items]*/
 	public static final DeferredItem<Item> TEST_ITEM = ITEMSREGISTRY.registerItem("test_item", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 
-	public static final DeferredItem<Item> ANCIENT_CHUNK = ITEMSREGISTRY.registerItem("ancient_chunk", Item::new, new Item.Properties().stacksTo(64).fireResistant());
-
 	public static final DeferredItem<Item> CHISEL = ITEMSREGISTRY.register("chisel", ChiselItem::new);
 	public static final DeferredItem<Item> SCULK_HAMMER = ITEMSREGISTRY.register("sculk_hammer", SculkHammerItem::new);
 
@@ -733,6 +1029,11 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> FLAWLESS_ALEXANDRITE = ITEMSREGISTRY.registerItem("flawless_alexandrite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_ALEXANDRITE = ITEMSREGISTRY.registerItem("perfect_alexandrite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_ALEXANDRITE = ITEMSREGISTRY.registerItem("brilliant_alexandrite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+	public static final DeferredItem<Item> CRUDE_AMETHYST = ITEMSREGISTRY.registerItem("crude_amethyst", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_AMETHYST = ITEMSREGISTRY.registerItem("flawless_amethyst", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_AMETHYST = ITEMSREGISTRY.registerItem("perfect_amethyst", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_AMETHYST = ITEMSREGISTRY.registerItem("brilliant_amethyst", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> CRUDE_ANDALUSITE = ITEMSREGISTRY.registerItem("crude_andalusite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> ANDALUSITE = ITEMSREGISTRY.registerItem("andalusite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
@@ -763,12 +1064,22 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> FLAWLESS_CYMOPHANE = ITEMSREGISTRY.registerItem("flawless_cymophane", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_CYMOPHANE = ITEMSREGISTRY.registerItem("perfect_cymophane", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_CYMOPHANE = ITEMSREGISTRY.registerItem("brilliant_cymophane", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+	public static final DeferredItem<Item> CRUDE_DIAMOND = ITEMSREGISTRY.registerItem("crude_diamond", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_DIAMOND = ITEMSREGISTRY.registerItem("flawless_diamond", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_DIAMOND = ITEMSREGISTRY.registerItem("perfect_diamond", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_DIAMOND = ITEMSREGISTRY.registerItem("brilliant_diamond", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	
 	public static final DeferredItem<Item> CRUDE_DRAGONITE = ITEMSREGISTRY.registerItem("crude_dragonite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> DRAGONITE = ITEMSREGISTRY.registerItem("dragonite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 	public static final DeferredItem<Item> FLAWLESS_DRAGONITE = ITEMSREGISTRY.registerItem("flawless_dragonite", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
 	public static final DeferredItem<Item> PERFECT_DRAGONITE = ITEMSREGISTRY.registerItem("perfect_dragonite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_DRAGONITE = ITEMSREGISTRY.registerItem("brilliant_dragonite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+
+	public static final DeferredItem<Item> CRUDE_EMERALD = ITEMSREGISTRY.registerItem("crude_emerald", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
+	public static final DeferredItem<Item> FLAWLESS_EMERALD = ITEMSREGISTRY.registerItem("flawless_emerald", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> PERFECT_EMERALD = ITEMSREGISTRY.registerItem("perfect_emerald", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
+	public static final DeferredItem<Item> BRILLIANT_EMERALD = ITEMSREGISTRY.registerItem("brilliant_emerald", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
 	public static final DeferredItem<Item> CRUDE_JADEITE = ITEMSREGISTRY.registerItem("crude_jadeite", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
 	public static final DeferredItem<Item> JADEITE = ITEMSREGISTRY.registerItem("jadeite", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
@@ -818,29 +1129,16 @@ public class RegistryBIBI {
 	public static final DeferredItem<Item> PERFECT_TANZANITE = ITEMSREGISTRY.registerItem("perfect_tanzanite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 	public static final DeferredItem<Item> BRILLIANT_TANZANITE = ITEMSREGISTRY.registerItem("brilliant_tanzanite", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
 
-	public static final DeferredItem<Item> CRUDE_AMETHYST = ITEMSREGISTRY.registerItem("crude_amethyst", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
-	public static final DeferredItem<Item> FLAWLESS_AMETHYST = ITEMSREGISTRY.registerItem("flawless_amethyst", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
-	public static final DeferredItem<Item> PERFECT_AMETHYST = ITEMSREGISTRY.registerItem("perfect_amethyst", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-	public static final DeferredItem<Item> BRILLIANT_AMETHYST = ITEMSREGISTRY.registerItem("brilliant_amethyst", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-
-	public static final DeferredItem<Item> CRUDE_EMERALD = ITEMSREGISTRY.registerItem("crude_emerald", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
-	public static final DeferredItem<Item> FLAWLESS_EMERALD = ITEMSREGISTRY.registerItem("flawless_emerald", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
-	public static final DeferredItem<Item> PERFECT_EMERALD = ITEMSREGISTRY.registerItem("perfect_emerald", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-	public static final DeferredItem<Item> BRILLIANT_EMERALD = ITEMSREGISTRY.registerItem("brilliant_emerald", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-
-	public static final DeferredItem<Item> CRUDE_DIAMOND = ITEMSREGISTRY.registerItem("crude_diamond", Item::new, new Item.Properties().rarity(Rarity.COMMON).stacksTo(64));
-	public static final DeferredItem<Item> FLAWLESS_DIAMOND = ITEMSREGISTRY.registerItem("flawless_diamond", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
-	public static final DeferredItem<Item> PERFECT_DIAMOND = ITEMSREGISTRY.registerItem("perfect_diamond", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-	public static final DeferredItem<Item> BRILLIANT_DIAMOND = ITEMSREGISTRY.registerItem("brilliant_diamond", Item::new, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1));
-
 	public static final DeferredItem<Item> GEMSTONE_DUST = ITEMSREGISTRY.registerItem("gemstone_dust", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64));
 
+	public static final DeferredItem<Item> RAW_ONYX = ITEMSREGISTRY.registerItem("raw_onyx", Item::new, new Item.Properties().stacksTo(64));
+	public static final DeferredItem<Item> RAW_TITANIUM = ITEMSREGISTRY.registerItem("raw_titanium", Item::new, new Item.Properties().stacksTo(64));
 
-	public static final DeferredItem<Item> CRYSTAL_SHARD = ITEMSREGISTRY.registerItem("crystal_shard", Item::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(64));
+	public static final DeferredItem<Item> ONYX_INGOT = ITEMSREGISTRY.registerItem("onyx_ingot", Item::new, new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC));
+	public static final DeferredItem<Item> TITANIUM_INGOT = ITEMSREGISTRY.registerItem("titanium_ingot", Item::new, new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC));
 
-
+	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.registerItem("crying_ingot", Item::new, new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.EPIC));
 	public static final DeferredItem<Item> CRYING_ESSENCE_BUCKET = ITEMSREGISTRY.register("crying_essence_bucket", CryingEssenceItem::new);
-	public static final DeferredItem<Item> CRYING_INGOT = ITEMSREGISTRY.register("crying_ingot", CryingIngotItem::new);
 	public static final DeferredItem<Item> CRYING_SMITHING_TEMPLATE = ITEMSREGISTRY.register("crying_smithing_template", CryingSmithingTemplateItem::new);
 
 	public static final DeferredItem<Item> CRYING_AXE = ITEMSREGISTRY.register("crying_axe", CryingAxeItem::new);

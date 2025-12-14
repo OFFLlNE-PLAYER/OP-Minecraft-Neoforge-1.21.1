@@ -3,6 +3,7 @@ package net.offllneplayer.opminecraft.blocks._block._geode.geode;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -13,11 +14,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.DirectionalBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -53,7 +49,7 @@ public class GeodeClusterBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public Integer getBeaconColorMultiplier(BlockState state, LevelReader world, BlockPos pos, BlockPos beaconPos) {
-        return 0xff00e7ff;
+        return material.beaconColor();
     }
 
     @Override
@@ -109,13 +105,24 @@ public class GeodeClusterBlock extends Block implements SimpleWaterloggedBlock {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
-        if (state.getValue(WATERLOGGED)) {
-            world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
-        }
-        return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
-    }
+	@Override
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
+		if (state.getValue(WATERLOGGED)) {
+			world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+		}
+		// Drop if no longer supported
+		if (!canSurvive(state, world, currentPos)) {
+			return state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+		}
+		return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
+	}
+
+	@Override
+	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+		Direction dir = state.getValue(FACING);
+		BlockPos supportPos = pos.relative(dir.getOpposite());
+		return world.getBlockState(supportPos).isFaceSturdy(world, supportPos, dir);
+	}
 
     @Override
     public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {

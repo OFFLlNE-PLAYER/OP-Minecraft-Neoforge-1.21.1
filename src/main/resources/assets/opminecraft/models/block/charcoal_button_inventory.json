@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/button_inventory",
   "textures": {
     "particle": "opminecraft:block/text_block_of_charcoal",

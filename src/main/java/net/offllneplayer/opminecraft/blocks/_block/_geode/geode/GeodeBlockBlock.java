@@ -44,7 +44,7 @@ public class GeodeBlockBlock extends Block {
 
     @Override
     public Integer getBeaconColorMultiplier(BlockState state, LevelReader world, BlockPos pos, BlockPos beaconPos) {
-        return 0x00E7FF; // same as previous crystal color; material-based tinting can be added later
+        return material.beaconColor();
     }
 
     @Override

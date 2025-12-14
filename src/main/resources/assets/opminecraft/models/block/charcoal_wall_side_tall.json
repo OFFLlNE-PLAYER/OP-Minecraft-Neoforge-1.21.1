@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/template_wall_side_tall",
   "textures": {
     "wall": "opminecraft:block/text_block_of_charcoal",

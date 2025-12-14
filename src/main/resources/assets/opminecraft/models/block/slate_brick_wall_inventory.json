@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/wall_inventory",
   "textures": {
     "wall": "opminecraft:block/text_slate_bricks",

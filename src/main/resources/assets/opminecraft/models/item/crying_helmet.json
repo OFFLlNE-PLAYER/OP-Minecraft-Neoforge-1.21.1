@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "minecraft:item/generated",
   "overrides": [
     {

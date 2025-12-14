@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/cube_bottom_top",
   "textures": {
     "particle": "opminecraft:block/text_slate_bricks",

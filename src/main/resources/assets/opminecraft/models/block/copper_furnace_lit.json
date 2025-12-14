@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "opminecraft:block/netherite_furnace",
   "ambientocclusion": false,
   "render_type": "cutout_mipped",

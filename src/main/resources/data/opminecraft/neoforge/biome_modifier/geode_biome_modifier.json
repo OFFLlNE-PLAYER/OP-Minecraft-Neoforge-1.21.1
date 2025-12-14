@@ -1,0 +1,24 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "opminecraft:alexandrite_geode",
+    "opminecraft:andalusite_geode",
+    "opminecraft:aquamarine_geode",
+    "opminecraft:chrysoberyl_geode",
+    "opminecraft:corundum_geode",
+    "opminecraft:cymophane_geode",
+    "opminecraft:diamond_geode",
+    "opminecraft:dragonite_geode",
+    "opminecraft:emerald_geode",
+    "opminecraft:jadeite_geode",
+    "opminecraft:opalite_geode",
+    "opminecraft:padparadscha_geode",
+    "opminecraft:ruby_geode",
+    "opminecraft:sapphire_geode",
+    "opminecraft:scapolite_geode",
+    "opminecraft:staurolite_geode",
+    "opminecraft:tanzanite_geode"
+  ],
+  "step": "local_modifications"
+}

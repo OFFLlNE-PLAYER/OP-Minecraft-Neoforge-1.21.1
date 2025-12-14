@@ -1,8 +1,0 @@
-{
-  "parent": "block/button",
-  "textures": {
-    "particle": "opminecraft:block/geode/text_crystal_block",
-    "texture": "opminecraft:block/geode/text_crystal_block"
-  },
-  "render_type": "solid"
-}

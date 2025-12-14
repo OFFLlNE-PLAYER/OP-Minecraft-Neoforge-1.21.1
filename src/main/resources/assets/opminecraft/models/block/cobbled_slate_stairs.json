@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/stairs",
   "textures": {
     "particle": "opminecraft:block/cobbled_slate",

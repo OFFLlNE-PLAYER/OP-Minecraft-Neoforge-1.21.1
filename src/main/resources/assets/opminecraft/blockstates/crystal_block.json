@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "axis=x": { "model": "opminecraft:block/crystal_block" },
-    "axis=y": { "model": "opminecraft:block/crystal_block" },
-    "axis=z": { "model": "opminecraft:block/crystal_block" }
-  }
-}

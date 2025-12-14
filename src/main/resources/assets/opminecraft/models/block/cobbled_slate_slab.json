@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/slab",
   "textures": {
     "bottom": "opminecraft:block/cobbled_slate",

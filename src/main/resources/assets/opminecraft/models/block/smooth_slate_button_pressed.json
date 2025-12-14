@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/button_pressed",
   "textures": {
     "particle": "opminecraft:block/text_smooth_slate",

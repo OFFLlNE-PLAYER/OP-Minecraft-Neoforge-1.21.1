@@ -1,4 +1,4 @@
-{
+﻿{
     "parent": "opminecraft:block/titan_oplamp_black_hanging",
     "textures": {
       "0": "opminecraft:block/oplamp/text_oplamp_gray",

@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/template_wall_post",
   "textures": {
     "wall": "opminecraft:block/text_stone_tiles",

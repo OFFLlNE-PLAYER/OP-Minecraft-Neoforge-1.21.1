@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "opminecraft:item/stuck_op_sword",
   "textures": {
     "0": "opminecraft:item/sw0rd/text_crying_sword",

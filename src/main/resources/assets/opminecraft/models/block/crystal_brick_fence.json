@@ -1,8 +1,0 @@
-{
-  "parent": "block/fence_side",
-  "textures": {
-    "texture": "opminecraft:block/geode/text_crystal_bricks",
-    "particle": "opminecraft:block/geode/text_crystal_bricks"
-  },
-  "render_type": "solid"
-}

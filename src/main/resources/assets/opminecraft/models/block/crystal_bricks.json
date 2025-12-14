@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "opminecraft:block/geode/text_crystal_bricks",
-    "particle": "opminecraft:block/geode/text_crystal_bricks"
-  },
-  "render_type": "solid"
-}

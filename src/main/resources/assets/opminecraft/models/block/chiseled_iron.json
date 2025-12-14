@@ -1,12 +1,7 @@
-{
-  "parent": "block/cube",
+﻿{
+  "parent": "opminecraft:block/chiseled_netherite",
   "textures": {
-    "down": "opminecraft:block/text_chiseled_iron",
-    "up": "opminecraft:block/text_chiseled_iron",
-    "north": "opminecraft:block/text_chiseled_iron",
-    "east": "opminecraft:block/text_chiseled_iron",
-    "south": "opminecraft:block/text_chiseled_iron",
-    "west": "opminecraft:block/text_chiseled_iron",
+    "1": "opminecraft:block/text_chiseled_iron",
     "particle": "opminecraft:block/text_chiseled_iron"
   },
   "render_type": "solid",

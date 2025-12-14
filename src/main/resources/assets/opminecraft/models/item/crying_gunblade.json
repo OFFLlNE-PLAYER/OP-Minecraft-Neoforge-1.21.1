@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "opminecraft:item/titan_gunblade",
   "textures": {
     "0": "opminecraft:item/gunblade/text_crying_gunblade",

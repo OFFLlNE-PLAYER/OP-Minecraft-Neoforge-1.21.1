@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "opminecraft:item/brilliant_gem",
   "textures": {
     "0": "opminecraft:item/gem/text_brilliant_tanzanite"

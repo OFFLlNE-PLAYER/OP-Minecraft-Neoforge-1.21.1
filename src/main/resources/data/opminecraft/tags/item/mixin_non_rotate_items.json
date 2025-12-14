@@ -369,17 +369,17 @@
 
     "#opminecraft:balloons",
 
-    "opminecraft:brilliant_amethyst",
-    "opminecraft:brilliant_diamond",
-    "opminecraft:brilliant_emerald",
 
     "opminecraft:brilliant_alexandrite",
+    "opminecraft:brilliant_amethyst",
     "opminecraft:brilliant_andalusite",
     "opminecraft:brilliant_aquamarine",
     "opminecraft:brilliant_chrysoberyl",
     "opminecraft:brilliant_corundum",
     "opminecraft:brilliant_cymophane",
+    "opminecraft:brilliant_diamond",
     "opminecraft:brilliant_dragonite",
+    "opminecraft:brilliant_emerald",
     "opminecraft:brilliant_jadeite",
     "opminecraft:brilliant_opalite",
     "opminecraft:brilliant_padparadscha",
@@ -389,9 +389,134 @@
     "opminecraft:brilliant_staurolite",
     "opminecraft:brilliant_tanzanite",
 
+    "opminecraft:alexandrite_block",
+    "opminecraft:budding_alexandrite_block",
+    "opminecraft:alexandrite_cluster",
+    "opminecraft:small_alexandrite_bud",
+    "opminecraft:medium_alexandrite_bud",
+    "opminecraft:large_alexandrite_bud",
+
+    "opminecraft:andalusite_block",
+    "opminecraft:budding_andalusite_block",
+    "opminecraft:andalusite_cluster",
+    "opminecraft:small_andalusite_bud",
+    "opminecraft:medium_andalusite_bud",
+    "opminecraft:large_andalusite_bud",
+
+    "opminecraft:aquamarine_block",
+    "opminecraft:budding_aquamarine_block",
+    "opminecraft:aquamarine_cluster",
+    "opminecraft:small_aquamarine_bud",
+    "opminecraft:medium_aquamarine_bud",
+    "opminecraft:large_aquamarine_bud",
+
+    "opminecraft:chrysoberyl_block",
+    "opminecraft:budding_chrysoberyl_block",
+    "opminecraft:chrysoberyl_cluster",
+    "opminecraft:small_chrysoberyl_bud",
+    "opminecraft:medium_chrysoberyl_bud",
+    "opminecraft:large_chrysoberyl_bud",
+
+    "opminecraft:cymophane_block",
+    "opminecraft:budding_cymophane_block",
+    "opminecraft:cymophane_cluster",
+    "opminecraft:small_cymophane_bud",
+    "opminecraft:medium_cymophane_bud",
+    "opminecraft:large_cymophane_bud",
+
+    "opminecraft:diamond_block",
+    "opminecraft:budding_diamond_block",
+    "opminecraft:diamond_cluster",
+    "opminecraft:small_diamond_bud",
+    "opminecraft:medium_diamond_bud",
+    "opminecraft:large_diamond_bud",
+
+    "opminecraft:dragonite_block",
+    "opminecraft:budding_dragonite_block",
+    "opminecraft:dragonite_cluster",
+    "opminecraft:small_dragonite_bud",
+    "opminecraft:medium_dragonite_bud",
+    "opminecraft:large_dragonite_bud",
+
+    "opminecraft:emerald_block",
+    "opminecraft:budding_emerald_block",
+    "opminecraft:emerald_cluster",
+    "opminecraft:small_emerald_bud",
+    "opminecraft:medium_emerald_bud",
+    "opminecraft:large_emerald_bud",
+
+    "opminecraft:jadeite_block",
+    "opminecraft:budding_jadeite_block",
+    "opminecraft:jadeite_cluster",
+    "opminecraft:small_jadeite_bud",
+    "opminecraft:medium_jadeite_bud",
+    "opminecraft:large_jadeite_bud",
+
+    "opminecraft:opalite_block",
+    "opminecraft:budding_opalite_block",
+    "opminecraft:opalite_cluster",
+    "opminecraft:small_opalite_bud",
+    "opminecraft:medium_opalite_bud",
+    "opminecraft:large_opalite_bud",
+
+    "opminecraft:padparadscha_block",
+    "opminecraft:budding_padparadscha_block",
+    "opminecraft:padparadscha_cluster",
+    "opminecraft:small_padparadscha_bud",
+    "opminecraft:medium_padparadscha_bud",
+    "opminecraft:large_padparadscha_bud",
+
+    "opminecraft:corundum_block",
+    "opminecraft:budding_corundum_block",
+    "opminecraft:corundum_cluster",
+    "opminecraft:small_corundum_bud",
+    "opminecraft:medium_corundum_bud",
+    "opminecraft:large_corundum_bud",
+
+    "opminecraft:ruby_block",
+    "opminecraft:budding_ruby_block",
+    "opminecraft:ruby_cluster",
+    "opminecraft:small_ruby_bud",
+    "opminecraft:medium_ruby_bud",
+    "opminecraft:large_ruby_bud",
+    
+    "opminecraft:sapphire_block",
+    "opminecraft:budding_sapphire_block",
+    "opminecraft:sapphire_cluster",
+    "opminecraft:small_sapphire_bud",
+    "opminecraft:medium_sapphire_bud",
+    "opminecraft:large_sapphire_bud",
+    
+    "opminecraft:scapolite_block",
+    "opminecraft:budding_scapolite_block",
+    "opminecraft:scapolite_cluster",
+    "opminecraft:small_scapolite_bud",
+    "opminecraft:medium_scapolite_bud",
+    "opminecraft:large_scapolite_bud",
+    
+    "opminecraft:staurolite_block",
+    "opminecraft:budding_staurolite_block",
+    "opminecraft:staurolite_cluster",
+    "opminecraft:small_staurolite_bud",
+    "opminecraft:medium_staurolite_bud",
+    "opminecraft:large_staurolite_bud",
+
+    "opminecraft:tanzanite_block",
+    "opminecraft:budding_tanzanite_block",
+    "opminecraft:tanzanite_cluster",
+    "opminecraft:small_tanzanite_bud",
+    "opminecraft:medium_tanzanite_bud",
+    "opminecraft:large_tanzanite_bud",
+
+    
     "opminecraft:fourty_four_s_and_w_rounds",
     "opminecraft:fifty_s_and_w_rounds",
     "opminecraft:tenmm_parabellum_rounds",
+
+    "opminecraft:jar_gunpowder_a",
+    "opminecraft:jar_gunpowder_b",
+    "opminecraft:jar_gunpowder_c",
+    "opminecraft:jar_gunpowder_d",
 
     "opminecraft:totem_of_life",
     "opminecraft:totem_of_uncrying",
@@ -421,8 +546,6 @@
     "minecraft:muddy_mangrove_roots",
     "minecraft:podzol",
     "minecraft:rooted_dirt",
-
-    "minecraft:armor_stand",
 
     "minecraft:barrel",
     "minecraft:chest",
@@ -624,6 +747,12 @@
     "minecraft:raw_gold_block",
 
     "minecraft:amethyst_block",
+    "minecraft:budding_amethyst",
+    "minecraft:amethyst_cluster",
+    "minecraft:small_amethyst_bud",
+    "minecraft:medium_amethyst_bud",
+    "minecraft:large_amethyst_bud",
+
     "minecraft:coal_block",
     "minecraft:diamond_block",
     "minecraft:emerald_block",
@@ -924,7 +1053,6 @@
     "minecraft:zombie_head",
     "minecraft:skeleton_skull",
     "minecraft:wither_skeleton_skull",
-
 
     "minecraft:totem_of_undying"
   ]

@@ -270,46 +270,327 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.TITAN_OPLAMP_WHITE.get());
 					event.accept(RegistryBIBI.TITAN_OPLAMP_YELLOW.get());
 
-					// Crystal blocks
-					event.accept(RegistryBIBI.CRYSTAL_SLAB);
-					event.accept(RegistryBIBI.CRYSTAL_STAIRS);
-					event.accept(RegistryBIBI.CRYSTAL_WALL);
-					event.accept(RegistryBIBI.CRYSTAL_FENCE);
-					event.accept(RegistryBIBI.CRYSTAL_FENCE_GATE);
-					event.accept(RegistryBIBI.CRYSTAL_TRAPDOOR);
-					event.accept(RegistryBIBI.CRYSTAL_BUTTON);
-					event.accept(RegistryBIBI.CRYSTAL_PRESSURE_PLATE);
 
-					event.accept(RegistryBIBI.CRYSTAL_BRICKS);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_SLAB);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_STAIRS);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_WALL);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_FENCE);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_FENCE_GATE);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_TRAPDOOR);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_BUTTON);
-					event.accept(RegistryBIBI.CRYSTAL_BRICK_PRESSURE_PLATE);
+     // Alexandrite blocks
+     event.accept(RegistryBIBI.ALEXANDRITE_BUTTON);
+     event.accept(RegistryBIBI.ALEXANDRITE_FENCE);
+     event.accept(RegistryBIBI.ALEXANDRITE_FENCE_GATE);
+     event.accept(RegistryBIBI.ALEXANDRITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.ALEXANDRITE_SLAB);
+     event.accept(RegistryBIBI.ALEXANDRITE_STAIRS);
+     event.accept(RegistryBIBI.ALEXANDRITE_TRAPDOOR);
+     event.accept(RegistryBIBI.ALEXANDRITE_WALL);
 
-            }
+     // Andalusite blocks
+     event.accept(RegistryBIBI.ANDALUSITE_BUTTON);
+     event.accept(RegistryBIBI.ANDALUSITE_FENCE);
+     event.accept(RegistryBIBI.ANDALUSITE_FENCE_GATE);
+     event.accept(RegistryBIBI.ANDALUSITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.ANDALUSITE_SLAB);
+     event.accept(RegistryBIBI.ANDALUSITE_STAIRS);
+     event.accept(RegistryBIBI.ANDALUSITE_TRAPDOOR);
+     event.accept(RegistryBIBI.ANDALUSITE_WALL);
+
+     // Aquamarine blocks
+     event.accept(RegistryBIBI.AQUAMARINE_BUTTON);
+     event.accept(RegistryBIBI.AQUAMARINE_FENCE);
+     event.accept(RegistryBIBI.AQUAMARINE_FENCE_GATE);
+     event.accept(RegistryBIBI.AQUAMARINE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.AQUAMARINE_SLAB);
+     event.accept(RegistryBIBI.AQUAMARINE_STAIRS);
+     event.accept(RegistryBIBI.AQUAMARINE_TRAPDOOR);
+     event.accept(RegistryBIBI.AQUAMARINE_WALL);
+
+     // Chrysoberyl blocks
+     event.accept(RegistryBIBI.CHRYSOBERYL_BUTTON);
+     event.accept(RegistryBIBI.CHRYSOBERYL_FENCE);
+     event.accept(RegistryBIBI.CHRYSOBERYL_FENCE_GATE);
+     event.accept(RegistryBIBI.CHRYSOBERYL_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.CHRYSOBERYL_SLAB);
+     event.accept(RegistryBIBI.CHRYSOBERYL_STAIRS);
+     event.accept(RegistryBIBI.CHRYSOBERYL_TRAPDOOR);
+     event.accept(RegistryBIBI.CHRYSOBERYL_WALL);
+
+     // Corundum blocks
+     event.accept(RegistryBIBI.CORUNDUM_BUTTON);
+     event.accept(RegistryBIBI.CORUNDUM_FENCE);
+     event.accept(RegistryBIBI.CORUNDUM_FENCE_GATE);
+     event.accept(RegistryBIBI.CORUNDUM_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.CORUNDUM_SLAB);
+     event.accept(RegistryBIBI.CORUNDUM_STAIRS);
+     event.accept(RegistryBIBI.CORUNDUM_TRAPDOOR);
+     event.accept(RegistryBIBI.CORUNDUM_WALL);
+
+     // Cymophane blocks
+     event.accept(RegistryBIBI.CYMOPHANE_BUTTON);
+     event.accept(RegistryBIBI.CYMOPHANE_FENCE);
+     event.accept(RegistryBIBI.CYMOPHANE_FENCE_GATE);
+     event.accept(RegistryBIBI.CYMOPHANE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.CYMOPHANE_SLAB);
+     event.accept(RegistryBIBI.CYMOPHANE_STAIRS);
+     event.accept(RegistryBIBI.CYMOPHANE_TRAPDOOR);
+     event.accept(RegistryBIBI.CYMOPHANE_WALL);
+
+     // Diamond blocks
+     event.accept(RegistryBIBI.DIAMOND_BUTTON);
+     event.accept(RegistryBIBI.DIAMOND_FENCE);
+     event.accept(RegistryBIBI.DIAMOND_FENCE_GATE);
+     event.accept(RegistryBIBI.DIAMOND_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.DIAMOND_SLAB);
+     event.accept(RegistryBIBI.DIAMOND_STAIRS);
+     event.accept(RegistryBIBI.DIAMOND_TRAPDOOR);
+     event.accept(RegistryBIBI.DIAMOND_WALL);
+
+     // Dragonite blocks
+     event.accept(RegistryBIBI.DRAGONITE_BUTTON);
+     event.accept(RegistryBIBI.DRAGONITE_FENCE);
+     event.accept(RegistryBIBI.DRAGONITE_FENCE_GATE);
+     event.accept(RegistryBIBI.DRAGONITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.DRAGONITE_SLAB);
+     event.accept(RegistryBIBI.DRAGONITE_STAIRS);
+     event.accept(RegistryBIBI.DRAGONITE_TRAPDOOR);
+     event.accept(RegistryBIBI.DRAGONITE_WALL);
+
+     // Emerald blocks
+     event.accept(RegistryBIBI.EMERALD_BUTTON);
+     event.accept(RegistryBIBI.EMERALD_FENCE);
+     event.accept(RegistryBIBI.EMERALD_FENCE_GATE);
+     event.accept(RegistryBIBI.EMERALD_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.EMERALD_SLAB);
+     event.accept(RegistryBIBI.EMERALD_STAIRS);
+     event.accept(RegistryBIBI.EMERALD_TRAPDOOR);
+     event.accept(RegistryBIBI.EMERALD_WALL);
+
+     // Jadeite blocks
+     event.accept(RegistryBIBI.JADEITE_BUTTON);
+     event.accept(RegistryBIBI.JADEITE_FENCE);
+     event.accept(RegistryBIBI.JADEITE_FENCE_GATE);
+     event.accept(RegistryBIBI.JADEITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.JADEITE_SLAB);
+     event.accept(RegistryBIBI.JADEITE_STAIRS);
+     event.accept(RegistryBIBI.JADEITE_TRAPDOOR);
+     event.accept(RegistryBIBI.JADEITE_WALL);
+
+     // Opalite blocks
+     event.accept(RegistryBIBI.OPALITE_BUTTON);
+     event.accept(RegistryBIBI.OPALITE_FENCE);
+     event.accept(RegistryBIBI.OPALITE_FENCE_GATE);
+     event.accept(RegistryBIBI.OPALITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.OPALITE_SLAB);
+     event.accept(RegistryBIBI.OPALITE_STAIRS);
+     event.accept(RegistryBIBI.OPALITE_TRAPDOOR);
+     event.accept(RegistryBIBI.OPALITE_WALL);
+
+     // Padparadscha blocks
+     event.accept(RegistryBIBI.PADPARADSCHA_BUTTON);
+     event.accept(RegistryBIBI.PADPARADSCHA_FENCE);
+     event.accept(RegistryBIBI.PADPARADSCHA_FENCE_GATE);
+     event.accept(RegistryBIBI.PADPARADSCHA_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.PADPARADSCHA_SLAB);
+     event.accept(RegistryBIBI.PADPARADSCHA_STAIRS);
+     event.accept(RegistryBIBI.PADPARADSCHA_TRAPDOOR);
+     event.accept(RegistryBIBI.PADPARADSCHA_WALL);
+
+     // Ruby blocks
+     event.accept(RegistryBIBI.RUBY_BUTTON);
+     event.accept(RegistryBIBI.RUBY_FENCE);
+     event.accept(RegistryBIBI.RUBY_FENCE_GATE);
+     event.accept(RegistryBIBI.RUBY_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.RUBY_SLAB);
+     event.accept(RegistryBIBI.RUBY_STAIRS);
+     event.accept(RegistryBIBI.RUBY_TRAPDOOR);
+     event.accept(RegistryBIBI.RUBY_WALL);
+
+     // Sapphire blocks
+     event.accept(RegistryBIBI.SAPPHIRE_BUTTON);
+     event.accept(RegistryBIBI.SAPPHIRE_FENCE);
+     event.accept(RegistryBIBI.SAPPHIRE_FENCE_GATE);
+     event.accept(RegistryBIBI.SAPPHIRE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.SAPPHIRE_SLAB);
+     event.accept(RegistryBIBI.SAPPHIRE_STAIRS);
+     event.accept(RegistryBIBI.SAPPHIRE_TRAPDOOR);
+     event.accept(RegistryBIBI.SAPPHIRE_WALL);
+
+     // Scapolite blocks
+     event.accept(RegistryBIBI.SCAPOLITE_BUTTON);
+     event.accept(RegistryBIBI.SCAPOLITE_FENCE);
+     event.accept(RegistryBIBI.SCAPOLITE_FENCE_GATE);
+     event.accept(RegistryBIBI.SCAPOLITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.SCAPOLITE_SLAB);
+     event.accept(RegistryBIBI.SCAPOLITE_STAIRS);
+     event.accept(RegistryBIBI.SCAPOLITE_TRAPDOOR);
+     event.accept(RegistryBIBI.SCAPOLITE_WALL);
+
+     // Staurolite blocks
+     event.accept(RegistryBIBI.STAUROLITE_BUTTON);
+     event.accept(RegistryBIBI.STAUROLITE_FENCE);
+     event.accept(RegistryBIBI.STAUROLITE_FENCE_GATE);
+     event.accept(RegistryBIBI.STAUROLITE_PRESSURE_PLATE);
+     event.accept(RegistryBIBI.STAUROLITE_SLAB);
+     event.accept(RegistryBIBI.STAUROLITE_STAIRS);
+     event.accept(RegistryBIBI.STAUROLITE_TRAPDOOR);
+     event.accept(RegistryBIBI.STAUROLITE_WALL);
+
+	  //Tanzanite blocks
+	  event.accept(RegistryBIBI.TANZANITE_BUTTON);
+	  event.accept(RegistryBIBI.TANZANITE_FENCE);
+	  event.accept(RegistryBIBI.TANZANITE_FENCE_GATE);
+	  event.accept(RegistryBIBI.TANZANITE_PRESSURE_PLATE);
+	  event.accept(RegistryBIBI.TANZANITE_SLAB);
+	  event.accept(RegistryBIBI.TANZANITE_STAIRS);
+	  event.accept(RegistryBIBI.TANZANITE_TRAPDOOR);
+	  event.accept(RegistryBIBI.TANZANITE_WALL);
+
+			}
 
 // ~~~NATURAL BLOCKS TAB~~~
             if (event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS) { // ~~~NATURAL BLOCKS TAB~~~
 
-					event.accept(RegistryBIBI.FLOWERING_PITCHER_PLANT);
-					event.accept(RegistryBIBI.WUMPA_PLANT);
+                event.accept(RegistryBIBI.FLOWERING_PITCHER_PLANT);
+                event.accept(RegistryBIBI.WUMPA_PLANT);
 
-					//ores
+                // ores
+                event.accept(RegistryBIBI.DEEPSLATE_ONYX_ORE);
+                event.accept(RegistryBIBI.DEEPSLATE_TITANIUM_ORE);
+                event.accept(RegistryBIBI.DEEPSLATE_ALEXANDRITE_ORE);
+                event.accept(RegistryBIBI.DEEPSLATE_CHRYSOBERYL_ORE);
+                event.accept(RegistryBIBI.DEEPSLATE_RUBY_ORE);
 
-					event.accept((RegistryBIBI.DEEPSLATE_ONYX_ORE));
+                // Alexandrite geode
+                event.accept(RegistryBIBI.ALEXANDRITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_ALEXANDRITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_ALEXANDRITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_ALEXANDRITE_BUD);
+                event.accept(RegistryBIBI.LARGE_ALEXANDRITE_BUD);
+                event.accept(RegistryBIBI.ALEXANDRITE_CLUSTER);
 
-					// Crystal geode
-					event.accept(RegistryBIBI.CRYSTAL_BLOCK);
-					event.accept(RegistryBIBI.BUDDING_CRYSTAL_BLOCK);
-					event.accept(RegistryBIBI.SMALL_CRYSTAL_BUD);
-					event.accept(RegistryBIBI.MEDIUM_CRYSTAL_BUD);
-					event.accept(RegistryBIBI.LARGE_CRYSTAL_BUD);
-					event.accept(RegistryBIBI.CRYSTAL_CLUSTER);
+                // Andalusite geode
+                event.accept(RegistryBIBI.ANDALUSITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_ANDALUSITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_ANDALUSITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_ANDALUSITE_BUD);
+                event.accept(RegistryBIBI.LARGE_ANDALUSITE_BUD);
+                event.accept(RegistryBIBI.ANDALUSITE_CLUSTER);
 
+                // Aquamarine geode
+                event.accept(RegistryBIBI.AQUAMARINE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_AQUAMARINE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_AQUAMARINE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_AQUAMARINE_BUD);
+                event.accept(RegistryBIBI.LARGE_AQUAMARINE_BUD);
+                event.accept(RegistryBIBI.AQUAMARINE_CLUSTER);
+
+                // Chrysoberyl geode
+                event.accept(RegistryBIBI.CHRYSOBERYL_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_CHRYSOBERYL_BLOCK);
+                event.accept(RegistryBIBI.SMALL_CHRYSOBERYL_BUD);
+                event.accept(RegistryBIBI.MEDIUM_CHRYSOBERYL_BUD);
+                event.accept(RegistryBIBI.LARGE_CHRYSOBERYL_BUD);
+                event.accept(RegistryBIBI.CHRYSOBERYL_CLUSTER);
+
+                // Corundum geode
+                event.accept(RegistryBIBI.CORUNDUM_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_CORUNDUM_BLOCK);
+                event.accept(RegistryBIBI.SMALL_CORUNDUM_BUD);
+                event.accept(RegistryBIBI.MEDIUM_CORUNDUM_BUD);
+                event.accept(RegistryBIBI.LARGE_CORUNDUM_BUD);
+                event.accept(RegistryBIBI.CORUNDUM_CLUSTER);
+
+                // Cymophane geode
+                event.accept(RegistryBIBI.CYMOPHANE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_CYMOPHANE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_CYMOPHANE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_CYMOPHANE_BUD);
+                event.accept(RegistryBIBI.LARGE_CYMOPHANE_BUD);
+                event.accept(RegistryBIBI.CYMOPHANE_CLUSTER);
+
+                // Diamond geode
+                event.accept(RegistryBIBI.DIAMOND_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_DIAMOND_BLOCK);
+                event.accept(RegistryBIBI.SMALL_DIAMOND_BUD);
+                event.accept(RegistryBIBI.MEDIUM_DIAMOND_BUD);
+                event.accept(RegistryBIBI.LARGE_DIAMOND_BUD);
+                event.accept(RegistryBIBI.DIAMOND_CLUSTER);
+
+                // Dragonite geode
+                event.accept(RegistryBIBI.DRAGONITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_DRAGONITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_DRAGONITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_DRAGONITE_BUD);
+                event.accept(RegistryBIBI.LARGE_DRAGONITE_BUD);
+                event.accept(RegistryBIBI.DRAGONITE_CLUSTER);
+
+                // Emerald geode
+                event.accept(RegistryBIBI.EMERALD_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_EMERALD_BLOCK);
+                event.accept(RegistryBIBI.SMALL_EMERALD_BUD);
+                event.accept(RegistryBIBI.MEDIUM_EMERALD_BUD);
+                event.accept(RegistryBIBI.LARGE_EMERALD_BUD);
+                event.accept(RegistryBIBI.EMERALD_CLUSTER);
+
+                // Jadeite geode
+                event.accept(RegistryBIBI.JADEITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_JADEITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_JADEITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_JADEITE_BUD);
+                event.accept(RegistryBIBI.LARGE_JADEITE_BUD);
+                event.accept(RegistryBIBI.JADEITE_CLUSTER);
+
+                // Opalite geode
+                event.accept(RegistryBIBI.OPALITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_OPALITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_OPALITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_OPALITE_BUD);
+                event.accept(RegistryBIBI.LARGE_OPALITE_BUD);
+                event.accept(RegistryBIBI.OPALITE_CLUSTER);
+
+                // Padparadscha geode
+                event.accept(RegistryBIBI.PADPARADSCHA_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_PADPARADSCHA_BLOCK);
+                event.accept(RegistryBIBI.SMALL_PADPARADSCHA_BUD);
+                event.accept(RegistryBIBI.MEDIUM_PADPARADSCHA_BUD);
+                event.accept(RegistryBIBI.LARGE_PADPARADSCHA_BUD);
+                event.accept(RegistryBIBI.PADPARADSCHA_CLUSTER);
+
+                // Ruby geode
+                event.accept(RegistryBIBI.RUBY_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_RUBY_BLOCK);
+                event.accept(RegistryBIBI.SMALL_RUBY_BUD);
+                event.accept(RegistryBIBI.MEDIUM_RUBY_BUD);
+                event.accept(RegistryBIBI.LARGE_RUBY_BUD);
+                event.accept(RegistryBIBI.RUBY_CLUSTER);
+
+                // Sapphire geode
+                event.accept(RegistryBIBI.SAPPHIRE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_SAPPHIRE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_SAPPHIRE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_SAPPHIRE_BUD);
+                event.accept(RegistryBIBI.LARGE_SAPPHIRE_BUD);
+                event.accept(RegistryBIBI.SAPPHIRE_CLUSTER);
+
+                // Scapolite geode
+                event.accept(RegistryBIBI.SCAPOLITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_SCAPOLITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_SCAPOLITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_SCAPOLITE_BUD);
+                event.accept(RegistryBIBI.LARGE_SCAPOLITE_BUD);
+                event.accept(RegistryBIBI.SCAPOLITE_CLUSTER);
+
+                // Staurolite geode
+                event.accept(RegistryBIBI.STAUROLITE_BLOCK);
+                event.accept(RegistryBIBI.BUDDING_STAUROLITE_BLOCK);
+                event.accept(RegistryBIBI.SMALL_STAUROLITE_BUD);
+                event.accept(RegistryBIBI.MEDIUM_STAUROLITE_BUD);
+                event.accept(RegistryBIBI.LARGE_STAUROLITE_BUD);
+                event.accept(RegistryBIBI.STAUROLITE_CLUSTER);
+
+					//Tanzanite geode
+					event.accept(RegistryBIBI.TANZANITE_BLOCK);
+					event.accept(RegistryBIBI.BUDDING_TANZANITE_BLOCK);
+					event.accept(RegistryBIBI.SMALL_TANZANITE_BUD);
+					event.accept(RegistryBIBI.MEDIUM_TANZANITE_BUD);
+					event.accept(RegistryBIBI.LARGE_TANZANITE_BUD);
+					event.accept(RegistryBIBI.TANZANITE_CLUSTER);
             }
 
 // ~~~FUNCTIONAL BLOCKS TAB~~~
@@ -751,6 +1032,10 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.ONYX_S_AND_W_500.get());
 					event.accept(RegistryBIBI.TITAN_S_AND_W_500.get());
 
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_A.get());
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_B.get());
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_C.get());
+					event.accept(RegistryBIBI.JAR_GUNPOWDER_D.get());
 
 					event.accept(RegistryBIBI.NINEmm_PARABELLUM_ROUNDS.get());
 					event.accept(RegistryBIBI.TENmm_PARABELLUM_ROUNDS.get());
@@ -782,7 +1067,11 @@ public class RegistryCreative {
 
 					event.accept(RegistryBIBI.TEST_ITEM);
 
-					event.accept(RegistryBIBI.ANCIENT_CHUNK);
+					event.accept(RegistryBIBI.RAW_ONYX);
+					event.accept(RegistryBIBI.RAW_TITANIUM);
+
+					event.accept(RegistryBIBI.ONYX_INGOT);
+					event.accept(RegistryBIBI.TITANIUM_INGOT);
 
 					event.accept(RegistryBIBI.CRYING_INGOT);
 					event.accept(RegistryBIBI.CRYING_SMITHING_TEMPLATE);
@@ -909,9 +1198,6 @@ public class RegistryCreative {
 					event.accept(RegistryBIBI.FLAWLESS_EMERALD);
 					event.accept(RegistryBIBI.PERFECT_EMERALD);
 					event.accept(RegistryBIBI.BRILLIANT_EMERALD);
-					
-					// OP Minecraft crystals
-					event.accept(RegistryBIBI.CRYSTAL_SHARD);
 
 					event.accept(RegistryBIBI.CRUDE_DIAMOND);
 					event.accept(RegistryBIBI.FLAWLESS_DIAMOND);

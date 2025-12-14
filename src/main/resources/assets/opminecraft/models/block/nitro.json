@@ -1,4 +1,4 @@
-{
+﻿{
   "parent": "block/cube",
   "textures": {
     "down": "opminecraft:block/text_nitro_bottom",

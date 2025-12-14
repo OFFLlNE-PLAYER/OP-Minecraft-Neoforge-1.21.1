@@ -7,13 +7,93 @@
     "#opminecraft:glass_panes",
     "#opminecraft:signs",
 
-    "opminecraft:crystal_cluster",
-    "opminecraft:large_crystal_bud",
-    "opminecraft:medium_crystal_bud",
-    "opminecraft:small_crystal_bud",
-
     "opminecraft:flowering_pitcher_plant",
     "opminecraft:wumpa_plant",
+
+    "opminecraft:alexandrite_cluster",
+    "opminecraft:small_alexandrite_bud",
+    "opminecraft:medium_alexandrite_bud",
+    "opminecraft:large_alexandrite_bud",
+
+    "opminecraft:andalusite_cluster",
+    "opminecraft:small_andalusite_bud",
+    "opminecraft:medium_andalusite_bud",
+    "opminecraft:large_andalusite_bud",
+
+    "opminecraft:aquamarine_cluster",
+    "opminecraft:small_aquamarine_bud",
+    "opminecraft:medium_aquamarine_bud",
+    "opminecraft:large_aquamarine_bud",
+
+    "opminecraft:chrysoberyl_cluster",
+    "opminecraft:small_chrysoberyl_bud",
+    "opminecraft:medium_chrysoberyl_bud",
+    "opminecraft:large_chrysoberyl_bud",
+
+    "opminecraft:corundum_cluster",
+    "opminecraft:small_corundum_bud",
+    "opminecraft:medium_corundum_bud",
+    "opminecraft:large_corundum_bud",
+
+    "opminecraft:cymophane_cluster",
+    "opminecraft:small_cymophane_bud",
+    "opminecraft:medium_cymophane_bud",
+    "opminecraft:large_cymophane_bud",
+
+    "opminecraft:diamond_cluster",
+    "opminecraft:small_diamond_bud",
+    "opminecraft:medium_diamond_bud",
+    "opminecraft:large_diamond_bud",
+
+    "opminecraft:dragonite_cluster",
+    "opminecraft:small_dragonite_bud",
+    "opminecraft:medium_dragonite_bud",
+    "opminecraft:large_dragonite_bud",
+
+    "opminecraft:emerald_cluster",
+    "opminecraft:small_emerald_bud",
+    "opminecraft:medium_emerald_bud",
+    "opminecraft:large_emerald_bud",
+
+    "opminecraft:jadeite_cluster",
+    "opminecraft:small_jadeite_bud",
+    "opminecraft:medium_jadeite_bud",
+    "opminecraft:large_jadeite_bud",
+
+    "opminecraft:opalite_cluster",
+    "opminecraft:small_opalite_bud",
+    "opminecraft:medium_opalite_bud",
+    "opminecraft:large_opalite_bud",
+
+    "opminecraft:padparadscha_cluster",
+    "opminecraft:small_padparadscha_bud",
+    "opminecraft:medium_padparadscha_bud",
+    "opminecraft:large_padparadscha_bud",
+
+    "opminecraft:ruby_cluster",
+    "opminecraft:small_ruby_bud",
+    "opminecraft:medium_ruby_bud",
+    "opminecraft:large_ruby_bud",
+
+    "opminecraft:sapphire_cluster",
+    "opminecraft:small_sapphire_bud",
+    "opminecraft:medium_sapphire_bud",
+    "opminecraft:large_sapphire_bud",
+
+    "opminecraft:scapolite_cluster",
+    "opminecraft:small_scapolite_bud",
+    "opminecraft:medium_scapolite_bud",
+    "opminecraft:large_scapolite_bud",
+
+    "opminecraft:staurolite_cluster",
+    "opminecraft:small_staurolite_bud",
+    "opminecraft:medium_staurolite_bud",
+    "opminecraft:large_staurolite_bud",
+
+    "opminecraft:tanzanite_cluster",
+    "opminecraft:small_tanzanite_bud",
+    "opminecraft:medium_tanzanite_bud",
+    "opminecraft:large_tanzanite_bud",
 
 
     "#minecraft:replaceable",
@@ -34,6 +114,12 @@
     "#minecraft:candle_cakes",
     "#minecraft:flowers",
     "#minecraft:flower_pots",
+
+
+    "minecraft:amethyst_cluster",
+    "minecraft:large_amethyst_bud",
+    "minecraft:medium_amethyst_bud",
+    "minecraft:small_amethyst_bud",
 
     "minecraft:air",
     "minecraft:void_air",
@@ -99,11 +185,6 @@
     "minecraft:powered_rail",
     "minecraft:detector_rail",
     "minecraft:activator_rail",
-
-    "minecraft:amethyst_cluster",
-    "minecraft:large_amethyst_bud",
-    "minecraft:medium_amethyst_bud",
-    "minecraft:small_amethyst_bud",
 
     "minecraft:calibrated_sculk_sensor",
     "minecraft:sculk_sensor",
