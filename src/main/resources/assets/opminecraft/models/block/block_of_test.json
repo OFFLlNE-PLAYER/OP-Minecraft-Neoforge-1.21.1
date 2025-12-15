@@ -1,8 +1,8 @@
 ﻿{
   "parent": "block/cube_all",
   "textures": {
-    "all": "opminecraft:block/text_block_of_onyx_test",
-    "particle": "opminecraft:block/text_block_of_onyx_test"
+    "all": "opminecraft:block/geode/andalusite/text_andalusite_block_test",
+    "particle": "opminecraft:block/geode/andalusite/text_andalusite_block_test"
   },
   "render_type": "solid"
 }

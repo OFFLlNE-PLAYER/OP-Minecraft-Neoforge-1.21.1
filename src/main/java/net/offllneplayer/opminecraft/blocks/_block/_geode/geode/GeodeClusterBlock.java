@@ -24,7 +24,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.offllneplayer.opminecraft.blocks._block._geode.geode_method.GeodeClusterDestroyed_Method;
 import net.offllneplayer.opminecraft.blocks._block._geode.geode_method.MineGeodeCluster_Method;
 import net.offllneplayer.opminecraft.blocks._block._geode.geode_method.GeodeMaterial;
 
@@ -89,7 +88,8 @@ public class GeodeClusterBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean flag = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
-        return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, flag);
+        // Use defaultBlockState to avoid potential null from super.getStateForPlacement
+        return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, flag);
     }
 
     public BlockState rotate(BlockState state, Rotation rot) {
@@ -105,23 +105,28 @@ public class GeodeClusterBlock extends Block implements SimpleWaterloggedBlock {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
-		if (state.getValue(WATERLOGGED)) {
-			world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
-		}
-		// Drop if no longer supported
-		if (!canSurvive(state, world, currentPos)) {
-			return state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-		}
-		return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
-	}
+ @Override
+ public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
+     if (state.getValue(WATERLOGGED)) {
+         world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+     }
+
+     // Only react to changes on the attachment side (vanilla parity)
+     if (facing == state.getValue(FACING).getOpposite() && !canSurvive(state, world, currentPos)) {
+         if (world instanceof Level level && !level.isClientSide) {
+             Block.dropResources(state, level, currentPos, null);
+         }
+         return state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+     }
+     return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
+ }
 
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-		Direction dir = state.getValue(FACING);
-		BlockPos supportPos = pos.relative(dir.getOpposite());
-		return world.getBlockState(supportPos).isFaceSturdy(world, supportPos, dir);
+		// Vanilla-parity: support is behind (opposite of FACING), check the face toward the cluster (FACING)
+		Direction facing = state.getValue(FACING);
+		BlockPos supportPos = pos.relative(facing.getOpposite());
+		return world.getBlockState(supportPos).isFaceSturdy(world, supportPos, facing);
 	}
 
     @Override
@@ -132,7 +137,6 @@ public class GeodeClusterBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
         boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-        GeodeClusterDestroyed_Method.execute(world, pos.getX(), pos.getY(), pos.getZ(), material);
         return retval;
     }
 

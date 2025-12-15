@@ -91,7 +91,8 @@ public class LargeGeodeBudBlock extends Block implements SimpleWaterloggedBlock 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean flag = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
-        return super.getStateForPlacement(context).setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, flag);
+        // Use defaultBlockState to avoid potential null from super.getStateForPlacement
+        return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, flag);
     }
 
     public BlockState rotate(BlockState state, Rotation rot) {
@@ -112,8 +113,8 @@ public class LargeGeodeBudBlock extends Block implements SimpleWaterloggedBlock 
         if (state.getValue(WATERLOGGED)) {
             world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         }
-        // Drop if no longer supported
-        if (!canSurvive(state, world, currentPos)) {
+        // Only react to changes on the attachment side (vanilla parity)
+        if (facing == state.getValue(FACING).getOpposite() && !canSurvive(state, world, currentPos)) {
             return state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
         }
         return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
@@ -121,9 +122,10 @@ public class LargeGeodeBudBlock extends Block implements SimpleWaterloggedBlock 
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        Direction dir = state.getValue(FACING);
-        BlockPos supportPos = pos.relative(dir.getOpposite());
-        return world.getBlockState(supportPos).isFaceSturdy(world, supportPos, dir);
+        // Vanilla-parity: check support block behind and the face toward the bud
+        Direction facing = state.getValue(FACING);
+        BlockPos supportPos = pos.relative(facing.getOpposite());
+        return world.getBlockState(supportPos).isFaceSturdy(world, supportPos, facing);
     }
 
     @Override
