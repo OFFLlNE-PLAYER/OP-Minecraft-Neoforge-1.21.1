@@ -185,7 +185,46 @@
   "block.opminecraft.block_of_titanium": "§7Block Of Titanium§r",
   "block.opminecraft.onyx_block": "§8Onyx Block§r",
   "block.opminecraft.titanium_block": "§7Titanium Block§r",
+
+
+  "block.opminecraft.alexandrite_ore": "Alexandrite Ore",
+  "block.opminecraft.amethyst_ore": "Amethyst Ore",
+  "block.opminecraft.andalusite_ore": "Andalusite Ore",
+  "block.opminecraft.aquamarine_ore": "Aquamarine Ore",
+  "block.opminecraft.chrysoberyl_ore": "Chrysoberyl Ore",
+  "block.opminecraft.corundum_ore": "Corundum Ore",
+  "block.opminecraft.cymophane_ore": "Cymophane Ore",
+  "block.opminecraft.dragonite_ore": "Dragonite Ore",
+  "block.opminecraft.jadeite_ore": "Jadeite Ore",
+  "block.opminecraft.opalite_ore": "Opalite Ore",
+  "block.opminecraft.padparadscha_ore": "Padparadscha Ore",
+  "block.opminecraft.ruby_ore": "Ruby Ore",
+  "block.opminecraft.sapphire_ore": "Sapphire Ore",
+  "block.opminecraft.scapolite_ore": "Scapolite Ore",
+  "block.opminecraft.staurolite_ore": "Staurolite Ore",
+  "block.opminecraft.tanzanite_ore": "Tanzanite Ore",
+
+
   "block.opminecraft.deepslate_onyx_ore": "Deepslate Onyx Ore",
+  "block.opminecraft.deepslate_titanium_ore": "Deepslate Titanium Ore",
+
+  "block.opminecraft.deepslate_alexandrite_ore": "Deepslate Alexandrite Ore",
+  "block.opminecraft.deepslate_amethyst_ore": "Deepslate Amethyst Ore",
+  "block.opminecraft.deepslate_andalusite_ore": "Deepslate Andalusite Ore",
+  "block.opminecraft.deepslate_aquamarine_ore": "Deepslate Aquamarine Ore",
+  "block.opminecraft.deepslate_chrysoberyl_ore": "Deepslate Chrysoberyl Ore",
+  "block.opminecraft.deepslate_corundum_ore": "Deepslate Corundum Ore",
+  "block.opminecraft.deepslate_cymophane_ore": "Deepslate Cymophane Ore",
+  "block.opminecraft.deepslate_dragonite_ore": "Deepslate Dragonite Ore",
+  "block.opminecraft.deepslate_jadeite_ore": "Deepslate Jadeite Ore",
+  "block.opminecraft.deepslate_opalite_ore": "Deepslate Opalite Ore",
+  "block.opminecraft.deepslate_padparadscha_ore": "Deepslate Padparadscha Ore",
+  "block.opminecraft.deepslate_ruby_ore": "Deepslate Ruby Ore",
+  "block.opminecraft.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
+  "block.opminecraft.deepslate_scapolite_ore": "Deepslate Scapolite Ore",
+  "block.opminecraft.deepslate_staurolite_ore": "Deepslate Staurolite Ore",
+  "block.opminecraft.deepslate_tanzanite_ore": "Deepslate Tanzanite Ore",
+
 
 
   "block.opminecraft.alexandrite_block": "Alexandrite Block",
@@ -194,6 +233,7 @@
   "block.opminecraft.medium_alexandrite_bud": "Medium Alexandrite Bud",
   "block.opminecraft.large_alexandrite_bud": "Large Alexandrite Bud",
   "block.opminecraft.alexandrite_cluster": "Alexandrite Cluster",
+
   "block.opminecraft.alexandrite_button": "Alexandrite Button",
   "block.opminecraft.alexandrite_fence": "Alexandrite Fence",
   "block.opminecraft.alexandrite_fence_gate": "Alexandrite Fence Gate",
@@ -203,12 +243,14 @@
   "block.opminecraft.alexandrite_trapdoor": "Alexandrite Trapdoor",
   "block.opminecraft.alexandrite_wall": "Alexandrite Wall",
 
+
   "block.opminecraft.andalusite_block": "Andalusite Block",
   "block.opminecraft.budding_andalusite_block": "Budding Andalusite Block",
   "block.opminecraft.small_andalusite_bud": "Small Andalusite Bud",
   "block.opminecraft.medium_andalusite_bud": "Medium Andalusite Bud",
   "block.opminecraft.large_andalusite_bud": "Large Andalusite Bud",
   "block.opminecraft.andalusite_cluster": "Andalusite Cluster",
+
   "block.opminecraft.andalusite_button": "Andalusite Button",
   "block.opminecraft.andalusite_fence": "Andalusite Fence",
   "block.opminecraft.andalusite_fence_gate": "Andalusite Fence Gate",
@@ -218,12 +260,14 @@
   "block.opminecraft.andalusite_trapdoor": "Andalusite Trapdoor",
   "block.opminecraft.andalusite_wall": "Andalusite Wall",
 
+
   "block.opminecraft.aquamarine_block": "Aquamarine Block",
   "block.opminecraft.budding_aquamarine_block": "Budding Aquamarine Block",
   "block.opminecraft.small_aquamarine_bud": "Small Aquamarine Bud",
   "block.opminecraft.medium_aquamarine_bud": "Medium Aquamarine Bud",
   "block.opminecraft.large_aquamarine_bud": "Large Aquamarine Bud",
   "block.opminecraft.aquamarine_cluster": "Aquamarine Cluster",
+
   "block.opminecraft.aquamarine_button": "Aquamarine Button",
   "block.opminecraft.aquamarine_fence": "Aquamarine Fence",
   "block.opminecraft.aquamarine_fence_gate": "Aquamarine Fence Gate",
@@ -233,12 +277,14 @@
   "block.opminecraft.aquamarine_trapdoor": "Aquamarine Trapdoor",
   "block.opminecraft.aquamarine_wall": "Aquamarine Wall",
 
+
   "block.opminecraft.chrysoberyl_block": "Chrysoberyl Block",
   "block.opminecraft.budding_chrysoberyl_block": "Budding Chrysoberyl Block",
   "block.opminecraft.small_chrysoberyl_bud": "Small Chrysoberyl Bud",
   "block.opminecraft.medium_chrysoberyl_bud": "Medium Chrysoberyl Bud",
   "block.opminecraft.large_chrysoberyl_bud": "Large Chrysoberyl Bud",
   "block.opminecraft.chrysoberyl_cluster": "Chrysoberyl Cluster",
+
   "block.opminecraft.chrysoberyl_button": "Chrysoberyl Button",
   "block.opminecraft.chrysoberyl_fence": "Chrysoberyl Fence",
   "block.opminecraft.chrysoberyl_fence_gate": "Chrysoberyl Fence Gate",
@@ -248,12 +294,14 @@
   "block.opminecraft.chrysoberyl_trapdoor": "Chrysoberyl Trapdoor",
   "block.opminecraft.chrysoberyl_wall": "Chrysoberyl Wall",
 
+
   "block.opminecraft.corundum_block": "Corundum Block",
   "block.opminecraft.budding_corundum_block": "Budding Corundum Block",
   "block.opminecraft.small_corundum_bud": "Small Corundum Bud",
   "block.opminecraft.medium_corundum_bud": "Medium Corundum Bud",
   "block.opminecraft.large_corundum_bud": "Large Corundum Bud",
   "block.opminecraft.corundum_cluster": "Corundum Cluster",
+
   "block.opminecraft.corundum_button": "Corundum Button",
   "block.opminecraft.corundum_fence": "Corundum Fence",
   "block.opminecraft.corundum_fence_gate": "Corundum Fence Gate",
@@ -263,12 +311,14 @@
   "block.opminecraft.corundum_trapdoor": "Corundum Trapdoor",
   "block.opminecraft.corundum_wall": "Corundum Wall",
 
+
   "block.opminecraft.cymophane_block": "Cymophane Block",
   "block.opminecraft.budding_cymophane_block": "Budding Cymophane Block",
   "block.opminecraft.small_cymophane_bud": "Small Cymophane Bud",
   "block.opminecraft.medium_cymophane_bud": "Medium Cymophane Bud",
   "block.opminecraft.large_cymophane_bud": "Large Cymophane Bud",
   "block.opminecraft.cymophane_cluster": "Cymophane Cluster",
+
   "block.opminecraft.cymophane_button": "Cymophane Button",
   "block.opminecraft.cymophane_fence": "Cymophane Fence",
   "block.opminecraft.cymophane_fence_gate": "Cymophane Fence Gate",
@@ -278,16 +328,23 @@
   "block.opminecraft.cymophane_trapdoor": "Cymophane Trapdoor",
   "block.opminecraft.cymophane_wall": "Cymophane Wall",
 
+
   "block.opminecraft.diamond_block": "Diamond Block",
   "block.opminecraft.budding_diamond_block": "Budding Diamond Block",
   "block.opminecraft.small_diamond_bud": "Small Diamond Bud",
   "block.opminecraft.medium_diamond_bud": "Medium Diamond Bud",
   "block.opminecraft.large_diamond_bud": "Large Diamond Bud",
   "block.opminecraft.diamond_cluster": "Diamond Cluster",
+
+  "block.opminecraft.diamond_button": "Diamond Button",
+  "block.opminecraft.diamond_fence": "Diamond Fence",
+  "block.opminecraft.diamond_fence_gate": "Diamond Fence Gate",
   "block.opminecraft.diamond_pressure_plate": "Diamond Pressure Plate",
   "block.opminecraft.diamond_slab": "Diamond Slab",
   "block.opminecraft.diamond_stairs": "Diamond Stairs",
   "block.opminecraft.diamond_trapdoor": "Diamond Trapdoor",
+  "block.opminecraft.diamond_wall": "Diamond Wall",
+
 
   "block.opminecraft.emerald_block": "Emerald Block",
   "block.opminecraft.budding_emerald_block": "Budding Emerald Block",
@@ -295,10 +352,16 @@
   "block.opminecraft.medium_emerald_bud": "Medium Emerald Bud",
   "block.opminecraft.large_emerald_bud": "Large Emerald Bud",
   "block.opminecraft.emerald_cluster": "Emerald Cluster",
+
+  "block.opminecraft.emerald_button": "Emerald Button",
+  "block.opminecraft.emerald_fence": "Emerald Fence",
+  "block.opminecraft.emerald_fence_gate": "Emerald Fence Gate",
   "block.opminecraft.emerald_pressure_plate": "Emerald Pressure Plate",
   "block.opminecraft.emerald_slab": "Emerald Slab",
   "block.opminecraft.emerald_stairs": "Emerald Stairs",
   "block.opminecraft.emerald_trapdoor": "Emerald Trapdoor",
+  "block.opminecraft.emerald_wall": "Emerald Wall",
+
 
   "block.opminecraft.dragonite_block": "Dragonite Block",
   "block.opminecraft.budding_dragonite_block": "Budding Dragonite Block",
@@ -307,13 +370,32 @@
   "block.opminecraft.large_dragonite_bud": "Large Dragonite Bud",
   "block.opminecraft.dragonite_cluster": "Dragonite Cluster",
 
+  "block.opminecraft.dragonite_button": "Dragonite Button",
+  "block.opminecraft.dragonite_fence": "Dragonite Fence",
+  "block.opminecraft.dragonite_fence_gate": "Dragonite Fence Gate",
+  "block.opminecraft.dragonite_pressure_plate": "Dragonite Pressure Plate",
+  "block.opminecraft.dragonite_slab": "Dragonite Slab",
+  "block.opminecraft.dragonite_stairs": "Dragonite Stairs",
+  "block.opminecraft.dragonite_trapdoor": "Dragonite Trapdoor",
+  "block.opminecraft.dragonite_wall": "Dragonite Wall",
+
+
   "block.opminecraft.jadeite_block": "Jadeite Block",
   "block.opminecraft.budding_jadeite_block": "Budding Jadeite Block",
   "block.opminecraft.small_jadeite_bud": "Small Jadeite Bud",
   "block.opminecraft.medium_jadeite_bud": "Medium Jadeite Bud",
   "block.opminecraft.large_jadeite_bud": "Large Jadeite Bud",
   "block.opminecraft.jadeite_cluster": "Jadeite Cluster",
+
   "block.opminecraft.jadeite_button": "Jadeite Button",
+  "block.opminecraft.jadeite_fence": "Jadeite Fence",
+  "block.opminecraft.jadeite_fence_gate": "Jadeite Fence Gate",
+  "block.opminecraft.jadeite_pressure_plate": "Jadeite Pressure Plate",
+  "block.opminecraft.jadeite_slab": "Jadeite Slab",
+  "block.opminecraft.jadeite_stairs": "Jadeite Stairs",
+  "block.opminecraft.jadeite_trapdoor": "Jadeite Trapdoor",
+  "block.opminecraft.jadeite_wall": "Jadeite Wall",
+
 
   "block.opminecraft.opalite_block": "Opalite Block",
   "block.opminecraft.budding_opalite_block": "Budding Opalite Block",
@@ -321,7 +403,16 @@
   "block.opminecraft.medium_opalite_bud": "Medium Opalite Bud",
   "block.opminecraft.large_opalite_bud": "Large Opalite Bud",
   "block.opminecraft.opalite_cluster": "Opalite Cluster",
+
   "block.opminecraft.opalite_button": "Opalite Button",
+  "block.opminecraft.opalite_fence": "Opalite Fence",
+  "block.opminecraft.opalite_fence_gate": "Opalite Fence Gate",
+  "block.opminecraft.opalite_pressure_plate": "Opalite Pressure Plate",
+  "block.opminecraft.opalite_slab": "Opalite Slab",
+  "block.opminecraft.opalite_stairs": "Opalite Stairs",
+  "block.opminecraft.opalite_trapdoor": "Opalite Trapdoor",
+  "block.opminecraft.opalite_wall": "Opalite Wall",
+
 
   "block.opminecraft.padparadscha_block": "Padparadscha Block",
   "block.opminecraft.budding_padparadscha_block": "Budding Padparadscha Block",
@@ -329,7 +420,33 @@
   "block.opminecraft.medium_padparadscha_bud": "Medium Padparadscha Bud",
   "block.opminecraft.large_padparadscha_bud": "Large Padparadscha Bud",
   "block.opminecraft.padparadscha_cluster": "Padparadscha Cluster",
+
   "block.opminecraft.padparadscha_button": "Padparadscha Button",
+  "block.opminecraft.padparadscha_fence": "Padparadscha Fence",
+  "block.opminecraft.padparadscha_fence_gate": "Padparadscha Fence Gate",
+  "block.opminecraft.padparadscha_pressure_plate": "Padparadscha Pressure Plate",
+  "block.opminecraft.padparadscha_slab": "Padparadscha Slab",
+  "block.opminecraft.padparadscha_stairs": "Padparadscha Stairs",
+  "block.opminecraft.padparadscha_trapdoor": "Padparadscha Trapdoor",
+  "block.opminecraft.padparadscha_wall": "Padparadscha Wall",
+
+
+  "block.opminecraft.ruby_block": "Ruby Block",
+  "block.opminecraft.budding_ruby_block": "Budding Ruby Block",
+  "block.opminecraft.small_ruby_bud": "Small Ruby Bud",
+  "block.opminecraft.medium_ruby_bud": "Medium Ruby Bud",
+  "block.opminecraft.large_ruby_bud": "Large Ruby Bud",
+  "block.opminecraft.ruby_cluster": "Ruby Cluster",
+
+  "block.opminecraft.ruby_button": "Ruby Button",
+  "block.opminecraft.ruby_fence": "Ruby Fence",
+  "block.opminecraft.ruby_fence_gate": "Ruby Fence Gate",
+  "block.opminecraft.ruby_pressure_plate": "Ruby Pressure Plate",
+  "block.opminecraft.ruby_slab": "Ruby Slab",
+  "block.opminecraft.ruby_stairs": "Ruby Stairs",
+  "block.opminecraft.ruby_trapdoor": "Ruby Trapdoor",
+  "block.opminecraft.ruby_wall": "Ruby Wall",
+
 
   "block.opminecraft.sapphire_block": "Sapphire Block",
   "block.opminecraft.budding_sapphire_block": "Budding Sapphire Block",
@@ -339,6 +456,14 @@
   "block.opminecraft.sapphire_cluster": "Sapphire Cluster",
 
   "block.opminecraft.sapphire_button": "Sapphire Button",
+  "block.opminecraft.sapphire_fence": "Sapphire Fence",
+  "block.opminecraft.sapphire_fence_gate": "Sapphire Fence Gate",
+  "block.opminecraft.sapphire_pressure_plate": "Sapphire Pressure Plate",
+  "block.opminecraft.sapphire_slab": "Sapphire Slab",
+  "block.opminecraft.sapphire_stairs": "Sapphire Stairs",
+  "block.opminecraft.sapphire_trapdoor": "Sapphire Trapdoor",
+  "block.opminecraft.sapphire_wall": "Sapphire Wall",
+
 
   "block.opminecraft.scapolite_block": "Scapolite Block",
   "block.opminecraft.budding_scapolite_block": "Budding Scapolite Block",
@@ -347,6 +472,13 @@
   "block.opminecraft.large_scapolite_bud": "Large Scapolite Bud",
   "block.opminecraft.scapolite_cluster": "Scapolite Cluster",
   "block.opminecraft.scapolite_button": "Scapolite Button",
+  "block.opminecraft.scapolite_fence": "Scapolite Fence",
+  "block.opminecraft.scapolite_fence_gate": "Scapolite Fence Gate",
+  "block.opminecraft.scapolite_pressure_plate": "Scapolite Pressure Plate",
+  "block.opminecraft.scapolite_slab": "Scapolite Slab",
+  "block.opminecraft.scapolite_stairs": "Scapolite Stairs",
+  "block.opminecraft.scapolite_trapdoor": "Scapolite Trapdoor",
+  "block.opminecraft.scapolite_wall": "Scapolite Wall",
 
   "block.opminecraft.staurolite_block": "Staurolite Block",
   "block.opminecraft.budding_staurolite_block": "Budding Staurolite Block",
@@ -355,22 +487,14 @@
   "block.opminecraft.large_staurolite_bud": "Large Staurolite Bud",
   "block.opminecraft.staurolite_cluster": "Staurolite Cluster",
   "block.opminecraft.staurolite_button": "Staurolite Button",
+  "block.opminecraft.staurolite_fence": "Staurolite Fence",
   "block.opminecraft.staurolite_fence_gate": "Staurolite Fence Gate",
+  "block.opminecraft.staurolite_pressure_plate": "Staurolite Pressure Plate",
+  "block.opminecraft.staurolite_slab": "Staurolite Slab",
+  "block.opminecraft.staurolite_stairs": "Staurolite Stairs",
+  "block.opminecraft.staurolite_trapdoor": "Staurolite Trapdoor",
+  "block.opminecraft.staurolite_wall": "Staurolite Wall",
 
-  "block.opminecraft.ruby_block": "Ruby Block",
-  "block.opminecraft.budding_ruby_block": "Budding Ruby Block",
-  "block.opminecraft.small_ruby_bud": "Small Ruby Bud",
-  "block.opminecraft.medium_ruby_bud": "Medium Ruby Bud",
-  "block.opminecraft.ruby_button": "Ruby Button",
-  "block.opminecraft.ruby_fence": "Ruby Fence",
-  "block.opminecraft.ruby_fence_gate": "Ruby Fence Gate",
-  "block.opminecraft.ruby_pressure_plate": "Ruby Pressure Plate",
-  "block.opminecraft.ruby_slab": "Ruby Slab",
-  "block.opminecraft.ruby_stairs": "Ruby Stairs",
-  "block.opminecraft.ruby_trapdoor": "Ruby Trapdoor",
-  "block.opminecraft.ruby_wall": "Ruby Wall",
-  "block.opminecraft.large_ruby_bud": "Large Ruby Bud",
-  "block.opminecraft.ruby_cluster": "Ruby Cluster",
 
   "block.opminecraft.tanzanite_block": "Tanzanite Block",
   "block.opminecraft.budding_tanzanite_block": "Budding Tanzanite Block",
@@ -378,6 +502,15 @@
   "block.opminecraft.medium_tanzanite_bud": "Medium Tanzanite Bud",
   "block.opminecraft.large_tanzanite_bud": "Large Tanzanite Bud",
   "block.opminecraft.tanzanite_cluster": "Tanzanite Cluster",
+  "block.opminecraft.tanzanite_button": "Tanzanite Button",
+  "block.opminecraft.tanzanite_fence": "Tanzanite Fence",
+  "block.opminecraft.tanzanite_fence_gate": "Tanzanite Fence Gate",
+  "block.opminecraft.tanzanite_pressure_plate": "Tanzanite Pressure Plate",
+  "block.opminecraft.tanzanite_slab": "Tanzanite Slab",
+  "block.opminecraft.tanzanite_stairs": "Tanzanite Stairs",
+  "block.opminecraft.tanzanite_trapdoor": "Tanzanite Trapdoor",
+  "block.opminecraft.tanzanite_wall": "Tanzanite Wall",
+
 
 
   "block.opminecraft.schist": "Schist",

@@ -450,26 +450,44 @@ public class RegistryCreative {
                 event.accept(RegistryBIBI.FLOWERING_PITCHER_PLANT);
                 event.accept(RegistryBIBI.WUMPA_PLANT);
 
-            // ores
             event.accept(RegistryBIBI.DEEPSLATE_ONYX_ORE);
             event.accept(RegistryBIBI.DEEPSLATE_TITANIUM_ORE);
-					 
+
+            // Geode-related stone ores
+            event.accept(RegistryBIBI.ALEXANDRITE_ORE);
+            event.accept(RegistryBIBI.AMETHYST_ORE);
+            event.accept(RegistryBIBI.ANDALUSITE_ORE);
+            event.accept(RegistryBIBI.AQUAMARINE_ORE);
+            event.accept(RegistryBIBI.CHRYSOBERYL_ORE);
+            event.accept(RegistryBIBI.CORUNDUM_ORE);
+            event.accept(RegistryBIBI.CYMOPHANE_ORE);
+            event.accept(RegistryBIBI.DRAGONITE_ORE);
+            event.accept(RegistryBIBI.JADEITE_ORE);
+            event.accept(RegistryBIBI.OPALITE_ORE);
+            event.accept(RegistryBIBI.PADPARADSCHA_ORE);
+            event.accept(RegistryBIBI.RUBY_ORE);
+            event.accept(RegistryBIBI.SAPPHIRE_ORE);
+            event.accept(RegistryBIBI.SCAPOLITE_ORE);
+            event.accept(RegistryBIBI.STAUROLITE_ORE);
+            event.accept(RegistryBIBI.TANZANITE_ORE);
+
+            // Geode-related deepslate ores
             event.accept(RegistryBIBI.DEEPSLATE_ALEXANDRITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_AMETHYST_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_ANDALUSITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_AQUAMARINE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_AMETHYST_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_ANDALUSITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_AQUAMARINE_ORE);
             event.accept(RegistryBIBI.DEEPSLATE_CHRYSOBERYL_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_CORUNDUM_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_CYMOPHANE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_DRAGONITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_JADEITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_OPALITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_PADPARADSCHA_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_RUBY_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_SAPPHIRE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_SCAPOLITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_STAUROLITE_ORE);
-				event.accept(RegistryBIBI.DEEPSLATE_TANZANITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_CORUNDUM_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_CYMOPHANE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_DRAGONITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_JADEITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_OPALITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_PADPARADSCHA_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_RUBY_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_SAPPHIRE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_SCAPOLITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_STAUROLITE_ORE);
+            event.accept(RegistryBIBI.DEEPSLATE_TANZANITE_ORE);
 
 
                 // Alexandrite geode
