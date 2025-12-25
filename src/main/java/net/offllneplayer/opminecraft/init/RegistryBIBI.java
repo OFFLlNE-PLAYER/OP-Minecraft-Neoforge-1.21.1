@@ -90,7 +90,11 @@ public class RegistryBIBI {
 
 	// public static final DeferredBlock<Block> BLOCK_OF_FIRERES_EPICNESS = registerFREpicBlock("block_of_crying_ingots", BlockofCryingIngotsBlock::new);
 
-	public static final DeferredBlock<Block> BLOCK_OF_TEST = registerBlock("block_of_test", BlockofOnyxBlock::new);
+	public static final DeferredBlock<Block> BLOCK_OF_TEST =
+			registerBlock("block_of_test", () -> new RotatedPillarBlock(Properties.of() // instead of block, "RotatedPillarBlock" used to have "axis" property
+					.strength(3F, 3F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion())); // no occ prevents culling of faces behind this bloc
 
 	public static final DeferredBlock<Block> BLOCK_OF_CHARCOAL = registerBlock("block_of_charcoal", BlockofCharcoalBlock::new);
 	public static final DeferredBlock<Block> CHARCOAL_BUTTON = registerBlock("charcoal_button", CharcoalButtonBlock::new);
@@ -274,6 +278,7 @@ public class RegistryBIBI {
 	public static final DeferredBlock<Block> BLOCK_OF_TITANIUM = registerBlock("block_of_titanium", BlockofTitaniumBlock::new);
 	public static final DeferredBlock<Block> ONYX_BLOCK = registerBlock("onyx_block", OnyxBlockBlock::new);
 	public static final DeferredBlock<Block> TITANIUM_BLOCK = registerBlock("titanium_block", TitaniumBlockBlock::new);
+
 
  // stone ore variants of geode-gems here
  // Place stone ores above deepslate ores, ABC order, using vanilla diamond_ore strength/resistance
@@ -1236,6 +1241,7 @@ public class RegistryBIBI {
 
 
 	public static final DeferredItem<PrototypeGunbladeItem> PROTOTYPE_GUNBLADE = ITEMSREGISTRY.register("prototype_gunblade", PrototypeGunbladeItem::new);
+
 	public static final Supplier<GunbladeItem> GOLDEN_GUNBLADE = ITEMSREGISTRY.register("golden_gunblade",
 		() -> new GunbladeItem(GunbladeMaterial.GOLDEN));
 	public static final Supplier<GunbladeItem> IRON_GUNBLADE = ITEMSREGISTRY.register("iron_gunblade",
